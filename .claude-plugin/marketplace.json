@@ -14,7 +14,7 @@
   "plugins": [
     {
       "name": "agentkits-marketing",
-      "source": "./",
+      "source": "../",
       "description": "Full marketing automation suite - agents, commands, skills, workflows, and training",
       "category": "marketing",
       "tags": [
@@ -30,7 +30,7 @@
     },
     {
       "name": "agentkits-marketing-skills",
-      "source": "./.claude/skills",
+      "source": "../.claude/skills",
       "description": "28 marketing skills including CRO, SEO, copywriting, psychology, and growth",
       "category": "skills",
       "tags": [
@@ -40,7 +40,7 @@
     },
     {
       "name": "agentkits-marketing-agents",
-      "source": "./.claude/agents",
+      "source": "../.claude/agents",
       "description": "18 specialized marketing agents for campaigns, content, and optimization",
       "category": "agents",
       "tags": [
@@ -50,7 +50,7 @@
     },
     {
       "name": "agentkits-marketing-commands",
-      "source": "./.claude/commands",
+      "source": "../.claude/commands",
       "description": "90+ marketing slash commands for campaigns, content, SEO, CRO, and analytics",
       "category": "commands",
       "tags": [
