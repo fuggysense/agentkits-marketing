@@ -44,7 +44,6 @@
         "./.claude/agents/upsell-maximizer.md"
       ],
       "skills": "./.claude/skills",
-      "strict": false,
       "category": "marketing",
       "tags": ["marketing", "content", "seo", "cro", "automation"]
     }

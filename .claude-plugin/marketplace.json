@@ -44,7 +44,6 @@
         "./.claude/agents/upsell-maximizer.md"
       ],
       "skills": "./.claude/skills",
-      "strict": false,
       "category": "marketing",
       "tags": ["marketing", "content", "seo", "cro", "email", "sales", "campaigns", "automation"]
     },
@@ -54,7 +53,6 @@
       "description": "28 marketing skills including CRO, SEO, copywriting, psychology, and growth",
       "version": "1.7.1",
       "skills": "./.claude/skills",
-      "strict": false,
       "category": "skills",
       "tags": ["skills", "marketing"]
     },
@@ -85,7 +83,6 @@
         "./.claude/agents/startup-founder.md",
         "./.claude/agents/upsell-maximizer.md"
       ],
-      "strict": false,
       "category": "agents",
       "tags": ["agents", "marketing"]
     },
@@ -95,7 +92,6 @@
       "description": "90+ marketing slash commands for campaigns, content, SEO, CRO, and analytics",
       "version": "1.7.1",
       "commands": "./.claude/commands",
-      "strict": false,
       "category": "commands",
       "tags": ["commands", "marketing"]
     }
