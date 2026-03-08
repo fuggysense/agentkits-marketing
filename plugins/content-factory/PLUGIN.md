@@ -75,8 +75,8 @@ The CF plugin transforms how marketers create content by enabling rapid, paralle
 
 ```bash
 git clone https://github.com/aitytech/agentkits-marketing.git
-cd marketing-tools-marketplace
-ln -s $(pwd)/plugins/cf ~/.claude/plugins/cf
+cd agentkits-marketing
+ln -s "$(pwd)/plugins/content-factory" ~/.claude/plugins/content-factory
 ```
 
 ## Quick Start
@@ -522,8 +522,8 @@ Control quality/speed trade-off:
 
 ## Support
 
-- **Documentation:** [Getting Started Guide](../../docs/GETTING-STARTED.md)
-- **Examples:** [CF Examples](../../examples/cf/)
+- **Documentation:** [Usage Guide](../../docs/usage-guide.md)
+- **Examples:** [Campaign Playbooks](../../docs/campaign-playbooks.md)
 - **Issues:** [GitHub Issues](https://github.com/aitytech/agentkits-marketing/issues)
 - **Community:** [GitHub Discussions](https://github.com/aitytech/agentkits-marketing/discussions)
 
