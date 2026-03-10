@@ -52,6 +52,9 @@
   "files": [
     ".claude-plugin/",
     ".claude/",
+    "agents/",
+    "commands/",
+    "skills/",
     "bin/",
     "installers/",
     "training/",
