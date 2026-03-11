@@ -1,0 +1,25 @@
+{
+  "primary": [],
+  "secondary": [],
+  "channels": {
+    "email": {
+      "platform": "",
+      "list_size": null,
+      "frequency": ""
+    },
+    "social": {
+      "platforms": [],
+      "posting_frequency": {}
+    },
+    "paid": {
+      "platforms": [],
+      "monthly_budget": null
+    },
+    "content": {
+      "blog": false,
+      "podcast": false,
+      "youtube": false,
+      "newsletter": false
+    }
+  }
+}

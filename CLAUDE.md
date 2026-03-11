@@ -280,3 +280,136 @@ We keep all important docs in `./docs` folder and keep updating them, structure 
 - `/skills:select` - Intelligent skill selection (NEW)
 
 **IMPORTANT:** *MUST READ* and *MUST COMPLY* all *INSTRUCTIONS* in project `./CLAUDE.md`, especially *WORKFLOWS* section is *CRITICALLY IMPORTANT*, this rule is *MANDATORY. NON-NEGOTIABLE. NO EXCEPTIONS. MUST REMEMBER AT ALL TIMES!!!*
+
+---
+
+## Owner & Operating Model
+
+**Owner:** Jerel — non-technical operator, taste/strategy/direction role.
+**Operating Model:** 80/20 HITL — Claude handles 80% execution (research, drafting, analysis, file organization), Jerel handles 20% (taste, strategy, creative direction, approvals).
+
+## Routing Table
+
+### Agents (`agents/`)
+| Agent | Purpose |
+|-------|---------|
+| `attraction-specialist` | Lead gen, TOFU, SEO, competitor intel, landing pages |
+| `brainstormer` | Campaign ideation, creative concepts, messaging angles |
+| `brand-voice-guardian` | Brand consistency, voice validation, tone review |
+| `command-helper` | Command discovery and usage guidance |
+| `continuity-specialist` | Retention, engagement, customer success |
+| `conversion-optimizer` | CRO, conversion rate optimization |
+| `copywriter` | Content creation, headlines, CTAs, marketing copy |
+| `docs-manager` | Documentation, brand guidelines, style guides |
+| `email-wizard` | Email campaigns, sequences, automation |
+| `lead-qualifier` | Intent detection, lead scoring, audience analysis |
+| `mcp-manager` | MCP server integrations, tool orchestration |
+| `persona-builder` | Buyer persona creation and refinement |
+| `planner` | Campaign planning, content calendars |
+| `project-manager` | Campaign management, coordination |
+| `researcher` | Market research, competitive analysis |
+| `sales-enabler` | Sales collateral, case studies, presentations |
+| `seo-specialist` | SEO optimization, technical review |
+| `solopreneur` | Solopreneur perspective reviewer |
+| `startup-founder` | Startup founder perspective reviewer |
+| `upsell-maximizer` | Revenue expansion, cross-sell, upsell |
+
+### Skills (`skills/`)
+| Skill | Purpose |
+|-------|---------|
+| `meta-builder` | Creates new agents and skills with feedback loops |
+| `marketing-fundamentals` | Core marketing concepts, funnel stages |
+| `marketing-psychology` | 70+ mental models for marketing |
+| `marketing-ideas` | 140+ proven SaaS marketing strategies |
+| `seo-mastery` | Search optimization, keyword research |
+| `social-media` | Social strategies, platform best practices |
+| `email-marketing` | Email automation, deliverability |
+| `paid-advertising` | Ad platform strategies, ROAS optimization |
+| `content-strategy` | Content planning, editorial calendars |
+| `analytics-attribution` | Performance measurement, attribution models |
+| `brand-building` | Brand strategy, voice, positioning |
+| `problem-solving` | Marketing problem-solving techniques |
+| `copywriting` | Marketing page copy, headlines, CTAs |
+| `copy-editing` | Edit and polish existing marketing copy |
+| `email-sequence` | Drip campaigns, nurture sequences |
+| `page-cro` | Homepage, landing page, pricing page optimization |
+| `form-cro` | Lead capture, contact, demo request forms |
+| `popup-cro` | Modals, overlays, exit intent popups |
+| `signup-flow-cro` | Registration, trial signup optimization |
+| `onboarding-cro` | Post-signup activation, first-run experience |
+| `paywall-upgrade-cro` | In-app paywalls, upgrade screens |
+| `ab-test-setup` | A/B test planning and experiment design |
+| `programmatic-seo` | Template pages at scale |
+| `schema-markup` | Structured data, rich snippets |
+| `competitor-alternatives` | Comparison and alternative pages |
+| `launch-strategy` | Product launches, feature announcements |
+| `pricing-strategy` | Pricing, packaging, monetization |
+| `referral-program` | Referral, affiliate, word-of-mouth |
+| `free-tool-strategy` | Engineering-as-marketing tools |
+| `document-skills` | DOCX, PDF, PPTX, XLSX document creation |
+
+### Context Layers
+| Path | Purpose |
+|------|---------|
+| `context/clief-notes/` | Foundation layer — curated repos, skills, MCP servers, tools |
+| `context/writing/` | Writing frameworks — copywriting masters, marketing genius, anti-AI patterns |
+| `voice/` | Voice profile system — templates and per-person profiles |
+| `clients/` | Per-client configs — ICP, offer, brand voice, channels |
+
+## Self-Annealing Rule
+
+When an error occurs or a process fails:
+1. **Fix** — Resolve the immediate issue
+2. **Update** — Modify the directive/skill/agent that caused the failure
+3. **Test** — Verify the fix works
+4. **Strengthen** — The system is now more resilient than before the error
+
+Every failure makes the system stronger. Never fix the same error twice — always update the source.
+
+## HITL Gates
+
+### Requires Human Approval
+- Any spend (ads, API credits, subscriptions, tools)
+- Publishing to live platforms (social, email, website)
+- Creative direction and brand voice decisions
+- Strategy pivots or major campaign changes
+- Client-facing deliverables
+
+### Auto-Executes (No Approval Needed)
+- Research and analysis
+- Drafting and iteration
+- File organization and cleanup
+- Internal documentation updates
+- Skill/agent scaffolding and testing
+
+## Analysis Framework
+
+When multiple tools, approaches, or strategies exist, score each option:
+
+| Factor | Weight | Question |
+|--------|--------|----------|
+| Speed | 40% | How fast can we get results? |
+| Simplicity | 30% | How easy is it to set up and maintain? |
+| Cost | 20% | What's the financial investment? |
+| Scalability | 10% | Will it grow with us? |
+
+Explain the winner in plain language with an analogy a 4th grader would understand.
+
+## Session End Protocol
+
+Before ending any session:
+1. Log key decisions to `## Learnings` below
+2. Update any directives that were improved during the session
+3. Note unfinished work in `### Open Threads`
+4. This persists context across context window clears
+
+## Learnings
+
+### Confirmed Patterns
+- (grows over time as patterns are confirmed)
+
+### Mistakes Not to Repeat
+- (grows over time as mistakes are identified)
+
+### Open Threads
+- (unfinished work from interrupted sessions)

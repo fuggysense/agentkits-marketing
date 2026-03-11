@@ -75,3 +75,10 @@ data/**
 
 # Translation cache
 .translation-cache.json
+
+# Local temp files
+.tmp/
+
+# Credentials
+credentials.json
+token.json
