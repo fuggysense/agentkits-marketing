@@ -1,0 +1,35 @@
+{
+  "name": "postiz",
+  "description": "Self-hosted social media scheduling, publishing, and analytics",
+  "type": "npm",
+  "command": "npx",
+  "args": ["-y", "postiz"],
+  "env": {
+    "POSTIZ_API_KEY": "${POSTIZ_API_KEY}",
+    "POSTIZ_API_URL": "${POSTIZ_API_URL}"
+  },
+  "setup": {
+    "requirements": [
+      "Self-hosted Postiz instance (Docker Compose on VPS)",
+      "API key from Postiz dashboard",
+      "At least one social platform connected"
+    ],
+    "supported": [
+      "Twitter/X", "LinkedIn", "Instagram", "Facebook",
+      "TikTok", "YouTube", "Pinterest", "Threads",
+      "Reddit", "Bluesky", "Mastodon"
+    ]
+  },
+  "capabilities": {
+    "tools": 7,
+    "categories": ["posting", "scheduling", "media-upload", "analytics"]
+  },
+  "rateLimits": {
+    "requestsPerHour": 30
+  },
+  "source": {
+    "npm": "https://www.npmjs.com/package/postiz",
+    "github": "https://github.com/gitroomhq/postiz-app",
+    "docs": "https://docs.postiz.com"
+  }
+}

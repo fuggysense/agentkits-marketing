@@ -472,6 +472,12 @@ Maintain consistency throughout, but adjust intensity:
 
 ---
 
+## References
+
+- **Video Ad Scripts**: `references/video-ad-scripts.md` — 3 talking-head video ad frameworks (Straight-For-The-Kill, Personal Story, Don't Do That) with fill-in templates. Load for any video ad script task.
+- **Ad Creative Frameworks**: `references/ad-creative-frameworks.md` — RSA architecture, Meta creative structure, testing methodology
+- **Direct Response Copy**: `references/direct-response-copy.md` — Classic DR copywriting principles (Schwartz, Hopkins, Ogilvy, etc.)
+
 ## Related Skills
 
 - **copy-editing**: For polishing and improving existing copy (use after writing your first draft)
@@ -479,3 +485,4 @@ Maintain consistency throughout, but adjust intensity:
 - **email-sequence**: For email copywriting
 - **popup-cro**: For popup and modal copy
 - **ab-test-setup**: To test copy variations properly
+- **linkedin-content**: For storytelling frameworks (SIREN) — see `linkedin-content/references/siren_framework.md`

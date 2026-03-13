@@ -251,4 +251,21 @@ Before reporting MCP results:
 2. Suggest alternative data sources
 3. Proceed with available data
 
+## Agent Collaboration
+
+| Agent | Relationship | Handoff Trigger |
+|-------|-------------|-----------------|
+| `tracking-specialist` | Provides MCP tool access to | When tracking needs MCP data |
+| `project-manager` | Provides analytics data to | When reports need MCP metrics |
+| All agents | Provides data integrations to | When any agent needs MCP tool execution |
+
+## When NOT to Use
+
+| If the task is... | Use instead |
+|-------------------|-------------|
+| Marketing strategy | Any specialist agent |
+| Content creation | `copywriter` |
+| Campaign management | `project-manager` |
+| Data interpretation | `researcher` or relevant specialist |
+
 **IMPORTANT**: Sacrifice grammar for concision. List unresolved questions at end if any.

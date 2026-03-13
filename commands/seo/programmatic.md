@@ -45,6 +45,7 @@ Load these files first:
 - **Basic** - Opportunity assessment
 - **Recommended** - Full plan with templates
 - **Complete** - Implementation-ready specs
+- **Pipeline (pSEO 2.0)** - End-to-end: taxonomy → schema → generation → validation → rollout → monitoring
 - **Custom** - I'll specify what I need
 
 ---
@@ -59,7 +60,22 @@ Load these files first:
 - **Locations** - [service] in [city]
 - **Comparisons** - [X] vs [Y]
 - **Integrations** - [product] + [integration]
+- **Resources** - [type] for [niche] (idea lists, checklists, guides)
+- **Free Tools** - [niche] [tool type] (calculators, generators)
 - **Other** - Different pattern
+
+---
+
+### Step 2.5: Ask Architecture (only if Pipeline scope)
+
+**Question:** "Which content architecture approach?"
+**Header:** "Architecture"
+**MultiSelect:** false
+
+**Options:**
+- **JSON-First (Recommended)** - Strict JSON schemas, separated layers, deterministic titles
+- **Traditional** - Template-based variable substitution
+- **Hybrid** - JSON schemas for structure, templates for simpler pages
 
 ---
 
@@ -174,9 +190,22 @@ Load these files first:
 
 | Task | Agent | Trigger |
 |------|-------|---------|
-| pSEO planning | `attraction-specialist` | Primary task |
+| pSEO 2.0 pipeline (Pipeline scope) | `pseo-architect` | User selects "Pipeline" scope |
+| pSEO planning (other scopes) | `attraction-specialist` | Basic/Recommended/Complete scope |
 | Template copy | `copywriter` | Content structure |
 | Technical specs | `seo-specialist` | Schema, indexation |
+| Quality validation | `seo-specialist` | 3-gate quality check |
+| Indexation monitoring | `tracking-specialist` | Post-rollout monitoring |
+
+### Routing Decision Tree
+
+1. User selects **Pipeline** scope → route to `pseo-architect`
+   - pseo-architect orchestrates the full 7-step pipeline
+   - Delegates internally to researcher, copywriter, seo-specialist, tracking-specialist
+2. User selects **Basic/Recommended/Complete** scope → route to `attraction-specialist`
+   - attraction-specialist uses programmatic-seo v2.0 skill as reference
+   - Produces planning deliverable (not pipeline execution)
+3. User selects **Custom** → ask what they need, route accordingly
 
 ---
 

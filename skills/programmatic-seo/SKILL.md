@@ -1,25 +1,36 @@
 ---
 name: programmatic-seo
-version: "1.0.0"
+version: "2.0.0"
+updated: "260313"
 brand: AgentKits Marketing by AityTech
 category: seo-growth
 difficulty: advanced
-description: When the user wants to create SEO-driven pages at scale using templates and data. Also use when the user mentions "programmatic SEO," "template pages," "pages at scale," "directory pages," "location pages," "[keyword] + [city] pages," "comparison pages," "integration pages," or "building many pages for SEO." For auditing existing SEO issues, see seo-audit.
+description: When the user wants to create SEO-driven pages at scale using templates and data. Also use when the user mentions "programmatic SEO," "pSEO 2.0," "JSON-first pages," "niche taxonomy," "schema-driven content," "template pages," "pages at scale," "directory pages," "location pages," "[keyword] + [city] pages," "comparison pages," "integration pages," "GEO," "generative engine optimization," or "building many pages for SEO." For auditing existing SEO issues, see seo-audit.
 triggers:
   - programmatic SEO
+  - pSEO 2.0
+  - JSON-first pages
+  - niche taxonomy
+  - schema-driven content
   - template pages
   - pages at scale
   - directory pages
   - location pages
   - comparison pages
   - integration pages
+  - GEO
+  - generative engine optimization
 prerequisites:
   - seo-mastery
 related_skills:
   - seo-mastery
   - schema-markup
   - competitor-alternatives
+  - analytics-attribution
+  - content-strategy
+  - website-design
 agents:
+  - pseo-architect
   - attraction-specialist
   - seo-specialist
 mcp_integrations:
@@ -33,9 +44,128 @@ success_metrics:
   - keyword_coverage
 ---
 
-# Programmatic SEO
+# Programmatic SEO (v2.0)
 
 You are an expert in programmatic SEO—building SEO-optimized pages at scale using templates and data. Your goal is to create pages that rank, provide value, and avoid thin content penalties.
+
+## pSEO 2.0: The Paradigm Shift
+
+pSEO 2.0 separates content generation into three distinct layers:
+
+1. **Data Layer** — Structured niche taxonomy defining what pages exist
+2. **Schema Layer** — Strict JSON schemas defining page structure per content type
+3. **Renderer Layer** — Templates that consume JSON to produce HTML pages
+
+**Key innovations over v1.0**:
+- JSON-first architecture (validate before render, not after publish)
+- Deterministic title templates (no AI-generated titles — prevents cannibalization)
+- Niche taxonomy system (strategic page planning, not random generation)
+- Three-gate quality validation (unique answer, 40% data, engagement)
+- Graduated scaling protocol with DA-based velocity limits
+- Indexation kill switch (<40% indexed = stop and audit)
+
+> **Survivorship bias notice**: Published pSEO case studies represent best-case outcomes. Results vary significantly by domain authority, niche competition, and content quality. Never promise specific traffic growth percentages.
+
+**Deep dive**: `references/pseo-2-architecture.md`
+
+---
+
+## Three-Gate Quality Validation
+
+Every pSEO page must pass all three gates before publishing:
+
+| Gate | Test | Threshold |
+|------|------|-----------|
+| Gate 1: Unique Answer | Does this page answer a distinct query no other page answers? | Pass/fail — no overlap allowed |
+| Gate 2: 40% Unique Data | Is ≥40% of content unique to THIS page (not template)? | ≥40% unique content words |
+| Gate 3: Engagement | Would a user bookmark this page? Useful without search engines? | Pass = actionable value |
+
+Pages scoring <40 on the quality framework should NOT be published. Hold, improve, or remove.
+
+**Deep dive**: `references/pseo-quality-gates.md`
+
+---
+
+## Niche Taxonomy System
+
+Every pSEO project starts with a structured taxonomy:
+
+```
+Niches → Audiences → Pain Points → Content Types → Subtopics → Monetization
+```
+
+The taxonomy defines the universe of pages. Build it BEFORE designing schemas or generating content. Each business builds its own taxonomy — we teach the framework, not a universal list.
+
+**Deep dive**: `references/niche-taxonomy-builder.md`
+
+---
+
+## Graduated Scaling Protocol
+
+Scale based on signals, not ambition. DA thresholds are non-negotiable:
+
+| DA Range | Max Total Pages | Max Pages/Week | Status |
+|----------|----------------|----------------|--------|
+| DA < 20 | **0** | **0** | STOP — build authority first |
+| DA 20-30 | 500 | 50 | Cautious |
+| DA 30-40 | 2,000 | 100 | Standard |
+| DA 40-60 | 5,000 | 200 | Accelerated |
+| DA 60+ | 10,000+ | 500 | Full velocity |
+
+**Indexation kill switch**: If indexation drops below 40%, STOP all publishing, alert stakeholder, audit content.
+
+**Deep dive**: `references/pseo-scaling-protocol.md`
+
+---
+
+## Risk Assessment & Guardrails
+
+### Non-Negotiable Guardrails
+
+1. **DA threshold check** before any pSEO campaign starts
+2. **Page velocity limits** enforced per DA range (see Scaling Protocol)
+3. **Indexation kill switch** at <40% — automatic stop
+4. **Survivorship bias disclaimer** on all case study references
+5. **Content decay monitoring** — pSEO pages go stale faster than editorial
+6. **Cannibalization detection** — check before publishing every batch
+
+### Risk Matrix
+
+| Risk | Likelihood | Impact | Mitigation |
+|------|-----------|--------|------------|
+| Thin content penalty | Medium (if no quality gates) | High | Three-gate validation, 40% unique data minimum |
+| Keyword cannibalization | High (at scale) | Medium | Deterministic titles, Gate 1 uniqueness check |
+| Content decay | High (especially location/pricing data) | Medium | Quarterly refresh schedule, dynamic data where possible |
+| Algorithm update vulnerability | Medium | High | Graduated rollout, kill switch, don't over-index on pSEO |
+| Crawl budget exhaustion | Medium (at scale) | Medium | Velocity limits, sitemap management |
+| Index bloat (many low-quality pages) | Medium | High | Prune pages with 0 impressions after 90 days |
+
+### When NOT to Use pSEO
+
+- DA < 20 (build authority with editorial content first)
+- No proprietary or differentiated data available
+- Niche has <100 realistic keyword variations
+- No conversion path for the generated pages
+- Site already has thin content issues
+
+---
+
+## Generative Engine Optimization (GEO)
+
+pSEO pages must be optimized for both traditional search AND AI search engines (Perplexity, ChatGPT Search, Google AI Overviews).
+
+**Key GEO principles for pSEO at scale**:
+- Entity-first structure with schema.org markup on every page
+- Concise 40-60 word answer blocks near page top (AI-extractable)
+- Citation-friendly formatting (clear headings, numbered lists, data tables)
+- Unique data points (AI engines prefer citing original data)
+- Source attribution (clear provenance for all data)
+
+For detailed AEO/GEO markup patterns on individual pages, see `skills/website-design/SKILL.md` → "AEO / GEO Specific Patterns" section. The patterns above focus on GEO considerations unique to pSEO at scale.
+
+**Deep dive**: `references/pseo-2-architecture.md` → GEO section
+
+---
 
 ## Initial Assessment
 
@@ -86,294 +216,67 @@ Hierarchy of data defensibility:
 - Good: `yoursite.com/templates/resume/`
 - Bad: `templates.yoursite.com/resume/`
 
-Subfolders pass authority to your main domain. Subdomains are treated as separate sites by Google.
-
-**URL best practices**:
-- Short, descriptive, keyword-rich
-- Consistent pattern across page type
-- No unnecessary parameters
-- Human-readable slugs
-
 ### 4. Genuine Search Intent Match
-Pages must actually answer what people are searching for:
-- Understand the intent behind each pattern
-- Provide the complete answer
-- Don't over-optimize for keywords at expense of usefulness
+Pages must actually answer what people are searching for.
 
 ### 5. Scalable Quality, Not Just Quantity
-- Quality standards must be maintained at scale
-- Better to have 100 great pages than 10,000 thin ones
-- Build quality checks into the process
+Quality standards must be maintained at scale. Better to have 100 great pages than 10,000 thin ones.
 
 ### 6. Avoid Google Penalties
-- No doorway pages (thin pages that just funnel to main site)
-- No keyword stuffing
-- No duplicate content across pages
-- Genuine utility for users
+No doorway pages, keyword stuffing, or duplicate content across pages.
 
 ---
 
 ## The 12 Programmatic SEO Playbooks
 
-Beyond mixing and matching data point permutations, these are the proven playbooks for programmatic SEO:
+These define **WHAT** types of pages to build. pSEO 2.0 (above) defines **HOW** to build them at scale with quality.
 
 ### 1. Templates
-**Pattern**: "[Type] template" or "free [type] template"
-**Example searches**: "resume template", "invoice template", "pitch deck template"
-
-**What it is**: Downloadable or interactive templates users can use directly.
-
-**Why it works**:
-- High intent—people need it now
-- Shareable/linkable assets
-- Natural for product-led companies
-
-**Value requirements**:
-- Actually usable templates (not just previews)
-- Multiple variations per type
-- Quality comparable to paid options
-- Easy download/use flow
-
-**URL structure**: `/templates/[type]/` or `/templates/[category]/[type]/`
-
----
+**Pattern**: "[Type] template" — Downloadable or interactive templates.
 
 ### 2. Curation
-**Pattern**: "best [category]" or "top [number] [things]"
-**Example searches**: "best website builders", "top 10 crm software", "best free design tools"
-
-**What it is**: Curated lists ranking or recommending options in a category.
-
-**Why it works**:
-- Comparison shoppers searching for guidance
-- High commercial intent
-- Evergreen with updates
-
-**Value requirements**:
-- Genuine evaluation criteria
-- Real testing or expertise
-- Regular updates (date visible)
-- Not just affiliate-driven rankings
-
-**URL structure**: `/best/[category]/` or `/[category]/best/`
-
----
+**Pattern**: "best [category]" — Curated lists ranking options.
 
 ### 3. Conversions
-**Pattern**: "[X] to [Y]" or "[amount] [unit] in [unit]"
-**Example searches**: "$10 USD to GBP", "100 kg to lbs", "pdf to word"
-
-**What it is**: Tools or pages that convert between formats, units, or currencies.
-
-**Why it works**:
-- Instant utility
-- Extremely high search volume
-- Repeat usage potential
-
-**Value requirements**:
-- Accurate, real-time data
-- Fast, functional tool
-- Related conversions suggested
-- Mobile-friendly interface
-
-**URL structure**: `/convert/[from]-to-[to]/` or `/[from]-to-[to]-converter/`
-
----
+**Pattern**: "[X] to [Y]" — Format, unit, or currency converters.
 
 ### 4. Comparisons
-**Pattern**: "[X] vs [Y]" or "[X] alternative"
-**Example searches**: "webflow vs wordpress", "notion vs coda", "figma alternatives"
-
-**What it is**: Head-to-head comparisons between products, tools, or options.
-
-**Why it works**:
-- High purchase intent
-- Clear search pattern
-- Scales with number of competitors
-
-**Value requirements**:
-- Honest, balanced analysis
-- Actual feature comparison data
-- Clear recommendation by use case
-- Updated when products change
-
-**URL structure**: `/compare/[x]-vs-[y]/` or `/[x]-vs-[y]/`
-
-*See also: competitor-alternatives skill for detailed frameworks*
-
----
+**Pattern**: "[X] vs [Y]" — Head-to-head product comparisons.
+*See also: competitor-alternatives skill*
 
 ### 5. Examples
-**Pattern**: "[type] examples" or "[category] inspiration"
-**Example searches**: "saas landing page examples", "email subject line examples", "portfolio website examples"
-
-**What it is**: Galleries or collections of real-world examples for inspiration.
-
-**Why it works**:
-- Research phase traffic
-- Highly shareable
-- Natural for design/creative tools
-
-**Value requirements**:
-- Real, high-quality examples
-- Screenshots or embeds
-- Categorization/filtering
-- Analysis of why they work
-
-**URL structure**: `/examples/[type]/` or `/[type]-examples/`
-
----
+**Pattern**: "[type] examples" — Galleries of real-world examples.
 
 ### 6. Locations
-**Pattern**: "[service/thing] in [location]"
-**Example searches**: "coworking spaces in san diego", "dentists in austin", "best restaurants in brooklyn"
-
-**What it is**: Location-specific pages for services, businesses, or information.
-
-**Why it works**:
-- Local intent is massive
-- Scales with geography
-- Natural for marketplaces/directories
-
-**Value requirements**:
-- Actual local data (not just city name swapped)
-- Local providers/options listed
-- Location-specific insights (pricing, regulations)
-- Map integration helpful
-
-**URL structure**: `/[service]/[city]/` or `/locations/[city]/[service]/`
-
----
+**Pattern**: "[service] in [location]" — Location-specific pages.
 
 ### 7. Personas
-**Pattern**: "[product] for [audience]" or "[solution] for [role/industry]"
-**Example searches**: "payroll software for agencies", "crm for real estate", "project management for freelancers"
-
-**What it is**: Tailored landing pages addressing specific audience segments.
-
-**Why it works**:
-- Speaks directly to searcher's context
-- Higher conversion than generic pages
-- Scales with personas
-
-**Value requirements**:
-- Genuine persona-specific content
-- Relevant features highlighted
-- Testimonials from that segment
-- Use cases specific to audience
-
-**URL structure**: `/for/[persona]/` or `/solutions/[industry]/`
-
----
+**Pattern**: "[product] for [audience]" — Audience-specific landing pages.
 
 ### 8. Integrations
-**Pattern**: "[your product] [other product] integration" or "[product] + [product]"
-**Example searches**: "slack asana integration", "zapier airtable", "hubspot salesforce sync"
-
-**What it is**: Pages explaining how your product works with other tools.
-
-**Why it works**:
-- Captures users of other products
-- High intent (they want the solution)
-- Scales with integration ecosystem
-
-**Value requirements**:
-- Real integration details
-- Setup instructions
-- Use cases for the combination
-- Working integration (not vaporware)
-
-**URL structure**: `/integrations/[product]/` or `/connect/[product]/`
-
----
+**Pattern**: "[product] [integration]" — Integration detail pages.
 
 ### 9. Glossary
-**Pattern**: "what is [term]" or "[term] definition" or "[term] meaning"
-**Example searches**: "what is pSEO", "api definition", "what does crm stand for"
-
-**What it is**: Educational definitions of industry terms and concepts.
-
-**Why it works**:
-- Top-of-funnel awareness
-- Establishes expertise
-- Natural internal linking opportunities
-
-**Value requirements**:
-- Clear, accurate definitions
-- Examples and context
-- Related terms linked
-- More depth than a dictionary
-
-**URL structure**: `/glossary/[term]/` or `/learn/[term]/`
-
----
+**Pattern**: "what is [term]" — Educational definitions.
 
 ### 10. Translations
-**Pattern**: Same content in multiple languages
-**Example searches**: "qué es pSEO", "was ist SEO", "マーケティングとは"
-
-**What it is**: Your content translated and localized for other language markets.
-
-**Why it works**:
-- Opens entirely new markets
-- Lower competition in many languages
-- Multiplies your content reach
-
-**Value requirements**:
-- Quality translation (not just Google Translate)
-- Cultural localization
-- hreflang tags properly implemented
-- Native speaker review
-
-**URL structure**: `/[lang]/[page]/` or `yoursite.com/es/`, `/de/`, etc.
-
----
+Multi-language content with hreflang tags.
 
 ### 11. Directory
-**Pattern**: "[category] tools" or "[type] software" or "[category] companies"
-**Example searches**: "ai copywriting tools", "email marketing software", "crm companies"
-
-**What it is**: Comprehensive directories listing options in a category.
-
-**Why it works**:
-- Research phase capture
-- Link building magnet
-- Natural for aggregators/reviewers
-
-**Value requirements**:
-- Comprehensive coverage
-- Useful filtering/sorting
-- Details per listing (not just names)
-- Regular updates
-
-**URL structure**: `/directory/[category]/` or `/[category]-directory/`
-
----
+**Pattern**: "[category] tools" — Comprehensive category directories.
 
 ### 12. Profiles
-**Pattern**: "[person/company name]" or "[entity] + [attribute]"
-**Example searches**: "stripe ceo", "airbnb founding story", "elon musk companies"
+**Pattern**: "[entity] info" — Profile pages about people/companies.
 
-**What it is**: Profile pages about notable people, companies, or entities.
+### Additional Playbooks (v2.0)
 
-**Why it works**:
-- Informational intent traffic
-- Builds topical authority
-- Natural for B2B, news, research
+### 13. Resources
+**Pattern**: "[type] for [niche]" — Idea lists, checklists, guides.
 
-**Value requirements**:
-- Accurate, sourced information
-- Regularly updated
-- Unique insights or aggregation
-- Not just Wikipedia rehash
+### 14. Free Tools
+**Pattern**: "[niche] [tool type]" — Calculators, generators, analyzers.
 
-**URL structure**: `/people/[name]/` or `/companies/[name]/`
-
----
-
-## Choosing Your Playbook
-
-### Match to Your Assets
+### Choosing Your Playbook
 
 | If you have... | Consider... |
 |----------------|-------------|
@@ -382,18 +285,10 @@ Beyond mixing and matching data point permutations, these are the proven playboo
 | Design/creative product | Templates, Examples |
 | Multi-segment audience | Personas |
 | Local presence | Locations |
-| Tool or utility product | Conversions |
-| Content/expertise | Glossary, Curation |
+| Tool or utility product | Conversions, Free Tools |
+| Content/expertise | Glossary, Curation, Resources |
 | International potential | Translations |
 | Competitor landscape | Comparisons |
-
-### Combine Playbooks
-
-You can layer multiple playbooks:
-- **Locations + Personas**: "Marketing agencies for startups in Austin"
-- **Curation + Locations**: "Best coworking spaces in San Diego"
-- **Integrations + Personas**: "Slack for sales teams"
-- **Glossary + Translations**: Multi-language educational content
 
 ---
 
@@ -401,141 +296,59 @@ You can layer multiple playbooks:
 
 ### 1. Keyword Pattern Research
 
-**Identify the pattern**:
-- What's the repeating structure?
-- What are the variables?
-- How many unique combinations exist?
-
-**Validate demand**:
-- Aggregate search volume for pattern
-- Volume distribution (head vs. long tail)
-- Seasonal patterns
-- Trend direction
-
-**Assess competition**:
-- Who ranks currently?
-- What's their content quality?
-- What's their domain authority?
-- Can you realistically compete?
+**Identify the pattern** → **Validate demand** → **Assess competition**
 
 ### 2. Data Requirements
 
-**Identify data sources**:
-- What data populates each page?
-- Where does that data come from?
-- Is it first-party, scraped, licensed, public?
-- How is it updated?
+**Identify data sources** and design data schema. See `references/niche-taxonomy-builder.md` for structured taxonomy approach.
 
-**Data schema design**:
-```
-For "[Service] in [City]" pages:
+### 2.5. pSEO 2.0 Architecture (NEW)
 
-city:
-  - name
-  - population
-  - relevant_stats
+For projects using the pSEO 2.0 approach:
+1. Build niche taxonomy (see Niche Taxonomy System above)
+2. Design strict JSON schemas per content type (see `references/pseo-2-architecture.md`)
+3. Design deterministic title templates (NOT AI-generated)
+4. Set up three-gate quality validation
+5. Follow graduated scaling protocol
 
-service:
-  - name
-  - description
-  - typical_pricing
-
-local_providers:
-  - name
-  - rating
-  - reviews_count
-  - specialty
-
-local_data:
-  - regulations
-  - average_prices
-  - market_size
-```
+**Pipeline orchestration**: Use `pseo-architect` agent for end-to-end pipeline management.
 
 ### 3. Template Design
 
-**Page structure**:
-- Header with target keyword
-- Unique intro (not just variables swapped)
-- Data-driven sections
-- Related pages / internal links
-- CTAs appropriate to intent
+**Page structure**: Header with target keyword → Unique intro → Data-driven sections → Related pages → CTAs
 
-**Ensuring uniqueness**:
-- Each page needs unique value
-- Conditional content based on data
-- User-generated content where possible
-- Original insights/analysis per page
-
-**Template example**:
-```
-H1: [Service] in [City]: [Year] Guide
-
-Intro: [Dynamic paragraph using city stats + service context]
-
-Section 1: Why [City] for [Service]
-[City-specific data and insights]
-
-Section 2: Top [Service] Providers in [City]
-[Data-driven list with unique details]
-
-Section 3: Pricing for [Service] in [City]
-[Local pricing data if available]
-
-Section 4: FAQs about [Service] in [City]
-[Common questions with city-specific answers]
-
-Related: [Service] in [Nearby Cities]
-```
+**Ensuring uniqueness**: Each page needs unique value. Conditional content based on data. Use JSON schema `unique_data_threshold` field (minimum 0.4 = 40%).
 
 ### 4. Internal Linking Architecture
 
-**Hub and spoke model**:
-- Hub: Main category page
-- Spokes: Individual programmatic pages
-- Cross-links between related spokes
-
-**Avoid orphan pages**:
-- Every page reachable from main site
-- Logical category structure
-- XML sitemap for all pages
-
-**Breadcrumbs**:
-- Show hierarchy
-- Structured data markup
-- User navigation aid
+Hub and spoke model. No orphan pages. XML sitemap for all pages. Breadcrumbs with structured data.
 
 ### 5. Indexation Strategy
 
-**Prioritize important pages**:
-- Not all pages need to be indexed
-- Index high-volume patterns
-- Noindex very thin variations
-
-**Crawl budget management**:
-- Paginate thoughtfully
-- Avoid infinite crawl traps
-- Use robots.txt wisely
-
-**Sitemap strategy**:
-- Separate sitemaps by page type
-- Monitor indexation rate
-- Prioritize by importance
+Prioritize important pages. Manage crawl budget. Separate sitemaps by page type. Monitor indexation rate against kill switch threshold (40%).
 
 ---
 
 ## Quality Checks
 
+### Three-Gate Validation (v2.0)
+
+All pSEO pages must pass:
+1. **Gate 1: Unique Answer** — distinct query answered
+2. **Gate 2: 40% Unique Data** — sufficient differentiation
+3. **Gate 3: Engagement** — genuinely useful without search engines
+
+See `references/pseo-quality-gates.md` for scoring rubrics and automated checks.
+
 ### Pre-Launch Checklist
 
 **Content quality**:
-- [ ] Each page provides unique value
-- [ ] Not just variable substitution
-- [ ] Answers search intent
-- [ ] Readable and useful
+- [ ] Each page provides unique value (Gate 1 passed)
+- [ ] ≥40% unique content per page (Gate 2 passed)
+- [ ] Useful standalone (Gate 3 passed)
 
 **Technical SEO**:
-- [ ] Unique titles and meta descriptions
+- [ ] Unique titles (deterministic templates, not AI-generated)
 - [ ] Proper heading structure
 - [ ] Schema markup implemented
 - [ ] Canonical tags correct
@@ -543,59 +356,38 @@ Related: [Service] in [Nearby Cities]
 
 **Internal linking**:
 - [ ] Connected to site architecture
-- [ ] Related pages linked
 - [ ] No orphan pages
 - [ ] Breadcrumbs implemented
 
 **Indexation**:
 - [ ] In XML sitemap
 - [ ] Crawlable
-- [ ] Not blocked by robots.txt
-- [ ] No conflicting noindex
+- [ ] Kill switch monitoring configured
 
 ### Monitoring Post-Launch
 
-**Track**:
-- Indexation rate
-- Rankings by page pattern
-- Traffic by page pattern
-- Engagement metrics
-- Conversion rate
+**Track**: Indexation rate, rankings by pattern, traffic by pattern, engagement, conversions
 
-**Watch for**:
-- Thin content warnings in Search Console
-- Ranking drops
-- Manual actions
-- Crawl errors
+**Watch for**: Thin content warnings, ranking drops, manual actions, crawl errors, indexation rate < 40%
 
 ---
 
 ## Common Mistakes to Avoid
 
-### Thin Content
-- Just swapping city names in identical content
-- No unique information per page
-- "Doorway pages" that just redirect
+### Classic Mistakes (v1.0)
+- **Thin Content**: Just swapping variables in identical content
+- **Keyword Cannibalization**: Multiple pages targeting same keyword
+- **Over-Generation**: Creating pages with no search demand
+- **Poor Data Quality**: Outdated, incorrect, or missing data
+- **Ignoring User Experience**: Pages exist for Google, not users
 
-### Keyword Cannibalization
-- Multiple pages targeting same keyword
-- No clear hierarchy
-- Competing with yourself
-
-### Over-Generation
-- Creating pages with no search demand
-- Too many low-quality pages dilute authority
-- Quantity over quality
-
-### Poor Data Quality
-- Outdated information
-- Incorrect data
-- Missing data showing as blank
-
-### Ignoring User Experience
-- Pages exist for Google, not users
-- No conversion path
-- Bouncy, unhelpful content
+### New Mistakes (v2.0)
+- **Mixing layers**: Combining data, schema, and rendering in one step
+- **AI-generated titles**: Causes cannibalization at scale — use deterministic templates
+- **Scaling too fast**: Publishing thousands of pages before proving concept works
+- **Ignoring cannibalization**: Not checking for overlap before each batch
+- **No kill switch**: Publishing without indexation monitoring = flying blind
+- **Content decay neglect**: pSEO pages go stale faster than editorial content
 
 ---
 
@@ -603,36 +395,15 @@ Related: [Service] in [Nearby Cities]
 
 ### Strategy Document
 
-**Opportunity Analysis**:
-- Keyword pattern identified
-- Search volume estimates
-- Competition assessment
-- Feasibility rating
-
-**Implementation Plan**:
-- Data requirements and sources
-- Template structure
-- Number of pages (phases)
-- Internal linking plan
-- Technical requirements
-
-**Content Guidelines**:
-- What makes each page unique
-- Quality standards
-- Update frequency
+**Opportunity Analysis** → **Implementation Plan** → **Content Guidelines**
 
 ### Page Template
 
-**URL structure**: `/category/variable/`
-**Title template**: [Variable] + [Static] + [Brand]
-**Meta description template**: [Pattern with variables]
-**H1 template**: [Pattern]
-**Content outline**: Section by section
-**Schema markup**: Type and required fields
+**URL structure** → **Title template** (deterministic) → **Meta description template** → **JSON schema** → **Content outline** → **Schema markup**
 
 ### Launch Checklist
 
-Specific pre-launch checks for this implementation
+Specific pre-launch checks including all three quality gates.
 
 ---
 
@@ -642,7 +413,7 @@ If you need more context:
 1. What keyword patterns are you targeting?
 2. What data do you have (or can acquire)?
 3. How many pages are you planning to create?
-4. What does your site authority look like?
+4. What does your site authority look like? (DA score)
 5. Who currently ranks for these terms?
 6. What's your technical stack for generating pages?
 
@@ -650,7 +421,10 @@ If you need more context:
 
 ## Related Skills
 
-- **seo-audit**: For auditing programmatic pages after launch
-- **schema-markup**: For adding structured data to templates
-- **copywriting**: For the non-templated copy portions
-- **analytics-tracking**: For measuring programmatic page performance
+- **seo-mastery**: Foundation SEO knowledge (prerequisite)
+- **schema-markup**: Structured data for pSEO templates
+- **copywriting**: Non-templated copy portions
+- **analytics-attribution**: Performance measurement and indexation tracking
+- **content-strategy**: Niche taxonomy design and content planning
+- **website-design**: HTML/Tailwind template rendering for pSEO pages
+- **competitor-alternatives**: Comparison page frameworks

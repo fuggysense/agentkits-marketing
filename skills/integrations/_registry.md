@@ -19,6 +19,7 @@
 | [Twitter/X](./twitter/) | Social | npm | ✅ Active |
 | [TikTok](./tiktok/) | Social | npm | ✅ Active |
 | [Crosspost](./crosspost/) | Social | npm | ✅ Active |
+| [Linkup](./linkup/) | Web Search | Custom | ✅ Active |
 | [LINE](./line/) | Messaging (JP) | npm | ✅ Active |
 | [Zalo](./zalo/) | Messaging (VN) | Custom | ⚠️ Planned |
 
@@ -72,6 +73,10 @@
 
 - **[Crosspost](./crosspost/)** - Multi-platform posting
   - Tools: 3 | Package: `@humanwhocodes/crosspost` | Auth: Per-platform
+
+### Web Search & Research
+- **[Linkup](./linkup/)** - Sourced answers, citations, date/domain filtering, async deep research
+  - Tools: 5 | Type: Custom | Auth: `LINKUP_API_KEY`
 
 ### Regional Messaging
 - **[LINE](./line/)** - Japan/Asia messaging (97M users)
@@ -145,6 +150,9 @@ export TWITTER_API_KEY="xxx"
 export TWITTER_API_SECRET="xxx"
 export TWITTER_ACCESS_TOKEN="xxx"
 export TWITTER_ACCESS_SECRET="xxx"
+
+# Web Search & Research
+export LINKUP_API_KEY="xxx"
 
 # Regional
 export LINE_CHANNEL_ACCESS_TOKEN="xxx"

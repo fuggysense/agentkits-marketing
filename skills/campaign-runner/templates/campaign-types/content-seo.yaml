@@ -1,0 +1,100 @@
+# Content SEO Campaign Template
+# Keyword-to-traffic pipeline for organic growth
+
+campaign:
+  name: ""
+  project: ""
+  type: content-seo
+  created: ""
+  phase: planning
+
+status:
+  last_session: ""
+  last_action: "Campaign created from content-seo template"
+  next_actions:
+    - "Run keyword research cluster analysis"
+    - "Create content calendar"
+  blockers: []
+
+tasks:
+  # --- PLANNING PHASE ---
+  - id: keyword-research
+    phase: planning
+    status: planned
+    agent: seo-specialist
+    skill: seo-mastery
+    description: "Keyword cluster research — primary keywords, long-tail variants, search volume, difficulty"
+    dependencies: []
+    asset: assets/research/keyword-clusters.md
+
+  - id: content-calendar
+    phase: planning
+    status: planned
+    agent: planner
+    skill: content-strategy
+    description: "12-post content calendar — topics, target keywords, publish dates, distribution plan"
+    dependencies: [keyword-research]
+    asset: assets/content-calendar.md
+
+  # --- CREATION PHASE ---
+  - id: blog-posts
+    phase: creation
+    status: planned
+    agent: copywriter
+    skill: seo-mastery
+    description: "Write SEO-optimized blog posts per content calendar (batch of 4 per session)"
+    dependencies: [content-calendar]
+    asset: assets/blog/
+
+  - id: social-distribution
+    phase: creation
+    status: planned
+    agent: copywriter
+    skill: social-media
+    description: "Social distribution posts for each blog — 2-3 posts per article across platforms"
+    dependencies: [blog-posts]
+    asset: assets/social/
+
+  - id: schema-markup
+    phase: creation
+    status: planned
+    agent: seo-specialist
+    skill: schema-markup
+    description: "JSON-LD schema markup for each blog post — FAQ, Article, HowTo as appropriate"
+    dependencies: [blog-posts]
+    asset: assets/schema/
+
+  # --- EXECUTION PHASE ---
+  - id: schedule-social
+    phase: execution
+    status: planned
+    agent: copywriter
+    skill: social-media
+    description: "Schedule social distribution posts via Postiz, timed to blog publish dates"
+    dependencies: [social-distribution]
+    published:
+      platform: postiz
+
+  - id: internal-linking
+    phase: execution
+    status: planned
+    agent: seo-specialist
+    skill: seo-mastery
+    description: "Internal linking audit — connect new posts to existing content, update old posts"
+    dependencies: [blog-posts]
+    asset: assets/internal-linking-plan.md
+
+  # --- OPTIMIZATION PHASE ---
+  - id: monthly-rankings
+    phase: optimization
+    status: planned
+    agent: ""
+    skill: analytics-attribution
+    description: "Monthly ranking report — keyword positions, traffic growth, top performers"
+    dependencies: [schedule-social]
+    asset: assets/reports/monthly-rankings.md
+
+assets: []
+
+metrics:
+  snapshots: []

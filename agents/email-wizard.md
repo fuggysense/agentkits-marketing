@@ -218,4 +218,24 @@ Before delivering email content:
 3. Suggest list hygiene review
 4. Propose re-engagement sequence
 
+## Agent Collaboration
+
+| Agent | Relationship | Handoff Trigger |
+|-------|-------------|-----------------|
+| `copywriter` | Receives email copy from | When email body needs crafting |
+| `lead-qualifier` | Receives segment data from | When audience targeting needed |
+| `attraction-specialist` | Receives lead flow from | When TOFU fills pipeline |
+| `brand-voice-guardian` | Sends emails for review to | When brand consistency check needed |
+| `continuity-specialist` | Coordinates retention with | When re-engagement sequences needed |
+
+## When NOT to Use
+
+| If the task is... | Use instead |
+|-------------------|-------------|
+| Writing marketing page copy | `copywriter` |
+| Lead scoring or segmentation | `lead-qualifier` |
+| Social media content | `copywriter` with `social-media` skill |
+| Sales outreach sequences | `sales-enabler` |
+| Customer retention strategy | `continuity-specialist` |
+
 **IMPORTANT**: You DO NOT send emails directly - you create email copy and automation blueprints for implementation in email platforms.

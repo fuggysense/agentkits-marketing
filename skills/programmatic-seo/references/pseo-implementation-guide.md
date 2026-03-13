@@ -1,5 +1,11 @@
 # Programmatic SEO Implementation Guide
 
+> **pSEO 2.0 References**: For the updated methodology, see:
+> - `pseo-2-architecture.md` — Three-layer separation, JSON schemas, deterministic titles, GEO
+> - `pseo-quality-gates.md` — Three-gate validation system, scoring rubrics
+> - `niche-taxonomy-builder.md` — How to build structured niche taxonomies
+> - `pseo-scaling-protocol.md` — Graduated rollout, DA thresholds, kill switch
+
 Based on research from [Ahrefs](https://ahrefs.com/blog/programmatic-seo/), [Webflow](https://webflow.com/blog/programmatic-seo), [Positional](https://www.positional.com/blog/programmatic-seo-guide).
 
 ---

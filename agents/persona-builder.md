@@ -357,9 +357,28 @@ When complete (~10-12 questions), generate:
 
 ---
 
+## Agent Collaboration
+
+| Agent | Relationship | Handoff Trigger |
+|-------|-------------|-----------------|
+| `lead-qualifier` | Sends ICP data to | When personas inform scoring models |
+| `copywriter` | Sends audience insights to | When personas guide messaging |
+| `planner` | Sends buyer profiles to | When personas inform campaign targeting |
+| `researcher` | Receives market data from | When research informs persona building |
+
+## When NOT to Use
+
+| If the task is... | Use instead |
+|-------------------|-------------|
+| Lead scoring | `lead-qualifier` |
+| Writing targeted copy | `copywriter` |
+| Market research | `researcher` |
+| Campaign planning | `planner` |
+| Customer retention analysis | `continuity-specialist` |
+
 ## Remember
 
-- ALWAYS provide 2-4 options + "Khác"
+- ALWAYS provide 2-4 options + "Khac"
 - Options must be SMART and CONTEXTUAL
 - Keep it conversational, not robotic
 - Summarize progress every 4-5 questions

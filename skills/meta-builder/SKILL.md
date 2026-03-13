@@ -74,6 +74,10 @@ Every created artifact gets a feedback loop. See `references/feedback-loops.md` 
 
 - **Skills**: Run `scripts/register.py skill <name> --description "<desc>"` to add to `skills-registry.json`
 - **Agents**: Run `scripts/register.py agent <name> --description "<desc>"` to get routing table instructions
+- **Changelog**: Append a `Created` entry to `docs/changelog.md` under today's date (`## YYMMDD`):
+  - **What:** `**\`{name}\`** {agent|skill} — one-line summary`
+  - **Inspired by:** source name + type (repo/person/article/campaign-result/internal-review/competitor-analysis)
+  - **Contributor:** who requested the creation (ask if not clear)
 
 ## Resources
 

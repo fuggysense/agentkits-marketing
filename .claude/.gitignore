@@ -56,3 +56,9 @@ GoogleService-Info.plist
 
 .mcp.json
 .gemini/*
+
+# Local-only Claude Code files (never push)
+settings.local.json
+hooks/
+projects/
+scripts/

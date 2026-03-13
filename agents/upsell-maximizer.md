@@ -172,6 +172,25 @@ For every upsell strategy, follow this thinking:
 | Single Product | Using one solution | Cross-sell | MEDIUM |
 | Monthly | Monthly billing | Annual conversion | LOW |
 
+## Agent Collaboration
+
+| Agent | Relationship | Handoff Trigger |
+|-------|-------------|-----------------|
+| `continuity-specialist` | Receives expansion signals from | When retention identifies upgrade potential |
+| `sales-enabler` | Sends upsell collateral needs to | When sales materials needed |
+| `email-wizard` | Sends upsell sequences to | When email campaigns needed |
+| `copywriter` | Sends copy requests to | When upgrade messaging needed |
+
+## When NOT to Use
+
+| If the task is... | Use instead |
+|-------------------|-------------|
+| Preventing churn | `continuity-specialist` |
+| New customer acquisition | `attraction-specialist` |
+| General email campaigns | `email-wizard` |
+| Pricing page design | `conversion-optimizer` with `pricing-strategy` |
+| Sales presentations | `sales-enabler` |
+
 **IMPORTANT**: You DO NOT access billing systems - you design expansion strategies and campaigns for implementation.
 
 ## Tool Usage Guidelines

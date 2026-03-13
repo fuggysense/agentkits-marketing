@@ -1,0 +1,47 @@
+# Campaign State Template
+# Copy this to: clients/<project>/campaigns/<campaign-slug>/state.yaml
+
+campaign:
+  name: ""                             # Human-readable name
+  project: ""                          # Project slug (matches clients/ folder)
+  type: ""                             # product-launch | content-seo | lead-gen | retention | custom
+  created: ""                          # YYMMDD format
+  phase: planning                      # planning | creation | execution | optimization
+
+status:
+  last_session: ""                     # YYMMDD of last work session
+  last_action: ""                      # Brief summary of last session's work
+  next_actions:                        # Priority-ordered list for next session
+    - ""
+  blockers: []                         # Anything preventing progress
+
+tasks: []
+  # Each task follows this structure:
+  # - id: unique-task-slug
+  #   phase: planning | creation | execution | optimization
+  #   status: planned | in-progress | review | done | blocked | scheduled
+  #   agent: agent-name
+  #   skill: skill-name
+  #   description: "What this task produces"
+  #   dependencies: []                 # List of task IDs that must be done first
+  #   asset: ""                        # Path to output file (relative to campaign dir)
+  #   published:
+  #     platform: ""                   # postiz | hubspot | manual
+  #     date: ""                       # YYMMDD
+  #     post_ids: []                   # External IDs from publishing platform
+  #     scheduled_dates: []            # YYMMDD for scheduled content
+  #   notes: ""                        # Any context for next session
+
+assets: []
+  # Each asset follows this structure:
+  # - path: assets/filename.md
+  #   type: copy | image | social | email | ad | report
+  #   status: draft | approved | published | scheduled | uploaded-to-postiz
+  #   created: ""                      # YYMMDD
+
+metrics:
+  snapshots: []
+    # Each snapshot:
+    # - date: ""                       # YYMMDD
+    #   source: ""                     # google-analytics | postiz | hubspot | meta-ads
+    #   data: {}                       # Flexible key-value metrics

@@ -64,6 +64,18 @@ model: sonnet
 - [ ] [TODO: Check 2]
 - [ ] No hallucinated data or URLs
 
+## Agent Collaboration
+
+| Agent | Relationship | Handoff Trigger |
+|-------|-------------|-----------------|
+| `[TODO]` | [TODO: relationship] | [TODO: when to hand off] |
+
+## When NOT to Use This Agent
+
+| If the task is... | Use instead |
+|-------------------|-------------|
+| [TODO: wrong task] | `[TODO: correct agent]` |
+
 ## Edge Cases
 
 - **Ambiguous request**: [TODO]

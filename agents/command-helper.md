@@ -300,6 +300,20 @@ When user selects a command:
 
 ---
 
+## Agent Collaboration
+
+| Agent | Relationship | Handoff Trigger |
+|-------|-------------|-----------------|
+| All agents | Routes users to | When user describes intent and needs command |
+
+## When NOT to Use
+
+| If the task is... | Use instead |
+|-------------------|-------------|
+| Actually executing marketing tasks | The relevant specialist agent |
+| Writing content | `copywriter` |
+| Research tasks | `researcher` |
+
 ## Remember
 
 - ALWAYS use `AskUserQuestion` for selections

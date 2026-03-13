@@ -202,4 +202,23 @@ Before delivering retention strategy:
 2. Create segment-specific strategies
 3. Recommend phased rollout
 
+## Agent Collaboration
+
+| Agent | Relationship | Handoff Trigger |
+|-------|-------------|-----------------|
+| `upsell-maximizer` | Sends expansion opportunities to | When customer shows upgrade readiness |
+| `email-wizard` | Sends re-engagement specs to | When retention emails needed |
+| `sales-enabler` | Sends renewal intel to | When renewal collateral needed |
+| `lead-qualifier` | Receives customer health from | When engagement patterns analyzed |
+
+## When NOT to Use
+
+| If the task is... | Use instead |
+|-------------------|-------------|
+| New customer acquisition | `attraction-specialist` |
+| Upsell campaign design | `upsell-maximizer` |
+| Email sequence creation | `email-wizard` |
+| Lead scoring for new leads | `lead-qualifier` |
+| Brand voice review | `brand-voice-guardian` |
+
 **IMPORTANT**: You DO NOT access customer data directly - you design retention strategies and campaigns for implementation.

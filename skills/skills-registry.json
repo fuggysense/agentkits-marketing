@@ -3,11 +3,11 @@
   "name": "agentkits-marketing-skills",
   "version": "2.0.0",
   "description": "Enterprise-grade marketing skills registry with semantic metadata, dependency graphs, and MCP mappings",
-  "lastUpdated": "2026-02-01",
+  "lastUpdated": "2026-03-11",
   "categories": {
     "core": {
       "description": "Foundational marketing knowledge and frameworks",
-      "skills": ["marketing-fundamentals", "marketing-psychology", "marketing-ideas", "seo-mastery", "social-media", "email-marketing", "paid-advertising", "content-strategy", "analytics-attribution", "brand-building", "problem-solving"]
+      "skills": ["marketing-fundamentals", "marketing-psychology", "marketing-ideas", "seo-mastery", "social-media", "linkedin-optimization", "email-marketing", "paid-advertising", "content-strategy", "analytics-attribution", "brand-building", "problem-solving"]
     },
     "cro": {
       "description": "Conversion rate optimization across touchpoints",
@@ -15,7 +15,7 @@
     },
     "content": {
       "description": "Content creation and copywriting",
-      "skills": ["copywriting", "copy-editing", "email-sequence"]
+      "skills": ["copywriting", "copy-editing", "email-sequence", "website-design", "linkedin-content", "video-director"]
     },
     "seo-growth": {
       "description": "SEO and growth-focused strategies",
@@ -24,6 +24,30 @@
     "document": {
       "description": "Document creation skills",
       "skills": ["document-skills/docx", "document-skills/pdf", "document-skills/pptx", "document-skills/xlsx"]
+    },
+    "paid-media": {
+      "description": "Paid media auditing and optimization",
+      "skills": ["paid-media-audit"]
+    },
+    "onboarding": {
+      "description": "Client and project onboarding",
+      "skills": ["client-onboarding"]
+    },
+    "campaign": {
+      "description": "Campaign execution and state management",
+      "skills": ["campaign-runner"]
+    },
+    "research": {
+      "description": "Deep research and analysis capabilities",
+      "skills": ["deep-research"]
+    },
+    "quality-assurance": {
+      "description": "Quality control, verification, and structured execution",
+      "skills": ["verification-loops", "multi-agent-consensus", "prompt-contracts", "agent-chatrooms"]
+    },
+    "specialized": {
+      "description": "System tools for managing and improving the skill/agent ecosystem",
+      "skills": ["amplifier", "claude-md"]
     }
   },
   "dependencyGraph": {
@@ -35,12 +59,24 @@
     "ab-test-setup": ["page-cro", "analytics-attribution"],
     "copy-editing": ["copywriting"],
     "email-sequence": ["email-marketing", "copywriting"],
-    "programmatic-seo": ["seo-mastery"],
+    "programmatic-seo": ["seo-mastery", "analytics-attribution", "content-strategy"],
     "schema-markup": ["seo-mastery"],
     "competitor-alternatives": ["seo-mastery", "copywriting"],
     "launch-strategy": ["content-strategy", "social-media"],
     "referral-program": ["marketing-fundamentals"],
-    "free-tool-strategy": ["seo-mastery", "content-strategy"]
+    "free-tool-strategy": ["seo-mastery", "content-strategy"],
+    "paid-media-audit": ["paid-advertising", "analytics-attribution"],
+    "client-onboarding": [],
+    "linkedin-optimization": ["social-media"],
+    "linkedin-content": ["linkedin-optimization", "copywriting"],
+    "campaign-runner": ["content-strategy", "social-media", "analytics-attribution"],
+    "deep-research": [],
+    "website-design": [],
+    "verification-loops": [],
+    "multi-agent-consensus": [],
+    "prompt-contracts": [],
+    "agent-chatrooms": [],
+    "video-director": ["image-generation"]
   },
   "skills": [
     {
@@ -139,6 +175,25 @@
       "hasReferences": true
     },
     {
+      "id": "linkedin-optimization",
+      "name": "LinkedIn Optimization",
+      "path": "linkedin-optimization/SKILL.md",
+      "category": "core",
+      "version": "1.0.0",
+      "difficulty": "intermediate",
+      "description": "LinkedIn organic optimization — profile audit, algorithm, content type playbooks, creator mode, B2B sales, engagement, newsletters, banner design",
+      "triggers": ["LinkedIn profile", "LinkedIn optimization", "LinkedIn content", "LinkedIn strategy", "LinkedIn algorithm", "LinkedIn profile audit", "LinkedIn banner", "LinkedIn content ideas", "LinkedIn newsletter", "LinkedIn engagement", "LinkedIn creator mode", "LinkedIn SSI", "LinkedIn B2B", "LinkedIn organic"],
+      "prerequisites": ["social-media"],
+      "relatedSkills": ["social-media", "paid-advertising", "copywriting", "content-strategy", "image-generation"],
+      "agents": ["attraction-specialist", "copywriter", "brainstormer"],
+      "mcpIntegrations": {
+        "required": [],
+        "optional": ["postiz"]
+      },
+      "successMetrics": ["SSI_score", "engagement_rate", "profile_views", "follower_growth", "connection_acceptance_rate"],
+      "hasReferences": true
+    },
+    {
       "id": "email-marketing",
       "name": "Email Marketing",
       "path": "email-marketing/SKILL.md",
@@ -168,7 +223,7 @@
       "triggers": ["paid ads", "PPC", "Google Ads", "Facebook Ads", "Meta Ads", "LinkedIn Ads", "ROAS", "CPC", "CPL", "ad campaign"],
       "prerequisites": ["analytics-attribution"],
       "relatedSkills": ["analytics-attribution", "copywriting", "page-cro"],
-      "agents": ["attraction-specialist"],
+      "agents": ["attraction-specialist", "tracking-specialist"],
       "mcpIntegrations": {
         "required": [],
         "optional": ["meta-ads", "google-analytics"]
@@ -206,7 +261,7 @@
       "triggers": ["analytics", "attribution", "tracking", "ROI", "CAC", "LTV", "dashboard", "reporting", "conversion tracking", "marketing metrics"],
       "prerequisites": ["marketing-fundamentals"],
       "relatedSkills": ["ab-test-setup", "paid-advertising"],
-      "agents": ["project-manager", "researcher"],
+      "agents": ["project-manager", "researcher", "tracking-specialist"],
       "mcpIntegrations": {
         "required": [],
         "optional": ["google-analytics", "google-search-console"]
@@ -447,19 +502,19 @@
       "name": "Programmatic SEO",
       "path": "programmatic-seo/SKILL.md",
       "category": "seo-growth",
-      "version": "1.0.0",
+      "version": "2.0.0",
       "difficulty": "advanced",
-      "description": "Build SEO-driven pages at scale using templates and data",
-      "triggers": ["programmatic SEO", "template pages", "pages at scale", "directory pages", "location pages", "comparison pages", "integration pages"],
+      "description": "pSEO 2.0 — JSON-first schema-driven pages at scale, niche taxonomy, quality gates, GEO",
+      "triggers": ["programmatic SEO", "pSEO 2.0", "JSON-first pages", "niche taxonomy", "schema-driven content", "template pages", "pages at scale", "directory pages", "location pages", "comparison pages", "integration pages", "GEO", "generative engine optimization"],
       "prerequisites": ["seo-mastery"],
-      "relatedSkills": ["seo-mastery", "schema-markup", "competitor-alternatives"],
-      "agents": ["attraction-specialist", "seo-specialist"],
+      "relatedSkills": ["seo-mastery", "schema-markup", "competitor-alternatives", "analytics-attribution", "content-strategy", "website-design"],
+      "agents": ["pseo-architect", "attraction-specialist", "seo-specialist"],
       "mcpIntegrations": {
         "required": [],
         "optional": ["google-search-console", "semrush", "dataforseo"]
       },
       "successMetrics": ["indexed_pages", "organic_traffic", "keyword_coverage"],
-      "hasReferences": false
+      "hasReferences": true
     },
     {
       "id": "schema-markup",
@@ -650,12 +705,240 @@
       },
       "successMetrics": [],
       "hasReferences": true
+    },
+    {
+      "id": "paid-media-audit",
+      "name": "Paid Media Audit",
+      "path": "paid-media-audit/SKILL.md",
+      "category": "paid-media",
+      "version": "1.0.0",
+      "difficulty": "advanced",
+      "description": "Systematic 200+ checkpoint audit framework for paid advertising accounts across Google Ads, Meta Ads, LinkedIn Ads, and TikTok Ads",
+      "triggers": ["paid media audit", "ad account audit", "PPC audit", "ads review", "advertising audit", "account health check", "ad performance review", "campaign audit"],
+      "prerequisites": ["paid-advertising", "analytics-attribution"],
+      "relatedSkills": ["paid-advertising", "analytics-attribution", "page-cro"],
+      "agents": ["attraction-specialist", "tracking-specialist"],
+      "mcpIntegrations": {
+        "required": [],
+        "optional": ["meta-ads", "google-analytics"]
+      },
+      "successMetrics": ["audit_completion", "findings_resolved", "ROAS_improvement"],
+      "hasReferences": true
+    },
+    {
+      "id": "client-onboarding",
+      "name": "Client Onboarding",
+      "path": "client-onboarding/SKILL.md",
+      "category": "onboarding",
+      "version": "1.0.0",
+      "difficulty": "beginner",
+      "description": "Guided client/project onboarding — scaffold files, discovery interview, agent enrichment, readiness validation, session activation",
+      "triggers": ["new project", "onboard client", "new client", "set up project", "create project", "project setup"],
+      "prerequisites": [],
+      "relatedSkills": ["brand-building", "campaign-runner", "marketing-fundamentals"],
+      "agents": ["persona-builder", "researcher", "brand-voice-guardian"],
+      "mcpIntegrations": {
+        "required": [],
+        "optional": []
+      },
+      "successMetrics": ["files_completed", "readiness_score", "time_to_first_campaign"],
+      "hasReferences": true
+    },
+    {
+      "id": "campaign-runner",
+      "name": "Campaign Runner",
+      "path": "campaign-runner/SKILL.md",
+      "category": "campaign",
+      "version": "1.0.0",
+      "difficulty": "intermediate",
+      "description": "Full-stack campaign execution framework with state tracking across sessions, agent routing, asset management, and Postiz publishing",
+      "triggers": ["campaign", "run campaign", "campaign status", "continue campaign", "next actions", "schedule posts", "campaign metrics", "start campaign", "campaign progress"],
+      "prerequisites": ["content-strategy", "social-media", "analytics-attribution"],
+      "relatedSkills": ["launch-strategy", "email-sequence", "paid-advertising", "copywriting", "page-cro"],
+      "agents": ["copywriter", "email-wizard", "attraction-specialist", "planner", "project-manager", "seo-specialist", "tracking-specialist"],
+      "mcpIntegrations": {
+        "required": [],
+        "optional": ["postiz", "google-analytics", "hubspot", "meta-ads"]
+      },
+      "successMetrics": ["campaign_completion_rate", "tasks_per_session", "time_to_publish"],
+      "hasReferences": true
+    },
+    {
+      "id": "amplifier",
+      "name": "Amplifier",
+      "path": "amplifier/SKILL.md",
+      "category": "specialized",
+      "version": "1.0.0",
+      "difficulty": "advanced",
+      "description": "Enhances and updates existing agents and skills. Scans for conflicts, detects similarity overlaps, analyzes gaps, suggests merges, and tracks attribution.",
+      "triggers": ["amplify", "enhance skill", "improve agent", "scan conflicts", "find overlaps", "merge skills", "audit skill", "upgrade agent", "skill gaps", "agent conflicts"],
+      "prerequisites": [],
+      "relatedSkills": [],
+      "agents": [],
+      "mcpIntegrations": {
+        "required": [],
+        "optional": []
+      },
+      "successMetrics": ["conflicts_resolved", "skills_improved", "merges_completed"],
+      "hasReferences": true
+    },
+    {
+      "id": "deep-research",
+      "name": "Deep Research",
+      "path": "deep-research/SKILL.md",
+      "category": "research",
+      "version": "1.0.0",
+      "difficulty": "intermediate",
+      "description": "Multi-agent parallel research orchestrator using MECE decomposition — 90.2% better than single-agent",
+      "triggers": ["deep research", "thorough research", "research everything", "comprehensive research", "spawn research agents", "find everything about", "exhaustive research", "multi-agent research"],
+      "prerequisites": [],
+      "relatedSkills": ["marketing-fundamentals", "competitor-alternatives", "content-strategy"],
+      "agents": ["researcher", "brainstormer", "planner"],
+      "mcpIntegrations": {
+        "required": [],
+        "optional": ["semrush", "dataforseo", "google-search-console"]
+      },
+      "successMetrics": ["research_depth", "source_count", "actionable_insights"],
+      "hasReferences": false
+    },
+    {
+      "id": "verification-loops",
+      "name": "Verification Loops",
+      "path": "verification-loops/SKILL.md",
+      "category": "quality-assurance",
+      "version": "1.0.0",
+      "difficulty": "intermediate",
+      "description": "Spawn reviewer agents to audit output, then resolver agents to fix issues. Implement → Review → Resolve chain for 2-3x quality improvement.",
+      "triggers": ["verify this", "review loop", "verification loop", "self-review", "agent review agent", "double-check", "get a second opinion", "review and resolve"],
+      "prerequisites": [],
+      "relatedSkills": ["prompt-contracts", "multi-agent-consensus", "deep-research"],
+      "agents": ["brand-voice-guardian", "conversion-optimizer", "seo-specialist"],
+      "mcpIntegrations": {
+        "required": [],
+        "optional": []
+      },
+      "successMetrics": ["issues_caught", "quality_improvement", "review_pass_rate"],
+      "hasReferences": false
+    },
+    {
+      "id": "multi-agent-consensus",
+      "name": "Multi-Agent Consensus",
+      "path": "multi-agent-consensus/SKILL.md",
+      "category": "quality-assurance",
+      "version": "1.0.0",
+      "difficulty": "intermediate",
+      "description": "Spawn N agents with framing variations to independently analyze a problem, then aggregate by consensus, divergence, and outlier detection.",
+      "triggers": ["consensus", "poll agents", "stochastic consensus", "multi-agent vote", "get multiple opinions", "compare approaches", "spawn agents to analyze"],
+      "prerequisites": [],
+      "relatedSkills": ["verification-loops", "deep-research", "prompt-contracts"],
+      "agents": ["brainstormer", "researcher", "planner"],
+      "mcpIntegrations": {
+        "required": [],
+        "optional": []
+      },
+      "successMetrics": ["consensus_strength", "outlier_value", "decision_confidence"],
+      "hasReferences": false
+    },
+    {
+      "id": "prompt-contracts",
+      "name": "Prompt Contracts",
+      "path": "prompt-contracts/SKILL.md",
+      "category": "quality-assurance",
+      "version": "1.0.0",
+      "difficulty": "beginner",
+      "description": "Define GOAL, CONSTRAINTS, FORMAT, and FAILURE conditions as a structured contract before execution. Prevents ambiguous deliverables.",
+      "triggers": ["prompt contract", "define success criteria", "failure conditions", "spec this out", "what does done look like", "structured spec", "define the contract"],
+      "prerequisites": [],
+      "relatedSkills": ["verification-loops", "multi-agent-consensus", "campaign-runner"],
+      "agents": ["planner", "project-manager"],
+      "mcpIntegrations": {
+        "required": [],
+        "optional": []
+      },
+      "successMetrics": ["contract_pass_rate", "failure_conditions_caught"],
+      "hasReferences": false
+    },
+    {
+      "id": "agent-chatrooms",
+      "name": "Agent Chatrooms",
+      "path": "agent-chatrooms/SKILL.md",
+      "category": "quality-assurance",
+      "version": "1.0.0",
+      "difficulty": "intermediate",
+      "description": "Multi-round adversarial debate between N agents with distinct roles. Agents read each other's responses and refine positions across rounds.",
+      "triggers": ["chatroom", "agent debate", "have agents discuss", "debate this", "multi-agent discussion", "let them debate", "adversarial review"],
+      "prerequisites": [],
+      "relatedSkills": ["multi-agent-consensus", "verification-loops", "deep-research"],
+      "agents": ["brainstormer", "researcher", "planner", "brand-voice-guardian", "conversion-optimizer"],
+      "mcpIntegrations": {
+        "required": [],
+        "optional": []
+      },
+      "successMetrics": ["convergence_rate", "mind_changes", "decision_quality"],
+      "hasReferences": false
+    },
+    {
+      "id": "website-design",
+      "name": "Website Design",
+      "path": "website-design/SKILL.md",
+      "category": "content",
+      "version": "4.0.0",
+      "difficulty": "intermediate",
+      "description": "Dual-mode website skill: Recreation (match reference screenshots pixel-perfect) OR Creation (build distinctive interfaces from scratch with bold aesthetics and anti-generic guardrails). Single index.html with Tailwind CDN. Automated screenshot comparison loops.",
+      "triggers": ["website design", "build website", "create website", "design website", "landing page design", "website from screenshot", "clone design", "replicate website", "web design", "website redesign", "HTML website", "design from scratch", "build landing page", "cinematic website", "distinctive website", "bold design", "creative landing page", "scroll-driven website", "animated website", "pixel perfect", "recreate website", "match this design"],
+      "prerequisites": [],
+      "relatedSkills": ["page-cro", "copywriting", "image-generation", "brand-building", "schema-markup"],
+      "agents": ["copywriter", "brand-voice-guardian", "conversion-optimizer", "tracking-specialist"],
+      "mcpIntegrations": {
+        "required": [],
+        "optional": ["google-analytics", "firecrawl"]
+      },
+      "successMetrics": ["design_match_percentage", "mobile_responsive", "page_load_speed", "conversion_elements_present"],
+      "hasReferences": true
+    },
+    {
+      "id": "linkedin-content",
+      "name": "LinkedIn Content",
+      "path": "linkedin-content/SKILL.md",
+      "category": "content",
+      "version": "1.0.0",
+      "difficulty": "advanced",
+      "description": "LinkedIn content creation pipeline — story mining via reverse-prompting interview, SIREN framework drafting, virality engineering, and performance tracking",
+      "triggers": ["linkedin post", "write linkedin post", "linkedin ghostwriting", "linkedin story", "story bank", "SIREN framework", "linkedin content creation", "client interview", "linkedin engagement", "unfindable content"],
+      "prerequisites": ["linkedin-optimization", "copywriting"],
+      "relatedSkills": ["content-strategy", "copywriting", "linkedin-optimization", "social-media", "brand-building"],
+      "agents": ["copywriter", "brainstormer", "brand-voice-guardian"],
+      "mcpIntegrations": {
+        "required": [],
+        "optional": ["postiz"]
+      },
+      "successMetrics": ["post_engagement_rate", "likes_per_post", "comment_to_like_ratio", "story_bank_depth", "SIREN_score_average"],
+      "hasReferences": true
+    },
+    {
+      "id": "video-director",
+      "name": "Video Director",
+      "path": "video-director/SKILL.md",
+      "category": "content",
+      "version": "1.0.0",
+      "difficulty": "intermediate",
+      "description": "AI video prompt generation for marketing ads — 11 video types across 3 pipelines (Direct, Image-First, Localized). Generates ready-to-paste prompts for Sora, Kling, VEO with HITL review gates and full production SOP.",
+      "triggers": ["video ad", "AI video", "video prompt", "sora prompt", "kling prompt", "veo prompt", "talking head video", "UGC video", "unboxing video", "product video", "street interview", "podcast video", "shock hook", "video commercial", "food video", "real estate video", "anatomical animation", "ad localization", "video generation"],
+      "prerequisites": ["image-generation"],
+      "relatedSkills": ["copywriting", "paid-advertising", "image-generation", "social-media"],
+      "agents": ["copywriter", "attraction-specialist", "brainstormer"],
+      "mcpIntegrations": {
+        "required": [],
+        "optional": ["meta-ads"]
+      },
+      "successMetrics": ["prompt_approval_rate", "video_quality_score", "platform_native_feel"],
+      "hasReferences": true
     }
   ],
   "mcpIntegrationMatrix": {
     "google-analytics": {
-      "skills": ["analytics-attribution", "page-cro", "form-cro", "popup-cro", "signup-flow-cro", "onboarding-cro", "paywall-upgrade-cro", "ab-test-setup", "paid-advertising", "free-tool-strategy", "marketing-fundamentals"],
-      "agents": ["conversion-optimizer", "attraction-specialist", "project-manager"],
+      "skills": ["analytics-attribution", "page-cro", "form-cro", "popup-cro", "signup-flow-cro", "onboarding-cro", "paywall-upgrade-cro", "ab-test-setup", "paid-advertising", "free-tool-strategy", "marketing-fundamentals", "paid-media-audit"],
+      "agents": ["conversion-optimizer", "attraction-specialist", "project-manager", "tracking-specialist"],
       "dataTypes": ["traffic", "conversions", "user_behavior", "goals"]
     },
     "google-search-console": {
@@ -674,8 +957,8 @@
       "dataTypes": ["SERP_data", "keyword_metrics", "backlinks"]
     },
     "meta-ads": {
-      "skills": ["paid-advertising"],
-      "agents": ["attraction-specialist"],
+      "skills": ["paid-advertising", "paid-media-audit"],
+      "agents": ["attraction-specialist", "tracking-specialist"],
       "dataTypes": ["ad_performance", "audiences", "creatives"]
     },
     "hubspot": {
@@ -702,6 +985,11 @@
       "skills": ["social-media", "launch-strategy"],
       "agents": ["attraction-specialist", "copywriter"],
       "dataTypes": ["tweets", "engagement", "trends"]
+    },
+    "postiz": {
+      "skills": ["social-media", "linkedin-optimization", "linkedin-content", "campaign-runner"],
+      "agents": ["copywriter", "project-manager"],
+      "dataTypes": ["scheduled_posts", "post_analytics", "platform_analytics", "media"]
     }
   },
   "outputSchemas": {

@@ -107,11 +107,12 @@ Apply paid advertising expertise when:
 **Meta Ads (Facebook/Instagram)**
 | Campaign Type | Best For | Key Settings |
 |---------------|----------|--------------|
-| Traffic | Website visits | Landing page optimization |
+| Leads | Services, events, B2B | Lead form optimization — **USE THIS BY DEFAULT** |
 | Conversions | Sales, signups | Pixel setup, CAPI |
-| Leads | B2B, services | Lead form optimization |
 | Catalog Sales | E-commerce | Dynamic product ads |
 | Advantage+ | Automation | Broad targeting |
+
+> **EXPERT NOTE:** Always load `references/meta-ads.md` for the full expert operations manual before planning or diagnosing any Meta campaign. It contains the complete funnel metrics chain, optimization flowcharts, benchmarks, scaling rules, and stop-loss protocols.
 
 **LinkedIn Ads**
 | Campaign Type | Best For | Key Settings |

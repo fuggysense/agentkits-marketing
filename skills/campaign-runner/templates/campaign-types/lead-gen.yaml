@@ -1,0 +1,119 @@
+# Lead Generation Campaign Template
+# Full-funnel lead capture and nurture pipeline
+
+campaign:
+  name: ""
+  project: ""
+  type: lead-gen
+  created: ""
+  phase: planning
+
+status:
+  last_session: ""
+  last_action: "Campaign created from lead-gen template"
+  next_actions:
+    - "Define lead magnet and qualification criteria"
+    - "Write landing page copy"
+    - "Design lead scoring model"
+  blockers: []
+
+tasks:
+  # --- PLANNING PHASE ---
+  - id: lead-magnet-strategy
+    phase: planning
+    status: planned
+    agent: brainstormer
+    skill: marketing-fundamentals
+    description: "Define lead magnet — type, topic, value proposition, qualification criteria"
+    dependencies: []
+    asset: assets/research/lead-magnet-strategy.md
+
+  - id: lead-scoring
+    phase: planning
+    status: planned
+    agent: lead-qualifier
+    skill: marketing-fundamentals
+    description: "Lead scoring model — behavioral signals, demographic fit, MQL/SQL thresholds"
+    dependencies: [lead-magnet-strategy]
+    asset: assets/research/lead-scoring-model.md
+
+  # --- CREATION PHASE ---
+  - id: landing-page
+    phase: creation
+    status: planned
+    agent: copywriter
+    skill: page-cro
+    description: "Landing page copy — headline, benefits, form, social proof, CTA"
+    dependencies: [lead-magnet-strategy]
+    asset: assets/landing-page.md
+
+  - id: lead-form
+    phase: creation
+    status: planned
+    agent: conversion-optimizer
+    skill: form-cro
+    description: "Lead capture form — fields, progressive profiling, thank-you page copy"
+    dependencies: [landing-page, lead-scoring]
+    asset: assets/lead-form.md
+
+  - id: nurture-sequence
+    phase: creation
+    status: planned
+    agent: email-wizard
+    skill: email-sequence
+    description: "5-email nurture sequence — value delivery, education, case study, offer, follow-up"
+    dependencies: [lead-magnet-strategy]
+    asset: assets/emails/nurture/
+
+  - id: social-promotion
+    phase: creation
+    status: planned
+    agent: copywriter
+    skill: social-media
+    description: "Social promotion posts — 5 posts driving to landing page across platforms"
+    dependencies: [landing-page]
+    asset: assets/social/
+
+  - id: ad-creative
+    phase: creation
+    status: planned
+    agent: copywriter
+    skill: paid-advertising
+    description: "Paid ad creative — 3 variants targeting ICP pain points"
+    dependencies: [landing-page]
+    asset: assets/ads/
+
+  # --- EXECUTION PHASE ---
+  - id: tracking-setup
+    phase: execution
+    status: planned
+    agent: tracking-specialist
+    skill: analytics-attribution
+    description: "Conversion tracking — form submissions, email opens, MQL triggers"
+    dependencies: [lead-form]
+    asset: assets/tracking-setup.md
+
+  - id: schedule-social
+    phase: execution
+    status: planned
+    agent: copywriter
+    skill: social-media
+    description: "Schedule social promotion via Postiz"
+    dependencies: [social-promotion]
+    published:
+      platform: postiz
+
+  # --- OPTIMIZATION PHASE ---
+  - id: funnel-analysis
+    phase: optimization
+    status: planned
+    agent: ""
+    skill: analytics-attribution
+    description: "Funnel analysis — visitor→lead→MQL→SQL conversion rates, drop-off points"
+    dependencies: [tracking-setup]
+    asset: assets/reports/funnel-analysis.md
+
+assets: []
+
+metrics:
+  snapshots: []

@@ -1,0 +1,138 @@
+# Product Launch Campaign Template
+# Pre-filled task list for launching a product or major feature
+
+campaign:
+  name: ""
+  project: ""
+  type: product-launch
+  created: ""
+  phase: planning
+
+status:
+  last_session: ""
+  last_action: "Campaign created from product-launch template"
+  next_actions:
+    - "Run market positioning research"
+    - "Write landing page copy"
+    - "Create hero + social images"
+  blockers: []
+
+tasks:
+  # --- PLANNING PHASE ---
+  - id: market-research
+    phase: planning
+    status: planned
+    agent: researcher
+    skill: marketing-fundamentals
+    description: "Market positioning research — competitors, differentiators, messaging angles"
+    dependencies: []
+    asset: assets/research/market-positioning.md
+
+  # --- CREATION PHASE ---
+  - id: landing-page
+    phase: creation
+    status: planned
+    agent: copywriter
+    skill: page-cro
+    description: "Landing page copy — hero, features, social proof, CTA sections"
+    dependencies: [market-research]
+    asset: assets/landing-page.md
+
+  - id: hero-images
+    phase: creation
+    status: planned
+    agent: ""
+    skill: image-generation
+    description: "Hero image + 3 social media images for launch posts"
+    dependencies: [landing-page]
+    asset: assets/images/
+
+  - id: email-sequence
+    phase: creation
+    status: planned
+    agent: email-wizard
+    skill: email-sequence
+    description: "5-email launch sequence — announcement, value, social proof, urgency, last chance"
+    dependencies: [landing-page]
+    asset: assets/emails/
+
+  - id: social-posts
+    phase: creation
+    status: planned
+    agent: copywriter
+    skill: social-media
+    description: "5-7 social posts across platforms — teasers, announcement, features, testimonial"
+    dependencies: [landing-page]
+    asset: assets/social/
+
+  - id: press-outreach
+    phase: creation
+    status: planned
+    agent: copywriter
+    skill: copywriting
+    description: "Press/PR outreach copy — pitch email, press release, media kit talking points"
+    dependencies: [market-research]
+    asset: assets/pr/
+
+  - id: ad-creative
+    phase: creation
+    status: planned
+    agent: copywriter
+    skill: paid-advertising
+    description: "Meta ad creative — 3 headline variants x 3 body variants + image specs"
+    dependencies: [landing-page, hero-images]
+    asset: assets/ads/
+
+  # --- EXECUTION PHASE ---
+  - id: tracking-setup
+    phase: execution
+    status: planned
+    agent: tracking-specialist
+    skill: analytics-attribution
+    description: "GA4 conversion events, UTM templates, Postiz tracking params"
+    dependencies: [landing-page]
+    asset: assets/tracking-setup.md
+
+  - id: schedule-social
+    phase: execution
+    status: planned
+    agent: copywriter
+    skill: social-media
+    description: "Schedule all social posts via Postiz with optimal timing"
+    dependencies: [social-posts, hero-images]
+    published:
+      platform: postiz
+
+  - id: launch-blitz
+    phase: execution
+    status: planned
+    agent: copywriter
+    skill: social-media
+    description: "Launch day social blitz — real-time posting + engagement"
+    dependencies: [schedule-social]
+    published:
+      platform: postiz
+
+  # --- OPTIMIZATION PHASE ---
+  - id: week1-metrics
+    phase: optimization
+    status: planned
+    agent: ""
+    skill: analytics-attribution
+    description: "Pull week 1 metrics — traffic, signups, conversion rate, social engagement"
+    dependencies: [launch-blitz]
+    asset: assets/reports/week1-metrics.md
+
+  - id: ad-optimization
+    phase: optimization
+    status: planned
+    agent: attraction-specialist
+    skill: paid-advertising
+    description: "Optimize ads based on week 1 data — pause losers, scale winners, new variants"
+    dependencies: [week1-metrics, ad-creative]
+    asset: assets/ads/optimization-notes.md
+
+assets: []
+
+metrics:
+  snapshots: []

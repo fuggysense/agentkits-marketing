@@ -1,0 +1,101 @@
+# Retention Campaign Template
+# Reduce churn and increase customer lifetime value
+
+campaign:
+  name: ""
+  project: ""
+  type: retention
+  created: ""
+  phase: planning
+
+status:
+  last_session: ""
+  last_action: "Campaign created from retention template"
+  next_actions:
+    - "Analyze churn signals and at-risk segments"
+    - "Design re-engagement triggers"
+    - "Write win-back email sequence"
+  blockers: []
+
+tasks:
+  # --- PLANNING PHASE ---
+  - id: churn-analysis
+    phase: planning
+    status: planned
+    agent: researcher
+    skill: analytics-attribution
+    description: "Churn signal analysis — identify at-risk behaviors, segment by risk level"
+    dependencies: []
+    asset: assets/research/churn-analysis.md
+
+  - id: engagement-strategy
+    phase: planning
+    status: planned
+    agent: continuity-specialist
+    skill: marketing-fundamentals
+    description: "Engagement strategy — touchpoints, triggers, content themes, success criteria"
+    dependencies: [churn-analysis]
+    asset: assets/research/engagement-strategy.md
+
+  # --- CREATION PHASE ---
+  - id: win-back-emails
+    phase: creation
+    status: planned
+    agent: email-wizard
+    skill: email-sequence
+    description: "Win-back email sequence — 4 emails for at-risk users (value reminder, what's new, special offer, last chance)"
+    dependencies: [engagement-strategy]
+    asset: assets/emails/win-back/
+
+  - id: nps-survey
+    phase: creation
+    status: planned
+    agent: continuity-specialist
+    skill: marketing-fundamentals
+    description: "NPS survey + follow-up automation — survey copy, thank-you, detractor outreach"
+    dependencies: [engagement-strategy]
+    asset: assets/nps/
+
+  - id: success-content
+    phase: creation
+    status: planned
+    agent: copywriter
+    skill: content-strategy
+    description: "Customer success content — tips, best practices, case studies for existing users"
+    dependencies: [engagement-strategy]
+    asset: assets/content/
+
+  - id: social-engagement
+    phase: creation
+    status: planned
+    agent: copywriter
+    skill: social-media
+    description: "Community engagement posts — user spotlights, tips, polls, discussions"
+    dependencies: [success-content]
+    asset: assets/social/
+
+  # --- EXECUTION PHASE ---
+  - id: schedule-content
+    phase: execution
+    status: planned
+    agent: copywriter
+    skill: social-media
+    description: "Schedule community content via Postiz on recurring cadence"
+    dependencies: [social-engagement]
+    published:
+      platform: postiz
+
+  # --- OPTIMIZATION PHASE ---
+  - id: retention-report
+    phase: optimization
+    status: planned
+    agent: ""
+    skill: analytics-attribution
+    description: "Monthly retention report — churn rate, NPS trend, engagement metrics, win-back conversions"
+    dependencies: [schedule-content]
+    asset: assets/reports/retention-report.md
+
+assets: []
+
+metrics:
+  snapshots: []

@@ -46,6 +46,19 @@ For every TOFU/lead gen request, follow this structured thinking:
 - `competitor-alternatives` for comparison pages
 - `free-tool-strategy` for engineering-as-marketing
 
+### pSEO Pipeline Handoff
+When a user requests **end-to-end programmatic SEO execution** (taxonomy creation, batch generation, progressive rollout, indexation monitoring), delegate to `pseo-architect` agent. The attraction-specialist handles pSEO **opportunity assessment and strategy** but not full pipeline orchestration.
+
+**Handoff triggers:**
+- User asks to "build" or "generate" hundreds/thousands of pages
+- User wants end-to-end pSEO with rollout management
+- User selects "Pipeline" scope in `/seo:programmatic`
+
+**Keep in attraction-specialist:**
+- Keyword opportunity assessment for pSEO
+- Competitive gap analysis for page types
+- General pSEO strategy recommendations
+
 ## Data Reliability (MANDATORY)
 
 **CRITICAL**: Follow `./workflows/data-reliability-rules.md` strictly.
@@ -211,11 +224,24 @@ Use MCP integrations when available:
 
 ## Agent Collaboration
 
-- **lead-qualifier**: Hand off captured leads for scoring
-- **email-wizard**: Coordinate nurture sequences for new leads
-- **copywriter**: Collaborate on content creation
-- **seo-specialist**: Deep dive on technical SEO needs
-- **researcher**: Market research for content angles
+| Agent | Relationship | Handoff Trigger |
+|-------|-------------|-----------------|
+| `lead-qualifier` | Sends captured leads to | When leads need scoring |
+| `email-wizard` | Sends nurture specs to | When leads need email sequences |
+| `copywriter` | Collaborates on content with | When content creation needed |
+| `seo-specialist` | Receives technical SEO from | When deep technical audit needed |
+| `researcher` | Receives market intel from | When research informs content |
+| `tracking-specialist` | Sends tracking specs to | When conversion tracking needed |
+
+## When NOT to Use
+
+| If the task is... | Use instead |
+|-------------------|-------------|
+| Technical SEO implementation details | `seo-specialist` |
+| Email sequence design | `email-wizard` |
+| Lead scoring model design | `lead-qualifier` |
+| Sales collateral creation | `sales-enabler` |
+| Retention/churn campaigns | `continuity-specialist` |
 
 ## Quality Standards
 

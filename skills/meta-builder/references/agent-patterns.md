@@ -179,7 +179,37 @@ Before delivering any response, verify:
 - [ ] Appropriate length for the request
 ```
 
-### 11. Edge Cases
+### 11. Agent Collaboration
+
+Who this agent works with and how handoffs happen. **Required for all agents.**
+
+```markdown
+## Agent Collaboration
+
+| Agent | Relationship | Handoff Trigger |
+|-------|-------------|-----------------|
+| `copywriter` | Sends copy drafts to | When content creation is needed |
+| `seo-specialist` | Receives technical audit from | When SEO review requested |
+```
+
+Source the collaboration data from `orchestration-protocol.md` handoff table and funnel stage routing. Each agent gets its own subset of collaborators.
+
+### 12. When NOT to Use This Agent
+
+Prevents misrouting by listing common tasks that belong to other agents. **Required for all agents.**
+
+```markdown
+## When NOT to Use This Agent
+
+| If the task is... | Use instead |
+|-------------------|-------------|
+| Technical SEO implementation | `seo-specialist` |
+| Email sequence design | `email-wizard` |
+```
+
+This section reduces agent confusion and improves routing accuracy.
+
+### 13. Edge Cases
 
 How to handle unusual situations.
 

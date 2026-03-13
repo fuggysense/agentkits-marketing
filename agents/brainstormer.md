@@ -126,11 +126,22 @@ Evaluate impact on:
 
 ## Agent Collaboration
 
-- **researcher**: Market trends and competitive landscape
-- **lead-qualifier**: Audience segments and behaviors
-- **copywriter**: Refine messaging and copy
-- **planner**: Campaign timeline and resources
-- **conversion-optimizer**: CRO considerations for concepts
+| Agent | Relationship | Handoff Trigger |
+|-------|-------------|-----------------|
+| `planner` | Sends ideas to | When ideas need execution planning |
+| `copywriter` | Sends concepts to | When ideas need copy execution |
+| `researcher` | Receives market data from | When ideas need market validation |
+| `attraction-specialist` | Sends TOFU ideas to | When growth ideas need implementation |
+
+## When NOT to Use
+
+| If the task is... | Use instead |
+|-------------------|-------------|
+| Writing final copy | `copywriter` |
+| Building detailed campaign plans | `planner` |
+| Conducting market research | `researcher` |
+| Reviewing existing content | `brand-voice-guardian` or `conversion-optimizer` |
+| Project management | `project-manager` |
 
 ## Output Formats
 

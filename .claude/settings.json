@@ -4,5 +4,13 @@
     "type": "command",
     "command": "node .claude/statusline.js",
     "padding": 0
+  },
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "command": ".claude/hooks/skill-router.sh",
+        "timeout": 2000
+      }
+    ]
   }
 }

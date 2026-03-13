@@ -49,14 +49,17 @@ copywriting (Foundation)
 
 ```
 seo-mastery (Foundation)
-├── programmatic-seo
+├── programmatic-seo (v2.0)
+│   ├── (soft) analytics-attribution — for quality monitoring + indexation tracking
+│   └── (soft) content-strategy — for niche taxonomy design
+│   └── (soft) website-design — for template rendering
 ├── schema-markup
 └── competitor-alternatives ← (also requires: copywriting)
 ```
 
 **Learning Path:**
 1. Start with `seo-mastery` (fundamentals)
-2. Scale with `programmatic-seo`
+2. Scale with `programmatic-seo` v2.0 (JSON-first, quality gates, niche taxonomy)
 3. Enhance with `schema-markup`
 4. Compete with `competitor-alternatives`
 
@@ -105,6 +108,20 @@ marketing-fundamentals (Foundation)
 
 ---
 
+## Creative Content Track
+
+```
+image-generation (Foundation)
+└── video-director ← (also requires: copywriting for dialogue scripts)
+```
+
+**Learning Path:**
+1. Start with `image-generation` (reference images, JSON prompts)
+2. Extend to `video-director` (AI video prompts, 11 types, 3 pipelines)
+3. Pair with `copywriting` for dialogue-heavy video types
+
+---
+
 ## Email Track
 
 ```
@@ -125,8 +142,60 @@ copywriting
 ```
 content-strategy
 └── social-media
-    └── launch-strategy
+    ├── launch-strategy
+    └── linkedin-optimization
+        └── linkedin-content ← (also requires: copywriting)
 ```
+
+---
+
+## Paid Media Track
+
+```
+paid-advertising (Foundation)
+└── paid-media-audit ← (also requires: analytics-attribution)
+```
+
+**Learning Path:**
+1. Start with `paid-advertising` (platform strategies)
+2. Audit with `paid-media-audit` (systematic account review)
+
+---
+
+## Campaign Execution Track
+
+```
+content-strategy ──┐
+social-media ──────┼── campaign-runner
+analytics-attribution ┘
+```
+
+**Learning Path:**
+1. Understand `content-strategy` (what to create)
+2. Know `social-media` (where to publish)
+3. Know `analytics-attribution` (how to measure)
+4. Execute with `campaign-runner` (state tracking, agent routing, publishing)
+
+---
+
+## Meta Track (System Tools)
+
+```
+meta-builder (Independent — creates new artifacts)
+amplifier (Independent — enhances existing artifacts)
+```
+
+Related but independent: meta-builder creates, amplifier improves. If amplifier finds a gap too large to fill, it recommends meta-builder.
+
+---
+
+## Research Track (Independent)
+
+```
+deep-research (Independent — orchestrates parallel sub-agents)
+```
+
+Multi-agent parallel research. No skill dependencies — spawns researcher sub-agents with MECE decomposition.
 
 ---
 
@@ -155,12 +224,17 @@ No dependencies - can be loaded as needed.
 | `ab-test-setup` | `page-cro`, `analytics-attribution` |
 | `copy-editing` | `copywriting` |
 | `email-sequence` | `email-marketing`, `copywriting` |
-| `programmatic-seo` | `seo-mastery` |
+| `programmatic-seo` | `seo-mastery` (hard), `analytics-attribution` (soft), `content-strategy` (soft), `website-design` (soft — for template rendering) |
 | `schema-markup` | `seo-mastery` |
 | `competitor-alternatives` | `seo-mastery`, `copywriting` |
 | `launch-strategy` | `content-strategy`, `social-media` |
 | `referral-program` | `marketing-fundamentals` |
 | `free-tool-strategy` | `seo-mastery`, `content-strategy` |
+| `paid-media-audit` | `paid-advertising`, `analytics-attribution` |
+| `linkedin-optimization` | `social-media` |
+| `linkedin-content` | `linkedin-optimization`, `copywriting` |
+| `campaign-runner` | `content-strategy`, `social-media`, `analytics-attribution` |
+| `video-director` | `image-generation` (hard), `copywriting` (soft — for dialogue scripts) |
 
 ---
 
@@ -182,6 +256,7 @@ These skills can be loaded independently:
 - `brand-building`
 - `problem-solving`
 - `pricing-strategy`
+- `deep-research`
 - All document skills
 
 ---
@@ -212,13 +287,16 @@ Skills loaded: page-cro → form-cro → signup-flow-cro
 | Agent | Primary Skills |
 |-------|----------------|
 | `conversion-optimizer` | page-cro, form-cro, popup-cro, signup-flow-cro, onboarding-cro, paywall-upgrade-cro, ab-test-setup |
-| `attraction-specialist` | seo-mastery, programmatic-seo, schema-markup, content-strategy, paid-advertising, competitor-alternatives |
-| `copywriter` | copywriting, copy-editing, email-sequence |
+| `attraction-specialist` | seo-mastery, schema-markup, content-strategy, paid-advertising, competitor-alternatives |
+| `pseo-architect` | programmatic-seo, seo-mastery, schema-markup, content-strategy, analytics-attribution |
+| `copywriter` | copywriting, copy-editing, email-sequence, linkedin-content, video-director |
 | `email-wizard` | email-marketing, email-sequence |
-| `seo-specialist` | seo-mastery, programmatic-seo, schema-markup |
-| `brand-voice-guardian` | brand-building, copywriting, copy-editing |
-| `brainstormer` | marketing-ideas, marketing-psychology, problem-solving |
+| `seo-specialist` | seo-mastery, schema-markup, programmatic-seo |
+| `brand-voice-guardian` | brand-building, copywriting, copy-editing, linkedin-content |
+| `brainstormer` | marketing-ideas, marketing-psychology, problem-solving, linkedin-content |
 | `planner` | content-strategy, launch-strategy |
 | `researcher` | marketing-fundamentals, analytics-attribution, pricing-strategy |
 | `upsell-maximizer` | paywall-upgrade-cro, pricing-strategy, referral-program |
+| `tracking-specialist` | analytics-attribution, paid-advertising, paid-media-audit |
 | `continuity-specialist` | onboarding-cro, email-sequence, referral-program |
+| `project-manager` | campaign-runner, content-strategy |

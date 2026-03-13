@@ -1,0 +1,18 @@
+{
+  "name": "linkup",
+  "description": "Web search API with sourced answers, citations, and async deep research",
+  "type": "custom",
+  "command": "bash",
+  "args": ["scripts/linkup.sh"],
+  "env": {
+    "LINKUP_API_KEY": "${LINKUP_API_KEY}"
+  },
+  "capabilities": {
+    "tools": 5,
+    "categories": ["web-search", "research", "url-fetch", "citations"]
+  },
+  "source": {
+    "api": "https://api.linkup.so",
+    "docs": "https://docs.linkup.so"
+  }
+}

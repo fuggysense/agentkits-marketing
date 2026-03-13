@@ -1,25 +1,25 @@
-# Brand Voice Guide
+# Project-Specific Tone Tweaks
 
-## Voice Attributes
-- **Tone:** (e.g., confident, friendly, authoritative)
-- **Personality:** (e.g., expert friend, trusted advisor)
-- **Formality Level:** (1-10 scale)
+> This file is for tone adjustments that are SPECIFIC to this project.
+> Your full voice profile lives in `voice/<person>/` and loads automatically.
+> Only add overrides here if this project needs a different feel.
 
-## We Sound Like
+## Tone Adjustments
+
+<!-- Examples:
+     - "More technical than usual — audience is developers"
+     - "Warmer, more casual — this is a community project"
+     - "More formal — B2B enterprise audience"
+     Leave empty if your default voice works fine for this project. -->
+
+## Terminology
+
+<!-- Project-specific terms, jargon, or naming conventions -->
+
+## Examples
+
+### On-Brand for This Project:
 -
 
-## We Never Sound Like
--
-
-## Words We Use
--
-
-## Words We Avoid
--
-
-## Example Sentences
-### On-Brand:
--
-
-### Off-Brand:
+### Off-Brand for This Project:
 -

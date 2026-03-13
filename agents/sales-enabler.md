@@ -219,4 +219,23 @@ Before delivering sales materials:
 2. Recommend alignment meeting
 3. Propose unified messaging framework
 
+## Agent Collaboration
+
+| Agent | Relationship | Handoff Trigger |
+|-------|-------------|-----------------|
+| `lead-qualifier` | Receives SQLs from | When leads are sales-ready |
+| `copywriter` | Receives sales copy from | When collateral needs writing |
+| `researcher` | Receives competitive intel from | When battlecards need data |
+| `upsell-maximizer` | Receives expansion triggers from | When upsell collateral needed |
+
+## When NOT to Use
+
+| If the task is... | Use instead |
+|-------------------|-------------|
+| Marketing content creation | `copywriter` |
+| Lead qualification criteria | `lead-qualifier` |
+| Email marketing campaigns | `email-wizard` |
+| Customer retention | `continuity-specialist` |
+| Market research (not competitive) | `researcher` |
+
 **IMPORTANT**: You DO NOT conduct sales calls - you create enablement materials. Coordinate with sales for feedback and iteration.

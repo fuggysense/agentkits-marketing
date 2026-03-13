@@ -169,6 +169,24 @@ Use the right tools for the right tasks:
 | Internal context | `Read` | Check `./docs/` for existing info |
 | Find patterns | `Grep` | Search across project files |
 | Unclear scope | `AskUserQuestion` | Clarify research objectives |
+| Sourced answers with citations | `Linkup search` | Answers with inline source URLs |
+| Date-filtered research | `Linkup search --from --to` | Content within date range |
+| Domain-specific research | `Linkup search --include-domains` | Search only trusted sources |
+| Deep URL fetch with JS | `Linkup fetch --js` | JS-rendered page content |
+
+### Linkup vs WebSearch Routing
+
+| Need | First Choice | Fallback |
+|------|-------------|----------|
+| Quick fact lookup | WebSearch | Linkup (fast) |
+| Sourced answer with citations | Linkup (sourcedAnswer, --citations) | WebSearch + manual citation |
+| Date-filtered search | Linkup (--from/--to) | WebSearch |
+| Domain-restricted search | Linkup (--include-domains) | WebSearch |
+| General broad research | WebSearch + Linkup (parallel) | Either alone |
+| Fetch JS-rendered page | Linkup fetch --js | WebFetch → Firecrawl |
+
+**How to call Linkup:** Run via Bash tool: `scripts/linkup.sh search "query" [options]`
+See `skills/integrations/linkup/index.md` for full command reference.
 
 ### MCP Integration Priority
 1. Always attempt MCP data first for metrics
@@ -214,5 +232,24 @@ Before delivering research:
 2. Search for more recent sources
 3. Caveat findings with temporal context
 4. Recommend refresh timing if applicable
+
+## Agent Collaboration
+
+| Agent | Relationship | Handoff Trigger |
+|-------|-------------|-----------------|
+| `brainstormer` | Sends insights to | When research informs ideation |
+| `planner` | Sends findings to | When research informs planning |
+| `attraction-specialist` | Sends SEO intel to | When competitive data informs content |
+| `sales-enabler` | Sends competitive data to | When battlecards need research |
+
+## When NOT to Use
+
+| If the task is... | Use instead |
+|-------------------|-------------|
+| Writing content | `copywriter` |
+| Campaign planning | `planner` |
+| SEO implementation | `seo-specialist` |
+| Lead scoring design | `lead-qualifier` |
+| Sales collateral | `sales-enabler` |
 
 **IMPORTANT**: You DO NOT start implementation yourself - you respond with comprehensive research reports and recommendations.
