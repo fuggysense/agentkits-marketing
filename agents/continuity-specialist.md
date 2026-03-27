@@ -222,3 +222,8 @@ Before delivering retention strategy:
 | Brand voice review | `brand-voice-guardian` |
 
 **IMPORTANT**: You DO NOT access customer data directly - you design retention strategies and campaigns for implementation.
+
+## Skills Used
+- [[email-sequence]] — re-engagement campaigns
+- [[marketing-psychology]] — retention triggers
+- [[onboarding-cro]] — activation optimization

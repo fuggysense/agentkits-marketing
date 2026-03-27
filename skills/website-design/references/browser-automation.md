@@ -1,3 +1,8 @@
+## Graph Links
+- **Parent skill:** [[website-design]]
+- **Sibling references:** [[aesthetic-guidelines]], [[cinematic-presets]], [[component-sources]], [[gallery-sources]], [[scroll-driven-design]]
+- **Related skills:** [[page-cro]], [[brand-building]]
+
 # Browser Automation Reference
 
 ## Playwright Stealth Setup
@@ -27,6 +32,27 @@ with sync_playwright() as p:
 python3 -m playwright install chromium
 ```
 The `browser-tools.py` script handles this automatically on first run.
+
+---
+
+## Extract Functions (HTML, CSS, JS)
+
+### Full Page Extraction
+```bash
+python3 scripts/browser-tools.py extract https://example.com /tmp/extracted
+```
+
+Outputs to the directory:
+- `page.html` — full rendered HTML
+- `styles.css` — all inline + linked CSS rules (cross-origin noted but unreadable)
+- `scripts.js` — all inline JS + external script URLs listed
+- `computed-styles.json` — computed styles for key elements (body, h1-h3, p, a, button, nav, header, footer, section)
+- `screenshot.png` — full-page screenshot
+
+### Mobile Extraction
+```bash
+python3 scripts/browser-tools.py extract https://example.com /tmp/extracted-mobile --mobile
+```
 
 ---
 

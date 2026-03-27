@@ -1,0 +1,175 @@
+# Video Content Campaign Template (Script-to-Video Pipeline)
+# Full pipeline: Research → Script → Prompt → Image → Generate → Schedule
+#
+# VIDEO GENERATION API: Kie.ai — API access to Sora 2 Pro, Kling, VEO
+# Pricing: $0.75-$3.15 per clip (varies by model and duration)
+#
+# AUTOMATION NOTE: Currently manual via Claude Code.
+# Future automation target: trigger.dev / inngest / modal.com (NOT n8n)
+#
+# HITL GATES: Script approval + final video review
+
+campaign:
+  name: ""
+  project: ""
+  type: video-content
+  created: ""
+  phase: planning
+
+status:
+  last_session: ""
+  last_action: "Campaign created from video-content template"
+  next_actions:
+    - "Research competitor videos and trending formats"
+    - "Load ICP and offer from project files"
+    - "Define video types and models for this campaign"
+  blockers: []
+
+tasks:
+  # --- RESEARCH PHASE (3 tasks) ---
+  - id: competitor-scrape
+    phase: research
+    status: planned
+    agent: researcher
+    skill: deep-research
+    description: "Competitor video analysis — scrape top-performing video ads in niche. Analyze hooks, pacing, visual style, CTAs. Identify patterns to replicate and gaps to exploit"
+    dependencies: []
+    asset: assets/research/competitor-videos.md
+
+  - id: format-selection
+    phase: research
+    status: planned
+    agent: planner
+    skill: video-director
+    description: "Select video types from catalog (1-14), model pairings, and pipeline routing for this campaign. Consider: target platform, audience temperature, product type, budget"
+    dependencies: [competitor-scrape]
+    asset: assets/video/format-selection.md
+
+  - id: character-setup
+    phase: research
+    status: planned
+    agent: copywriter
+    skill: video-director
+    description: "Create character bible(s) for recurring talent. Facial profile + context profile + expression matrix. Choose method: Sora Characters API or text-based block. Reference: character-bible-template.md"
+    dependencies: []
+    asset: assets/video/character-bibles.md
+
+  # --- SCRIPT PHASE (2 tasks) ---
+  - id: script-writing
+    phase: script
+    status: planned
+    agent: copywriter
+    skill: copywriting
+    description: "Write video scripts using emotional block structure. Hook → story → soft sell → CTA. Include dialogue with delivery cues, beat descriptions, and timing. Load V.O.I.C.E. files for voice matching"
+    extra_skills: [content-moat, video-director]
+    dependencies: [format-selection, character-setup]
+    asset: assets/video/scripts.md
+
+  - id: hitl-script-approval
+    phase: script
+    status: planned
+    agent: ""
+    skill: ""
+    description: "HITL gate — present scripts for review. Format: | # | Type | Hook | Duration | Platform | Script Preview | Action |. Jerel approves/edits/cuts each"
+    dependencies: [script-writing]
+    hitl: true
+
+  # --- PROMPT PHASE (2 tasks) ---
+  - id: video-prompts
+    phase: prompt
+    status: planned
+    agent: copywriter
+    skill: video-director
+    description: "Generate video prompts from approved scripts using Universal 5-Part Schema. Include: cinematography, subject (from character bible), action/dialogue, context, style. Add seed from seed library if available"
+    dependencies: [hitl-script-approval]
+    asset: assets/video/prompts.md
+
+  - id: image-prompts
+    phase: prompt
+    status: planned
+    agent: copywriter
+    skill: image-generation
+    description: "For image-first types: generate reference image prompts. For all types: generate first-frame anchor images if using image input. Cross-image consistency checklist required"
+    dependencies: [hitl-script-approval]
+    asset: assets/video/image-prompts.md
+
+  # --- GENERATION PHASE (3 tasks) ---
+  - id: image-generation
+    phase: generation
+    status: planned
+    agent: ""
+    skill: image-generation
+    description: "Generate reference images and first-frame anchors using Nano Banana. Batch review all images before proceeding to video generation"
+    dependencies: [image-prompts]
+    asset: assets/video/images/
+
+  - id: video-generation
+    phase: generation
+    status: planned
+    agent: ""
+    skill: ""
+    description: "Generate videos via Kie.ai API (or direct model access). Feed prompts + reference images. Use seed from seed library. Run seed bracket test for new styles (seeds 1000-1010)"
+    dependencies: [video-prompts, image-generation]
+    asset: assets/video/raw/
+
+  - id: post-production
+    phase: generation
+    status: planned
+    agent: ""
+    skill: ""
+    description: "Post-production pipeline: grain/texture (CapCut) → upscale 1.25-1.75x (Topaz) → voice/audio (11 Labs). Assemble clips, add captions, music, CTA end cards"
+    dependencies: [video-generation]
+    asset: assets/video/final/
+
+  # --- REVIEW & PUBLISH PHASE (3 tasks) ---
+  - id: hitl-video-review
+    phase: review
+    status: planned
+    agent: ""
+    skill: ""
+    description: "HITL gate — final video review. Format: | # | Type | Duration | Platform | Thumbnail | Action |. Jerel approves/requests reshoots/cuts"
+    dependencies: [post-production]
+    hitl: true
+
+  - id: schedule-publish
+    phase: review
+    status: planned
+    agent: ""
+    skill: social-media
+    description: "Schedule approved videos via Postiz or upload to ad platform. Platform-specific specs check (aspect ratio, duration limits, file size)"
+    dependencies: [hitl-video-review]
+    published:
+      platform: postiz
+
+  - id: seed-library-update
+    phase: review
+    status: planned
+    agent: ""
+    skill: video-director
+    description: "Update seed library with winning seeds from this batch. Log seed scores and platform assignments to clients/<project>/assets/video/seed-library.md"
+    dependencies: [hitl-video-review]
+    asset: assets/video/seed-library.md
+
+  # --- OPTIMIZATION PHASE (2 tasks) ---
+  - id: campaign-audit
+    phase: optimization
+    status: planned
+    agent: ""
+    skill: paid-media-audit
+    description: "After 7-14 days, run 7-step campaign audit. Key metric: unique outbound click rate. Classify ads: >3% scale, 1-3% optimize, <1% kill. Reference: client-campaign-audit.md"
+    dependencies: [schedule-publish]
+    asset: assets/reports/video-campaign-audit.md
+
+  - id: feedback-loop
+    phase: optimization
+    status: planned
+    agent: researcher
+    skill: content-strategy
+    description: "Identify winning hooks, best-performing types, optimal seeds. Update learnings.md, seed library, and character bibles. Feed insights into next batch cycle"
+    dependencies: [campaign-audit]
+    asset: assets/reports/video-learnings.md
+
+assets: []
+
+metrics:
+  snapshots: []

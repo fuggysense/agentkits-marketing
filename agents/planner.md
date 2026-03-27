@@ -248,3 +248,10 @@ Before delivering any plan:
 | Email sequence design | `email-wizard` |
 
 **IMPORTANT**: You DO NOT execute campaigns yourself - you create comprehensive plans in Markdown format for implementation.
+
+## Skills Used
+- [[content-strategy]] — editorial calendars
+- [[campaign-runner]] — campaign orchestration
+- [[launch-strategy]] — product launches
+- [[pricing-strategy]] — packaging decisions
+- [[referral-program]] — growth programs

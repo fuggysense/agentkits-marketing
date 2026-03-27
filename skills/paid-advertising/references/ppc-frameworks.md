@@ -1,3 +1,8 @@
+## Graph Links
+- **Parent skill:** [[paid-advertising]]
+- **Sibling references:** [[google-ads]], [[linkedin-ads]], [[meta-ads]], [[paid-media-playbook]], [[tiktok-ads]]
+- **Related skills:** [[paid-media-audit]], [[analytics-attribution]]
+
 # PPC Strategy Frameworks
 
 Comprehensive reference for paid search and PPC campaign architecture, budget allocation, and optimization.

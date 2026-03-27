@@ -1,3 +1,5 @@
+> Consolidated learnings → [[video-learnings]]
+
 # Image Generation — Learnings & Patterns
 
 > This file updates continuously. Add confirmed patterns, insights, and fixes discovered during use.
@@ -10,6 +12,10 @@
 - "thinking_level": "high" for complex scenes with people, "minimal" for simple product shots
 - Negative prompts are essential — always exclude: stock photo, airbrushed, cartoon, watermark, extra fingers
 - Before/after images MUST use identical lighting on both sides for trust
+- Nano Banana Pro features (style saving, annotation) improve batch consistency — save a style as a preset, clone across campaign images
+- Annotation workflow bridges image → video pipeline — mark motion zones, static zones, and add notes for video model direction
+- Seedream 4 is a viable alternative for character consistency — better facial feature preservation across 10+ images than Nano Banana
+- Two image workflows: Objects path (product → animate around) vs Characters path (character reference → action). Choose based on whether the hero element is a product or a person
 
 ## Diagnostic Rules
 - Image looks too polished/fake → Add natural imperfections, specify "casual imperfect framing"

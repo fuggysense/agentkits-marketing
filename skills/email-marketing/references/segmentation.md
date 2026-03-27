@@ -1,3 +1,8 @@
+## Graph Links
+- **Parent skill:** [[email-marketing]]
+- **Sibling references:** [[automation]], [[deliverability]], [[email-marketing-playbook]], [[lead-nurturing-workflows]], [[sequence-design]]
+- **Related skills:** [[analytics-attribution]]
+
 # Email Segmentation
 
 Strategies for audience segmentation.

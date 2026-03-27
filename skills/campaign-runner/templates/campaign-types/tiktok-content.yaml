@@ -1,0 +1,174 @@
+# TikTok Slideshow Content Campaign Template
+# Batch creation pipeline: research trends → design slideshows → approve → schedule → optimize
+#
+# ⚠️ TIKTOK API REALITY: Unaudited API apps post to DRAFTS only.
+# Jerel must tap "Publish" in TikTok app after Postiz pushes drafts.
+# Music is added in TikTok app — Postiz cannot attach audio.
+#
+# FORMAT: TikTok Photo Mode carousels (3-10 image slides with music), NOT video.
+# Images: AI-generated via image-generation skill (carousel slide set templates).
+# Production: Jerel assembles final carousels in Canva/CapCut (text overlays, music).
+
+campaign:
+  name: ""
+  project: ""
+  type: tiktok-content
+  created: ""
+  phase: planning
+
+status:
+  last_session: ""
+  last_action: "Campaign created from tiktok-content template"
+  next_actions:
+    - "Research trending TikTok formats, sounds, and hashtags"
+    - "Load content pillars from project strategy"
+    - "Build 2-week slideshow calendar"
+  blockers: []
+
+tasks:
+  # --- PLANNING PHASE (4 tasks) ---
+  - id: tiktok-trend-research
+    phase: planning
+    status: planned
+    agent: researcher
+    skill: social-media
+    description: "TikTok trend research — trending slideshow formats, sounds, hashtags, competitor carousels via TikTok MCP. Include viral format study: analyze top 10 trending slideshow formats, note hooks, pacing, and visual patterns"
+    dependencies: []
+    asset: assets/research/tiktok-trends.md
+
+  - id: content-pillars
+    phase: planning
+    status: planned
+    agent: planner
+    skill: content-strategy
+    description: "Load content pillars from clients/<project>/campaigns/tiktok-slideshows/content-strategy.md if exists. Otherwise define 4 pillars (edu 40%, entertain 30%, inspire 20%, promo 10%). Map each to slideshow format templates"
+    dependencies: [tiktok-trend-research]
+    asset: assets/tiktok/content-pillars.md
+
+  - id: batch-calendar
+    phase: planning
+    status: planned
+    agent: planner
+    skill: content-strategy
+    description: "2-week calendar, 5x/week. Each slot: pillar, slide count (3-10), hook concept, hashtags, date/time. Use project posting schedule if defined"
+    dependencies: [content-pillars]
+    asset: assets/tiktok/batch-calendar.md
+
+  - id: hitl-concept-approval
+    phase: planning
+    status: planned
+    agent: ""
+    skill: ""
+    description: "HITL gate — present calendar grid to Jerel for 5-min review. Format: | # | Day | Pillar | Hook Angle | Slide Count | Date |. Catches direction errors before creation phase"
+    dependencies: [batch-calendar]
+    hitl: true
+
+  # --- CREATION PHASE (4 tasks) ---
+  - id: hook-scripts
+    phase: creation
+    status: planned
+    agent: copywriter
+    skill: copywriting
+    description: "Slide-by-slide text/copy for each carousel. What text goes on each slide, text overlays, CTA copy. First slide hook is everything — pattern interrupt, curiosity, or bold claim. Script framework: hook (pattern interrupt) → storytelling (relatable situation) → soft sell (value without hard push) → visual cues (what appears on screen). For character-based accounts, reference character-bible-template.md"
+    extra_skills: [content-moat]
+    dependencies: [hitl-concept-approval]
+    asset: assets/tiktok/hooks-scripts.md
+
+  - id: slideshow-designs
+    phase: creation
+    status: planned
+    agent: copywriter
+    skill: image-generation
+    description: "AI image prompts for each slide (3-10 images per post). Use carousel slide set templates. Consistent visual style within each carousel — same color palette, typography, layout. 3:4 aspect ratio (1080x1440)"
+    dependencies: [hook-scripts]
+    asset: assets/tiktok/slideshow-designs.md
+
+  - id: captions-hashtags
+    phase: creation
+    status: planned
+    agent: copywriter
+    skill: social-media
+    description: "TikTok captions + hashtag sets for every post. Max 2200 chars, 3-5 hashtags per post (mix trending + niche). Algorithm-optimized"
+    dependencies: [hook-scripts]
+    asset: assets/tiktok/captions-hashtags.md
+
+  - id: slide-generation
+    phase: creation
+    status: planned
+    agent: ""
+    skill: image-generation
+    description: "Batch-generate all slide images using carousel slide set templates. Output: numbered image files per post in assets/tiktok/slideshows/ (e.g., post-01-slide-01.png). Consistent style within each carousel"
+    dependencies: [slideshow-designs]
+    asset: assets/tiktok/slideshows/
+
+  # --- EXECUTION PHASE (4 tasks) ---
+  - id: hitl-batch-review
+    phase: execution
+    status: planned
+    agent: ""
+    skill: ""
+    description: "HITL gate — structured review table. Format: | # | Pillar | Hook | Slides | Caption Preview | Scheduled Time | Action |. Jerel marks APPROVE / EDIT / CUT per row"
+    dependencies: [hook-scripts, slideshow-designs, captions-hashtags, slide-generation]
+    hitl: true
+
+  - id: slideshow-production
+    phase: execution
+    status: planned
+    agent: ""
+    skill: ""
+    description: "HITL — Jerel assembles final carousels in Canva/CapCut using generated images + text overlays. Selects music for each post. Drops final files to assets/tiktok/final/. ~1 hour for 10 slideshows"
+    dependencies: [hitl-batch-review]
+    hitl: true
+
+  - id: media-upload
+    phase: execution
+    status: planned
+    agent: ""
+    skill: ""
+    description: "Upload approved slideshow images to Postiz via upload tool. Multiple images per post (3-10) for Photo Mode carousel. Save media IDs to state"
+    dependencies: [slideshow-production]
+    published:
+      platform: postiz
+
+  - id: batch-schedule
+    phase: execution
+    status: planned
+    agent: ""
+    skill: social-media
+    description: "Schedule all posts via Postiz posts:create with platforms: ['tiktok'] and multiple media IDs per post. Rate limit: 2s between calls. Max 5 posts/day (project cadence). Posts go to TikTok drafts — Jerel publishes from TikTok app"
+    dependencies: [media-upload]
+    published:
+      platform: postiz
+
+  # --- OPTIMIZATION PHASE (3 tasks) ---
+  - id: analytics-pull
+    phase: optimization
+    status: planned
+    agent: ""
+    skill: analytics-attribution
+    description: "After 7 days, pull per-post analytics via Postiz + TikTok MCP. Track: views, completion rate, shares, saves, profile visits, link clicks"
+    dependencies: [batch-schedule]
+    asset: assets/reports/tiktok-batch-analytics.md
+
+  - id: cross-post-ig
+    phase: optimization
+    status: planned
+    agent: copywriter
+    skill: social-media
+    description: "Repurpose top 3 performers as IG carousels. Resize slides (1:1 or 4:5), adapt captions for Instagram voice/hashtags. Free 3x distribution from same content"
+    dependencies: [analytics-pull]
+    asset: assets/tiktok/ig-repurposed/
+
+  - id: feedback-loop
+    phase: optimization
+    status: planned
+    agent: researcher
+    skill: content-strategy
+    description: "Identify winning hooks, best posting times, top pillars. Update clients/<project>/learnings.md. Feed insights into next batch cycle"
+    dependencies: [analytics-pull]
+    asset: assets/reports/tiktok-learnings.md
+
+assets: []
+
+metrics:
+  snapshots: []

@@ -1,3 +1,8 @@
+## Graph Links
+- **Parent skill:** [[analytics-attribution]]
+- **Sibling references:** [[attribution-models]], [[dashboards]], [[ga4-implementation-guide]], [[google-analytics]], [[reporting-templates]], [[search-console]]
+- **Related skills:** [[paid-advertising]], [[ab-test-setup]]
+
 # Analytics & Attribution Frameworks
 
 Comprehensive reference for marketing analytics, attribution modeling, RFM analysis, dashboards, and ROI calculations.

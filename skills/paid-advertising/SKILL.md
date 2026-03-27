@@ -35,6 +35,12 @@ success_metrics:
   - conversion_rate
 ---
 
+## Graph Links
+- **Feeds into:** [[paid-media-audit]]
+- **Draws from:** [[analytics-attribution]]
+- **Used by agents:** [[attraction-specialist]], [[conversion-optimizer]]
+- **Related:** [[copywriting]], [[page-cro]]
+
 # Paid Advertising
 
 Paid media strategy and optimization across platforms for profitable customer acquisition.
@@ -196,3 +202,8 @@ Apply paid advertising expertise when:
 - `/content/ads` - Create ad copy for platforms
 - `/analytics/roi` - Calculate campaign ROI
 - `/campaign/plan` - Full campaign planning
+
+## References
+
+- `references/paid-media-playbook.md` - Cross-platform paid media strategy playbook
+- `references/ppc-frameworks.md` - PPC bidding and optimization frameworks

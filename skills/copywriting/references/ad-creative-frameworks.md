@@ -1,3 +1,8 @@
+## Graph Links
+- **Parent skill:** [[copywriting]]
+- **Sibling references:** [[direct-response-copy]], [[frameworks-library]], [[video-ad-scripts]]
+- **Related skills:** [[paid-advertising]], [[image-generation]]
+
 # Ad Creative Frameworks
 
 Comprehensive reference for ad creative strategy across Google, Meta, LinkedIn, and TikTok. Covers copy architecture, testing methodology, and message alignment.

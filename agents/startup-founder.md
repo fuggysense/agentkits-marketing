@@ -503,3 +503,8 @@ Before delivering startup founder review:
 1. Identify personal brand angles
 2. Suggest authentic storytelling
 3. Note community building potential
+
+## Skills Used
+- [[launch-strategy]] — go-to-market
+- [[referral-program]] — viral loops
+- [[free-tool-strategy]] — engineering as marketing

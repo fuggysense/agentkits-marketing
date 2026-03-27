@@ -1,3 +1,8 @@
+## Graph Links
+- **Parent skill:** [[marketing-fundamentals]]
+- **Sibling references:** [[competitor-analysis]], [[copywriting-frameworks]], [[funnel-psychology]], [[marketing-metrics]], [[marketing-strategy-essentials]]
+- **Related skills:** [[page-cro]], [[marketing-psychology]]
+
 # Conversion Principles
 
 Psychology of persuasion and conversion optimization.

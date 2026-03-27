@@ -1,3 +1,7 @@
+## Graph Links
+- **Parent skill:** [[form-cro]]
+- **Related skills:** [[page-cro]], [[signup-flow-cro]], [[popup-cro]]
+
 # Form Optimization Guide
 
 Based on research from [Formstack](https://www.formstack.com/resources/report-form-conversion), [HubSpot](https://blog.hubspot.com/marketing/form-conversion-optimization), [Unbounce](https://unbounce.com/landing-page-optimization/form-best-practices/).

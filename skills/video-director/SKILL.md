@@ -1,6 +1,6 @@
 ---
 name: video-director
-version: "1.0.0"
+version: "2.0.0"
 brand: AgentKits Marketing by AityTech
 category: content
 difficulty: intermediate
@@ -25,6 +25,14 @@ triggers:
   - anatomical animation
   - ad localization
   - video generation
+  - consistent character
+  - UGC automation
+  - sora character
+  - video edit
+  - character bible
+  - seed bracketing
+  - 8K video
+  - post production
 prerequisites:
   - image-generation
 related_skills:
@@ -38,9 +46,27 @@ agents:
   - brainstormer
 ---
 
+## Graph Links
+- **Feeds into:** [[tiktok-slideshows]], [[social-media]]
+- **Draws from:** [[image-generation]], [[copywriting]]
+- **Used by agents:** [[copywriter]]
+- **Related:** [[content-moat]], [[youtube-content]]
+
 # AI Video Director
 
-Generate ready-to-paste prompts for AI video tools (Sora 2 Pro, Kling, VEO). This skill produces PROMPTS, not actual videos. Every prompt goes through a HITL review gate before the user takes it to the external tool.
+Generate ready-to-paste prompts for AI video tools (Sora 2 Pro, Kling, VEO). This skill produces PROMPTS, not actual videos — EXCEPT when using Vertex AI direct API, which can generate videos and images end-to-end from Claude Code. Every prompt goes through a HITL review gate before the user takes it to the external tool.
+
+## Vertex AI Direct Generation (Optional)
+
+When the user says "generate with Vertex", "use Veo directly", or "generate the video/image for me" — use the Vertex AI API to produce actual media files instead of just prompts. See `references/vertex-ai-api.md` for full config, API templates, and gotchas.
+
+- **Imagen 4 Fast** — $0.02/img, text-to-image via Vertex AI
+- **Nano Banana 2** — $0.067/img, reference-based image gen via Generative Language API
+- **Nano Banana Pro** — $0.134/img, higher fidelity reference-based gen
+- **Veo 3.1 Fast** — $0.15/s, text-to-video and I2V
+- **Veo 3.1 Quality** — $0.40/s, higher quality, stricter safety filters
+
+Default to NB2 for images, Veo 3.1 Fast for video unless user requests quality.
 
 ## Language & Quality Standards
 
@@ -58,13 +84,13 @@ Generate ready-to-paste prompts for AI video tools (Sora 2 Pro, Kling, VEO). Thi
 - Educational/anatomical animations for health products
 - Any marketing video that needs AI generation prompts
 
-## The Framework: 3 Pipelines, 11 Types
+## The Framework: 3 Pipelines, 14 Types
 
 ### Pipeline Overview
 
 | Pipeline | Video Types | Flow |
 |----------|-------------|------|
-| **Direct Video** | Street Interview, Podcast, Try-On, Shock Hook, Product Commercial, POV Adventure | Single prompt -> video model |
+| **Direct Video** | Street Interview, Podcast, Try-On, Shock Hook, Product Commercial, POV Adventure, Walk-and-Talk, Driver's Seat, At-Home Demo | Single prompt -> video model |
 | **Image-First** | Viral Food, Anatomical Animation, Real Estate Transformation, Unboxing | Generate 2-3 reference images -> feed to video model |
 | **Localized Recreation** | Ad Localization at Scale | Analyze source -> reconstruct in new language/culture |
 
@@ -83,6 +109,9 @@ Generate ready-to-paste prompts for AI video tools (Sora 2 Pro, Kling, VEO). Thi
 | 9 | Real Estate Transform | Image-First | Nano Banana + Kling | Renovation, interior design |
 | 10 | Unboxing | Image-First | Nano Banana + Kling | E-commerce, subscription boxes |
 | 11 | Ad Localization | Localized | Gemini + Sora 2 Pro | International scaling |
+| 12 | On-the-Go Testimonial | Direct | Sora 2 Pro | Authentic testimonials, social proof |
+| 13 | Driver's Seat Review | Direct | Sora 2 Pro | Product reviews, immediate reactions |
+| 14 | At-Home Demo | Direct | Sora 2 Pro | Home products, beauty routines |
 
 Full templates and examples: `references/video-type-catalog.md`
 
@@ -281,10 +310,10 @@ Quick decision flow — full details in `references/model-selection-guide.md`.
 
 ```
 Does the video need someone TALKING?
-├── YES -> Sora 2 Pro
+├── YES -> Sora 2 Pro (Characters API for 1min+ multi-clip)
 └── NO
-    ├── Need image-to-video? -> Kling
-    ├── Educational/scientific? -> VEO
+    ├── Need image-to-video? -> Kling (default to image-first — 90% of projects)
+    ├── Educational/scientific? -> VEO (ingredients-to-video approach)
     └── Simple UGC action? -> Sora 2 Pro
 ```
 
@@ -340,6 +369,97 @@ Build longer videos from shorter generations:
 
 ---
 
+## Platform-Specific Features (Sora 2 Pro)
+
+### Characters API
+Maintain consistent character appearance across clips using `@username` handles. Upload a reference image, get a handle, reference in future prompts. Max 2 characters per generation. Full details: `references/character-bible-template.md`
+
+### Video Edits Endpoint
+Remix or modify existing video clips — change backgrounds, alter actions, adjust timing without regenerating from scratch.
+
+### Clip Extension
+Extend clips with full context — the model sees the entire previous clip, not just the last frame. Extend up to 6x original length (20s base → 120s). Shorter base clips (4-8s) produce more reliable extensions.
+
+### Batch API
+Submit multiple generation jobs asynchronously. Useful for batch campaign creation — submit all prompts, collect results later.
+
+### API vs Prompt Structure
+- **API parameters:** Character references, style presets, model version, resolution, duration
+- **Prompt text:** Scene description, actions, dialogue, camera, environment
+- Rule: Put stable/reusable info in API params, put per-video unique info in the prompt
+
+### Storyboard Mode (Pro)
+Multi-shot storyboards with per-shot prompts. Define shots individually, Sora maintains continuity across the sequence. Best for longer narratives and multi-beat ad stories.
+
+---
+
+## Production Techniques
+
+### Character Bible
+Create detailed facial profiles + context profiles for recurring characters. Two methods: Sora Characters API (automatic) and text-based blocks (all models). Full template: `references/character-bible-template.md`
+
+### Seed Management
+Reduce generation costs by ~60% through systematic seed bracketing. Test seeds 1000-1010, score results, reuse winners. Platform-specific ranges for visual consistency. Full guide: `references/seed-management.md`
+
+### Post-Production Pipeline
+Enhance raw AI output: grain/texture (CapCut) → upscale 1.25-1.75x (Topaz) → voice/audio (11 Labs). Full details in `references/realism-tricks.md`
+
+### 8K Shot Prompting
+Specify professional camera bodies (RED Komodo 6K, ARRI Alexa LF, Sony FX6) in prompts to trigger higher-fidelity rendering. Full camera list: `references/cinematography-reference.md`
+
+---
+
+## Automation & Scale
+
+### UGC Pipeline (Kie.ai)
+API access to Sora 2 Pro, Kling, and other models. $0.75-$3.15 per clip. Single API for batch generation across models. Best for production-scale campaigns.
+
+### 3 UGC Archetypes
+| Archetype | Setting | Energy | Template |
+|-----------|---------|--------|----------|
+| Walk-and-Talk | Street/park, moving | High, slightly breathless | Type 12 |
+| Driver's Seat | Parked car, stationary | Calm, intimate | Type 13 |
+| At-Home Demo | Kitchen/bathroom/living room | Casual, real | Type 14 |
+
+### Creative Director Pattern
+System prompt for maintaining consistent creative direction across batch UGC generation. Ensures all videos feel authentic, not branded. Template in `references/video-type-catalog.md` (Type 14).
+
+---
+
+## Prompting Mastery
+
+### Creativity Tradeoff
+- **Short prompts** (1-2 sentences) = more creative freedom, model fills gaps artistically
+- **Long prompts** (detailed 5-part schema) = more precise control, less surprise
+- Use short for exploration/ideation, long for production
+
+### Ultra-Detailed Cinematic Format
+10-section prompt structure for maximum control (Sora-specific):
+1. Opening shot description
+2. Camera movement
+3. Subject details
+4. Action/performance
+5. Dialogue (if any)
+6. Environment detail
+7. Lighting specification
+8. Sound design
+9. Technical specs (resolution, FPS, aspect ratio)
+10. Style/mood constraints
+
+### Weak → Strong Prompts
+Transform vague prompts into production-quality outputs. Pattern: add specific person + specific place + specific action + sensory details + camera specifics. Full transformation table: `references/realism-tricks.md`
+
+### OpenAI Recommended Prompt Structure (Alternative Format)
+For Sora specifically, an alternative to the 5-Part Schema:
+```
+HEADER: [concept + duration + aspect ratio]
+SHOT: [camera position + movement + subject framing]
+TECH: [model + resolution + style constraints]
+AUDIO: [dialogue + ambient + music direction]
+```
+
+---
+
 ## Transition Realism
 
 For transformation and before/after types:
@@ -376,7 +496,10 @@ For transformation and before/after types:
 - `references/realism-tricks.md` — Universal realism rules and negative prompt library
 - `references/model-selection-guide.md` — Model comparison and decision framework
 - `references/cinematography-reference.md` — Camera angles, movements, shot types, lenses
+- `references/character-bible-template.md` — Character profiles, facial engineering, consistency methods
+- `references/seed-management.md` — Seed bracketing, platform ranges, cost optimization
+- `references/client-campaign-audit.md` — 7-step audit framework, outbound click analysis
 
 ---
 
-*Source: Framework extracted from David Roberts (AI Ad Guys) — @recap_david on X/Twitter. Enhanced with patterns from snubroot (Veo 3.1 Meta Framework) — GitHub snubroot/Veo-3-Meta-Framework.*
+*Sources: Framework extracted from David Roberts (AI Ad Guys) — @recap_david on X/Twitter. Enhanced with patterns from snubroot (Veo 3.1 Meta Framework), Mikoslab (character bibles, 8K shot prompting, seed bracketing, post-production, campaign audit), OpenAI Sora 2 Prompting Guide, and Lucas Walter UGC automation workflow.*

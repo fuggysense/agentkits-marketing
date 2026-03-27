@@ -14,6 +14,11 @@ triggers:
   - make this better
   - copy sweep
   - improve writing
+  - humanize text
+  - humanise text
+  - de-ai
+  - remove ai patterns
+  - sound more human
 prerequisites:
   - copywriting
 related_skills:
@@ -28,6 +33,12 @@ success_metrics:
   - clarity_improvement
   - consistency_score
 ---
+
+## Graph Links
+- **Feeds into:** (polish pass — terminal skill)
+- **Draws from:** [[copywriting]]
+- **Used by agents:** [[copywriter]], [[brand-voice-guardian]]
+- **Related:** [[content-moat]]
 
 # Copy Editing
 
@@ -45,9 +56,9 @@ Good copy editing isn't about rewriting—it's about enhancing. Each pass focuse
 
 ---
 
-## The Seven Sweeps Framework
+## The Eight Sweeps Framework
 
-Edit copy through seven sequential passes, each focusing on one dimension. After each sweep, loop back to check previous sweeps aren't compromised.
+Edit copy through eight sequential passes, each focusing on one dimension. After each sweep, loop back to check previous sweeps aren't compromised.
 
 ### Sweep 1: Clarity
 
@@ -277,6 +288,61 @@ For every statement, ask "Okay, so what?" If the copy doesn't answer that questi
 
 ---
 
+### Sweep 8: De-AI
+
+**Focus:** Does the copy sound like it was written by a human, not a language model?
+
+**What to check:**
+- AI-typical rhetorical constructions (Elliptical Setups, Revelation Hooks, Big Contrasts, Great Reframes, Philosophical Reductions)
+- Overused transition words (Moreover, Furthermore, However, Additionally)
+- Business jargon and marketing buzzwords (leverage, synergy, cutting-edge, paradigm shift)
+- Em-dash overuse (replace with periods, commas, or colons)
+- Perfect balanced oppositions ("It's not X, it's Y")
+- Poetic/literary overuse (tapestry, symphony, labyrinth, metamorphosis)
+
+**References:**
+- Read `references/overused-ai-patterns.md` for the complete prohibition catalog (HARD constraints — never use)
+- Check `skills/unslop/profiles/` for a domain-matching avoidance profile (SOFT constraints — prefer to avoid). Match by content type: `linkedin-posts.md` for LinkedIn, `saas-landing-pages.md` for landing pages, `email-sequences.md` for emails, `blog-writing.md` for articles, etc.
+
+**The 4-layer de-AI stack:**
+```
+Layer 1: Unslop profile       (domain-specific, empirical)  — SOFT constraints
+Layer 2: overused-ai-patterns  (universal prohibitions)      — HARD constraints
+Layer 3: corrections.md        (user session fixes)          — HARD constraints
+Layer 4: V.O.I.C.E.            (positive voice target)       — write LIKE this
+```
+
+**Process:**
+1. Read the full `overused-ai-patterns.md` reference file (Layer 2)
+2. Check if a matching unslop profile exists in `skills/unslop/profiles/` for this content type (Layer 1)
+3. Load `corrections.md` if it exists (Layer 3)
+4. Scan the copy line by line against all loaded layers
+5. For each flagged item, select a replacement from the reference tables
+6. Rewrite sentences naturally with replacements (don't just swap words — restructure if needed)
+7. Self-audit: re-scan your rewrite for any patterns you accidentally reintroduced
+8. Verify the rewrite preserves the original meaning and voice
+
+**Quality Gate (score before delivering):**
+
+| Dimension | Question | /10 |
+|-----------|----------|-----|
+| Directness | Every sentence earns its place? No throat-clearing, no runway. | |
+| Rhythm | Sentence length/structure varies naturally? No robotic uniformity. | |
+| Reader Trust | Zero meta-commentary, zero "let me explain why this matters." Show, don't announce. | |
+| Authenticity | Would a human with this voice actually write this? No performative anything. | |
+| Density | Every word carries weight? No filler, no padding, no empty qualifiers. | |
+
+**Minimum 35/50 to deliver.** Below 35: revise weakest dimension, re-score.
+
+**Critical rules:**
+- Never use em-dashes. Period.
+- Replace ALL prohibited items, not just some
+- Complete the self-audit before delivering output
+
+**After this sweep:** Return through all previous sweeps one final time.
+
+---
+
 ## Quick-Pass Editing Checks
 
 Use these for faster reviews when a full seven-sweep process isn't needed.
@@ -333,6 +399,17 @@ Use these for faster reviews when a full seven-sweep process isn't needed.
 - [ ] Know the target audience
 - [ ] Identify the desired action
 - [ ] Read through once without editing
+
+### De-AI (Sweep 8)
+- [ ] Unslop profile loaded for content type (if exists in `skills/unslop/profiles/`)
+- [ ] No AI rhetorical constructions (Elliptical Setup, Revelation Hook, Big Contrast, etc.)
+- [ ] No prohibited transition words (Moreover, Furthermore, etc.)
+- [ ] No business jargon or marketing buzzwords
+- [ ] No em-dashes
+- [ ] No "It's not X, it's Y" constructions
+- [ ] No domain-specific AI defaults flagged by unslop profile
+- [ ] Self-audit completed against full reference file AND unslop profile
+- [ ] Quality gate scored >= 35/50
 
 ### Clarity (Sweep 1)
 - [ ] Every sentence is immediately understandable
@@ -445,6 +522,13 @@ If you need more context:
 6. What proof/evidence do you have available?
 
 ---
+
+## References
+
+- `references/editing-checklist.md` - Copy editing checklist & best practices
+- `references/overused-ai-patterns.md` - Overused AI patterns reference (De-AI sweep catalog, HARD constraints)
+- `references/de-ai-transformations.md` - Before/after examples for De-AI fixes
+- `skills/unslop/profiles/` - Domain-specific avoidance profiles (SOFT constraints, loaded by content type)
 
 ## Related Skills
 

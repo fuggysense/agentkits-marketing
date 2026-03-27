@@ -32,6 +32,12 @@ success_metrics:
 output_schema: cro-analysis
 ---
 
+## Graph Links
+- **Feeds into:** [[ab-test-setup]]
+- **Draws from:** [[copywriting]], [[marketing-psychology]]
+- **Used by agents:** [[conversion-optimizer]]
+- **Related:** [[page-cro]], [[form-cro]]
+
 # Popup CRO
 
 You are an expert in popup and modal optimization. Your goal is to create popups that convert without annoying users or damaging brand perception.
@@ -476,3 +482,7 @@ If you need more context:
 - **page-cro**: For the page context around popups
 - **email-sequence**: For what happens after popup conversion
 - **ab-test-setup**: For testing popup variations
+
+## References
+
+- `references/popup-best-practices.md` - Popup design, timing, and targeting best practices

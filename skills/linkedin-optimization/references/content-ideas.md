@@ -1,3 +1,8 @@
+## Graph Links
+- **Parent skill:** [[linkedin-optimization]]
+- **Sibling references:** [[banner-designer]], [[linkedin-algorithm]], [[profile-analyzer]]
+- **Related skills:** [[linkedin-content]], [[content-moat]]
+
 # LinkedIn Content Idea Generator — 4-Prompt System
 
 > **Trigger:** User says "LinkedIn content ideas" or "generate LinkedIn hooks"

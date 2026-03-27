@@ -1,3 +1,8 @@
+## Graph Links
+- **Parent skill:** [[paid-advertising]]
+- **Sibling references:** [[google-ads]], [[linkedin-ads]], [[paid-media-playbook]], [[ppc-frameworks]], [[tiktok-ads]]
+- **Related skills:** [[paid-media-audit]]
+
 # Meta Ads — Expert Operations Manual
 
 > Load this reference whenever running, planning, or diagnosing Meta ad campaigns. This represents 20+ years of performance marketing expertise.

@@ -1,3 +1,8 @@
+## Graph Links
+- **Parent skill:** [[brand-building]]
+- **Sibling references:** [[brand-strategy-framework]], [[brand-strategy]], [[visual-identity]], [[voice-tone]]
+- **Related skills:** [[competitor-alternatives]], [[offer-builder]]
+
 # Brand Positioning
 
 Market positioning and differentiation.

@@ -8,8 +8,14 @@
   "hooks": {
     "UserPromptSubmit": [
       {
-        "command": ".claude/hooks/skill-router.sh",
-        "timeout": 2000
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": ".claude/hooks/skill-router.sh",
+            "timeout": 2000
+          }
+        ]
       }
     ]
   }

@@ -1,3 +1,8 @@
+## Graph Links
+- **Parent skill:** [[programmatic-seo]]
+- **Sibling references:** [[pseo-2-architecture]], [[pseo-implementation-guide]], [[pseo-quality-gates]], [[pseo-scaling-protocol]]
+- **Related skills:** [[seo-mastery]]
+
 # Niche Taxonomy Builder
 
 Framework for building structured niche taxonomies for pSEO 2.0 campaigns. Every pSEO project starts with a taxonomy — it defines what pages exist and how they relate.

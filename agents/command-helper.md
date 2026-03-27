@@ -347,3 +347,6 @@ When user selects a command:
 1. Identify logical sequence
 2. Suggest starting point
 3. Outline follow-up commands
+
+## Skills Used
+- (meta-agent — routes to all skills)

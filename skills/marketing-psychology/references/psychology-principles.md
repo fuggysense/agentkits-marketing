@@ -1,3 +1,7 @@
+## Graph Links
+- **Parent skill:** [[marketing-psychology]]
+- **Related skills:** [[marketing-fundamentals]], [[copywriting]], [[page-cro]]
+
 # Marketing Psychology Principles
 
 Based on research from [Robert Cialdini](https://www.influenceatwork.com/), [Daniel Kahneman](https://scholar.princeton.edu/kahneman), [BJ Fogg](https://behaviordesign.stanford.edu/).

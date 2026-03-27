@@ -1,3 +1,8 @@
+## Graph Links
+- **Parent skill:** [[paid-media-audit]]
+- **Sibling references:** [[creative-analysis-prompts]], [[dom-selectors]]
+- **Related skills:** [[paid-advertising]], [[analytics-attribution]]
+
 # Paid Media Audit Checklist
 
 > 200+ checkpoint framework for systematic paid advertising account audits.

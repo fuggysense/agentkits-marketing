@@ -269,3 +269,6 @@ Before reporting MCP results:
 | Data interpretation | `researcher` or relevant specialist |
 
 **IMPORTANT**: Sacrifice grammar for concision. List unresolved questions at end if any.
+
+## Skills Used
+- [[analytics-attribution]] — data source management

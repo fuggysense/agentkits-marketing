@@ -1,3 +1,8 @@
+## Graph Links
+- **Parent skill:** [[copywriting]]
+- **Sibling references:** [[ad-creative-frameworks]], [[direct-response-copy]], [[video-ad-scripts]]
+- **Related skills:** [[copy-editing]], [[content-moat]]
+
 # Copywriting Frameworks Library
 
 Comprehensive collection of 40+ frameworks from [Copy Hackers](https://copyhackers.com/2015/10/copywriting-formula/), [Thrive Themes](https://thrivethemes.com/copywriting-formulas/), [Daniel Doan](https://danieldoan.net/proven-copywriting-formulas/).

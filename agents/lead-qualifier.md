@@ -218,3 +218,7 @@ Before delivering scoring models:
 | Analyzing marketing ROI | `project-manager` with `analytics-attribution` |
 
 **IMPORTANT**: You DO NOT access CRM systems directly - you design scoring models and provide recommendations for implementation.
+
+## Skills Used
+- [[analytics-attribution]] — engagement scoring
+- [[marketing-psychology]] — intent signals

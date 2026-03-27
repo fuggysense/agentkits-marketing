@@ -1,3 +1,8 @@
+## Graph Links
+- **Parent skill:** [[video-director]]
+- **Sibling references:** [[character-bible-template]], [[cinematography-reference]], [[client-campaign-audit]], [[model-selection-guide]], [[realism-tricks]], [[seed-management]]
+- **Related skills:** [[campaign-runner]]
+
 # Video Type Catalog
 
 All 11 AI video ad types organized by pipeline. Each type includes a fill-in-the-blank prompt template, recommended model, and key techniques.
@@ -634,6 +639,189 @@ MAINTAIN FROM ORIGINAL:
 - The CULTURE changes — that's what makes it feel native
 - Localize, don't translate — idioms, humor, and references must feel local
 - Test the localized version separately — what works in English may not convert in Japanese
+
+---
+
+# UGC Automation Pipeline
+
+## 12. On-the-Go Testimonial (Walk-and-Talk)
+
+**Pipeline:** Direct Video
+**Primary Model:** Sora 2 Pro | **Fallback:** Kling + voice-over
+**Duration:** 15-30s | **Aspect Ratio:** 9:16
+
+### When to Use
+- Authentic customer testimonials without a studio
+- "Spotted in the wild" social proof
+- Founder/creator day-in-the-life content
+- Low-production-value-by-design content
+
+### When NOT to Use
+- Products requiring visual demonstration
+- When the testimonial needs specific product shots
+- Formal B2B contexts
+
+### Prompt Template
+
+```
+[SCENE SETUP]
+A [age]-year-old [gender] walks along a [specific street / park path / office hallway],
+holding phone at selfie-arm distance. They speak directly to camera while walking.
+Natural outdoor/indoor lighting. Background moves as they walk.
+
+[DIALOGUE]
+Speaking casually, slightly out of breath from walking:
+"[Testimonial/story — conversational, not rehearsed, includes 'um' or 'like']"
+[Glances away to navigate, then back to camera]
+"[Key benefit or result statement]"
+
+[CAMERA]
+Front-facing smartphone, arm's length, natural walking bounce.
+Slight wind noise, background pedestrians/traffic.
+Auto-focus occasionally adjusts. Frame drifts.
+
+[REALISM]
+Walking creates natural body movement and background motion.
+Wind moves hair. Outdoor ambient sounds implied.
+Subject occasionally looks where they're going, not always at camera.
+
+[NEGATIVE]
+No tripod, no studio, no perfect framing, no scripted delivery,
+no steady walk, no perfect audio, no extra fingers.
+```
+
+### Key Techniques
+- Walking creates natural movement that's hard for AI to fake — adds authenticity
+- "Slightly out of breath" cue gives the voice a real texture
+- Glancing away to navigate = natural behavior, not rehearsed
+
+---
+
+## 13. Driver's Seat Review
+
+**Pipeline:** Direct Video
+**Primary Model:** Sora 2 Pro | **Fallback:** Kling + voice-over
+**Duration:** 15-30s | **Aspect Ratio:** 9:16
+
+### When to Use
+- Authentic product reviews (especially subscription boxes, apps, services)
+- "Just tried this" immediate reaction content
+- Car-as-studio format (popular on TikTok/Instagram)
+- Solo creator content without a visible setup
+
+### When NOT to Use
+- Products that need visual demo (can't show while driving)
+- When movement/action is the selling point
+- Safety-sensitive contexts
+
+### Prompt Template
+
+```
+[SCENE SETUP]
+A [age]-year-old [gender] sits in the driver's seat of a [car type: sedan / SUV / hatchback],
+parked. Phone mounted on dash or held at arm's length.
+Natural daylight through windshield, dashboard visible.
+
+[DIALOGUE]
+Speaking directly to camera, relaxed posture, one hand on steering wheel:
+"Okay so I just [tried / received / used] [product] and..."
+[Slight laugh or head shake]
+"[Honest reaction — positive or mixed, feels genuine]"
+[Looks at product briefly if holding it, then back to camera]
+"[Key takeaway or recommendation]"
+
+[CAMERA]
+Dashboard-mounted or selfie-held phone camera.
+Slight vibration from parked car (engine idle or settling).
+Natural daylight + dashboard reflections.
+
+[REALISM]
+Seatbelt visible. Dashboard clutter (phone charger, coffee cup).
+Trees/buildings visible through windows.
+Slightly compressed audio feel (car interior acoustics).
+
+[NEGATIVE]
+No driving, no movement, no professional lighting, no studio,
+no perfect framing, no extra fingers.
+```
+
+### Key Techniques
+- Car = built-in private studio with natural lighting
+- Dashboard clutter adds massive authenticity
+- Seatbelt visible = believability anchor
+- Parked only — never depict driving + talking
+
+---
+
+## 14. At-Home Demo
+
+**Pipeline:** Direct Video
+**Primary Model:** Sora 2 Pro | **Fallback:** Kling + voice-over
+**Duration:** 15-45s | **Aspect Ratio:** 9:16
+
+### When to Use
+- Home products, kitchen gadgets, cleaning products
+- Skincare/beauty routines in natural setting
+- Subscription box unboxing + immediate use
+- "Real person, real home" authenticity
+
+### When NOT to Use
+- Products that need outdoor/location context
+- When home setting doesn't match target demographic
+- Products that need professional demonstration
+
+### Prompt Template
+
+```
+[SCENE SETUP]
+A [age]-year-old [gender] in their [kitchen / bathroom / living room].
+Wearing [casual home clothes: t-shirt and sweats / robe / loungewear].
+Phone propped on counter or held at arm's length.
+Natural home lighting — overhead + window.
+
+[ACTION SEQUENCE]
+1. Shows product to camera: "So I got this [product] and..."
+2. Demonstrates use: [applies / opens / assembles / cooks with]
+3. Real-time reaction: [genuine surprise / satisfaction / commentary]
+4. Shows result: [holds up to camera / points at result / shows before vs after]
+
+[CAMERA]
+Propped phone or selfie-arm. Slight angle from below (counter height).
+Natural home lighting (mixed: window + overhead).
+Occasional auto-focus adjustment when showing product close.
+
+[REALISM]
+Home background clutter (dishes, mail, pet toy, etc.).
+Natural skin — no makeup or minimal. Hair not styled.
+Product packaging visible (proves it's real, not staged).
+Casual speech with natural fillers ("so", "like", "honestly").
+
+[NEGATIVE]
+No studio, no professional lighting, no styled set, no makeup artist result,
+no perfect home, no stock photo kitchen, no extra fingers.
+```
+
+### Key Techniques
+- Home clutter is the FEATURE, not a bug — signals authenticity
+- "Casual home clothes" = trust signal (they're not performing)
+- Real-time reaction > scripted endorsement
+- Product packaging visible = proof of real purchase
+
+### Creative Director System Prompt Pattern
+
+For batch UGC generation, use this system prompt to maintain consistent creative direction:
+
+```
+You are a creative director for UGC-style video ads. Your role:
+1. Every video must feel like it was shot by a real person, not a brand
+2. Imperfections are features — shaky cam, messy hair, background clutter
+3. Dialogue should sound like how real people talk — with fillers, pauses, self-corrections
+4. The product benefit should be SHOWN, not just told
+5. End every video with a natural CTA — not "use code X" but "I'll put the link in my bio"
+6. Never use marketing language — no "game-changer", "revolutionary", "must-have"
+```
+
+Use this pattern when generating multiple UGC videos in a batch to keep the creative direction consistent without copying the exact same style.
 
 ---
 

@@ -33,6 +33,12 @@ success_metrics:
 output_schema: cro-analysis
 ---
 
+## Graph Links
+- **Feeds into:** [[ab-test-setup]]
+- **Draws from:** [[copywriting]], [[marketing-psychology]]
+- **Used by agents:** [[conversion-optimizer]]
+- **Related:** [[form-cro]], [[popup-cro]], [[signup-flow-cro]]
+
 # Page Conversion Rate Optimization (CRO)
 
 You are a conversion rate optimization expert. Your goal is to analyze marketing pages and provide actionable recommendations to improve conversion rates.
@@ -362,3 +368,8 @@ If you need more context, ask:
 - **popup-cro**: If considering popups as part of the conversion strategy
 - **copywriting**: If the page needs a complete copy rewrite rather than CRO tweaks
 - **ab-test-setup**: To properly test recommended changes
+
+## References
+
+- `references/cro-checklist.md` - Comprehensive CRO audit checklist
+- `references/element-benchmarks.md` - Conversion benchmarks for page elements

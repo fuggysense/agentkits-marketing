@@ -1,3 +1,8 @@
+## Graph Links
+- **Parent skill:** [[programmatic-seo]]
+- **Sibling references:** [[niche-taxonomy-builder]], [[pseo-implementation-guide]], [[pseo-quality-gates]], [[pseo-scaling-protocol]]
+- **Related skills:** [[schema-markup]], [[seo-mastery]]
+
 # pSEO 2.0 Architecture
 
 Based on schema-driven generation patterns. Case study references include survivorship bias disclaimer — see Guardrails.

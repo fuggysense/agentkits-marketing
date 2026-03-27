@@ -1,3 +1,8 @@
+## Graph Links
+- **Parent skill:** [[problem-solving]]
+- **Sibling references:** [[attribution]], [[collision-zone-thinking]], [[inversion-exercise]], [[scale-game]], [[simplification-cascades]], [[when-stuck]]
+- **Related skills:** [[analytics-attribution]]
+
 # Meta-Pattern Recognition
 
 ## Problem Pattern

@@ -1,3 +1,8 @@
+## Graph Links
+- **Parent skill:** [[website-design]]
+- **Sibling references:** [[aesthetic-guidelines]], [[browser-automation]], [[component-sources]], [[gallery-sources]], [[scroll-driven-design]]
+- **Related skills:** [[video-director]]
+
 # Cinematic Landing Page Presets
 
 Adapted from Nick Sareav's cinematic landing page framework. These presets define complete aesthetic systems for premium landing pages built with Tailwind CSS + GSAP 3.
@@ -99,6 +104,69 @@ Adapted from Nick Sareav's cinematic landing page framework. These presets defin
   "identity": "Trust and clarity. A doctor's precision with a designer's eye."
 }
 ```
+
+---
+
+## 5. Bento Dashboard
+**Vibe:** Apple-inspired feature grid — clean, scannable, modern product marketing
+```json
+{
+  "palette": {
+    "bg": "#F9FAFB",
+    "surface": "#FFFFFF",
+    "text": "#111827",
+    "muted": "#6B7280",
+    "accent": "#2563EB",
+    "accentHover": "#1D4ED8",
+    "border": "rgba(148,163,184,0.3)"
+  },
+  "typography": {
+    "heading": "Satoshi",
+    "body": "General Sans",
+    "mono": "JetBrains Mono"
+  },
+  "imageMood": "clean product UI, light studio, soft diffusion, no harsh shadows",
+  "identity": "Information architecture as art. Every card tells one story, perfectly framed."
+}
+```
+**Key rules:** White cards with `border-slate-200/50`, `rounded-[2.5rem]`, diffusion shadows (`shadow-[0_8px_30px_rgb(0,0,0,0.04)]`). Asymmetric grid — hero card spans 2 columns. Inner content has generous `p-8` to `p-12`.
+
+---
+
+## Texture Profiles
+
+Texture profiles define **surface treatment and depth language** — how elements feel, not what colors they use. They layer ON TOP of presets: pick a preset for color/font/mood, then a texture profile for surface quality. You can mix them freely (e.g., Organic Tech preset + Editorial Luxury texture).
+
+### 1. Ethereal Glass
+Translucent surfaces, mesh gradients, refracted light.
+- **Surface:** `backdrop-blur-2xl bg-white/10` (dark) or `bg-white/70` (light)
+- **Borders:** `border border-white/10` hairline, never heavy
+- **Shadows:** None or extremely diffused (`shadow-[0_0_80px_rgba(0,0,0,0.03)]`)
+- **Depth:** Stacked translucent layers with varying opacity
+- **Texture:** Subtle mesh gradient background (2-3 color stops, low saturation)
+- **Best for:** AI/tech products, SaaS dashboards, developer tools
+
+### 2. Editorial Luxury
+Warm materials, tactile depth, magazine-quality surfaces.
+- **Surface:** Warm cream/ivory backgrounds (`#FAF7F2`, `#F5F0E8`)
+- **Borders:** Thin warm borders (`border-amber-200/30`) or none
+- **Shadows:** Warm-tinted, multi-layer (`shadow-[0_4px_24px_rgba(120,80,40,0.08)]`)
+- **Depth:** CSS noise overlay at 0.03 opacity for paper texture
+- **Typography:** Variable serif headings, generous tracking on small caps
+- **Best for:** Lifestyle brands, real estate, agencies, luxury products
+
+### 3. Soft Structuralism
+Maximum typographic contrast, minimal decoration, ambient depth.
+- **Surface:** Silver-grey to white (`#F4F4F5`, `#FAFAFA`)
+- **Borders:** Nearly invisible (`border-zinc-200/40`) — structure from spacing, not lines
+- **Shadows:** Extremely diffused ambient shadows — no directional light source
+- **Depth:** Hierarchy from type scale contrast (96px heading vs 14px label) rather than visual decoration
+- **Typography:** Massive bold grotesk headings (Satoshi, Cabinet Grotesk), light-weight body
+- **Best for:** Consumer products, health/wellness, minimal portfolios
+
+---
+
+> **Presets vs Texture Profiles:** Presets are complete systems (color + font + mood + identity). Texture profiles are surface treatments (how glass, paper, or space feels). A preset answers "what is the brand?" A texture profile answers "how do surfaces behave?" Use both together for maximum distinctiveness.
 
 ---
 

@@ -32,6 +32,12 @@ success_metrics:
 output_schema: cro-analysis
 ---
 
+## Graph Links
+- **Feeds into:** [[paywall-upgrade-cro]]
+- **Draws from:** [[signup-flow-cro]], [[marketing-psychology]]
+- **Used by agents:** [[conversion-optimizer]]
+- **Related:** [[email-sequence]]
+
 # Onboarding CRO
 
 You are an expert in user onboarding and activation. Your goal is to help users reach their "aha moment" as quickly as possible and establish habits that lead to long-term retention.
@@ -460,3 +466,7 @@ If you need more context:
 - **email-sequence**: For onboarding email series
 - **paywall-upgrade-cro**: For converting to paid during/after onboarding
 - **ab-test-setup**: For testing onboarding changes
+
+## References
+
+- `references/activation-playbook.md` - Post-signup activation strategies and checklist

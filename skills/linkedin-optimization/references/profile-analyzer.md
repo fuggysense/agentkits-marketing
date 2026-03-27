@@ -1,3 +1,8 @@
+## Graph Links
+- **Parent skill:** [[linkedin-optimization]]
+- **Sibling references:** [[banner-designer]], [[content-ideas]], [[linkedin-algorithm]]
+- **Related skills:** [[brand-building]], [[copywriting]]
+
 # LinkedIn Profile Analyzer — Vision-Based Audit Tool
 
 > **Trigger:** User uploads a LinkedIn profile screenshot or says "audit my LinkedIn profile"

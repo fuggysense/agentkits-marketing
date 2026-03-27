@@ -1,3 +1,8 @@
+## Graph Links
+- **Parent skill:** [[content-moat]]
+- **Sibling references:** [[layer-catalog]]
+- **Related skills:** [[content-strategy]], [[deep-research]], [[copywriting]]
+
 # Ideation Frameworks — Originality-First Content Creation
 
 These frameworks generate ideas that are hard to copy because they start from what's uniquely yours, not what's trending.
@@ -78,7 +83,7 @@ Take a content format that dominates one platform and translate it to a platform
 
 **Why it works:** You get first-mover advantage on Platform B. The format is proven (reduces risk) but novel in context (triggers algorithmic novelty signal). Copycats on Platform B are copying YOU, not the original format creator.
 
-**Quality check:** If the format already exists on the target platform, even in small numbers, you're not translating — you're copying.
+**Quality check:** If the format appears in more than 5% of content in your niche on the target platform, it's saturated — you're copying, not translating. One or two examples don't count as saturated. Check the ratio, not mere existence.
 
 ---
 
@@ -102,6 +107,40 @@ Build content that references and builds on your OWN previous content, creating 
 
 ---
 
+## Framework 6: Research-Fueled Ideation
+
+Use the `deep-research` skill or `researcher` agent to gather raw material BEFORE ideating. Instead of pulling only from your own head, you research what exists — then create what doesn't.
+
+**When to use:** New niche entry, declining content performance, competitor evolution, or when you want data-backed originality instead of gut-feel originality.
+
+**Process:**
+1. Define research scope (pick 3-5 angles from the list below)
+2. Spawn research agents (use `deep-research` for comprehensive, `researcher` for quick)
+3. Review findings — mark what's saturated, what's white space, what's emerging
+4. Feed findings into Frameworks 1-5 as raw material
+
+**Research Angles:**
+
+| Angle | What to look for | Feeds which framework |
+|---|---|---|
+| Competitor content audit | Formats, angles, engagement levels, posting frequency of top 5-10 competitors | Collision Method (avoid their formats), Perspective Flip (find practices to challenge) |
+| Adjacent niche scan | Formats crushing it in 2-3 niches your audience doesn't follow | Collision Method (unexpected format sources), Format Translation |
+| Platform gap analysis | What dominates Platform A but doesn't exist on Platform B | Format Translation (first-mover opportunities) |
+| Audience discourse mining | Complaints, questions, debates in communities/forums/subreddits | Perspective Flip (real evidence for contrarian takes), Proprietary Insight |
+| Trend lifecycle check | Where current trends sit on the originals→copies→saturation curve | All frameworks (timing intelligence — ride early, skip late) |
+
+**Example:**
+- Research finds: Every AI marketing creator on YouTube does "tool review" content. It's saturated. But on LinkedIn, nobody is doing behind-the-scenes BUILD content showing AI tools in action on real campaigns.
+- Collision: Take the "build in public" format (indie hacker niche) × AI marketing execution (your domain) → show real campaign builds using AI tools with real metrics at the end
+- Format Translation: This format lives on YouTube/Twitter but is absent on LinkedIn video
+- Result: Original concept backed by research that confirms the white space actually exists
+
+**Quality check:** Research should INFORM ideation, not REPLACE it. If your concept is just "do what the research says is trending" — you're trend-following, not moat-building. The research tells you where the GAPS are. Your creativity fills them.
+
+**Anti-pattern:** Don't research-loop forever. Cap at 2-3 research rounds max. If you still can't find white space, the insight is that this niche is saturated — pivot to a different angle or lean harder on Layers 7-10 (voice, messaging, proprietary data, personal context) which are uncopyable regardless of format saturation.
+
+---
+
 ## Combining Frameworks
 
 The strongest concepts combine 2-3 frameworks:
@@ -112,6 +151,9 @@ The strongest concepts combine 2-3 frameworks:
 | Perspective Flip + Compound | Contrarian series that evolves — audience invested in the arc |
 | Format Translation + Layering | First-mover on new platform with stacked visual identity |
 | Proprietary + Compound | Data-driven journey — each piece builds on real results from the last |
+| Research-Fueled + Collision | Research confirms white space exists, then you fill it with an original collision — data-backed originality |
+| Research-Fueled + Perspective Flip | Research surfaces the "accepted practices" + community debates, giving you real evidence for contrarian takes |
+| Research-Fueled + Format Translation | Research identifies which formats dominate Platform A but are absent on Platform B — first-mover with proof |
 
 ---
 

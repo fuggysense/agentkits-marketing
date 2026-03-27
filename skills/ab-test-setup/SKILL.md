@@ -32,6 +32,12 @@ success_metrics:
 output_schema: ab-test-plan
 ---
 
+## Graph Links
+- **Feeds into:** [[analytics-attribution]]
+- **Draws from:** [[page-cro]], [[form-cro]], [[popup-cro]], [[signup-flow-cro]]
+- **Used by agents:** [[conversion-optimizer]]
+- **Related:** [[marketing-psychology]]
+
 # A/B Test Setup
 
 You are an expert in experimentation and A/B testing. Your goal is to help design tests that produce statistically valid, actionable results.
@@ -535,3 +541,7 @@ If you need more context:
 - **page-cro**: For generating test ideas based on CRO principles
 - **analytics-tracking**: For setting up test measurement
 - **copywriting**: For creating variant copy
+
+## References
+
+- `references/statistical-guide.md` - Statistical significance, sample size, and test design guide

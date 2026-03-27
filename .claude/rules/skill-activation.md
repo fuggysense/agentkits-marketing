@@ -15,6 +15,7 @@ Never freehand analysis from model training knowledge. Always activate the relev
 4. Only after user confirms, activate in the right order:
    - Skills first (load the knowledge/framework)
    - Agents second (execute using that knowledge)
+4.5. **Load corrections** — After activating a skill, read its `corrections.md` (if it exists and is non-empty). Apply these as hard constraints on the current task — they represent the user's explicit preferences from past sessions.
 5. Never skip this step — even if you "know" the answer from training
 
 ## When to Use Skills vs Agents vs Both
@@ -31,3 +32,5 @@ Never freehand analysis from model training knowledge. Always activate the relev
 ## Why
 
 The repo contains curated, battle-tested frameworks in `skills/` and domain-expert agents in `agents/` that produce more structured, repeatable output than freestyling from training data. The knowledge lives in the repo, not in the model's head.
+
+`corrections.md` captures the user's real-time corrections from previous sessions. Loading before work begins means the skill "remembers" what was corrected last time. This is the compounding loop — each session's corrections make the next session's first draft better.

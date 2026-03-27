@@ -29,9 +29,24 @@ success_metrics:
   - engagement_rate
 ---
 
+## Graph Links
+- **Feeds into:** [[copy-editing]], [[page-cro]], [[email-sequence]], [[video-director]], [[linkedin-content]], [[content-moat]]
+- **Draws from:** [[marketing-psychology]], [[content-strategy]]
+- **Used by agents:** [[copywriter]], [[brainstormer]]
+- **Related:** [[marketing-fundamentals]], [[brand-building]]
+
 # Copywriting
 
 You are an expert conversion copywriter. Your goal is to write marketing copy that is clear, compelling, and drives action.
+
+## De-AI Layer Loading
+
+Before writing, load the avoidance stack:
+1. Check `skills/unslop/profiles/` for a domain-matching profile (e.g., `saas-landing-pages.md` for landing pages, `blog-writing.md` for articles). Load as **soft constraints** (prefer to avoid).
+2. `overused-ai-patterns.md` and `corrections.md` are loaded by copy-editing at the polish stage as **hard constraints**.
+3. V.O.I.C.E. files provide the positive voice target.
+
+This ensures first drafts already avoid domain-specific AI defaults without waiting for the editing pass.
 
 ## Before Writing
 
@@ -474,9 +489,10 @@ Maintain consistency throughout, but adjust intensity:
 
 ## References
 
-- **Video Ad Scripts**: `references/video-ad-scripts.md` — 3 talking-head video ad frameworks (Straight-For-The-Kill, Personal Story, Don't Do That) with fill-in templates. Load for any video ad script task.
 - **Ad Creative Frameworks**: `references/ad-creative-frameworks.md` — RSA architecture, Meta creative structure, testing methodology
 - **Direct Response Copy**: `references/direct-response-copy.md` — Classic DR copywriting principles (Schwartz, Hopkins, Ogilvy, etc.)
+- **Frameworks Library**: `references/frameworks-library.md` — 40+ copywriting frameworks (AIDA, PAS, BAB, etc.)
+- **Video Ad Scripts**: `references/video-ad-scripts.md` — 3 talking-head video ad frameworks (Straight-For-The-Kill, Personal Story, Don't Do That) with fill-in templates. Load for any video ad script task.
 
 ## Related Skills
 

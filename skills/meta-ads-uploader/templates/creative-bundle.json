@@ -1,0 +1,33 @@
+{
+  "bundle_name": "q2-launch-ugc-test",
+  "page_id": "YOUR_PAGE_ID",
+  "instagram_actor_id": "YOUR_INSTAGRAM_ACTOR_ID",
+  "ad_set_id": "YOUR_AD_SET_ID",
+  "url_tags": "utm_source=meta&utm_medium=paid&utm_campaign=q2-launch",
+  "creatives": [
+    {
+      "name": "UGC-Hook-A-Image-1",
+      "format": "single_image",
+      "image_path": "assets/ad-images/ugc-hook-a.png",
+      "primary_texts": [
+        "We 3x'd our pipeline in 90 days.",
+        "Still doing outreach manually?"
+      ],
+      "headlines": ["3x Pipeline Growth", "Automate Outreach"],
+      "descriptions": ["See how it works"],
+      "link_url": "https://example.com/landing",
+      "cta_type": "LEARN_MORE"
+    },
+    {
+      "name": "Video-Demo-30s",
+      "format": "single_video",
+      "video_path": "assets/ad-videos/demo-30s.mp4",
+      "thumbnail_path": "assets/ad-images/demo-thumb.png",
+      "primary_texts": ["Watch how it works in 30 seconds"],
+      "headlines": ["See the Demo"],
+      "descriptions": ["Free trial available"],
+      "link_url": "https://example.com/demo",
+      "cta_type": "SIGN_UP"
+    }
+  ]
+}

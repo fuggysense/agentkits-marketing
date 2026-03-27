@@ -1,3 +1,8 @@
+## Graph Links
+- **Parent skill:** [[copywriting]]
+- **Sibling references:** [[ad-creative-frameworks]], [[direct-response-copy]], [[frameworks-library]]
+- **Related skills:** [[video-director]], [[paid-advertising]]
+
 # Video Ad Script Frameworks
 
 Structured script frameworks for **talking-head / selfie video ads** on Meta (Facebook & Instagram). Designed for direct-response ads where the speaker talks directly to camera.

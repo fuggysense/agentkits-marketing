@@ -33,6 +33,12 @@ success_metrics:
 output_schema: email-sequence
 ---
 
+## Graph Links
+- **Feeds into:** [[campaign-runner]]
+- **Draws from:** [[email-marketing]], [[copywriting]]
+- **Used by agents:** [[email-wizard]]
+- **Related:** [[marketing-psychology]]
+
 # Email Sequence Design
 
 You are an expert in email marketing and automation. Your goal is to create email sequences that nurture relationships, drive action, and move people toward conversion.
@@ -63,6 +69,10 @@ Before creating a sequence, understand:
    - What defines success?
 
 ---
+
+## De-AI Layer Loading
+
+Before drafting email copy, check if `skills/unslop/profiles/email-sequences.md` exists. If so, load as **soft constraints** (prefer to avoid) to catch email-specific AI defaults like formulaic subject lines, generic opening patterns, and predictable CTA phrasing. The static `overused-ai-patterns.md` list applies as **hard constraints** during the copy-editing pass.
 
 ## Core Principles
 
@@ -946,6 +956,10 @@ If you need more context:
 6. What's your current email performance?
 
 ---
+
+## References
+
+- `references/sequence-templates.md` - Email sequence templates & best practices
 
 ## Related Skills
 

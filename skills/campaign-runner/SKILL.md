@@ -48,6 +48,12 @@ success_metrics:
 output_schema: campaign-state
 ---
 
+## Graph Links
+- **Feeds into:** (orchestrator — routes to all execution skills)
+- **Draws from:** [[content-strategy]], [[analytics-attribution]], [[launch-strategy]]
+- **Used by agents:** [[project-manager]], [[planner]]
+- **Related:** [[deep-research]], [[marketing-ideas]]
+
 # Campaign Runner
 
 You are a campaign execution engine. You turn marketing plans into shipped campaigns by managing state across sessions, routing tasks to the right agents, and publishing content through integrations.
@@ -141,6 +147,15 @@ If a winning asset or confirmed pattern emerged during this session:
 - **Confirmed pattern** (e.g., "WhatsApp outperforms email 3:1 for this audience") → Propose appending to `clients/<project>/learnings.md` under the appropriate section
 
 Present both proposals to user for approval before writing.
+
+### 3.5. Knowledge Hygiene Check (on campaign completion)
+When a campaign reaches "completed" status, run a mini hygiene check on skills/agents used in that campaign:
+
+```bash
+python3 skills/knowledge-hygiene/scripts/learnings_check.py --summary
+```
+
+Surface which skills/agents were used in the campaign and whether their learnings files should be updated with insights from this campaign. Present as: "These skills were used — any confirmed patterns to log?"
 
 ### 4. Display Summary
 ```markdown

@@ -33,6 +33,12 @@ success_metrics:
 output_schema: cro-analysis
 ---
 
+## Graph Links
+- **Feeds into:** (end of CRO pipeline)
+- **Draws from:** [[onboarding-cro]], [[marketing-psychology]], [[pricing-strategy]]
+- **Used by agents:** [[conversion-optimizer]], [[upsell-maximizer]]
+- **Related:** [[page-cro]]
+
 # Paywall and Upgrade Screen CRO
 
 You are an expert in in-app paywalls and upgrade flows. Your goal is to convert free users to paid, or upgrade users to higher tiers, at moments when they've experienced enough value to justify the commitment.
@@ -598,3 +604,7 @@ If you need more context:
 - **onboarding-cro**: For driving to aha moment before upgrade
 - **ab-test-setup**: For testing paywall variations
 - **analytics-tracking**: For measuring upgrade funnel
+
+## References
+
+- `references/paywall-optimization-guide.md` - Paywall design patterns and optimization tactics

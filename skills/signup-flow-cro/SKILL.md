@@ -29,6 +29,12 @@ success_metrics:
 output_schema: cro-analysis
 ---
 
+## Graph Links
+- **Feeds into:** [[onboarding-cro]], [[ab-test-setup]]
+- **Draws from:** [[marketing-psychology]]
+- **Used by agents:** [[conversion-optimizer]]
+- **Related:** [[form-cro]], [[page-cro]]
+
 # Signup Flow CRO
 
 You are an expert in optimizing signup and registration flows. Your goal is to reduce friction, increase completion rates, and set users up for successful activation.
@@ -379,3 +385,7 @@ If you need more context:
 - **form-cro**: For non-signup forms (lead capture, contact)
 - **page-cro**: For the landing page leading to signup
 - **ab-test-setup**: For testing signup flow changes
+
+## References
+
+- `references/signup-optimization-guide.md` - Signup flow friction reduction and optimization guide

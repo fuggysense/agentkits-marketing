@@ -536,3 +536,8 @@ Before delivering SEO review:
 1. State "⚠️ Rankings pending - Configure [MCP server]"
 2. Provide recommendations based on best practices
 3. Note that validation requires real data
+
+## Skills Used
+- [[seo-mastery]] — SEO strategy
+- [[programmatic-seo]] — pages at scale
+- [[schema-markup]] — structured data

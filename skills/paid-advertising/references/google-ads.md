@@ -1,3 +1,8 @@
+## Graph Links
+- **Parent skill:** [[paid-advertising]]
+- **Sibling references:** [[linkedin-ads]], [[meta-ads]], [[paid-media-playbook]], [[ppc-frameworks]], [[tiktok-ads]]
+- **Related skills:** [[seo-mastery]], [[paid-media-audit]]
+
 # Google Ads
 
 Search, display, and YouTube advertising guide.

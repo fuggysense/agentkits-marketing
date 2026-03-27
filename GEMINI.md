@@ -73,3 +73,14 @@ Claude Code uses `/use-mcp` command to delegate MCP operations to you. The workf
 4. Claude Code parses the JSON and continues its work
 
 **Your output is programmatically parsed. Any deviation from the JSON format will break the integration.**
+
+## Research Mode Usage
+
+Gemini CLI is also used as a research synthesis backend via `scripts/research-llm.sh`. When invoked this way, the script pipes a research prompt to `gemini -y -m gemini-2.5-flash` and expects structured text output (not MCP JSON). This is a separate path from MCP proxy operations.
+
+```bash
+# Called by research-llm.sh — NOT an MCP operation
+scripts/research-llm.sh gemini "Synthesize these research findings..."
+```
+
+The research router wraps the output in its own JSON envelope. Gemini just needs to return the research synthesis as plain text in this mode.

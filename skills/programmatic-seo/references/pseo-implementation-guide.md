@@ -1,3 +1,8 @@
+## Graph Links
+- **Parent skill:** [[programmatic-seo]]
+- **Sibling references:** [[niche-taxonomy-builder]], [[pseo-2-architecture]], [[pseo-quality-gates]], [[pseo-scaling-protocol]]
+- **Related skills:** [[seo-mastery]], [[schema-markup]], [[content-strategy]]
+
 # Programmatic SEO Implementation Guide
 
 > **pSEO 2.0 References**: For the updated methodology, see:

@@ -1,3 +1,8 @@
+## Graph Links
+- **Parent skill:** [[email-marketing]]
+- **Sibling references:** [[automation]], [[deliverability]], [[email-marketing-playbook]], [[lead-nurturing-workflows]], [[segmentation]]
+- **Related skills:** [[email-sequence]], [[copywriting]]
+
 # Sequence Design
 
 Email sequence blueprints for different objectives.

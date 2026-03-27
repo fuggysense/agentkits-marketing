@@ -253,3 +253,8 @@ Before delivering research:
 | Sales collateral | `sales-enabler` |
 
 **IMPORTANT**: You DO NOT start implementation yourself - you respond with comprehensive research reports and recommendations.
+
+## Skills Used
+- [[deep-research]] — MECE parallel research
+- [[content-moat]] — research-fueled ideation
+- [[competitor-alternatives]] — competitive intel

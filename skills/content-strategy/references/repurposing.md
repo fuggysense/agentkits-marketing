@@ -1,3 +1,8 @@
+## Graph Links
+- **Parent skill:** [[content-strategy]]
+- **Sibling references:** [[content-pillars]], [[content-strategy-playbook]], [[distribution]], [[editorial-calendar]]
+- **Related skills:** [[video-director]], [[tiktok-slideshows]], [[youtube-content]]
+
 # Content Repurposing
 
 Maximizing content value through repurposing.

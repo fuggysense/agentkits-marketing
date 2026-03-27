@@ -1,3 +1,8 @@
+## Graph Links
+- **Parent skill:** [[analytics-attribution]]
+- **Sibling references:** [[analytics-frameworks]], [[attribution-models]], [[dashboards]], [[ga4-implementation-guide]], [[google-analytics]], [[search-console]]
+- **Related skills:** [[campaign-runner]], [[paid-media-audit]]
+
 # Marketing Reporting Templates
 
 Client-ready reporting frameworks aligned with `sales-workflow.md` and `crm-workflow.md`.

@@ -1,3 +1,8 @@
+## Graph Links
+- **Parent skill:** [[competitor-alternatives]]
+- **Sibling references:** (none)
+- **Related skills:** [[seo-mastery]], [[programmatic-seo]], [[copywriting]]
+
 # Competitor Comparison & Alternative Page Guide
 
 Based on research from [Siege Media](https://www.siegemedia.com/seo/programmatic-seo), [G2](https://www.g2.com/), [Ahrefs](https://ahrefs.com/blog/comparison-pages/).

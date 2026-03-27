@@ -1,3 +1,8 @@
+## Graph Links
+- **Parent skill:** [[copy-editing]]
+- **Sibling references:** [[overused-ai-patterns]]
+- **Related skills:** [[copywriting]], [[brand-building]]
+
 # Copy Editing Checklist & Best Practices
 
 Based on research from [Copy Hackers](https://copyhackers.com/), [Ann Handley](https://annhandley.com/everybody-writes/), [Nielsen Norman](https://www.nngroup.com/articles/writing-for-the-web/).

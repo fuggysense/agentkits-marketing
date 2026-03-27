@@ -1,3 +1,8 @@
+## Graph Links
+- **Parent skill:** [[website-design]]
+- **Sibling references:** [[aesthetic-guidelines]], [[browser-automation]], [[cinematic-presets]], [[component-sources]], [[scroll-driven-design]]
+- **Related skills:** [[page-cro]], [[brand-building]]
+
 # Gallery Sources Reference
 
 ## Gallery Strengths & Usage

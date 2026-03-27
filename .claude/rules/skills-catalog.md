@@ -41,7 +41,8 @@ Standardized outputs: `.claude/skills/schemas/output-schemas.yaml`
 - `analytics-attribution` - Performance measurement, attribution models
 - `brand-building` - Brand strategy, voice, positioning
 - `problem-solving` - Marketing problem-solving techniques
-- `client-onboarding` - Guided project onboarding (scaffold, interview, enrich, validate, activate)
+- `client-onboarding` - Guided project onboarding — scaffold, 30-question business context profile (→ context-profile.json), marketing deep dive, agent enrichment, validate, activate. Also runs standalone via `/project:profile` for updates.
+- `offer-builder` - Interactive offer construction — deep discovery, viability scoring (OV Gate + Vending Machine), identity extraction, micro offers, audit passes, deployment scripts
 - `document-skills` - DOCX, PDF, PPTX, XLSX document creation
 
 ## CRO Skills
@@ -53,12 +54,22 @@ Standardized outputs: `.claude/skills/schemas/output-schemas.yaml`
 - `paywall-upgrade-cro` - In-app paywalls, upgrade screens
 - `ab-test-setup` - A/B test planning and experiment design
 
+## Utility Skills
+- `transcribe` - Video URL transcription via yt-dlp + faster-whisper (YouTube, Instagram, TikTok, 1000+ sites)
+- `scrapecreators` - Universal social intelligence API client for 25+ platforms (TikTok, Instagram, YouTube, LinkedIn, Facebook, Twitter/X, Reddit, Threads, Pinterest, Bluesky, and more)
+- `unslop` - Domain-specific AI pattern detection — generates empirical avoidance profiles by sampling model defaults. Layer 1 of 4-layer de-AI stack (unslop → overused-ai-patterns → corrections.md → V.O.I.C.E.)
+
 ## Content & Copy Skills
 - `copywriting` - Marketing page copy, headlines, CTAs
-- `copy-editing` - Edit and polish existing marketing copy
+- `copy-editing` - Edit and polish existing marketing copy (includes Sweep 8: De-AI pattern removal)
+- `youtube-content` - YouTube description generation from transcripts — timestamps, links, brand-consistent copy
 - `email-sequence` - Drip campaigns, nurture sequences
+- `content-moat` - Originality-first ideation, layer stacking (10 types), copycat resistance scoring
+- `tiktok-slideshows` - TikTok Photo Mode carousels — 3:4 specs, text placement rules, typography system, batch workflow, Canva assembly
+- `image-generation` - AI image generation — Nano Banana 2 JSON prompts, carousel slides, marketing assets (~$0.07/image)
 - `linkedin-content` - LinkedIn post creation — story mining, SIREN framework, virality engineering
-- `video-director` - AI video prompt generation — 11 types, 3 pipelines (Direct, Image-First, Localized), HITL gates, production SOP
+- `script-skill` - Video script writing in YOUR voice — voice capture, competitor hook scraping, hooks database, de-AI + humanizer passes (global: `~/.claude/skills/script-skill/`)
+- `video-director` - AI video prompt generation — 14 types, 3 pipelines (Direct, Image-First, Localized), character bibles, seed management, UGC automation, HITL gates
 
 ## SEO & Growth Skills
 - `programmatic-seo` - pSEO 2.0 — JSON-first schema-driven pages at scale, niche taxonomy, quality gates, GEO
@@ -71,6 +82,22 @@ Standardized outputs: `.claude/skills/schemas/output-schemas.yaml`
 
 ## Paid Media Skills
 - `paid-media-audit` - Systematic 200+ checkpoint ad account audit
+- `meta-ads-uploader` - Upload ad creatives to Meta (images, videos, dynamic creatives) → ads created PAUSED
+
+## Knowledge Hygiene
+- `knowledge-hygiene` - Anti-decay system: freshness audit, learnings integration check, registry drift detection. Wired into `/ops:weekly` and `/ops:monthly`, not standalone.
+
+## System Tools (Global Skills)
+- `skill-builder` - Creates new agents and skills with feedback loops (global: `~/.claude/skills/skill-builder/`)
+- `skill-amplifier` - Enhance existing skills/agents, conflict detection, merge suggestions (global: `~/.claude/skills/skill-amplifier/`)
+- `autoresearch` - Autonomous skill optimization via generate → evaluate → mutate → keep/discard loops. Wraps any skill in a self-improving loop per client (global: `~/.claude/skills/autoresearch/`)
+- `chrome-mcp` - Chrome DevTools browser control — authenticated dashboard access, tracking verification, live page inspection (global: `~/.claude/skills/chrome-mcp/`)
+
+## Design & Build Skills
+- `website-design` - Quad-mode website builds (Recreate, Create, Hybrid, Paper-First) with Paper.design MCP for bidirectional visual editing, design token extraction, JSX/Tailwind export
+
+## Usage Analytics
+- `analytics-usage` - Global skill/agent usage tracking, 80/20 pareto analysis, trend reports, unused detection
 
 ## Research Skills
 - `deep-research` - Multi-agent parallel research orchestrator (MECE decomposition, 90.2% better than single-agent)

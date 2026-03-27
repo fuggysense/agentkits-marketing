@@ -1,3 +1,8 @@
+## Graph Links
+- **Parent skill:** [[copywriting]]
+- **Sibling references:** [[ad-creative-frameworks]], [[frameworks-library]], [[video-ad-scripts]]
+- **Related skills:** [[email-sequence]], [[page-cro]]
+
 # Direct Response Copy — Master Reference
 
 > Source: The Boring Marketer (thevibemarketer.com). Frameworks from Schwartz, Hopkins, Ogilvy, Halbert, Caples, Sugarman, Collier.

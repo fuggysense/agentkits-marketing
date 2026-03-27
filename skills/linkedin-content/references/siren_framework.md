@@ -1,3 +1,8 @@
+## Graph Links
+- **Parent skill:** [[linkedin-content]]
+- **Sibling references:** (none)
+- **Related skills:** [[copywriting]], [[content-moat]], [[linkedin-optimization]]
+
 # The SIREN Framework — Deep Reference
 
 > Derived from analysis of 35 LinkedIn posts across two high-performing Singapore-based creators (Kelvin Kuok, 9.6K followers; Michelle Koh, 5K followers). Engagement data from March 2026.

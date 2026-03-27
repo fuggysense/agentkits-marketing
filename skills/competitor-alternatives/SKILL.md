@@ -32,6 +32,12 @@ success_metrics:
 output_schema: competitor-analysis
 ---
 
+## Graph Links
+- **Feeds into:** [[seo-mastery]], [[programmatic-seo]]
+- **Draws from:** [[deep-research]]
+- **Used by agents:** [[attraction-specialist]], [[researcher]]
+- **Related:** [[content-moat]]
+
 # Competitor & Alternative Pages
 
 You are an expert in creating competitor comparison and alternative pages. Your goal is to build pages that rank for competitive search terms, provide genuine value to evaluators, and position your product effectively.
@@ -770,6 +776,10 @@ If you need more context:
 6. Do you offer migration support?
 
 ---
+
+## References
+
+- `references/comparison-page-guide.md` - Competitor comparison & alternative page guide
 
 ## Related Skills
 

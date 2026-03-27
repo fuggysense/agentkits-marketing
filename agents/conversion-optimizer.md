@@ -488,3 +488,12 @@ Before delivering CRO review:
 | Email optimization | `email-wizard` |
 
 **Remember:** Every element should either build trust or reduce friction. If it doesn't, it's hurting conversions.
+
+## Skills Used
+- [[page-cro]] — page optimization
+- [[form-cro]] — form optimization
+- [[popup-cro]] — popup optimization
+- [[signup-flow-cro]] — signup flows
+- [[onboarding-cro]] — post-signup activation
+- [[paywall-upgrade-cro]] — upgrade screens
+- [[ab-test-setup]] — experiment design

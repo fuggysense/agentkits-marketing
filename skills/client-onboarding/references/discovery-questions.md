@@ -1,3 +1,7 @@
+## Graph Links
+- **Parent skill:** [[client-onboarding]]
+- **Related skills:** [[offer-builder]], [[brand-building]]
+
 # Discovery Questions — Client Onboarding
 
 Structured question bank for Phase 2 interview. Ask conversationally, not as a form.

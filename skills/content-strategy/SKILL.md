@@ -34,6 +34,12 @@ success_metrics:
 output_schema: content-plan
 ---
 
+## Graph Links
+- **Feeds into:** [[launch-strategy]], [[campaign-runner]], [[programmatic-seo]], [[social-media]], [[seo-mastery]]
+- **Draws from:** [[marketing-fundamentals]]
+- **Used by agents:** [[planner]], [[attraction-specialist]], [[brainstormer]]
+- **Related:** [[content-moat]], [[analytics-attribution]]
+
 # Content Strategy
 
 Content planning, creation, and distribution for sustainable organic growth.
@@ -177,6 +183,7 @@ Content pillars are the main themes your content revolves around.
 ## References
 
 - `references/content-pillars.md` - Building pillar strategy
+- `references/content-strategy-playbook.md` - Comprehensive content strategy playbook
+- `references/distribution.md` - Amplification strategies
 - `references/editorial-calendar.md` - Calendar planning
 - `references/repurposing.md` - Content multiplication
-- `references/distribution.md` - Amplification strategies

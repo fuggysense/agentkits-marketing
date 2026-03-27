@@ -1,3 +1,8 @@
+## Graph Links
+- **Parent skill:** [[programmatic-seo]]
+- **Sibling references:** [[niche-taxonomy-builder]], [[pseo-2-architecture]], [[pseo-implementation-guide]], [[pseo-quality-gates]]
+- **Related skills:** [[seo-mastery]], [[schema-markup]], [[content-strategy]]
+
 # pSEO Scaling Protocol
 
 Graduated rollout system for programmatic SEO pages. Designed to protect domain authority while maximizing growth.

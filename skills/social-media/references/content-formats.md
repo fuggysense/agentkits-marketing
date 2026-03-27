@@ -1,3 +1,8 @@
+## Graph Links
+- **Parent skill:** [[social-media]]
+- **Sibling references:** [[engagement-tactics]], [[platform-algorithms]], [[social-media-playbook]], [[viral-mechanics]]
+- **Related skills:** [[video-director]], [[image-generation]]
+
 # Content Formats
 
 Best practices for each social media content format.

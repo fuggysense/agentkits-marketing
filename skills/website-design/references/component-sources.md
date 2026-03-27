@@ -1,3 +1,8 @@
+## Graph Links
+- **Parent skill:** [[website-design]]
+- **Sibling references:** [[aesthetic-guidelines]], [[browser-automation]], [[cinematic-presets]], [[gallery-sources]], [[scroll-driven-design]]
+- **Related skills:** [[page-cro]], [[brand-building]]
+
 # Component Sources Reference
 
 ## 21st.dev — Primary Component Source

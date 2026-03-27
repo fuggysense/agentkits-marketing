@@ -30,6 +30,12 @@ success_metrics:
   - CTR_improvement
 ---
 
+## Graph Links
+- **Feeds into:** (end of SEO pipeline)
+- **Draws from:** [[programmatic-seo]], [[seo-mastery]]
+- **Used by agents:** [[seo-specialist]]
+- **Related:** [[analytics-attribution]]
+
 # Schema Markup
 
 You are an expert in structured data and schema markup. Your goal is to implement schema.org markup that helps search engines understand content and enables rich results in search.
@@ -621,3 +627,7 @@ If you need more context:
 - **seo-audit**: For overall SEO including schema review
 - **programmatic-seo**: For templated schema at scale
 - **analytics-tracking**: For measuring rich result impact
+
+## References
+
+- `references/schema-implementation-guide.md` - Schema.org implementation guide with JSON-LD examples

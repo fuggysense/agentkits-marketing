@@ -1,3 +1,8 @@
+## Graph Links
+- **Parent skill:** [[linkedin-optimization]]
+- **Sibling references:** [[content-ideas]], [[linkedin-algorithm]], [[profile-analyzer]]
+- **Related skills:** [[image-generation]], [[brand-building]]
+
 # LinkedIn Banner Designer — Interactive Image Generation Tool
 
 > **Trigger:** User says "design my LinkedIn banner" or "create LinkedIn banner"

@@ -4,6 +4,7 @@ browser-tools.py — Autonomous browser automation for website-design skill v2.0
 
 Subcommands:
   screenshot <url> <output_path> [--width N] [--full-page] [--mobile]
+  extract <url> <output_dir> [--width N] [--mobile]
   gallery <gallery_url> [--limit N] [--category CAT]
   compare <reference> <build> <output>
   serve <html_dir> [--port N]
@@ -153,6 +154,186 @@ def cmd_screenshot(args):
         "full_page": args.full_page,
         "size_kb": round(size_kb, 1),
     })
+
+# ---------------------------------------------------------------------------
+# extract
+# ---------------------------------------------------------------------------
+
+def cmd_extract(args):
+    """Extract HTML, CSS, and JS from a page."""
+    ensure_playwright()
+    from playwright.sync_api import sync_playwright
+
+    url = args.url
+    output_dir = os.path.abspath(args.output_dir)
+    width = args.width or 1440
+    mobile = args.mobile
+
+    if mobile:
+        width = 390
+
+    os.makedirs(output_dir, exist_ok=True)
+
+    with sync_playwright() as p:
+        browser = p.chromium.launch(headless=True)
+        context = browser.new_context(
+            viewport={"width": width, "height": 900},
+            user_agent=(
+                "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
+                "AppleWebKit/537.36 (KHTML, like Gecko) "
+                "Chrome/120.0.0.0 Safari/537.36"
+            ),
+            device_scale_factor=2 if not mobile else 3,
+        )
+        page = context.new_page()
+        page.add_init_script("""
+            Object.defineProperty(navigator, 'webdriver', {get: () => undefined});
+            window.chrome = { runtime: {} };
+        """)
+
+        try:
+            page.goto(url, wait_until="networkidle", timeout=30000)
+        except Exception:
+            try:
+                page.goto(url, wait_until="load", timeout=30000)
+            except Exception as e:
+                browser.close()
+                fail(f"Failed to load {url}: {e}")
+
+        page.wait_for_timeout(2000)
+
+        # Extract full HTML
+        html_content = page.content()
+        html_path = os.path.join(output_dir, "page.html")
+        with open(html_path, "w", encoding="utf-8") as f:
+            f.write(html_content)
+
+        # Extract all inline and linked CSS
+        css_data = page.evaluate("""() => {
+            const results = [];
+            // Inline <style> tags
+            document.querySelectorAll('style').forEach((el, i) => {
+                if (el.textContent.trim()) {
+                    results.push({type: 'inline', index: i, content: el.textContent});
+                }
+            });
+            // Linked stylesheets — extract computed rules
+            for (const sheet of document.styleSheets) {
+                try {
+                    const rules = [];
+                    for (const rule of sheet.cssRules) {
+                        rules.push(rule.cssText);
+                    }
+                    if (rules.length > 0) {
+                        results.push({
+                            type: 'linked',
+                            href: sheet.href || 'embedded',
+                            content: rules.join('\\n')
+                        });
+                    }
+                } catch (e) {
+                    // Cross-origin stylesheets can't be read
+                    if (sheet.href) {
+                        results.push({
+                            type: 'linked',
+                            href: sheet.href,
+                            content: null,
+                            error: 'cross-origin'
+                        });
+                    }
+                }
+            }
+            return results;
+        }""")
+
+        css_path = os.path.join(output_dir, "styles.css")
+        with open(css_path, "w", encoding="utf-8") as f:
+            for item in css_data:
+                if item.get("content"):
+                    f.write(f"/* Source: {item.get('href', 'inline style #' + str(item.get('index', '')))} */\n")
+                    f.write(item["content"])
+                    f.write("\n\n")
+                elif item.get("error") == "cross-origin":
+                    f.write(f"/* Cross-origin stylesheet: {item['href']} (cannot extract) */\n\n")
+
+        # Extract all JavaScript (inline + src URLs)
+        js_data = page.evaluate("""() => {
+            const results = [];
+            document.querySelectorAll('script').forEach((el, i) => {
+                if (el.src) {
+                    results.push({type: 'external', src: el.src, content: null});
+                } else if (el.textContent.trim()) {
+                    results.push({type: 'inline', index: i, content: el.textContent});
+                }
+            });
+            return results;
+        }""")
+
+        js_path = os.path.join(output_dir, "scripts.js")
+        with open(js_path, "w", encoding="utf-8") as f:
+            for item in js_data:
+                if item["type"] == "external":
+                    f.write(f"/* External script: {item['src']} */\n\n")
+                elif item.get("content"):
+                    f.write(f"/* Inline script #{item.get('index', '')} */\n")
+                    f.write(item["content"])
+                    f.write("\n\n")
+
+        # Also extract computed styles for key elements
+        computed = page.evaluate("""() => {
+            const targets = ['body', 'h1', 'h2', 'h3', 'p', 'a', 'button', 'nav', 'header', 'footer', 'main', 'section'];
+            const results = {};
+            for (const tag of targets) {
+                const el = document.querySelector(tag);
+                if (!el) continue;
+                const s = getComputedStyle(el);
+                results[tag] = {
+                    fontFamily: s.fontFamily,
+                    fontSize: s.fontSize,
+                    fontWeight: s.fontWeight,
+                    lineHeight: s.lineHeight,
+                    color: s.color,
+                    backgroundColor: s.backgroundColor,
+                    padding: s.padding,
+                    margin: s.margin,
+                    borderRadius: s.borderRadius,
+                };
+            }
+            return results;
+        }""")
+
+        computed_path = os.path.join(output_dir, "computed-styles.json")
+        with open(computed_path, "w", encoding="utf-8") as f:
+            json.dump(computed, f, indent=2)
+
+        # Take a screenshot too
+        screenshot_path = os.path.join(output_dir, "screenshot.png")
+        page.screenshot(path=screenshot_path, full_page=True)
+        resize_image(screenshot_path)
+
+        browser.close()
+
+    # File sizes
+    files = {}
+    for fname in ["page.html", "styles.css", "scripts.js", "computed-styles.json", "screenshot.png"]:
+        fpath = os.path.join(output_dir, fname)
+        if os.path.exists(fpath):
+            files[fname] = round(os.path.getsize(fpath) / 1024, 1)
+
+    # Count cross-origin stylesheets
+    cross_origin = [item for item in css_data if item.get("error") == "cross-origin"]
+    external_js = [item for item in js_data if item["type"] == "external"]
+
+    emit({
+        "status": "ok",
+        "url": url,
+        "output_dir": output_dir,
+        "files": files,
+        "cross_origin_css": len(cross_origin),
+        "external_js_urls": [item["src"] for item in external_js],
+        "computed_elements": list(computed.keys()),
+    })
+
 
 # ---------------------------------------------------------------------------
 # gallery
@@ -729,6 +910,13 @@ def main():
     p_ss.add_argument("--full-page", action="store_true", help="Capture full page")
     p_ss.add_argument("--mobile", action="store_true", help="Use mobile viewport (390px)")
 
+    # extract
+    p_ext = sub.add_parser("extract", help="Extract HTML, CSS, and JS from a page")
+    p_ext.add_argument("url", help="URL to extract from")
+    p_ext.add_argument("output_dir", help="Directory to save extracted files")
+    p_ext.add_argument("--width", type=int, default=1440, help="Viewport width (default 1440)")
+    p_ext.add_argument("--mobile", action="store_true", help="Use mobile viewport (390px)")
+
     # gallery
     p_gal = sub.add_parser("gallery", help="Scrape a design gallery")
     p_gal.add_argument("url", help="Gallery URL")
@@ -766,6 +954,8 @@ def main():
     try:
         if args.command == "screenshot":
             cmd_screenshot(args)
+        elif args.command == "extract":
+            cmd_extract(args)
         elif args.command == "gallery":
             cmd_gallery(args)
         elif args.command == "compare":

@@ -18,6 +18,7 @@ Before any brand review, load context in this order:
 1. **Project**: Read `./README.md` for product and positioning
 2. **Brand Guidelines**: Read `./docs/brand-guidelines.md` (REQUIRED)
 3. **Brand Skill**: Load `.claude/skills/brand-building/SKILL.md`
+3.5. **Unslop Profile**: Check `skills/unslop/profiles/` for a domain-matching avoidance profile based on the content type being reviewed. Load as **soft constraints** to flag AI-default patterns specific to that domain. Cross-reference with `overused-ai-patterns.md` (hard constraints).
 4. **Prior Content**: Check `./content/` for existing voice examples
 
 ## Reasoning Process
@@ -375,3 +376,8 @@ Before delivering brand review:
 | Campaign strategy | `planner` or `brainstormer` |
 
 **Remember:** Your job is to protect the brand's voice while helping content be more effective. Be helpful, specific, and provide actionable guidance—not just criticism.
+
+## Skills Used
+- [[brand-building]] — brand strategy
+- [[copy-editing]] — voice consistency checks
+- [[Voice/brand-voice]] — V.O.I.C.E. reference

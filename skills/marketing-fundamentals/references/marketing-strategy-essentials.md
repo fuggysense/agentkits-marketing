@@ -1,3 +1,8 @@
+## Graph Links
+- **Parent skill:** [[marketing-fundamentals]]
+- **Sibling references:** [[competitor-analysis]], [[conversion-principles]], [[copywriting-frameworks]], [[funnel-psychology]], [[marketing-metrics]]
+- **Related skills:** [[content-strategy]], [[launch-strategy]]
+
 # Marketing Strategy Essentials
 
 Based on research from [HubSpot](https://www.hubspot.com/), [Gartner](https://www.gartner.com/en/marketing), [McKinsey](https://www.mckinsey.com/business-functions/growth-marketing-and-sales/).

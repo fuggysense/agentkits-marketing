@@ -1,3 +1,8 @@
+## Graph Links
+- **Parent skill:** [[seo-mastery]]
+- **Sibling references:** [[keyword-research]], [[link-building]], [[local-seo]], [[on-page-seo]], [[seo-audit-checklist]], [[seo-playbook]]
+- **Related skills:** [[schema-markup]], [[programmatic-seo]]
+
 # Technical SEO
 
 Technical requirements for search engine optimization.

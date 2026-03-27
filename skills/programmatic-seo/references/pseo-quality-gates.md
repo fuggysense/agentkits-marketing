@@ -1,3 +1,8 @@
+## Graph Links
+- **Parent skill:** [[programmatic-seo]]
+- **Sibling references:** [[niche-taxonomy-builder]], [[pseo-2-architecture]], [[pseo-implementation-guide]], [[pseo-scaling-protocol]]
+- **Related skills:** [[analytics-attribution]]
+
 # pSEO Quality Gates
 
 Three-gate validation system for programmatic SEO content. Every page must pass all three gates before publishing.

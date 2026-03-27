@@ -33,6 +33,12 @@ success_metrics:
   - attribution_confidence
 ---
 
+## Graph Links
+- **Feeds into:** [[paid-advertising]], [[paid-media-audit]], [[campaign-runner]], [[ab-test-setup]]
+- **Draws from:** (foundation — standalone)
+- **Used by agents:** [[tracking-specialist]], [[conversion-optimizer]]
+- **Related:** [[marketing-fundamentals]]
+
 # Analytics & Attribution
 
 Performance measurement and attribution modeling for data-driven marketing decisions.
@@ -170,8 +176,10 @@ Apply analytics expertise when:
 
 ## References
 
-- `references/google-analytics.md` - GA4 setup and usage
-- `references/search-console.md` - SEO performance tracking
+- `references/analytics-frameworks.md` - Comprehensive analytics & attribution frameworks
 - `references/attribution-models.md` - Attribution deep dive
 - `references/dashboards.md` - Reporting best practices
+- `references/ga4-implementation-guide.md` - GA4 implementation & setup guide
+- `references/google-analytics.md` - GA4 setup and usage
 - `references/reporting-templates.md` - Client-ready report templates
+- `references/search-console.md` - SEO performance tracking

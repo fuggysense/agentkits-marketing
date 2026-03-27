@@ -1,3 +1,7 @@
+## Graph Links
+- **Parent skill:** [[paywall-upgrade-cro]]
+- **Related skills:** [[pricing-strategy]], [[onboarding-cro]], [[page-cro]]
+
 # Paywall & Upgrade Screen Optimization Guide
 
 Based on research from [RevenueCat](https://www.revenuecat.com/blog/growth/paywall-best-practices/), [Apphud](https://www.apphud.com/blog/paywall-conversion-optimization), [ProductLed](https://productled.com/blog/freemium-conversion-rate/).

@@ -1,3 +1,8 @@
+## Graph Links
+- **Parent skill:** [[brand-building]]
+- **Sibling references:** [[brand-strategy-framework]], [[brand-strategy]], [[positioning]], [[visual-identity]]
+- **Related skills:** [[copywriting]], [[copy-editing]], [[linkedin-content]]
+
 # Voice & Tone
 
 Verbal identity guidelines.

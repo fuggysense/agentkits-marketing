@@ -29,6 +29,12 @@ agents:
   - seo-specialist
 ---
 
+## Graph Links
+- **Feeds into:** (meta-skill -- quality gate)
+- **Draws from:** (any skill output)
+- **Used by agents:** (system-level)
+- **Related:** [[multi-agent-consensus]]
+
 # Subagent Verification Loops
 
 After completing a task, spawn a reviewer agent with fresh context to audit the output. If the reviewer finds issues, spawn a resolver agent to reconcile. Chain: **Implement → Review → Resolve**. Repeat until clean or max iterations reached.

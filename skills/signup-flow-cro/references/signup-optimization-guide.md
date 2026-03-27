@@ -1,3 +1,7 @@
+## Graph Links
+- **Parent skill:** [[signup-flow-cro]]
+- **Related skills:** [[form-cro]], [[onboarding-cro]], [[page-cro]]
+
 # Signup Flow Optimization Guide
 
 Based on research from [Baymard Institute](https://baymard.com/blog/checkout-flow-average-form-fields), [UserPilot](https://userpilot.com/blog/user-signup-flow/), [ProductLed](https://productled.com/blog/signup-flow-optimization/).

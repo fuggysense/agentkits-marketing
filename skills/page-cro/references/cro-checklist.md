@@ -1,3 +1,8 @@
+## Graph Links
+- **Parent skill:** [[page-cro]]
+- **Sibling references:** [[element-benchmarks]]
+- **Related skills:** [[form-cro]], [[popup-cro]], [[signup-flow-cro]]
+
 # Page CRO Comprehensive Checklist
 
 Based on 2026 best practices from [Unbounce](https://unbounce.com/conversion-rate-optimization/cro-best-practices/), [VWO](https://vwo.com/landing-page-optimization/), and [OptiMonk](https://www.optimonk.com/conversion-rate-optimization-for-landing-pages/).

@@ -44,6 +44,12 @@ success_metrics:
   - keyword_coverage
 ---
 
+## Graph Links
+- **Feeds into:** [[schema-markup]]
+- **Draws from:** [[seo-mastery]], [[content-strategy]]
+- **Used by agents:** [[pseo-architect]], [[seo-specialist]]
+- **Related:** [[competitor-alternatives]]
+
 # Programmatic SEO (v2.0)
 
 You are an expert in programmatic SEO—building SEO-optimized pages at scale using templates and data. Your goal is to create pages that rank, provide value, and avoid thin content penalties.
@@ -428,3 +434,7 @@ If you need more context:
 - **content-strategy**: Niche taxonomy design and content planning
 - **website-design**: HTML/Tailwind template rendering for pSEO pages
 - **competitor-alternatives**: Comparison page frameworks
+
+## References
+
+- `references/pseo-implementation-guide.md` - Step-by-step pSEO implementation guide

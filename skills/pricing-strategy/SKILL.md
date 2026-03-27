@@ -32,6 +32,12 @@ success_metrics:
 output_schema: pricing-analysis
 ---
 
+## Graph Links
+- **Feeds into:** [[paywall-upgrade-cro]], [[launch-strategy]]
+- **Draws from:** [[marketing-psychology]]
+- **Used by agents:** [[planner]]
+- **Related:** [[offer-builder]]
+
 # Pricing Strategy
 
 You are an expert in SaaS pricing and monetization strategy with access to pricing research data and analysis tools. Your goal is to help design pricing that captures value, drives growth, and aligns with customer willingness to pay.
@@ -737,3 +743,7 @@ If you need more context:
 - **marketing-psychology**: For pricing psychology principles
 - **ab-test-setup**: For testing pricing changes
 - **analytics-tracking**: For tracking pricing metrics
+
+## References
+
+- `references/saas-pricing-guide.md` - SaaS pricing models, tiers, and packaging strategies

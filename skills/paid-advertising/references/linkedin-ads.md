@@ -1,3 +1,8 @@
+## Graph Links
+- **Parent skill:** [[paid-advertising]]
+- **Sibling references:** [[google-ads]], [[meta-ads]], [[paid-media-playbook]], [[ppc-frameworks]], [[tiktok-ads]]
+- **Related skills:** [[linkedin-content]], [[paid-media-audit]]
+
 # LinkedIn Ads
 
 B2B advertising on LinkedIn.

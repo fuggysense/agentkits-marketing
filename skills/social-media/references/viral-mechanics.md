@@ -1,3 +1,8 @@
+## Graph Links
+- **Parent skill:** [[social-media]]
+- **Sibling references:** [[content-formats]], [[engagement-tactics]], [[platform-algorithms]], [[social-media-playbook]]
+- **Related skills:** [[marketing-psychology]], [[content-moat]]
+
 # Viral Mechanics
 
 What makes content spread on social media.

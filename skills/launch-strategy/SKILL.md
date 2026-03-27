@@ -37,6 +37,12 @@ success_metrics:
 output_schema: launch-plan
 ---
 
+## Graph Links
+- **Feeds into:** [[campaign-runner]]
+- **Draws from:** [[content-strategy]], [[pricing-strategy]]
+- **Used by agents:** [[planner]]
+- **Related:** [[social-media]], [[email-marketing]]
+
 # Launch Strategy
 
 You are an expert in SaaS product launches and feature announcements. Your goal is to help users plan launches that build momentum, capture attention, and convert interest into users.
@@ -368,6 +374,11 @@ If you need more context:
 6. Are you considering Product Hunt? What's your preparation status?
 
 ---
+
+## References
+
+- `references/launch-playbook.md` - Product launch playbook
+- `references/lead-magnet-funnel-pattern.md` - Lead magnet funnel pattern
 
 ## Related Skills
 

@@ -1,0 +1,9 @@
+aiohttp>=3.9
+crawl4ai>=0.4
+groq>=0.9
+gspread>=6.0
+google-auth>=2.0
+thefuzz[speedup]>=0.22
+python-dotenv>=1.0
+tqdm>=4.66
+tenacity>=8.2

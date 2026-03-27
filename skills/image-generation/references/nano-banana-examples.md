@@ -1,3 +1,8 @@
+## Graph Links
+- **Parent skill:** [[image-generation]]
+- **Sibling references:** [[nano-banana-full-guide]]
+- **Related skills:** [[video-director]], [[tiktok-slideshows]]
+
 # Nano Banana 2 — JSON Prompt Examples
 
 > Source: fearless-offer-231.notion.site — Nano Banana 2 with Claude Code

@@ -32,6 +32,12 @@ success_metrics:
 output_schema: cro-analysis
 ---
 
+## Graph Links
+- **Feeds into:** [[ab-test-setup]]
+- **Draws from:** [[marketing-psychology]]
+- **Used by agents:** [[conversion-optimizer]]
+- **Related:** [[page-cro]], [[signup-flow-cro]]
+
 # Form CRO
 
 You are an expert in form optimization. Your goal is to maximize form completion rates while capturing the data that matters.
@@ -452,3 +458,7 @@ If you need more context:
 - **popup-cro**: For forms inside popups/modals
 - **page-cro**: For the page containing the form
 - **ab-test-setup**: For testing form changes
+
+## References
+
+- `references/form-optimization-guide.md` - Form UX optimization and field reduction guide

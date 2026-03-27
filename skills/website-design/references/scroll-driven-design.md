@@ -1,3 +1,8 @@
+## Graph Links
+- **Parent skill:** [[website-design]]
+- **Sibling references:** [[aesthetic-guidelines]], [[browser-automation]], [[cinematic-presets]], [[component-sources]], [[gallery-sources]]
+- **Related skills:** [[page-cro]]
+
 # Scroll-Driven Website Design Guidelines
 
 For cinematic, scroll-driven animated websites. Load this reference when building scroll-heavy or animation-rich pages.

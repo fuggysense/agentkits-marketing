@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Harmony Wellness - TCM & Physio 元泰堂养生中心</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Figtree:wght@300;400;500;600;700&family=Noto+Serif+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            cream: '#FAF7F2',
+            stone: '#F4EFE8',
+            sand: '#EDE8E0',
+            brown: { DEFAULT: '#2C2420', light: '#6B5F56' },
+            jade: '#4A7C6F',
+            gold: '#C4956A',
+            muted: '#8A7E74',
+            dark: '#1E1B18',
+          },
+          fontFamily: {
+            display: ['"DM Serif Display"', 'serif'],
+            body: ['"Figtree"', 'sans-serif'],
+            chinese: ['"Noto Serif SC"', 'serif'],
+          },
+        },
+      },
+    }
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+    .btn-jade { transition: transform 0.2s ease, box-shadow 0.2s ease; }
+    .btn-jade:hover { transform: scale(1.02); box-shadow: 0 4px 16px rgba(74,124,111,0.25); }
+    .btn-jade:active { transform: scale(0.98); }
+    .btn-outline { transition: transform 0.2s ease, background-color 0.2s ease; }
+    .btn-outline:hover { background-color: rgba(44,36,32,0.05); transform: scale(1.02); }
+    .btn-outline:active { transform: scale(0.98); }
+    .btn-white { transition: transform 0.2s ease, box-shadow 0.2s ease; }
+    .btn-white:hover { transform: scale(1.02); box-shadow: 0 4px 16px rgba(0,0,0,0.15); }
+    .btn-white:active { transform: scale(0.98); }
+    .card-hover { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+    .card-hover:hover { transform: translateY(-4px); box-shadow: 0 8px 32px rgba(74,124,111,0.12); }
+    .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+    nav a { transition: color 0.2s ease; }
+    nav a:hover { color: #4A7C6F; }
+  </style>
+</head>
+<body class="bg-cream text-brown font-body">
+
+  <!-- Nav -->
+  <nav class="flex items-center justify-between px-16 py-5 bg-cream sticky top-0 z-50" style="backdrop-filter: blur(12px); background-color: rgba(250,247,242,0.9);">
+    <div class="flex flex-col">
+      <span class="font-chinese text-lg font-semibold text-brown tracking-wider">元泰堂</span>
+      <span class="font-body text-[11px] font-medium text-muted tracking-[0.12em] uppercase">Harmony Wellness</span>
+    </div>
+    <div class="flex items-center gap-9">
+      <a href="#services" class="text-sm font-medium text-brown">Services</a>
+      <a href="#approach" class="text-sm font-medium text-brown">Our Approach</a>
+      <a href="#testimonials" class="text-sm font-medium text-brown">Testimonials</a>
+      <a href="#contact" class="text-sm font-medium text-brown">Contact</a>
+      <a href="https://wa.me/6590897778" target="_blank" class="btn-jade flex items-center justify-center px-6 py-2.5 bg-jade rounded-md">
+        <span class="text-sm font-semibold text-white">Book Now</span>
+      </a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="flex items-center px-16 py-24 gap-16 bg-cream">
+    <div class="flex flex-col gap-8 flex-1">
+      <div class="flex flex-col gap-2.5">
+        <span class="font-body text-[13px] font-semibold text-gold tracking-[0.15em] uppercase">TCM &amp; Physiotherapy · Singapore</span>
+        <h1 class="font-display text-[54px] font-normal text-brown leading-[1.1]" style="letter-spacing: -0.03em;">Where Ancient Wisdom Meets Modern Healing</h1>
+      </div>
+      <p class="font-body text-[17px] text-muted leading-relaxed max-w-[440px]">Registered healthcare clinic at Orchard Road combining Traditional Chinese Medicine with evidence-based physiotherapy. Release tension, restore circulation, reclaim vitality.</p>
+      <div class="flex items-center gap-4">
+        <a href="#contact" class="btn-jade flex items-center justify-center px-8 py-3.5 bg-jade rounded-md">
+          <span class="font-body text-[15px] font-semibold text-white">Book a Trial — $89</span>
+        </a>
+        <a href="#approach" class="btn-outline flex items-center justify-center px-8 py-3.5 rounded-md border-[1.5px] border-brown">
+          <span class="font-body text-[15px] font-medium text-brown">Learn More</span>
+        </a>
+      </div>
+    </div>
+    <div class="flex-1 flex items-center justify-center bg-sand rounded-xl h-[460px] overflow-hidden relative">
+      <div class="flex flex-col items-center gap-2">
+        <span class="font-chinese text-[56px] text-gold opacity-35">養</span>
+        <span class="font-body text-[11px] text-muted tracking-[0.1em] uppercase">Treatment Room Photo</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Philosophy / Our Approach -->
+  <section id="approach" class="bg-stone">
+    <div class="flex flex-col items-center px-16 pt-24 pb-12 gap-3">
+      <span class="font-body text-[13px] font-semibold text-gold tracking-[0.15em] uppercase">Our Approach</span>
+      <h2 class="font-display text-[42px] font-normal text-brown text-center leading-[1.15]" style="letter-spacing: -0.02em;">The Three Pillars of Restoration</h2>
+      <p class="font-body text-base text-muted text-center leading-relaxed max-w-[520px]">Every treatment follows our time-tested protocol rooted in centuries of TCM wisdom, refined with modern clinical practice.</p>
+    </div>
+    <div class="flex gap-6 px-16 pb-24 items-start">
+      <!-- Pillar 1: Release -->
+      <div class="card-hover flex flex-col gap-5 flex-1 p-10 bg-cream rounded-xl" style="box-shadow: 0 2px 8px rgba(44,36,32,0.04), 0 8px 24px rgba(74,124,111,0.06);">
+        <div class="flex items-center gap-4">
+          <div class="flex items-center justify-center w-14 h-14 bg-jade rounded-full shrink-0">
+            <span class="font-chinese text-2xl text-white font-medium">排</span>
+          </div>
+          <div class="flex flex-col gap-0.5">
+            <span class="font-display text-[22px] text-brown">Release</span>
+            <span class="font-body text-xs text-muted tracking-[0.08em] uppercase">Pái — Remove</span>
+          </div>
+        </div>
+        <p class="font-body text-[15px] text-brown-light leading-relaxed">Clear accumulated cold and dampness. Toxins and stagnation are gently flushed through targeted meridian work and herbal therapy.</p>
+      </div>
+      <!-- Pillar 2: Restore -->
+      <div class="card-hover flex flex-col gap-5 flex-1 p-10 bg-cream rounded-xl mt-8" style="box-shadow: 0 2px 8px rgba(44,36,32,0.04), 0 8px 24px rgba(196,149,106,0.08);">
+        <div class="flex items-center gap-4">
+          <div class="flex items-center justify-center w-14 h-14 bg-gold rounded-full shrink-0">
+            <span class="font-chinese text-2xl text-white font-medium">通</span>
+          </div>
+          <div class="flex flex-col gap-0.5">
+            <span class="font-display text-[22px] text-brown">Restore</span>
+            <span class="font-body text-xs text-muted tracking-[0.08em] uppercase">Tōng — Unblock</span>
+          </div>
+        </div>
+        <p class="font-body text-[15px] text-brown-light leading-relaxed">Open blocked meridians and restore natural energy flow. Circulation improves, tension dissolves, and the body self-regulates again.</p>
+      </div>
+      <!-- Pillar 3: Replenish -->
+      <div class="card-hover flex flex-col gap-5 flex-1 p-10 bg-cream rounded-xl" style="box-shadow: 0 2px 8px rgba(44,36,32,0.04), 0 8px 24px rgba(44,36,32,0.06);">
+        <div class="flex items-center gap-4">
+          <div class="flex items-center justify-center w-14 h-14 bg-brown rounded-full shrink-0">
+            <span class="font-chinese text-2xl text-cream font-medium">补</span>
+          </div>
+          <div class="flex flex-col gap-0.5">
+            <span class="font-display text-[22px] text-brown">Replenish</span>
+            <span class="font-body text-xs text-muted tracking-[0.08em] uppercase">Bǔ — Nourish</span>
+          </div>
+        </div>
+        <p class="font-body text-[15px] text-brown-light leading-relaxed">Strengthen qi and blood to rebuild your foundation. Deep nourishment for lasting energy, warmth, and resilience against daily stress.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section id="services" class="flex flex-col gap-6 px-16 py-24 bg-cream">
+    <div class="flex flex-col items-center gap-3 pb-6">
+      <span class="font-body text-[13px] font-semibold text-gold tracking-[0.15em] uppercase">What We Treat</span>
+      <h2 class="font-display text-[42px] font-normal text-brown text-center leading-[1.15]" style="letter-spacing: -0.02em;">Integrated Care for Body and Mind</h2>
+    </div>
+    <div class="flex gap-6">
+      <!-- TCM Card -->
+      <div class="flex flex-col gap-4 flex-[2] p-12 bg-sand rounded-xl">
+        <span class="font-body text-xs font-semibold text-gold tracking-[0.1em] uppercase">Traditional Chinese Medicine</span>
+        <h3 class="font-display text-[28px] text-brown" style="letter-spacing: -0.02em;">Acupuncture, Cupping and Tuina</h3>
+        <p class="font-body text-[15px] text-brown-light leading-relaxed">Precise needle placement and therapeutic bodywork to relieve pain, reduce inflammation, and restore your body's natural energy pathways. Effective for chronic tension, migraines, and digestive issues.</p>
+        <span class="font-chinese text-sm text-muted">针灸 · 拔罐 · 推拿</span>
+      </div>
+      <!-- Physio Card -->
+      <div class="flex flex-col gap-4 flex-1 p-10 bg-jade rounded-xl">
+        <span class="font-body text-xs font-semibold text-white/60 tracking-[0.1em] uppercase">Physiotherapy</span>
+        <h3 class="font-display text-[28px] text-white" style="letter-spacing: -0.02em;">Evidence-Based Rehab</h3>
+        <p class="font-body text-[15px] text-white/80 leading-relaxed">Clinical assessment and targeted exercises to recover from injury, correct posture, and build lasting physical resilience.</p>
+        <span class="font-chinese text-sm text-white/50">物理治疗</span>
+      </div>
+    </div>
+    <!-- Integrated Wellness -->
+    <div class="flex items-center gap-12 p-12 bg-brown rounded-xl">
+      <div class="flex flex-col gap-4 flex-1">
+        <span class="font-body text-xs font-semibold text-gold tracking-[0.1em] uppercase">Integrated Wellness</span>
+        <h3 class="font-display text-[28px] text-cream" style="letter-spacing: -0.02em;">TCM + Physio Combined Protocol</h3>
+        <p class="font-body text-[15px] text-cream/70 leading-relaxed">Our signature approach pairs both disciplines in a single session. Your physiotherapist and TCM practitioner collaborate on a unified treatment plan.</p>
+        <span class="font-chinese text-sm text-gold/60">中西结合 · 综合调理</span>
+      </div>
+      <div class="flex flex-col gap-3 shrink-0">
+        <div class="flex items-center gap-2.5">
+          <div class="w-2 h-2 bg-jade rounded-full shrink-0"></div>
+          <span class="font-body text-sm text-cream/80">Muscle stiffness and pain</span>
+        </div>
+        <div class="flex items-center gap-2.5">
+          <div class="w-2 h-2 bg-jade rounded-full shrink-0"></div>
+          <span class="font-body text-sm text-cream/80">Poor circulation and cold limbs</span>
+        </div>
+        <div class="flex items-center gap-2.5">
+          <div class="w-2 h-2 bg-jade rounded-full shrink-0"></div>
+          <span class="font-body text-sm text-cream/80">Chronic fatigue and low energy</span>
+        </div>
+        <div class="flex items-center gap-2.5">
+          <div class="w-2 h-2 bg-gold rounded-full shrink-0"></div>
+          <span class="font-body text-sm text-cream/80">Stress and sleep disorders</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section id="testimonials" class="flex flex-col gap-12 px-16 py-24 bg-cream">
+    <div class="flex flex-col items-center gap-3">
+      <span class="font-body text-[13px] font-semibold text-gold tracking-[0.15em] uppercase">Patient Stories</span>
+      <h2 class="font-display text-[42px] font-normal text-brown text-center leading-[1.15]" style="letter-spacing: -0.02em;">Trusted by Thousands in Singapore</h2>
+    </div>
+    <div class="flex gap-6 items-start">
+      <div class="card-hover flex flex-col gap-5 flex-1 p-9 bg-stone rounded-xl">
+        <p class="font-display text-lg text-brown leading-[1.5] italic">"I had chronic lower back pain for three years. After six sessions combining acupuncture and physio exercises, I can finally sit through a workday without discomfort."</p>
+        <div class="flex flex-col gap-0.5">
+          <span class="font-body text-sm font-semibold text-brown">Rachel Tan</span>
+          <span class="font-body text-[13px] text-muted">Marketing Manager, Tanjong Pagar</span>
+        </div>
+      </div>
+      <div class="card-hover flex flex-col gap-5 flex-1 p-9 bg-stone rounded-xl mt-6">
+        <p class="font-display text-lg text-brown leading-[1.5] italic">"My hands and feet were always cold. The TCM practitioner explained it was qi deficiency. After the warming treatment protocol, I feel completely different."</p>
+        <div class="flex flex-col gap-0.5">
+          <span class="font-body text-sm font-semibold text-brown">Lim Wei Jie</span>
+          <span class="font-body text-[13px] text-muted">Software Engineer, Bukit Timah</span>
+        </div>
+      </div>
+      <div class="card-hover flex flex-col gap-5 flex-1 p-9 bg-stone rounded-xl">
+        <p class="font-display text-lg text-brown leading-[1.5] italic">"Went for the $89 trial expecting the usual hard sell. Instead, the therapist spent 20 minutes explaining my body condition. Professional, no pressure."</p>
+        <div class="flex flex-col gap-0.5">
+          <span class="font-body text-sm font-semibold text-brown">Priya Nair</span>
+          <span class="font-body text-[13px] text-muted">Teacher, Clementi</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Booking CTA -->
+  <section id="contact" class="flex flex-col items-center px-16 py-20 gap-8 bg-jade">
+    <div class="flex flex-col items-center gap-3">
+      <span class="font-chinese text-[32px] text-cream/20">養生</span>
+      <h2 class="font-display text-[40px] font-normal text-cream text-center leading-[1.2]" style="letter-spacing: -0.02em;">Ready to Feel Like Yourself Again?</h2>
+      <p class="font-body text-base text-cream/75 text-center leading-relaxed max-w-[480px]">Book your first trial session at $89 (usual $224). No hard sell, no packages. Just honest treatment from registered practitioners.</p>
+    </div>
+    <div class="flex items-center gap-4">
+      <a href="https://wa.me/6590897778" target="_blank" class="btn-white flex items-center justify-center px-9 py-4 bg-cream rounded-md">
+        <span class="font-body text-[15px] font-semibold text-brown">WhatsApp Us</span>
+      </a>
+      <a href="tel:+6590897778" class="btn-outline flex items-center justify-center px-9 py-4 rounded-md border-[1.5px] border-cream/50 hover:bg-white/10">
+        <span class="font-body text-[15px] font-medium text-cream">Call +65 9089 7778</span>
+      </a>
+    </div>
+    <div class="flex gap-12 pt-4">
+      <div class="flex flex-col items-center gap-1">
+        <span class="font-body text-[13px] font-semibold text-cream tracking-[0.05em]">MON — SAT</span>
+        <span class="font-body text-sm text-cream/60">10:00 AM – 8:00 PM</span>
+      </div>
+      <div class="flex flex-col items-center gap-1">
+        <span class="font-body text-[13px] font-semibold text-cream tracking-[0.05em]">LOCATION</span>
+        <span class="font-body text-sm text-cream/60">400 Orchard Road, Orchard Tower<br>#03-04 – #03-45, S238875</span>
+      </div>
+      <div class="flex flex-col items-center gap-1">
+        <span class="font-body text-[13px] font-semibold text-cream tracking-[0.05em]">REGISTERED</span>
+        <span class="font-body text-sm text-cream/60">MOH Healthcare Clinic</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-dark">
+    <div class="flex justify-between px-16 py-12">
+      <div class="flex flex-col gap-3">
+        <div class="flex flex-col gap-0.5">
+          <span class="font-chinese text-base font-semibold text-cream">元泰堂养生中心</span>
+          <span class="font-body text-[11px] text-muted tracking-[0.1em] uppercase">Harmony Wellness — TCM &amp; Physio</span>
+        </div>
+        <p class="font-body text-[13px] text-brown-light leading-relaxed max-w-[280px]">400 Orchard Road, Orchard Tower #03-04 – #03-45, Singapore 238875</p>
+      </div>
+      <div class="flex gap-16">
+        <div class="flex flex-col gap-3">
+          <span class="font-body text-xs font-semibold text-muted tracking-[0.1em] uppercase">Services</span>
+          <a href="#" class="font-body text-sm text-cream/60 hover:text-cream/90 transition-colors">Acupuncture</a>
+          <a href="#" class="font-body text-sm text-cream/60 hover:text-cream/90 transition-colors">Cupping Therapy</a>
+          <a href="#" class="font-body text-sm text-cream/60 hover:text-cream/90 transition-colors">Tuina Massage</a>
+          <a href="#" class="font-body text-sm text-cream/60 hover:text-cream/90 transition-colors">Physiotherapy</a>
+        </div>
+        <div class="flex flex-col gap-3">
+          <span class="font-body text-xs font-semibold text-muted tracking-[0.1em] uppercase">Clinic</span>
+          <a href="#approach" class="font-body text-sm text-cream/60 hover:text-cream/90 transition-colors">Our Approach</a>
+          <a href="#" class="font-body text-sm text-cream/60 hover:text-cream/90 transition-colors">About Us</a>
+          <a href="#testimonials" class="font-body text-sm text-cream/60 hover:text-cream/90 transition-colors">Testimonials</a>
+          <a href="#contact" class="font-body text-sm text-cream/60 hover:text-cream/90 transition-colors">Contact</a>
+        </div>
+        <div class="flex flex-col gap-3">
+          <span class="font-body text-xs font-semibold text-muted tracking-[0.1em] uppercase">Connect</span>
+          <a href="#" class="font-body text-sm text-cream/60 hover:text-cream/90 transition-colors">Facebook</a>
+          <a href="#" class="font-body text-sm text-cream/60 hover:text-cream/90 transition-colors">Instagram</a>
+          <a href="https://wa.me/6590897778" target="_blank" class="font-body text-sm text-cream/60 hover:text-cream/90 transition-colors">WhatsApp</a>
+        </div>
+      </div>
+    </div>
+    <div class="flex justify-between items-center px-16 py-5 border-t border-muted/15">
+      <span class="font-body text-xs text-brown-light">&copy; 2026 Harmony Wellness Pte Ltd. All rights reserved.</span>
+      <span class="font-body text-xs text-brown-light">Privacy Policy &nbsp;|&nbsp; Terms of Service</span>
+    </div>
+  </footer>
+
+  <!-- Scroll fade-in animation -->
+  <script>
+    document.querySelectorAll('section, footer').forEach(el => el.classList.add('fade-in'));
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

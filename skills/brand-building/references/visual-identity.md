@@ -1,3 +1,8 @@
+## Graph Links
+- **Parent skill:** [[brand-building]]
+- **Sibling references:** [[brand-strategy-framework]], [[brand-strategy]], [[positioning]], [[voice-tone]]
+- **Related skills:** [[image-generation]], [[tiktok-slideshows]]
+
 # Visual Identity
 
 Design guidelines for brand consistency.

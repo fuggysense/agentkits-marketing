@@ -423,3 +423,7 @@ Before delivering solopreneur review:
 1. Enthusiastically endorse
 2. Note why it works for solo
 3. Suggest enhancements for solo success
+
+## Skills Used
+- [[marketing-fundamentals]] — core concepts
+- [[content-strategy]] — DIY content planning

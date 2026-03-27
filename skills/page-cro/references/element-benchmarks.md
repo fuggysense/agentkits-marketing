@@ -1,3 +1,8 @@
+## Graph Links
+- **Parent skill:** [[page-cro]]
+- **Sibling references:** [[cro-checklist]]
+- **Related skills:** [[form-cro]], [[popup-cro]], [[signup-flow-cro]]
+
 # Page Element Benchmarks & Optimization Data
 
 Research-backed benchmarks for page elements. Sources: [WebFX](https://www.webfx.com/blog/conversion-rate-optimization/cro-trends/), [Fibr](https://fibr.ai/conversion-rate-optimization/best-practices), [CXL](https://cxl.com/).

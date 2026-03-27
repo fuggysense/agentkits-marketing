@@ -236,9 +236,45 @@ Save review to: `./docs/ops/weekly/W[XX]-[YYYY].md`
 
 ---
 
+## Step 5: Knowledge Hygiene Check
+
+After completing the review, run hygiene scripts and append a summary to the output:
+
+```bash
+python3 skills/knowledge-hygiene/scripts/freshness_audit.py --summary
+python3 skills/knowledge-hygiene/scripts/learnings_check.py --summary
+```
+
+**Output format (inline, not a separate report):**
+
+> **Hygiene:** 2 docs overdue (campaign-playbooks 45d, channel-strategies 32d). 3 skills have unintegrated learnings (copywriting: 4, seo-mastery: 2, paid-advertising: 1). Registry clean.
+
+If all clean: `**Hygiene:** All clean.`
+
+If items need action, suggest: "Run `/amplify:skill copywriting` to integrate learnings" or "Update campaign-playbooks.md with recent campaign results."
+
+---
+
+## Step 6: Autoresearch Rotation Check
+
+After hygiene, check if any skills are due for autoresearch optimization:
+
+```bash
+python3 ~/.claude/skills/autoresearch/scripts/scheduler.py next --client <project> --count 3
+```
+
+**Output format (inline):**
+
+> **Autoresearch:** Top 3 due: copywriting (score 0.82, last run 12d ago), seo-mastery (0.71, 18d ago), email-sequence (0.65, never run). Run `/autoresearch:run copywriting --client <project>` to start.
+
+If no client context is set, skip this step.
+
+---
+
 ## Next Steps
 
 After weekly review, consider:
 - `/ops:daily` - Daily task management
 - `/report:weekly` - Client-ready report
 - `/campaign:calendar` - Content calendar update
+- `/autoresearch:run <skill>` - Optimize a skill from the rotation queue

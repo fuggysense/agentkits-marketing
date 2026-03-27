@@ -1,3 +1,8 @@
+## Graph Links
+- **Parent skill:** [[marketing-fundamentals]]
+- **Sibling references:** [[competitor-analysis]], [[conversion-principles]], [[copywriting-frameworks]], [[funnel-psychology]], [[marketing-strategy-essentials]]
+- **Related skills:** [[analytics-attribution]], [[paid-advertising]]
+
 # Marketing Metrics
 
 Key performance indicators for marketing measurement.

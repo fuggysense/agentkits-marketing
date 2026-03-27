@@ -44,6 +44,12 @@ success_metrics:
   - connection_acceptance_rate
 ---
 
+## Graph Links
+- **Feeds into:** (end of LinkedIn pipeline)
+- **Draws from:** [[linkedin-content]], [[social-media]]
+- **Used by agents:** [[attraction-specialist]]
+- **Related:** [[analytics-attribution]]
+
 # LinkedIn Optimization
 
 LinkedIn organic optimization — profile, algorithm, content, creator mode, B2B sales, engagement, newsletters, and organic-to-paid compounding.

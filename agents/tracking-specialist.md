@@ -297,5 +297,9 @@ Before delivering tracking work:
 
 **REMEMBER**: If you can't measure it, you can't improve it. Every marketing dollar must be traceable from click to conversion. Your job is to make that chain unbreakable.
 
+## Skills Used
+- [[analytics-attribution]] — tracking setup
+- [[paid-advertising]] — ad platform pixels
+
 ---
 *Attribution: Adapted from msitarzewski/agency-agents tracking specialist patterns. Enhanced with AgentKits format and cross-awareness wiring.*

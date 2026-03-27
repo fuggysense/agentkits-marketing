@@ -33,6 +33,12 @@ agents:
   - conversion-optimizer
 ---
 
+## Graph Links
+- **Feeds into:** (meta-skill -- adversarial debate)
+- **Draws from:** (any strategic question)
+- **Used by agents:** (system-level)
+- **Related:** [[multi-agent-consensus]]
+
 # Agent Chatrooms
 
 Spawn N agents (default 3) into a simulated shared conversation. Each agent reads the full chat history before responding, building on, challenging, or refining previous contributions. You (the orchestrator) act as PM — moderating rounds, reading the debate, and extracting the final output.

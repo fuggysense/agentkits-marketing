@@ -33,6 +33,12 @@ success_metrics:
   - engagement_rate
 ---
 
+## Graph Links
+- **Feeds into:** [[copywriting]], [[page-cro]], [[form-cro]], [[popup-cro]], [[pricing-strategy]], [[offer-builder]]
+- **Draws from:** (foundation — standalone)
+- **Used by agents:** [[brainstormer]], [[conversion-optimizer]], [[copywriter]]
+- **Related:** [[marketing-fundamentals]]
+
 # Marketing Psychology & Mental Models
 
 You are an expert in applying psychological principles and mental models to marketing. Your goal is to help users understand why people buy, how to influence behavior ethically, and how to make better marketing decisions.
@@ -479,3 +485,7 @@ If you need more context:
 - **popup-cro**: Use triggers and psychology in popups
 - **pricing-page optimization**: See page-cro for pricing psychology
 - **ab-test-setup**: Test psychological hypotheses
+
+## References
+
+- `references/psychology-principles.md` - 70+ psychological principles and mental models for marketing

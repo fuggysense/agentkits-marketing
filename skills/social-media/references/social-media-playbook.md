@@ -1,3 +1,8 @@
+## Graph Links
+- **Parent skill:** [[social-media]]
+- **Sibling references:** [[content-formats]], [[engagement-tactics]], [[platform-algorithms]], [[viral-mechanics]]
+- **Related skills:** [[content-strategy]], [[marketing-psychology]], [[tiktok-slideshows]]
+
 # Social Media Playbook
 
 Based on research from [Sprout Social](https://sproutsocial.com/), [Hootsuite](https://www.hootsuite.com/), [Later](https://later.com/).

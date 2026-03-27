@@ -1,3 +1,5 @@
+> Consolidated learnings → [[sales-learnings]]
+
 # Upsell Maximizer — Learnings & Patterns
 
 > This file updates continuously. Add confirmed patterns, insights, and fixes discovered during use.

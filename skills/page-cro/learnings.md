@@ -1,3 +1,5 @@
+> Consolidated learnings → [[cro-learnings]]
+
 # Page CRO — Learnings & Patterns
 
 > This file updates continuously. Add confirmed patterns, insights, and fixes discovered during use.

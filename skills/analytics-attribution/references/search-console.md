@@ -1,3 +1,8 @@
+## Graph Links
+- **Parent skill:** [[analytics-attribution]]
+- **Sibling references:** [[analytics-frameworks]], [[attribution-models]], [[dashboards]], [[ga4-implementation-guide]], [[google-analytics]], [[reporting-templates]]
+- **Related skills:** [[seo-mastery]], [[programmatic-seo]]
+
 # Google Search Console
 
 SEO performance monitoring and optimization.

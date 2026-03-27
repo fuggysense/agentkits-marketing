@@ -1,3 +1,8 @@
+## Graph Links
+- **Parent skill:** [[content-moat]]
+- **Sibling references:** [[ideation-frameworks]]
+- **Related skills:** [[video-director]], [[image-generation]], [[copywriting]]
+
 # Layer Catalog — The 10 Content Moat Layers
 
 Each layer is a unique variable you stack into your content. More layers = harder to copy. This catalog defines each layer, how to implement it, and what tools in the pipeline handle it.
@@ -11,7 +16,8 @@ Each layer is a unique variable you stack into your content. More layers = harde
 **Implementation:**
 - Commission or generate a signature track (Suno, Udio, or musician)
 - Create 2-3 variations (intro, background, outro) for consistency across content
-- Register the audio so platforms can detect copies using your sound
+- Upload as a named Sound on TikTok and primary audio on Reels — if it catches on, platforms index it and copies using your sound drive traffic back to you
+- For YouTube: distribute through a music distributor (DistroKid, TuneCore) to enable Content ID claims
 
 **Pipeline integration:**
 - Specify in video-director prompt: `CONTEXT > Sound design: [describe your custom audio]`

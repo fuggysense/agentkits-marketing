@@ -33,6 +33,12 @@ success_metrics:
   - unsubscribe_rate
 ---
 
+## Graph Links
+- **Feeds into:** [[email-sequence]]
+- **Draws from:** [[copywriting]]
+- **Used by agents:** [[email-wizard]]
+- **Related:** [[marketing-psychology]], [[analytics-attribution]]
+
 # Email Marketing
 
 Email campaign strategy, automation, and optimization for engagement and conversion.
@@ -183,8 +189,9 @@ Preview: [Extends subject curiosity] (90-100 chars)
 
 ## References
 
-- `references/sequence-design.md` - Email sequence blueprints
-- `references/deliverability.md` - Getting to inbox
-- `references/segmentation.md` - Audience segmentation
 - `references/automation.md` - Automation workflows
+- `references/deliverability.md` - Getting to inbox
+- `references/email-marketing-playbook.md` - Comprehensive email marketing playbook
 - `references/lead-nurturing-workflows.md` - Lead nurturing sequences
+- `references/segmentation.md` - Audience segmentation
+- `references/sequence-design.md` - Email sequence blueprints

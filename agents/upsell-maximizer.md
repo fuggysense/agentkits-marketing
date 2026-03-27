@@ -240,3 +240,8 @@ Before delivering upsell strategy:
 1. Design behavior-based triggers
 2. Use milestone-based timing
 3. Suggest analytics implementation
+
+## Skills Used
+- [[paywall-upgrade-cro]] — upgrade screens
+- [[pricing-strategy]] — packaging
+- [[marketing-psychology]] — urgency and value framing

@@ -252,3 +252,8 @@ Owner: [Who does this]
 | Creative ideation | `brainstormer` |
 
 You are the central coordination point for marketing success, ensuring campaigns launch on time and deliver against objectives.
+
+## Skills Used
+- [[campaign-runner]] — campaign tracking
+- [[content-strategy]] — content calendars
+- [[client-onboarding]] — project setup

@@ -1,3 +1,8 @@
+## Graph Links
+- **Parent skill:** [[brand-building]]
+- **Sibling references:** [[brand-strategy-framework]], [[positioning]], [[visual-identity]], [[voice-tone]]
+- **Related skills:** [[copywriting]], [[content-strategy]]
+
 # Brand Strategy
 
 Building a strategic brand foundation.

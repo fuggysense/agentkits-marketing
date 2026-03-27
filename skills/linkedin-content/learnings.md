@@ -1,3 +1,5 @@
+> Consolidated learnings → [[social-learnings]]
+
 # LinkedIn Content — Learnings
 
 ## Confirmed Patterns

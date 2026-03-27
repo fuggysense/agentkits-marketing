@@ -20,6 +20,7 @@
 | [TikTok](./tiktok/) | Social | npm | ✅ Active |
 | [Crosspost](./crosspost/) | Social | npm | ✅ Active |
 | [Linkup](./linkup/) | Web Search | Custom | ✅ Active |
+| [Paper](./paper/) | Design | HTTP | ✅ Active |
 | [LINE](./line/) | Messaging (JP) | npm | ✅ Active |
 | [Zalo](./zalo/) | Messaging (VN) | Custom | ⚠️ Planned |
 
@@ -77,6 +78,28 @@
 ### Web Search & Research
 - **[Linkup](./linkup/)** - Sourced answers, citations, date/domain filtering, async deep research
   - Tools: 5 | Type: Custom | Auth: `LINKUP_API_KEY`
+
+### Research LLM Routing
+- **Kilo Gateway** - Route research synthesis to cheap models (MiniMax M2.5, Nemotron 3 Super) via OpenAI-compatible API
+  - Type: Script (`scripts/research-llm.sh kilo`) | Auth: `KILO_API_KEY`
+  - Endpoint: `https://api.kilo.ai/api/gateway/chat/completions`
+  - Default model: `minimax/minimax-m2.5` | Alt: `nvidia/nemotron-3-super`
+
+- **Gemini CLI** - Route research synthesis to Gemini 2.5 Flash via local CLI
+  - Type: Script (`scripts/research-llm.sh gemini`) | Auth: `GEMINI_API_KEY` (via gemini CLI config)
+  - Default model: `gemini-2.5-flash`
+
+### Social Intelligence
+- **ScrapeCreators** - TikTok competitor profiles, video metrics, keyword search, trending hashtags/sounds
+  - Tools: REST API | Type: Custom | Auth: `SCRAPECREATORS_API_KEY`
+  - Base URL: `https://api.scrapecreators.com`
+  - Docs: `https://docs.scrapecreators.com`
+  - Cost: 1 credit/request
+  - Endpoints: 100+ endpoints across 20+ platforms. See `skills/scrapecreators/` for full reference.
+
+### Design Tools
+- **[Paper](./paper/)** - Visual design editing, JSX/Tailwind export, HTML preview
+  - Tools: 24 | Type: HTTP (local) | Auth: None (local server)
 
 ### Regional Messaging
 - **[LINE](./line/)** - Japan/Asia messaging (97M users)
@@ -153,6 +176,12 @@ export TWITTER_ACCESS_SECRET="xxx"
 
 # Web Search & Research
 export LINKUP_API_KEY="xxx"
+
+# Research LLM Routing
+export KILO_API_KEY="xxx"
+
+# Social Intelligence
+export SCRAPECREATORS_API_KEY="xxx"
 
 # Regional
 export LINE_CHANNEL_ACCESS_TOKEN="xxx"

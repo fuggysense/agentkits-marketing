@@ -30,6 +30,12 @@ agents:
   - planner
 ---
 
+## Graph Links
+- **Feeds into:** (meta-skill -- decision making)
+- **Draws from:** (any strategic question)
+- **Used by agents:** (system-level)
+- **Related:** [[verification-loops]], [[agent-chatrooms]]
+
 # Stochastic Multi-Agent Consensus
 
 Spawn N agents (default 10) with identical context and near-identical prompts. Each independently analyzes and produces a structured response. Aggregate by finding consensus (mode), divergences (splits), and outliers (unique ideas).

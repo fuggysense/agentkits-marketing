@@ -1,3 +1,8 @@
+## Graph Links
+- **Parent skill:** [[analytics-attribution]]
+- **Sibling references:** [[analytics-frameworks]], [[attribution-models]], [[ga4-implementation-guide]], [[google-analytics]], [[reporting-templates]], [[search-console]]
+- **Related skills:** [[paid-advertising]], [[campaign-runner]]
+
 # Marketing Dashboards
 
 Building effective performance dashboards.

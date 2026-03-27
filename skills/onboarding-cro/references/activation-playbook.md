@@ -1,3 +1,7 @@
+## Graph Links
+- **Parent skill:** [[onboarding-cro]]
+- **Related skills:** [[signup-flow-cro]], [[page-cro]], [[form-cro]]
+
 # User Activation & Onboarding Playbook
 
 Based on 2026 research from [UserGuiding](https://userguiding.com/blog/state-of-plg-in-saas), [ProductLed](https://productled.com/blog/5-best-practices-for-better-saas-user-onboarding), [UXCam](https://uxcam.com/blog/saas-onboarding-best-practices/).

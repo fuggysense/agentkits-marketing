@@ -1,3 +1,8 @@
+## Graph Links
+- **Parent skill:** [[marketing-fundamentals]]
+- **Sibling references:** [[competitor-analysis]], [[conversion-principles]], [[copywriting-frameworks]], [[marketing-metrics]], [[marketing-strategy-essentials]]
+- **Related skills:** [[marketing-psychology]], [[page-cro]]
+
 # Funnel Psychology
 
 Understanding buyer psychology at each stage of the marketing funnel.

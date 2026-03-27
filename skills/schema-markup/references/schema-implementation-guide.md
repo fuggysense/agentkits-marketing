@@ -1,3 +1,7 @@
+## Graph Links
+- **Parent skill:** [[schema-markup]]
+- **Related skills:** [[seo-mastery]], [[programmatic-seo]]
+
 # Schema Markup Implementation Guide
 
 Based on research from [Schema.org](https://schema.org/), [Google Search Central](https://developers.google.com/search/docs/appearance/structured-data), [Moz](https://moz.com/learn/seo/schema-structured-data).

@@ -1,3 +1,8 @@
+## Graph Links
+- **Parent skill:** [[brand-building]]
+- **Sibling references:** [[brand-strategy]], [[positioning]], [[visual-identity]], [[voice-tone]]
+- **Related skills:** [[marketing-psychology]], [[content-strategy]]
+
 # Brand Strategy Framework
 
 Based on research from [Marty Neumeier](https://www.martyneumeier.com/), [April Dunford](https://www.aprildunford.com/), [Brand New](https://www.underconsideration.com/brandnew/).

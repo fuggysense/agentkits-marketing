@@ -1,3 +1,8 @@
+## Graph Links
+- **Parent skill:** [[marketing-fundamentals]]
+- **Sibling references:** [[conversion-principles]], [[copywriting-frameworks]], [[funnel-psychology]], [[marketing-metrics]], [[marketing-strategy-essentials]]
+- **Related skills:** [[seo-mastery]], [[paid-media-audit]]
+
 # Competitor Analysis Framework
 
 Strategic competitive intelligence for positioning and differentiation.

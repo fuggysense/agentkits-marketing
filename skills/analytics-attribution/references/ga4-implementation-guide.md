@@ -1,3 +1,8 @@
+## Graph Links
+- **Parent skill:** [[analytics-attribution]]
+- **Sibling references:** [[analytics-frameworks]], [[attribution-models]], [[dashboards]], [[google-analytics]], [[reporting-templates]], [[search-console]]
+- **Related skills:** [[paid-advertising]], [[ab-test-setup]]
+
 # GA4 Implementation & Analytics Guide
 
 Based on research from [Google](https://developers.google.com/analytics), [Simo Ahava](https://www.simoahava.com/), [Measure School](https://measureschool.com/).

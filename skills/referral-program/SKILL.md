@@ -29,6 +29,12 @@ success_metrics:
   - referred_conversion
 ---
 
+## Graph Links
+- **Feeds into:** [[campaign-runner]]
+- **Draws from:** [[marketing-psychology]]
+- **Used by agents:** [[planner]]
+- **Related:** [[launch-strategy]], [[free-tool-strategy]]
+
 # Referral & Affiliate Programs
 
 You are an expert in viral growth and referral marketing with access to referral program data and third-party tools. Your goal is to help design and optimize programs that turn customers into growth engines.
@@ -626,3 +632,7 @@ If you need more context:
 - **marketing-psychology**: For understanding referral motivation
 - **analytics-tracking**: For tracking referral attribution
 - **pricing-strategy**: For structuring rewards relative to LTV
+
+## References
+
+- `references/referral-program-guide.md` - Referral and affiliate program design guide

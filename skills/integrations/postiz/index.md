@@ -24,16 +24,15 @@ Postiz is a self-hosted social media management platform. It handles multi-platf
 
 ### 1. Self-Host Postiz
 
-Recommended: $5-10/mo VPS (Hetzner or DigitalOcean).
+**Current deployment:** Contabo VPS (`167.86.97.68`), Docker Compose, Caddy reverse proxy with auto-SSL.
 
-```bash
-# On your VPS
-git clone https://github.com/gitroomhq/postiz-app.git
-cd postiz-app
-cp .env.example .env
-# Edit .env with your settings
-docker compose up -d
-```
+- **Dashboard:** https://postiz.genflos.com
+- **API:** https://postiz.genflos.com/api
+- **SSH:** `ssh -p 2222 root@167.86.97.68` (port 22 blocked by ISP)
+- **Config:** `/opt/postiz/docker-compose.yml`
+- **Caddy:** `/etc/caddy/Caddyfile`
+
+Stack: Postiz app + PostgreSQL 17 + Redis 7.2 + Temporal (workflow orchestration) + Elasticsearch.
 
 Full docs: docs.postiz.com/installation/docker-compose
 
@@ -63,7 +62,7 @@ Add to your Claude Code MCP settings:
       "args": ["-y", "postiz"],
       "env": {
         "POSTIZ_API_KEY": "<your-api-key>",
-        "POSTIZ_API_URL": "http://<your-vps-ip>:4007"
+        "POSTIZ_API_URL": "https://postiz.genflos.com/api"
       }
     }
   }
@@ -140,6 +139,21 @@ analytics:post({
 - Caption up to 2200 characters
 - Up to 30 hashtags (recommend 5-10)
 
+### TikTok
+- **Photo Mode (Carousels):** Upload 3-10 images per post for slideshow format
+  - Image format: 3:4 (1080x1440), JPG/PNG, max 10MB per image
+  - Use `posts:create` with multiple media IDs for carousel
+  - Music: added in TikTok app after Postiz pushes to drafts (cannot attach audio via API)
+- Video format: 9:16 vertical, 1080x1920 resolution
+- Video length: 15s-10min (15-60s performs best)
+- Caption up to 2200 characters
+- 3-5 hashtags per post (mix trending + niche)
+- Max 15 posts/day via API
+- Space posts 2+ hours apart for algorithm distribution
+- **Drafts only:** Unaudited API apps post to drafts — Jerel taps publish in TikTok app
+- Best posting times: Tue-Thu 7-9pm local time
+- File formats: MP4 (H.264), max 287MB for video; JPG/PNG, max 10MB for images
+
 ### Facebook
 - No hard character limit (recommend <500)
 - Link previews auto-generated
@@ -181,8 +195,19 @@ published:
 | Rate limited | Wait 1 hour, then retry with smaller batch |
 | Media upload fails | Check file size (<10MB) and format (PNG, JPG, MP4) |
 
+## Dashboard
+
+Postiz dashboard at **https://postiz.genflos.com**:
+- View all scheduled posts across all connected platforms
+- Post-level analytics (views, engagement)
+- Connected social accounts management
+- All clients sharing the same Postiz instance appear in one dashboard
+
+Bookmark this URL for quick access.
+
 ## Related
 
+- [VPS Maintenance Guide](./vps-guide.md) — Troubleshooting, updates, emergency procedures
 - [Crosspost](../crosspost/) — Simpler alternative for multi-platform posting
 - [Twitter](../twitter/) — Twitter-specific features
 - Campaign Runner skill — `skills/campaign-runner/SKILL.md`

@@ -1,3 +1,8 @@
+## Graph Links
+- **Parent skill:** [[paid-advertising]]
+- **Sibling references:** [[google-ads]], [[linkedin-ads]], [[meta-ads]], [[paid-media-playbook]], [[ppc-frameworks]]
+- **Related skills:** [[tiktok-slideshows]], [[paid-media-audit]]
+
 # TikTok Ads
 
 Advertising on TikTok.

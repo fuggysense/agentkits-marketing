@@ -29,6 +29,12 @@ success_metrics:
   - brand_awareness
 ---
 
+## Graph Links
+- **Feeds into:** [[copywriting]], [[content-strategy]]
+- **Draws from:** [[marketing-psychology]]
+- **Used by agents:** [[brand-voice-guardian]]
+- **Related:** [[offer-builder]], [[Voice/brand-voice]]
+
 # Brand Building
 
 Brand strategy, identity, and positioning for differentiated market presence.
@@ -163,7 +169,8 @@ Apply brand expertise when:
 
 ## References
 
+- `references/brand-strategy-framework.md` - Comprehensive brand strategy framework
 - `references/brand-strategy.md` - Strategic foundation
+- `references/positioning.md` - Market positioning frameworks
 - `references/visual-identity.md` - Design guidelines
 - `references/voice-tone.md` - Verbal identity
-- `references/positioning.md` - Market positioning frameworks

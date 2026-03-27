@@ -1,3 +1,7 @@
+## Graph Links
+- **Parent skill:** [[marketing-ideas]]
+- **Related skills:** [[marketing-fundamentals]], [[content-strategy]], [[content-moat]]
+
 # Marketing Tactics Library
 
 Based on research from [GrowthHackers](https://growthhackers.com/), [Demand Curve](https://www.demandcurve.com/), [Reforge](https://www.reforge.com/).

@@ -1,3 +1,8 @@
+## Graph Links
+- **Parent skill:** [[marketing-fundamentals]]
+- **Sibling references:** [[competitor-analysis]], [[conversion-principles]], [[funnel-psychology]], [[marketing-metrics]], [[marketing-strategy-essentials]]
+- **Related skills:** [[copywriting]], [[copy-editing]]
+
 # Copywriting Frameworks
 
 Proven formulas for persuasive marketing copy.

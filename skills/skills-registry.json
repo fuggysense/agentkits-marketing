@@ -3,11 +3,11 @@
   "name": "agentkits-marketing-skills",
   "version": "2.0.0",
   "description": "Enterprise-grade marketing skills registry with semantic metadata, dependency graphs, and MCP mappings",
-  "lastUpdated": "2026-03-11",
+  "lastUpdated": "2026-03-14",
   "categories": {
     "core": {
       "description": "Foundational marketing knowledge and frameworks",
-      "skills": ["marketing-fundamentals", "marketing-psychology", "marketing-ideas", "seo-mastery", "social-media", "linkedin-optimization", "email-marketing", "paid-advertising", "content-strategy", "analytics-attribution", "brand-building", "problem-solving"]
+      "skills": ["marketing-fundamentals", "marketing-psychology", "marketing-ideas", "seo-mastery", "social-media", "linkedin-optimization", "email-marketing", "paid-advertising", "content-strategy", "analytics-attribution", "brand-building", "problem-solving", "offer-builder"]
     },
     "cro": {
       "description": "Conversion rate optimization across touchpoints",
@@ -15,7 +15,7 @@
     },
     "content": {
       "description": "Content creation and copywriting",
-      "skills": ["copywriting", "copy-editing", "email-sequence", "website-design", "linkedin-content", "video-director"]
+      "skills": ["copywriting", "copy-editing", "email-sequence", "website-design", "linkedin-content", "video-director", "content-moat", "youtube-content", "tiktok-slideshows", "image-generation"]
     },
     "seo-growth": {
       "description": "SEO and growth-focused strategies",
@@ -26,8 +26,8 @@
       "skills": ["document-skills/docx", "document-skills/pdf", "document-skills/pptx", "document-skills/xlsx"]
     },
     "paid-media": {
-      "description": "Paid media auditing and optimization",
-      "skills": ["paid-media-audit"]
+      "description": "Paid media auditing, optimization, and ad deployment",
+      "skills": ["paid-media-audit", "meta-ads-uploader"]
     },
     "onboarding": {
       "description": "Client and project onboarding",
@@ -47,7 +47,11 @@
     },
     "specialized": {
       "description": "System tools for managing and improving the skill/agent ecosystem",
-      "skills": ["amplifier", "claude-md"]
+      "skills": ["claude-md", "knowledge-hygiene", "autoresearch"]
+    },
+    "utility": {
+      "description": "Utility skills for content processing",
+      "skills": ["transcribe", "scrapecreators", "unslop"]
     }
   },
   "dependencyGraph": {
@@ -58,6 +62,7 @@
     "paywall-upgrade-cro": ["page-cro", "pricing-strategy"],
     "ab-test-setup": ["page-cro", "analytics-attribution"],
     "copy-editing": ["copywriting"],
+    "unslop": [],
     "email-sequence": ["email-marketing", "copywriting"],
     "programmatic-seo": ["seo-mastery", "analytics-attribution", "content-strategy"],
     "schema-markup": ["seo-mastery"],
@@ -66,7 +71,9 @@
     "referral-program": ["marketing-fundamentals"],
     "free-tool-strategy": ["seo-mastery", "content-strategy"],
     "paid-media-audit": ["paid-advertising", "analytics-attribution"],
+    "meta-ads-uploader": ["paid-advertising"],
     "client-onboarding": [],
+    "offer-builder": [],
     "linkedin-optimization": ["social-media"],
     "linkedin-content": ["linkedin-optimization", "copywriting"],
     "campaign-runner": ["content-strategy", "social-media", "analytics-attribution"],
@@ -726,6 +733,25 @@
       "hasReferences": true
     },
     {
+      "id": "meta-ads-uploader",
+      "name": "Meta Ads Uploader",
+      "path": "meta-ads-uploader/SKILL.md",
+      "category": "paid-media",
+      "version": "1.0.0",
+      "difficulty": "intermediate",
+      "description": "End-to-end pipeline for uploading ad creatives to Meta (Facebook/Instagram). Image/video upload, creative creation, ad creation — all PAUSED.",
+      "triggers": ["upload ads", "create meta ads", "bulk upload ads", "publish ads to meta", "facebook ads upload", "instagram ads upload", "ad creative upload", "launch ads", "deploy ads to meta"],
+      "prerequisites": ["paid-advertising"],
+      "relatedSkills": ["paid-advertising", "copywriting", "image-generation", "video-director", "campaign-runner", "paid-media-audit"],
+      "agents": ["copywriter", "tracking-specialist"],
+      "mcpIntegrations": {
+        "required": ["meta-ads"],
+        "optional": []
+      },
+      "successMetrics": ["ads_created", "upload_success_rate", "creative_approval_rate"],
+      "hasReferences": true
+    },
+    {
       "id": "client-onboarding",
       "name": "Client Onboarding",
       "path": "client-onboarding/SKILL.md",
@@ -735,13 +761,32 @@
       "description": "Guided client/project onboarding — scaffold files, discovery interview, agent enrichment, readiness validation, session activation",
       "triggers": ["new project", "onboard client", "new client", "set up project", "create project", "project setup"],
       "prerequisites": [],
-      "relatedSkills": ["brand-building", "campaign-runner", "marketing-fundamentals"],
+      "relatedSkills": ["brand-building", "campaign-runner", "marketing-fundamentals", "offer-builder"],
       "agents": ["persona-builder", "researcher", "brand-voice-guardian"],
       "mcpIntegrations": {
         "required": [],
         "optional": []
       },
       "successMetrics": ["files_completed", "readiness_score", "time_to_first_campaign"],
+      "hasReferences": true
+    },
+    {
+      "id": "offer-builder",
+      "name": "Offer Builder",
+      "path": "offer-builder/SKILL.md",
+      "category": "core",
+      "version": "1.0.0",
+      "difficulty": "intermediate",
+      "description": "Interactive 5-phase offer construction — deep discovery, viability scoring (OV Gate + Vending Machine), identity extraction, micro offers, audit passes, deployment scripts",
+      "triggers": ["build offer", "offer builder", "offer positioning", "micro offer", "offer viability", "offer audit", "offer score", "vending machine score", "create offer", "offer document", "what should I sell", "package my offer"],
+      "prerequisites": [],
+      "relatedSkills": ["marketing-psychology", "brand-building", "pricing-strategy", "copywriting", "client-onboarding", "launch-strategy"],
+      "agents": ["persona-builder", "brand-voice-guardian", "copywriter", "sales-enabler"],
+      "mcpIntegrations": {
+        "required": [],
+        "optional": []
+      },
+      "successMetrics": ["ov_gate_score", "vending_machine_score", "audit_pass_rate", "time_to_first_sale"],
       "hasReferences": true
     },
     {
@@ -764,23 +809,23 @@
       "hasReferences": true
     },
     {
-      "id": "amplifier",
-      "name": "Amplifier",
-      "path": "amplifier/SKILL.md",
+      "id": "knowledge-hygiene",
+      "name": "Knowledge Hygiene",
+      "path": "knowledge-hygiene/SKILL.md",
       "category": "specialized",
       "version": "1.0.0",
-      "difficulty": "advanced",
-      "description": "Enhances and updates existing agents and skills. Scans for conflicts, detects similarity overlaps, analyzes gaps, suggests merges, and tracks attribution.",
-      "triggers": ["amplify", "enhance skill", "improve agent", "scan conflicts", "find overlaps", "merge skills", "audit skill", "upgrade agent", "skill gaps", "agent conflicts"],
+      "difficulty": "beginner",
+      "description": "Anti-decay system that detects stale docs, unintegrated learnings, and registry drift. Surfaces hygiene reports inside existing ops commands.",
+      "triggers": ["hygiene", "stale docs", "knowledge decay", "freshness audit", "learnings check", "registry drift"],
       "prerequisites": [],
-      "relatedSkills": [],
-      "agents": [],
+      "relatedSkills": ["analytics-usage"],
+      "agents": ["docs-manager"],
       "mcpIntegrations": {
         "required": [],
         "optional": []
       },
-      "successMetrics": ["conflicts_resolved", "skills_improved", "merges_completed"],
-      "hasReferences": true
+      "successMetrics": ["docs_freshness_rate", "learnings_integration_rate", "registry_accuracy_rate"],
+      "hasReferences": false
     },
     {
       "id": "deep-research",
@@ -882,18 +927,18 @@
       "name": "Website Design",
       "path": "website-design/SKILL.md",
       "category": "content",
-      "version": "4.0.0",
+      "version": "5.0.0",
       "difficulty": "intermediate",
-      "description": "Dual-mode website skill: Recreation (match reference screenshots pixel-perfect) OR Creation (build distinctive interfaces from scratch with bold aesthetics and anti-generic guardrails). Single index.html with Tailwind CDN. Automated screenshot comparison loops.",
-      "triggers": ["website design", "build website", "create website", "design website", "landing page design", "website from screenshot", "clone design", "replicate website", "web design", "website redesign", "HTML website", "design from scratch", "build landing page", "cinematic website", "distinctive website", "bold design", "creative landing page", "scroll-driven website", "animated website", "pixel perfect", "recreate website", "match this design"],
+      "description": "Quad-mode website skill: Recreation (pixel-perfect from reference), Creation (bold aesthetics from scratch), Hybrid (recreate + improve), Paper-First (import from Paper.design). Paper.design MCP integration for bidirectional visual editing — push HTML to Paper, read back JSX/Tailwind, extract precise design tokens. Single index.html with Tailwind CDN. Automated screenshot comparison loops. Anti-generic guardrails. BM25 design system lookup (67 styles, 161 palettes, 57 font pairings).",
+      "triggers": ["website design", "build website", "create website", "design website", "landing page design", "website from screenshot", "clone design", "replicate website", "web design", "website redesign", "HTML website", "design from scratch", "build landing page", "cinematic website", "distinctive website", "bold design", "creative landing page", "scroll-driven website", "animated website", "pixel perfect", "recreate website", "match this design", "design system", "paper design", "design from paper", "paper to code", "import from paper", "paper file"],
       "prerequisites": [],
       "relatedSkills": ["page-cro", "copywriting", "image-generation", "brand-building", "schema-markup"],
       "agents": ["copywriter", "brand-voice-guardian", "conversion-optimizer", "tracking-specialist"],
       "mcpIntegrations": {
         "required": [],
-        "optional": ["google-analytics", "firecrawl"]
+        "optional": ["google-analytics", "firecrawl", "paper"]
       },
-      "successMetrics": ["design_match_percentage", "mobile_responsive", "page_load_speed", "conversion_elements_present"],
+      "successMetrics": ["design_match_percentage", "mobile_responsive", "page_load_speed", "conversion_elements_present", "aesthetic_distinctiveness"],
       "hasReferences": true
     },
     {
@@ -920,18 +965,94 @@
       "name": "Video Director",
       "path": "video-director/SKILL.md",
       "category": "content",
-      "version": "1.0.0",
+      "version": "2.0.0",
       "difficulty": "intermediate",
-      "description": "AI video prompt generation for marketing ads — 11 video types across 3 pipelines (Direct, Image-First, Localized). Generates ready-to-paste prompts for Sora, Kling, VEO with HITL review gates and full production SOP.",
-      "triggers": ["video ad", "AI video", "video prompt", "sora prompt", "kling prompt", "veo prompt", "talking head video", "UGC video", "unboxing video", "product video", "street interview", "podcast video", "shock hook", "video commercial", "food video", "real estate video", "anatomical animation", "ad localization", "video generation"],
+      "description": "AI video prompt generation for marketing ads — 14 video types across 3 pipelines (Direct, Image-First, Localized). Generates ready-to-paste prompts for Sora, Kling, VEO. Includes HITL review gates, character bibles, seed management, UGC automation, and full production SOP.",
+      "triggers": ["video ad", "AI video", "video prompt", "sora prompt", "kling prompt", "veo prompt", "talking head video", "UGC video", "unboxing video", "product video", "street interview", "podcast video", "shock hook", "video commercial", "food video", "real estate video", "anatomical animation", "ad localization", "video generation", "consistent character", "UGC automation", "sora character", "video edit", "character bible", "seed bracketing", "8K video", "post production"],
       "prerequisites": ["image-generation"],
-      "relatedSkills": ["copywriting", "paid-advertising", "image-generation", "social-media"],
+      "relatedSkills": ["copywriting", "paid-advertising", "image-generation", "social-media", "content-moat"],
       "agents": ["copywriter", "attraction-specialist", "brainstormer"],
       "mcpIntegrations": {
         "required": [],
         "optional": ["meta-ads"]
       },
       "successMetrics": ["prompt_approval_rate", "video_quality_score", "platform_native_feel"],
+      "hasReferences": true
+    },
+    {
+      "id": "autoresearch",
+      "name": "Autoresearch",
+      "path": "~/.claude/skills/autoresearch/SKILL.md",
+      "category": "specialized",
+      "version": "1.0.0",
+      "difficulty": "advanced",
+      "description": "Autonomous skill optimization via generate → evaluate → mutate → keep/discard loops. Wraps any existing skill in a self-improving loop that simultaneously improves the skill AND produces winning content per client.",
+      "triggers": ["autoresearch", "skill optimization", "autonomous improvement", "self-improving", "optimize skill", "boost skill", "skill booster"],
+      "prerequisites": [],
+      "relatedSkills": ["knowledge-hygiene", "analytics-usage", "campaign-runner"],
+      "agents": [],
+      "mcpIntegrations": {
+        "required": ["kilo-gateway"],
+        "optional": ["gemini-cli"]
+      },
+      "successMetrics": ["score_improvement_per_run", "winner_rate", "rollback_rate", "cost_per_run"],
+      "hasReferences": true
+    },
+    {
+      "id": "transcribe",
+      "name": "Transcribe",
+      "path": "transcribe/SKILL.md",
+      "category": "utility",
+      "version": "1.0.0",
+      "difficulty": "beginner",
+      "description": "Transcribe video from any URL into text using yt-dlp + faster-whisper",
+      "triggers": ["transcribe", "transcribe video", "transcribe url", "get transcript", "video to text"],
+      "prerequisites": [],
+      "relatedSkills": ["youtube-content", "copywriting", "content-strategy"],
+      "agents": ["researcher", "copywriter"],
+      "mcpIntegrations": {
+        "required": [],
+        "optional": []
+      },
+      "successMetrics": ["transcription_accuracy", "processing_speed"],
+      "hasReferences": false
+    },
+    {
+      "id": "youtube-content",
+      "name": "YouTube Content",
+      "path": "youtube-content/SKILL.md",
+      "category": "content",
+      "version": "1.0.0",
+      "difficulty": "intermediate",
+      "description": "Generate complete YouTube descriptions from video transcripts with timestamps, links, and brand-consistent copy",
+      "triggers": ["youtube description", "describe this video", "video description", "youtube metadata"],
+      "prerequisites": ["transcribe", "copywriting"],
+      "relatedSkills": ["transcribe", "copywriting", "content-strategy", "seo-mastery"],
+      "agents": ["copywriter"],
+      "mcpIntegrations": {
+        "required": [],
+        "optional": []
+      },
+      "successMetrics": ["description_quality", "timestamp_accuracy", "seo_optimization"],
+      "hasReferences": false
+    },
+    {
+      "id": "unslop",
+      "name": "Unslop",
+      "path": "unslop/SKILL.md",
+      "category": "utility",
+      "version": "1.0.0",
+      "difficulty": "intermediate",
+      "description": "Domain-specific AI pattern detection — generates empirical avoidance profiles by sampling model defaults. Layer 1 of 4-layer de-AI stack.",
+      "triggers": ["unslop", "ai pattern detection", "domain profile", "avoidance profile", "de-ai profile", "slop detection", "ai defaults"],
+      "prerequisites": [],
+      "relatedSkills": ["copy-editing", "copywriting", "linkedin-content", "email-sequence", "website-design"],
+      "agents": ["copywriter", "brand-voice-guardian"],
+      "mcpIntegrations": {
+        "required": [],
+        "optional": []
+      },
+      "successMetrics": ["patterns_detected", "profile_specificity", "consumer_skill_improvement"],
       "hasReferences": true
     }
   ],
@@ -957,7 +1078,7 @@
       "dataTypes": ["SERP_data", "keyword_metrics", "backlinks"]
     },
     "meta-ads": {
-      "skills": ["paid-advertising", "paid-media-audit"],
+      "skills": ["paid-advertising", "paid-media-audit", "meta-ads-uploader"],
       "agents": ["attraction-specialist", "tracking-specialist"],
       "dataTypes": ["ad_performance", "audiences", "creatives"]
     },

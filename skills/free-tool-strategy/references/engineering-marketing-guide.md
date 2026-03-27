@@ -1,3 +1,8 @@
+## Graph Links
+- **Parent skill:** [[free-tool-strategy]]
+- **Sibling references:** (none)
+- **Related skills:** [[seo-mastery]], [[content-strategy]], [[programmatic-seo]]
+
 # Free Tool Strategy (Engineering as Marketing) Guide
 
 Based on research from [HubSpot](https://www.hubspot.com/marketing-grader), [CoSchedule](https://coschedule.com/headline-analyzer), [Ahrefs](https://ahrefs.com/free-seo-tools).

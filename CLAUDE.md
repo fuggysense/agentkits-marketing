@@ -6,6 +6,14 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Your role is to analyze marketing requirements, delegate tasks to appropriate marketing agents, and ensure cohesive delivery of campaigns that drive leads, conversions, and revenue.
 
+## Startup Files (read every session)
+
+On every new session, read these files before doing any work:
+- `SOUL.md` — Communication tone, writing rules, mobile formatting
+- `USER.md` — Operator context (who Jerel is, preferences, tools)
+- `cron-registry.json` — Scheduled tasks to restore if running with channels
+- `CHANNELS.md` — Telegram bot setup, launch commands, cron reference (read on demand)
+
 ## Workflows
 
 ### Core Workflows
@@ -77,11 +85,31 @@ We keep all important docs in `./docs` folder and keep updating them, structure 
 
 When an error occurs or a process fails:
 1. **Fix** — Resolve the immediate issue
+1.5. **Log** — Append the correction to the relevant skill's `corrections.md`: `- YYMMDD | what was wrong → what was right | context`
 2. **Update** — Modify the directive/skill/agent that caused the failure
 3. **Test** — Verify the fix works
 4. **Strengthen** — The system is now more resilient than before the error
 
 Every failure makes the system stronger. Never fix the same error twice — always update the source.
+
+## Correction Capture Rule
+
+**When the user corrects any output during a session:**
+1. Apply the correction immediately to the current work
+2. Append to the relevant skill's `corrections.md`: `- YYMMDD | what was wrong → what was right | context`
+3. If client-specific, ALSO append to `clients/<project>/learnings.md`
+
+**What counts as a correction:**
+- "Don't use that word/phrase" → log in the skill that produced it
+- "The tone should be more X" → log in copywriting or brand-building
+- "Always do X for this client" → log in client learnings AND the skill
+- "That's not how we format this" → log in the skill that formatted it
+- Rewriting/heavily editing Claude's output → diff key changes and log
+
+**What does NOT count (skip):**
+- Clarifying a vague request ("I meant the pricing page")
+- Choosing between options Claude presented
+- Factual corrections ("the price is $49, not $39")
 
 ## HITL Gates
 
@@ -116,10 +144,31 @@ Explain the winner in plain language with an analogy a 4th grader would understa
 
 Before ending any session:
 1. Log key decisions to `## Learnings` below
+1.5. **Learnings capture:** If any skill or agent was invoked this session and produced a confirmed insight (something worked, something failed, a pattern was validated), append it to that skill's `learnings.md` under the appropriate section. This is not optional maintenance — it's part of completing the work.
+1.75. **Corrections triage:** Review corrections.md files appended to this session. If any correction appeared 3+ times across sessions, promote to the appropriate section of that skill's `learnings.md` and remove from `corrections.md`.
 2. Update any directives that were improved during the session
 3. Note unfinished work in `### Open Threads`
 4. If any skill/agent was created, updated, amplified, merged, or deleted during this session → append entry to `docs/changelog.md` under today's date. Ask for "inspired by" source + contributor if not clear from conversation. Use verbs: `Created`, `Amplified`, `Updated`, `Merged`, `Deleted`.
-5. This persists context across context window clears
+5. **Living files update:** Review what you learned about the user this session and update:
+   - `USER.md` — new tools, platforms, workflows, preferences, or context about Jerel
+   - `SOUL.md` — new communication patterns, writing rules, or formatting preferences observed
+   - Only add confirmed patterns, not one-off requests. If in doubt, skip.
+6. This persists context across context window clears
+
+## Obsidian Brain
+
+This repo lives inside the Obsidian vault "Jerel's Brain" at:
+`/Users/jerel/Documents/Jerel's brain/jerel's brain/Marketing/`
+
+The vault root contains personal knowledge (Life/, Business/, Voice/, Profile/).
+This Marketing/ subfolder contains the full agent kit.
+
+When loading context:
+- Voice files: `../../Voice/` (vault root) or `voice/jerel/` (symlink)
+- Personal profile: `../../Personal and professional profile/`
+- Skill graph: Follow [[wiki-links]] in SKILL.md files
+- Master map: `../../index.md`
+- Consolidated learnings: `learnings/` (10 domain files)
 
 ## Learnings
 
@@ -127,10 +176,47 @@ Before ending any session:
 - Fork workflow: `upstream` = aitytech/agentkits-marketing, `origin` = fuggysense/agentkits-marketing. Push to origin, pull from upstream.
 - Jerel prefers "trust and ship" over PR review for Claude-built changes.
 - Commit only after significant changes, not after every small edit. Bundle related work.
+- Telegram bot: `@fuggycompany_bot` via official Anthropic plugin. Token at `~/.claude/channels/telegram/.env`. Launch with `--channels plugin:telegram@claude-plugins-official`. Requires Bun + pairing step. Full ref in `CHANNELS.md`.
+- ClaudeClaw blueprint cloned at `/Users/jerel/AI workflows/claudeclaw/` — reference only, not an installed system. Borrowed patterns: SOUL.md, USER.md, cron-registry.json, deny list.
 
 ### Mistakes Not to Repeat
-- (grows over time as mistakes are identified)
+- Must install Telegram plugin (`claude plugin install telegram`) BEFORE launching with `--channels` flag. Otherwise shows "plugin not installed."
+- Bun runtime required for Telegram plugin MCP server. Install with `curl -fsSL https://bun.sh/install | bash`.
+- Bot token must be at `~/.claude/channels/telegram/.env` (where plugin reads it), not just in `settings.local.json`.
+- Cannot launch a second Claude Code instance from inside an existing one via tmux — TTY conflict. User must launch manually in a separate terminal.
+- Telegram pairing step is mandatory — bot won't respond until you DM it, get the 6-char code, and run `/telegram:access pair <code>` in the terminal.
+- When user says "follow the setup instructions" for a repo, clone it and follow literally. Don't abstract/adapt without asking.
 
 ### Open Threads
 - **Upstream sync check (every 3 days):** At the start of each session, run `git fetch upstream` and check if aitytech/agentkits-marketing has new commits. If so, show Jerel what changed and ask to merge before doing other work.
 - **Weekly reference repo scan:** Once per week, run the multi-repo sync check (see `docs/repo-sync-guide.md`). Fetch all reference remotes, check for new commits, summarize anything useful for Jerel to decide on.
+- **Ops review freshness check:** At session start, check file timestamps to determine when `/ops:weekly` and `/ops:monthly` last ran. Surface overdue reviews proactively. See Session Start Protocol below.
+- **Telegram bot maintenance:** Bot dies on Mac restart, context overflow, or power loss. Relaunch via `CHANNELS.md` quick launch steps. Re-register crons after every restart. Crons auto-expire after 7 days — restart sessions weekly.
+
+### Session Start Protocol
+
+At the start of every session (before any work), run these checks silently and surface a brief status:
+
+1. **Git sync** — `git fetch upstream`, check for new commits (every 3 days)
+2. **Ops freshness** — Check when reviews last ran:
+   - Look for most recent file in `docs/ops/weekly/` → if >7 days ago, flag `/ops:weekly` as overdue
+   - Look for most recent file in `docs/ops/monthly/` → if >30 days ago, flag `/ops:monthly` as overdue
+   - If no files exist yet, note "never run" and suggest first run
+3. **Multi-project check** — If multiple projects exist in `clients/`, show per-project status:
+   ```
+   Project health:
+   - AURA: weekly overdue (12 days) | monthly OK (18 days)
+   - Client B: all OK
+   ```
+4. **Active campaigns** — Check `clients/*/campaigns/` for campaigns with `phase: execution` or `phase: optimization`. Surface any that need attention.
+5. **Cron restore** — If running with `--channels` (Telegram bot active), read `cron-registry.json` and re-register all `enabled: true` jobs via CronCreate. Crons are session-only and auto-expire after 7 days, so this must happen every session. Log how many were restored.
+6. **Present as a compact dashboard** — max 5 lines. Don't block work, just surface it. If everything is fine, say "All ops current" and move on.
+
+**Format:**
+```
+Session check:
+  Git: upstream synced (2 days ago)
+  Ops: /ops:weekly overdue (9 days) — run now?
+  Crons: 4 restored from cron-registry.json
+  AURA: 1 active campaign (tiktok-content, execution phase)
+```

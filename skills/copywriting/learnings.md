@@ -1,3 +1,5 @@
+> Consolidated learnings → [[copywriting-learnings]]
+
 # Copywriting — Learnings & Patterns
 
 > This file updates continuously. Add confirmed patterns, insights, and fixes discovered during use.

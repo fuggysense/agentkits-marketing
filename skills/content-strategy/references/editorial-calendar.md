@@ -1,3 +1,8 @@
+## Graph Links
+- **Parent skill:** [[content-strategy]]
+- **Sibling references:** [[content-pillars]], [[content-strategy-playbook]], [[distribution]], [[repurposing]]
+- **Related skills:** [[campaign-runner]], [[linkedin-content]]
+
 # Editorial Calendar
 
 Planning and managing content production.

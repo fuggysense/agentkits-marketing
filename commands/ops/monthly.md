@@ -234,6 +234,43 @@ Save review to: `./docs/ops/monthly/[YYYY-MM].md`
 
 ---
 
+## Knowledge Hygiene Report
+
+Run all 3 hygiene checks and include a full report section in the monthly output:
+
+```bash
+python3 skills/knowledge-hygiene/scripts/freshness_audit.py
+python3 skills/knowledge-hygiene/scripts/learnings_check.py
+python3 skills/knowledge-hygiene/scripts/registry_drift.py
+```
+
+Include results as a "Knowledge Hygiene" section in the monthly report with:
+- Full freshness audit table (all docs, not just overdue)
+- Learnings integration table (all skills with learnings)
+- Registry drift details (if any)
+- Action items: which docs to update, which skills to amplify, which registry entries to fix
+
+Also review `docs/feature-parking-lot.md` — check if any parked features' trigger conditions have been met.
+
+### Autoresearch Summary
+
+Run autoresearch status across all active clients:
+
+```bash
+python3 ~/.claude/skills/autoresearch/scripts/safety.py budget --client <project>
+python3 ~/.claude/skills/autoresearch/scripts/trust_tracker.py status --client <project>
+python3 ~/.claude/skills/autoresearch/scripts/scheduler.py queue --client <project>
+```
+
+Include in monthly report:
+- Total autoresearch spend this month vs budget cap
+- Skills optimized this month (count, avg score improvement)
+- Trust level changes (any graduations or demotions)
+- Top 3 priority skills for next month's rotation
+- Winner content produced (count, any published via campaign-runner)
+
+---
+
 ## Next Steps
 
 After monthly review, consider:

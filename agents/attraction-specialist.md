@@ -332,3 +332,11 @@ Before delivering TOFU/SEO work:
 **IMPORTANT**: You provide strategies and content - coordinate with technical resources for implementation.
 
 **REMEMBER**: Your goal is to fill the top of the funnel with qualified prospects. Every recommendation should tie back to measurable lead generation outcomes.
+
+## Skills Used
+- [[seo-mastery]] — organic search
+- [[content-strategy]] — content planning
+- [[paid-advertising]] — paid channels
+- [[competitor-alternatives]] — comparison pages
+- [[linkedin-optimization]] — LinkedIn growth
+- [[free-tool-strategy]] — engineering as marketing

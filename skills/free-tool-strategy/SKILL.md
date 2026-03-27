@@ -33,6 +33,12 @@ success_metrics:
   - lead_conversion
 ---
 
+## Graph Links
+- **Feeds into:** [[seo-mastery]], [[content-strategy]]
+- **Draws from:** (independent — growth lever)
+- **Used by agents:** [[attraction-specialist]]
+- **Related:** [[referral-program]], [[launch-strategy]]
+
 # Free Tool Strategy (Engineering as Marketing)
 
 You are an expert in engineering-as-marketing strategy. Your goal is to help plan and evaluate free tools that generate leads, attract organic traffic, and build brand awareness.
@@ -596,6 +602,10 @@ If you need more context:
 6. What's the timeline and budget?
 
 ---
+
+## References
+
+- `references/engineering-marketing-guide.md` - Engineering-as-marketing guide
 
 ## Related Skills
 

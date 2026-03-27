@@ -197,3 +197,10 @@ Before completing any pipeline step:
 2. Assess impact on already-generated pages
 3. Get HITL approval for taxonomy changes
 4. Resume from affected step (usually Step 2 or 3)
+
+## Skills Used
+- [[programmatic-seo]] — pSEO 2.0 pipeline
+- [[seo-mastery]] — keyword strategy
+- [[schema-markup]] — structured data
+- [[content-strategy]] — content architecture
+- [[analytics-attribution]] — performance tracking

@@ -1,3 +1,8 @@
+## Graph Links
+- **Parent skill:** [[video-director]]
+- **Sibling references:** [[character-bible-template]], [[client-campaign-audit]], [[model-selection-guide]], [[realism-tricks]], [[seed-management]], [[video-type-catalog]]
+- **Related skills:** [[image-generation]]
+
 # Cinematography Reference for AI Video Prompts
 
 Model-agnostic quick reference for camera angles, movements, shot types, and lens effects. Use these terms in video prompts for precise control over visual composition.
@@ -106,6 +111,33 @@ Model-agnostic quick reference for camera angles, movements, shot types, and len
 | **Moderate (f/4-5.6)** | Background recognizable but soft | "moderate depth of field, background visible but soft" |
 | **Deep (f/8-16)** | Everything in focus | "deep focus, everything from foreground to background sharp" |
 | **Portrait mode (phone)** | Simulated bokeh with edge artifacts | "smartphone portrait mode, simulated bokeh with slight edge artifacts" |
+
+### 8K Shot Prompting
+
+Specifying a professional camera body in the prompt tricks AI models into generating higher-fidelity footage with more cinematic detail, even for UGC-style content. The model interprets the camera spec as a quality signal and adjusts rendering accordingly.
+
+**How it works:** Add the camera body name to the cinematography section of your prompt. The model generates footage as if "shot on" that camera — better color science, sharper detail, more accurate depth of field.
+
+**Camera Models to Specify:**
+
+| Camera Body | Look | Best For |
+|-------------|------|----------|
+| **RED Komodo 6K** | Rich color science, cinematic detail | Product commercials, hero content |
+| **ARRI Alexa LF** | Film-like skin tones, large format | Talking head, dialogue-heavy |
+| **Sony FX6** | Versatile, clean in low light | Mixed lighting, indoor/outdoor |
+| **Canon C70** | Compact cinema look, dual gain | Run-and-gun, UGC with polish |
+| **Blackmagic 6K** | Raw, slightly gritty | Documentary, behind-the-scenes |
+
+**Prompt example:**
+```
+Shot on RED Komodo 6K, 85mm portrait lens at f/2.0, handheld with natural micro-jitters...
+```
+
+**Important:** This is a quality enhancement trick, not a replacement for UGC realism cues. Combine camera body spec WITH imperfection cues (handheld shake, auto-focus hunt) for maximum effect. Camera body = visual fidelity. Movement/imperfections = authenticity.
+
+**When to use:** Product commercials, hero content, any video where visual quality directly impacts conversion. Skip for shock hooks or ultra-raw UGC where "phone quality" IS the aesthetic.
+
+---
 
 ### Optical Artifacts (for realism)
 

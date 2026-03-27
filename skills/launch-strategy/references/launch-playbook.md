@@ -1,3 +1,8 @@
+## Graph Links
+- **Parent skill:** [[launch-strategy]]
+- **Sibling references:** [[lead-magnet-funnel-pattern]]
+- **Related skills:** [[content-strategy]], [[email-sequence]], [[social-media]]
+
 # Product Launch Playbook
 
 Based on research from [Product Hunt](https://www.producthunt.com/), [First Round](https://review.firstround.com/), [Lenny's Newsletter](https://www.lennysnewsletter.com/).

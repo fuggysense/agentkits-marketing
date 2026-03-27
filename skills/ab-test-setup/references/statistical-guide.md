@@ -1,3 +1,7 @@
+## Graph Links
+- **Parent skill:** [[ab-test-setup]]
+- **Related skills:** [[page-cro]], [[analytics-attribution]], [[form-cro]]
+
 # A/B Testing Statistical Guide
 
 Based on research from [Evan Miller](https://www.evanmiller.org/ab-testing/sample-size.html), [CXL](https://cxl.com/ab-test-calculator/), [Optimizely](https://www.optimizely.com/sample-size-calculator/).

@@ -1,3 +1,8 @@
+## Graph Links
+- **Parent skill:** [[email-marketing]]
+- **Sibling references:** [[automation]], [[deliverability]], [[email-marketing-playbook]], [[segmentation]], [[sequence-design]]
+- **Related skills:** [[email-sequence]], [[campaign-runner]]
+
 # Lead Nurturing Workflows
 
 Comprehensive lead nurturing sequences aligned with `crm-workflow.md` and `sales-workflow.md`.

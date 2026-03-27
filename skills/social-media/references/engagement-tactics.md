@@ -1,3 +1,8 @@
+## Graph Links
+- **Parent skill:** [[social-media]]
+- **Sibling references:** [[content-formats]], [[platform-algorithms]], [[social-media-playbook]], [[viral-mechanics]]
+- **Related skills:** [[marketing-psychology]], [[copywriting]]
+
 # Engagement Tactics
 
 Strategies for building social media engagement.

@@ -1,3 +1,8 @@
+## Graph Links
+- **Parent skill:** [[problem-solving]]
+- **Sibling references:** [[attribution]], [[inversion-exercise]], [[meta-pattern-recognition]], [[scale-game]], [[simplification-cascades]], [[when-stuck]]
+- **Related skills:** [[marketing-psychology]]
+
 # Collision-Zone Thinking
 
 ## Problem Pattern

@@ -1,0 +1,16 @@
+{
+  "batch_name": "example-batch",
+  "model": "gemini-3.1-flash-image-preview",
+  "aspect_ratio": "3:4",
+  "prompt_prefix": "Generate a high-quality marketing image for a TikTok Photo Mode carousel slide at 3:4 aspect ratio: ",
+  "slides": [
+    {
+      "filename": "post01_slide1.png",
+      "prompt": "#170F0B warm black background. Bold sans-serif text in #F8F7F6 cream, centered. Clean editorial typography. 3:4 portrait (1080x1440)"
+    },
+    {
+      "filename": "post01_slide2.png",
+      "prompt": "#F8F7F6 cream background. Dark text in #170F0B. Minimal, clean. 3:4 portrait (1080x1440)"
+    }
+  ]
+}

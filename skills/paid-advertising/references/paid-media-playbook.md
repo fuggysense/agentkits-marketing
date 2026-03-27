@@ -1,3 +1,8 @@
+## Graph Links
+- **Parent skill:** [[paid-advertising]]
+- **Sibling references:** [[google-ads]], [[linkedin-ads]], [[meta-ads]], [[ppc-frameworks]], [[tiktok-ads]]
+- **Related skills:** [[paid-media-audit]], [[analytics-attribution]]
+
 # Paid Advertising Playbook
 
 Based on research from [Google Ads](https://ads.google.com/), [Meta Business](https://www.facebook.com/business), [WordStream](https://www.wordstream.com/).

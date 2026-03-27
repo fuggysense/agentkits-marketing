@@ -1,3 +1,8 @@
+## Graph Links
+- **Parent skill:** [[seo-mastery]]
+- **Sibling references:** [[keyword-research]], [[link-building]], [[on-page-seo]], [[seo-audit-checklist]], [[seo-playbook]], [[technical-seo]]
+- **Related skills:** [[schema-markup]]
+
 # Local SEO
 
 Optimization for local search visibility.

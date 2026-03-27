@@ -1,3 +1,8 @@
+## Graph Links
+- **Parent skill:** [[analytics-attribution]]
+- **Sibling references:** [[analytics-frameworks]], [[attribution-models]], [[dashboards]], [[ga4-implementation-guide]], [[reporting-templates]], [[search-console]]
+- **Related skills:** [[paid-advertising]], [[ab-test-setup]]
+
 # Google Analytics 4
 
 GA4 setup, configuration, and reporting.

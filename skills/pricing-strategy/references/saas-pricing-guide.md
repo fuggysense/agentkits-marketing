@@ -1,3 +1,7 @@
+## Graph Links
+- **Parent skill:** [[pricing-strategy]]
+- **Related skills:** [[offer-builder]], [[paywall-upgrade-cro]], [[launch-strategy]]
+
 # SaaS Pricing Strategy Guide
 
 Based on research from [Price Intelligently](https://www.priceintelligently.com/), [OpenView](https://openviewpartners.com/), [Kyle Poyar](https://www.growthunhinged.com/).

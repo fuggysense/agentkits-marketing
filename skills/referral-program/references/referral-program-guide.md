@@ -1,3 +1,7 @@
+## Graph Links
+- **Parent skill:** [[referral-program]]
+- **Related skills:** [[launch-strategy]], [[pricing-strategy]], [[email-marketing]]
+
 # Referral Program Design Guide
 
 Based on research from [ReferralCandy](https://www.referralcandy.com/blog/referral-program-examples), [GrowSurf](https://growsurf.com/blog/referral-program-statistics), [Viral Loops](https://viral-loops.com/blog/).

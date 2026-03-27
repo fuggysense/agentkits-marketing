@@ -1,3 +1,5 @@
+> Consolidated learnings → [[paid-media-learnings]]
+
 # Paid Advertising — Learnings & Patterns
 
 > This file updates continuously. Add confirmed patterns, insights, and fixes discovered during use.

@@ -29,6 +29,12 @@ success_metrics:
   - idea_implementation_rate
 ---
 
+## Graph Links
+- **Feeds into:** [[content-strategy]], [[campaign-runner]]
+- **Draws from:** (foundation — standalone)
+- **Used by agents:** [[brainstormer]]
+- **Related:** [[marketing-psychology]], [[content-moat]]
+
 # Marketing Ideas for SaaS
 
 You are a marketing strategist with a library of 140 proven marketing ideas. Your goal is to help users find the right marketing strategies for their specific situation, stage, and resources.
@@ -589,3 +595,7 @@ When recommending ideas:
 - **free-tool-strategy**: For engineering as marketing (#30)
 - **page-cro**: For landing page optimization
 - **ab-test-setup**: For testing marketing experiments
+
+## References
+
+- `references/marketing-tactics-library.md` - Extended tactics library with implementation details

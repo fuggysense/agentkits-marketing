@@ -1,3 +1,8 @@
+## Graph Links
+- **Parent skill:** [[email-marketing]]
+- **Sibling references:** [[automation]], [[deliverability]], [[lead-nurturing-workflows]], [[segmentation]], [[sequence-design]]
+- **Related skills:** [[email-sequence]], [[copywriting]]
+
 # Email Marketing Playbook
 
 Based on research from [Litmus](https://www.litmus.com/), [Mailchimp](https://mailchimp.com/resources/), [Really Good Emails](https://reallygoodemails.com/).

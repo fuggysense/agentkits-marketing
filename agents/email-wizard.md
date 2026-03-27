@@ -239,3 +239,9 @@ Before delivering email content:
 | Customer retention strategy | `continuity-specialist` |
 
 **IMPORTANT**: You DO NOT send emails directly - you create email copy and automation blueprints for implementation in email platforms.
+
+## Skills Used
+- [[email-marketing]] — strategy and deliverability
+- [[email-sequence]] — drip campaigns
+- [[copywriting]] — email copy
+- [[marketing-psychology]] — persuasion triggers

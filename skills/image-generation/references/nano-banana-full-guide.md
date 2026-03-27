@@ -1,3 +1,8 @@
+## Graph Links
+- **Parent skill:** [[image-generation]]
+- **Sibling references:** [[nano-banana-examples]]
+- **Related skills:** [[video-director]], [[tiktok-slideshows]]
+
 # Nano Banana 2 — Complete Image Generation Guide
 
 > Source: AI Topia / fearless-offer-231.notion.site
@@ -224,18 +229,31 @@ Add context-specific:
 
 ## Generation Script (Python)
 
+Supports key rotation for batch generation. Set `GEMINI_API_KEY`, `GEMINI_API_KEY_2`, `GEMINI_API_KEY_3` in `.env` for 3x throughput.
+
 ```python
 import json, sys, os, requests, base64
 from datetime import datetime
 
-def generate(prompt_path, output_dir="images"):
+def get_api_keys():
+    """Load all available Gemini API keys for round-robin rotation."""
+    keys = [os.environ.get("GEMINI_API_KEY")]
+    for i in range(2, 10):
+        k = os.environ.get(f"GEMINI_API_KEY_{i}")
+        if k:
+            keys.append(k)
+    return [k for k in keys if k]
+
+def generate(prompt_path, output_dir="images", index=0):
+    keys = get_api_keys()
+    key = keys[index % len(keys)]
     with open(prompt_path) as f:
         data = json.load(f)
     prompt_text = json.dumps(data, indent=2)
     response = requests.post(
         "https://generativelanguage.googleapis.com/v1beta/models/"
         "gemini-3.1-flash-image-preview:generateContent",
-        params={"key": os.environ["GOOGLE_AI_KEY"]},
+        params={"key": key},
         json={
             "contents": [{"parts": [{"text": prompt_text}]}],
             "generationConfig": {
@@ -256,14 +274,14 @@ def generate(prompt_path, output_dir="images"):
             path = f"{output_dir}/{ts}.png"
             with open(path, "wb") as f:
                 f.write(img_data)
-            print(f"Saved: {path}")
+            print(f"Saved: {path} (key {index % len(keys) + 1}/{len(keys)})")
             return path
 
 if __name__ == "__main__":
     generate(sys.argv[1], sys.argv[2] if len(sys.argv) > 2 else "images")
 ```
 
-Requires: `GOOGLE_AI_KEY` env var, `requests` package.
+Requires: `GEMINI_API_KEY` env var (+ optional `GEMINI_API_KEY_2`, `GEMINI_API_KEY_3` for rotation), `requests` package.
 
 ---
 
@@ -283,6 +301,37 @@ Plan all campaign assets at once. Lock visual settings, swap only content per im
 
 ### Web Grounding
 `"web_grounding": true` for real locations, products, landmarks. Model searches Google for reference.
+
+---
+
+## Nano Banana Pro Advanced Features
+
+### Style Prompt Saving
+Lock a complete style configuration and reuse across batches:
+```json
+{
+  "meta": { "style_preset": "saved:my-brand-style" },
+  "subject": [{ "description": "[new subject each time]" }]
+}
+```
+- Save lighting, color grading, lens, angle, and mood as a preset
+- Swap only the subject/content per generation
+- Ensures brand consistency across 50+ images in a campaign
+
+### Annotation Workflow
+After generating an image, annotate it for downstream use:
+1. **Mark motion zones** — Circle areas that should move in video (e.g., "steam rises here", "hand enters from right")
+2. **Mark static zones** — X areas that should stay fixed (product label, background)
+3. **Add notes** — Text labels for video model context ("this is the hero product", "camera pushes in here")
+
+This annotation feeds into the video-director's image-first pipeline: annotated reference images give video models clearer direction about what to animate.
+
+### Seedream 4 Character Alternative
+For projects needing extreme character consistency:
+- **Seedream 4** generates consistent characters from a single reference image
+- Better facial feature preservation than Nano Banana across 10+ images
+- Use when building character image libraries for video campaigns or character-based social accounts
+- Workflow: Seedream 4 (character images) → Nano Banana (scene/product images) → Video model
 
 ---
 

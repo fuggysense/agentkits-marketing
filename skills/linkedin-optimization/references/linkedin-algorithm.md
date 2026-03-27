@@ -1,3 +1,8 @@
+## Graph Links
+- **Parent skill:** [[linkedin-optimization]]
+- **Sibling references:** [[banner-designer]], [[content-ideas]], [[profile-analyzer]]
+- **Related skills:** [[linkedin-content]], [[social-media]]
+
 # LinkedIn Algorithm — Deep Reference
 
 > Last verified: 2026-03-12

@@ -33,6 +33,12 @@ agents:
   - project-manager
 ---
 
+## Graph Links
+- **Feeds into:** (meta-skill -- prompt structure)
+- **Draws from:** (any skill invocation)
+- **Used by agents:** (system-level)
+- **Related:** [[verification-loops]]
+
 # Prompt Contracts
 
 Define a 4-part contract before implementation: **GOAL** (quantifiable success), **CONSTRAINTS** (hard limits), **FORMAT** (exact output shape), **FAILURE** (explicit conditions that mean "not done"). The agent treats this as an engineering spec with zero ambiguity about what "done" means.

@@ -1,3 +1,8 @@
+## Graph Links
+- **Parent skill:** [[social-media]]
+- **Sibling references:** [[content-formats]], [[engagement-tactics]], [[social-media-playbook]], [[viral-mechanics]]
+- **Related skills:** [[analytics-attribution]]
+
 # Platform Algorithms
 
 How social media algorithms rank and distribute content.

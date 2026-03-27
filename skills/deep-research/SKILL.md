@@ -26,11 +26,18 @@ related_skills:
   - competitor-alternatives
   - content-strategy
   - analytics-attribution
+  - content-moat
 agents:
   - researcher
   - brainstormer
   - planner
 ---
+
+## Graph Links
+- **Feeds into:** [[content-moat]], [[competitor-alternatives]]
+- **Draws from:** (independent — research engine)
+- **Used by agents:** [[researcher]]
+- **Related:** [[content-strategy]]
 
 # Deep Research Skill
 
@@ -234,6 +241,60 @@ Research compiled [date]. [N] parallel research tracks synthesized.
 ## Output Location
 
 Save research documents to: `./docs/research/[topic-slug]-[YYYY-MM-DD].md`
+
+## External LLM Synthesis (Token-Saving Option)
+
+The biggest token cost in deep research isn't the searching — it's the **synthesis**. Each sub-agent processes 10+ pages of raw search results into structured findings. That processing can be offloaded to cheaper models.
+
+### How It Works
+
+Sub-agents still use WebSearch/Linkup for the actual searching (gathering). But the synthesis step — reading raw results and producing structured findings — gets piped to `scripts/research-llm.sh`:
+
+```
+Sub-agent workflow:
+1. WebSearch / Linkup  →  raw results (gathering)
+2. research-llm.sh     →  structured summary (synthesis)  ← token savings here
+3. Return summary to orchestrator (Claude)
+```
+
+### Sub-Agent Synthesis Command
+
+After gathering raw search results, sub-agents can run:
+
+```bash
+# Pipe raw findings to cheap LLM for synthesis
+scripts/research-llm.sh auto "Synthesize these raw search findings into structured research output.
+
+RAW FINDINGS:
+[paste raw search results here]
+
+OUTPUT FORMAT:
+## Key Findings
+[Numbered list with inline source citations]
+## Evidence Quality
+[Which findings are well-sourced vs. speculative]
+## Sources
+[Full list with URLs]"
+```
+
+The script returns JSON with a `result` field containing the structured synthesis. The sub-agent passes this back to the orchestrator.
+
+### When to Use
+
+- **Use external LLM:** When research has 3+ sub-agents each processing many search results (biggest savings)
+- **Stay on Claude:** When synthesis requires nuanced judgment, creative connection-making, or the topic is highly specialized
+- **HITL gate:** Ask the user which research backend to use before spawning sub-agents
+
+### Available Models
+
+| Provider | Model | Best For |
+|----------|-------|----------|
+| Kilo Gateway | `minimax/minimax-m2.5` (default) | General research synthesis, cheapest |
+| Kilo Gateway | `nvidia/nemotron-3-super` | More complex synthesis, still cheap |
+| Gemini CLI | `gemini-2.5-flash` | Fallback, good general quality |
+| Auto | tries Kilo → Gemini | Set-and-forget |
+
+---
 
 ## The 5 Pitfalls That Kill Research Quality
 

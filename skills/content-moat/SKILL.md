@@ -24,11 +24,19 @@ related_skills:
   - content-strategy
   - social-media
   - linkedin-content
+  - deep-research
 agents:
   - brainstormer
   - copywriter
   - brand-voice-guardian
+  - researcher
 ---
+
+## Graph Links
+- **Feeds into:** [[copywriting]], [[video-director]], [[image-generation]]
+- **Draws from:** [[deep-research]], [[content-strategy]]
+- **Used by agents:** [[brainstormer]], [[copywriter]], [[researcher]]
+- **Related:** [[marketing-psychology]], [[marketing-ideas]]
 
 # Content Moat
 
@@ -50,8 +58,9 @@ The tools are commoditized. Sora, Kling, VEO, Nano Banana — everyone has acces
 - When content performance is declining (sign of format saturation)
 - During creative direction sessions with the brainstormer agent
 - Before handing off to video-director or image-generation skills
+- When you want research-backed ideation instead of ideating from memory alone
 
-**NOT for:** Paid ad creative (different game — conversion > originality), quick social replies, repurposing existing content.
+**NOT for:** Paid ad creative (different game — conversion > originality), quick social replies, reactive posts where speed matters more than moat.
 
 ---
 
@@ -63,7 +72,7 @@ Every successful content format follows this lifecycle:
 1. **Creator invents** a format — gets algorithmic boost for novelty
 2. **First wave** of audience discovers it — high engagement, shares, follows
 3. **Copycats appear** — recreate the surface (same structure, similar visuals)
-4. **Algorithm deprioritizes** the copies — it already served that format to users
+4. **Copies get lower engagement** — audience has seen the structure, completion drops, saves drop. Algorithm reads declining engagement as declining quality, reduces distribution
 5. **Creator evolves** or a new original emerges — cycle repeats
 
 The copycats never get the initial wave. They arrive after the algorithm has already distributed the format. They're competing for the 10-20% residual attention.
@@ -120,45 +129,138 @@ COPYCAT RESISTANCE SCORE
 ========================
 Content: [title/description]
 
-Layers present:                    /10
-Layers that require YOUR context:  /10
-Time to copy (honest estimate):    ___
-Would a copy get the same result?  Yes / Partial / No
+A. Layers present:                    /10
+B. Layers that require YOUR context:  /10
+C. Time to copy (honest estimate):    ___
+D. Would a copy get the same result?  Yes / Partial / No
 
-SCORE: [layers present] × [uniqueness multiplier]
-- 1-3 layers: EXPOSED (anyone can copy this tomorrow)
-- 4-6 layers: DEFENDED (copies will feel off)
-- 7-9 layers: MOATED (would take significant effort + won't hit the same)
-- 10: UNCOPYABLE (your identity IS the content)
+SCORE = A + (B × 0.5 bonus)
+Example: 5 layers present, 3 require your context → 5 + 1.5 = 6.5
+
+BANDS:
+- 0-3: EXPOSED (anyone can copy this tomorrow)
+- 4-6: DEFENDED (copies will feel off)
+- 7-9: MOATED (significant effort to copy + won't hit the same)
+- 10+: UNCOPYABLE (your identity IS the content)
+
+If D = "Yes" → drop one band regardless of score (you're format-dependent)
 ```
+
+Start with the Minimum Viable Moat (4 layers) and build up. See `references/layer-catalog.md` for the recommended addition sequence.
+
+---
+
+## Research-Fueled Mode (Optional)
+
+When activated, research runs BEFORE ideation — giving you raw material to collide, flip, and translate with instead of pulling only from memory.
+
+### When to Use Research Mode
+
+- Entering a new niche or platform you don't have deep knowledge of yet
+- Competitor content is evolving and you need to see what's out there before differentiating
+- You want data-backed contrarian takes (Perspective Flip needs evidence)
+- You're doing Format Translation and need to scout formats on other platforms
+- Content performance is declining — research what's saturated vs. what's white space
+
+### How It Works
+
+```
+deep-research / researcher agent     →  content-moat ideation  →  execution skills
+(what exists, what's saturated,         (what to make + why)       (how to make it)
+ what's white space, what formats
+ are crushing it elsewhere)
+```
+
+**Step 0 (Research)** runs before Step 1 (Ideate). It spawns research agents using `deep-research` skill's MECE decomposition:
+
+| Research Angle | What It Feeds | Ideation Framework |
+|---|---|---|
+| **Competitor content audit** — what formats/angles top competitors use, engagement levels, posting frequency | Know what to AVOID (saturated) and what to BEAT | Collision Method (avoid existing collisions), Perspective Flip (find "best practices" to challenge) |
+| **Adjacent niche scan** — formats crushing it in niches your audience doesn't follow | Raw material for unexpected collisions | Collision Method, Format Translation |
+| **Platform gap analysis** — what works on Platform A but doesn't exist on Platform B | First-mover opportunities | Format Translation |
+| **Audience discourse mining** — what your target audience complains about, asks for, debates in communities | Pain points and contrarian angles backed by real sentiment | Perspective Flip, Proprietary Insight Extraction |
+| **Trend lifecycle check** — where current trends sit in the originals→copies→saturation curve | Timing intelligence — ride early waves, skip late ones | All frameworks (avoid saturated formats) |
+
+### Research Prompt Template
+
+When activating research mode, spawn the `researcher` agent (or use `deep-research` for comprehensive coverage) with this context:
+
+```
+CONTEXT: Content moat research for [PROJECT/NICHE].
+PURPOSE: Feed original content ideation — we need to know what EXISTS so we can make what DOESN'T.
+
+Research these angles (pick 3-5 based on need):
+1. COMPETITOR CONTENT: Top 5-10 competitors' content formats, engagement patterns, posting cadence. What's working? What's oversaturated?
+2. ADJACENT FORMATS: Scan [2-3 unrelated niches] for content formats that don't exist in [our niche] yet. Look for structural patterns, not topics.
+3. PLATFORM GAPS: What formats dominate [Platform A] but are absent on [Platform B]?
+4. AUDIENCE DISCOURSE: What is [target audience] debating, complaining about, or asking for in [communities/forums/subreddits]?
+5. TREND LIFECYCLE: For [current trends in niche], where are they on the originals→copies→saturation curve?
+
+OUTPUT: Raw findings organized by angle. Flag white space opportunities and saturated zones. Include specific examples with URLs.
+```
+
+### Research → Ideation Handoff
+
+After research returns, feed findings into the ideation frameworks:
+
+| Research Finding | Action |
+|---|---|
+| "Everyone in [niche] uses [format X]" | AVOID format X. Use Collision Method to create something structurally different |
+| "[Format Y] is huge on TikTok but nobody does it on LinkedIn" | Format Translation opportunity — adapt Y for LinkedIn |
+| "Audience is debating [accepted practice Z]" | Perspective Flip — research which side has underrepresented evidence |
+| "[Adjacent niche] has [unexpected format]" | Collision Method — collide that format with your domain |
+| "[Trend] is in early copy phase, not saturated yet" | Can ride the wave IF you add 4+ original layers (Minimum Viable Moat) |
+
+### Research Backend (Token-Saving Option)
+
+Research *gathering* (WebSearch, Linkup) stays the same. But the heavy *synthesis* step — reading 10+ pages of raw results and summarizing into structured findings — can be routed to cheaper LLMs via `scripts/research-llm.sh` instead of burning Claude tokens.
+
+**How to use:** After gathering raw search results, pipe the synthesis prompt to the research router:
+
+```bash
+# Synthesize raw findings with MiniMax M2.5 (cheapest)
+scripts/research-llm.sh kilo "Synthesize these findings into structured research: [raw data]"
+
+# Or with Nemotron 3 Super (more capable)
+scripts/research-llm.sh kilo "Synthesize..." --model "nvidia/nemotron-3-super"
+
+# Or Gemini 2.5 Flash
+scripts/research-llm.sh gemini "Synthesize these findings into structured research: [raw data]"
+
+# Auto mode: tries Kilo first, falls back to Gemini
+scripts/research-llm.sh auto "Synthesize..."
+```
+
+The script returns consistent JSON: `{"provider","model","success","result","tokens_used","error"}`. Claude parses the `result` field and feeds it into ideation frameworks. Claude only sees the final structured summary — not the raw search pages.
+
+**Token savings:** Research synthesis is the most token-heavy step (processing 10+ web pages). Routing it to Kilo/Gemini keeps Claude tokens for creative ideation only.
+
+### HITL Gate
+
+| Gate | What | Why |
+|------|------|-----|
+| Research scope approval | Before spawning research agents | Avoid wasting time researching the wrong angles |
+| Research backend choice | Claude / Kilo Gateway / Gemini / Auto | Control token spend vs. synthesis quality |
 
 ---
 
 ## Pipeline Integration
 
-This skill sits BEFORE the execution skills in the creative pipeline:
+This skill sits BEFORE the execution skills in the creative pipeline. Research mode adds an optional upstream step:
 
 ```
-content-moat          →  copywriting / video-director / image-generation
-(what to make + why)     (how to make it)
+[deep-research / researcher]  →  content-moat          →  copywriting / video-director / image-generation
+(optional: what exists)           (what to make + why)     (how to make it)
 ```
 
-### With video-director:
-1. Run content-moat ideation first → get the concept + layer plan
-2. Feed the concept to video-director → it handles prompt generation
-3. The layer plan tells video-director WHICH layers to embed in the prompt (color grade, grain, transition style, character consistency)
+| Downstream Skill | What content-moat feeds it | Key parameters |
+|-----------------|---------------------------|----------------|
+| `video-director` | Concept + layer plan → embed in prompt | STYLE: color grade, grain, transitions. CHARACTER: consistency template. AUDIO CUE: custom sound placement |
+| `image-generation` | Visual identity layers → JSON prompt params | `style.color_grading`, `style.aesthetic`, `negative_prompt` values from layer plan |
+| `copywriting` | Messaging layers → copy constraints | Voice pattern, argument structure, proof points, catchphrase bank |
+| `linkedin-content` | Concept angles → SIREN hook | Which layer is the story hook, messaging framework constraints |
 
-### With image-generation:
-1. Content-moat defines the visual identity layers (color grade, texture, style aesthetic)
-2. Image-generation translates those into JSON prompt parameters (style.color_grading, style.aesthetic, negative_prompt)
-
-### With copywriting:
-1. Content-moat defines messaging layers (framework, catchphrases, argument structure)
-2. Copywriting skill handles the actual copy using those constraints
-
-### With linkedin-content:
-1. Content-moat ideation generates the concept angles
-2. SIREN framework handles LinkedIn-specific formatting
+See `references/layer-catalog.md` for implementation details per layer.
 
 ---
 
@@ -176,6 +278,12 @@ content-moat          →  copywriting / video-director / image-generation
 When invoked, deliver:
 
 ```markdown
+## Research Intel (if research-fueled mode used)
+**Saturated formats:** [what to avoid]
+**White space found:** [gaps nobody is filling]
+**Platform gaps:** [formats absent on target platform]
+**Source:** [research doc location or key URLs]
+
 ## Content Concept
 **Idea:** [one-line concept]
 **Origin:** [what collision/framework produced this]
@@ -190,9 +298,10 @@ When invoked, deliver:
 [Score breakdown]
 
 ## Execution Handoff
-- **Video:** [what video-director needs to know]
-- **Image:** [what image-generation needs to know]
-- **Copy:** [what copywriting needs to know]
+- **Video (video-director):** STYLE: [color grade], [grain type], [transition rhythm] | CHARACTER: [if applicable] | AUDIO CUE: [custom sound placement]
+- **Image (image-generation):** style.color_grading: [value] | style.aesthetic: [value] | negative_prompt: [what to avoid]
+- **Copy (copywriting):** Voice constraints: [messaging pattern] | Proof points: [specific data to include]
+- **LinkedIn (linkedin-content):** SIREN hook angle: [which layer is the story hook]
 
 ## Anti-Copy Evolution Plan
 [How to evolve this format when copies appear — next layer to add, next angle to explore]

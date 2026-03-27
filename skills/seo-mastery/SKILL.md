@@ -37,6 +37,12 @@ success_metrics:
 output_schema: seo-audit
 ---
 
+## Graph Links
+- **Feeds into:** [[programmatic-seo]], [[schema-markup]], [[competitor-alternatives]]
+- **Draws from:** [[content-strategy]]
+- **Used by agents:** [[seo-specialist]], [[attraction-specialist]]
+- **Related:** [[analytics-attribution]]
+
 # SEO Mastery
 
 Search engine optimization strategies and tactics for sustainable organic growth.
@@ -222,3 +228,4 @@ Pillar Page (comprehensive, 3000+ words)
 - `references/link-building.md` - Link acquisition strategies
 - `references/local-seo.md` - Local search optimization
 - `references/seo-audit-checklist.md` - Comprehensive audit framework
+- `references/seo-playbook.md` - Complete SEO strategy playbook

@@ -1,3 +1,8 @@
+## Graph Links
+- **Parent skill:** [[email-sequence]]
+- **Sibling references:** (none)
+- **Related skills:** [[email-marketing]], [[copywriting]], [[campaign-runner]]
+
 # Email Sequence Templates & Best Practices
 
 Based on research from [HubSpot](https://blog.hubspot.com/sales/drip-emails-opens), [MoEngage](https://www.moengage.com/blog/email-drip-campaigns/), [Omnisend](https://www.omnisend.com/blog/drip-campaign/).

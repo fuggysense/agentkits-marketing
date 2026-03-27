@@ -1,3 +1,7 @@
+## Graph Links
+- **Parent skill:** [[popup-cro]]
+- **Related skills:** [[page-cro]], [[form-cro]], [[marketing-psychology]]
+
 # Popup & Modal Optimization Guide
 
 Based on research from [OptinMonster](https://optinmonster.com/popup-statistics/), [Sumo](https://sumo.com/stories/pop-up-statistics), [Wisepops](https://wisepops.com/blog/popup-statistics/).

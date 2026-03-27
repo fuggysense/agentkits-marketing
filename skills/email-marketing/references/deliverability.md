@@ -1,3 +1,8 @@
+## Graph Links
+- **Parent skill:** [[email-marketing]]
+- **Sibling references:** [[automation]], [[email-marketing-playbook]], [[lead-nurturing-workflows]], [[segmentation]], [[sequence-design]]
+- **Related skills:** [[analytics-attribution]]
+
 # Email Deliverability
 
 Getting emails to the inbox.

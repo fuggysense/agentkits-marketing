@@ -103,3 +103,14 @@ token.json
 .claude/hooks/
 .claude/projects/
 .claude/scripts/
+.claude/telegram/
+
+# ClaudeClaw personal files (operator-specific, never push)
+SOUL.md
+USER.md
+CHANNELS.md
+cron-registry.json
+credentials/
+.agent/
+.agents/
+.claude/scheduled_tasks.lock

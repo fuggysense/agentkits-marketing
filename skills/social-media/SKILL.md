@@ -34,6 +34,12 @@ success_metrics:
   - reach
 ---
 
+## Graph Links
+- **Feeds into:** [[linkedin-content]], [[linkedin-optimization]], [[tiktok-slideshows]]
+- **Draws from:** [[content-strategy]], [[video-director]]
+- **Used by agents:** [[copywriter]]
+- **Related:** [[campaign-runner]]
+
 # Social Media
 
 Social media strategy, content creation, and community building across platforms.
@@ -219,3 +225,4 @@ Apply social media expertise when:
 - `references/content-formats.md` - Format best practices
 - `references/engagement-tactics.md` - Building engagement
 - `references/viral-mechanics.md` - What makes content spread
+- `references/social-media-playbook.md` - Complete social media strategy playbook

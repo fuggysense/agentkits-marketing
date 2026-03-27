@@ -27,6 +27,12 @@ success_metrics:
   - problem_resolution_rate
 ---
 
+## Graph Links
+- **Feeds into:** [[content-strategy]], [[campaign-runner]]
+- **Draws from:** (independent — thinking tool)
+- **Used by agents:** [[brainstormer]], [[planner]]
+- **Related:** [[marketing-psychology]]
+
 # Marketing Problem-Solving
 
 Systematic techniques for solving complex marketing challenges, breaking through creative blocks, and optimizing campaigns.

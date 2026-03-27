@@ -24,6 +24,12 @@ mcp_integrations:
 success_metrics: []
 ---
 
+## Graph Links
+- **Feeds into:** (document output -- terminal)
+- **Draws from:** [[copywriting]], [[brand-building]]
+- **Used by agents:** [[docs-manager]], [[copywriter]]
+- **Related:** [[document-skills/pdf]], [[document-skills/pptx]], [[document-skills/xlsx]]
+
 # DOCX creation, editing, and analysis
 
 ## Language & Quality Standards

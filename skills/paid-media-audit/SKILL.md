@@ -2,7 +2,7 @@
 name: paid-media-audit
 version: "1.0.0"
 brand: AgentKits Marketing by AityTech
-description: Systematic audit framework for evaluating paid advertising accounts across Google Ads, Meta Ads, LinkedIn Ads, and TikTok Ads. Covers 200+ checkpoints spanning account structure, tracking, bidding, targeting, creative, and landing pages.
+description: Systematic audit framework for evaluating paid advertising accounts across Google Ads, Meta Ads, LinkedIn Ads, and TikTok Ads. Covers 200+ checkpoints spanning account structure, tracking, bidding, targeting, creative, landing pages, and competitive ad intelligence.
 triggers:
   - paid media audit
   - ad account audit
@@ -12,14 +12,24 @@ triggers:
   - account health check
   - ad performance review
   - campaign audit
+  - competitor ads
+  - competitor ad analysis
+  - ad spy
+  - ad library
 model: sonnet
 ---
+
+## Graph Links
+- **Feeds into:** (end of paid pipeline)
+- **Draws from:** [[paid-advertising]], [[analytics-attribution]]
+- **Used by agents:** [[attraction-specialist]]
+- **Related:** [[campaign-runner]]
 
 # Paid Media Audit
 
 ## Overview
 
-A 5-phase audit workflow for systematically evaluating paid advertising accounts and surfacing actionable improvements.
+A 6-phase audit workflow for systematically evaluating paid advertising accounts, surfacing actionable improvements, and analyzing competitor ad creatives.
 
 1. **Scope** — Define audit goals, platforms, timeframe, and success criteria. Align with stakeholders on what "good" looks like.
 2. **Extract** — Pull account structure, performance data, tracking configs, audience settings, and budget/bidding parameters from each platform.
@@ -175,6 +185,30 @@ Structure the audit report as follows:
    - **60 days:** Address P2 optimizations
    - **90 days:** Implement P3 improvements and establish ongoing monitoring
 
+### Phase 6: Competitive Ad Intelligence
+
+Extract and analyze competitor ad creatives from Meta Ad Library.
+
+**Sub-steps:**
+1. **Extract** — Get competitor's delegate_page ID from their Facebook page, build Ad Library URL (see `references/dom-selectors.md`)
+2. **Download** — Run browser extraction JS to get media URLs, then use `scripts/extract-and-download.sh` to batch download images/videos to `clients/<project>/campaigns/competitive-intel/<advertiser-slug>/`
+3. **Analyze Creatives** — Use multimodal analysis prompts from `references/creative-analysis-prompts.md` to analyze each ad (video via Gemini Files API for long videos, image via Claude vision)
+4. **Analyze Landing Pages** — Screenshot competitor landing pages, analyze with the landing page prompt from `references/creative-analysis-prompts.md`
+5. **Generate Report** — Fill `templates/competitive-report.html` with findings — self-contained HTML with inline media, strategy overview, per-funnel breakdowns, and actionable takeaways
+
+**Checklist additions (Competitive Positioning):**
+- [ ] Active ads extracted from Meta Ad Library
+- [ ] Ad creatives downloaded and organized by advertiser
+- [ ] Video ads analyzed (hook, script, emotion, CTA, format)
+- [ ] Image ads analyzed (hierarchy, copy, design, emotion)
+- [ ] Landing pages screenshotted and analyzed
+- [ ] Comparative analysis completed (patterns, testing strategy, funnel consistency)
+- [ ] Competitive report generated with actionable takeaways
+
+**Output:** Self-contained HTML report saved to `clients/<project>/campaigns/competitive-intel/<advertiser-slug>/report.html`
+
+**Dependencies:** `jq` (for JSON parsing), `curl` (for downloads), Gemini API key (for video ad analysis via Files API)
+
 ## Workflow
 
 1. **Kick-off:** Confirm platforms, access, goals, and timeframe with stakeholder
@@ -192,12 +226,17 @@ Structure the audit report as follows:
 
 - `/audit:paid-media` — Run full paid media audit (all phases, all categories)
 - `/audit:paid-media:quick` — Rapid health check (top 20 checkpoints only — tracking, bidding, top waste)
+- `/audit:competitor-ads` — Run competitive ad intelligence (Phase 6 only — extract, download, analyze competitor ads)
 
 ## Resources
 
 - **Reference:** `./references/audit-checklist.md` — Detailed 200+ checkpoint checklist
 - **Skill:** `paid-advertising/SKILL.md` — Platform strategies and campaign management
 - **Skill:** `analytics-attribution/SKILL.md` — Measurement framework and attribution models
+- **Reference:** `./references/dom-selectors.md` — Meta Ad Library extraction selectors
+- **Reference:** `./references/creative-analysis-prompts.md` — Multimodal analysis prompts for ads and landing pages
+- **Script:** `./scripts/extract-and-download.sh` — Batch download extracted ad media
+- **Template:** `./templates/competitive-report.html` — Self-contained HTML report template
 
 ## Related Skills
 

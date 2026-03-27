@@ -1,3 +1,8 @@
+## Graph Links
+- **Parent skill:** [[video-director]]
+- **Sibling references:** [[character-bible-template]], [[cinematography-reference]], [[client-campaign-audit]], [[model-selection-guide]], [[seed-management]], [[video-type-catalog]]
+- **Related skills:** [[image-generation]], [[script-skill]], [[campaign-runner]]
+
 # Realism Tricks for AI Video Generation
 
 Universal realism rules extracted from proven AI video ad prompts. These techniques make AI-generated video look like native UGC content shot on a phone, not polished studio production.
@@ -153,6 +158,20 @@ For multi-shot sequences, copy this character block into EVERY prompt to maintai
 with [POSTURE DESCRIPTION], expressing [EMOTION/ENERGY LEVEL]
 ```
 
+### Two Methods for Character Consistency
+
+**Method 1: Sora Characters API** (Sora 2 Pro only)
+- Upload reference image → get `@username` handle → reference in prompts
+- Max 2 characters per generation via API
+- Best for: multi-clip sequences, 1min+ content, recurring characters
+- See: `references/character-bible-template.md` for full API documentation
+
+**Method 2: Text-Based Character Block** (All models)
+- Copy the character block verbatim into every prompt
+- Works with Sora, Kling, VEO — any model that accepts text
+- Best for: one-off sequences, multi-model workflows, more than 2 characters
+- See: `references/character-bible-template.md` for facial profile + context templates
+
 ### Character Consistency Rules
 - Be specific about UNCHANGING features (bone structure, eye color, skin tone) not just clothing
 - Describe the same clothing in identical terms across prompts — "navy crew-neck sweater" not "blue top"
@@ -216,6 +235,141 @@ Some models interpret "no X" as emphasis on X. Listing bare terms in the negativ
 | Real Estate | CGI, miniature, dollhouse, unrealistic, stock |
 | Educational | cartoon, horror, gore, inaccurate anatomy |
 | All Types | extra fingers, missing fingers, watermark, text overlay, blurry face |
+
+---
+
+## Post-Production Pipeline
+
+After generating video clips, enhance with this toolchain:
+
+### Step 1: Grain & Texture (CapCut / DaVinci Resolve)
+- Add subtle film grain to fight the "too clean" AI look
+- Adjust exposure for slight highlights blow-out (natural phone camera behavior)
+- Add subtle lens vignette if not present
+
+### Step 2: Upscale (Topaz Video AI)
+- Upscale 1.25x to 1.75x — NOT more (over-upscaling looks artificial)
+- Use "natural" mode, not "enhance" (enhance over-sharpens)
+- Maintains detail without introducing AI upscaling artifacts
+
+### Step 3: Voice & Audio (11 Labs / ElevenLabs)
+- Generate voice-over for talking head clips
+- Match voice to character profile (age, gender, energy level)
+- Add room tone / ambient noise to match the visual environment
+- Layer under the voice: keyboard clicks, traffic hum, café noise (per scene)
+
+### Result
+Raw AI clip → grain + texture → upscale → voice/audio = production-ready video that passes as real footage.
+
+---
+
+## Emotional Block Dialogue Cues
+
+Structure dialogue in "emotional blocks" — each block has one dominant emotion and transitions naturally to the next:
+
+```
+BLOCK 1 — CURIOSITY (0:00-0:04)
+Speaker leans forward, eyes slightly squinted, speaks slowly:
+"Have you ever noticed how the best ads don't feel like ads?"
+[Beat — slight pause, head tilt]
+
+BLOCK 2 — CONFIDENCE (0:04-0:08)
+Speaker straightens up, gestures with open palm, pace increases:
+"That's because they're built on one simple principle..."
+[Slight smile, eyebrow raise]
+
+BLOCK 3 — CONVICTION (0:08-0:12)
+Speaker points at camera, lowers voice slightly:
+"Real stories from real people. That's it. That's the secret."
+[Nods slowly, maintains eye contact]
+```
+
+### Why Emotional Blocks Work
+- Models interpret emotional cues as acting direction → more natural facial expressions
+- Each block gives the model a clear "beat" to play → better pacing
+- Transitions between emotions feel human (curiosity → confidence → conviction is a natural arc)
+
+### Block Transition Patterns
+| From → To | Feels Like | Physical Cue |
+|-----------|-----------|-------------|
+| Curiosity → Confidence | "I figured it out" | Lean back, shoulders drop, slight smile |
+| Surprise → Excitement | "Wait, this is amazing" | Eyes widen, lean forward, hands come up |
+| Frustration → Resolution | "Here's what finally worked" | Head shake → nod, tension release |
+| Calm → Urgency | "But here's the thing..." | Lean in, pace quickens, finger point |
+
+---
+
+## Weak → Strong Prompt Transformations
+
+Turn vague prompts into high-quality outputs by following these transformation patterns:
+
+| Weak Prompt | Problem | Strong Prompt |
+|------------|---------|---------------|
+| "A woman talking to camera" | No specificity | "A 28-year-old woman with dark wavy hair, wearing a sage green linen shirt, speaking directly to camera from a sunlit kitchen, iPhone selfie-cam at arm's length, slight natural shake" |
+| "Product on a table" | No context or action | "Hands slide a matte black subscription box across a wooden dining table, pause, then carefully lift the magnetic lid. Warm window light from the left, shallow depth of field. Sound: satisfying magnetic click, tissue paper rustle" |
+| "Someone reacting to something" | No emotion anchor | "Close-up of a 35-year-old man's face shifting from skepticism (furrowed brow, slight head shake) to genuine surprise (eyebrows up, mouth opens slightly, leans back), shot on iPhone 15 Pro, ring light catchlights visible in eyes" |
+| "A cooking video" | No sensory detail | "Macro shot of golden-brown garlic sizzling in olive oil in a cast iron pan, camera slowly pulls back to reveal hands adding fresh herbs. Steam rises, oil pops. 45-degree overhead angle, warm kitchen lighting, shallow DOF" |
+
+### Transformation Rules
+1. **Add a specific person** — age, appearance, clothing, emotion
+2. **Add a specific place** — not "kitchen" but "sunlit Brooklyn apartment kitchen with subway tile and hanging copper pots"
+3. **Add a specific action** — not "using product" but "slides open the magnetic lid, lifts out the bottle, reads the label"
+4. **Add sensory details** — sounds, textures, temperatures, smells (described for scene comprehension)
+5. **Add camera specifics** — not "medium shot" but "35mm lens, eye-level, slight handheld drift, shallow DOF"
+
+---
+
+## Image Input First-Frame Control
+
+When a model supports image input (Sora, Kling, VEO):
+
+### How It Works
+1. Generate a high-quality reference image using `image-generation` skill
+2. Upload as the "first frame" or "reference image" input
+3. The model uses this as the starting composition and animates from there
+4. Result: exact visual match to your intended look, with motion added
+
+### Best Practices
+- Reference image should match the exact aspect ratio of the video output
+- Lighting, composition, and subject appearance in the image = what the video starts with
+- For transformation videos: provide both first-frame AND last-frame images
+- Image quality matters — higher quality input = better video output
+
+### When to Use
+- Product shots where you need exact product appearance
+- Character-based content where facial features must match a reference
+- Scene compositions that are difficult to describe in text alone
+- Before/after sequences where you control both endpoints
+
+---
+
+## Dialogue Formatting Best Practice
+
+How dialogue is formatted in the prompt affects how models interpret and render speech:
+
+### Recommended Format
+```
+[CHARACTER] speaks [delivery style], [physical action]:
+"[Dialogue line]"
+[Beat/reaction description]
+"[Next line]"
+```
+
+### Example
+```
+Sarah speaks confidently, leaning forward with one hand on the desk:
+"Three months ago, I couldn't get a single ad to convert."
+[Slight laugh, shakes head, sits back]
+"Now? We're spending $50K a month and every dollar comes back 4x."
+[Direct eye contact, slight smile]
+```
+
+### Rules
+- Dialogue ALWAYS in quotation marks — models interpret these as spoken words
+- Delivery style as adverb: "confidently," "hesitantly," "excitedly"
+- Physical actions between lines as [bracketed beats]
+- Keep individual lines short — models handle 1-2 sentences per speech block better than paragraphs
+- Specify WHO speaks before each line in multi-character scenes
 
 ---
 

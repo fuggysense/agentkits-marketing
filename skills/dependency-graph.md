@@ -35,13 +35,44 @@ page-cro (Foundation)
 ```
 copywriting (Foundation)
 ├── copy-editing
+├── youtube-content ← (also requires: transcribe)
 └── email-sequence ← (also requires: email-marketing)
 ```
 
 **Learning Path:**
 1. Start with `copywriting` (write first)
-2. Polish with `copy-editing`
+2. Polish with `copy-editing` (includes Sweep 8: De-AI)
 3. Automate with `email-sequence`
+4. YouTube with `youtube-content` (requires `transcribe`)
+
+---
+
+## Social Content Track
+
+```
+image-generation (Foundation)
+└── tiktok-slideshows ← (also requires: campaign-runner, social-media, scrapecreators)
+```
+
+**Learning Path:**
+1. Start with `image-generation` (AI image prompts)
+2. Specialize with `tiktok-slideshows` (TikTok Photo Mode carousels at 3:4)
+
+---
+
+## Utility Track
+
+```
+transcribe (Independent — no prerequisites)
+└── youtube-content ← (also requires: copywriting)
+
+scrapecreators (Independent — no prerequisites)
+```
+
+**Learning Path:**
+1. Start with `transcribe` (video → text)
+2. Extend to `youtube-content` (transcript → full YouTube description)
+3. Use `scrapecreators` for social intelligence data (profiles, videos, trending)
 
 ---
 
@@ -122,6 +153,25 @@ image-generation (Foundation)
 
 ---
 
+## Offer Track
+
+```
+offer-builder (Foundation — no prerequisites)
+├── (soft) marketing-psychology — for buyer psychology and mental models
+├── (soft) brand-building — for positioning and identity work
+├── (soft) pricing-strategy — for price anchoring and packaging
+└── (soft) copywriting — for polishing offer language and outreach scripts
+```
+
+**Learning Path:**
+1. Start with `offer-builder` (construct the offer)
+2. Deepen with `marketing-psychology` (buyer mental models)
+3. Position with `brand-building` (brand identity)
+4. Price with `pricing-strategy` (packaging and tiers)
+5. Polish with `copywriting` (offer language and scripts)
+
+---
+
 ## Email Track
 
 ```
@@ -153,12 +203,14 @@ content-strategy
 
 ```
 paid-advertising (Foundation)
-└── paid-media-audit ← (also requires: analytics-attribution)
+├── paid-media-audit ← (also requires: analytics-attribution)
+└── meta-ads-uploader ← (also requires: copywriting, image-generation)
 ```
 
 **Learning Path:**
 1. Start with `paid-advertising` (platform strategies)
 2. Audit with `paid-media-audit` (systematic account review)
+3. Deploy with `meta-ads-uploader` (creative upload → PAUSED ads)
 
 ---
 
@@ -181,11 +233,15 @@ analytics-attribution ┘
 ## Meta Track (System Tools)
 
 ```
-meta-builder (Independent — creates new artifacts)
-amplifier (Independent — enhances existing artifacts)
+skill-builder (Independent — creates new artifacts, global: ~/.claude/skills/skill-builder/)
+skill-amplifier (Independent — enhances existing artifacts, global: ~/.claude/skills/skill-amplifier/)
+autoresearch (Independent — autonomous skill optimization, global: ~/.claude/skills/autoresearch/)
+├── (soft) analytics-usage — for priority scoring (Phase 3)
+├── (soft) knowledge-hygiene — for staleness signals (Phase 3)
+└── (soft) campaign-runner — for feedback loop (Phase 4)
 ```
 
-Related but independent: meta-builder creates, amplifier improves. If amplifier finds a gap too large to fill, it recommends meta-builder.
+Related but independent: skill-builder creates, skill-amplifier improves, autoresearch optimizes autonomously. If autoresearch finds a skill too weak to optimize, it recommends skill-amplifier first.
 
 ---
 
@@ -231,10 +287,24 @@ No dependencies - can be loaded as needed.
 | `referral-program` | `marketing-fundamentals` |
 | `free-tool-strategy` | `seo-mastery`, `content-strategy` |
 | `paid-media-audit` | `paid-advertising`, `analytics-attribution` |
+| `meta-ads-uploader` | `paid-advertising` (hard), `copywriting` (soft), `image-generation` (soft) |
 | `linkedin-optimization` | `social-media` |
 | `linkedin-content` | `linkedin-optimization`, `copywriting` |
 | `campaign-runner` | `content-strategy`, `social-media`, `analytics-attribution` |
+| `offer-builder` | none (foundational) |
 | `video-director` | `image-generation` (hard), `copywriting` (soft — for dialogue scripts) |
+| `transcribe` | none (foundational) |
+| `scrapecreators` | none (foundational) |
+| `tiktok-slideshows` | `image-generation` (hard), `campaign-runner`, `social-media`, `scrapecreators` |
+| `youtube-content` | `transcribe` (hard), `copywriting` (hard) |
+
+---
+
+## Data Sources
+
+| Skill | External Data | Origin |
+|-------|--------------|--------|
+| `website-design` | 8 CSV files in `data/` (styles, colors, typography, ui-reasoning, landing, ux-guidelines, charts, app-interface) + BM25 search scripts | Cherry-picked from [nextlevelbuilder/ui-ux-pro-max-skill](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill) (2026-03-13) |
 
 ---
 
@@ -256,6 +326,8 @@ These skills can be loaded independently:
 - `brand-building`
 - `problem-solving`
 - `pricing-strategy`
+- `offer-builder`
+- `transcribe`
 - `deep-research`
 - All document skills
 

@@ -23,6 +23,12 @@ mcp_integrations:
 success_metrics: []
 ---
 
+## Graph Links
+- **Feeds into:** (document output -- terminal)
+- **Draws from:** [[analytics-attribution]]
+- **Used by agents:** [[docs-manager]], [[project-manager]]
+- **Related:** [[document-skills/docx]], [[document-skills/pdf]], [[document-skills/pptx]]
+
 # XLSX Spreadsheet Processing
 
 ## Language & Quality Standards

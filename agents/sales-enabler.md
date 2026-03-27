@@ -239,3 +239,8 @@ Before delivering sales materials:
 | Market research (not competitive) | `researcher` |
 
 **IMPORTANT**: You DO NOT conduct sales calls - you create enablement materials. Coordinate with sales for feedback and iteration.
+
+## Skills Used
+- [[copywriting]] — sales copy
+- [[marketing-psychology]] — buyer psychology
+- [[competitor-alternatives]] — battlecards

@@ -32,6 +32,12 @@ success_metrics:
   - customer_acquisition
 ---
 
+## Graph Links
+- **Feeds into:** [[content-strategy]], [[copywriting]], [[analytics-attribution]]
+- **Draws from:** (foundation — entry point)
+- **Used by agents:** (all agents draw from this implicitly)
+- **Related:** [[marketing-psychology]]
+
 # Marketing Fundamentals
 
 Core marketing concepts, psychology, and frameworks for effective marketing execution.
@@ -191,3 +197,4 @@ Apply marketing fundamentals when:
 - `references/copywriting-frameworks.md` - Proven copy formulas
 - `references/marketing-metrics.md` - Key marketing KPIs
 - `references/competitor-analysis.md` - Competitive intelligence
+- `references/marketing-strategy-essentials.md` - Strategic foundations from HubSpot, Gartner, McKinsey
