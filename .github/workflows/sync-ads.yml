@@ -1,0 +1,56 @@
+name: Sync Ghost ads to swipe-files
+
+on:
+  schedule:
+    - cron: "0 18 * * *"  # 02:00 SGT daily (18:00 UTC prev day)
+  workflow_dispatch:
+    inputs:
+      industry:
+        description: "Industry slug (leave blank for all)"
+        required: false
+        default: ""
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install deps
+        run: pip install "psycopg[binary]==3.3.3"
+
+      - name: Run sync
+        env:
+          GHOST_DATABASE_URL: ${{ secrets.GHOST_DATABASE_URL }}
+          INDUSTRY_INPUT: ${{ github.event.inputs.industry }}
+        run: |
+          if [ -n "$INDUSTRY_INPUT" ]; then
+            python3 scripts/sync-ghost-to-swipefiles.py --industry "$INDUSTRY_INPUT"
+          else
+            python3 scripts/sync-ghost-to-swipefiles.py --all-industries
+          fi
+
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add swipe-files/
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+            exit 0
+          fi
+          CHANGES=$(git diff --staged --stat | tail -1)
+          git commit -m "sync: ghost ads → swipe-files ($(date -u +%Y-%m-%d))
+
+          $CHANGES"
+          git push
