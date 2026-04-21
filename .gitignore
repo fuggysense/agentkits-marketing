@@ -114,3 +114,12 @@ credentials/
 .agent/
 .agents/
 .claude/scheduled_tasks.lock
+scripts/modal/credentials.json
+skills/design-system/node_modules
+skills/design-system/package-lock.json
+
+# Video/image asset binaries downloaded during ad ingestion — local-only working
+# copies used for transcription because Meta CDN URLs expire. DB keeps the URL;
+# binaries don't belong in git.
+swipe-files/**/ads/assets/
+swipe-files/**/assets/
