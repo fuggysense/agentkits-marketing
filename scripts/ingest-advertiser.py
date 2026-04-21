@@ -111,35 +111,103 @@ def _local_video_path(industry: str, page_id: str, ad_archive_id: str) -> pathli
     return _SWIPE_ROOT / industry / "pages" / page_id / "ads" / "assets" / f"{ad_archive_id}.mp4"
 
 
-def _save_video_asset(asset_url: str, industry: str, page_id: str, ad_archive_id: str) -> pathlib.Path | None:
-    """Download the video to a persistent local path.
+def _resolve_ffmpeg() -> str | None:
+    """Find a working ffmpeg binary, skipping the known-broken ~/.darkbloom symlink."""
+    import shutil
+    found = shutil.which("ffmpeg")
+    if found and ".darkbloom" not in found:
+        return found
+    for candidate in ("/opt/homebrew/bin/ffmpeg", "/usr/local/bin/ffmpeg"):
+        if pathlib.Path(candidate).exists():
+            return candidate
+    return None
 
-    Meta CDN URLs expire within days, so we save a local copy at scrape time
-    so downstream transcription keeps working. Idempotent — returns existing
-    file if already saved. Never raises.
+
+def _compress_video(src: pathlib.Path, dest: pathlib.Path) -> bool:
+    """Compress src → dest at 720p H.264 CRF 25 AAC 128k (HandBrake "Fast 720p"
+    preset equivalent). Returns True on success."""
+    import subprocess
+    ff = _resolve_ffmpeg()
+    if not ff:
+        return False
+    try:
+        result = subprocess.run(
+            [
+                ff, "-y", "-hide_banner", "-loglevel", "error",
+                "-i", str(src),
+                "-vf", "scale='min(1280,iw)':'min(720,ih)':"
+                       "force_original_aspect_ratio=decrease:force_divisible_by=2",
+                "-c:v", "libx264",
+                "-preset", "fast",
+                "-crf", "25",
+                "-c:a", "aac",
+                "-b:a", "128k",
+                "-movflags", "+faststart",
+                str(dest),
+            ],
+            capture_output=True, text=True, timeout=300,
+        )
+        if result.returncode != 0:
+            print(f"WARN: ffmpeg compress failed rc={result.returncode} {result.stderr[:200]}", file=sys.stderr)
+            return False
+        return dest.exists() and dest.stat().st_size > 0
+    except Exception as e:
+        print(f"WARN: ffmpeg compress exception: {e}", file=sys.stderr)
+        return False
+
+
+def _save_video_asset(asset_url: str, industry: str, page_id: str, ad_archive_id: str) -> pathlib.Path | None:
+    """Download + compress video to a persistent local path.
+
+    Meta CDN URLs expire within days, so we save a compressed local copy at
+    scrape time so downstream transcription keeps working. Idempotent —
+    returns existing file if already saved. Never raises.
+
+    Flow: HTTP download to temp → ffmpeg 720p/CRF25/AAC128k → final path.
+    If ffmpeg unavailable, stores the raw download uncompressed (still works,
+    just bigger). Typical ~80% size reduction after compression.
     """
     if not asset_url or not asset_url.startswith("http"):
         return None
     dest = _local_video_path(industry, page_id, ad_archive_id)
     if dest.exists() and dest.stat().st_size > 0:
         return dest
+
+    import tempfile
+    dest.parent.mkdir(parents=True, exist_ok=True)
+
+    # Download raw to a temp file in the same directory (same filesystem for atomic rename)
+    raw_tmp = None
     try:
-        dest.parent.mkdir(parents=True, exist_ok=True)
-        req = urllib.request.Request(asset_url, headers={"User-Agent": "Mozilla/5.0"})
-        max_size = 200_000_000  # 200MB cap per video
-        total = 0
-        with urllib.request.urlopen(req, timeout=60) as resp:
-            with dest.open("wb") as f:
+        with tempfile.NamedTemporaryFile(
+            dir=dest.parent, prefix=f".{ad_archive_id}-raw-", suffix=".mp4", delete=False
+        ) as tf:
+            raw_tmp = pathlib.Path(tf.name)
+            req = urllib.request.Request(asset_url, headers={"User-Agent": "Mozilla/5.0"})
+            max_size = 500_000_000  # 500MB input cap (before compression)
+            total = 0
+            with urllib.request.urlopen(req, timeout=60) as resp:
                 while chunk := resp.read(65536):
                     total += len(chunk)
                     if total > max_size:
-                        dest.unlink(missing_ok=True)
-                        print(f"WARN: video {ad_archive_id} exceeded 200MB; aborted", file=sys.stderr)
+                        raw_tmp.unlink(missing_ok=True)
+                        print(f"WARN: video {ad_archive_id} raw exceeded 500MB; aborted", file=sys.stderr)
                         return None
-                    f.write(chunk)
+                    tf.write(chunk)
+
+        # Compress to final destination; if ffmpeg missing/fails, keep raw as-is.
+        if _compress_video(raw_tmp, dest):
+            # Success — remove raw, keep compressed
+            raw_tmp.unlink(missing_ok=True)
+        else:
+            # Compression unavailable or failed — move raw into place as fallback.
+            raw_tmp.rename(dest)
+            print(f"INFO: video {ad_archive_id} stored uncompressed (ffmpeg unavailable or failed)", file=sys.stderr)
         return dest
     except Exception as e:
         print(f"WARN: video save failed for {ad_archive_id}: {type(e).__name__}: {str(e)[:120]}", file=sys.stderr)
+        if raw_tmp and raw_tmp.exists():
+            raw_tmp.unlink(missing_ok=True)
         if dest.exists() and dest.stat().st_size == 0:
             dest.unlink(missing_ok=True)
         return None
