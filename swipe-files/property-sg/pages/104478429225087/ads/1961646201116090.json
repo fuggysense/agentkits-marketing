@@ -1,14 +1,20 @@
 {
   "ad_archive_id": "1961646201116090",
-  "angle": null,
+  "angle": "5-tier system to maximize rent and speed",
   "asset_type": "video",
   "asset_url": "https://video-iad6-1.xx.fbcdn.net/o1/v/t2/f2/m366/AQOVH-w_pJX0IsTDzNDOek7cK6tyJcnxFV2Ux-iNHnhgAOnpy8WZ651gf6oCGlp5LsMSViWJku0nhZq-zQPwHcgAAICcR4RgATcC1JUF1Y373Q.mp4?_nc_cat=107&_nc_sid=5e9851&_nc_ht=video-iad6-1.xx.fbcdn.net&_nc_ohc=3jnWwYNEpD0Q7kNvwF7FiRQ&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5WSV9VU0VDQVNFX1BST0RVQ1RfVFlQRS4uQzMuNzIwLmRhc2hfaDI2NC1iYXNpYy1nZW4yXzcyMHAiLCJ4cHZfYXNzZXRfaWQiOjUxOTMwNTU5MzY4OTg5NSwiYXNzZXRfYWdlX2RheXMiOjExNTMsInZpX3VzZWNhc2VfaWQiOjEwMTM5LCJkdXJhdGlvbl9zIjo3MiwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&vs=611cffeca066bdae&_nc_vs=HBksFQIYRWZiX2VwaGVtZXJhbC80RTRGM0U4OEUzQUI2MkM0MUQ4RTU4ODI5OUMzQzBBOF9tdF8xX3ZpZGVvX2Rhc2hpbml0Lm1wNBUAAsgBEgAVAhg0ZmJfcGVybWFuZW50LzE3MjkxMDY5MjE1ODgyOF80ODkyMTAyMDExMjgzODg5ODQwLm1wNBUCAsgBEgAoABgAGwKIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRUAACbO3IiXyJPsARUCKAJDMywXQFIxBiTdLxsYGWRhc2hfaDI2NC1iYXNpYy1nZW4yXzcyMHARAHUAZbaeAQA&_nc_gid=5sIMX_qqiS-rYBYnpIg-iA&_nc_ss=7a389&_nc_zt=28&oh=00_Af2bRgEslhf4BPiZOfQs3tyMuZfMOkY0x6V2dr84xFh7gw&oe=69EB9B25",
   "avatar_fit": null,
   "blue_box_category": null,
   "body_text": "Did you know that not all properties rent out at the desired prices and in a timely manner?\n\nWhy do some homes rent out faster, and at a higher price than other similar ones?\n\nIt has a lot to do with the 5 Different Tiers that most property owners never learn about. \n\nThese 5 tiers are contained within our latest guide as pictured in the photo below titled “The Ultimate Guide To Renting Out Your Property At The Highest Price, and With Little Effort”\n\nSo if you’re a property owner looking to rent out your home, this guide is a must-have.\n\nYou can download it by clicking the link below right now\n\nP.S: If you're not a property owner, but have someone who might be interested to rent out their property, please share this post with them as well",
   "classifier_confidence": null,
-  "classifier_model": null,
-  "classifier_raw": null,
+  "classifier_model": "nvidia/nemotron-3-super-120b-a12b:free",
+  "classifier_raw": {
+    "detected_angle": "5-tier system to maximize rent and speed",
+    "detected_hooks": "[\"How To Rent Out Your Home At High Prices and FAST!\", \"Did you know that not all properties rent out at the desired prices and in a timely manner?\", \"Wanting to rent your home at the highest price and the fastest time possible? Wait, you need to watch this first.\"]",
+    "detected_mass_desire": "wealth",
+    "schwartz_awareness": "Problem-Aware",
+    "schwartz_sophistication": "1"
+  },
   "cta_text": "Download",
   "days_running": 56,
   "first_seen_date": "2026-04-20",
@@ -28,7 +34,7 @@
     "AUDIENCE_NETWORK"
   ],
   "regions": [],
-  "schwartz_stage": null,
+  "schwartz_stage": 1,
   "start_date": "2026-02-23",
   "status": "ACTIVE",
   "stopped_date": null,

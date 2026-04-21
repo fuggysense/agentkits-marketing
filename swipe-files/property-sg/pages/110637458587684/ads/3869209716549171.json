@@ -1,14 +1,20 @@
 {
   "ad_archive_id": "3869209716549171",
-  "angle": null,
+  "angle": "Leverage URA Masterplan for property advantage",
   "asset_type": "image",
   "asset_url": "https://scontent-lga3-2.xx.fbcdn.net/v/t39.35426-6/659109432_960138186518987_5951668218266819106_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=c53f8f&_nc_ohc=8hB7grIe4xMQ7kNvwGExcub&_nc_oc=AdpOj5KdSAazCrL7zvurTT6883klxV1u5NfwJ7BDSEV4-12NT-uyv4R_UigA1osGO44&_nc_zt=14&_nc_ht=scontent-lga3-2.xx&_nc_gid=66PhOnbNGnDYxVjek_IVgw&_nc_ss=7a389&oh=00_Af20qKXQO3AttC8gEncgH6RTR3TIp0hdBt-SuGGhIni-jg&oe=69EA5633",
   "avatar_fit": null,
   "blue_box_category": null,
   "body_text": "Ready to navigate the 2025 property market with confidence? Join Real Estate Strategist KS Tan for a free live webclass and learn how to use the URA Masterplan to your advantage.",
   "classifier_confidence": null,
-  "classifier_model": null,
-  "classifier_raw": null,
+  "classifier_model": "nvidia/nemotron-3-super-120b-a12b:free",
+  "classifier_raw": {
+    "detected_angle": "Leverage URA Masterplan for property advantage",
+    "detected_hooks": "[\"Ready to navigate the 2025 property market with confidence?\", \"Are you READY to navigate the 2025 URA Masterplan?\", \"FREE WEBCLASS \\u2014 60 SLOTS ONLY\"]",
+    "detected_mass_desire": "wealth",
+    "schwartz_awareness": "Problem-Aware",
+    "schwartz_sophistication": "4"
+  },
   "cta_text": "Sign up",
   "days_running": 19,
   "first_seen_date": "2026-03-30",
@@ -30,7 +36,7 @@
     "THREADS"
   ],
   "regions": [],
-  "schwartz_stage": null,
+  "schwartz_stage": 4,
   "start_date": "2026-03-30",
   "status": "ACTIVE",
   "stopped_date": null,

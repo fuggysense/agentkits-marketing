@@ -1,14 +1,20 @@
 {
   "ad_archive_id": "1644938570175367",
-  "angle": null,
+  "angle": "Re-evaluating property holding for maximized growth",
   "asset_type": "video",
   "asset_url": "https://video-lga3-3.xx.fbcdn.net/o1/v/t2/f2/m366/AQPZVDIA1jy3BiygrIJNxijw4G2O8WmBD8B77kZctTpqF448YM_YhrQNJ2TzScqeFu08eeaUQnijSQZoQLf3ii4GR-XYQFw96N7xHC7Z2K8v-Q.mp4?_nc_cat=106&_nc_sid=5e9851&_nc_ht=video-lga3-3.xx.fbcdn.net&_nc_ohc=W7Bl4aNCdUgQ7kNvwGawK36&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5WSV9VU0VDQVNFX1BST0RVQ1RfVFlQRS4uQzMuNzIwLmRhc2hfaDI2NC1iYXNpYy1nZW4yXzcyMHAiLCJ4cHZfYXNzZXRfaWQiOjE1OTQ3MTk3MDg2MTc0NjksImFzc2V0X2FnZV9kYXlzIjoxMTMsInZpX3VzZWNhc2VfaWQiOjEwNzk5LCJkdXJhdGlvbl9zIjo4NiwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&vs=933be0e1d94876b6&_nc_vs=HBksFQIYRWZiX2VwaGVtZXJhbC85NTRGREI4QkIyMUQ2MDE4MkMyQTk5NDc4QkQxN0JCNl9tdF8xX3ZpZGVvX2Rhc2hpbml0Lm1wNBUAAsgBEgAVAhhAZmJfcGVybWFuZW50Lzc5NDcyOUUzOUE4MzdDQzc2MzhFRThDQzA5QjI3OTlFX2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwKIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRUAACb66_zb85jVBRUCKAJDMywXQFWqn752yLQYGWRhc2hfaDI2NC1iYXNpYy1nZW4yXzcyMHARAHUAZd6oAQA&_nc_gid=imABghwRzs5HCSM8E1UVlA&_nc_ss=7a389&_nc_zt=28&oh=00_Af1sHXEnaEyEfSDSLsCjarPp1yrHwifMhy9AVzn8uzP3fg&oe=69EA6D1A",
   "avatar_fit": null,
   "blue_box_category": null,
   "body_text": "🏡 𝐈𝐬 𝐇𝐨𝐥𝐝𝐢𝐧𝐠 𝐒𝐭𝐢𝐥𝐥 𝐭𝐡𝐞 𝐁𝐞𝐬𝐭 𝐌𝐨𝐯𝐞 𝐟𝐨𝐫 𝐘𝐨𝐮?\nA simple decision. Big impact.\n\nMany owners tell me:\n“My property has gone up over the past few years.\nBut replacement cost is just as high — maybe even higher…\nso maybe we should just hold.”\nIt sounds safe.\n𝐁𝐮𝐭 𝐢𝐬 𝐢𝐭 𝐬𝐭𝐢𝐥𝐥 𝐭𝐡𝐞 𝐛𝐞𝐬𝐭 𝐦𝐨𝐯𝐞? 🤔\n\nHi, I’m 𝐀𝐥𝐲𝐬𝐬𝐚. Over the past 18 years, I’ve seen how the right decisions can move families forward —\nand how holding on may not always align with long-term goals.\nIt’s not simply about selling or holding.\nIt’s about whether your 𝐜𝐮𝐫𝐫𝐞𝐧𝐭 𝐩𝐫𝐨𝐩𝐞𝐫𝐭𝐲 is still helping you get to where you want to be.\n\nTo help you think this through clearly, I’ve put together 𝟐 𝐜𝐨𝐦𝐩𝐥𝐢𝐦𝐞𝐧𝐭𝐚𝐫𝐲 𝐞𝐁𝐨𝐨𝐤𝐬 to guide you on how to:\n\n✅ Assess your property’s future potential\n✅ Understand how timing may affect your options\n✅ Explore when selling could open better options\n✅ Plan your next move with clarity and confidence\n\n📘 𝐃𝐨𝐰𝐧𝐥𝐨𝐚𝐝 𝐭𝐡𝐞 𝐞𝐁𝐨𝐨𝐤𝐬 𝐭𝐨𝐝𝐚𝐲 and start mapping out your property journey the smart way.",
   "classifier_confidence": null,
-  "classifier_model": null,
-  "classifier_raw": null,
+  "classifier_model": "gemini-2.5-flash",
+  "classifier_raw": {
+    "detected_angle": "Re-evaluating property holding for maximized growth",
+    "detected_hooks": "[\"Is Your Property Still Working for You?\", \"Is Holding Still the Best Move for You?\", \"A simple decision. Big impact.\"]",
+    "detected_mass_desire": "wealth",
+    "schwartz_awareness": "Problem-Aware",
+    "schwartz_sophistication": "3"
+  },
   "cta_text": "Learn more",
   "days_running": 1,
   "first_seen_date": "2026-04-17",
@@ -28,7 +34,7 @@
     "AUDIENCE_NETWORK"
   ],
   "regions": [],
-  "schwartz_stage": null,
+  "schwartz_stage": 3,
   "start_date": "2026-04-17",
   "status": "ACTIVE",
   "stopped_date": null,

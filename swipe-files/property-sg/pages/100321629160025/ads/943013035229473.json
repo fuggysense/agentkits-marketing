@@ -38,7 +38,7 @@
   "start_date": "2026-04-16",
   "status": "ACTIVE",
   "stopped_date": null,
-  "transcript_duration_sec": null,
+  "transcript_duration_sec": 0.0,
   "transcript_language": null,
-  "transcript_text": null
+  "transcript_text": ""
 }
