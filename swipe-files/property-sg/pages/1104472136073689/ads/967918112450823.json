@@ -1,0 +1,43 @@
+{
+  "ad_archive_id": "967918112450823",
+  "angle": "Avoid costly HDB selling mistakes",
+  "asset_type": "carousel",
+  "asset_url": null,
+  "avatar_fit": null,
+  "blue_box_category": null,
+  "body_text": "Thinking of selling your HDB?\n\nAfter helping many homeowners, we’ve noticed the same mistakes happening again and again.\n\nWe’ve compiled a simple checklist to help you avoid them and know how to:\n\n☑ Price correctly\n☑ Time the market better\n☑ Understand how much you can actually walk away with\n\nDon’t make these mistakes before you even start.\n\n👉 Grab your free checklist before you list your flat.",
+  "classifier_confidence": null,
+  "classifier_model": "nvidia/nemotron-3-super-120b-a12b:free",
+  "classifier_raw": {
+    "detected_angle": "Avoid costly HDB selling mistakes",
+    "detected_hooks": "[\"Thinking of selling your HDB?\", \"After helping many homeowners, we\\u2019ve noticed the same mistakes happening again and again.\", \"Don\\u2019t make these mistakes before you even start.\", \"\\ud83d\\udc49 Grab your free checklist before you list your flat.\"]",
+    "detected_mass_desire": "wealth",
+    "schwartz_awareness": "Problem-Aware",
+    "schwartz_sophistication": "4"
+  },
+  "cta_text": "Download",
+  "days_running": 5,
+  "first_seen_date": "2026-04-20",
+  "format": "CAROUSEL",
+  "headline": "Selling Your HDB? Avoid These 3 Mistakes",
+  "is_active": true,
+  "is_winner": false,
+  "last_seen_active_date": "2026-04-20",
+  "meta_library_url": "https://www.facebook.com/ads/library/?id=967918112450823",
+  "ocr_extracted_at": null,
+  "ocr_model": null,
+  "ocr_text": null,
+  "page_id": "1104472136073689",
+  "platforms": [
+    "FACEBOOK",
+    "INSTAGRAM"
+  ],
+  "regions": [],
+  "schwartz_stage": 4,
+  "start_date": "2026-04-15",
+  "status": "ACTIVE",
+  "stopped_date": null,
+  "transcript_duration_sec": null,
+  "transcript_language": null,
+  "transcript_text": null
+}

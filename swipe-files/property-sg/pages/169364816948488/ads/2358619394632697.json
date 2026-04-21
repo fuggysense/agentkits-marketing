@@ -1,0 +1,43 @@
+{
+  "ad_archive_id": "2358619394632697",
+  "angle": "Exit‑focused property strategy",
+  "asset_type": "video",
+  "asset_url": "https://video-lga3-3.xx.fbcdn.net/o1/v/t2/f2/m366/AQOnRcEO5C6MpcRRWHertsU7qKdivKuc4DRSknVatdPUNAGo-njW3LQ3c1LNJePej5HDs4mxTj2S2MJWeGtaVZZjHEql0F_cH9LZ4Kp-2ZqX-g.mp4?_nc_cat=104&_nc_sid=5e9851&_nc_ht=video-lga3-3.xx.fbcdn.net&_nc_ohc=xqFDXdYAc-cQ7kNvwH4qqQS&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5WSV9VU0VDQVNFX1BST0RVQ1RfVFlQRS4uQzMuNzIwLmRhc2hfaDI2NC1iYXNpYy1nZW4yXzcyMHAiLCJ4cHZfYXNzZXRfaWQiOjE2Njg1NjIzOTA5NjQyMzEsImFzc2V0X2FnZV9kYXlzIjoxNCwidmlfdXNlY2FzZV9pZCI6MTA3OTksImR1cmF0aW9uX3MiOjQwLCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&vs=67356210ade7d343&_nc_vs=HBksFQIYRWZiX2VwaGVtZXJhbC8xRDQzMzY0RTUzMkM4OERCMDAxQjNCRjJGQzJDREJCNl9tdF8xX3ZpZGVvX2Rhc2hpbml0Lm1wNBUAAsgBEgAVAhhAZmJfcGVybWFuZW50L0FGNDEyRDA5MkZEMTg3OUVDQTVCQjRFNTg1RkMxMzk4X2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwKIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRUAACaO4MrJjuP2BRUCKAJDMywXQERAAAAAAAAYGWRhc2hfaDI2NC1iYXNpYy1nZW4yXzcyMHARAHUAZd6oAQA&_nc_gid=wOmK48IzwgQcq2CUNg9OEQ&_nc_ss=7a389&_nc_zt=28&oh=00_Af2y7ZSWmkODbh4JpMSbWtagqfx91DIhMqGOkwvu4v_dVg&oe=69EBBB94",
+  "avatar_fit": null,
+  "blue_box_category": null,
+  "body_text": "Have you been researching on where and how to buy at the right price?\nWe go 1 step deeper: analyzing the exit plan.\nWith the right exit plan, your entry is smarter, safer, and more strategic\nBecause smart buying isn’t just about entry, it’s about knowing who will want this after you.\n.\nWatch the video and learn how to ensure both entry AND exit are right.\nFill out the form to get our proven framework.",
+  "classifier_confidence": null,
+  "classifier_model": "nvidia/nemotron-3-super-120b-a12b:free",
+  "classifier_raw": {
+    "detected_angle": "Exit‑focused property strategy",
+    "detected_hooks": "[\"Don\\u2019t Let FOMO Choose Your Property! Get Ahead Before the Showflat Launch \\ud83d\\udeab\\ud83c\\udfc3\\u200d\\u2642\\ufe0f\", \"If you are waiting for the show flat to decide, you are already too late.\"]",
+    "detected_mass_desire": "wealth",
+    "schwartz_awareness": "Problem-Aware",
+    "schwartz_sophistication": "3"
+  },
+  "cta_text": "Learn more",
+  "days_running": 2,
+  "first_seen_date": "2026-04-20",
+  "format": "VIDEO",
+  "headline": "Don’t Let FOMO Choose Your Property! Get Ahead Before the Showflat Launch 🚫🏃‍♂️",
+  "is_active": true,
+  "is_winner": false,
+  "last_seen_active_date": "2026-04-20",
+  "meta_library_url": "https://www.facebook.com/ads/library/?id=2358619394632697",
+  "ocr_extracted_at": null,
+  "ocr_model": null,
+  "ocr_text": null,
+  "page_id": "169364816948488",
+  "platforms": [
+    "FACEBOOK",
+    "INSTAGRAM"
+  ],
+  "regions": [],
+  "schwartz_stage": 3,
+  "start_date": "2026-04-18",
+  "status": "ACTIVE",
+  "stopped_date": null,
+  "transcript_duration_sec": 40.52,
+  "transcript_language": "en",
+  "transcript_text": " If you are waiting for the show flat to decide, you are already too late. By then, the most important decisions have already been made. The moment the land is sold, we already analyse and estimate the launch price. We break it down using our 4R framework. So here's one fun fact you need to know for 2026. There are only 4 same confirmed residential GLS sites for the entire year. Save this video to refer back. Choosing the right project matters more than rushing into one. Apply our 4R framework and the choice becomes much clearer. If you buy the wrong project for your profile, holding it becomes very uncomfortable. Don't just listen to us. Meet us to know how we can use our 4R framework to help you. Stay tuned for part 2."
+}

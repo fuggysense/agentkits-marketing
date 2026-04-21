@@ -1,0 +1,21 @@
+{
+  "category": "Property",
+  "first_scraped_at": "2026-04-19T00:00:00+00:00",
+  "full_history_complete": false,
+  "industry_slug": "property-sg",
+  "last_active_scrape_at": "2026-04-19T00:00:00+00:00",
+  "last_full_scrape_at": null,
+  "last_scraped_at": "2026-04-19T00:00:00+00:00",
+  "meta": {
+    "ads_active_last_scrape": 2,
+    "ads_collected_total": 2,
+    "page_like_count": 91,
+    "scrape_count": 1,
+    "source_url_label": "TBD"
+  },
+  "name": "Real Estate with Leonard & Michelle",
+  "page_id": "108580084171574",
+  "profile_pic_url": "https://scontent-bos5-1.xx.fbcdn.net/v/t39.35426-6/668531218_919839581034131_5322513434391220071_n.jpg?stp=dst-jpg_s60x60_tt6&_nc_cat=105&ccb=1-7&_nc_sid=c53f8f&_nc_ohc=s-Ya9ekvem4Q7kNvwEe3KIP&_nc_oc=AdoQdaEc81HUrXqdfziexuI35_OdIAKcfSALA-vP6ep_3ZFwvLdH8OBh9BEypmGxkSc&_nc_zt=14&_nc_ht=scontent-bos5-1.xx&_nc_gid=ptjYq3TWlhME-fmOAMqzsw&_nc_ss=7a389&oh=00_Af1XY-cgujo1-wWcFiZ3C0h4I4Njg13SK2aFwPqMlubXgw&oe=69EA5D43",
+  "url": "https://www.facebook.com/leonardmichelleproperty/",
+  "verified": false
+}

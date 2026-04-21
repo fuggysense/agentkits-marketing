@@ -1,0 +1,43 @@
+{
+  "ad_archive_id": "946464278105416",
+  "angle": "Strategic, expert-driven real estate sales for serious homeowners",
+  "asset_type": "image",
+  "asset_url": "https://scontent-bos5-1.xx.fbcdn.net/v/t39.35426-6/663255210_965381523100709_6510886210132732777_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=c53f8f&_nc_ohc=2tmwEvQlAVkQ7kNvwGedJ4r&_nc_oc=AdpumOu_cK1AHeuXpTIgV9ZfCIM3HPfb65LCFqYb4nFqcEJ-RWC9nLF4VZI9sEbjuwY&_nc_zt=14&_nc_ht=scontent-bos5-1.xx&_nc_gid=ptjYq3TWlhME-fmOAMqzsw&_nc_ss=7a389&oh=00_Af1_r4wtUO8yUGEcwKXtS0aOwHq1QTXDGQrN6-cJZRpZzA&oe=69EA75C8",
+  "avatar_fit": null,
+  "blue_box_category": null,
+  "body_text": "This unit sat on the market for weeks…\nuntil we repositioned it properly.\n\nWith over 11 years of experience, we don’t just list homes — we work with homeowners who are serious about selling well.\n\nBuyers don’t just buy a unit they buy how it feels.\nThat’s where the difference comes in.\n\nIf your goal is:\n✅ Attract real buyers (not just viewings)\n✅ Position your home correctly from Day 1\n✅ Sell within a clear timeline\n\nWe can help.\n\nWe focus on:\n• Strategic pricing (based on real data)\n• Simple home staging that creates demand\n• Targeted marketing that brings serious offers\n\nAll with zero upfront cost\n\nWe’re currently working with a small number of homeowners planning to sell in the next few months.\n\nWe may not be the right fit if you’re just exploring prices.\n\n👉 Tap [Learn More] to see if your home is a good fit",
+  "classifier_confidence": null,
+  "classifier_model": "gemini-2.5-flash",
+  "classifier_raw": {
+    "detected_angle": "Strategic, expert-driven real estate sales for serious homeowners",
+    "detected_hooks": "[\"For Homeowners Serious About Selling \\u2014 Not Just Testing the Market\", \"This unit sat on the market for weeks\\u2026until we repositioned it properly.\", \"Buyers don\\u2019t just buy a unit they buy how it feels.\", \"Sell within a clear timeline\", \"All with zero upfront cost\", \"We may not be the right fit if you\\u2019re just exploring prices.\"]",
+    "detected_mass_desire": "wealth",
+    "schwartz_awareness": "Solution-Aware",
+    "schwartz_sophistication": "3"
+  },
+  "cta_text": "Learn more",
+  "days_running": 2,
+  "first_seen_date": "2026-04-17",
+  "format": "IMAGE",
+  "headline": "For Homeowners Serious About Selling — Not Just Testing the Market",
+  "is_active": true,
+  "is_winner": false,
+  "last_seen_active_date": "2026-04-19",
+  "meta_library_url": "https://www.facebook.com/ads/library/?id=946464278105416",
+  "ocr_extracted_at": null,
+  "ocr_model": null,
+  "ocr_text": null,
+  "page_id": "108580084171574",
+  "platforms": [
+    "FACEBOOK",
+    "INSTAGRAM"
+  ],
+  "regions": [],
+  "schwartz_stage": 3,
+  "start_date": "2026-04-17",
+  "status": "ACTIVE",
+  "stopped_date": null,
+  "transcript_duration_sec": null,
+  "transcript_language": null,
+  "transcript_text": null
+}

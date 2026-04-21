@@ -1,0 +1,21 @@
+{
+  "category": "Real Estate",
+  "first_scraped_at": "2026-04-19T00:00:00+00:00",
+  "full_history_complete": false,
+  "industry_slug": "property-sg",
+  "last_active_scrape_at": "2026-04-19T00:00:00+00:00",
+  "last_full_scrape_at": null,
+  "last_scraped_at": "2026-04-19T00:00:00+00:00",
+  "meta": {
+    "ads_active_last_scrape": 3,
+    "ads_collected_total": 3,
+    "page_like_count": 10,
+    "scrape_count": 1,
+    "source_url_label": "TBD"
+  },
+  "name": "AngAlvin.SG",
+  "page_id": "772786282589446",
+  "profile_pic_url": "https://scontent-phl2-1.xx.fbcdn.net/v/t39.35426-6/641281383_2111400646344875_8677285849225398762_n.jpg?stp=dst-jpg_s60x60_tt6&_nc_cat=103&ccb=1-7&_nc_sid=c53f8f&_nc_ohc=BXi2tp-EBK8Q7kNvwFMxaWa&_nc_oc=AdoHCQzNMzLkiR3Tn5bc_W94pieS-m89ebLkJYs-D7EV8WQl9NBLSDzFVqdUsgTbRkQ&_nc_zt=14&_nc_ht=scontent-phl2-1.xx&_nc_gid=hoFrpXyS9_ZFC7NexTdMXw&_nc_ss=7a389&oh=00_Af3fQ-PE8UtCvolAKnvVX3qQelzz3rTgtBKTJAusXVJNVw&oe=69EA871C",
+  "url": "https://www.facebook.com/61581171897872/",
+  "verified": false
+}

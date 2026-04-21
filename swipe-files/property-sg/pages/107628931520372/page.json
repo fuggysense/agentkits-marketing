@@ -1,0 +1,21 @@
+{
+  "category": "Real Estate",
+  "first_scraped_at": "2026-04-19T00:00:00+00:00",
+  "full_history_complete": false,
+  "industry_slug": "property-sg",
+  "last_active_scrape_at": "2026-04-19T00:00:00+00:00",
+  "last_full_scrape_at": null,
+  "last_scraped_at": "2026-04-19T00:00:00+00:00",
+  "meta": {
+    "ads_active_last_scrape": 2,
+    "ads_collected_total": 2,
+    "page_like_count": 209,
+    "scrape_count": 1,
+    "source_url_label": "TBD"
+  },
+  "name": "Samuel Goh - Real Estate Consultant",
+  "page_id": "107628931520372",
+  "profile_pic_url": "https://scontent-phl2-1.xx.fbcdn.net/v/t39.35426-6/671177463_27431659249756711_6973409929973170608_n.jpg?stp=dst-jpg_s60x60_tt6&_nc_cat=108&ccb=1-7&_nc_sid=c53f8f&_nc_ohc=XSqyqqfEzr4Q7kNvwFjP1iV&_nc_oc=AdoRYSMt-Z9RUSMDC9FWCdU0rQir1X8JxcIS002NEfQ8bhNfRMDgbBR9hJe1R7GaoVk&_nc_zt=14&_nc_ht=scontent-phl2-1.xx&_nc_gid=pl7uVT9HFqBMUbHPY4Zpwg&_nc_ss=7a389&oh=00_Af3sq1gWsndTpxAkb2WgwAAJHwmmQBPkP6yb3ojfC70ueQ&oe=69EA8DB9",
+  "url": "https://www.facebook.com/theRealSamuelGoh/",
+  "verified": false
+}

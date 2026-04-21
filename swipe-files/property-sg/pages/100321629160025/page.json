@@ -1,0 +1,21 @@
+{
+  "category": "Property",
+  "first_scraped_at": "2026-04-19T00:00:00+00:00",
+  "full_history_complete": false,
+  "industry_slug": "property-sg",
+  "last_active_scrape_at": "2026-04-19T00:00:00+00:00",
+  "last_full_scrape_at": null,
+  "last_scraped_at": "2026-04-19T00:00:00+00:00",
+  "meta": {
+    "ads_active_last_scrape": 4,
+    "ads_collected_total": 4,
+    "page_like_count": 349,
+    "scrape_count": 1,
+    "source_url_label": "TBD"
+  },
+  "name": "Big Homes by Jiada",
+  "page_id": "100321629160025",
+  "profile_pic_url": "https://scontent-iad3-2.xx.fbcdn.net/v/t39.35426-6/545546576_1324587659050079_5881629678617250223_n.jpg?stp=dst-jpg_s60x60_tt6&_nc_cat=111&ccb=1-7&_nc_sid=c53f8f&_nc_ohc=IzhoYYtLGIkQ7kNvwFfZf2z&_nc_oc=Adr5DpTs1mn8bB19gmWiyStmjeMcwRAy4CT1EybpksrsFVL9S8HkLV1tJL8-s2kUjmY&_nc_zt=14&_nc_ht=scontent-iad3-2.xx&_nc_gid=OcCuEs3CcTZ4Zn44JT1qFw&_nc_ss=7a389&oh=00_Af0mWU-kR5pqNqZmp8tfsezTBUeTLbhDzzUlamLJjEhiSA&oe=69EA69BC",
+  "url": "https://www.facebook.com/BigHomesbyJiada/",
+  "verified": false
+}

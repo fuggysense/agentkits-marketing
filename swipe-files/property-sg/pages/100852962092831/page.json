@@ -1,0 +1,21 @@
+{
+  "category": "Real Estate",
+  "first_scraped_at": "2026-04-19T00:00:00+00:00",
+  "full_history_complete": false,
+  "industry_slug": "property-sg",
+  "last_active_scrape_at": "2026-04-19T00:00:00+00:00",
+  "last_full_scrape_at": null,
+  "last_scraped_at": "2026-04-19T00:00:00+00:00",
+  "meta": {
+    "ads_active_last_scrape": 4,
+    "ads_collected_total": 4,
+    "page_like_count": 185,
+    "scrape_count": 3,
+    "source_url_label": "Delvin Goh (verified 2026-04-19 via test call; was labelled \"Damien Tan Properties\" in handover — corrected)"
+  },
+  "name": "Delvin Goh",
+  "page_id": "100852962092831",
+  "profile_pic_url": "https://scontent-lga3-1.xx.fbcdn.net/v/t39.35426-6/654204734_805876631978564_960810170771596292_n.jpg?stp=dst-jpg_s60x60_tt6&_nc_cat=103&ccb=1-7&_nc_sid=c53f8f&_nc_ohc=UvcKgLKGGCkQ7kNvwHL07fG&_nc_oc=Adp6ie0jiyolF7QULaJbe2WL3Kb7XFWFW5jFQ2akVUFOcArLWnP0l2l_OxM94f8iPs4&_nc_zt=14&_nc_ht=scontent-lga3-1.xx&_nc_gid=hfCvENFmpdel6z4uRDGsAA&_nc_ss=7a389&oh=00_Af11JVSZRyBNKGgHcsAQTGJfSr0sC9OxaYXOZI2zG--LoQ&oe=69EA8B4C",
+  "url": "https://www.facebook.com/delvingohsg/",
+  "verified": false
+}

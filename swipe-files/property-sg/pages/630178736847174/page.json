@@ -1,0 +1,21 @@
+{
+  "category": "Real Estate",
+  "first_scraped_at": "2026-04-19T00:00:00+00:00",
+  "full_history_complete": false,
+  "industry_slug": "property-sg",
+  "last_active_scrape_at": "2026-04-19T00:00:00+00:00",
+  "last_full_scrape_at": null,
+  "last_scraped_at": "2026-04-19T00:00:00+00:00",
+  "meta": {
+    "ads_active_last_scrape": 8,
+    "ads_collected_total": 8,
+    "page_like_count": 17,
+    "scrape_count": 1,
+    "source_url_label": "TBD"
+  },
+  "name": "Smart Property Moves",
+  "page_id": "630178736847174",
+  "profile_pic_url": "https://scontent-lga3-2.xx.fbcdn.net/v/t39.35426-6/586588447_1311254614134094_4432408193889646824_n.jpg?stp=dst-jpg_s60x60_tt6&_nc_cat=107&ccb=1-7&_nc_sid=c53f8f&_nc_ohc=5xW_vc7IhP8Q7kNvwHqU_1U&_nc_oc=Adpcx743YAUveER3jizs8nJvXZImIerF0hdrNXabXb9FXkGGqHLRRn3oo6giciH24WI&_nc_zt=14&_nc_ht=scontent-lga3-2.xx&_nc_gid=imABghwRzs5HCSM8E1UVlA&_nc_ss=7a389&oh=00_Af0B_ke-Da1J50iHxPh8biyqM5ZdcRRi-69_nUIg0kVZAg&oe=69EA75F8",
+  "url": "https://www.facebook.com/61575183741177/",
+  "verified": false
+}

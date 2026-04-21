@@ -1,0 +1,21 @@
+{
+  "category": "Real Estate",
+  "first_scraped_at": "2026-04-19T00:00:00+00:00",
+  "full_history_complete": false,
+  "industry_slug": "property-sg",
+  "last_active_scrape_at": "2026-04-19T00:00:00+00:00",
+  "last_full_scrape_at": null,
+  "last_scraped_at": "2026-04-19T00:00:00+00:00",
+  "meta": {
+    "ads_active_last_scrape": 1,
+    "ads_collected_total": 1,
+    "page_like_count": 125,
+    "scrape_count": 1,
+    "source_url_label": "TBD"
+  },
+  "name": "Property Matters Singapore",
+  "page_id": "1088704584518373",
+  "profile_pic_url": "https://scontent-bos5-1.xx.fbcdn.net/v/t39.35426-6/672180015_899606386415536_6969481722369616659_n.jpg?stp=dst-jpg_s60x60_tt6&_nc_cat=104&ccb=1-7&_nc_sid=c53f8f&_nc_ohc=4heSKn1nsG0Q7kNvwFRKG-j&_nc_oc=AdrjvewOsrWjNdbcOqxsu-7IlOzNEpbfcwzG1AAVV2C2fGP-nQ9cfPKwmEmSOo-tzl4&_nc_zt=14&_nc_ht=scontent-bos5-1.xx&_nc_gid=JXQ2ptrHsucwSXW8nfPalQ&_nc_ss=7a389&oh=00_Af151eYjtRXh2tnWz9C-q6L5hT_hZ9a9Ihu83uoRExNiAg&oe=69EA65FA",
+  "url": "https://www.facebook.com/sgpropertymatters.co/",
+  "verified": false
+}

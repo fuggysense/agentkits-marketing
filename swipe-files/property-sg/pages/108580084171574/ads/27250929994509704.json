@@ -1,0 +1,43 @@
+{
+  "ad_archive_id": "27250929994509704",
+  "angle": "Strategic home positioning for faster sale",
+  "asset_type": "video",
+  "asset_url": "https://video-bos5-1.xx.fbcdn.net/o1/v/t2/f2/m366/AQPxkV5pVkoB9uMYDpnaRJwrbBRSXE2LaNxg41RxLz8o3WGPAG916tCnDHDSA3BXjeBEOq2AZP4I21Us9tj8FgWMxhhmXU2c7eyPIU0HezlLfw.mp4?_nc_cat=107&_nc_sid=5e9851&_nc_ht=video-bos5-1.xx.fbcdn.net&_nc_ohc=FCdC8qnaS0AQ7kNvwEk75ZR&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5WSV9VU0VDQVNFX1BST0RVQ1RfVFlQRS4uQzMuNzIwLmRhc2hfaDI2NC1iYXNpYy1nZW4yXzcyMHAiLCJ4cHZfYXNzZXRfaWQiOjE0NDkwMjQ1MTY5MjAyMzEsImFzc2V0X2FnZV9kYXlzIjoxMCwidmlfdXNlY2FzZV9pZCI6MTA3OTksImR1cmF0aW9uX3MiOjQ4LCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&vs=129eac980d4a7b0d&_nc_vs=HBksFQIYRWZiX2VwaGVtZXJhbC9CNjRCMTlCRTI0RTZCNjRCQTk5OEY4OEIxQTc0MEM5OV9tdF8xX3ZpZGVvX2Rhc2hpbml0Lm1wNBUAAsgBEgAVAhhAZmJfcGVybWFuZW50L0YwNDgzQUYyMDJEMkE0MkRDN0MwRkRCOTA0MEZCRUI5X2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwKIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRUAACbOztD5qfiSBRUCKAJDMywXQEgmZmZmZmYYGWRhc2hfaDI2NC1iYXNpYy1nZW4yXzcyMHARAHUAZd6oAQA&_nc_gid=ptjYq3TWlhME-fmOAMqzsw&_nc_ss=7a389&_nc_zt=28&oh=00_Af0q4uYiSvIqDohLpGCozLFLqgd5Uj1P8fyzOmJeFz1qNg&oe=69EA6CC5",
+  "avatar_fit": null,
+  "blue_box_category": null,
+  "body_text": "If you’ve been thinking about selling…\nbut not sure how to get the best result,\nthis is where many homeowners get stuck.\n\nMost homes don’t struggle because of demand — they struggle because of positioning.\n\nIn today’s market, buyers have more choices.\n\nSo the homes that stand out…\nare the ones that feel right the moment buyers walk in.\n\nThat’s why we focus on:\n✅ Simple home staging to create that emotional connection\n✅ Strategic positioning from Day 1\n✅ Attracting serious buyers — not just viewings\n\nIf you’re planning to sell in the next few months\nand want to do it properly from the start,\nwe can walk you through a clear strategy.\n\nWe may not be the right fit if you’re just exploring prices.\n\n👉 Tap below to get a free property review & see what’s possible for your home",
+  "classifier_confidence": null,
+  "classifier_model": "nvidia/nemotron-3-super-120b-a12b:free",
+  "classifier_raw": {
+    "detected_angle": "Strategic home positioning for faster sale",
+    "detected_hooks": "[\"Thinking of Selling? Here\\u2019s How to Do It Right From Day 1\", \"If you\\u2019ve been thinking about selling\\u2026 but not sure how to get the best result\"]",
+    "detected_mass_desire": "wealth",
+    "schwartz_awareness": "Problem-Aware",
+    "schwartz_sophistication": "3"
+  },
+  "cta_text": "Learn more",
+  "days_running": 10,
+  "first_seen_date": "2026-04-09",
+  "format": "VIDEO",
+  "headline": "Thinking of Selling? Here’s How to Do It Right From Day 1",
+  "is_active": true,
+  "is_winner": false,
+  "last_seen_active_date": "2026-04-19",
+  "meta_library_url": "https://www.facebook.com/ads/library/?id=27250929994509704",
+  "ocr_extracted_at": null,
+  "ocr_model": null,
+  "ocr_text": null,
+  "page_id": "108580084171574",
+  "platforms": [
+    "FACEBOOK",
+    "INSTAGRAM"
+  ],
+  "regions": [],
+  "schwartz_stage": 3,
+  "start_date": "2026-04-09",
+  "status": "ACTIVE",
+  "stopped_date": null,
+  "transcript_duration_sec": 48.32,
+  "transcript_language": "en",
+  "transcript_text": " Thinking of selling your property but not sure how to get the best results? Now if your current marketing plan is just taking photos and listing on Property Guru, there may be a better way. With more homes on the market now, buyers have plenty of choices. That's why it's so important that your home stands out and make a strong first impression. We offer Free Home Staging, a simple proven approach that helps showcase your property in the best light so it feels warm, inviting and memorable to potential buyers. And when buyers feel emotionally connected to your home, they tend to make decisions faster and with more confidence. If you'd like to explore how this could work for your home, click the link below and we'll see you for a free property review."
+}

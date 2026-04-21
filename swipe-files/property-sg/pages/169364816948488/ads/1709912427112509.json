@@ -1,0 +1,43 @@
+{
+  "ad_archive_id": "1709912427112509",
+  "angle": "Secure a property purchase significantly below market rate for a safer investment.",
+  "asset_type": "carousel",
+  "asset_url": null,
+  "avatar_fit": null,
+  "blue_box_category": null,
+  "body_text": "Resale units hitting record-breaking prices.\nIf you’ve been waiting for the right entry, now is your chance\nWhat if you could buy $300 psf cheaper than your neighbour, does that feel like a safer entry to you?\n\nDM me now!",
+  "classifier_confidence": null,
+  "classifier_model": "gemini-2.5-flash",
+  "classifier_raw": {
+    "detected_angle": "Secure a property purchase significantly below market rate for a safer investment.",
+    "detected_hooks": "[\"$300 psf cheaper, is this a fire sale?\", \"Resale units hitting record-breaking prices.\", \"If you\\u2019ve been waiting for the right entry, now is your chance\", \"What if you could buy $300 psf cheaper than your neighbour, does that feel like a safer entry to you?\"]",
+    "detected_mass_desire": "safety",
+    "schwartz_awareness": "Product-Aware",
+    "schwartz_sophistication": "2"
+  },
+  "cta_text": "Send message",
+  "days_running": 14,
+  "first_seen_date": "2026-04-20",
+  "format": "CAROUSEL",
+  "headline": "$300 psf cheaper, is this a fire sale?",
+  "is_active": true,
+  "is_winner": false,
+  "last_seen_active_date": "2026-04-20",
+  "meta_library_url": "https://www.facebook.com/ads/library/?id=1709912427112509",
+  "ocr_extracted_at": null,
+  "ocr_model": null,
+  "ocr_text": null,
+  "page_id": "169364816948488",
+  "platforms": [
+    "FACEBOOK",
+    "INSTAGRAM"
+  ],
+  "regions": [],
+  "schwartz_stage": 2,
+  "start_date": "2026-04-06",
+  "status": "ACTIVE",
+  "stopped_date": null,
+  "transcript_duration_sec": null,
+  "transcript_language": null,
+  "transcript_text": null
+}

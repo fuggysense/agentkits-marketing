@@ -1,0 +1,43 @@
+{
+  "ad_archive_id": "967927712855109",
+  "angle": "Affordability beyond price",
+  "asset_type": "video",
+  "asset_url": "https://video-lga3-1.xx.fbcdn.net/o1/v/t2/f2/m366/AQP5h1VTdbPJ2qvjmGH4SlpMv2zHstcFLdDGktavMLkCuygz46aiq3mR1PVq5Bb-iSMYQwB1kDDPNQhV8cjlI_4cs5X5X_or-CzEMoYpq2DkRQ.mp4?_nc_cat=103&_nc_sid=5e9851&_nc_ht=video-lga3-1.xx.fbcdn.net&_nc_ohc=T7Y6vkzHAMQQ7kNvwH5j4IO&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5WSV9VU0VDQVNFX1BST0RVQ1RfVFlQRS4uQzMuNzIwLmRhc2hfaDI2NC1iYXNpYy1nZW4yXzcyMHAiLCJ4cHZfYXNzZXRfaWQiOjEzNjY1MDEzNDUyMTQzNTUsImFzc2V0X2FnZV9kYXlzIjoxMDIsInZpX3VzZWNhc2VfaWQiOjEwNzk5LCJkdXJhdGlvbl9zIjo2MCwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&vs=6660feda0ba8147d&_nc_vs=HBksFQIYRWZiX2VwaGVtZXJhbC9FRDRCMzBFMUYwRDdDNzZDRTNFMkM4MUEwNEI1NjNCM19tdF8xX3ZpZGVvX2Rhc2hpbml0Lm1wNBUAAsgBEgAVAhhAZmJfcGVybWFuZW50Lzg5NEI1MEMzMUM5ODY0OEQ2NzVDM0QyNjIwQUI2QTk4X2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwKIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRUAACam_qG07LTtBBUCKAJDMywXQE4EOVgQYk4YGWRhc2hfaDI2NC1iYXNpYy1nZW4yXzcyMHARAHUAZd6oAQA&_nc_gid=wOmK48IzwgQcq2CUNg9OEQ&_nc_ss=7a389&_nc_zt=28&oh=00_Af2JOb5KEPd1WrJqG_Qv7RpJ2D9TSsGhAaImIYzFQ3Vayg&oe=69EB8DFD",
+  "avatar_fit": null,
+  "blue_box_category": null,
+  "body_text": "You should not stress on your monthly expenses and life after you move. This is what we call UPGRADING. \n\nCash outlay, loan progression, and early holding pressure can feel very different between resale and new launch. \nNever commit until you are sure about all your options and monthly commitment.\nThat's why some upgraders find certain options more comfortable than expected, even at higher prices. \n\nNot sure if your upgrade will feel lighter? Message me! Always welcome enquire even if you are planning ahead.",
+  "classifier_confidence": null,
+  "classifier_model": "nvidia/nemotron-3-super-120b-a12b:free",
+  "classifier_raw": {
+    "detected_angle": "Affordability beyond price",
+    "detected_hooks": "[\"DO NOT UPGRADE till YOU ARE SURE!\", \"Not sure if your upgrade will feel lighter?\", \"Most buyers reject new launches in 10 seconds because they compare price, not affordability.\", \"Are you one of them?\"]",
+    "detected_mass_desire": "ease",
+    "schwartz_awareness": "Problem-Aware",
+    "schwartz_sophistication": "3"
+  },
+  "cta_text": "Send message",
+  "days_running": 14,
+  "first_seen_date": "2026-04-20",
+  "format": "VIDEO",
+  "headline": "DO NOT UPGRADE till YOU ARE SURE!",
+  "is_active": true,
+  "is_winner": false,
+  "last_seen_active_date": "2026-04-20",
+  "meta_library_url": "https://www.facebook.com/ads/library/?id=967927712855109",
+  "ocr_extracted_at": null,
+  "ocr_model": null,
+  "ocr_text": null,
+  "page_id": "169364816948488",
+  "platforms": [
+    "FACEBOOK",
+    "INSTAGRAM"
+  ],
+  "regions": [],
+  "schwartz_stage": 3,
+  "start_date": "2026-04-06",
+  "status": "ACTIVE",
+  "stopped_date": null,
+  "transcript_duration_sec": 60.07,
+  "transcript_language": "en",
+  "transcript_text": " Most buyers reject new launches in 10 seconds because they compare price, not affordability. Are you one of them? When we talk about affordable, most people only look at one thing, the purchase price. But in property, that's only part of the picture. There are three numbers you should always compare. Your initial cash outlay, your monthly commitment and your holding comfort over time. For resale, a large portion of cash and CPF goes in almost immediately. For new launches, payments are staggered through progressive payment, so the entry point can be lighter than many expect. In the early years of a new launch, you are usually not servicing the full loan yet. That's why some buyers find new launches easier to hold at the start. Brand new also means fewer short-term costs, no urgent renovation, fewer repairs and more predictability in your expenses. So affordability isn't about stretching your budget, it's about choosing a structure that fits your cash flow. If you want to compare resale and new launch properly, DM me, I'll walk you through the numbers."
+}
