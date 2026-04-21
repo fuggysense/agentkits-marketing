@@ -36,8 +36,9 @@ GROQ_KEY = os.environ.get("GROQ_API_KEY")
 SWIPE_DIR = pathlib.Path(__file__).parent.parent / "swipe-files"
 
 
-def transcribe_groq(audio_path: pathlib.Path, language: str = "en") -> tuple[str, float | None]:
-    """Returns (text, duration_sec). Raises on failure."""
+def transcribe_groq(audio_path: pathlib.Path, language: str = "en") -> tuple[str, float | None, list]:
+    """Returns (text, duration_sec, segments). Segments are timestamped chunks
+    from verbose_json: [{id, start, end, text, ...}, ...]. Raises on failure."""
     import requests
 
     with open(audio_path, "rb") as f:
@@ -56,17 +57,37 @@ def transcribe_groq(audio_path: pathlib.Path, language: str = "en") -> tuple[str
     if resp.status_code != 200:
         raise RuntimeError(f"groq {resp.status_code}: {resp.text[:400]}")
     j = resp.json()
-    return j.get("text", ""), j.get("duration")
+    return j.get("text", ""), j.get("duration"), j.get("segments", [])
 
 
-def transcribe_faster_whisper(audio_path: pathlib.Path, language: str = "en") -> tuple[str, float | None]:
-    """Fallback: local faster-whisper if Groq rate-limits or fails."""
+def transcribe_faster_whisper(audio_path: pathlib.Path, language: str = "en") -> tuple[str, float | None, list]:
+    """Fallback: local faster-whisper. Returns (text, duration, segments)."""
     from faster_whisper import WhisperModel
 
     model = WhisperModel("base", device="cpu", compute_type="int8")
-    segments, info = model.transcribe(str(audio_path), language=language, beam_size=5)
-    text = " ".join(s.text.strip() for s in segments)
-    return text, info.duration
+    segments_iter, info = model.transcribe(str(audio_path), language=language, beam_size=5)
+    segments = []
+    text_parts = []
+    for s in segments_iter:
+        segments.append({"id": s.id, "start": s.start, "end": s.end, "text": s.text})
+        text_parts.append(s.text.strip())
+    return " ".join(text_parts), info.duration, segments
+
+
+def has_audio_stream(video_path: pathlib.Path) -> bool:
+    """True if video contains at least one audio stream (else silent)."""
+    for cand in ("/opt/homebrew/bin/ffprobe", "/usr/local/bin/ffprobe", "ffprobe"):
+        try:
+            r = subprocess.run(
+                [cand, "-v", "error", "-select_streams", "a",
+                 "-show_entries", "stream=codec_name", str(video_path)],
+                capture_output=True, text=True, timeout=10,
+            )
+            if r.returncode == 0:
+                return "codec_name" in r.stdout
+        except (FileNotFoundError, subprocess.TimeoutExpired):
+            continue
+    return True  # assume audio present if ffprobe unavailable; let ffmpeg error if wrong
 
 
 def extract_audio(video_path: pathlib.Path, out_dir: pathlib.Path) -> pathlib.Path:
@@ -177,6 +198,22 @@ def main() -> int:
                         continue
                     vpath = tmp / f"{ad_id}.mp4"
                     urlretrieve(asset_url, vpath)
+
+                # Silent-video guard — many property ads are text-overlay only
+                # with no audio track. Mark them with status='no_audio' so they
+                # don't retry on every backfill, and continue.
+                if not has_audio_stream(vpath):
+                    conn.execute(
+                        """INSERT INTO transcripts (ad_archive_id, text, language, duration_sec, status)
+                           VALUES (%s, '', NULL, 0, 'no_audio')
+                           ON CONFLICT (ad_archive_id) DO UPDATE SET
+                               status = 'no_audio', text = '', created_at = now()""",
+                        (ad_id,),
+                    )
+                    print("  ⊘ silent video (no audio stream) — marked no_audio")
+                    skipped += 1
+                    continue
+
                 # Extract audio
                 audio = extract_audio(vpath, tmp)
                 # Transcribe
@@ -185,13 +222,13 @@ def main() -> int:
                     engine = "groq"
                 try:
                     if engine == "groq":
-                        text, dur = transcribe_groq(audio, language="en")
+                        text, dur, segments = transcribe_groq(audio, language="en")
                     else:
-                        text, dur = transcribe_faster_whisper(audio, language="en")
+                        text, dur, segments = transcribe_faster_whisper(audio, language="en")
                 except Exception as e:
                     if args.engine == "auto" and "groq" in str(e).lower():
                         print(f"  ! groq failed ({str(e)[:80]}); retry local")
-                        text, dur = transcribe_faster_whisper(audio, language="en")
+                        text, dur, segments = transcribe_faster_whisper(audio, language="en")
                         engine = "faster-whisper"
                     else:
                         raise
@@ -200,13 +237,17 @@ def main() -> int:
                     fail += 1
                     continue
                 # Write to DB
+                import json as _json
                 conn.execute(
-                    """INSERT INTO transcripts (ad_archive_id, text, language, duration_sec)
-                       VALUES (%s, %s, 'en', %s)
+                    """INSERT INTO transcripts (ad_archive_id, text, language, duration_sec, segments, status)
+                       VALUES (%s, %s, 'en', %s, %s::jsonb, 'ok')
                        ON CONFLICT (ad_archive_id) DO UPDATE SET
                            text = EXCLUDED.text, language = 'en',
-                           duration_sec = EXCLUDED.duration_sec, created_at = now()""",
-                    (ad_id, text, dur),
+                           duration_sec = EXCLUDED.duration_sec,
+                           segments = EXCLUDED.segments,
+                           status = 'ok',
+                           created_at = now()""",
+                    (ad_id, text, dur, _json.dumps(segments) if segments else None),
                 )
                 # Sidecar .txt for disk backup
                 if slug and page_id:
