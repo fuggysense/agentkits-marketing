@@ -1,222 +1,83 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+Project guidance for Claude Code on the Marketing repository.
 
-## Role & Responsibilities
+## Role
+Analyze marketing requirements → delegate to marketing agents → deliver campaigns that drive leads, conversions, revenue.
 
-Your role is to analyze marketing requirements, delegate tasks to appropriate marketing agents, and ensure cohesive delivery of campaigns that drive leads, conversions, and revenue.
+## Startup files (read every session)
+- `SOUL.md` — communication tone, writing rules, mobile formatting
+- `USER.md` — operator context (Jerel)
+- `cron-registry.json` — scheduled tasks (if running with `--channels`)
+- `CHANNELS.md` — Telegram bot setup (read on demand)
 
-## Startup Files (read every session)
+## Critical workflow rules (mandatory, every session)
 
-On every new session, read these files before doing any work:
-- `SOUL.md` — Communication tone, writing rules, mobile formatting
-- `USER.md` — Operator context (who Jerel is, preferences, tools)
-- `cron-registry.json` — Scheduled tasks to restore if running with channels
-- `CHANNELS.md` — Telegram bot setup, launch commands, cron reference (read on demand)
+- **DATA RELIABILITY:** NEVER fabricate metrics. Use MCP integrations. If unavailable, show "⚠️ NOT AVAILABLE" with setup instructions. → `./.claude/workflows/data-reliability-rules.md`
+- **CONTEXT DISCIPLINE:** Heavy operations (research, DB queries, scrapes, URL fetches) route through subagents or `ctx_execute`. NEVER directly into session context. The `smart-ctx-guard.sh` PreToolUse hook nudges. → `./.claude/workflows/context-discipline.md`
+- **MARKETING RULES:** mandatory, non-negotiable → `./.claude/workflows/marketing-rules.md`
+- **README CONTEXT:** Before planning a campaign, read `./README.md`.
+- **Concision:** Sacrifice grammar for concision in reports. List unresolved questions at end.
+- **Dates:** `bash -c 'date +%y%m%d'`. Never use model knowledge for dates.
+
+## CONTEXT GATE (before invoking ANY skill or agent)
+
+Establish WHO and WHAT PROJECT. If not set:
+1. List `clients/` (excl. `_template/`) + `voice/` profiles (excl. templates).
+2. Ask: "Who is this session for?"
+3. Once picked, **lean-load only**:
+   - **Always:** `clients/<project>/context-profile.json` (~2KB).
+   - **On demand via `ctx_search`:** voice files, icp.md, offer.md, brand-voice.md, channels.json, learnings.md, buyer-profile.md.
+   - **Full load required:** copywriting sessions (brand-voice verbatim), offer pages (offer.md verbatim).
+4. Keep loaded files active for the session.
+5. If no project: offer to scaffold from `clients/_template/`.
+6. **Exception:** pure research tasks (`/research:trend`, `/marketing:ideas`) skip this gate.
 
 ## Workflows
-
-### Core Workflows
-- **Marketing:** `./.claude/workflows/primary-workflow.md` - Campaign lifecycle & content pipeline
-- **Sales:** `./.claude/workflows/sales-workflow.md` - Lead qualification to deal closure
-- **CRM:** `./.claude/workflows/crm-workflow.md` - Contact lifecycle & automation sequences
-
-### Supporting Workflows
+- Marketing: `./.claude/workflows/primary-workflow.md`
+- Sales: `./.claude/workflows/sales-workflow.md`
+- CRM: `./.claude/workflows/crm-workflow.md`
 - Marketing rules: `./.claude/workflows/marketing-rules.md`
-- Orchestration protocols: `./.claude/workflows/orchestration-protocol.md`
-- Documentation management: `./.claude/workflows/documentation-management.md`
-- **Data reliability: `./.claude/workflows/data-reliability-rules.md`** (MANDATORY)
+- Orchestration: `./.claude/workflows/orchestration-protocol.md`
+- Documentation mgmt: `./.claude/workflows/documentation-management.md`
 
-**CRITICAL - DATA RELIABILITY:** NEVER fabricate data. Use MCP integrations for real metrics. If data unavailable, show "⚠️ NOT AVAILABLE" with setup instructions. See `data-reliability-rules.md` for full rules.
+## Reference files (load on demand — do NOT preload)
 
-**CRITICAL — CONTEXT GATE:** Before invoking ANY skill or agent, check if the session has established WHO and WHAT PROJECT this work is for. If not set yet:
-1. List available projects from `clients/` (exclude `_template/`) and voice profiles from `voice/` (exclude templates/READMEs)
-2. Ask the user: "Who is this session for?" — present available projects
-3. Once picked, load BOTH layers:
-   - **Voice** (shared): Read all V.O.I.C.E. files from `voice/<person>/` (brand-voice.md, about-me.md, working-style.md, compound-ideas.md, voice-examples.md)
-   - **Project** (specific): Read `clients/<project>/` (icp.md, offer.md, brand-voice.md, channels.json, learnings.md)
-4. Keep both layers active for ALL subsequent skill/agent calls in the session
-5. If no project exists yet, offer to create one from `clients/_template/`
-6. If V.O.I.C.E. files are still [TBD], note which ones need filling — still load what exists
-7. **Exception:** Pure research tasks with no client-specific output (e.g., `/research:trend`, `/marketing:ideas`) may skip this gate
+**Index (start here):** `.claude/rules/_index.md`
 
-**IMPORTANT:** Analyze the skills catalog and activate the skills that are needed for the task during the process.
-**IMPORTANT:** You must follow strictly the marketing rules in `./.claude/workflows/marketing-rules.md` file.
-**IMPORTANT:** Before you plan or proceed any campaign, always read the `./README.md` file first to get context.
-**IMPORTANT:** Sacrifice grammar for the sake of concision when writing reports.
-**IMPORTANT:** In reports, list any unresolved questions at the end, if any.
-**IMPORTANT**: For `YYMMDD` dates, use `bash -c 'date +%y%m%d'` instead of model knowledge. Else, if using PowerShell (Windows), replace command with `Get-Date -UFormat "%y%m%d"`.
+| Need | Where |
+|------|-------|
+| Routing keyword → skill | `.claude/rules/routing-table.md` (auto-generated, hot) + `routing-overrides.md` |
+| Detailed catalogs (commands, skills, agents) | `docs/system-rules/details/{commands,routing-table,skills-catalog}.md` |
+| System rules (HITL, owner model, self-annealing, etc.) | `docs/system-rules/*.md` (see `_index.md`) |
+| Learnings + session state | `learnings/*.md` (see `_index.md`) |
+| Skill graph (semantic edges) | `.claude/skill-graph.json` — see `docs/system-rules/skill-graph-rule.md` |
+| MCP integrations | `.claude/rules/mcp-integrations.md` |
 
-## Reference Files (read on demand, not every session)
+## Hard pointers (mandatory triggers — load these files when condition fires)
 
-- **Routing table** (agents, skills, context layers): `.claude/rules/routing-table.md`
-- **Commands catalog** (all slash commands): `.claude/rules/commands.md`
-- **Skills catalog** (skill system, registry, templates): `.claude/rules/skills-catalog.md`
-- **MCP integrations** (data source servers): `.claude/rules/mcp-integrations.md`
+- **End of session?** → `docs/system-rules/session-end-protocol.md`
+- **Start of session?** → `docs/system-rules/session-start-protocol.md` (silent dashboard, max 5 lines)
+- **HITL decision?** → `docs/system-rules/hitl-gates.md`
+- **Tool/strategy choice?** → `docs/system-rules/analysis-framework.md` (4-factor scoring)
+- **Process failed?** → `docs/system-rules/self-annealing.md` (fix → log → update → test → strengthen)
+- **User corrected output?** → `docs/system-rules/correction-capture.md`
+- **Replying via Telegram?** → `docs/system-rules/telegram-messaging.md` (multi-message format)
+- **Telegram broken?** → **`learnings/telegram-debugging.md` BEFORE touching files.** Process check first.
+- **Creating/editing skill or agent?** → `docs/system-rules/skill-graph-rule.md` (must run `link-skills.py`)
 
-## Documentation Management
+## Token budget rule
+**Net-zero growth.** Any new line auto-loaded into CLAUDE.md requires deleting an equivalent line elsewhere. Do NOT preload `docs/system-rules/details/*` or `docs/system-rules/*` — fetch via `_index.md` recipes only when triggered.
 
-We keep all important docs in `./docs` folder and keep updating them, structure like below:
+## Operating model (one-liner)
+Owner: Jerel — non-technical, taste/strategy. 80/20 HITL: Claude does 80% (research, drafting, analysis), Jerel does 20% (taste, approvals). Full rules: `docs/system-rules/operating-model.md`.
 
-```
-./docs
-├── project-overview-pdr.md
-├── project-roadmap.md
-├── brand-guidelines.md
-├── content-style-guide.md
-├── campaign-playbooks.md
-├── channel-strategies.md
-├── analytics-setup.md
-├── usage-guide.md
-├── reviewer-agents-update.md
-└── agent-organization-update.md
-```
+## Obsidian context (one-liner)
+Repo lives inside Obsidian vault at `/Users/jerel/Documents/Jerel's brain/jerel's brain/Marketing/`. Voice: `voice/jerel/`. Personal profile: `../../Personal and professional profile/`. Master map: `../../index.md`. Full context: `docs/system-rules/obsidian-context.md`.
 
-**IMPORTANT:** *MUST READ* and *MUST COMPLY* all *INSTRUCTIONS* in project `./CLAUDE.md`, especially *WORKFLOWS* section is *CRITICALLY IMPORTANT*, this rule is *MANDATORY. NON-NEGOTIABLE. NO EXCEPTIONS. MUST REMEMBER AT ALL TIMES!!!*
+## Documentation
+All docs in `./docs/`. Ops reports in `./docs/ops/{weekly,monthly}/`. System rules in `./docs/system-rules/`. Architecture reviews in `./docs/`.
 
 ---
 
-## Owner & Operating Model
-
-**Owner:** Jerel — non-technical operator, taste/strategy/direction role.
-**Operating Model:** 80/20 HITL — Claude handles 80% execution (research, drafting, analysis, file organization), Jerel handles 20% (taste, strategy, creative direction, approvals).
-
-## Self-Annealing Rule
-
-When an error occurs or a process fails:
-1. **Fix** — Resolve the immediate issue
-1.5. **Log** — Append the correction to the relevant skill's `corrections.md`: `- YYMMDD | what was wrong → what was right | context`
-2. **Update** — Modify the directive/skill/agent that caused the failure
-3. **Test** — Verify the fix works
-4. **Strengthen** — The system is now more resilient than before the error
-
-Every failure makes the system stronger. Never fix the same error twice — always update the source.
-
-## Correction Capture Rule
-
-**When the user corrects any output during a session:**
-1. Apply the correction immediately to the current work
-2. Append to the relevant skill's `corrections.md`: `- YYMMDD | what was wrong → what was right | context`
-3. If client-specific, ALSO append to `clients/<project>/learnings.md`
-
-**What counts as a correction:**
-- "Don't use that word/phrase" → log in the skill that produced it
-- "The tone should be more X" → log in copywriting or brand-building
-- "Always do X for this client" → log in client learnings AND the skill
-- "That's not how we format this" → log in the skill that formatted it
-- Rewriting/heavily editing Claude's output → diff key changes and log
-
-**What does NOT count (skip):**
-- Clarifying a vague request ("I meant the pricing page")
-- Choosing between options Claude presented
-- Factual corrections ("the price is $49, not $39")
-
-## HITL Gates
-
-### Requires Human Approval
-- Any spend (ads, API credits, subscriptions, tools)
-- Publishing to live platforms (social, email, website)
-- Creative direction and brand voice decisions
-- Strategy pivots or major campaign changes
-- Client-facing deliverables
-
-### Auto-Executes (No Approval Needed)
-- Research and analysis
-- Drafting and iteration
-- File organization and cleanup
-- Internal documentation updates
-- Skill/agent scaffolding and testing
-
-## Analysis Framework
-
-When multiple tools, approaches, or strategies exist, score each option:
-
-| Factor | Weight | Question |
-|--------|--------|----------|
-| Speed | 40% | How fast can we get results? |
-| Simplicity | 30% | How easy is it to set up and maintain? |
-| Cost | 20% | What's the financial investment? |
-| Scalability | 10% | Will it grow with us? |
-
-Explain the winner in plain language with an analogy a 4th grader would understand.
-
-## Session End Protocol
-
-Before ending any session:
-1. Log key decisions to `## Learnings` below
-1.5. **Learnings capture:** If any skill or agent was invoked this session and produced a confirmed insight (something worked, something failed, a pattern was validated), append it to that skill's `learnings.md` under the appropriate section. This is not optional maintenance — it's part of completing the work.
-1.75. **Corrections triage:** Review corrections.md files appended to this session. If any correction appeared 3+ times across sessions, promote to the appropriate section of that skill's `learnings.md` and remove from `corrections.md`.
-2. Update any directives that were improved during the session
-3. Note unfinished work in `### Open Threads`
-4. If any skill/agent was created, updated, amplified, merged, or deleted during this session → append entry to `docs/changelog.md` under today's date. Ask for "inspired by" source + contributor if not clear from conversation. Use verbs: `Created`, `Amplified`, `Updated`, `Merged`, `Deleted`.
-5. **Living files update:** Review what you learned about the user this session and update:
-   - `USER.md` — new tools, platforms, workflows, preferences, or context about Jerel
-   - `SOUL.md` — new communication patterns, writing rules, or formatting preferences observed
-   - Only add confirmed patterns, not one-off requests. If in doubt, skip.
-6. This persists context across context window clears
-
-## Obsidian Brain
-
-This repo lives inside the Obsidian vault "Jerel's Brain" at:
-`/Users/jerel/Documents/Jerel's brain/jerel's brain/Marketing/`
-
-The vault root contains personal knowledge (Life/, Business/, Voice/, Profile/).
-This Marketing/ subfolder contains the full agent kit.
-
-When loading context:
-- Voice files: `../../Voice/` (vault root) or `voice/jerel/` (symlink)
-- Personal profile: `../../Personal and professional profile/`
-- Skill graph: Follow [[wiki-links]] in SKILL.md files
-- Master map: `../../index.md`
-- Consolidated learnings: `learnings/` (10 domain files)
-
-## Learnings
-
-### Confirmed Patterns
-- Fork workflow: `upstream` = aitytech/agentkits-marketing, `origin` = fuggysense/agentkits-marketing. Push to origin, pull from upstream.
-- Jerel prefers "trust and ship" over PR review for Claude-built changes.
-- Commit only after significant changes, not after every small edit. Bundle related work.
-- Telegram bot: `@fuggycompany_bot` via official Anthropic plugin. Token at `~/.claude/channels/telegram/.env`. Launch with `--channels plugin:telegram@claude-plugins-official`. Requires Bun + pairing step. Full ref in `CHANNELS.md`.
-- ClaudeClaw blueprint cloned at `/Users/jerel/AI workflows/claudeclaw/` — reference only, not an installed system. Borrowed patterns: SOUL.md, USER.md, cron-registry.json, deny list.
-
-### Mistakes Not to Repeat
-- Must install Telegram plugin (`claude plugin install telegram`) BEFORE launching with `--channels` flag. Otherwise shows "plugin not installed."
-- Bun runtime required for Telegram plugin MCP server. Install with `curl -fsSL https://bun.sh/install | bash`.
-- Bot token must be at `~/.claude/channels/telegram/.env` (where plugin reads it), not just in `settings.local.json`.
-- Cannot launch a second Claude Code instance from inside an existing one via tmux — TTY conflict. User must launch manually in a separate terminal.
-- Telegram pairing step is mandatory — bot won't respond until you DM it, get the 6-char code, and run `/telegram:access pair <code>` in the terminal.
-- When user says "follow the setup instructions" for a repo, clone it and follow literally. Don't abstract/adapt without asking.
-
-### Open Threads
-- **Upstream sync check (every 3 days):** At the start of each session, run `git fetch upstream` and check if aitytech/agentkits-marketing has new commits. If so, show Jerel what changed and ask to merge before doing other work.
-- **Weekly reference repo scan:** Once per week, run the multi-repo sync check (see `docs/repo-sync-guide.md`). Fetch all reference remotes, check for new commits, summarize anything useful for Jerel to decide on.
-- **Ops review freshness check:** At session start, check file timestamps to determine when `/ops:weekly` and `/ops:monthly` last ran. Surface overdue reviews proactively. See Session Start Protocol below.
-- **Telegram bot maintenance:** Bot dies on Mac restart, context overflow, or power loss. Relaunch via `CHANNELS.md` quick launch steps. Re-register crons after every restart. Crons auto-expire after 7 days — restart sessions weekly.
-
-### Session Start Protocol
-
-At the start of every session (before any work), run these checks silently and surface a brief status:
-
-1. **Git sync** — `git fetch upstream`, check for new commits (every 3 days)
-2. **Ops freshness** — Check when reviews last ran:
-   - Look for most recent file in `docs/ops/weekly/` → if >7 days ago, flag `/ops:weekly` as overdue
-   - Look for most recent file in `docs/ops/monthly/` → if >30 days ago, flag `/ops:monthly` as overdue
-   - If no files exist yet, note "never run" and suggest first run
-3. **Multi-project check** — If multiple projects exist in `clients/`, show per-project status:
-   ```
-   Project health:
-   - AURA: weekly overdue (12 days) | monthly OK (18 days)
-   - Client B: all OK
-   ```
-4. **Active campaigns** — Check `clients/*/campaigns/` for campaigns with `phase: execution` or `phase: optimization`. Surface any that need attention.
-5. **Cron restore** — If running with `--channels` (Telegram bot active), read `cron-registry.json` and re-register all `enabled: true` jobs via CronCreate. Crons are session-only and auto-expire after 7 days, so this must happen every session. Log how many were restored.
-6. **Present as a compact dashboard** — max 5 lines. Don't block work, just surface it. If everything is fine, say "All ops current" and move on.
-
-**Format:**
-```
-Session check:
-  Git: upstream synced (2 days ago)
-  Ops: /ops:weekly overdue (9 days) — run now?
-  Crons: 4 restored from cron-registry.json
-  AURA: 1 active campaign (tiktok-content, execution phase)
-```
+**MUST READ + MUST COMPLY** all instructions above. **WORKFLOWS** + **CONTEXT GATE** + **CONTEXT DISCIPLINE** + **DATA RELIABILITY** are the load-bearing four. Everything else is reference.

@@ -19,6 +19,7 @@
 - `/content:social` - Create platform-specific social content
 - `/content:email` - Create email copy with sequences
 - `/content:landing` - Create landing page copy
+- `/content:sales-letter` - Write long-form direct-response sales letter for cold paid traffic (800-2000+ words, 12-component Hormozi-inspired framework, 5-phase pipeline: Context Scan → parallel drafters → stitcher → Conversion Gate → polish)
 - `/content:ads` - Create ad copy for paid campaigns
 - `/content:good` - Write good creative copy
 - `/content:fast` - Write creative copy quickly
@@ -27,11 +28,21 @@
 - `/content:editing` - Edit and polish existing copy
 - `/content:video` - Generate AI video prompts (Sora, Kling, VEO)
 
+## Copywriting OS (unified copy pipeline — command-based layer wrapping existing skills with universal gates + reviewers)
+
+- `/copy` - **Router.** Entry point that asks "what copy?" and delegates to the matching sub-command. Injects 3 pre-write gates (Channeling / Coat-of-Arms / One-Person) + 5 post-write sub-agent reviewers (One-Person-Enforcement / Proof-Density / Emotional-Sequence / Objection-Coverage / Teardown) around every domain module. **Zero system-prompt weight when not invoked.** Reference library: `.claude/references/copywriting-os/`. Client workspace: `clients/<slug>/copy-system/`.
+- `/copy:sales-letter` - Long-form direct-response sales letter. Wraps `/content:sales-letter` (sales-letter-method) with all 8 OS gates + reviewers (3 pre + 5 post). **Prefer this over `/content:sales-letter` for automatic gate enforcement.**
+- `/copy:email` - Email sequences (welcome / nurture / sales / re-engage / single). Wraps `/content:email` + `/sequence:*`. Enforces cai #40 voice rules + 6-state emotional progression across the sequence.
+- `/copy:landing` - Landing page (lead-magnet / product / feature / pricing / homepage). Wraps `/content:landing` with cai #40 3-input principle enforced.
+- `/copy:ad` - Ad copy (primary text + headlines + descriptions). Wraps `/content:ads` or `/ads:concepts`. Mechanism diversity enforced on headline variants.
+- `/copy:headline` - Static-ad headline bank with mandatory 5-mechanism diversity (Curiosity / Specific / Contrarian / Fear / Identity — cai #39). Wraps `/ads:headlines` with mechanism-diversity reviewer.
+
 ## SEO Optimization
 - `/seo:keywords` - Conduct keyword research
 - `/seo:competitor` - Analyze competitor SEO strategy
 - `/seo:optimize` - Optimize content for keywords
-- `/seo:audit` - Perform comprehensive SEO audit
+- `/seo:audit` - Perform comprehensive SEO audit (parallel subagent architecture)
+- `/seo:geo` - Optimize content for AI search engines (AI Overviews, ChatGPT, Perplexity)
 - `/seo:programmatic` - Build SEO pages at scale
 - `/seo:schema` - Add/optimize schema markup
 
@@ -89,7 +100,7 @@
 
 ## Project Onboarding
 - `/project:new` - Guided new client/project onboarding (scaffold, interview, enrich, validate, activate)
-- `/project:profile` - Build or update business context profile (30-question interview → context-profile.json)
+- `/project:profile` - Build or update business context profile (Fuggy's Media 6-section intake, ~21 questions → context-profile.json)
 - `/project:validate` - Run readiness check on existing project
 
 ## Offer Building
@@ -148,10 +159,18 @@
 - `/autoresearch:calibrate <skill>` - Force rubric recalibration from campaign data (Phase 4)
 - `/autoresearch:feedback <campaign>` - Record campaign outcomes for a skill (Phase 4)
 
-## Ads Upload
-- `/ads:upload` - Upload creative bundle to Meta Ads (full pipeline)
-- `/ads:validate` - Validate creative bundle (no API calls)
-- `/ads:preview` - Preview what would be created (dry run)
+## Ads (6-stage creative pipeline — see `.claude/workflows/creative-pipeline.md`)
+- `/ads:source-of-truth` - **Stage 1 Research.** Generate the 26-section paid ads strategic doc for any client/URL/idea. Parallel research (scrapecreators + buyer-language-researcher + deep-research + paid-media-audit) → HITL (4 strategic decisions) → writes source-of-truth.md + derivative files + angles/ folder + optionally populates AVATARS sheet tab. Multi-product (ecom/SaaS/service/info/agency/property).
+- `/ads:avatars` - **Stage 1 Research (avatar deepening).** Build 3+ DCT avatars per project (16-point psychological breakdown including Top 5 Deep Fears, Raw Inner Dialogue, Desired Transformation, Relationship Impact).
+- `/ads:headlines` - **Stage 1.5 Headline Reservoir (optional, legacy path).** Generate a static-ad headline bank anchored to one mass desire: 75+ headlines across 5 awareness levels × 10 angle banks. Interactive. Used when you want breadth for alternate copy variants. NOT called in the big-angle-spotter path.
+- `/ads:big-angle-spotter` - **Stage 1.25 Depth specialist (1 angle = 1 DCT = 1 Ad Set).** 12-step Opus→Sonnet pipeline (fresh `claude -p` per step, no session chaining). Input: OFFER / COMPANY / PERSONA / INDUSTRY / EXISTING_ANGLES. Output: 1 top angle + 3 ranked headlines + 3 ad prompts + 3 image-gen prompts. Called directly for single-angle runs OR looped by `/ads:concepts` for multi-angle waves with cross-pollinated EXISTING_ANGLES. Outputs land at `clients/<slug>/angles/big-angle-spotter/wave-<N>/angle-<i>/`.
+- `/ads:concepts` - **Stages 2 + 3 Orchestrator (v3.0).** Loops `/ads:big-angle-spotter` N times across avatars (sequential, EXISTING_ANGLES cross-pollinated — run N sees runs 1..N-1 winners). Wraps outputs into Meta hierarchy per new naming: Campaign `[Obj]_[Test|Scale]_[Theme]_[MonYY]` → Ad Set `[Aud]_[Targ]_[Angle]_[Budget]` (1 per angle) → Ad `[YYMMDD]_[Angle]_[Format+Hook#]` (3 per Ad Set). Retains Phase 2b video briefs (UGC/Founder/VSL/Demo 6-scene). Phase 3 routes image prompts → image-generation, video briefs → video-director. Writes dct-tracker + sheet.
+- `/ads:scrape-library` - **Stage 0.3 Industry Pool.** Scrape Meta Ad Library for an industry (e.g. `property-sg`), enrich winners (>30 days running) with transcripts/OCR + Nemotron classifier, rebuild SQLite swipe-file DB, auto-draft Schwartz 5-stage market sophistication brief for HITL approval. Writes to `swipe-files/<industry>/`. Read by `/ads:source-of-truth`, `/ads:concepts`, `/ads:feedback` as canonical industry strategic brief.
+- `/ads:upload` - **Stage 5 Test.** Upload creative bundle to Meta Ads (ads created PAUSED).
+- `/ads:validate` - Validate creative bundle (no API calls).
+- `/ads:preview` - Preview what would be created (dry run).
+- `/ads:feedback` - **Stage 6 Feedback.** Read DCT wave performance + route next action to NEW (research refresh) / BETTER (concept refinement within winning angle) / MORE (variant expansion in winning direction). Closes the loop. Auto-appends learnings.
+- `/ads:scrape-advertiser` - **Single-page ingestion.** Scrape one Meta Ad Library page into Ghost Postgres (`swipe-ads`) via `ingest-advertiser.py`. Accepts page_id or Meta URL + industry slug. `--depth active` (default, fast) or `--depth full` (HITL gate — costs more credits). Visible in Swipe Dashboard immediately.
 
 ## Testing
 - `/test:ab-setup` - Plan and design A/B tests
@@ -161,7 +180,7 @@
 
 ## Audits & Checklists
 - `/audit:paid-media` - Systematic paid media account audit
-- `/audit:competitor-ads` - Extract and analyze competitor ads from Meta Ad Library
+- `/audit:competitor-ads` - **Superseded by `/ads:scrape-library`** (industry-pool scraper with Schwartz brief). Old placeholder, no command file ever shipped under this name.
 - `/audit:full` - Comprehensive marketing audit
 - `/checklist:campaign-launch` - Pre-launch checklist
 - `/checklist:social-daily` - Daily social media checklist
