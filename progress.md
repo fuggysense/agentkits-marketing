@@ -146,6 +146,49 @@ Jerel approved verdict + migration plan, picked 5.3 first.
 - `.claude/rules/details/routing-table.md` → `docs/system-rules/details/routing-table.md`
 - `.claude/rules/details/skills-catalog.md` → `docs/system-rules/details/skills-catalog.md`
 
+### 5.4 execution log (2026-05-04)
+Jerel reviewed the video/visual skill inventory, marked specific keep/cut/refactor decisions.
+
+**Retired (9 skills, all GLOBAL `~/.claude/skills/`)** — `mv SKILL.md → SKILL.md.retired-260504` (reversible by `mv` back):
+- `seedance-effects` (frontmatter said RETIRED — absorbed into seedance-director)
+- `seedance-loop` (RETIRED — absorbed)
+- `seedance-motion` (RETIRED — absorbed)
+- `seedance-prompt` (RETIRED — absorbed)
+- `filmmaking` (RETIRED — absorbed into ai-filmmaking)
+- `directors-cut` (RETIRED — absorbed into ai-filmmaking)
+- `video-director` GLOBAL (RETIRED — narrative absorbed into ai-filmmaking; project version stays live)
+- `marketing-studio-director` (Jerel: delete because higgsfield MCP supersedes)
+- `remotion-best-practices` (Jerel: delete)
+
+Other files in each retired skill folder (corrections.md, references/, scripts/, lib/) preserved for institutional memory + recovery.
+
+**Refactored:**
+- **`skills/higgsfield/SKILL.md`** (PROJECT) — added "Execution backend selection" section at top: MCP-first (`mcp__higgsfield__*` if available) with documented expected tool surface (`generate_image`, `generate_video`, `list_models`, `check_credits`, `get_generation`), browser fallback for current sessions where MCP not installed. Same model router applies regardless of backend.
+- **`~/.claude/skills/ugc-creator/SKILL.md`** (GLOBAL) — added new section "CHARACTER REFERENCE SHEET TEMPLATE" with Jerel's full Cinematic Character Concept Art Sheet template (CHARACTER CORE / PERSONALITY / MAIN IDENTITY & SCALE / HEAD DETAIL / COLOR PALETTE / WARDROBE / NOTES / CLOSE-UP / LAYOUT RULES). Added field-mapping table from existing actor.json to template fields. Added optional `narrative` block schema for actor.json to capture archetype/personality_traits/etc. Render path routes to gpt-image-2-director (default), image-generation, or higgsfield.
+- **`~/.claude/skills/gpt-image-2-director/SKILL.md`** — added "When to use a sibling skill instead" cross-ref table pointing to beat-sheet-director (videos), image-generation/higgsfield (UGC faces), seedance-* (videos), ugc-creator (character sheets).
+- **`~/.claude/skills/beat-sheet-director/SKILL.md`** — added matching cross-ref table pointing back to gpt-image-2-director (single images) + seedance for videos + ugc-creator for character sheets.
+
+**Decision: Don't merge gpt-image-2-director and beat-sheet-director.** Beat-sheet IS GPT Image 2's specialized video-storyboard mode, but its output format (panel grid w/ timecodes/captions) is distinct enough that merging would bloat the parent. Cross-references make the relationship explicit.
+
+**NOT done (deliberate):**
+- Did not delete folder contents — only mv'd SKILL.md → SKILL.md.retired-260504. Easy revert.
+- Did not update `docs/system-rules/details/routing-table.md` or `details/skills-catalog.md` to remove retired skills entries. The auto-generated `.claude/rules/routing-table.md` will refresh on next SessionStart hook (refresh-registry.js scans for SKILL.md presence). Manual catalog cleanup queued for a future hygiene pass — they're already on-demand-only so don't bloat session.
+- Did not touch `seedance-ugc-director` (frontmatter says RETIRED but Jerel kept on default per "rest do the default" — frontmatter discrepancy noted for future hygiene pass).
+
+### Files created/modified this 5.4 sub-session
+**Modified (4 SKILL.md):**
+- `skills/higgsfield/SKILL.md`
+- `~/.claude/skills/ugc-creator/SKILL.md`
+- `~/.claude/skills/gpt-image-2-director/SKILL.md`
+- `~/.claude/skills/beat-sheet-director/SKILL.md`
+
+**Renamed (9 SKILL.md → SKILL.md.retired-260504):**
+- `~/.claude/skills/{seedance-effects, seedance-loop, seedance-motion, seedance-prompt, filmmaking, directors-cut, video-director, marketing-studio-director, remotion-best-practices}/SKILL.md`
+
+**Modified (planning):**
+- `task_plan.md` — 5.4 marked complete
+- `progress.md` — this log
+
 ### 5-Question Reboot Check
 | Question | Answer |
 |----------|--------|
