@@ -189,6 +189,85 @@ Other files in each retired skill folder (corrections.md, references/, scripts/,
 - `task_plan.md` — 5.4 marked complete
 - `progress.md` — this log
 
+---
+
+### 5.2 execution log (2026-05-04)
+Jerel: "sure do a snapshot and /session-handoff afterwards, keeping in mind the jake organising"
+
+**Pre-reorg snapshot:** `clients/neezanizam-260504-pre-reorg/` (50M, rsync from working folder). Single-command rollback if reorg fails: `rm -rf clients/neezanizam && mv clients/neezanizam-260504-pre-reorg clients/neezanizam`.
+
+**Reorg executed (Jake/Eduba ICM L0/L3/L4):**
+
+| New path | Was | Layer |
+|----------|-----|-------|
+| `clients/neezanizam/CLAUDE.md, context-profile.json` | (root) | L0 always-loaded |
+| `_brand/{icp,offer,brand-voice,buyer-profile,channels,learnings,source-of-truth,source-of-truth-draft,story-bank,asset-map,notebooklm,metrics-config}.md/json + .bak files` | (root) | L3 stable identity |
+| `_brand/avatars/` | `avatars/` | L3 |
+| `_brand/brand-assets/{DESIGN, font, reference, "everything else"}` | `brand/` | L3 |
+| `_swipe/research/` | `research/` | L3 research |
+| `_swipe/competitor-ads/` | `competitor-ads/` | L3 |
+| `_swipe/swipe-file{,-buyers,-sellers}.md` | (root) | L3 |
+| `_swipe/hook-library.md, wave-reserved-angles.md` | `angles/` | L3 reservoir |
+| `_swipe/headline-banks/wave-{1,2}-headline-bank.md` | `angles/` | L3 reservoir |
+| `campaigns/angles/{README, wave-1, wave-2, wave-1-vs-stage-analysis, iteration-log}.md, big-angle-spotter/` | `angles/` | L4 working |
+| `campaigns/big-angle-spotter-runs/` | (root) | L4 |
+| `campaigns/{feedback, metrics, funnel, sheet-snapshots}/` | (root) | L4 |
+| `campaigns/dashboard.html` | (root) | L4 |
+| `output/sales-letters/` | `sales-letters/` | L4 deliverables |
+| `output/deliverables/` | `deliverables/` | L4 |
+
+**Top level after reorg (10 items):** `.claude/, .DS_Store, CLAUDE.md, context-profile.json, _brand/, _swipe/, assets/ (empty placeholder), campaigns/, output/`. Down from 38 items.
+
+**Nested CLAUDE.md updates:**
+- Replaced flat file routing table with new ICM-aware version + visual structure tree at top
+- Updated 6-stage pipeline references (e.g., `angles/big-angle-spotter/` → `campaigns/angles/big-angle-spotter/`, `research/big-ideas/` → `_swipe/research/big-ideas/`)
+- Updated Active Work paths (Wave 1 headline bank → `_swipe/headline-banks/`)
+- Updated Never Do clauses (saturated angles in `_brand/learnings.md`, angle/hook/wave data in `campaigns/angles/`)
+- Updated Branding pointer (`brand/DESIGN/` → `_brand/brand-assets/DESIGN/`)
+
+**Real code fix:** `scripts/patch_angle_cell.py:145` — `clients/<slug>/sheet-snapshots/` → `clients/<slug>/campaigns/sheet-snapshots/`. (Was the only real path-building code; rest were docstrings/usage examples.)
+
+**Symlink preserved:** `_swipe/research/big-ideas/` (points to `~/AI workflows/nn-ads-big-ideas/`) survived the move (rsync preserves symlinks).
+
+### Phase 5.2.5 — Cleanup queue (post-reorg, do later)
+
+These do NOT block the reorg from working but should be touched in a hygiene pass to keep the system honest:
+
+**Script docstrings/usage examples with old paths (cosmetic, won't break code):**
+- `scripts/phase4_acceptance_test.py` line 9 — sales-letters/ path in docstring
+- `scripts/backfill_angle_rationale.py` lines 11, 14 — `--dct-dir` examples
+- `scripts/ad_concept_sheet_writer.py` lines 24, 359 — comment strings
+- `scripts/source_of_truth_sheet_writer.py` lines 13, 22, 27 — `--draft` examples
+- `scripts/reddit.py` line 17 — `--output-dir` example
+
+**Copywriting OS reviewer templates (`scripts/build_copyos_reviewers.py`):**
+- Lines 147-485: TEMPLATE STRINGS that get written into reviewer markdown files when the script runs. Templates reference `clients/<slug>/source-of-truth.md`, `clients/<slug>/research/*.md`, `clients/<slug>/learnings.md`, `clients/<slug>/brand-voice.md`, `clients/<slug>/angles/iteration-log.md`. Need to update to new ICM paths AND re-run the script to regenerate the shipped reviewer files at `.claude/references/copywriting-os/reviewers/`.
+
+**Already-shipped reviewer files** (at `.claude/references/copywriting-os/reviewers/`) likely reference old paths — verify and update on next session.
+
+**Decision (Phase 5.2.5 priority):** the ICM reorg is functional for interactive use (Claude reads new paths from updated nested CLAUDE.md). Scripts using old paths will fail with clear errors. Address scripts as encountered OR batch-update during next `/ops:weekly`. Snapshot at `clients/neezanizam-260504-pre-reorg/` stays until Wave 2 ships and operator confirms no regressions, then delete.
+
+### Files created/modified this 5.2 sub-session
+**Created (snapshot):**
+- `clients/neezanizam-260504-pre-reorg/` (50M, full mirror — gitignore?)
+
+**Modified:**
+- `clients/neezanizam/CLAUDE.md` — full ICM-aware rewrite of routing table + 6-stage pipeline + active work + never-do paths + branding pointer
+- `scripts/patch_angle_cell.py:145` — real code path updated
+- `task_plan.md` — 5.2 marked complete + 5.2.5 cleanup phase added
+- `progress.md` — this log
+
+**File-system changes (clients/neezanizam/):**
+- 13 root-level files moved into `_brand/`
+- 1 dir (`avatars/`) moved into `_brand/`, 1 dir (`brand/`) renamed to `_brand/brand-assets/`
+- 2 dirs (`research/`, `competitor-ads/`) moved into `_swipe/`
+- 3 swipe-file md's + 2 reservoir md's moved into `_swipe/`
+- 2 headline banks moved into `_swipe/headline-banks/`
+- 5 angles md's + 1 dir + 1 README moved into `campaigns/angles/`
+- 6 dirs (big-angle-spotter-runs, feedback, metrics, funnel, sheet-snapshots) + 1 file (dashboard.html) moved into `campaigns/`
+- 2 dirs (sales-letters, deliverables) moved into `output/`
+- 0 deletes — all moves preserve content
+
 ### 5-Question Reboot Check
 | Question | Answer |
 |----------|--------|
