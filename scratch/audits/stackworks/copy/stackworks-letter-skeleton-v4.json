@@ -1,0 +1,377 @@
+{
+  "schema_version": "0.4",
+  "extraction_metadata": {
+    "source_letter": "scratch/audits/stackworks/copy/stackworks-letter.md",
+    "extracted_at": "2026-05-08T00:00:00+08:00",
+    "extractor_version": "0.4.0",
+    "context_branch": "loaded",
+    "phase_2_status": "skipped_upstream_present",
+    "phase_2_should_run": false,
+    "declared_anchors": {
+      "purpose_of_letter": "Convert wealthy SG property investors with $400K–$2M of unallocated reserves into qualified applicants for Stackworks's algorithmic trading service — buyers who built wealth through property and are looking to compound capital between deals without becoming traders themselves.",
+      "cta_target": "Request Private Access → suitability application form → 1:1 assessment call with the principal.",
+      "final_goal": "Qualified applicants who pass suitability screening and become Stackworks clients ($500K+ allocations)."
+    },
+    "speculation_ratio": 0.0,
+    "voc_anchor_coverage": "91% — 10 of 11 findings have direct or adjacent dossier match. 1 finding (MAGIC name check) is no-VOC.",
+    "cold_path_warning": null
+  },
+  "meta": {
+    "word_count": 1102,
+    "audience_inferred": "Broad 'private investor' framing — no property-investor specificity. Letter speaks to anyone with capital who is time-poor. The declared target (SG property investors with stranded capital) is not named or addressed in the letter.",
+    "verticals_detected": [
+      "Generic private investor (time-poor executive)",
+      "DIY trader (Path Two framing)"
+    ],
+    "segment_leakage_flag": "PRESENT — letter is written for a generic 'private investor' not the SG property-investor-with-stranded-capital segment. DIY trader framing (Path Two) may actively repel the property investor who doesn't identify as a trader at all."
+  },
+  "ump": {
+    "articulated_concept": "A rules-based, automated execution system that runs the currency market 24 hours across three dimensions (price, time, position size) while the investor's attention remains elsewhere.",
+    "branded_terms": [
+      {
+        "name": "TripleStack™",
+        "occurrence_count": 2,
+        "first_appearance_word_index": 395,
+        "notes": "Appears as section heading and implied in the three-component description. 'Stack' as product name is used ~18 times."
+      },
+      {
+        "name": "Stack",
+        "occurrence_count": 18,
+        "first_appearance_word_index": 7,
+        "notes": "Product name doubles as mechanism shorthand. Creates ambiguity between brand and mechanism."
+      }
+    ],
+    "arrival_word_index": 395,
+    "arrival_flag": "LATE — mechanism not articulated until word ~395. Lede and problem sections (~300 words) name no mechanism. Reader must commit 300 words before understanding what Stack actually does.",
+    "prior_solution_link": "implicit",
+    "prior_solution_link_notes": "Two paths named (private banker, DIY investor) but neither is discredited with a structural failure mode. Named competitors (Endowus, T-bills, SSBs, structured notes, robo-advisors) are entirely absent."
+  },
+  "magic_name_check": {
+    "name_under_test": "TripleStack™",
+    "m_magnetic_reason": false,
+    "a_avatar": false,
+    "g_goal": false,
+    "i_interval": false,
+    "c_container": true,
+    "score": 1,
+    "missing": ["magnetic_reason", "avatar", "goal", "interval"],
+    "verdict": "[M] finding — mechanism name is not MAGIC-wrapped. 'TripleStack™' is a container word only. It signals nothing about who it's for, what it achieves, or why it exists now. Route to sales-letter-method Phase 0.7."
+  },
+  "discredit_old_solutions": [
+    {
+      "alternative_name": "Private banker / wealth management relationship",
+      "dismissal_quote": "Sounds like the sophisticated choice — until you realise those advisors are managing dozens of relationships, answering to their own institutions and optimising for their interests as much as yours. Conflict of interest is not an accusation. It is the structure of the relationship.",
+      "dismissal_word_index": 115,
+      "dismissal_type": "named-no-structural-failure",
+      "structural_failure_mode": null,
+      "notes": "Names the relationship category and gestures at incentive misalignment but gives no specific mechanism by which the private banker fails the investor (e.g., can't execute 24-hour rules-based entries, product suite limited by institutional mandate, no obligation to capital performance)."
+    },
+    {
+      "alternative_name": "DIY investor",
+      "dismissal_quote": "They study. They research. They watch the charts late into the night. And most of them lose money anyway — not because they were wrong about the opportunity, but because they could not execute it cleanly, consistently and without emotion.",
+      "dismissal_word_index": 160,
+      "dismissal_type": "named-no-structural-failure",
+      "structural_failure_mode": null,
+      "notes": "Names behavioral failure (emotion, inconsistency) but gives no math-level explanation. Also: this framing positions the reader as a potential DIY investor, which may repel the property investor who has never identified as a trader."
+    },
+    {
+      "alternative_name": "Endowus",
+      "dismissal_quote": null,
+      "dismissal_word_index": null,
+      "dismissal_type": "absent",
+      "structural_failure_mode": null
+    },
+    {
+      "alternative_name": "T-bills / SSBs",
+      "dismissal_quote": null,
+      "dismissal_word_index": null,
+      "dismissal_type": "absent",
+      "structural_failure_mode": null
+    },
+    {
+      "alternative_name": "Structured notes / ILPs",
+      "dismissal_quote": null,
+      "dismissal_word_index": null,
+      "dismissal_type": "absent",
+      "structural_failure_mode": null
+    },
+    {
+      "alternative_name": "Robo-advisors (Stashaway, Syfe)",
+      "dismissal_quote": null,
+      "dismissal_word_index": null,
+      "dismissal_type": "absent",
+      "structural_failure_mode": null
+    }
+  ],
+  "identity_ladder": {
+    "l1_problem_aware": {
+      "quote": "You don't have a strategy problem. You have an execution problem.",
+      "word_index": 1,
+      "location": "headline",
+      "notes": "Strong. Direct. Arrives immediately."
+    },
+    "l2_solution_aware": {
+      "quote": "Path One — The private banker... Path Two — The DIY investor",
+      "word_index": 115,
+      "location": "body",
+      "notes": "Present but weak. Two paths named without structural contrast. Reader who doesn't identify as either a private banker client or DIY trader may not see themselves here."
+    },
+    "l3_outcome_aware": {
+      "quote": "Your capital stays active. Your life stays yours.",
+      "word_index": 290,
+      "location": "body",
+      "notes": "Present. Arrives via the TripleStack benefits section. Adequate but generic — 'your life stays yours' is near the Philosophical Reduction anti-pattern."
+    },
+    "l4_post_decision_identity": {
+      "quote": null,
+      "word_index": null,
+      "location": "absent",
+      "notes": "ABSENT. The letter never crystallizes who the buyer becomes after deciding. No 'the investor who stops watching the market and starts living' identity moment. The closest ('You run your business on systems. Your capital deserves the same.') is aspiration, not identity crystallization. [H] finding."
+    }
+  },
+  "motifs": [
+    {
+      "phrase": "time, energy and/or attention",
+      "count": 4,
+      "anchor_claims_per_occurrence": 0.0,
+      "notes": "Zero of 4 occurrences carry proof weight. Pure structural repetition. Repetition fatigue risk."
+    },
+    {
+      "phrase": "execution",
+      "count": 9,
+      "anchor_claims_per_occurrence": 0.28,
+      "notes": "9 occurrences. About 2-3 carry actual claim weight. The rest are structural connectives. Repetition is semantic — reader hears 'execution problem' nine times with little new evidence."
+    },
+    {
+      "phrase": "rules-based / rules",
+      "count": 4,
+      "anchor_claims_per_occurrence": 0.75,
+      "notes": "Each use is in a definitional context. Earning its repetition."
+    },
+    {
+      "phrase": "your capital",
+      "count": 6,
+      "anchor_claims_per_occurrence": 0.33,
+      "notes": "6 uses. 2 carry specificity; 4 are connective."
+    }
+  ],
+  "headline_body_coherence": {
+    "headline_phrases": [
+      "execution problem",
+      "structured execution system",
+      "round-the-clock",
+      "private access"
+    ],
+    "echo_count": {
+      "execution problem": 9,
+      "structured execution system": 3,
+      "round-the-clock": 1,
+      "private access": 2
+    },
+    "orphan_flags": [
+      "'round-the-clock' appears in hero block but only once in body — mild orphan risk"
+    ]
+  },
+  "concentration_alternatives": [
+    {
+      "alternative": "Private banker relationship",
+      "dismissal_type": "feeling",
+      "quote": "Conflict of interest is not an accusation. It is the structure of the relationship."
+    },
+    {
+      "alternative": "DIY investor path",
+      "dismissal_type": "feeling",
+      "quote": "most of them lose money anyway — not because they were wrong about the opportunity, but because they could not execute it cleanly, consistently and without emotion."
+    }
+  ],
+  "cta_architecture": {
+    "elements_present": [
+      "explicit_action_label",
+      "application_only_framing",
+      "scarcity_signal_limited_investors",
+      "no_commitment_at_application_stage"
+    ],
+    "elements_absent": [
+      "guarantee",
+      "self_validation_checkpoint_near_cta",
+      "named_outcome_near_cta",
+      "return_story_near_cta",
+      "urgency_mechanism_beyond_vague_scarcity",
+      "liquidity_statement",
+      "minimum_investment",
+      "MAS_licence_reference"
+    ],
+    "word_count": 133,
+    "guarantee_present": false,
+    "self_validation_checkpoint_present": false,
+    "notes": "The 'Stack is not for you if / Stack is for you if' self-qualifier sits mid-letter (~word 580), not near the CTA. The CTA close is thin — 133 words with no return data, no liquidity terms, no trust anchors."
+  },
+  "proof_inventory": {
+    "named_outcomes": [],
+    "numbers": [],
+    "placeholders_present": false,
+    "trust_chain_gaps": [
+      "Entire 'Guide' section relies on credential listing (JPMorgan, Citibank, 2 decades) with zero named outcomes — no client result, no capital performance, no named deal. Credential ≠ proof of result.",
+      "'Unsolicited validation' quote has no attribution — no name, no institution, no deal specifics. Anonymous validation is the format scam testimonials use. This is the one trust-building element the letter has, and it's unattributed.",
+      "No MAS licensing information anywhere in the letter. Buyer-profile §7 identifies MAS licence as the non-negotiable floor. Its absence is a hard trust gap.",
+      "No track record duration, no return figures, no auditor named. The letter claims institutional-grade execution without a single number to support it.",
+      "No liquidity terms stated anywhere. Avatar 01 secondary objection is explicitly 'What if I need the money for the next deal?' — the letter is silent.",
+      "No minimum investment stated. The letter implies exclusivity ('limited number of private investors') but doesn't state the $500K+ threshold, leaving the self-selection filter undefined."
+    ],
+    "ai_pattern_flags": [
+      {
+        "pattern": "Big Contrast / Negative Listing",
+        "source_file": "overused-ai-patterns.md §3 + §Negative Listing",
+        "quote": "No screens. Your capital works. Your attention stays elsewhere. The market no longer competes with your life. No daily burden. No morning checks. No missed alerts. No decisions that drain your energy before your day has started. No emotional execution. Rules run. Not feelings.",
+        "word_index": 295,
+        "severity": "hard-flag",
+        "notes": "Three consecutive negative-statement blocks. Classic 'Not A, Not B, Not C — just D' structural anti-pattern. Reads as AI-default benefits enumeration."
+      },
+      {
+        "pattern": "Negative Parallelism",
+        "source_file": "anti-ai-patterns.md §8",
+        "quote": "not because they were wrong about the opportunity, but because they could not execute it cleanly, consistently and without emotion.",
+        "word_index": 165,
+        "severity": "hard-flag",
+        "notes": "Textbook 'Not because X but because Y' construction from the AI pattern library."
+      },
+      {
+        "pattern": "Rule of Three (structural default)",
+        "source_file": "anti-ai-patterns.md §9 + overused-ai-patterns.md §Three-Item Lists",
+        "quote": "cleanly, consistently and without emotion / Time. Energy. Attention. / Price. Time. Position Size. / Tesla. Amazon. Nvidia.",
+        "word_index": "multiple",
+        "severity": "hard-flag",
+        "notes": "At least 6 separate three-item groupings. The Tesla/Amazon/Nvidia tricolon is a rule-of-three layered onto a false analogy — these companies are not analogous to currency execution."
+      },
+      {
+        "pattern": "Dramatic Fragmentation",
+        "source_file": "overused-ai-patterns.md §Dramatic Fragmentation",
+        "quote": "No screens. / No daily burden. / No emotional execution. / Rules run. Not feelings.",
+        "word_index": 295,
+        "severity": "hard-flag",
+        "notes": "One-and-two-word sentences used as structural default in the benefits section. Fragments for impact that reads as AI-generated punched copy."
+      },
+      {
+        "pattern": "Big Contrast opener",
+        "source_file": "overused-ai-patterns.md §3",
+        "quote": "You don't have a strategy problem. You have an execution problem.",
+        "word_index": 1,
+        "severity": "soft-flag",
+        "notes": "The letter opens on the classic Big Contrast. It works as an attention-grab but is now an AI-default opening move in 2026. A/B test against a direct specific statement."
+      },
+      {
+        "pattern": "False Agency (market as subject)",
+        "source_file": "overused-ai-patterns.md §False Agency",
+        "quote": "The market moves while you're in a meeting. The market doesn't care about any of that. The market runs 24 hours.",
+        "word_index": 40,
+        "severity": "soft-flag",
+        "notes": "Inanimate subject performing human-intentional actions. Weak AI tell in copy register."
+      },
+      {
+        "pattern": "Philosophical Reduction",
+        "source_file": "overused-ai-patterns.md §5",
+        "quote": "Your capital stays active. Your life stays yours.",
+        "word_index": 290,
+        "severity": "soft-flag",
+        "notes": "Aphoristic reduction of a complex value proposition to a paradox-adjacent phrase. Works for buyers but is AI-default."
+      },
+      {
+        "pattern": "Bold-start-colon inline header formatting",
+        "source_file": "anti-ai-patterns.md §13",
+        "quote": "**I — Price.** Defined entry and exit parameters. **II — Time.** The system watches the market... **III — Position Size.** Capital deployed systematically.",
+        "word_index": 395,
+        "severity": "soft-flag",
+        "notes": "AI-default mechanism-explanation format. Every item bolded. Roman numeral structure is formal/corporate, not personal."
+      }
+    ],
+    "voc_anchored_findings": [
+      {
+        "finding_id": "trust_chain_gap_MAS_licence",
+        "letter_quote": "[absent — no MAS reference in letter]",
+        "letter_word_index": null,
+        "buyer_quote": "MAS Capital Markets Services licence — must be verifiable on MAS registry",
+        "buyer_source": "avatar-01 / The Specific Proof Type That Closes Them",
+        "match_strength": "direct"
+      },
+      {
+        "finding_id": "trust_chain_gap_audited_track_record",
+        "letter_quote": "[absent — no return figures, no auditor named]",
+        "letter_word_index": null,
+        "buyer_quote": "An audited track record from a named third party (not self-reported)",
+        "buyer_source": "avatar-01 / The Specific Proof Type That Closes Them",
+        "match_strength": "direct"
+      },
+      {
+        "finding_id": "trust_chain_gap_liquidity",
+        "letter_quote": "[absent — no liquidity terms anywhere]",
+        "letter_word_index": null,
+        "buyer_quote": "Your money lock for 25 years and returns not guaranteed. Got no liquidity premium as well.",
+        "buyer_source": "buyer-profile.md §2 / Objections & Fears",
+        "match_strength": "direct"
+      },
+      {
+        "finding_id": "segment_leakage_no_property_investor_acknowledgment",
+        "letter_quote": "Stack gives private investors a structured execution system",
+        "letter_word_index": 7,
+        "buyer_quote": "I can't buy another property right now. My money is in T-bills at 3% but I know that's not going to do much. What am I supposed to do — put it in Endowus and get 6% with all that volatility?",
+        "buyer_source": "avatar-01 / The Specific Frustration That Opens Them to Stackworks",
+        "match_strength": "direct"
+      },
+      {
+        "finding_id": "scam_pattern_trigger",
+        "letter_quote": "Stack gives private investors a structured execution system — so their capital works round-the-clock",
+        "letter_word_index": 7,
+        "buyer_quote": "It reminds me of all those get rich schemes, forex trading gurus, property investment gurus & MLM sales pitches.",
+        "buyer_source": "buyer-profile.md §2 / Objections & Fears",
+        "match_strength": "adjacent"
+      },
+      {
+        "finding_id": "trust_chain_gap_anonymous_validation",
+        "letter_quote": "When an investment bank and a global family office are keen to acquire Stack — you know it's built for real.",
+        "letter_word_index": 245,
+        "buyer_quote": "Always ask: if this is so good, why are you selling it to others for a few bucks? Answer always is: because selling someone hope is much easier and more certain than trading in the markets using any strategy.",
+        "buyer_source": "buyer-profile.md §2 / Theme D",
+        "match_strength": "adjacent"
+      },
+      {
+        "finding_id": "sleep_language_absent",
+        "letter_quote": "[absent — 'sleep' / 'sleep well at night' not used anywhere in letter]",
+        "letter_word_index": null,
+        "buyer_quote": "My old portfolio was too risky and I often lost sleep over it. No longer. After crossing the SGD 1.5 mil mark I rebalanced it slowly to where it is now and I have never lost any sleep over my portfolio since then.",
+        "buyer_source": "buyer-profile.md §2 Theme E / avatar-05",
+        "match_strength": "direct"
+      },
+      {
+        "finding_id": "discredit_named_competitors_absent",
+        "letter_quote": "[Endowus, T-bills, structured notes, robo-advisors — none mentioned]",
+        "letter_word_index": null,
+        "buyer_quote": "I can't buy another property right now. My money is in T-bills at 3% but I know that's not going to do much. What am I supposed to do — put it in Endowus and get 6% with all that volatility? I just want something that earns more than T-bills without me having to learn to trade or watch charts.",
+        "buyer_source": "avatar-01 / The Specific Frustration",
+        "match_strength": "direct"
+      },
+      {
+        "finding_id": "identity_l4_absent",
+        "letter_quote": "You run your business on systems. Your capital deserves the same.",
+        "letter_word_index": 545,
+        "buyer_quote": "Having the peace of mind from my finances to no longer feel a strong need to work has absolutely done wonders for me. My family, health, and social life have taken priority over my work, and I feel a lot happier most days.",
+        "buyer_source": "buyer-profile.md §2 / Desired Outcomes",
+        "match_strength": "adjacent"
+      },
+      {
+        "finding_id": "magic_name_check",
+        "letter_quote": "Proprietary Method — TripleStack™",
+        "letter_word_index": 395,
+        "buyer_quote": null,
+        "buyer_source": null,
+        "match_strength": "no-match"
+      }
+    ]
+  },
+  "inheritance_contracts": null,
+  "routing_signal": {
+    "primary": "Priority 2 — Segment lock and UMP rebuild. Letter speaks to a generic 'private investor' when the declared buyer is a SG property investor with stranded capital. The mechanism story has no dossier-grounded specificity.",
+    "secondary": "Priority 3 — Proof inventory rebuild. Zero named outcomes. Zero numbers. No MAS licence. No auditor. No liquidity terms. Trust chain is broken at every required node.",
+    "tertiary": "Priority 4 — CTA architecture. CTA close is thin (133 words), no return story, no trust anchors. Self-validation checkpoint is mid-letter, not at close.",
+    "recommended_reentry": "sales-letter-method Phase 0 (avatar re-anchoring and segment lock) → Phase 0.7 (mechanism architecture / MAGIC rebuild) → Phase 2 (proof inventory) → CTA architecture"
+  }
+}
