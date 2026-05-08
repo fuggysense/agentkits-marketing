@@ -123,7 +123,7 @@ The 13th Hormozi component (Price Anchor) is intentionally removed — this skil
 11. **FAQ** — 5 core objections: Time / Money / Authority / Stall / Preference
 12. **PS Line** — Threshold fear handler, personal tone
 
-## The 5-Phase Pipeline
+## The 5-Phase Pipeline (with Phase 0.5 Claim Audit + Phase 0.7 Mechanism Architecture)
 
 ### Phase 0 — Context Scan (auto + HITL gate)
 Auto-reads client files → builds component inclusion matrix → 1-screen HITL for confirm/adjust → feeds drafters.
@@ -142,11 +142,38 @@ Before any drafting begins, produce a 3-bucket claim inventory the drafters must
 
 The Phase 0.5 output is a one-screen creative-constraint document handed to all Phase 1 drafters alongside the component inclusion matrix.
 
+### Phase 0.7 — Mechanism + Offer Architecture (creative architecture + HITL gate)
+
+Before drafters touch a single component, architect the mechanism, the offer stack, the brand association ladder, and the scene assignment. Without this, drafters either copy generic mechanism naming from `offer.md` or improvise — producing forgettable UMPs and category-only ("most agents fail to follow up") dismissals of competitors.
+
+Five sub-steps, single output document, single HITL gate. Full playbook in `references/mechanism-architecture.md`.
+
+**A. Unique Characteristic + Discredit Old Solutions** — One-sentence mechanism articulation (`X works because of Y, which Z [named alternatives] cannot do because [structural failure mode]`) + 3-5 named alternatives with math/process-level failure modes. Generic categories ("other agents") fail this gate.
+
+**B. MAGIC Name composition** — 3 candidate mechanism names ranked, each broken down by **M**agnetic reason / **A**vatar / **G**oal / **I**nterval / **C**ontainer word. Container word constraints in the playbook.
+
+**C. Grand Slam Offer composition** — Hormozi value equation `(Dream Outcome × Perceived Likelihood) ÷ (Time Delay × Effort & Sacrifice)`. Trim + Stack: list every micro-problem (8-12 min) → solution per problem → bundle stack → solve the next problem (follow-on need pre-empted as a stack item, not an upsell). Each stack item tagged to a value-equation lever.
+
+**D. Branding via Association + Bouquet narrowing** — 3-5 transfer-influence brands/people/methodologies the buyer already trusts (positional pairing, not endorsement claim). Bouquet-narrow to ONE segment from `clients/<slug>/avatars/`. Letters that try to address all five collapse the UMP.
+
+**E. What-Who-When scene picker** — For each of the 12 components, assign scene type:
+- **What** scenes — Nightmare (current alternative failing) vs Dream (mechanism delivering)
+- **Who** scenes — status shift among family / peers / rivals
+- **When** scenes — consequence of indecision across past / present / future
+
+Scene assignment companion to `references/six-emotional-states.md` — pick scenes such that the emotional arc through the 12 components is monotonic, not whiplash.
+
+**HITL gate (single screen, not five sub-gates):** the five outputs interlock — changing the bouquet-narrow segment cascades into the scene picker and the stack. Splitting the gate forces re-confirming the same decision multiple times. One screen, all five outputs visible, one approve / adjust / reject. Operator may swap MAGIC candidates, trim stack items, flip 1-2 scene types, or reject and loop.
+
+**Audit pair:** `skills/sales-letter-audit/` Step 3 (UMP / discredit-old-solutions) checks the resulting letter for MAGIC compliance and named-alternative structure. Creation and audit share vocabulary so a letter passing here will not surface a UMP failure there.
+
+The Phase 0.7 output document is a required input to Phase 1. Drafters running without it is a hard error.
+
 ### Phase 1 — Parallel Drafting (2 Opus 4.6 subagents)
 - **Hook Half** (components 1-4): Headline + Sub + Lead + Pain Cycle + Integrity
 - **Commit Half** (components 5-12): Mechanism + Proof + Offer + Scarcity + Guarantee + CTA + FAQ + PS
 
-Run in parallel (single message, 2 Agent calls). Saves ~40% drafting time. Each agent receives identical Phase 0 output + component matrix + client files.
+Run in parallel (single message, 2 Agent calls). Saves ~40% drafting time. Each agent receives identical Phase 0 output + Phase 0.5 claim inventory + **Phase 0.7 mechanism + offer architecture document (required — drafters running without it is a hard error)** + component matrix + client files.
 
 **Model:** `claude-opus-4-6` for both drafters (global policy: Opus for all copy generation, Sonnet for all review). TODO: migrate to `claude-opus-4-7` by 2026-06-15 (Opus 4.6 deprecation date).
 
@@ -220,6 +247,7 @@ If any critical input is missing, surface to user before drafting. Do NOT fabric
 - `prompt-template.md` — finalized prompt, copy-paste-ready for any LLM
 - `references/copy-gems.md` — 11 techniques + verbatim quote library from 8 competitor scrapes
 - `references/component-matrix.md` — context-aware inclusion logic + 5 cross-cutting requirements
+- `references/mechanism-architecture.md` — Phase 0.7 playbook: Unique Characteristic + Discredit / MAGIC name / Grand Slam Offer / Branding via Association + Bouquet narrowing / What-Who-When scene picker. Outputs feed Phase 1 drafters; audited by `skills/sales-letter-audit/` Step 3.
 - `references/guarantee-variants.md` — no-price guarantee patterns
 - `references/frameworks.md` — Schwartz / Halbert / Sugarman distilled
 - `references/competitor-analysis.md` — 8-page scrape findings (Brendon Luu, Syncom ×4, RoofGrow, Green Industry, Damien Tan)
@@ -257,6 +285,7 @@ If any critical input is missing, surface to user before drafting. Do NOT fabric
 - Heavy urgency that reads as manipulation
 - Skipping FAQ because "it seems long" (it's 5 objections × 2 sentences)
 - Forgetting to re-inject specific numbers after de-AI pass
+- Skipping Phase 0.7 — drafters improvise mechanism naming and discredit-of-alternatives, producing forgettable UMPs and category-only dismissals.
 
 ## Related
 

@@ -38,12 +38,12 @@ Before reading the letter, the operator (or calling skill) must declare three th
 
 Without these three anchors, every audit finding is judged against an assumed goal that may be wrong. Record verbatim in `extraction_metadata.declared_anchors`.
 
-### Step −1: Detect client context branch (light vs cold path)
+### Step −1: Detect client context branch (loaded is the default expectation; cold is the exception)
 
-Auto-detect whether a `clients/<project>/` folder is loaded for the active project:
+Auto-detect whether a `clients/<project>/` folder is loaded for the active project. **Loaded is the default expectation** — every production audit should ground findings in the buyer dossier. Cold is the rare exception (greenfield letters with no client research yet).
 
-- **Loaded** (path exists with `context-profile.json`, `icp.md`, `offer.md`, `buyer-profile.md`): set `context_branch = "loaded"`. Run light path — Schwartz awareness + sophistication read off the letter, grounded in the loaded context. Skip the heavy reverse-inference work.
-- **Cold** (no client folder, or sparse/empty): set `context_branch = "cold"`. Run the full heavy-inference path — Purple Ocean / Mass Desires / Customer Avatar inferred from the letter alone using the general Schwartz/Halbert critic lens.
+- **Loaded** (path exists with `context-profile.json`, `icp.md`, `offer.md`, `buyer-profile.md`, AND `avatars/01-...md` through `avatars/05-...md`): set `context_branch = "loaded"`. **MANDATORY:** before scoring any finding, read `buyer-profile.md` in full AND every `avatars/*.md` file in full. These are the verbatim buyer-language source. Every `[H]` and `[M]` finding will be checked against this dossier in Step 9c. Skip the heavy reverse-inference work (Phase 2).
+- **Cold** (no client folder, or dossier missing/sparse): set `context_branch = "cold"`. Run the full heavy-inference path — Purple Ocean / Mass Desires / Customer Avatar inferred from the letter alone. **Emit a visible warning at the top of the operator brief and client brief:** "⚠ Audit ran without buyer dossier — every finding is reviewer-judgment-only, not VOC-traceable. Recommend running `buyer-language-researcher` before re-judging."
 
 Record `context_branch` in `extraction_metadata`.
 
@@ -85,6 +85,42 @@ Number the words as you read so you can cite positions accurately.
   - `structural` — the letter names a prior solution and shows why it can't produce the UMP's outcome
   - `implicit` — the contrast is gestured at but not made explicit
   - `absent` — no link to prior solutions
+
+#### Step 3a: MAGIC name check
+
+For the primary branded mechanism name found in the letter (the dominant entry in `branded_terms[]`), score 5 booleans against the MAGIC framework:
+
+- **M (Magnetic reason)** — does the name imply WHY this exists / WHY now? (e.g., "Grand Opening", "Founders' Cohort", "Pre-Launch Beta")
+- **A (Avatar)** — does the name call out the specific buyer segment? (e.g., "for first-time SG private property buyers")
+- **G (Goal)** — does the name state the dream outcome?
+- **I (Interval)** — does the name include a timeline? ("28-Day", "Quarterly")
+- **C (Container)** — does the name use a unique container word? (Blueprint / Protocol / System / Method / Stack)
+
+Output `magic_name_check` with shape `{ name_under_test, m, a, g, i, c, score (0–5), missing[] }`.
+
+**Score interpretation:** ≤2 means the mechanism name is generic / not MAGIC-wrapped. Surface as `[M]` finding in the operator brief and route to `sales-letter-method` Phase 0.7 (mechanism architecture).
+
+#### Step 3b: Discredit-Old-Solutions check
+
+For each named alternative the letter dismisses, record an entry in `discredit_old_solutions[]` with shape:
+
+```
+{
+  alternative_name,
+  dismissal_quote,
+  dismissal_word_index,
+  dismissal_type: "named-with-structural-failure" | "named-no-structural-failure" | "category-only" | "absent",
+  structural_failure_mode: string | null
+}
+```
+
+Concrete check: does the letter name actual competitors / alternatives BY NAME and explain WHY they fail at the math/process level? Or does it stay vague ("most tools", "the usual approach") without naming, or name without explaining?
+
+**Routing:**
+- All entries `category-only`, OR `discredit_old_solutions[]` is empty → `[H]` finding (no discredit work at all). Route to `sales-letter-method` Phase 0.7.
+- Dismissals named but lack `structural_failure_mode` → `[M]` finding.
+
+This is distinct from `concentration_alternatives` (Step 7), which catches dismissals at the prose level. Step 3b catches them at the UMP/positioning level — does the letter situate itself against named competitors, or stay in a vacuum?
 
 ### Step 4: Extract `identity_ladder`
 
@@ -139,6 +175,32 @@ This is the lens-blind track. Structural reviewers can pass a letter that has st
 - `trust_chain_gaps[]` — sections where credibility breaks. Specifically check: does each major claim section name a real outcome with a real person? "Why us" sections that rely only on credentials (not named outcomes) go here. So do "results" sections without names attached.
 
 Output gaps as plain-language descriptions: e.g., `"'Why us' section relies on credentials only — no named first-timer outcome to anchor the trust claim"`.
+
+### Step 9c: VOC anchor pass (loaded path only)
+
+**Run only if `context_branch == "loaded"`.** On cold path, skip — there is no dossier to anchor against; emit the cold-path warning instead.
+
+After collecting `trust_chain_gaps[]` (Step 9), walk every gap AND every other Phase 1 finding heading toward the brief, then look in the dossier (`buyer-profile.md` + `avatars/01..05.md`) for a verbatim buyer quote that speaks to the same concern. Record matches in `proof_inventory.voc_anchored_findings[]` with shape:
+
+```
+{
+  finding_id,                 // e.g. "trust_chain_gap_2", "ump_arrival_late", "cta_missing_guarantee"
+  letter_quote,               // verbatim from the letter
+  letter_word_index,
+  buyer_quote,                // verbatim from buyer-profile.md or avatars/*.md
+  buyer_source,               // e.g. "u/Kind-Onion-6015, r/singaporefi" or "avatar-03 / verbatim quotes / line 14"
+  match_strength: "direct" | "adjacent" | "no-match"
+}
+```
+
+Match-strength rubric:
+- **direct** — buyer quote articulates the same concern in the same register (1:1 anchor)
+- **adjacent** — buyer quote is in the same emotional/objection family but not 1:1 (still usable as anchor with mild rephrase)
+- **no-match** — no quote in the dossier maps to this finding (finding is reviewer-judgment-only — must be tagged `[no-VOC]` in the brief)
+
+**Routing signal:** if `> 50%` of brief-bound findings end up `match_strength: "no-match"`, the dossier may be incomplete. Recommend a `buyer-language-researcher` refresh before re-audit. Record this signal in `extraction_metadata` as `voc_anchor_coverage`.
+
+This step is what turns the brief from "framework lens speaking" to "buyer language speaking through the framework lens." Step 14b enforces the 3-line shape that surfaces these anchors.
 
 ### Step 9b: AI-pattern audit of source letter
 
@@ -213,6 +275,24 @@ Translate the skeleton + technical summary into an operator-facing audit brief a
 Open with: (1) a 1-line purpose statement declaring the four audit dimensions, and (2) a 1-line scope distinction stating this is first-pass and deeper rewrite work lives in `sales-letter-method`.
 
 Every finding MUST be tagged `[H]`, `[M]`, or `[L]` inline at the heading (H = blocks ship-readiness or core conversion; M = costs measurable conversion but not blocking; L = polish or style).
+
+### VOC-anchored 3-line shape (MANDATORY for [H] and [M] findings)
+
+Every `[H]` and `[M]` finding MUST adopt the 3-line shape that surfaces the dossier anchor produced in Step 9c:
+
+```
+### [H] <finding title — state the cost directly>
+Letter: "<verbatim from letter>"
+Buyer (<source>): "<verbatim from dossier>"
+Cost: <one-line direct cost statement, no diplomatic ramp>
+→ Resolves: <action>
+```
+
+If no relevant buyer quote exists for a finding (Step 9c flagged it `match_strength: "no-match"`), append `[no-VOC]` to the heading: `### [H] <finding> [no-VOC]`. The brief still works — the tag flags reviewer-judgment-only items so the operator can see at a glance which findings are dossier-grounded vs not.
+
+`[L]` polish findings keep the 1-line shape (do not force the 3-line shape on style items — the operator overhead isn't worth it for low-severity work).
+
+On cold path (`context_branch == "cold"`), every finding is reviewer-judgment-only by definition. Tag every `[H]`/`[M]` heading with `[no-VOC]` and skip the `Buyer:` line in the 3-line shape. The cold-path warning at the top of the brief explains why.
 
 ### Required structure (4-section format)
 
@@ -323,7 +403,7 @@ If N, skip to Step 17 handoff.
 
 If Gate A passed, produce a client-facing brief at `scratch/audits/<project>/copy/<letter-name>-client-brief.md` (or `clients/<project>/copy/<letter-name>-client-brief.md` if `context_branch = "loaded"`).
 
-**Canonical template reference:** `scratch/audits/stackworks/copy/stackworks-letter-client-brief-v3.md` — this is the validated V3 output. Match its register, tone, and structure exactly.
+**Canonical template reference:** `scratch/audits/stackworks/copy/stackworks-letter-client-brief-v3.md` — validated V3 register (tone + structure). V4 (downstream pilot) will be the new VOC-anchored exemplar once Track C ships it. Match V3's register and tone; layer in the v0.4 VOC-anchored 3-line shape on top.
 
 ### Template constraints (hard rules from corrections.md)
 
@@ -360,7 +440,18 @@ Hey [Name]. [Cold read + editor pass framing — 2 sentences.]
 [3–5 findings, each with verbatim quote and mechanical explanation of WHY it works]
 
 ### Strategic findings
-[H/M/L tagged. WHAT-not-HOW for strategic items: diagnose, describe principle mechanically, show the cost.
+[H/M/L tagged. Use the 3-line VOC-anchored shape for every [H] and [M] finding — client-facing register (no copywriter names, mechanical principle language):
+
+```
+### [H] <finding title — state the cost directly>
+What's in the letter: "<verbatim from letter>"
+What buyers actually say: "<verbatim from dossier — strip subreddit usernames; describe the source as 'a buyer in your segment said' or 'one prospect put it this way'>"
+Cost: <one-line direct cost statement>
+```
+
+Append `[no-VOC]` to the heading if Step 9c found no dossier match. On cold path, every finding gets `[no-VOC]` and the "What buyers actually say:" line is omitted.
+
+WHAT-not-HOW for strategic items: diagnose, describe principle mechanically, show the cost.
 Do NOT prescribe rewrites for strategic findings.
 Brand-vs-product: frame as client-answerable question with trade-offs visible (including de-identified outcome options).
 Outcomes gap: state options without prescribing testimonial-collection.]

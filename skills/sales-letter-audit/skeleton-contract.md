@@ -4,7 +4,7 @@ The `letter-skeleton.json` is the data structure produced by the `sales-letter-a
 
 This is a **contract** — both producer and consumers must conform. Any field added or renamed requires updating both sides + all consumer skills.
 
-## Status: v0.3 (draft) — locked enough to build against, expect breaking changes through V4 validation pass.
+## Status: v0.4 (draft) — locked enough to build against, expect breaking changes through V4 validation pass.
 
 ## Execution model: split-phase
 
@@ -67,7 +67,36 @@ This split means: clients with existing research get drift detection for free wi
           "description": "Inventory of trademarked / capitalized mechanism names. >1 entry suggests proliferation risk."
         },
         "arrival_word_index": { "type": "integer", "description": "Word position where mechanism is first articulated. >500 = late arrival, flag for UMP visibility regen." },
-        "prior_solution_link": { "enum": ["structural", "implicit", "absent"], "description": "How explicitly the UMP contrasts against existing alternatives." }
+        "prior_solution_link": { "enum": ["structural", "implicit", "absent"], "description": "How explicitly the UMP contrasts against existing alternatives." },
+        "magic_name_check": {
+          "type": "object",
+          "description": "v0.4. MAGIC framework score against the primary branded mechanism name. Score <=2 surfaces as [M] finding and routes to sales-letter-method Phase 0.7 (mechanism architecture).",
+          "properties": {
+            "name_under_test": { "type": "string" },
+            "m": { "type": "boolean", "description": "Magnetic reason — does the name imply WHY this exists / WHY now?" },
+            "a": { "type": "boolean", "description": "Avatar — does the name call out the specific buyer segment?" },
+            "g": { "type": "boolean", "description": "Goal — does the name state the dream outcome?" },
+            "i": { "type": "boolean", "description": "Interval — does the name include a timeline?" },
+            "c": { "type": "boolean", "description": "Container — does the name use a unique container word (Blueprint / Protocol / System / Method / Stack)?" },
+            "score": { "type": "integer", "minimum": 0, "maximum": 5 },
+            "missing": { "type": "array", "items": { "enum": ["m", "a", "g", "i", "c"] } }
+          }
+        },
+        "discredit_old_solutions": {
+          "type": "array",
+          "description": "v0.4. Each named alternative the letter dismisses at the UMP/positioning level. Distinct from concentration_alternatives (Step 7), which catches dismissals at prose level. Empty array OR all entries 'category-only' surfaces as [H] finding (no discredit work). Entries with type 'named-no-structural-failure' surface as [M] (named but unexplained).",
+          "items": {
+            "type": "object",
+            "required": ["alternative_name", "dismissal_quote", "dismissal_word_index", "dismissal_type"],
+            "properties": {
+              "alternative_name": { "type": "string" },
+              "dismissal_quote": { "type": "string" },
+              "dismissal_word_index": { "type": "integer" },
+              "dismissal_type": { "enum": ["named-with-structural-failure", "named-no-structural-failure", "category-only", "absent"] },
+              "structural_failure_mode": { "type": ["string", "null"] }
+            }
+          }
+        }
       }
     },
     "identity_ladder": {
@@ -171,6 +200,22 @@ This split means: clients with existing research get drift detection for free wi
               "severity": { "enum": ["soft-flag", "hard-flag"] }
             }
           }
+        },
+        "voc_anchored_findings": {
+          "type": "array",
+          "description": "v0.4. Step 9c output. For every brief-bound finding, the dossier match (or no-match) that anchors it to verbatim buyer language. Loaded path only — empty array on cold path. Findings with match_strength 'no-match' must be tagged [no-VOC] in the brief.",
+          "items": {
+            "type": "object",
+            "required": ["finding_id", "letter_quote", "letter_word_index", "match_strength"],
+            "properties": {
+              "finding_id": { "type": "string", "description": "Stable id, e.g. 'trust_chain_gap_2', 'ump_arrival_late', 'cta_missing_guarantee'" },
+              "letter_quote": { "type": "string" },
+              "letter_word_index": { "type": "integer" },
+              "buyer_quote": { "type": ["string", "null"], "description": "Verbatim quote from buyer-profile.md or avatars/*.md. Null when match_strength is 'no-match'." },
+              "buyer_source": { "type": ["string", "null"], "description": "Source attribution, e.g. 'u/Kind-Onion-6015, r/singaporefi' or 'avatar-03 / verbatim quotes'. Null when match_strength is 'no-match'." },
+              "match_strength": { "enum": ["direct", "adjacent", "no-match"] }
+            }
+          }
         }
       }
     },
@@ -210,6 +255,17 @@ This split means: clients with existing research get drift detection for free wi
           "enum": ["loaded", "cold"],
           "description": "Records which audit path was selected during pre-audit context detection. 'loaded' = clients/<project>/ exists with populated context files; light path runs (Schwartz awareness/sophistication off the letter, grounded in loaded context). 'cold' = no client folder or sparse; cold-audit heavy path runs (full Purple Ocean / Mass Desires / Customer Avatar inference from letter alone)."
         },
+        "voc_anchor_coverage": {
+          "type": "object",
+          "description": "v0.4. Aggregate of Step 9c VOC anchor pass. Used to detect dossier incompleteness and flag for buyer-language-researcher refresh.",
+          "properties": {
+            "total_findings": { "type": "integer" },
+            "direct_match_count": { "type": "integer" },
+            "adjacent_match_count": { "type": "integer" },
+            "no_match_count": { "type": "integer" },
+            "no_match_ratio": { "type": "number", "description": "no_match_count / total_findings. >0.5 flags dossier incompleteness." }
+          }
+        },
         "client_facing_brief": {
           "type": "object",
           "description": "Tracks whether the optional client-facing lead-magnet brief was produced (Gate A in the procedure). Omit if Gate A was not reached.",
@@ -244,7 +300,11 @@ The operator (or a downstream regen skill) reads the skeleton and routes to the 
 |----------|-----------------|-------------|-----------|
 | 0 (HARD STOP) | `meta.verticals_detected.length > 1` AND any vertical ≠ declared segment | **HALT — segment audit** | Segment leakage; cannot regen until segment confirmed |
 | 0 (HARD STOP) | `extraction_metadata.speculation_ratio > 0.30` | **HALT — human review of `reverse/` sandbox** | Inferred research too uncertain to route from |
-| 1 | `ump.branded_terms.length > 1` OR `ump.arrival_word_index > 500` | UMP regen (e.g., `sales-letter-method` Phase 0.5 + Phase 1 Mechanism re-derivation) | Mechanism naming or visibility broken |
+| 0 (SOFT FLAG, v0.4) | `extraction_metadata.voc_anchor_coverage.no_match_ratio > 0.5` (loaded path only) | **Recommend buyer-language-researcher refresh before re-audit** | Dossier likely incomplete; majority of findings unanchored |
+| 1 | `ump.branded_terms.length > 1` OR `ump.arrival_word_index > 500` | UMP regen (`sales-letter-method` Phase 0.5 + Phase 1 Mechanism re-derivation) | Mechanism naming or visibility broken |
+| 1 (v0.4) | `ump.magic_name_check.score <= 2` | `sales-letter-method` Phase 0.7 (mechanism architecture, Track B) | Branded mechanism name is generic / not MAGIC-wrapped |
+| 1 (v0.4) | `ump.discredit_old_solutions.length == 0` OR all entries `dismissal_type == "category-only"` | `sales-letter-method` Phase 0.7 (mechanism architecture, Track B) | No discredit work — letter sits in a vacuum vs named alternatives |
+| 1 (v0.4) | Any `ump.discredit_old_solutions[*].dismissal_type == "named-no-structural-failure"` | `sales-letter-method` Phase 0.7 (mechanism architecture, Track B) | Named dismissals lack structural failure modes |
 | 2 | `identity_ladder.l4.location IN ["ps", "absent"]` | Avatar / desire layer re-derivation | Layer 4 missing from body close |
 | 3 | `proof_inventory.trust_chain_gaps.length > 0` | Voice mining → proof inventory | Need new proof material before regen |
 | 4 | `cta_architecture.elements_present.length < 9` OR `cta_architecture.word_count > 210` | CTA rewrite (see `Marketing/skills/sales-letter-method/references/objection-architecture.md` → CTA Architecture) | CTA below quality bar |
@@ -272,5 +332,6 @@ If the skill ships and these don't appear, the extractor is under-specified — 
 - v0.1 — initial draft, pre-skill-implementation
 - v0.2 — added phase split (structural extraction + inheritance inference), re-entry routing table, V4 validation case
 - v0.3 — Added `declared_anchors`, `context_branch`, `client_facing_brief` fields to extraction_metadata. Anchors are hard-required pre-audit gate. Branch records light-vs-cold path selection. Brief tracks optional Gate A artifact.
+- v0.4 — VOC-anchored upgrade. Added `ump.magic_name_check` (5-boolean MAGIC scoring), `ump.discredit_old_solutions[]` (named-vs-category dismissal tracking), `proof_inventory.voc_anchored_findings[]` (Step 9c output), and `extraction_metadata.voc_anchor_coverage` (dossier completeness signal). Loaded path now mandates buyer-profile.md + avatars/*.md read before scoring. Routing table extended with three Phase 0.7 entries (MAGIC ≤2, empty/category-only discredit, named-no-structural-failure dismissals) and a soft-flag for >50% no-match findings. All v0.3 fields preserved (additive change, backwards-compatible).
 - v1.0 — after V4 validation pass
 - Breaking changes require: bumping `extractor_version`, updating all consumer skills, re-running existing skeletons.
