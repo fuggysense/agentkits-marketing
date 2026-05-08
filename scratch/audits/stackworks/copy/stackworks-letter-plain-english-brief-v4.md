@@ -16,6 +16,8 @@ First-pass only. Deeper rewrite work downstream in `sales-letter-method`.
 - CTA target: Request Private Access → application → 1:1 assessment call.
 - Final goal: Qualified applicants at $500K+ allocations.
 
+**Severity legend:** [H] = High priority. Fix before sending traffic. Major conversion, trust, or positioning issue. [M] = Medium priority. Important, but not usually a deal-breaker. [L] = Low priority. Polish, clarity, or testing note.
+
 ---
 
 ## Summary scores (1–5, 5 = strongest)

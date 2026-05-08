@@ -12,6 +12,11 @@ This is first-pass only. Deeper rewrite work exists if you want it. That is a se
 
 **Where to start:** Read the conversion potential section first — it has the items that will move the needle most. The AI hygiene section is the second priority. Grammar notes are minor in comparison.
 
+**Severity legend**
+[H] High priority — fix before sending traffic. Major conversion, trust, or positioning issue.
+[M] Medium priority — important, but not usually a deal-breaker.
+[L] Low priority — polish, clarity, or testing note.
+
 ---
 
 ## Conversion potential
@@ -72,11 +77,37 @@ The letter ends before the reader crosses a threshold. There's no moment where t
 
 ### Element reads
 
-- **Headline:** ✅ Strong. Reframes a recognisable frustration in one line.
-- **Lead / subhead:** ⚠️ Speaks to a generic "private investor." Doesn't name the buyer's specific situation.
+- **Headline:** ⚠️ Reframes a recognisable frustration in one line, but speaks to a generic "private investor" and uses a Big Contrast form ("not X, Y") that reads as default AI in 2026.
+
+**Replacement candidates** (grounded in buyer language from research)
+
+1. *Specific situation angle:* "Your money is in T-bills at 3%. ABSD is blocking the next property deal. Here's where Singapore's property investors are parking their reserves between cycles."
+2. *Peace-of-mind angle:* "For the property investor whose cash is stranded between deals and who wants it earning more than T-bills without losing sleep over it."
+3. *Structural alternative angle:* "Reserved cash sitting in T-bills. ABSD blocking the next move. A middle ground for property investors who don't want to learn to trade or sit through Endowus volatility."
+
+The reason these candidates work: each one names the buyer's exact situation in their own language (T-bills, ABSD, between deals, reserved cash, sleep), drops the Big Contrast pattern, and pre-qualifies before the reader has to decide whether the rest applies to them.
+
+- **Lead / subhead:** ⚠️ Speaks to a generic "private investor." Doesn't name the buyer's specific situation. Doesn't pre-qualify on capital floor.
+
+**Replacement candidates** (grounded in buyer language from research)
+
+1. "$250K minimum. Application-only. Built for the property investor whose reserved cash is sitting in T-bills between deals, not for the trader who already knows how to trade."
+2. "By application only. $250K floor. Suitability-based. For the Singapore property investor between cycles, not for someone learning to invest from scratch."
+3. "For Singapore property investors with at least $250K in reserved cash. Suitability-based and application-only, so capital is only placed when the fit is right."
+
+The reason these candidates work: the $250K floor pre-qualifies before the reader gets emotionally invested, application-only signals selectivity without overselling, and "reserved cash between deals" reflects how the buyer actually describes their own situation.
+
 - **Benefits:** ⚠️ [H] The benefits land in mechanism language (Price/Time/Position Size), not in the buyer's emotional register (sleep, peace of mind, "not worry about money").
 - **Proof:** ❌ [H] Zero named outcomes. Zero numbers. One anonymous quote. MAS licence not mentioned. No liquidity terms.
-- **CTA:** ⚠️ The button label is clear. The close section (133 words) has no proof, no outcome story, and no trust anchor near the point of decision.
+- **CTA:** ⚠️ The button label "Request Private Access" is clean and stays. The close section (133 words) has no proof, no outcome story, no fit-check, and no trust anchor near the point of decision.
+
+**Replacement candidates for the pre-button line** (the line directly above the button — the button copy itself stays)
+
+1. "If you have at least $250K in reserved cash that's sitting in T-bills or parked between property deals, the suitability check is the next step. Two decades inside JPMorgan and Citibank. MAS-licensed. Liquidity terms stated upfront."
+2. "Two questions before you click. Is this cash you'd otherwise leave in T-bills? Is the $250K floor comfortable, not stretched? If yes to both, the suitability check is the next step."
+3. "Application-only. $250K floor. Suitability-based. The first call is a fit-check, and we say no when the fit isn't there. If your reserved cash is sitting in T-bills between deals, that is the conversation we are having."
+
+The reason these candidates work: each one inserts the three things the close is missing — a fit-check that lets the reader self-qualify, a trust anchor near the point of decision (capital floor, regulator, founder credentials, liquidity), and a register that says "we say no when the fit isn't there" instead of pushing for the click.
 
 ---
 
@@ -143,7 +174,7 @@ The aphoristic close. Works emotionally. Reads as polished AI in 2026. A concret
 
 6. **[M] Add a post-decision identity moment near the close.** The letter ends at the mechanism. The close should name who the buyer becomes. One sentence — the investor who handed the execution over and got their time back. → Resolves: §Conversion potential #5.
 
-**If you only fix one thing this week:** Name the buyer's actual situation in the first paragraph. Property investor. ABSD. T-bills at 3%. Between deals. Everything else in the letter becomes more credible once the reader sees their exact world reflected back at them.
+**If you only fix one thing this week:** Adopt the headline candidate that names the buyer's specific situation. Every other recommendation in this audit depends on the reader knowing this letter is for them. Once that lands in the first line, the subhead and CTA candidates layer on top of it cleanly. Without it, the rest of the letter is doing more work than it needs to.
 
 ---
 

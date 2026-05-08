@@ -305,6 +305,8 @@ On cold path (`context_branch == "cold"`), every finding is reviewer-judgment-on
 [Header block: source path, audited date, declared_anchors verbatim,
 context_branch, links to skeleton.json + summary.md]
 
+**Severity legend:** [H] = High priority. Fix before sending traffic. Major conversion, trust, or positioning issue. [M] = Medium priority. Important, but not usually a deal-breaker. [L] = Low priority. Polish, clarity, or testing note.
+
 ## Summary scores (1–5, 5 = strongest)
 
 | Dimension | Score | One-line read |
@@ -390,6 +392,8 @@ The **Overall ship readiness** score is the lowest of the four sub-scores (the w
 - **Surface source-letter AI-pattern flags prominently in a `## Patterns to flag` section** between "What's working" and "What's broken". This is the deliverable's main anti-AI value-add. Group findings as `### Hard flags — rewrite before ship` and `### Soft flags — work for buyers, but A/B-worthy`. Each entry: pattern name, source checklist + section, verbatim quote(s) from the letter, and a specific fix or A/B suggestion.
 - **Do NOT include a self-audit of your own brief writing in the deliverable.** The brief's purpose is to expose patterns in the SOURCE LETTER, not to document your own rewrites. (Internal pipeline-quality tracking belongs in a separate log file, not in the operator-facing brief.)
 - **Apply the anti-AI checklists to your own writing as a private quality check** before finalising — but the result is invisible to the operator. The brief should read as if it landed clean on the first try.
+- **Replacement candidates for high-leverage elements (operator-facing register):** for headline, subheadline, and CTA pre-button line, surface 2–3 specific replacement candidates with full framework attribution intact (e.g. "candidate 1 uses Halbert one-person seed + dossier §3 power words", "candidate 2 channels Schwartz Stage 3 mechanism register", "candidate 3 collapses Big Contrast and seeds coat-of-arms specificity"). Operator must see candidates AND the reasoning behind each so they can validate before the client-facing brief ships. This is the operator-side mirror of the client-facing rule below; the exception is scoped to these 3 elements only — body copy stays WHAT-not-HOW.
+- **Severity legend MUST appear** between the header block and the summary scores. Verbatim text per skill specification.
 
 ## Step 15: Gate A — produce client-facing brief? Y/N
 
@@ -431,6 +435,11 @@ Hey [Name]. [Cold read + editor pass framing — 2 sentences.]
 [1-line scope: "This is first-pass only. Deeper rewrite work exists if you want it. That is a separate engagement."]
 
 [Brief pre-read note: strategic items vs. AI hygiene — which to read first and why.]
+
+**Severity legend**
+[H] High priority — fix before sending traffic. Major conversion, trust, or positioning issue.
+[M] Medium priority — important, but not usually a deal-breaker.
+[L] Low priority — polish, clarity, or testing note.
 
 ---
 
@@ -496,11 +505,13 @@ Let me know what you think about it for now.
 - **Severity tags:** every finding tagged `[H]`, `[M]`, or `[L]`
 - **WHAT-not-HOW** for strategic items: diagnose and show the cost — do not prescribe rewrites
 - **HOW for AI hygiene:** mechanical swaps are fine to provide (they are housekeeping, not strategy)
+- **Replacement candidates for high-leverage elements:** for headline, subheadline, and CTA pre-button line, the brief MUST provide 2–3 specific replacement candidates grounded in the buyer dossier's verbatim language. Each candidate sits inside the Element reads block under the relevant element, with explicit angle differentiation (e.g. "specific situation angle / peace-of-mind angle / structural alternative angle") and a one-sentence "the reason these candidates work" mechanical explanation. Other elements (benefits, proof, mid-letter sections) keep WHAT-not-HOW. Reason: headline / subheadline / CTA pre-button line are high-leverage enough that 3 candidates serve the client more than diagnosis alone, AND the dossier provides the source language to ground them. The exception ends at these 3 elements — do not extend to the rest of the letter.
 - **Coverage discipline:** every major copy element (Headline, Lead, Benefits, Proof, CTA) gets a one-line read in the element reads block — even working elements
 - **Methodology transparency:** Anti-AI section must open with one sentence listing the specific signals checked
 - **Honesty over diplomacy:** friend-tone is honest-tone, not diplomatic-tone. State the cost of each problem directly. No hedging, no mid-paragraph diplomatic ramps
 - **Length:** scales with source letter (1.5–2× source letter word count)
 - **No "→ Resolves" pointers for the operator:** the client version uses the same traceability pattern in Notes & Recommendations
+- **Severity legend required** in client brief between opening framing and first section divider. Verbatim text per skill specification.
 
 ## Output paths summary
 
