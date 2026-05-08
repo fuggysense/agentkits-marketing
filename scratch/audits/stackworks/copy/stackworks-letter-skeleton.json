@@ -1,0 +1,204 @@
+{
+  "meta": {
+    "source_path": "/Users/jerel/Documents/Jerel's brain/jerel's brain/Marketing/scratch/audits/stackworks/copy/stackworks-letter.md",
+    "word_count": 1310,
+    "audience_inferred": "Singapore/APAC HNW private investors with deployable capital ($300K–$5M+), already disillusioned with private banking OR exhausted by DIY trading; identifies as a systems-builder running operating systems in their own business; treats markets as a side allocation, not a profession; time-poor 35–55, male-skewed, post-exit founders / senior corporate leaders / second-gen family business owners.",
+    "verticals_detected": [
+      "time-poor HNW business owners with deployable capital",
+      "disenfranchised private-bank clients",
+      "burned-out DIY retail/swing traders",
+      "family-office-adjacent investors (institutional-language audience)"
+    ]
+  },
+  "ump": {
+    "articulated_concept": "Institutional-grade, rules-based 24-hour execution system that operates without consuming the investor's time, energy, attention, or emotional state — giving private investors the execution discipline previously reserved for institutional desks.",
+    "branded_terms": [
+      {
+        "name": "Stack",
+        "occurrence_count": 32,
+        "first_appearance_word_index": 36
+      },
+      {
+        "name": "TripleStack™",
+        "occurrence_count": 3,
+        "first_appearance_word_index": 510
+      }
+    ],
+    "arrival_word_index": 36,
+    "prior_solution_link": "structural"
+  },
+  "identity_ladder": {
+    "l1": {
+      "quote": "You don't have a strategy problem. You have an execution problem.",
+      "word_index": 6,
+      "location": "headline"
+    },
+    "l2": {
+      "quote": "Stack gives private investors a structured execution system — so their capital works round-the-clock without taking their time, energy or attention.",
+      "word_index": 36,
+      "location": "lede"
+    },
+    "l3": {
+      "quote": "TripleStack™ — A structured, rules-based execution framework across three dimensions — running while you don't.",
+      "word_index": 620,
+      "location": "body"
+    },
+    "l4": {
+      "quote": "You run your business on systems. Your capital deserves the same.",
+      "word_index": 945,
+      "location": "body"
+    }
+  },
+  "motifs": [
+    {
+      "phrase": "execution",
+      "count": 17,
+      "anchor_claims_per_occurrence": 0.4
+    },
+    {
+      "phrase": "time, energy, attention",
+      "count": 4,
+      "anchor_claims_per_occurrence": 0.25
+    },
+    {
+      "phrase": "system(s)",
+      "count": 13,
+      "anchor_claims_per_occurrence": 0.6
+    },
+    {
+      "phrase": "capital",
+      "count": 16,
+      "anchor_claims_per_occurrence": 0.65
+    },
+    {
+      "phrase": "institutional",
+      "count": 5,
+      "anchor_claims_per_occurrence": 0.8
+    },
+    {
+      "phrase": "rules / rules-based",
+      "count": 5,
+      "anchor_claims_per_occurrence": 0.7
+    },
+    {
+      "phrase": "the market",
+      "count": 9,
+      "anchor_claims_per_occurrence": 0.5
+    }
+  ],
+  "headline_body_coherence": {
+    "headline_phrases": [
+      "strategy problem",
+      "execution problem",
+      "missing link between capital and results"
+    ],
+    "echo_count_per_phrase": {
+      "strategy problem": 2,
+      "execution problem": 4,
+      "missing link between capital and results": 0
+    }
+  },
+  "concentration_alternatives": [
+    {
+      "alternative": "The private banker / wealth advisor",
+      "dismissal_type": "structural-failure-mode",
+      "quote": "those advisors are managing dozens of relationships, answering to their own institutions and optimising for their interests as much as yours. Conflict of interest is not an accusation. It is the structure of the relationship."
+    },
+    {
+      "alternative": "The DIY investor",
+      "dismissal_type": "structural-failure-mode",
+      "quote": "most of them lose money anyway — not because they were wrong about the opportunity, but because they could not execute it cleanly, consistently and without emotion."
+    },
+    {
+      "alternative": "Manual / by-hand wealth management",
+      "dismissal_type": "structural-failure-mode",
+      "quote": "in private wealth management, most investors are still doing everything by hand."
+    }
+  ],
+  "cta_architecture": {
+    "elements_present": [
+      "specific_action_named",
+      "exclusivity_framing (suitability-based, application-only)",
+      "soft_commitment_language (application does not constitute commitment)",
+      "repeated_cta (Request Private Access x3)",
+      "soft_urgency (the market is not waiting)"
+    ],
+    "word_count": 118,
+    "guarantee_present": false,
+    "self_validation_checkpoint_present": false
+  },
+  "proof_inventory": {
+    "named_outcomes": [
+      {
+        "person": "Jason (founder, no surname)",
+        "outcome": "Implied — he built Stack from his own institutional experience. No customer outcome attached to him.",
+        "is_placeholder": false
+      },
+      {
+        "person": "[ANONYMOUS investment bank]",
+        "outcome": "Keen to acquire Stack",
+        "is_placeholder": true
+      },
+      {
+        "person": "[ANONYMOUS global family office]",
+        "outcome": "Keen to acquire Stack",
+        "is_placeholder": true
+      }
+    ],
+    "numbers": [
+      {
+        "value": "24 hours",
+        "claim_backed": "Market operating hours / why human attention can't keep up",
+        "is_placeholder": false
+      },
+      {
+        "value": "2 decades / Two decades",
+        "claim_backed": "Founder's institutional tenure at JPMorgan + Citibank",
+        "is_placeholder": false
+      },
+      {
+        "value": "three dimensions",
+        "claim_backed": "TripleStack™ structure (Price / Time / Position Size)",
+        "is_placeholder": false
+      },
+      {
+        "value": "dozens of relationships",
+        "claim_backed": "How many clients private bankers manage (no source)",
+        "is_placeholder": false
+      }
+    ],
+    "trust_chain_gaps": [
+      "'The Guide' / 'Why us' section relies entirely on founder credentials (JPMorgan, Citibank, 2 decades) — zero named customer outcome to anchor the trust claim.",
+      "'Unsolicited validation' quote names neither the investment bank nor the family office — both parties anonymous, claim is unverifiable.",
+      "Zero client testimonials, named investor case studies, or quantified Stack performance numbers anywhere in the letter (no AUM, no win-rate, no Sharpe, no client count, no average return). This is the largest single proof gap.",
+      "'Most private investors fail in the financial markets' — no source, no statistic, no citation.",
+      "'Most of them lose money anyway' (DIY investors) — no source, no data.",
+      "Tesla / Amazon / Nvidia analogy is decorative — does not transfer proof weight to Stack (the analogy works in the reader's head, not as evidence).",
+      "TripleStack™ is asserted as proprietary but never demonstrated (no example trade, no rule shown, no comparison vs. discretionary execution)."
+    ]
+  },
+  "inheritance_contracts": {
+    "purple_ocean_inferred": "Singapore-based (and APAC-adjacent) HNW private investors with $300K–$5M+ deployable capital, who already hold private-bank relationships they feel commoditized inside, OR who are sophisticated retail/DIY traders burned out by manual execution. Identity: operator/builder type — has built and runs operating systems in their own business; intuitively believes systems > willpower. Treats personal capital as a side allocation that ought to perform like the institutions but never has. Likely 35–55, male-skewed, post-exit founders, senior corporate leaders, or second-generation family-business operators.",
+    "mass_desires_inferred": [
+      "Capital that performs without commanding more of my time, energy, or attention (passive sophistication)",
+      "Access to the institutional edge I always suspected existed but was never granted (insider status)",
+      "Freedom from emotional / fatigued execution decisions (decision-fatigue relief, dignity)",
+      "Confirmation that running my capital like a system — the way I run my business — is the right answer (operator-identity validation)"
+    ],
+    "customer_avatar_inferred": "A 40–50 year-old Singapore-based business owner or senior executive with $500K+ deployable capital. Has cycled through private-banker relationships (felt commoditized, suspects misaligned incentives) and through DIY trading (burned hours late at night, missed clean entries, knows emotional execution is bleeding returns). Identifies as a systems-builder — has built or runs the operating systems in their own business and intuitively believes the right answer for their capital is also a system. Stuck inside the decision: 'I have the capital, the knowledge, and the opportunity — why aren't my returns reflecting it?' Their fear is not market risk (already accepted) — their fear is being the structural bottleneck on their own capital. They want to delegate execution without ceding control of the account.",
+    "source_confidence": {
+      "purple_ocean_inferred": "partial",
+      "mass_desires_1": "high",
+      "mass_desires_2": "high",
+      "mass_desires_3": "high",
+      "mass_desires_4": "partial",
+      "customer_avatar_inferred": "partial"
+    }
+  },
+  "extraction_metadata": {
+    "extracted_at": "2026-05-07T00:00:00+08:00",
+    "extractor_version": "0.1.0",
+    "phase_2_status": "completed",
+    "speculation_ratio": 0.0
+  }
+}
