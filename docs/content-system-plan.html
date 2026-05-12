@@ -1,0 +1,1630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Content OS for Michelle — Single-Tenant MVP v0.5.2</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  body { font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+  .tree { white-space: pre; line-height: 1.45; }
+  .pill { display: inline-block; padding: 2px 8px; border-radius: 9999px; font-size: 0.75rem; font-weight: 600; }
+  details > summary { cursor: pointer; }
+  .anchor:hover { text-decoration: underline; }
+  .grid-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; }
+  .check-good::before { content: "✓ "; color: #10b981; font-weight: 700; }
+  .check-bad::before  { content: "✗ "; color: #ef4444; font-weight: 700; }
+  .check-want::before { content: "★ "; color: #f59e0b; font-weight: 700; }
+</style>
+</head>
+<body class="bg-stone-50 text-stone-900">
+
+<header class="bg-stone-900 text-stone-100 py-10">
+  <div class="max-w-5xl mx-auto px-6">
+    <p class="text-stone-400 text-sm uppercase tracking-widest">Content OS / Michelle Koh — Pilot</p>
+    <h1 class="text-3xl md:text-4xl font-bold mt-2">Content OS for Michelle — Single-Tenant MVP</h1>
+    <p class="text-stone-300 mt-3 max-w-3xl">A funnel-aware, client-tweakable, AI-led short-form content system. Single-tenant for Michelle as pilot, then generalizes. Storage = here.now. Frontend = Vercel on a subdirectory of your domain.</p>
+    <p class="mono text-xs text-stone-500 mt-4">v0.5.2 · 2026-05-12 · single source of truth · awaiting Jerel sign-off</p>
+    <p class="text-amber-300 text-sm mt-3 max-w-3xl"><strong>v0.5.2 update (stale-copy cleanup pass):</strong> Versions normalized across header/TL;DR/body/sign-off/footer. Auth standardized on Clerk (NextAuth references removed). Cloudflare relay confirmed Phase 6+ — Phase 4 dashboard is <strong>read/write only</strong> (config + approvals + manual analytics entry); headless Claude execution moves to Phase 6 with the relay. CTA language standardized on "LinkedIn Trust Leak Audit" (no more "FREE Q1 Brand Clarity Guide"); "DM AUDIT" only activates after T1 PDF + email gate ship. Dashboard timing reframed as conditional ("after manual + CLI pilot succeeds"), not week 5 promise. Stage 06 cron pull replaced with manual IG/LinkedIn entry schema. Client-facing booked-call language softened to targets/hypotheses. New sections: <strong>RACI</strong>, <strong>Data Handling / Privacy</strong>, <strong>Canonical Storage by Phase</strong>. The <a href="#decision-register" class="underline">Decision Register</a> remains the single source of truth.</p>
+  </div>
+</header>
+
+<section id="decision-register" class="max-w-5xl mx-auto px-6 py-8">
+  <h2 class="text-2xl font-bold border-l-4 border-rose-600 pl-3">v0.5.2 Decision Register — single source of truth</h2>
+  <p class="mt-3 text-stone-800">Every other section in this doc defers to this table. If you spot a number elsewhere that contradicts here, the table wins and the other text is a bug to be fixed.</p>
+
+  <table class="w-full text-sm mt-4 border-collapse">
+    <thead>
+      <tr class="bg-rose-900 text-amber-50">
+        <th class="text-left p-2">Decision</th>
+        <th class="text-left p-2">v0.5.2 lock</th>
+        <th class="text-left p-2">Source / rationale</th>
+      </tr>
+    </thead>
+    <tbody class="align-top">
+      <tr class="bg-white border-b border-stone-200"><td class="p-2 font-bold">Pilot client</td><td class="p-2">Michelle Koh — single-tenant only</td><td class="p-2">Generalize after 4 clean weeks</td></tr>
+      <tr class="bg-amber-50 border-b border-stone-200"><td class="p-2 font-bold">Short-form split (the canonical number)</td><td class="p-2 mono"><strong>60 TOFU · 30 MOFU · 10 BOFU</strong></td><td class="p-2">Reconciled from Iman (80/15/5 cold) · Hormozi (long-runway critical) · Michelle audit (re-position need). One number. Used everywhere.</td></tr>
+      <tr class="bg-white border-b border-stone-200"><td class="p-2 font-bold">Pillar split (Iman)</td><td class="p-2 mono">40 Educate · 30 Sell · 20 Story · 10 Inspire</td><td class="p-2">Applied across all funnel stages</td></tr>
+      <tr class="bg-amber-50 border-b border-stone-200"><td class="p-2 font-bold">Long-form add-on (Hormozi)</td><td class="p-2">1 workshop clip/mo + 1 podcast clip/mo</td><td class="p-2">When workshop / podcast assets exist (not in MVP). Currently zero long-form.</td></tr>
+      <tr class="bg-white border-b border-stone-200"><td class="p-2 font-bold">Cadence</td><td class="p-2">3 short-form posts/week, gate each</td><td class="p-2">Default. Iman recommends 4/week + daily stories — revisit after week 4 if Michelle has capacity.</td></tr>
+      <tr class="bg-amber-50 border-b border-stone-200"><td class="p-2 font-bold">Domain</td><td class="p-2 mono">genflos.com/content-os</td><td class="p-2">When dashboard exists (Phase 4 onward). Not used in Phases 1-3.</td></tr>
+      <tr class="bg-white border-b border-stone-200"><td class="p-2 font-bold">Auth (when dashboard exists)</td><td class="p-2">Clerk free tier</td><td class="p-2">Phase 4+. Operator + client roles. Free tier covers pilot.</td></tr>
+      <tr class="bg-amber-50 border-b border-stone-200"><td class="p-2 font-bold">Notifications (MVP)</td><td class="p-2"><strong>Web dashboard only</strong> (Phase 4+) · manual email otherwise (Phases 1-3)</td><td class="p-2">No Telegram in MVP. Telegram = Phase 6+.</td></tr>
+      <tr class="bg-white border-b border-stone-200"><td class="p-2 font-bold">Analytics source (MVP)</td><td class="p-2"><strong>Manual screenshots → Google Sheet</strong>. IG Insights API is a DEPENDENCY when access is granted, not a guarantee.</td><td class="p-2">Per your call: "We will handle IG Insights access afterwards."</td></tr>
+      <tr class="bg-amber-50 border-b border-stone-200"><td class="p-2 font-bold">Winner metric</td><td class="p-2">Hook rate × hold rate, weighted by funnel-stage. Composite &gt; 3× rolling 4-week avg.</td><td class="p-2">From manual screenshots until IG Insights API is granted.</td></tr>
+      <tr class="bg-white border-b border-stone-200"><td class="p-2 font-bold">CTA strategy until T1 lead magnet exists</td><td class="p-2"><strong>Stay soft.</strong> No "DM AUDIT" or aggressive BOFU until the T1 PDF + email gate ship. BOFU posts point at the bootcamp <em>page</em> only when said page is live and converts.</td><td class="p-2">offer.md says T1 is GAP. Don't build content for a funnel that doesn't exist.</td></tr>
+      <tr class="bg-amber-50 border-b border-stone-200"><td class="p-2 font-bold">T1 lead magnet (build)</td><td class="p-2"><strong>Phase 1 deliverable.</strong> "LinkedIn Trust Leak Audit" 1-page PDF + ConvertKit/Beehiiv landing page with email gate.</td><td class="p-2">Per offer.md recommendation. Required before BOFU content has anywhere to point.</td></tr>
+      <tr class="bg-white border-b border-stone-200"><td class="p-2 font-bold">Workshop + email gate</td><td class="p-2"><strong>Phase 7</strong></td><td class="p-2">Out of MVP scope per your call.</td></tr>
+      <tr class="bg-amber-50 border-b border-stone-200"><td class="p-2 font-bold">Storage</td><td class="p-2">here.now (namespace = michelle-koh)</td><td class="p-2">Filesystem + JSON + markdown until Phase 4 dashboard reads/writes</td></tr>
+      <tr class="bg-white border-b border-stone-200"><td class="p-2 font-bold">Cloudflare Tunnel + Mac-mini relay</td><td class="p-2"><strong>Phase 6+ only.</strong> Not in Phase 4. The Phase 4 dashboard is read/write against here.now via SDK — Jerel runs skills from terminal (Phase 3 CLI) and the dashboard reads outputs. When Phase 6 adds dashboard-triggered headless execution: two auth paths — Cloudflare Access + Google IdP/email-OTP for browsers; service token for the relay (M2M).</td><td class="p-2">Per third review: relay was double-booked between Phase 4 and Phase 6. Resolved → Phase 6.</td></tr>
+      <tr class="bg-amber-50 border-b border-stone-200"><td class="p-2 font-bold">Vercel cron caveat</td><td class="p-2">Vercel Hobby cron = daily-only, loose timing. Precise/sub-daily jobs run on Mac mini cron instead — Phase 6+ when crons activate.</td><td class="p-2">Per reviewer + Vercel docs. No Vercel crons in Phase 4 (manual analytics entry only).</td></tr>
+      <tr class="bg-white border-b border-stone-200"><td class="p-2 font-bold">Stage 07 Repurpose automation</td><td class="p-2">Phase 5 (after manual loop proven)</td><td class="p-2">Don't automate what hasn't been done manually. Iman repurposing playbook runs by hand in Phases 2-3.</td></tr>
+      <tr class="bg-amber-50 border-b border-stone-200"><td class="p-2 font-bold">Approval ownership</td><td class="p-2"><strong>Michelle = final publish approver, always.</strong> Jerel approves internal stage gates. Nothing publishes without explicit Michelle approval. See <a href="#raci" class="underline">RACI</a>.</td><td class="p-2">Per v0.5.2 review: previous versions left approval ownership ambiguous.</td></tr>
+      <tr class="bg-white border-b border-stone-200"><td class="p-2 font-bold">Data handling + privacy</td><td class="p-2">Documented retention, access, deletion, consent rules per data class. See <a href="#data-handling" class="underline">Data Handling</a>.</td><td class="p-2">Per v0.5.2 review: prior plan stored voice/screenshots/DMs without an explicit policy.</td></tr>
+      <tr class="bg-amber-50 border-b border-stone-200"><td class="p-2 font-bold">Canonical storage source</td><td class="p-2">Phase-dependent. Phases 1-2 = Google Doc/Sheet/Drive + local repo. Phase 3 = local repo + outputs. Phase 4+ = here.now is canonical, others become mirrors. See <a href="#canonical-storage" class="underline">Canonical Storage by Phase</a>.</td><td class="p-2">Per v0.5.2 review: storage was mentioned in 4+ sections without a single source of truth.</td></tr>
+    </tbody>
+  </table>
+
+  <p class="mt-4 text-sm text-stone-700">If any of these need to change, edit this table first — every downstream section reads from here.</p>
+</section>
+
+<section class="max-w-5xl mx-auto px-6 py-6">
+  <h2 class="text-2xl font-bold border-l-4 border-rose-600 pl-3">What is NOT yet real — dependency log</h2>
+  <p class="mt-3 text-stone-800">Reviewer correctly flagged that the prior plan assumed a funnel that doesn't exist. These are the things that need to be built or unlocked before parts of the plan can run:</p>
+
+  <table class="w-full text-sm mt-3 border-collapse">
+    <thead>
+      <tr class="bg-stone-100">
+        <th class="text-left p-2 border-b border-stone-200">Dependency</th>
+        <th class="text-left p-2 border-b border-stone-200">Status</th>
+        <th class="text-left p-2 border-b border-stone-200">Blocks</th>
+        <th class="text-left p-2 border-b border-stone-200">Owner</th>
+      </tr>
+    </thead>
+    <tbody class="align-top">
+      <tr><td class="p-2"><strong>T1 lead magnet PDF</strong> (LinkedIn Trust Leak Audit)</td><td class="p-2">Not built. <span class="mono text-xs">offer.md</span> says GAP.</td><td class="p-2">BOFU content CTAs · DM AUDIT keyword flow</td><td class="p-2">Phase 1 — Jerel + Michelle</td></tr>
+      <tr class="bg-stone-50"><td class="p-2"><strong>Email capture landing page</strong></td><td class="p-2">Not built. Per <span class="mono text-xs">offer.md</span> "MUST capture email."</td><td class="p-2">List building · long-form nurture · DM AUDIT page</td><td class="p-2">Phase 1 — Jerel (ConvertKit / Beehiiv)</td></tr>
+      <tr><td class="p-2"><strong>Workshop replay video</strong></td><td class="p-2">Not built. Future asset.</td><td class="p-2">Long-form trust bridge · 1-to-N short-form clips · BOFU evergreen path</td><td class="p-2">Phase 7</td></tr>
+      <tr class="bg-stone-50"><td class="p-2"><strong>IG Insights API access</strong></td><td class="p-2">Not granted. Manual screenshot path is the MVP analytics surface.</td><td class="p-2">Automated winner decomposition · hook/hold rate trending</td><td class="p-2">Michelle — convert to Business profile + Graph API permission</td></tr>
+      <tr><td class="p-2"><strong>Voice files</strong> (3-file split)</td><td class="p-2">Empty. Rich research exists in <span class="mono text-xs">_swipe/research/</span>.</td><td class="p-2">All script-stage outputs</td><td class="p-2">Phase 1 — distill + 30-min voice interview</td></tr>
+      <tr class="bg-stone-50"><td class="p-2"><strong>Buyer profile / ICP files</strong></td><td class="p-2">Empty. Research exists.</td><td class="p-2">All idea-stage outputs · funnel-goal wizard prefill</td><td class="p-2">Phase 1 — distill</td></tr>
+      <tr><td class="p-2"><strong>Bootcamp landing page CTA destination</strong></td><td class="p-2">Unconfirmed whether public landing page exists and converts.</td><td class="p-2">BOFU CTA destinations (when T1 path is bypassed)</td><td class="p-2">Michelle — confirm or build</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section class="max-w-5xl mx-auto px-6 py-8">
+  <h2 class="text-2xl font-bold border-l-4 border-amber-500 pl-3">High-level system flow (the one-pager view)</h2>
+  <p class="mt-3 text-stone-800">If you only read one section, read this.</p>
+<pre class="tree bg-stone-900 text-stone-100 rounded-lg p-4 mt-3 text-xs overflow-x-auto">
+  ┌─────────────────────────────────────────────────────────────────────────────────┐
+  │   IDEA SOURCES (all merge into one weekly pool)                                  │
+  │                                                                                  │
+  │   🤖 AI surfaces:                          ✍ Jerel injects:                      │
+  │   ─ niche swipe pool (Phase 6 cron)        ─ "Add an idea" form on dashboard    │
+  │   ─ Michelle's offer × buyer profile       ─ Voice memo upload (Whisper)        │
+  │   ─ Last week's winners (decomposed)       ─ Promote from swipe pool            │
+  │   ─ Comment/DM signals from her posts      ─ Override at the ideate gate        │
+  │                                                                                  │
+  │                                ▼                                                 │
+  │                        IDEA POOL (here.now)                                     │
+  │                  tagged: funnel_stage · pillar · source · must-do?              │
+  │                                ▼                                                 │
+  │   ┌─────────────────────────────────────────────────────────────────────────┐  │
+  │   │  WEEKLY SCHEDULER — picks 3 posts that honor:                            │  │
+  │   │   · must-do pins                                                          │  │
+  │   │   · funnel split (60 TOFU / 30 MOFU / 10 BOFU)                            │  │
+  │   │   · pillar split (40 Edu / 30 Sell / 20 Story / 10 Inspire)               │  │
+  │   │   · source diversification                                                │  │
+  │   └─────────────────────────────────────────────────────────────────────────┘  │
+  │                                ▼                                                 │
+  │     PER POST → Script → Produce → Approve gate → Publish → Analytics → Learn   │
+  │              (per-post hands-on toggle: low / co-author / operator-led)         │
+  │                                ▼                                                 │
+  │   ┌─────────────────────────────────────────────────────────────────────────┐  │
+  │   │  STAGE 07 — REPURPOSE (NEW)                                              │  │
+  │   │   shipped post → 3-5 derivative children (cross-platform + same-platform)│  │
+  │   │   workshop / podcast → 4-10 short-form clips                              │  │
+  │   │   DM/comment signal → "address this" follow-up post                       │  │
+  │   │   parent → child lineage stored in here.now                               │  │
+  │   └─────────────────────────────────────────────────────────────────────────┘  │
+  │                                ▼                                                 │
+  │   Derivatives go back into the IDEA POOL → next week's scheduler                │
+  │                          (the loop closes)                                       │
+  │                                                                                  │
+  └─────────────────────────────────────────────────────────────────────────────────┘
+
+   Dashboard: genflos.com/content-os    Auth: Clerk    Storage: here.now (michelle-koh namespace)
+   Operator view (Jerel): full pipeline + approvals + analytics + lineage
+   Client view (Michelle): 3 tabs — My Goal · My Offer + Voice · This Week
+</pre>
+  <p class="text-stone-800 mt-3 text-sm"><strong>One sentence answer to "where do you come in?"</strong> — Anywhere in the pool you want: drop an idea, swap an AI idea, pin a must-do, edit a hook, toggle a post into co-author mode. The system runs the loop; you steer it.</p>
+</section>
+
+<section class="max-w-5xl mx-auto px-6 py-10">
+  <h2 class="text-2xl font-bold border-l-4 border-amber-500 pl-3">TL;DR — v0.5.2 (single-tenant)</h2>
+  <ul class="mt-4 space-y-2 text-stone-800 leading-relaxed">
+    <li><strong>Pilot:</strong> Michelle Koh. Single-tenant MVP first. Generalize after she's running clean for ~4 weeks.</li>
+    <li><strong>Storage:</strong> here.now (everything — config, scripts, assets, analytics, decompositions). One namespace per client.</li>
+    <li><strong>Hosting:</strong> Vercel for frontend at <span class="mono text-sm">genflos.com/content-os</span> (subdirectory rewrite). <strong>Phase 4 dashboard = read/write only</strong> (config + approvals + manual analytics entry) — it reads/writes here.now directly via SDK. <strong>No Cloudflare Tunnel and no headless Claude execution in Phase 4.</strong> The Mac-mini relay + Cloudflare Tunnel are Phase 6+ (when we want the dashboard to <em>trigger</em> skill runs rather than Jerel firing them from terminal). Localhost for dev.</li>
+    <li><strong>Funnel-Stage Pre-System:</strong> NEW. A 6-question wizard the client (Michelle) takes through the dashboard (Q6 — pillar comfort — is optional advanced). Outputs <span class="mono text-sm">funnel-goal.json</span> that biases every downstream stage (ideate / script / produce / learn).</li>
+    <li><strong>Pipeline:</strong> 6 stages — ideate → script → produce → approve → publish → learn. Each stage reads <span class="mono text-sm">funnel-goal.json</span> + voice files + offer.</li>
+    <li><strong>Voice:</strong> 3-file split per client. Scrape Michelle's existing socials → 30-min interview fills gaps.</li>
+    <li><strong>Winner metric (decided):</strong> hook rate × hold rate, weighted by funnel-stage. TOFU winner ≠ BOFU winner. <strong>Manual screenshot entry</strong> until IG Insights API access is granted (dependency, not guarantee).</li>
+    <li><strong>Cadence (decided):</strong> 3 posts/week, gate each one. Approvals via web dashboard (Phase 4+) or shared doc (Phases 1-3). No Telegram in MVP.</li>
+    <li><strong>Two views in dashboard:</strong> operator view (Jerel — full pipeline) · client view (Michelle — settings + her own slate + her own analytics).</li>
+  </ul>
+</section>
+
+<section class="max-w-5xl mx-auto px-6 py-6">
+  <h2 class="text-2xl font-bold border-l-4 border-amber-500 pl-3">The Goal — sharpened to single-tenant</h2>
+  <p class="mt-3 text-lg text-stone-800">Build a content OS Jerel runs for Michelle Koh first: AI does 80% of the work, Jerel approves the gates, Michelle tweaks the goal + offer through a friendly settings UI. Output: 3 short-form posts/week, calibrated to her funnel-stage bottleneck. <strong>Designed to produce booked calls — pilot target, not guarantee.</strong> Success in the first 4 weeks is defined as <em>signal quality improving</em> (rejection rate dropping, at least one content winner identified, DM/call movement measurable in the analytics sheet), not a specific booked-call count. Generalize after MVP proves out.</p>
+</section>
+
+<section id="michelle" class="max-w-5xl mx-auto px-6 py-6">
+  <h2 class="text-2xl font-bold border-l-4 border-amber-500 pl-3">Michelle Koh — State of Play (locked from audit)</h2>
+  <p class="mt-3 text-stone-800">Audit complete. Michelle's pilot is essentially a green field for content — but with strong upstream research already in place. The MVP needs to fill the voice + scripts gap fast.</p>
+
+  <div class="grid md:grid-cols-2 gap-4 mt-4">
+    <div class="bg-white border border-stone-200 rounded-lg p-5">
+      <h3 class="font-bold">Who she is</h3>
+      <p class="text-sm text-stone-700 mt-2">Singapore "Meepok Lady" — LinkedIn coach for financial advisors, SMEs, property agents, and speakers who are tired of hard-sell tactics. ICP is mid-career B2B operators in SG/SEA.</p>
+    </div>
+    <div class="bg-white border border-stone-200 rounded-lg p-5">
+      <h3 class="font-bold">Offer ladder</h3>
+      <p class="text-sm text-stone-700 mt-2">
+        <strong>T1</strong> — <strong>LinkedIn Trust Leak Audit</strong> (1-page PDF, email-gated) — <em>Phase 1b co-design deliverable; does not exist yet.</em><br>
+        <strong>T2</strong> — $1,997 USD 2-day in-person bootcamp<br>
+        <strong>T3</strong> — 1:1 LinkedIn coaching (undisclosed)
+      </p>
+      <p class="text-xs text-rose-600 mt-1">Until T1 ships in Phase 1b, BOFU CTAs stay soft: "save this," "DM if this is you," "reply when you want me to send the audit." No "DM AUDIT" keyword flow until the PDF + landing page + email gate are live.</p>
+    </div>
+    <div class="bg-white border border-stone-200 rounded-lg p-5">
+      <h3 class="font-bold">Locked funnel (Architecture B) — staged</h3>
+      <p class="text-sm text-stone-700 mt-2"><strong>Phase 1a-1b:</strong> IG/LI organic → soft CTAs ("save this", "reply for early access to the audit") → manual DM conversation → bootcamp/1:1 mention only on direct ask.</p>
+      <p class="text-sm text-stone-700 mt-1"><strong>Phase 1c onward (T1 live):</strong> IG/LI organic → <strong>"DM AUDIT" or audit landing page</strong> → email gate → audit PDF → manual nurture → bootcamp/1:1.</p>
+      <p class="text-sm text-stone-700 mt-1"><strong>Phase 7 (workshop live):</strong> add evergreen filmed workshop between email gate and bootcamp.</p>
+      <p class="text-xs text-rose-600 mt-1">"DM AUDIT" keyword activates only after T1 PDF + email gate ship in Phase 1b. Until then, BOFU stays soft — we do not promote a CTA that has no destination.</p>
+    </div>
+    <div class="bg-white border border-stone-200 rounded-lg p-5">
+      <h3 class="font-bold">Funnel-goal split (canonical — per Decision Register)</h3>
+      <p class="text-sm text-stone-700 mt-2"><strong>60% TOFU · 30% MOFU · 10% BOFU</strong> (short-form post count).</p>
+      <p class="text-xs text-stone-600 mt-1">Reconciled from audit (which initially leaned MOFU-heavy for re-positioning) + Iman cold default (80/15/5 TOFU-heavy) + Hormozi long-runway requirement. Final lock skews TOFU to satisfy Iman's "filter" framing while protecting MOFU enough to bridge to bootcamp once T1 ships.</p>
+    </div>
+  </div>
+
+  <h3 class="font-bold text-lg mt-6">Top 3 gaps to close before MVP run</h3>
+  <ol class="mt-2 list-decimal list-inside text-sm text-stone-800 space-y-1">
+    <li><strong>Voice files don't exist.</strong> <span class="mono text-xs">brand-voice.md</span>, <span class="mono text-xs">voice-and-tone.md</span>, <span class="mono text-xs">format-patterns.md</span>, <span class="mono text-xs">constraints.md</span>, <span class="mono text-xs">buyer-profile.md</span>, <span class="mono text-xs">icp.md</span>, <span class="mono text-xs">learnings.md</span> all empty/missing. Rich research sits in <span class="mono text-xs">_swipe/research/</span> but hasn't been distilled. <strong>First action of Phase 1.</strong></li>
+    <li><strong>Zero scripts / production assets.</strong> <span class="mono text-xs">01_research</span> / <span class="mono text-xs">02_script</span> / <span class="mono text-xs">03_production</span> / <span class="mono text-xs">campaigns/</span> are empty except CONTEXT scaffolds. We're starting from clean.</li>
+    <li><strong>Workshop spec + email gate not built.</strong> Outside content scope. Flag for Jerel to spec separately. Content MVP runs without them.</li>
+  </ol>
+
+  <p class="text-stone-800 mt-4 text-sm">Full audit: <span class="mono text-xs">/Users/jerel/.claude/jobs/ad9ddcd2/michelle_koh_audit.md</span></p>
+</section>
+
+<section id="hosting" class="max-w-5xl mx-auto px-6 py-6">
+  <h2 class="text-2xl font-bold border-l-4 border-amber-500 pl-3">Hosting + Architecture (locked)</h2>
+  <p class="mt-3 text-stone-800">Three options stack-ranked. Critical realization: <strong>none of Vercel / Netlify / here.now sites can run Claude Code as a serverless function</strong> — Claude Code is a local CLI. So the dashboard frontend is hosted, the heavy-execution backend tunnels into your Mac mini.</p>
+
+  <table class="w-full text-sm mt-4 border-collapse">
+    <thead>
+      <tr class="bg-stone-100">
+        <th class="text-left p-2 border-b border-stone-200">Option</th>
+        <th class="text-left p-2 border-b border-stone-200">Verdict</th>
+        <th class="text-left p-2 border-b border-stone-200">Rationale</th>
+      </tr>
+    </thead>
+    <tbody class="align-top">
+      <tr class="bg-emerald-50">
+        <td class="p-2 font-bold">Vercel</td>
+        <td class="p-2"><strong>RECOMMENDED</strong></td>
+        <td class="p-2">Best Next.js DX. Subdirectory deploy via <span class="mono text-xs">vercel.json</span> rewrites (you keep <span class="mono text-xs">genflos.com/content-os/...</span>). Vercel Cron for scheduled jobs (niche pool refresh — Phase 6). Free tier covers MVP comfortably. Clerk free tier handles Jerel-vs-Michelle role gating. Mature ecosystem.</td>
+      </tr>
+      <tr>
+        <td class="p-2 font-bold">Netlify</td>
+        <td class="p-2">Backup</td>
+        <td class="p-2">Capable but slightly less Next-native. Pick only if you already have Netlify infra you'd rather consolidate against.</td>
+      </tr>
+      <tr class="bg-stone-50">
+        <td class="p-2 font-bold">here.now sites</td>
+        <td class="p-2">Skip for now</td>
+        <td class="p-2">Tempting because storage is already here.now (single vendor). Less mature for complex dashboards with auth + cron + role-based UI. Revisit if Vercel adds friction or if here.now sites matures further by Phase 5.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3 class="font-bold text-lg mt-6">Reference architecture — Phase 4 (read/write dashboard, no headless execution)</h3>
+<pre class="tree bg-stone-900 text-stone-100 rounded-lg p-4 mt-2 text-xs overflow-x-auto">
+                ┌──────────────────────────────────────────────────────────┐
+                │  genflos.com/content-os                                   │
+                │  (Vercel — Next.js frontend, Clerk role gates)            │
+                │  ┌─ Operator view (Jerel)                                 │
+                │  └─ Client view  (Michelle)                               │
+                └─────────────┬────────────────────────────────────────────┘
+                              │
+                  reads / writes config + drafts + approvals + analytics
+                              │
+                              ▼
+              ┌──────────────────────────┐
+              │   here.now storage        │
+              │   ─ config (funnel-goal,  │
+              │     offer, voice files)   │
+              │   ─ scripts + drafts      │
+              │   ─ assets (caption,      │
+              │     thumbnail, video)     │   Jerel runs skills from
+              │   ─ analytics (manual     │   terminal (Phase 3 CLI).
+              │     IG + LinkedIn entry)  │◀──── Outputs land in here.now,
+              │   ─ approval log          │      dashboard reads them.
+              │                           │
+              │   (namespace =            │
+              │    michelle-koh)          │
+              └──────────────────────────┘
+
+   Notifications (MVP):   Web dashboard in-app only. No Telegram.
+   Analytics (MVP):       Manual IG + LinkedIn entry into Google Sheet → here.now sync.
+   Vercel Cron (Phase 6): Daily-only on Hobby tier — sub-daily/precise jobs run on Mac mini.
+
+   Phase 6+ adds the relay path (NOT in Phase 4):
+     ─ Cloudflare Tunnel = agent.genflos.com → Mac mini Express relay
+     ─ Headless Claude (claude -p "<prompt>") triggered from dashboard buttons
+     ─ Two auth paths: Cloudflare Access + Google IdP/email-OTP for browsers;
+       Access service token for the relay (M2M).
+     ─ Niche pool weekly cron + IG Insights API integration land here.
+</pre>
+
+  <h3 class="font-bold text-lg mt-6">Dev → Prod flow</h3>
+  <ul class="text-sm text-stone-700 mt-2 space-y-1 list-disc list-inside">
+    <li><strong>Localhost dev (Phase 4):</strong> Next.js dev server on <span class="mono">localhost:3000</span> + here.now SDK reading the <span class="mono">michelle-koh</span> namespace. No tunnel needed, no relay needed in Phase 4 — Jerel runs skills from terminal (Phase 3 CLI) and the dashboard reads their outputs from here.now.</li>
+    <li><strong>Staging:</strong> Vercel preview deploys per branch. Throwaway URL for Michelle to test the wizard.</li>
+    <li><strong>Production (Phase 4):</strong> Vercel production = <span class="mono">genflos.com/content-os</span>. No tunnel. Dashboard is read/write against here.now via SDK; Clerk gates Operator vs Client.</li>
+    <li><strong>Production (Phase 6+):</strong> Add Cloudflare Tunnel at <span class="mono">agent.genflos.com</span> → Mac mini Express relay that runs <span class="mono">claude -p "&lt;prompt&gt;"</span> headless. <strong>Two auth paths:</strong> human browser traffic → Cloudflare Access with Google IdP / email-OTP; relay → Cloudflare Access service token (M2M). Service tokens alone would lock browser users out.</li>
+  </ul>
+  <p class="text-stone-800 mt-3 text-sm"><strong>Cost model:</strong> Vercel free + Cloudflare free + here.now (existing) + Mac mini (existing). Zero new monthly spend for the MVP. Headless Claude Code runs (Phase 6) use existing usage windows.</p>
+</section>
+
+<section id="funnel-pre-system" class="max-w-5xl mx-auto px-6 py-6">
+  <h2 class="text-2xl font-bold border-l-4 border-amber-500 pl-3">Funnel-Stage Pre-System</h2>
+  <p class="mt-3 text-stone-800">The single biggest insight: <em>generic content frameworks fail because they treat every post as the same job</em>. A TOFU post that converts to a follow has different anatomy than a BOFU post that converts to a DM. This pre-system makes Michelle (or any client) tell us where the bottleneck is, then biases the entire pipeline toward fixing it.</p>
+
+  <h3 class="font-bold text-lg mt-6">1. The diagnostic wizard</h3>
+  <p class="text-sm text-stone-700 mt-2">Six questions, takes &lt; 5 minutes (Q1-Q5 required, Q6 optional advanced setting). Lives in the client view of the dashboard. Re-takeable any time (e.g. after a quarter).</p>
+
+  <div class="space-y-3 mt-4">
+    <details class="bg-white border border-stone-200 rounded-lg p-4" open>
+      <summary class="font-bold">Q1 — What's your primary offer right now?</summary>
+      <ul class="text-sm mt-2 list-disc list-inside text-stone-700">
+        <li>Free download / lead magnet → biases <strong>TOFU + email capture MOFU</strong></li>
+        <li>Free discovery call / strategy session → biases <strong>MOFU + objection-handling BOFU</strong></li>
+        <li>Paid program $1K–$10K (coaching / DWY) → biases <strong>MOFU + BOFU</strong></li>
+        <li>High-ticket 1:1 $10K+ → biases <strong>BOFU + proof-heavy MOFU</strong></li>
+        <li>Course / membership → biases <strong>TOFU broad + MOFU education</strong></li>
+      </ul>
+    </details>
+
+    <details class="bg-white border border-stone-200 rounded-lg p-4">
+      <summary class="font-bold">Q2 — Where do you feel your funnel is leaking the most?</summary>
+      <ul class="text-sm mt-2 list-disc list-inside text-stone-700">
+        <li>Not enough people see me → <strong>TOFU bottleneck</strong> (reach problem)</li>
+        <li>People see but don't follow / engage → <strong>TOFU→MOFU transition</strong></li>
+        <li>People engage but don't DM / book calls → <strong>MOFU→BOFU transition</strong></li>
+        <li>They book calls but don't buy → out of scope for content (sales problem)</li>
+      </ul>
+    </details>
+
+    <details class="bg-white border border-stone-200 rounded-lg p-4">
+      <summary class="font-bold">Q3 — Of the people who follow you, what % would say "I know exactly what Michelle does and who she helps"?</summary>
+      <ul class="text-sm mt-2 list-disc list-inside text-stone-700">
+        <li>&lt; 20% → market is unaware → <strong>TOFU + MOFU heavy</strong></li>
+        <li>20–50% → mid-positioned → <strong>MOFU heavy</strong></li>
+        <li>50–80% → known → <strong>BOFU + objection-handling heavy</strong></li>
+        <li>80%+ → already converted minds → <strong>BOFU + offer-stack content</strong></li>
+      </ul>
+    </details>
+
+    <details class="bg-white border border-stone-200 rounded-lg p-4">
+      <summary class="font-bold">Q4 — What's your specific 90-day outcome?</summary>
+      <p class="text-sm text-stone-700 mt-2">Free text + structured tags: followers, email subs, DMs, booked calls, revenue. This sets the winner-metric weighting for stage 06.</p>
+    </details>
+
+    <details class="bg-white border border-stone-200 rounded-lg p-4">
+      <summary class="font-bold">Q5 — What kind of content makes you cringe to make?</summary>
+      <p class="text-sm text-stone-700 mt-2">Constraint capture. Output appends to <span class="mono text-xs">_config/constraints.md</span>. e.g. "no point-to-camera B-roll", "no 'POV: you're a coach' hooks".</p>
+    </details>
+
+    <details class="bg-white border border-stone-200 rounded-lg p-4">
+      <summary class="font-bold">Q6 — Pillar comfort (optional advanced setting; Iman's dimension)</summary>
+      <p class="text-sm text-stone-700 mt-2"><em>Skippable.</em> If skipped, defaults apply. Four pillars: <strong>Educate · Sell · Story · Inspire</strong>. Iman's default for booked-calls is <strong>40/30/20/10</strong>. <em>"Sell has to be higher than most people are comfortable with."</em> Wizard shows the default and lets the client adjust if specific pillars feel forced. Output: <span class="mono text-xs">pillar_weights</span> in funnel-goal.json.</p>
+    </details>
+  </div>
+
+  <h3 class="font-bold text-lg mt-6">2. The output — <span class="mono text-base">funnel-goal.json</span></h3>
+<pre class="tree bg-stone-900 text-stone-100 rounded-lg p-4 mt-2 text-xs overflow-x-auto">
+{
+  "client": "michelle-koh",
+  "captured_at": "2026-05-12T15:00:00+08:00",
+  "primary_stage": "TOFU",
+  "short_form_split": { "tofu": 60, "mofu": 30, "bofu": 10 },
+  "long_form_addons": {
+    "workshop_replay_clips_per_month": 1,
+    "podcast_clips_per_month": 1,
+    "note": "outside the 3-per-week short-form count; Hormozi long-runway requirement"
+  },
+  "pillar_weights": {
+    "educate": 0.40,
+    "sell":    0.30,
+    "story":   0.20,
+    "inspire": 0.10,
+    "source":  "iman_gadzhi_default_for_booked_calls"
+  },
+  "bottleneck": "positioning_engagement_to_dm",
+  "awareness_estimate_pct": 30,
+  "offer": {
+    "tier_1": "linkedin_trust_leak_audit_pdf_email_gated_phase_1b_deliverable",
+    "tier_2": "2_day_bootcamp_$1997_USD",
+    "tier_3": "1on1_linkedin_coaching_undisclosed",
+    "current_sales_mechanism_phase_1a": "soft_CTAs_no_keyword_flow_yet",
+    "sales_mechanism_phase_1c_onward": "DM AUDIT keyword → audit landing page → email gate → PDF → manual nurture → bootcamp / 1:1",
+    "future_mechanism_phase_7": "DM → email gate → evergreen workshop → bootcamp"
+  },
+  "90_day_outcome": {
+    "primary": "booked_calls",
+    "target": 20,
+    "secondary": "dm_keyword_hits",
+    "secondary_target": 100
+  },
+  "stage_rules": {
+    "tofu": {
+      "hook":  "curiosity_or_pain — never offer-led (Hormozi: 'burning money on fire')",
+      "body":  "Hook-Retain-Reward, Big Fast Value",
+      "cta":   "soft → reveal-problem lead magnet (audit / scorecard)",
+      "source": "hormozi_hooks_+_ads_playbook"
+    },
+    "mofu": {
+      "hook":  "promise + unique mechanism",
+      "body":  "How I (not How to) — experience makes you bulletproof",
+      "cta":   "Strategy Call (15-min BANT triage)",
+      "source": "hormozi_lead_nurture"
+    },
+    "bofu": {
+      "hook":  "proof or offer",
+      "body":  "Parade of Proof — identical-to-them, raw iPhone > polished",
+      "cta":   "Go for the jugular — direct DM/call ask",
+      "source": "hormozi_proof_playbook"
+    }
+  },
+  "winner_metric_weights": {
+    "tofu": { "hook_rate": 0.4, "follow_rate": 0.3, "watch_through": 0.3 },
+    "mofu": { "hold_rate": 0.4, "profile_visit_rate": 0.3, "save_rate": 0.3 },
+    "bofu": { "dm_keyword_hits": 0.5, "calls_booked": 0.5 }
+  },
+  "hand_raise_signals": [
+    "lead_magnet_optin",
+    "dm_after_cta",
+    "yes_comment",
+    "9_word_email_reply",
+    "qualitative_question_answer",
+    "long_form_watch_through_75pct"
+  ],
+  "hand_raise_response_sla_min": 5,
+  "diagnostic_benchmarks": {
+    "profile_visit_rate":     "1-3%",
+    "profile_to_dm":          "10-30%",
+    "qualified_dm_to_call":   "10-20%",
+    "dm_reply_continuation":  "60-80%",
+    "call_show_up":           "70-80%",
+    "source":                 "iman_gadzhi_whop_2026_05_12"
+  },
+  "cringe_constraints": [
+    "no point-to-camera B-roll",
+    "no listicles with em-dashes",
+    "no hard-sell tactics (Michelle's stated position)"
+  ]
+}
+</pre>
+
+  <h3 class="font-bold text-lg mt-6">3. How this biases each pipeline stage</h3>
+  <table class="w-full text-sm mt-3 border-collapse">
+    <thead>
+      <tr class="bg-stone-100">
+        <th class="text-left p-2 border-b border-stone-200">Stage</th>
+        <th class="text-left p-2 border-b border-stone-200">What changes per funnel-goal</th>
+      </tr>
+    </thead>
+    <tbody class="align-top">
+      <tr><td class="p-2 mono text-xs">01_ideate</td><td class="p-2">Ideas generated in the split ratio (e.g. 3 TOFU / 5 MOFU / 2 BOFU). Each idea tagged with stage. Source weighting also shifts: TOFU pulls more from outlier swipe; BOFU pulls more from offer angles + buyer-profile.</td></tr>
+      <tr class="bg-stone-50"><td class="p-2 mono text-xs">02_script</td><td class="p-2">Hook template + body structure + CTA differ by stage. TOFU = curiosity hook + broad pain + soft follow CTA. MOFU = specific problem + new mechanism tease + DM-keyword CTA. BOFU = proof / case / objection + direct call-booking CTA.</td></tr>
+      <tr><td class="p-2 mono text-xs">03_produce</td><td class="p-2">Caption length + hashtag set + cover image style adapt. TOFU caption is shorter, more curiosity; BOFU caption is longer, more proof-stacked. CTA copy mirrors script stage.</td></tr>
+      <tr class="bg-stone-50"><td class="p-2 mono text-xs">06_learn</td><td class="p-2">Winner metric uses per-stage weights from funnel-goal.json. A TOFU post is judged by hook rate × follow rate; a BOFU post by DM keyword hits + call bookings. <strong>Apples-to-apples is forbidden.</strong></td></tr>
+    </tbody>
+  </table>
+
+  <h3 class="font-bold text-lg mt-6">4. Hook rate × hold rate winner metric (mechanics)</h3>
+  <p class="text-sm text-stone-700 mt-2">From IG Insights per post (manual screenshot entry until API access is granted — see Dependency Log):</p>
+  <ul class="text-sm text-stone-700 mt-1 list-disc list-inside">
+    <li><strong>Hook rate</strong> = (3-second views / total impressions). Measures whether the opening earns attention.</li>
+    <li><strong>Hold rate</strong> = (avg watch time / video length). Measures whether the rest of the video keeps it.</li>
+    <li><strong>Stage-conditional bonus:</strong> add follow rate (TOFU), save rate (MOFU), profile visit rate + DM hits (BOFU).</li>
+  </ul>
+  <p class="text-sm text-stone-700 mt-2">Winner threshold = composite score &gt; 3× the client's rolling 4-week average for the same funnel stage. This auto-fires Stage 06 decomposition.</p>
+
+  <h3 class="font-bold text-lg mt-6">5. Iman Gadzhi — grounded rules (live Whop chatbot)</h3>
+  <div class="bg-white border border-stone-200 rounded-lg p-5 mt-2">
+    <p class="text-sm text-stone-800"><strong>Headline (verbatim):</strong> <em>"The biggest mistake is trying to make short form do the whole job… short form wins on curiosity. If you use it like a sales page, you overexplain, you flatten the hook, and you confuse cold people. They don't feel pulled in, they feel sold to. And once that happens, they scroll. Make short form a filter, not a funnel closer."</em></p>
+
+    <p class="font-bold mt-4">Iman's committed funnel split</p>
+    <table class="w-full text-sm mt-2 border-collapse">
+      <thead>
+        <tr class="bg-stone-100">
+          <th class="text-left p-2 border-b border-stone-200">Audience state</th>
+          <th class="text-left p-2 border-b border-stone-200">TOFU</th>
+          <th class="text-left p-2 border-b border-stone-200">MOFU</th>
+          <th class="text-left p-2 border-b border-stone-200">BOFU</th>
+        </tr>
+      </thead>
+      <tbody class="align-top">
+        <tr><td class="p-2">Cold baseline</td><td class="p-2 font-bold">80%</td><td class="p-2">15%</td><td class="p-2">5%</td></tr>
+        <tr class="bg-stone-50"><td class="p-2">Warm (strong baseline + intent signals + premium positioning)</td><td class="p-2 font-bold">70%</td><td class="p-2">20%</td><td class="p-2">10%</td></tr>
+      </tbody>
+    </table>
+
+    <p class="font-bold mt-4">Pillar weighting (for booked-calls goal)</p>
+    <p class="text-sm text-stone-700"><strong>40% Educate · 30% Sell · 20% Story · 10% Inspire.</strong> Iman: <em>"Sell has to be higher than most people are comfortable with… hiding behind value content is amateur hour."</em></p>
+
+    <p class="font-bold mt-4">Cadence (Iman's actual recommendation)</p>
+    <p class="text-sm text-stone-700">4 posts/week (2 talking head, 1 B-roll, 1 carousel) + daily stories. Mix: 50/25/25.</p>
+    <p class="text-xs text-stone-500 mt-1">Note: this is higher than our locked 3/week. Decision needed — adopt 4/week or keep 3 and shift one to stories.</p>
+
+    <p class="font-bold mt-4">Funnel diagnostic benchmarks (Iman, verbatim numbers)</p>
+    <ul class="text-sm text-stone-700 mt-1 list-disc list-inside">
+      <li><strong>Profile-visit rate:</strong> 1–3%</li>
+      <li><strong>Profile → DM conversion:</strong> 10–30%</li>
+      <li><strong>Qualified DM → call booking:</strong> 10–20%</li>
+      <li><strong>DM reply continuation:</strong> 60–80%</li>
+      <li><strong>Call show-up rate:</strong> 70–80%</li>
+    </ul>
+    <p class="text-xs text-stone-500 mt-1">These are our diagnostic anchors. If Michelle is below 10% on profile→DM, the bottleneck is BOFU/MOFU content (not enough hand-raise prompts). If she's below 1% on profile-visit, the bottleneck is TOFU (hooks not pulling).</p>
+  </div>
+
+  <h3 class="font-bold text-lg mt-6">6. Hormozi — grounded rules (NotebookLM "REAL Alex Hormozi", corpus a17ef3ee)</h3>
+  <div class="bg-white border border-stone-200 rounded-lg p-5 mt-2">
+    <p class="text-sm text-stone-800"><strong>Headline (load-bearing):</strong> Hormozi maps content stages 1:1 to <strong>Schwartz's 5 Levels of Awareness</strong>. <em>"The bigger the plane, the longer the runway has to be in order for the plane to take off."</em> <strong>78% of his clients consume 2+ long-form pieces (~7 hrs) before booking.</strong> Short-form alone won't close $1,997+ tickets. Implication for Michelle: TOFU short-form earns the click, but MOFU long-form (workshop / podcast / YouTube long) is where the trust transfers.</p>
+
+    <p class="font-bold mt-4">Stage rules — citations from Hormozi's playbooks</p>
+    <table class="w-full text-sm mt-2 border-collapse">
+      <thead>
+        <tr class="bg-stone-100">
+          <th class="text-left p-2 border-b border-stone-200">Field</th>
+          <th class="text-left p-2 border-b border-stone-200">TOFU · Awareness</th>
+          <th class="text-left p-2 border-b border-stone-200">MOFU · Education</th>
+          <th class="text-left p-2 border-b border-stone-200">BOFU · Decision</th>
+        </tr>
+      </thead>
+      <tbody class="align-top">
+        <tr>
+          <td class="p-2 font-bold">Hook</td>
+          <td class="p-2">Curiosity or pain. <em>"The hidden ___ that's costing you ___"</em></td>
+          <td class="p-2">Promise + mechanism. <em>"The fastest way to ___ — introducing [Your Mechanism]"</em></td>
+          <td class="p-2">Proof or offer. <em>"10,000 people chose ___"</em> / <em>"X spots left"</em></td>
+        </tr>
+        <tr class="bg-stone-50">
+          <td class="p-2 font-bold">Body</td>
+          <td class="p-2">"Big Fast Value" — 1 Hook · Retain · Reward unit. High value per second.</td>
+          <td class="p-2"><strong>"How I" — not "How to."</strong> Personal experience. <em>"No one can question your experience."</em></td>
+          <td class="p-2"><strong>Parade of Proof.</strong> Identical-to-them testimonials. Raw iPhone &gt; polished. <em>"80% of our winning ads told one story — This. Product. Works."</em></td>
+        </tr>
+        <tr>
+          <td class="p-2 font-bold">CTA</td>
+          <td class="p-2">Soft → Reveal-Problem Lead Magnet (audit / scorecard / checklist). <strong>Never offer-led.</strong> Offer-led TOFU = <em>"the closest thing to burning money on fire."</em></td>
+          <td class="p-2">Strong Hit lead magnet OR low-friction Strategy Call (15-min BANT triage).</td>
+          <td class="p-2"><strong>Go for the jugular.</strong> <em>"I'm looking for 5 [Avatar] to help achieve [Outcome]… If that sounds fair, DM me / book a call."</em></td>
+        </tr>
+        <tr class="bg-stone-50">
+          <td class="p-2 font-bold">Winner metric</td>
+          <td class="p-2">Reach + watch-through. <strong>NOT bookings.</strong></td>
+          <td class="p-2">Long-form completion rate. Hand-raise signals (saves, profile visits, DM keyword).</td>
+          <td class="p-2">DM → call booked. 15-min triage → CLOSER consult.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p class="font-bold mt-4">Hand-raise signals (between MOFU → BOFU)</p>
+    <ul class="text-sm text-stone-700 mt-1 list-disc list-inside">
+      <li>Lead-magnet opt-ins · DMs after a CTA · "YES" comments · 9-word email replies · qualitative-question answers · long-form watch-through</li>
+      <li><strong>Speed-to-contact &lt; 5 min lifts conversion up to 391%.</strong> Implication: when any of the above fires, surface it in the dashboard (and email Michelle for MVP). Telegram automation is Phase 6+.</li>
+    </ul>
+
+    <p class="font-bold mt-4">Effort allocation (Hormozi 70/30)</p>
+    <p class="text-sm text-stone-700">70% effort to TOFU brand/curiosity, 30% to BOFU direct-response. Note: this is <strong>effort</strong>, not post count. A single BOFU post can take 3× the production time of a TOFU clip (proof gathering, case-study editing). Maps to producer-time-allocation in our pipeline, not post-count split.</p>
+
+    <p class="font-bold mt-4">The Rule of 100</p>
+    <p class="text-sm text-stone-700"><strong>100 minutes/day, 100 days straight, 7 days/week.</strong> Intermittent Asks: value in 10 posts, offer on the 11th. This sets a floor for Michelle's audience contact time — even if she ships 3 posts/week, the in-between days need stories, DM replies, comments.</p>
+  </div>
+
+  <h3 class="font-bold text-lg mt-6">7. Reconciliation audit trail (how we arrived at the canonical 60/30/10)</h3>
+  <div class="bg-stone-900 text-stone-100 rounded-lg p-5 mt-2">
+    <p class="text-sm">Three independent perspectives on the same question. Here's the synthesis:</p>
+    <table class="w-full text-sm mt-3 border-collapse">
+      <thead>
+        <tr class="bg-stone-800">
+          <th class="text-left p-2 border-b border-stone-700">Source</th>
+          <th class="text-left p-2 border-b border-stone-700">Split (TOFU / MOFU / BOFU)</th>
+          <th class="text-left p-2 border-b border-stone-700">Caveat</th>
+        </tr>
+      </thead>
+      <tbody class="align-top">
+        <tr><td class="p-2">Michelle audit (state of play)</td><td class="p-2 mono">25 / 60 / 15</td><td class="p-2">She has audience-but-no-inbound — re-position via MOFU</td></tr>
+        <tr class="bg-stone-800"><td class="p-2">Iman (cold default, Whop chatbot)</td><td class="p-2 mono">80 / 15 / 5</td><td class="p-2">Short form is a FILTER, not a closer. Pillars: 40 Educate / 30 Sell / 20 Story / 10 Inspire</td></tr>
+        <tr><td class="p-2">Hormozi (effort split, $100M playbooks)</td><td class="p-2 mono">70 / — / 30 (effort, not post count)</td><td class="p-2">Long-form MOFU is non-negotiable for $1,997+. 78% need ~7 hrs before booking.</td></tr>
+      </tbody>
+    </table>
+
+    <p class="text-amber-300 font-bold mt-4">Final recommendation for Michelle (locked in Decision Register)</p>
+    <p class="text-sm mt-2"><strong>Short-form post count split: 60 TOFU · 30 MOFU · 10 BOFU.</strong></p>
+    <p class="text-sm mt-2"><strong>BUT</strong> — Hormozi's "long runway" insight changes everything: short-form alone won't convert $1,997+ tickets. The MOFU layer can't be 30% of <em>short-form</em>; it has to be a parallel <strong>long-form workshop / podcast / YouTube long</strong> that the TOFU shorts point to. Michelle's locked Architecture B already has this (evergreen filmed workshop) — it's the load-bearing piece for trust transfer.</p>
+    <p class="text-sm mt-2"><strong>Decision:</strong></p>
+    <ul class="text-sm text-stone-300 mt-1 list-disc list-inside">
+      <li>Short-form ship cadence: 3/week (60/30/10 split) — your locked default holds</li>
+      <li>Long-form: <strong>1 workshop replay + 1 podcast clip pulled monthly</strong> as separate content type — outside the 3/week count</li>
+      <li>Pillar weighting (Iman): 40 Educate / 30 Sell / 20 Story / 10 Inspire — applies <em>across</em> the funnel-stage split</li>
+      <li>Hand-raise signal trigger: any of the 6 Hormozi signals surfaces in the dashboard + emails Michelle (5-min target SLA). Telegram automation = Phase 6+.</li>
+      <li>BOFU CTA stays soft (e.g. "reply if you want me to send this when it's ready") <strong>until T1 PDF + email gate ship in Phase 1b</strong> — then upgrades to "DM AUDIT" → audit landing page. Upgrades again to Strategy-Call BANT triage when the workshop ships in Phase 7.</li>
+    </ul>
+  </div>
+
+  <p class="text-stone-800 mt-4 text-sm"><strong>Full Hormozi findings:</strong> <span class="mono text-xs">/Users/jerel/.claude/jobs/ad9ddcd2/hormozi_funnel_findings.md</span> · NotebookLM conversation <span class="mono text-xs">5de02d9f-6539-4ac3-b74d-22eeffe515a5</span> kept open for follow-up citations.</p>
+</section>
+
+<section id="jerel-contribution" class="max-w-5xl mx-auto px-6 py-6">
+  <h2 class="text-2xl font-bold border-l-4 border-amber-500 pl-3">How Jerel contributes — 4 injection points</h2>
+  <p class="mt-3 text-stone-800">The system surfaces ideas <em>and</em> accepts yours. Both flows merge into one weekly idea pool. Each idea is tagged with its source so we can tune the mix over time.</p>
+
+  <div class="grid md:grid-cols-2 gap-4 mt-4">
+    <div class="bg-white border border-stone-200 rounded-lg p-5">
+      <p class="pill bg-emerald-500 text-white">PATH 1 · primary</p>
+      <h3 class="font-bold mt-2">Dashboard "Add an idea" form</h3>
+      <p class="text-sm text-stone-700 mt-2">Always-visible button on the operator view. Form fields:</p>
+      <ul class="text-sm text-stone-700 mt-1 list-disc list-inside">
+        <li>Hook line (required, 1-2 sentences)</li>
+        <li>Body angle (optional, free text)</li>
+        <li>Funnel stage tag (TOFU / MOFU / BOFU)</li>
+        <li>Content pillar tag (Educate / Sell / Story / Inspire)</li>
+        <li>"Must-do this week" toggle</li>
+        <li>Source notes (where the idea came from — optional)</li>
+      </ul>
+      <p class="text-xs text-stone-500 mt-2">Lands in the idea pool with source = <span class="mono">jerel-manual</span>.</p>
+    </div>
+
+    <div class="bg-white border border-stone-200 rounded-lg p-5">
+      <p class="pill bg-stone-700 text-white">PATH 2</p>
+      <h3 class="font-bold mt-2">Voice memo upload</h3>
+      <p class="text-sm text-stone-700 mt-2">Drop a <span class="mono text-xs">.m4a</span> / <span class="mono text-xs">.mp3</span> on the dashboard. Whisper transcribes. AI mines the transcript for 3-5 distinct ideas. Each one lands in the pool, tagged <span class="mono">jerel-voice</span> with a link back to the source audio file.</p>
+      <p class="text-xs text-stone-500 mt-2">Use case: you have a 5-min thought walking to coffee. Record on iPhone. Drop into dashboard later. 5 ideas spawn.</p>
+    </div>
+
+    <div class="bg-white border border-stone-200 rounded-lg p-5">
+      <p class="pill bg-stone-700 text-white">PATH 3</p>
+      <h3 class="font-bold mt-2">Promote from the swipe pool</h3>
+      <p class="text-sm text-stone-700 mt-2">The niche swipe pool (coaches-consultants) refreshes weekly via the scraper. You browse the pool, see an outlier hook from another creator, click "Adapt for Michelle" — the system rewrites it in Michelle's voice and lands it in her idea pool tagged <span class="mono">jerel-adapted</span>.</p>
+    </div>
+
+    <div class="bg-white border border-stone-200 rounded-lg p-5">
+      <p class="pill bg-stone-700 text-white">PATH 4</p>
+      <h3 class="font-bold mt-2">Override at the ideate gate</h3>
+      <p class="text-sm text-stone-700 mt-2">When the weekly idea board renders, you can:</p>
+      <ul class="text-sm text-stone-700 mt-1 list-disc list-inside">
+        <li>Pin any idea as <strong>must-do</strong> → reserves a slot in the 3-post week</li>
+        <li>Swap an AI idea for one of yours</li>
+        <li>Edit any idea's hook / pillar / stage before approving</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 class="font-bold text-lg mt-6">Phase 6 add-on: Telegram capture channel</h3>
+  <p class="text-sm text-stone-700 mt-2">When Telegram notifications go live (Phase 6+), a dedicated channel listens for messages you DM to it. Text → idea. Voice note → transcribed → idea. Photo → captioned → idea. All tagged <span class="mono text-xs">jerel-telegram</span>. Same merge into the pool. Quietest capture surface — Telegram is always in your pocket. Not in MVP.</p>
+
+  <h3 class="font-bold text-lg mt-6">Per-post hands-on toggle (variable mode)</h3>
+  <p class="text-sm text-stone-700 mt-2">Each post in the weekly slate has a mode switch:</p>
+  <ul class="text-sm text-stone-700 mt-1 list-disc list-inside">
+    <li><strong>Low touch</strong> (default) → AI drafts hook + script + caption, you approve as-is or reject</li>
+    <li><strong>Co-author</strong> → AI proposes hook + script, you edit inline before it moves to produce</li>
+    <li><strong>Operator-led</strong> → you write the hook, AI fills body + caption + CTA in voice</li>
+  </ul>
+  <p class="text-sm text-stone-700 mt-1">You toggle per post. The default for new posts is "Low touch". Your overall feedback (corrections) auto-tunes the default toward co-author if you keep editing the same fields.</p>
+</section>
+
+<section id="pillars-and-funnel" class="max-w-5xl mx-auto px-6 py-6">
+  <h2 class="text-2xl font-bold border-l-4 border-amber-500 pl-3">Content Pillars + Funnel Scheduler</h2>
+  <p class="mt-3 text-stone-800"><strong>Two orthogonal dimensions</strong> drive every week's scheduling. Funnel-stage answers <em>"what's the post's job in the customer journey?"</em>. Pillar answers <em>"what's the post's voice character?"</em>. Hooks and scripts are anchored to BOTH.</p>
+
+  <h3 class="font-bold text-lg mt-6">The two dimensions</h3>
+  <table class="w-full text-sm mt-3 border-collapse">
+    <thead>
+      <tr class="bg-stone-100">
+        <th class="text-left p-2 border-b border-stone-200">Dimension</th>
+        <th class="text-left p-2 border-b border-stone-200">Values</th>
+        <th class="text-left p-2 border-b border-stone-200">Michelle's target split</th>
+      </tr>
+    </thead>
+    <tbody class="align-top">
+      <tr><td class="p-2 font-bold">Funnel stage</td><td class="p-2">TOFU · MOFU · BOFU</td><td class="p-2 mono text-xs">60 / 30 / 10</td></tr>
+      <tr class="bg-stone-50"><td class="p-2 font-bold">Content pillar</td><td class="p-2">Educate · Sell · Story · Inspire</td><td class="p-2 mono text-xs">40 / 30 / 20 / 10 (Iman)</td></tr>
+    </tbody>
+  </table>
+
+  <h3 class="font-bold text-lg mt-6">How they combine — the 12-cell grid</h3>
+  <p class="text-sm text-stone-700 mt-2">Every post lives in one cell of a 3 × 4 grid. Each cell has its own hook style + script anchor:</p>
+<pre class="tree bg-stone-900 text-stone-100 rounded-lg p-4 mt-2 text-xs overflow-x-auto">
+           │ Educate          │ Sell             │ Story            │ Inspire          │
+  ─────────┼──────────────────┼──────────────────┼──────────────────┼──────────────────┤
+  TOFU     │ "Hidden ___ is   │ ⚠ rare cell —    │ "I almost quit   │ "What I'd tell   │
+           │ costing you ___" │ Hormozi says     │ when ___"        │ younger me"      │
+           │ How-I micro      │ never offer-led  │ vulnerability    │ aspirational     │
+           │ teach            │ at TOFU          │ open             │ value-first      │
+  ─────────┼──────────────────┼──────────────────┼──────────────────┼──────────────────┤
+  MOFU     │ "How I built ___"│ "The 3 mistakes  │ "Last week a     │ "The version of  │
+           │ "How I" framing  │ I see ___ make"  │ client said ___" │ you 12 mos out"  │
+           │ promise + mech.  │ soft-sell        │ case-led trust   │ visioning        │
+  ─────────┼──────────────────┼──────────────────┼──────────────────┼──────────────────┤
+  BOFU     │ "Inside my ___"  │ "I'm opening 5   │ "Meet [client]   │ ⚠ rare cell —    │
+           │ behind-the-      │ spots for ___"   │ who went ___ to  │ inspire rarely   │
+           │ scenes           │ go for jugular   │ ___"             │ converts BOFU    │
+           │                  │                  │ Parade of Proof  │                  │
+</pre>
+
+  <h3 class="font-bold text-lg mt-6">The weekly scheduler — how it solves the constraint</h3>
+  <p class="text-sm text-stone-700 mt-2">Each Monday the scheduler runs and picks 3 ideas from the pool. The selection algorithm:</p>
+  <ol class="text-sm text-stone-700 mt-2 list-decimal list-inside space-y-1">
+    <li><strong>Honor must-do pins first.</strong> Any idea you pinned as must-do takes its slot. Funnel + pillar tags on the pin determine which cell it fills.</li>
+    <li><strong>Compute the gap.</strong> Subtract pinned-cell coverage from the target 60/30/10 funnel + 40/30/20/10 pillar splits. Get a 4-week rolling deficit per cell.</li>
+    <li><strong>Pick remaining slots to close the largest gaps.</strong> If you're 8 weeks into the system and Inspire is under-served, the scheduler biases the next free slot toward an Inspire cell.</li>
+    <li><strong>Source-balance tiebreaker.</strong> If two ideas score equally, prefer the one that diversifies source (jerel-manual + outlier + offer-angle ideal mix per week).</li>
+    <li><strong>Render the slate</strong> — 3 cards in the dashboard, each showing funnel · pillar · source · hook draft. You approve, edit, or swap.</li>
+  </ol>
+
+  <p class="text-sm text-stone-700 mt-3">Result: across any 4-week rolling window, Michelle's posts hit both splits ±5%. No cell gets starved. No pillar dominates. Your must-do pins always win.</p>
+
+  <h3 class="font-bold text-lg mt-6">Iman's structural rule — baked into the weekly shape</h3>
+  <p class="text-sm text-stone-700 mt-2">On top of the 4-week split math, the scheduler enforces a <strong>shape constraint per week</strong> for $1,997-tier coaches:</p>
+  <ul class="text-sm text-stone-700 mt-1 list-disc list-inside">
+    <li><strong>1 hook test</strong> (TOFU curiosity — pure attention earner)</li>
+    <li><strong>1 proof-driven</strong> (case / testimonial / Parade of Proof)</li>
+    <li><strong>1 pain / objection</strong> (MOFU problem-aware or BOFU objection-handler)</li>
+  </ul>
+  <p class="text-sm text-stone-700 mt-2">Even when the 60/30/10 math says "this week is 2 TOFU + 1 MOFU", the shape constraint forces variety — no two consecutive posts share function. Avoids the month-6 failure mode ("samey content, positioning dilutes").</p>
+</section>
+
+<section id="stage-07" class="max-w-5xl mx-auto px-6 py-6">
+  <h2 class="text-2xl font-bold border-l-4 border-amber-500 pl-3">Stage 07 — Repurpose (NEW)</h2>
+  <p class="mt-3 text-stone-800">Every shipped piece is a <strong>parent</strong>. Repurposing spawns <strong>children</strong>. Storage in here.now tracks parent → child relationships so we never lose lineage and we can see "what came from what."</p>
+
+  <h3 class="font-bold text-lg mt-6">The repurposing graph</h3>
+<pre class="tree bg-stone-900 text-stone-100 rounded-lg p-4 mt-2 text-xs overflow-x-auto">
+  IG Reel (parent)
+    ├─► Caption variant for LinkedIn post
+    ├─► Carousel slides (5-7 frames)
+    ├─► Newsletter section
+    ├─► Tweet thread (8-12 tweets)
+    └─► Same-platform recut (new hook, same body)
+
+  Workshop replay (long-form parent)
+    ├─► IG Reel clip × 4-6 (different hooks)
+    ├─► YouTube Short × 2-3
+    ├─► LinkedIn carousel × 2
+    └─► Quote card image × 6-10
+
+  Comment / DM signal (data parent)
+    ├─► "Address this objection" post (BOFU)
+    ├─► "Here's the truth about ___" post (MOFU)
+    └─► Email send (when Phase 7 ships)
+</pre>
+
+  <h3 class="font-bold text-lg mt-6">When Stage 07 fires</h3>
+  <ul class="text-sm text-stone-700 mt-2 list-disc list-inside">
+    <li><strong>Auto:</strong> 7 days after a piece is published — if hook rate × hold rate composite &gt; client's rolling 4-week average, spawn derivatives.</li>
+    <li><strong>Auto:</strong> a winner is decomposed at Stage 06 — automatically spawns 3 new ideas from the same insight in different funnel/pillar cells.</li>
+    <li><strong>Auto:</strong> a comment or DM thread on a post gets &gt;5 interactions on a single objection → spawns a follow-up post idea.</li>
+    <li><strong>Manual:</strong> Jerel clicks "Repurpose this" on any past post.</li>
+    <li><strong>Manual:</strong> Michelle uploads a workshop replay / podcast → 4-10 derivative ideas spawn.</li>
+  </ul>
+
+  <h3 class="font-bold text-lg mt-6">Storage model — parent/child relationships</h3>
+<pre class="tree bg-stone-900 text-stone-100 rounded-lg p-4 mt-2 text-xs overflow-x-auto">
+here.now://content-os/michelle-koh/posts/&lt;post-id&gt;
+  ├─ metadata.json
+  │    ├─ id, funnel_stage, pillar, source
+  │    ├─ parent_id (null if origin)
+  │    ├─ children_ids: []
+  │    └─ analytics_snapshot
+  ├─ script.md
+  ├─ caption.md
+  └─ asset.mp4
+</pre>
+
+  <p class="text-sm text-stone-700 mt-3">Each post knows its parent + children. The "Lineage view" in the dashboard shows the family tree visually — you can see which original short spawned a tweet thread, two recuts, and a podcast clip.</p>
+
+  <h3 class="font-bold text-lg mt-6">Iman — deep operating principles (live Whop, 2026-05-12)</h3>
+  <div class="bg-white border border-stone-200 rounded-lg p-5 mt-2">
+    <p class="text-base font-bold text-stone-900">Headline reframe: <em>"Stop trying to convert from content. Start trying to condition belief. Organic isn't a sales channel — it's a trust accumulation system. High-ticket moves because people feel safer, not because they understand more."</em></p>
+
+    <p class="font-bold mt-4">Repurposing playbook (committed, verbatim)</p>
+    <ul class="text-sm text-stone-700 mt-1 list-disc list-inside space-y-1">
+      <li><strong>Short-form winner cascade.</strong> 24h after a hit → ship a <em>follow-up short</em> on same theme. 48–72h → expand into <em>long-form</em>. Day 7 → clip 3-5 <em>additional shorts</em> from the long-form.</li>
+      <li><strong>Long-form mining rule.</strong> Every long-form yields <em>5–8 shorts</em>: opening hook · contrarian point · framework step · proof moment · objection handling · CTA-as-content.</li>
+      <li><strong>3-role split.</strong> Strategist owns angle. Editor owns cuts. Copywriter owns packaging. Don't let one person own all three.</li>
+      <li><strong>3 posts/week structural rule for $1,997 ticket:</strong> 1 <em>hook test</em> + 1 <em>proof-driven</em> + 1 <em>pain/objection</em>. Scheduler should enforce this distribution by default.</li>
+    </ul>
+
+    <p class="font-bold mt-4">70/30 system-to-raw split</p>
+    <p class="text-sm text-stone-700"><strong>10–15 system posts + 3–5 raw posts per week.</strong> System content = researched, structured, AI-assisted. Raw content = your voice memo / unfiltered moment / off-the-cuff reaction. Both ship. Raw posts are the freshness vaccine.</p>
+
+    <p class="font-bold mt-4">Top failure modes at month 3 · 6 · 12 (verbatim diagnosis)</p>
+    <ol class="text-sm text-stone-700 mt-1 list-decimal list-inside space-y-1">
+      <li><strong>Month 3 — Views without buyer intent.</strong> Content is broad / educational / nice. Engagement up, urgency dead. Audience never self-IDs as the buyer. <em>Fix:</em> tighten the avatar in every hook.</li>
+      <li><strong>Month 6 — Lead quality collapses while volume looks fine.</strong> Coaches blame "the algorithm." Real issue: positioning got diluted, page now attracts curious people instead of buyers. <em>Fix:</em> audit the last 30 posts for specificity drift.</li>
+      <li><strong>Month 12 — Founder dependency + watered-down message.</strong> Founder takes a week off, output drops. In chasing reach, they made the message broader and weaker. <em>Iman: "Specificity dies, conversion dies."</em></li>
+    </ol>
+
+    <p class="font-bold mt-4">4-layer freshness system (against samey-ness)</p>
+    <ol class="text-sm text-stone-700 mt-1 list-decimal list-inside space-y-1">
+      <li><strong>Rotate the pain, not the promise.</strong> Same outcome (booked calls), different pain entrypoint each week.</li>
+      <li><strong>Build belief shifts.</strong> One belief-change post every 2–3 weeks (e.g. "the thing you think is the problem is actually a symptom of…").</li>
+      <li><strong>7-bucket monthly stack.</strong> Rotate through 7 distinct angle buckets across a 4-week window so no two consecutive posts share a bucket.</li>
+      <li><strong>Living angle bank.</strong> Continuously mine audience DMs / comments / replies for new angles. The angle bank is never "done."</li>
+    </ol>
+
+    <p class="font-bold mt-4">10-step diagnostic when content dies</p>
+    <p class="text-sm text-stone-700">Check in this order: <span class="mono text-xs">distribution → hook → topic → CTA → DM flow → offer alignment → profile copy → audience quality → cadence → soft signals (saves, profile visits trending)</span>. Stop at the first thing that's off — don't blame the algorithm.</p>
+
+    <p class="font-bold mt-4">Kill / archive / recut / republish decision</p>
+    <p class="text-sm text-stone-700">Judge by <strong>current velocity</strong>, not past performance. A winner that's plateaued for 14+ days → recut with new hook. A flop that has a great body → re-cut with totally new hook. A piece that hits but only with the wrong audience → kill. A piece that worked once and the topic is evergreen → republish at 90 days with no changes.</p>
+
+    <p class="text-stone-500 mt-3 text-xs">Full deep findings: <span class="mono">/Users/jerel/.claude/jobs/ad9ddcd2/iman_deep_findings.md</span> · 8 questions, 7 committed answers, 1 hedge (app-agnostic on idea-capture).</p>
+  </div>
+
+  <h3 class="font-bold text-lg mt-6">Hormozi — deep operating principles ($100M playbooks, conv. 5de02d9f)</h3>
+  <div class="bg-white border border-stone-200 rounded-lg p-5 mt-2">
+    <p class="text-base font-bold text-stone-900">Hormozi's 1-to-N rule has TWO engines:</p>
+    <ul class="text-sm text-stone-700 mt-2 list-disc list-inside space-y-1">
+      <li><strong>Wellspring (organic):</strong> X/Twitter is your low-friction idea wellspring. When a tweet pops → fan into short-form video, LinkedIn post, Facebook, email. <strong>Cluster 20-30 thematically-similar winners into ONE YouTube long-form.</strong></li>
+      <li><strong>Ad Kaleidoscope (paid):</strong> 1 winning concept → <strong>150-750 unique ads/week</strong> via 50 hooks × 3-5 meats × 1-3 CTAs. Not for MVP (we're organic) but the math informs how aggressively we test hooks.</li>
+    </ul>
+
+    <p class="font-bold mt-4">Content-type split: 70 / 20 / 10 (output, not effort)</p>
+    <ul class="text-sm text-stone-700 mt-1 list-disc list-inside">
+      <li><strong>70% Core</strong> — repackaged winners. More of what works.</li>
+      <li><strong>20% Winner-adjacent</strong> — modeled from outside niches.</li>
+      <li><strong>10% Fresh / risky</strong> — big new ideas. If they win, promote to the 70% bucket.</li>
+    </ul>
+    <p class="text-xs text-stone-500 mt-1">Note: this is a 3rd 70/30-ish rule. Don't confuse with Hormozi's TOFU/BOFU <em>effort</em> 70/30 or Iman's system-vs-raw 70/30. All three are simultaneously true.</p>
+
+    <p class="font-bold mt-4">Mental reframe</p>
+    <p class="text-sm text-stone-700"><em>"The 'I'm bored of my own content' feeling is a trap — new customers enter your market every day, and to them, your best old post is brand new."</em> Counter to Iman's freshness system; both are true at different time horizons (Iman = within-month rotation; Hormozi = across-quarter republish).</p>
+
+    <p class="font-bold mt-4">"Content debt" = ignorance tax + Long Runway deficit</p>
+    <p class="text-sm text-stone-700">Hormozi doesn't use the phrase "content debt" — he calls it <strong>ignorance tax</strong> (cost of not knowing what works) and <strong>Long Runway deficit</strong> (not enough long-form to bridge cold to high-ticket). Five symptoms at month 6+:</p>
+    <ol class="text-sm text-stone-700 mt-1 list-decimal list-inside space-y-1">
+      <li><strong>70/30 split malfunction</strong> — operator drifts to 100% BOFU, starves TOFU. Reach dies.</li>
+      <li><strong>"Size of the Pie" fallacy</strong> — assumes market saturation when really ONE hook/placement is exhausted. Don't change the market; change the hook.</li>
+      <li><strong>Wrapper fatigue</strong> — creative + headline get dusty. Refresh order: creative → body → headline → offer (last).</li>
+      <li><strong>"Genius with a Thousand Hands" trap</strong> — founder is the only banger-content producer. Growth caps at personal capacity.</li>
+      <li><strong>Insufficient indoctrination</strong> — views without buyers because no long-form bridge. Locks in the long-runway requirement.</li>
+    </ol>
+
+    <p class="font-bold mt-4">Diagnostic tree — when content stops working (ordered)</p>
+    <table class="w-full text-sm mt-2 border-collapse">
+      <thead>
+        <tr class="bg-stone-100">
+          <th class="text-left p-2 border-b border-stone-200">Check order</th>
+          <th class="text-left p-2 border-b border-stone-200">Dimension</th>
+          <th class="text-left p-2 border-b border-stone-200">Specific checks</th>
+        </tr>
+      </thead>
+      <tbody class="align-top">
+        <tr><td class="p-2 font-bold">FIRST</td><td class="p-2">More — Volume</td><td class="p-2">Rule of 100 hit (100 min/day, 100 days)? Posting at platform max? Founder-dependent (Genius Trap)?</td></tr>
+        <tr class="bg-stone-50"><td class="p-2 font-bold">SECOND</td><td class="p-2">Better — Hook</td><td class="p-2">Are you spending 80% of time on the hook? Hook → Retain → Reward structure? "How I" not "How to"?</td></tr>
+        <tr><td class="p-2 font-bold">THIRD</td><td class="p-2">New — Placements/Wrapper</td><td class="p-2">70/30 effort split intact? Wrapper refresh order honored (creative → body → headline → offer)? Try new placements on current platform before switching platforms.</td></tr>
+      </tbody>
+    </table>
+
+    <p class="font-bold mt-4">Bonus problems flagged in Q8</p>
+    <ul class="text-sm text-stone-700 mt-1 list-disc list-inside space-y-1">
+      <li><strong>Bus Test:</strong> business is unsellable if dependent on your face. Mitigation: capture Member-Generated Content (clients producing testimonials/case studies you can re-cut).</li>
+      <li><strong>Hidden Funnel:</strong> you have a customer acquisition funnel but no talent acquisition mirror funnel. Use Core Four (warm / cold / paid / affiliate) to recruit A-players.</li>
+      <li><strong>Quality-over-Quantity Panic:</strong> when growth stalls, operators cut qualification to boost volume — kills profit per lead. Fix: Common Factors Analysis on top 20% of customers, narrow the avatar.</li>
+    </ul>
+
+    <p class="text-stone-500 mt-3 text-xs">Full deep findings: <span class="mono">/Users/jerel/.claude/jobs/ad9ddcd2/hormozi_deep_findings.md</span> · companion: <span class="mono">hormozi_funnel_findings.md</span> · conversation <span class="mono">5de02d9f-...</span> threaded across both.</p>
+  </div>
+
+  <h3 class="font-bold text-lg mt-6">Combined operating principles (Iman + Hormozi, applied to Michelle)</h3>
+  <div class="bg-stone-900 text-stone-100 rounded-lg p-5 mt-2">
+    <p class="font-bold text-amber-300">The seven rules that prevent the 6+ month stall:</p>
+    <ol class="text-sm mt-2 list-decimal list-inside space-y-2 text-stone-200">
+      <li><strong>Trust accumulation, not sales channel.</strong> (Iman) Every post is a brick in a wall. Stop measuring posts by conversion; measure them by belief shift.</li>
+      <li><strong>Long Runway is non-negotiable for $1,997+.</strong> (Hormozi) 78% need 7+ hrs of long-form before buying. Workshop / podcast / YouTube long is the load-bearing layer. Short-form is the bridge to it.</li>
+      <li><strong>Triple split discipline.</strong> Funnel 60/30/10 · Pillar 40/30/20/10 · Content-type 70/20/10 (repackaged/adjacent/fresh) · system-vs-raw 70/30. All four splits run simultaneously and check each other.</li>
+      <li><strong>1-to-N organic cascade.</strong> Hit short → 24h follow-up short → 48-72h long-form expansion → day-7 mine 3-5 more shorts. Plus cluster 20-30 same-theme winners into a YouTube long quarterly.</li>
+      <li><strong>Wrapper refresh order when content dies.</strong> Creative → body → headline → (last) offer. Don't change the offer first. Don't blame the algorithm.</li>
+      <li><strong>Founder-dependence kills at month 12.</strong> Build Member-Generated Content pipeline (Michelle's clients producing testimonials). Capture systems beat solo capacity.</li>
+      <li><strong>Specificity dies, conversion dies.</strong> (Iman) Audit posts monthly for avatar drift. Tighten the named avatar every quarter.</li>
+    </ol>
+  </div>
+</section>
+<section id="client-wizard" class="max-w-5xl mx-auto px-6 py-6">
+  <h2 class="text-2xl font-bold border-l-4 border-amber-500 pl-3">Client-Facing Dashboard — Settings + Wizard</h2>
+  <p class="mt-3 text-stone-800">Michelle's view of the dashboard. Must be friendly enough for a non-technical operator to navigate without instructions. Three tabs only — never more. Anything technical is hidden behind "advanced settings" expanders.</p>
+
+  <h3 class="font-bold text-lg mt-6">Tab 1 — My Goal (the wizard)</h3>
+<pre class="tree bg-stone-900 text-stone-100 rounded-lg p-4 mt-2 text-xs overflow-x-auto">
+┌─ My Goal ─────────────────────────────────────────────────────────────┐
+│                                                                       │
+│  Current state: TOFU-led · 60/30/10 split · bottleneck: engagement→DM    │
+│  Last updated: 2026-05-12 · [ Retake the wizard ]                     │
+│                                                                       │
+│  ───────────────────────────────────────────────────────────          │
+│                                                                       │
+│  TOFU       ◀─────────●────────────────────▶  30%                     │
+│  MOFU       ◀──────────────●───────────────▶  50%                     │
+│  BOFU       ◀──────●───────────────────────▶  20%                     │
+│                                                                       │
+│  Preview: "Next week's 3 posts will be 1 TOFU · 2 MOFU · 0 BOFU"      │
+│                                                                       │
+│  [ Apply for next week ]    [ Reset to wizard recommendation ]        │
+│                                                                       │
+│  ▶ Advanced: edit winner metric weights                               │
+│  ▶ Advanced: edit funnel-goal.json directly                           │
+│                                                                       │
+└───────────────────────────────────────────────────────────────────────┘
+</pre>
+
+  <h3 class="font-bold text-lg mt-6">Tab 2 — My Offer + Voice</h3>
+<pre class="tree bg-stone-900 text-stone-100 rounded-lg p-4 mt-2 text-xs overflow-x-auto">
+┌─ My Offer + Voice ────────────────────────────────────────────────────┐
+│                                                                       │
+│  OFFER                                                                │
+│  ─────                                                                │
+│  Name:           [ "Coach to 6 figures" .......................... ]  │
+│  Price:          [ $7,500 ]    Format: [ 12-week coaching program ]   │
+│  Sales mech:     [ DM → 30-min call → close ]                         │
+│  CTA keyword:    [ GROW ]                                             │
+│                                                                       │
+│  VOICE                                                                │
+│  ─────                                                                │
+│  Tone:           [ Direct · warm · expert ]                           │
+│  Catchphrases:   [ "let's be real" · "the truth is" · "honestly" ]    │
+│  Forbidden:      [ em-dash · "in today's world" · "game-changer" ]    │
+│                                                                       │
+│  ▶ Re-scrape my socials to refresh voice                              │
+│  ▶ Schedule a 30-min voice interview                                  │
+│                                                                       │
+│  [ Save changes ]                                                     │
+│                                                                       │
+└───────────────────────────────────────────────────────────────────────┘
+</pre>
+
+  <h3 class="font-bold text-lg mt-6">Tab 3 — This Week (the slate)</h3>
+<pre class="tree bg-stone-900 text-stone-100 rounded-lg p-4 mt-2 text-xs overflow-x-auto">
+┌─ This Week ───────────────────────────────────────────────────────────┐
+│                                                                       │
+│  Mon 15 May    Wed 17 May    Fri 19 May                               │
+│                                                                       │
+│  POST 1 (MOFU)        POST 2 (TOFU)        POST 3 (MOFU)              │
+│  "Why your offer        "The 3 calls you      "What I'd do with       │
+│   sounds the same"      should never take"    30 days as Michelle"    │
+│                                                                       │
+│  [ View pack ]          [ View pack ]         [ Generating... ]       │
+│  [ ✓ Approved ]         [ Awaiting approve ]                          │
+│                                                                       │
+│  LAST WEEK (Friday's decomposition)                                   │
+│  ──────────────────────────────────────                               │
+│  ★ Tue · MOFU · hook 41% · hold 62% · 4 DMs · WINNER                  │
+│    Hooks like this work → bias next week's MOFU slot to same shape    │
+│  · Thu · TOFU · hook 22% · hold 41% · 0 DMs · meh                     │
+│  · Sat · BOFU · hook 33% · hold 55% · 1 call · ok                     │
+│                                                                       │
+└───────────────────────────────────────────────────────────────────────┘
+</pre>
+
+  <p class="text-stone-800 mt-3 text-sm"><strong>UX rules:</strong> default action is on the right. Sliders show live preview before commit. "Apply for next week" never disrupts in-flight content. <strong>MVP notifications: web in-app only.</strong> Michelle sees a notifications bell + an emailed daily summary when there's something for her to do. Telegram automation is Phase 6+.</p>
+</section>
+
+<section class="max-w-5xl mx-auto px-6 py-6">
+  <h2 class="text-2xl font-bold border-l-4 border-amber-500 pl-3">What the research told us</h2>
+  <div class="grid-cards mt-4">
+    <div class="bg-white rounded-lg shadow-sm p-5 border border-stone-200">
+      <p class="pill bg-stone-900 text-white">REF 1</p>
+      <h3 class="font-bold text-lg mt-2">Jake's toolkit ≠ content stash</h3>
+      <p class="text-sm text-stone-700 mt-2">It's an OS pattern. <span class="mono text-xs">NN_stage/ + _ref/ + output/</span> shape. ICM layer model: L0 = CLAUDE.md, L1 = workspace CONTEXT.md, L2 = per-stage CONTEXT.md (Purpose / Inputs / Process / Output / Done-looks-like).</p>
+      <p class="text-sm text-stone-700 mt-2"><strong>Stealable:</strong> voice split into 3 files. Skill-starters that interview the user, not static templates. No dates, no status flags — the stage IS the status.</p>
+    </div>
+    <div class="bg-white rounded-lg shadow-sm p-5 border border-stone-200">
+      <p class="pill bg-stone-900 text-white">REF 2 · decoded from 23 frames</p>
+      <h3 class="font-bold text-lg mt-2">pfPi04pIfaw — Chase AI Agentic OS</h3>
+      <p class="text-sm text-stone-700 mt-2">Names three gaps: <strong>memory</strong> · <strong>consistency</strong> · <strong>access</strong>. The whole framework is <em>one Excalidraw org chart</em>: 5 fixed domain columns (MEMORY · PRODUCTIVITY · RESEARCH · CONTENT · CUSTOM) under a "Claude Code · the conductor" node.</p>
+      <p class="text-sm text-stone-700 mt-2">Obsidian = literally 3 + 2: <span class="mono text-xs">/raw → /wiki → /projects</span> + <span class="mono text-xs">CLAUDE.md</span> + <span class="mono text-xs">.claude/memory</span>. <strong>No RAG.</strong> Dashboard at <span class="mono text-xs">localhost:8501</span> is a button-grid that mirrors the chart 1:1.</p>
+      <p class="text-sm text-stone-700 mt-2"><strong>Stealable:</strong> the org-chart-first ritual · the 3+2 Obsidian shape · the local-vs-remote triage · the dashboard-as-button-mirror · the agentic voice (kebab-case + arrows + bucket-and-count outputs).</p>
+    </div>
+    <div class="bg-white rounded-lg shadow-sm p-5 border border-stone-200">
+      <p class="pill bg-stone-900 text-white">REF 3</p>
+      <h3 class="font-bold text-lg mt-2">Brendan Ang — the hook formula</h3>
+      <p class="text-sm text-stone-700 mt-2">316 subs, 8 videos, but the playbook is real. Six of eight follow one template. Hook = <span class="mono text-xs">[big number] + [no ads / no cold calls] + [pull back curtain] + [grab a pen]</span>. Funnel: DFY agency call + lead-magnet training.</p>
+      <p class="text-sm text-stone-700 mt-2"><strong>Stealable:</strong> the hook spine, the maturity ladder (amateur → pro), borrowed-authority interview format. <strong>Don't copy:</strong> his 1-per-3-months cadence.</p>
+    </div>
+    <div class="bg-white rounded-lg shadow-sm p-5 border border-stone-200">
+      <p class="pill bg-amber-500 text-stone-900">YOUR REPO</p>
+      <h3 class="font-bold text-lg mt-2">Current inventory — gap analysis</h3>
+      <p class="text-sm text-stone-700 mt-2">Heavily paid-ads-skewed. Zero clients have a <span class="mono text-xs">content/</span> folder. The 6-stage <span class="mono text-xs">creative-pipeline.md</span> is paid-DCT-only. 30+ overlapping content skills, no orchestrator. No organic feedback loop.</p>
+      <p class="text-sm text-stone-700 mt-2"><strong>Closest existing scaffold:</strong> <span class="mono text-xs">michelle-koh/01_research/02_script/03_production/output/_swipe</span> — but it isn't in <span class="mono text-xs">_template/</span>. We promote and extend that.</p>
+    </div>
+  </div>
+</section>
+
+<section class="max-w-5xl mx-auto px-6 py-6">
+  <h2 class="text-2xl font-bold border-l-4 border-amber-500 pl-3">Conditions — Good · Bad · Want</h2>
+  <div class="grid md:grid-cols-3 gap-4 mt-4">
+    <div class="bg-emerald-50 border border-emerald-200 rounded-lg p-5">
+      <h3 class="font-bold">Good looks like</h3>
+      <ul class="text-sm mt-2 space-y-1.5 text-stone-800">
+        <li class="check-good">Sounds like the client could have said it out loud.</li>
+        <li class="check-good">Has a clear job-to-be-done. One viewer, one step closer to a call.</li>
+        <li class="check-good">Hook tested against the niche swipe bank.</li>
+        <li class="check-good">Approved at the gate — never auto-shipped without sign-off.</li>
+        <li class="check-good">Tracked end-to-end: idea source → script → publish → analytics → decomposition.</li>
+        <li class="check-good">Built in &lt; 2 hrs of operator time per finished post.</li>
+      </ul>
+    </div>
+    <div class="bg-rose-50 border border-rose-200 rounded-lg p-5">
+      <h3 class="font-bold">Bad looks like</h3>
+      <ul class="text-sm mt-2 space-y-1.5 text-stone-800">
+        <li class="check-bad">Generic AI cadence — listicles, em-dashes, hedging, "in today's fast-paced world".</li>
+        <li class="check-bad">Off-voice. Words the client would never say.</li>
+        <li class="check-bad">No clear JTBD. Made because we needed to ship.</li>
+        <li class="check-bad">Untracked. We can't tell what worked, can't compound.</li>
+        <li class="check-bad">Heroic ops — anything that takes &gt; 2 hrs of Jerel time per finished post.</li>
+        <li class="check-bad">Clickbait that doesn't pay off in the body.</li>
+      </ul>
+    </div>
+    <div class="bg-amber-50 border border-amber-200 rounded-lg p-5">
+      <h3 class="font-bold">What Jerel wants</h3>
+      <ul class="text-sm mt-2 space-y-1.5 text-stone-800">
+        <li class="check-want">Inbound leads / booked calls as the success metric.</li>
+        <li class="check-want">3 posts/week per client, gate each one.</li>
+        <li class="check-want">Ideas merge from <em>three</em> sources weekly.</li>
+        <li class="check-want">Voice locked via scrape + 30-min interview.</li>
+        <li class="check-want">Swipe bank pools at niche level, overrides per client.</li>
+        <li class="check-want">Output lands in Drive / here.now folder — client publishes manually.</li>
+        <li class="check-want">Web dashboard wired to Google Sheets + filesystem.</li>
+        <li class="check-want">Friday performance decomposition — Brendan-style.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="max-w-5xl mx-auto px-6 py-6">
+  <h2 class="text-2xl font-bold border-l-4 border-amber-500 pl-3">System Architecture</h2>
+  <p class="mt-3 text-stone-800">The pipeline lives per-client. Niche-level assets compound across clients in the same niche. Global infrastructure (skills, agents, dashboards) lives once.</p>
+
+  <h3 class="font-bold text-lg mt-6">Per-client folder (modeled on Jake's toolkit)</h3>
+<pre class="tree bg-stone-900 text-stone-100 rounded-lg p-4 mt-2 text-xs overflow-x-auto">
+clients/&lt;slug&gt;/content/
+├── CLAUDE.md                        # L0 — always-loaded routing for this client
+├── CONTEXT.md                       # L1 — workspace routing for the content pipeline
+│
+├── _config/                         # L3 — reference material the stages read
+│   ├── voice-and-tone.md            # how this person sounds
+│   ├── format-patterns.md           # sentence shapes, intros, transitions
+│   ├── constraints.md               # forbidden words/topics/anti-patterns
+│   ├── offer.md                     # the thing we're driving them to
+│   ├── buyer-profile.md             # who we're talking to (already in repo)
+│   ├── swipe-handles.json           # per-client overrides (10–20 IG/LinkedIn handles)
+│   └── publish-config.json          # cadence, slots, platforms, drive URLs
+│
+├── _swipe/                          # client-side cache of merged swipe pool
+│   ├── outlier-pool.jsonl           # niche-pool + per-client merged
+│   └── hook-bank.md                 # decomposed winners (from 06_learn)
+│
+├── 01_ideate/                       # Stage 1 — merge 3 idea sources
+│   ├── CONTEXT.md                   # L2 — Purpose / Inputs / Process / Output / Done
+│   ├── raw_material/                # client voice memos, transcripts, notes
+│   └── output/
+│       └── 2026-W19_ideas.md        # weekly idea board, 10–15 angles
+│
+├── 02_script/                       # Stage 2 — voice-locked script per idea
+│   ├── CONTEXT.md
+│   └── output/&lt;post-id&gt;_script.md
+│
+├── 03_produce/                      # Stage 3 — assemble final asset pack
+│   ├── CONTEXT.md
+│   └── output/&lt;post-id&gt;/
+│       ├── caption.md
+│       ├── cover.jpg | thumbnail.jpg
+│       ├── video.mp4 (if applicable)
+│       ├── metadata.json
+│       └── publish-instructions.md
+│
+├── 04_approve/                      # Stage 4 — gated approval log (immutable)
+│   └── log.jsonl
+│
+├── 05_publish/                      # Stage 5 — handoff to Drive / here.now
+│   ├── manifest.md                  # what shipped + when + where
+│   └── drive_links.json
+│
+└── 06_learn/                        # Stage 6 — performance + decomposition
+    ├── analytics/&lt;post-id&gt;.json     # weekly API pull (views/saves/shares/profile-visits)
+    └── decomposition/&lt;post-id&gt;.md   # "why it worked" → feeds hook bank + voice updates
+</pre>
+
+  <h3 class="font-bold text-lg mt-6">Niche-level shared assets</h3>
+<pre class="tree bg-stone-900 text-stone-100 rounded-lg p-4 mt-2 text-xs overflow-x-auto">
+voice/swipe-pools/                   # compound across clients
+├── coaches-consultants/             # ← Jerel's first niche
+│   ├── outlier-pool.jsonl           # weekly cron refresh (Phase 6+)
+│   ├── hook-bank.md                 # decomposed winners across all coach clients
+│   └── watchlist.json               # niche-level handles
+└── property-agents-sg/              # (Fuggy's-side, later)
+    └── ...
+</pre>
+
+  <h3 class="font-bold text-lg mt-6">Global infrastructure (lives once)</h3>
+<pre class="tree bg-stone-900 text-stone-100 rounded-lg p-4 mt-2 text-xs overflow-x-auto">
+skills/content-pipeline/             # one orchestrator skill, replaces 30+ overlapping
+plugins/content-factory/             # currently orphaned — promote or absorb
+agents/                              # voice-extractor, script-writer, decomposer
+dashboard/                           # web UI (Phase 4)
+   ├── sheets-bridge/                # read/write per-client Google Sheet
+   └── filesystem-bridge/            # surface content/ folder live
+</pre>
+</section>
+
+<section class="max-w-5xl mx-auto px-6 py-6">
+  <h2 class="text-2xl font-bold border-l-4 border-amber-500 pl-3">The Six Stages</h2>
+  <p class="mt-3 text-stone-800">Each stage has a per-stage CONTEXT.md with the same five-field schema. Stages read only from the previous stage's <span class="mono text-sm">output/</span> plus <span class="mono text-sm">_config/</span>. They never reach back to raw sources. The folder shape enforces the contract.</p>
+
+  <div class="space-y-3 mt-4">
+
+    <details class="bg-white border border-stone-200 rounded-lg p-4" open>
+      <summary class="font-bold">Stage 01 — Ideate (merge 3 sources)</summary>
+      <div class="mt-3 text-sm text-stone-800 space-y-2">
+        <p><strong>Inputs:</strong> niche outlier pool + per-client overrides + client's weekly raw material (voice memos, notes) + <span class="mono">_config/offer.md</span> + <span class="mono">_config/buyer-profile.md</span>.</p>
+        <p><strong>Process:</strong> AI generates 10–15 ideas. Each idea logs which of the 3 sources it came from (so we can tune source weighting later). Each idea tagged with its job-to-be-done (awareness, consideration, decision) and the implied hook spine.</p>
+        <p><strong>Output:</strong> <span class="mono">01_ideate/output/&lt;year-week&gt;_ideas.md</span> — a markdown table you can scan in 90 seconds.</p>
+        <p><strong>Done-looks-like:</strong> Jerel ticks 3 ideas to move into scripting for this week. Untouched ideas roll forward.</p>
+      </div>
+    </details>
+
+    <details class="bg-white border border-stone-200 rounded-lg p-4">
+      <summary class="font-bold">Stage 02 — Script (voice-locked)</summary>
+      <div class="mt-3 text-sm text-stone-800 space-y-2">
+        <p><strong>Inputs:</strong> the approved idea + all of <span class="mono">_config/</span> + the hook bank.</p>
+        <p><strong>Process:</strong> draft → voice-and-tone pass → format-patterns pass → constraints pass (kill the forbidden words). Output passes a forced "would this person actually say this?" check.</p>
+        <p><strong>Output:</strong> <span class="mono">02_script/output/&lt;post-id&gt;_script.md</span> with hook · body · CTA · b-roll cues if video.</p>
+        <p><strong>Done-looks-like:</strong> Jerel reads the script in &lt; 60 seconds, says yes or rewrites the hook. Approval bumps it to stage 3.</p>
+      </div>
+    </details>
+
+    <details class="bg-white border border-stone-200 rounded-lg p-4">
+      <summary class="font-bold">Stage 03 — Produce (assemble the pack)</summary>
+      <div class="mt-3 text-sm text-stone-800 space-y-2">
+        <p><strong>Inputs:</strong> the approved script.</p>
+        <p><strong>Process:</strong> generate caption (IG-spec), cover/thumbnail brief, post metadata (platforms, scheduled slot, hashtags), publish instructions for the client. If a video, queue the production prompts (Seedance / UGC pipeline).</p>
+        <p><strong>Output:</strong> <span class="mono">03_produce/output/&lt;post-id&gt;/</span> folder with everything needed to publish.</p>
+        <p><strong>Done-looks-like:</strong> the folder mirrors to Drive / here.now. Client receives a link.</p>
+      </div>
+    </details>
+
+    <details class="bg-white border border-stone-200 rounded-lg p-4">
+      <summary class="font-bold">Stage 04 — Approve (the gate)</summary>
+      <div class="mt-3 text-sm text-stone-800 space-y-2">
+        <p><strong>Process:</strong> approval gate fires 3x per client per week. Web dashboard button (Phase 4+) or shared Google Doc check-off (Phases 1-3). Approval writes an immutable log entry. Rejection writes the reason — feeds the corrections loop.</p>
+        <p><strong>Output:</strong> <span class="mono">04_approve/log.jsonl</span> append-only.</p>
+        <p><strong>Done-looks-like:</strong> nothing reaches publish without a logged approval.</p>
+      </div>
+    </details>
+
+    <details class="bg-white border border-stone-200 rounded-lg p-4">
+      <summary class="font-bold">Stage 05 — Publish (Drive / here.now handoff)</summary>
+      <div class="mt-3 text-sm text-stone-800 space-y-2">
+        <p><strong>Process:</strong> the produce-folder is mirrored to a per-client Drive folder (or here.now Drive). Client gets a link with caption + asset + scheduled slot. They publish.</p>
+        <p><strong>Output:</strong> <span class="mono">05_publish/manifest.md</span> updated; <span class="mono">drive_links.json</span> updated.</p>
+        <p><strong>Done-looks-like:</strong> the post is live; the Google Sheet row for that post flips to <span class="mono">PUBLISHED</span>.</p>
+      </div>
+    </details>
+
+    <details class="bg-white border border-stone-200 rounded-lg p-4">
+      <summary class="font-bold">Stage 06 — Learn (Brendan-style decomposition)</summary>
+      <div class="mt-3 text-sm text-stone-800 space-y-2">
+        <p><strong>MVP analytics surface = manual screenshot entry into a Google Sheet</strong> (per Decision Register). Channel mix is IG + LinkedIn, not TikTok. No automated cron pulls until IG Insights API access is granted (Phase 6 dependency); LinkedIn has no public organic-personal Marketing API, so it stays manual indefinitely.</p>
+        <p><strong>Process (Phases 1-2, manual):</strong> Michelle screenshots IG Insights + LinkedIn analytics per post within 7 days of publish, enters numbers into the per-client analytics Google Sheet. Friday weekly review (30-min call with Jerel) walks the sheet: top 20% flagged as winners. Each winner gets decomposed: hook structure / sentence shape / CTA / opening 3 seconds / pattern interrupt. Decomposition writes back to the niche hook bank AND tunes <span class="mono">_config/format-patterns.md</span>.</p>
+        <p><strong>Process (Phase 6+, when IG Insights API granted):</strong> automated weekly pull for IG only. LinkedIn entry stays manual. Sheet still the source of truth; cron just pre-fills the IG rows.</p>
+        <p><strong>Per-platform manual entry schema</strong> (one row per post):</p>
+        <table class="w-full text-xs mt-2 border-collapse">
+          <thead><tr class="bg-stone-100"><th class="text-left p-2 border-b border-stone-200">Field</th><th class="text-left p-2 border-b border-stone-200">IG</th><th class="text-left p-2 border-b border-stone-200">LinkedIn</th></tr></thead>
+          <tbody class="align-top">
+            <tr><td class="p-2">post_id, platform, format (reel/carousel/static/text-only), publish_url, publish_ts, funnel_stage, pillar, source_tag</td><td class="p-2">All required</td><td class="p-2">All required</td></tr>
+            <tr class="bg-stone-50"><td class="p-2">impressions / views</td><td class="p-2">"Plays" + "Accounts reached"</td><td class="p-2">"Impressions"</td></tr>
+            <tr><td class="p-2">reach</td><td class="p-2">"Accounts reached"</td><td class="p-2">"Unique impressions" if shown, else blank</td></tr>
+            <tr class="bg-stone-50"><td class="p-2">watch_time / dwell</td><td class="p-2">"Avg watch time" (reels)</td><td class="p-2">Blank for text/carousel; "Avg time watched" if video</td></tr>
+            <tr><td class="p-2">saves</td><td class="p-2">"Saves"</td><td class="p-2">Blank (no LI saves metric)</td></tr>
+            <tr class="bg-stone-50"><td class="p-2">shares / reposts</td><td class="p-2">"Shares"</td><td class="p-2">"Reposts"</td></tr>
+            <tr><td class="p-2">comments</td><td class="p-2">"Comments"</td><td class="p-2">"Comments"</td></tr>
+            <tr class="bg-stone-50"><td class="p-2">profile_visits</td><td class="p-2">"Profile visits"</td><td class="p-2">Blank (not exposed)</td></tr>
+            <tr><td class="p-2">follows / new_followers</td><td class="p-2">"Follows"</td><td class="p-2">"New followers from post" (if shown)</td></tr>
+            <tr class="bg-stone-50"><td class="p-2">DMs received (attributable)</td><td class="p-2">Manual count, ±1 day window</td><td class="p-2">Manual count, ±1 day window</td></tr>
+            <tr><td class="p-2">calls_booked (attributable)</td><td class="p-2">Manual</td><td class="p-2">Manual</td></tr>
+            <tr class="bg-stone-50"><td class="p-2">screenshot_link, notes (winner reason / loser diagnosis), winner_flag</td><td class="p-2">All optional but expected for winners</td><td class="p-2">Same</td></tr>
+          </tbody>
+        </table>
+        <p class="mt-2"><strong>Static / carousel / text-only fallback:</strong> watch-time and hook-rate fields stay blank. Winner metric for non-video falls back to <em>(saves + shares × 2 + DMs × 3) / impressions</em>, weighted by funnel-stage per <span class="mono">funnel-goal.json</span>.</p>
+        <p><strong>Output:</strong> <span class="mono">06_learn/analytics/&lt;post-id&gt;.json</span> (synced from Sheet) + <span class="mono">06_learn/decomposition/&lt;post-id&gt;.md</span>.</p>
+        <p><strong>Done-looks-like:</strong> Friday review surfaces 1-3 decomposed winners. Next week's <em>01_ideate</em> prefers what worked.</p>
+      </div>
+    </details>
+
+  </div>
+</section>
+
+<section class="max-w-5xl mx-auto px-6 py-6">
+  <h2 class="text-2xl font-bold border-l-4 border-amber-500 pl-3">Voice Profile — the load-bearing piece</h2>
+  <p class="mt-3 text-stone-800">The whole system collapses if voice is wrong. We split it into three files (Jake's pattern) instead of a single mega brand-voice doc — each file answers one question:</p>
+  <div class="grid md:grid-cols-3 gap-4 mt-4">
+    <div class="bg-white border border-stone-200 rounded-lg p-5">
+      <p class="mono text-xs text-stone-500">_config/voice-and-tone.md</p>
+      <h4 class="font-bold mt-1">How do they sound?</h4>
+      <p class="text-sm text-stone-700 mt-2">Energy level, formality, default emotion, pace, register. Reference handles and exemplar posts. The qualitative layer.</p>
+    </div>
+    <div class="bg-white border border-stone-200 rounded-lg p-5">
+      <p class="mono text-xs text-stone-500">_config/format-patterns.md</p>
+      <h4 class="font-bold mt-1">What shapes do they use?</h4>
+      <p class="text-sm text-stone-700 mt-2">Average sentence length. Typical hooks. Common transitions. Catchphrases. CTA structures. The mechanical layer.</p>
+    </div>
+    <div class="bg-white border border-stone-200 rounded-lg p-5">
+      <p class="mono text-xs text-stone-500">_config/constraints.md</p>
+      <h4 class="font-bold mt-1">What must they never do?</h4>
+      <p class="text-sm text-stone-700 mt-2">Forbidden words. Avoided topics. Anti-patterns. The fence layer — a slop check before output ever leaves the script stage.</p>
+    </div>
+  </div>
+  <p class="text-stone-800 mt-4"><strong>Capture method:</strong> scrape their existing socials (IG/LinkedIn — Michelle's channel mix; podcast if it exists) to draft v1 of all three files automatically. Then a targeted 30-min interview fills the gaps the scrape couldn't reach. Total setup: ~90 min/client. Reusable forever.</p>
+</section>
+
+<section class="max-w-5xl mx-auto px-6 py-6">
+  <h2 class="text-2xl font-bold border-l-4 border-amber-500 pl-3">Swipe + Hook Bank</h2>
+  <p class="mt-3 text-stone-800">Two layers. Niche pool compounds across same-niche clients. Per-client overrides preserve specificity.</p>
+  <div class="grid md:grid-cols-2 gap-4 mt-4">
+    <div class="bg-white border border-stone-200 rounded-lg p-5">
+      <h4 class="font-bold">Niche pool — <span class="mono text-sm">voice/swipe-pools/coaches-consultants/</span></h4>
+      <p class="text-sm text-stone-700 mt-2">Weekly cron via <span class="mono">pp-scrape-creators</span> against a curated watchlist of coach / consultant / agency operators. <strong>Phase 6+ deliverable</strong> — runs on Mac mini, not Vercel (sub-daily precision). Top-performing posts get tagged, transcribed, indexed. New clients in this niche inherit the bank on day one. In Phases 1-2, swipe is manually pulled by Jerel ad-hoc.</p>
+    </div>
+    <div class="bg-white border border-stone-200 rounded-lg p-5">
+      <h4 class="font-bold">Per-client overrides — <span class="mono text-sm">_config/swipe-handles.json</span></h4>
+      <p class="text-sm text-stone-700 mt-2">Client adds 10–20 handles they specifically admire / compete with. Scraper pulls these too. Merged with niche pool. Brendan's hook formula goes here as a starter template.</p>
+    </div>
+  </div>
+  <p class="text-stone-800 mt-4"><strong>Hook bank</strong> grows from decomposition (stage 06). Every winning post gets reverse-engineered into a hook formula and appended. The bank becomes the bias of next week's script stage.</p>
+</section>
+
+<section id="agentic-voice-rules" class="max-w-5xl mx-auto px-6 py-6">
+  <h2 class="text-2xl font-bold border-l-4 border-amber-500 pl-3">Agentic Voice Rules — stolen from Chase AI</h2>
+  <p class="mt-3 text-stone-800">Extracted verbatim from on-screen prompts and skill outputs in the pfPi04pIfaw frames. This is the voice <em>our skills</em> write in — not the voice the client posts in. Two different layers. (Client voice lives in <span class="mono text-sm">_config/voice-and-tone.md</span>; agentic voice lives in our skill output templates.)</p>
+
+  <ol class="mt-4 space-y-3 list-decimal list-inside text-stone-800">
+    <li><strong>Arrow syntax over prose.</strong> Folders, skills, and CLIs are described with <span class="mono">→</span>, not "is". <span class="mono text-sm">/raw → staging area</span> · <span class="mono text-sm">Shopify CLI → e-comm</span> · <span class="mono text-sm">CLAUDE.md → instructions</span>. The arrow is the load-bearing element.</li>
+    <li><strong>Kebab-case-lowercase skill names. Always verb-noun or noun-noun.</strong> <span class="mono text-sm">yt-pipeline</span> · <span class="mono text-sm">deep-research</span> · <span class="mono text-sm">content-cascade</span> · <span class="mono text-sm">vault-cleanup</span>. Never <span class="mono text-sm">VaultCleanup</span> or <span class="mono text-sm">VaultCleanupSkill</span>.</li>
+    <li><strong>Bucket-and-count output format.</strong> Skill outputs lead with bold dated headers, then categorized bullets with counts up front. Numbers first, prose never. No "I've completed..." preambles.</li>
+    <li><strong>Confident operator hedges.</strong> Mid-execution notes read like a contractor's Post-it: <em>"should verify… already moved. Safe: wiki-links resolve by filename, nothing breaks."</em> One-line self-justification, not an apology.</li>
+    <li><strong>Domain-as-noun, skill-as-verb.</strong> System framing uses 5 nouns: MEMORY · PRODUCTIVITY · RESEARCH · CONTENT · CUSTOM. Inside each domain, skills are imperative actions (<span class="mono text-sm">triage, send, draft</span>). The two registers never mix.</li>
+  </ol>
+
+  <h3 class="font-bold text-lg mt-6">Reference output template (use as the spine for our content-pipeline skill outputs)</h3>
+<pre class="tree bg-stone-900 text-stone-100 rounded-lg p-4 mt-2 text-xs overflow-x-auto">
+CLEANUP COMPLETE — 2026-04-22
+
+Archived: 27 files
+- /projects → 8 files (8-13 days old)
+- /raw → 9 .md + 6 paired .excalidraw + .png (8-13 days old)
+- /raw/github-trending → 4 files (15-21 days old)
+
+Deleted: 6 temp files
+- 4 cascade payload JSONs + 1 masterclass payload + 1 addendum .md
+
+Untouched
+- /content/blog, /raw/demo-assets, /archive — empty/clean
+
+Heads up: moved 3 excalidraw/png pairs from /raw root
+(content-skill-pack, deep-research-workflow, morning-report-workflow).
+If those were meant as reusable diagrams, move to /raw/...
+</pre>
+  <p class="text-stone-800 mt-3 text-sm">Three verbatim quotes that capture the tone: <em>"any branch fires on-demand · on schedule (cloud cron) · from desktop triggers · as routines"</em> · <em>"click a skill · press run · or type any prompt"</em> · <em>"Safe: wiki-links resolve by filename, nothing breaks."</em></p>
+
+  <h3 class="font-bold text-lg mt-6">Local vs remote skill triage (also stolen)</h3>
+<pre class="tree bg-stone-900 text-stone-100 rounded-lg p-4 mt-2 text-xs overflow-x-auto">
+Skill touches filesystem / CLIs / your machine     → LOCAL  (Mac mini / your laptop, always-on)
+Skill uses only Claude-native tools + remote APIs  → REMOTE (Claude Code Routines, 15/day cap)
+</pre>
+  <p class="text-stone-800 mt-3 text-sm">Applies cleanly to our pipeline: <span class="mono">01_ideate / 02_script</span> can run REMOTE (idea + draft). <span class="mono">03_produce / 05_publish</span> must run LOCAL (filesystem writes, Drive sync). <span class="mono">06_learn</span> is hybrid.</p>
+</section>
+
+<section class="max-w-5xl mx-auto px-6 py-6">
+  <h2 class="text-2xl font-bold border-l-4 border-amber-500 pl-3">Operator Interface</h2>
+  <p class="mt-3 text-stone-800">Web dashboard bridging Google Sheets and the filesystem. Layout follows Chase's decoded pattern (frames 00:00:52 / 00:04:11 / 00:15:00): usage meters up top, button grid by domain in the middle, recent runs + forecast on the right rail.</p>
+<pre class="tree bg-stone-900 text-stone-100 rounded-lg p-4 mt-3 text-xs overflow-x-auto">
+┌─ CONTENT OS · Client: Coach Acme ───────────────────────────────────────────┐
+│                                                                              │
+│  5H WINDOW  ▓▓▓░░ 60%   WEEKLY ▓▓▓▓░ 75%   ROUTINES 9/15                    │
+│  ──────────────────────────────────────────────────────────────             │
+│  [ cumulative activity · 30d · orange-on-black sparkline                ]   │
+│                                                                              │
+│  RUN A SKILL TO BEGIN — click a skill · press run · or type any prompt      │
+│  ┌─────────────────────────────────────────────────────────────────────┐   │
+│  │ type any prompt, or pick a skill below to load a template...        │   │
+│  └─────────────────────────────────────────────────────────────────────┘   │
+│  [ RUN → ]   [ CLEAR ]                                                       │
+│                                                                              │
+│  IDEATE                       SCRIPT                  PRODUCE                │
+│  ┌──────────────┐ ┌─────────┐ ┌──────────────┐ ┌──────────────┐             │
+│  │ IDEAS WEEKLY │ │ SWIPE   │ │ SCRIPT DRAFT │ │ CAPTION PACK │             │
+│  │ merge sources│ │ REFRESH │ │ voice-locked │ │ +cover brief │             │
+│  └──────────────┘ └─────────┘ └──────────────┘ └──────────────┘             │
+│                                                                              │
+│  APPROVE                      PUBLISH                  LEARN                 │
+│  ┌──────────────┐ ┌─────────┐ ┌──────────────┐ ┌──────────────┐             │
+│  │ APPROVAL Q   │ │ REJECT  │ │ PUSH TO DRIVE│ │ DECOMPOSE WIN│             │
+│  │ 2 waiting    │ │ +reason │ │ here.now sync│ │ Fri review   │             │
+│  └──────────────┘ └─────────┘ └──────────────┘ └──────────────┘             │
+│                                                                              │
+│  CUSTOM (per-client pack)                                                    │
+│  ┌──────────────┐ ┌──────────────┐ ┌──────────────┐                         │
+│  │ COACH ACME   │ │ FUGGY'S PACK │ │ 1UP PACK     │  ← domain packs         │
+│  └──────────────┘ └──────────────┘ └──────────────┘                         │
+│                                                                              │
+│  ─────────────────────────────────────────  ──────── RIGHT RAIL ────────    │
+│  Awaiting approval (2)                       RECENT RUNS                     │
+│  #005 · script ready    [ View ] [ ✓ ] [ ✗ ] 16:30 morning-brief  ✓         │
+│  #006 · produce ready   [ Pack ] [ ✓ ] [ ✗ ] 16:25 yt-titles      ✓         │
+│                                              16:24 vault-cleanup  ✓         │
+│  Last week (decomposition Fri)               14:02 ideate         ✓         │
+│  #001 Tue · 12.4k · 3 calls · WINNER ★       13:41 script         ✓         │
+│  #002 Thu · 1.8k  · 0 calls · meh                                            │
+│  #003 Sat · 4.1k  · 1 call  · ok             FORECAST · 5H                  │
+│                                              under cap · in projects        │
+│  Vault state                                 used · routines · next         │
+│  _config: ✓ fresh                                                            │
+│  swipe pool: refreshed 4h ago                DAILY POLLS                    │
+│  hook bank: 47 entries                       2026-05-12 trending            │
+│                                              2026-05-12 agentic-os          │
+│                                                                              │
+└──────────────────────────────────────────────────────────────────────────────┘
+</pre>
+  <p class="text-stone-800 mt-3">Same anatomy as Chase's dashboard, retargeted at the content pipeline. Button grid groups by our 6 stages (ideate / script / produce / approve / publish / learn) plus a CUSTOM row for per-client "domain packs". Right rail keeps Recent Runs · Forecast · Daily Polls. Integration points: Google Sheets (analytics) · here.now (everything else) · web in-app notifications. Telegram = Phase 6+.</p>
+  <p class="text-stone-800 mt-2"><strong>Click behavior matches Chase's:</strong> button click injects the skill into the prompt box, operator edits if needed, hits RUN → Claude Code runs headless → output renders inline AND writes back to the vault folder. Operator never opens a terminal.</p>
+</section>
+
+<section class="max-w-5xl mx-auto px-6 py-6">
+  <h2 class="text-2xl font-bold border-l-4 border-amber-500 pl-3">Build Phasing</h2>
+  <p class="mt-2 text-stone-800">Reviewer's principle: <strong>build the operating loop manually first, then dashboard what actually works.</strong> Single-tenant scope. Tooling lives after, not before, proof.</p>
+
+  <ol class="mt-4 space-y-3">
+
+    <li class="bg-white border border-stone-200 rounded-lg p-4">
+      <p><span class="pill bg-stone-200 text-stone-700">Phase 0 · today</span> <strong>Decision Register locked.</strong> v0.5.2 of this document is the contract.</p>
+    </li>
+
+    <li class="bg-white border border-stone-200 rounded-lg p-4">
+      <p><span class="pill bg-stone-200 text-stone-700">Phase 0.5 · 1 hour</span> <strong>Draw the org chart (Chase's ritual).</strong></p>
+      <ul class="text-sm mt-2 list-disc list-inside text-stone-700">
+        <li>Excalidraw at <span class="mono">docs/content-os-org-chart.excalidraw</span>. Domain columns: <strong>RESEARCH · CONTENT · DISTRIBUTION · LEARN · CUSTOM</strong> (Michelle's pack).</li>
+        <li>Doubles as eventual Phase 4 dashboard wireframe.</li>
+      </ul>
+    </li>
+
+    <li class="bg-white border border-rose-300 rounded-lg p-4">
+      <p><span class="pill bg-rose-600 text-white">Phase 1a · 1 week</span> <strong>Distillation + voice + analytics sheet + paper wizard.</strong></p>
+      <p class="text-sm mt-2 text-stone-700">Scope deliberately reduced after adversarial review found Phase 1 was impossible as written. T1 PDF moved to its own phase because its content doesn't exist yet — it needs co-design with Michelle.</p>
+      <ul class="text-sm mt-2 list-disc list-inside text-stone-700">
+        <li><strong>Distill Michelle's research</strong> from <span class="mono">clients/michelle-koh/_swipe/research/</span> into <span class="mono">_config/buyer-profile.md</span> · <span class="mono">_config/icp.md</span> · <span class="mono">_config/offer.md</span>.</li>
+        <li><strong>Build voice files (3-file split):</strong> scrape LinkedIn + IG via <span class="mono">pp-scrape-creators</span> → draft v1 of <span class="mono">voice-and-tone.md</span> + <span class="mono">format-patterns.md</span> + <span class="mono">constraints.md</span>. 30-min voice interview to fill gaps.</li>
+        <li><strong>Define the analytics sheet:</strong> Google Sheet with columns for hook rate, hold rate, saves, profile visits, DMs, calls booked, funnel stage, pillar, source tag, winner flag. Manual entry.</li>
+        <li><strong>Funnel-goal wizard (paper version):</strong> Jerel walks Michelle through the 6 questions verbally (Q6 pillar comfort optional). Output: <span class="mono">_config/funnel-goal.json</span> seeded 60/30/10. <strong>Awareness % comes from Michelle in the interview — no fabricated values.</strong></li>
+        <li><strong>Capture the Michelle dependency answers</strong> (see Dependency Log + new Michelle Assumptions section below): timezone availability, tech comfort, IG account type, posting credential ownership, willingness to film 3×/week.</li>
+      </ul>
+    </li>
+
+    <li class="bg-white border border-rose-300 rounded-lg p-4">
+      <p><span class="pill bg-rose-600 text-white">Phase 1b · 1-2 weeks</span> <strong>T1 lead magnet build — Trust Leak Audit PDF + email gate.</strong></p>
+      <p class="text-sm mt-2 text-stone-700">Per adversarial review: this content doesn't exist yet. <span class="mono">offer.md</span> recommends "LinkedIn Trust Leak Audit" but the 7 leaks, scoring rubric, diagnostic logic, copy, and design are unbuilt. This is co-design work with Michelle, not a 1-day deliverable.</p>
+      <ul class="text-sm mt-2 list-disc list-inside text-stone-700">
+        <li><strong>Co-design session 1 (Jerel + Michelle, 90 min):</strong> identify the 7 trust leaks she actually sees in client audits. Define the 1-10 scoring rubric per leak.</li>
+        <li><strong>Co-design session 2 (90 min):</strong> diagnostic logic — what does a score in each band <em>mean</em> + what does the reader do about it.</li>
+        <li><strong>Jerel writes the PDF copy</strong> (the bulk of the work — 2-3 days). Michelle reviews + corrects in her voice.</li>
+        <li><strong>Design pass</strong> — 1 day, Canva or similar.</li>
+        <li><strong>ConvertKit / Beehiiv landing page</strong> — Jerel sets up; Michelle picks the tool.</li>
+        <li><strong>Done = email gate captures, PDF delivers automatically.</strong> Unblocks all BOFU CTAs.</li>
+      </ul>
+    </li>
+
+    <li class="bg-white border border-rose-300 rounded-lg p-4">
+      <p><span class="pill bg-rose-600 text-white">Phase 1c · 3 days</span> <strong>First 3 post packs (manual draft by Jerel).</strong></p>
+      <ul class="text-sm mt-2 list-disc list-inside text-stone-700">
+        <li>Jerel writes first week's 3 posts (ideas + scripts + captions + cover briefs) by hand using voice files + offer + buyer profile. No agents.</li>
+        <li>BOFU post can now have a real CTA (T1 PDF + email gate exists).</li>
+        <li>Drafts land in a shared Google Doc. Michelle approves / edits / rejects.</li>
+        <li><strong>Gate to Phase 2:</strong> 3 approved post packs in hand, ready to ship in week 1 of Phase 2.</li>
+      </ul>
+    </li>
+
+    <li class="bg-white border border-rose-300 rounded-lg p-4">
+      <p><span class="pill bg-rose-600 text-white">Phase 2 · 2 weeks</span> <strong>Manual operating loop — Michelle ships 6 posts under the system.</strong></p>
+      <ul class="text-sm mt-2 list-disc list-inside text-stone-700">
+        <li>Jerel runs the loop by hand: ideate → script → produce pack → approve via shared Google Doc / email → Michelle uploads to IG/LI manually.</li>
+        <li>Michelle takes manual screenshots of IG Insights each post + enters numbers into the analytics sheet weekly.</li>
+        <li>Friday weekly review (30 min on a call): identify any winners, decompose why, fold into next week's ideas. By hand.</li>
+        <li>Every correction Michelle makes goes into <span class="mono">_config/constraints.md</span> + skill <span class="mono">corrections.md</span>.</li>
+        <li><strong>Success gate for Phase 3:</strong> 6 posts shipped · 0 hard rejections · at least 1 winner identified · Michelle confirms she can read the weekly review without confusion.</li>
+      </ul>
+    </li>
+
+    <li class="bg-white border border-stone-200 rounded-lg p-4">
+      <p><span class="pill bg-amber-500 text-stone-900">Phase 3 · 1 week</span> <strong>Build the orchestrator skill (CLI-only).</strong></p>
+      <ul class="text-sm mt-2 list-disc list-inside text-stone-700">
+        <li><strong>Only after Phase 2 succeeds.</strong> If Phase 2 surfaces structural problems, fix those before building skills.</li>
+        <li>Build <span class="mono">content-pipeline</span> orchestrator skill. Reads <span class="mono">funnel-goal.json</span> + voice files + offer.</li>
+        <li>Build <span class="mono">voice-extractor</span>, <span class="mono">script-writer</span>, <span class="mono">winner-decomposer</span> as worker skills.</li>
+        <li>CLI-only. Jerel fires from terminal. No dashboard yet.</li>
+        <li>Re-run a 1-post-week to confirm orchestrator produces deliverable shape that matches Phase 2 manual output.</li>
+      </ul>
+    </li>
+
+    <li class="bg-white border border-stone-200 rounded-lg p-4">
+      <p><span class="pill bg-amber-500 text-stone-900">Phase 4 · earliest week 5+, conditional</span> <strong>Web dashboard MVP — read/write only, no headless execution.</strong></p>
+      <p class="text-sm mt-2 text-stone-700"><strong>Not a hard week-5 promise.</strong> Phase 4 starts only after Phase 2 (manual loop) AND Phase 3 (orchestrator skill) both succeed — that means at least 6 ships have happened, at least one winner has been decomposed, rejection rate has dropped, and Jerel's CLI orchestrator is producing output that matches manual quality. If those gates slip, Phase 4 slips with them. Current repo has no Next/React stack — Phase 4 is a clean scaffold from scratch.</p>
+      <p class="text-sm mt-2 text-stone-700"><strong>What Phase 4 IS:</strong> a dashboard that reads/writes here.now via SDK. Michelle approves drafts from a UI instead of a Google Doc. Jerel sees pipeline state in one place instead of via <span class="mono">ls</span>. Manual analytics still entered manually.</p>
+      <p class="text-sm mt-2 text-stone-700"><strong>What Phase 4 is NOT:</strong> a place where dashboard buttons trigger headless Claude execution. That requires the Cloudflare Tunnel + Mac-mini Express relay, which is Phase 6+. Until then, Jerel runs skills from terminal; the dashboard reads the outputs.</p>
+      <ul class="text-sm mt-2 list-disc list-inside text-stone-700">
+        <li><strong>Stack:</strong> Next.js 15 on Vercel · here.now SDK · <strong>Clerk free tier</strong> · Tailwind + shadcn/ui.</li>
+        <li><strong>Dev:</strong> <span class="mono">localhost:3000</span> + here.now SDK against <span class="mono">michelle-koh</span> namespace. No relay, no tunnel.</li>
+        <li><strong>Auth (Phase 4):</strong> Clerk only — Operator role (Jerel) + Client role (Michelle). No Cloudflare Access yet (no relay to protect).</li>
+        <li><strong>Operator view (Jerel):</strong> full pipeline state + approvals + manual-analytics entry surface + decomposition reader.</li>
+        <li><strong>Client view (Michelle):</strong> 3 tabs — My Goal · My Offer + Voice · This Week.</li>
+        <li><strong>Deploy:</strong> Vercel production = <span class="mono">genflos.com/content-os</span> via subdirectory rewrite.</li>
+        <li>Notifications: <strong>web dashboard in-app only.</strong> No Telegram. No email pushes (manual email from Jerel if a hand-raise fires).</li>
+        <li><strong>Cron / scheduled jobs:</strong> none in Phase 4. Weekly analytics review still happens on a Friday call, not via cron pull.</li>
+      </ul>
+    </li>
+
+    <li class="bg-white border border-stone-200 rounded-lg p-4">
+      <p><span class="pill bg-amber-500 text-stone-900">Phase 5 · 1-2 weeks</span> <strong>Stage 07 Repurpose pipeline (after manual repurposing proven).</strong></p>
+      <ul class="text-sm mt-2 list-disc list-inside text-stone-700">
+        <li>Phase 2 will have repurposed by hand. Phase 5 codifies what worked.</li>
+        <li>Winner → 3-5 derivative ideas auto-spawned into next week's pool.</li>
+        <li>Long-form (workshop / podcast — when it ships in Phase 7) → 5-8 short-form clip ideas.</li>
+        <li>DM/comment signal → "address this" follow-up idea (manual trigger in MVP; auto in Phase 6+).</li>
+        <li>Parent → child lineage stored in here.now.</li>
+      </ul>
+    </li>
+
+    <li class="bg-white border border-stone-200 rounded-lg p-4">
+      <p><span class="pill bg-stone-200 text-stone-700">Phase 6 · later</span> <strong>Mac-mini relay · Cloudflare Tunnel · niche scraper · IG API · Telegram · multi-tenant.</strong></p>
+      <ul class="text-sm mt-2 list-disc list-inside text-stone-700">
+        <li><strong>Cloudflare Tunnel + Express relay on Mac mini</strong> at <span class="mono">agent.genflos.com</span>. Dashboard buttons trigger headless Claude (<span class="mono">claude -p "&lt;prompt&gt;"</span>). Two auth paths: Cloudflare Access + Google IdP/email-OTP for browsers; Access service token for the relay (M2M). Service tokens alone would lock browser users out.</li>
+        <li><strong>Mac-mini cron monitoring:</strong> mini becomes load-bearing for cron freshness (Vercel Hobby = daily-only). Healthchecks.io or Cronitor ping per cron — silent failures = stale dashboard data.</li>
+        <li><span class="mono">voice/swipe-pools/coaches-consultants/</span> with weekly cron (Mac mini, sub-daily precision).</li>
+        <li>IG Insights API integration <strong>when Michelle's account is converted to Business + Graph API permission is granted.</strong> Manual screenshot path runs alongside as fallback.</li>
+        <li>LinkedIn analytics: manual entry continues (no public Marketing Developer API for organic personal accounts).</li>
+        <li>Telegram bot for approvals + hand-raise pings + idea capture.</li>
+        <li>Multi-tenant: per-namespace here.now structure <span class="mono">content-os/&lt;client-slug&gt;/</span>. Client switcher. Each client = a Domain Pack.</li>
+      </ul>
+    </li>
+
+    <li class="bg-white border border-stone-200 rounded-lg p-4">
+      <p><span class="pill bg-stone-200 text-stone-700">Phase 7 · later</span> <strong>Workshop + email gate + long-form nurture.</strong></p>
+      <ul class="text-sm mt-2 list-disc list-inside text-stone-700">
+        <li>Out of MVP per your call. Spec separately when bandwidth allows.</li>
+        <li>Unlocks Hormozi's "long runway" requirement for $1,997+ tickets.</li>
+        <li>Workshop replay = the 1-to-N parent for 5-8 short-form children per month.</li>
+      </ul>
+    </li>
+
+  </ol>
+</section>
+
+<section class="max-w-5xl mx-auto px-6 py-6">
+  <h2 class="text-2xl font-bold border-l-4 border-amber-500 pl-3">What we absorb from your existing repo</h2>
+  <table class="w-full text-sm mt-3 border-collapse">
+    <thead>
+      <tr class="bg-stone-100">
+        <th class="text-left p-2 border-b border-stone-200">Existing</th>
+        <th class="text-left p-2 border-b border-stone-200">Action</th>
+      </tr>
+    </thead>
+    <tbody class="align-top">
+      <tr><td class="p-2 mono text-xs">clients/michelle-koh/01_research / 02_script / 03_production</td><td class="p-2">Promote to <span class="mono">_template/content/</span> scaffold. Extend to 6 stages.</td></tr>
+      <tr class="bg-stone-50"><td class="p-2 mono text-xs">plugins/content-factory/</td><td class="p-2">Currently orphaned. Either absorb its generators into <span class="mono">content-pipeline</span> or formally retire it.</td></tr>
+      <tr><td class="p-2 mono text-xs">skills/content-strategy / content-moat / social-media / linkedin-content / tiktok-slideshows / script-skill / viral-hooks-content-creator</td><td class="p-2">Keep as <em>callable helpers</em>. Single orchestrator (<span class="mono">content-pipeline</span>) routes to them — no more 30-way overlap.</td></tr>
+      <tr class="bg-stone-50"><td class="p-2 mono text-xs">agents/copywriter / researcher</td><td class="p-2">Reused as Stage 2 (script) and Stage 1 (ideate) workers.</td></tr>
+      <tr><td class="p-2 mono text-xs">skills/feedback-router</td><td class="p-2">Currently paid-ads only. Extend a sibling — <span class="mono">organic-feedback-router</span> — for Stage 06.</td></tr>
+      <tr class="bg-stone-50"><td class="p-2 mono text-xs">skills/sheets-provisioner / sheets-updater</td><td class="p-2">Direct fit. Per-client content sheet provisioned and updated by these.</td></tr>
+      <tr><td class="p-2 mono text-xs">~/AI workflows/ugc-pipeline · youtube automation · Marketing/content · Marketing/LinkedIn</td><td class="p-2">Audit individually in Phase 1. Likely targets for symlink or absorption.</td></tr>
+      <tr class="bg-stone-50"><td class="p-2 mono text-xs">Postiz on Contabo</td><td class="p-2">Held back from Phase 1. Drive / here.now is the chosen handoff. Postiz revisited only if a client wants auto-publish.</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section class="max-w-5xl mx-auto px-6 py-6">
+  <h2 class="text-2xl font-bold border-l-4 border-rose-600 pl-3">Michelle assumptions — captured per adversarial review (S2-9)</h2>
+  <p class="mt-3 text-stone-800">These were implicit before. Capturing now so Phase 1a kickoff knows what to confirm with Michelle on call #1.</p>
+  <table class="w-full text-sm mt-3 border-collapse">
+    <thead>
+      <tr class="bg-stone-100">
+        <th class="text-left p-2 border-b border-stone-200">Assumption</th>
+        <th class="text-left p-2 border-b border-stone-200">Status</th>
+        <th class="text-left p-2 border-b border-stone-200">Confirm by</th>
+      </tr>
+    </thead>
+    <tbody class="align-top">
+      <tr><td class="p-2">Timezone working-hours window with Jerel</td><td class="p-2">Both SG — overlap likely, but not booked</td><td class="p-2">Phase 1a kickoff</td></tr>
+      <tr class="bg-stone-50"><td class="p-2">Tech comfort: Google Docs / Sheets / ConvertKit</td><td class="p-2">Unconfirmed</td><td class="p-2">Phase 1a kickoff</td></tr>
+      <tr><td class="p-2">IG account type (Personal / Creator / Business)</td><td class="p-2">Unconfirmed — determines Insights API path</td><td class="p-2">Phase 1a kickoff</td></tr>
+      <tr class="bg-stone-50"><td class="p-2">Posting credential ownership (Michelle / assistant / shared)</td><td class="p-2">Unconfirmed</td><td class="p-2">Phase 1a kickoff</td></tr>
+      <tr><td class="p-2">Willingness to film talking-head 3×/week</td><td class="p-2">Unconfirmed — affects production format mix</td><td class="p-2">Phase 1a kickoff</td></tr>
+      <tr class="bg-stone-50"><td class="p-2">30-min voice interview availability in Week 1</td><td class="p-2">Unconfirmed — book slot first</td><td class="p-2">Phase 1a kickoff</td></tr>
+      <tr><td class="p-2">Existing email tool preference (ConvertKit / Beehiiv / MailerLite / none)</td><td class="p-2">Unconfirmed</td><td class="p-2">Phase 1b session 1</td></tr>
+      <tr class="bg-stone-50"><td class="p-2">75 min/week sustainable when DM volume scales</td><td class="p-2"><strong>Caveat (S1-7):</strong> 75min is a best-case floor. &lt;5min SLA × 4+ DMs/week pushes DM time up. Real steady-state likely 90-120 min/week once signals trend up.</td><td class="p-2">Re-confirm Week 3</td></tr>
+      <tr><td class="p-2">Awareness % for funnel-goal wizard</td><td class="p-2">Currently fabricated at 30%. <strong>Must come from Michelle at the wizard run, not seeded.</strong></td><td class="p-2">Phase 1a kickoff</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section class="max-w-5xl mx-auto px-6 py-6">
+  <h2 class="text-2xl font-bold border-l-4 border-rose-600 pl-3">Acknowledged residual risks (S1/S2 from review)</h2>
+  <ul class="mt-3 space-y-2 text-stone-800 list-disc list-inside text-sm">
+    <li><strong>S1-5 — Mac mini becomes single point of failure.</strong> Vercel Hobby cron = daily-only, so weekly winner decomposition / niche pool refresh / monthly clip mining all run on mini cron. Mini sleeping = silent dashboard staleness. <strong>Mitigation:</strong> Healthchecks.io or Cronitor pings per cron job, surfaced on the dashboard as a "data freshness" indicator.</li>
+    <li><strong>S1-6 — Cross-platform repurposing performance is assumed.</strong> Stage 07 promises 3-5 derivatives per shipped piece; Iman/Hormozi rules cited but neither tested on SG B2B LinkedIn coach niche. <strong>Mitigation:</strong> measure derivatives independently of parents in Stage 06 winner-decomposer. If LinkedIn derivatives consistently underperform parents, kill cross-platform default.</li>
+    <li><strong>S2-8 — Phase 3 orchestrator spec is hand-wavy.</strong> <span class="mono">content-pipeline</span>, <span class="mono">winner-decomposer</span>, <span class="mono">script-writer</span> all listed without I/O contracts. <strong>Mitigation:</strong> Phase 3 start = write the skill SKILL.md frontmatter first, including inputs, outputs, and which existing skills they replace vs route to (the 30+ overlapping skill audit happens here).</li>
+    <li><strong>S2-10 — Dashboard mock is still rendered at full fidelity</strong> despite being demoted to Phase 4. This doc keeps the mock as a north-star wireframe for the Phase 4 build, NOT as a Phase 1 deliverable. The dashboard section explicitly says so.</li>
+    <li><strong>S2-10 — <span class="mono">plugins/content-factory/</span> still flagged as orphaned.</strong> Decision deferred to Phase 3 skill audit. Either absorb its generators into <span class="mono">content-pipeline</span> or formally retire it.</li>
+    <li><strong>S2-10 — <span class="mono">michelle_koh_audit.md</span> sits at <span class="mono">/Users/jerel/.claude/jobs/ad9ddcd2/</span> not in the client folder.</strong> <strong>Action:</strong> Phase 1a moves it into <span class="mono">clients/michelle-koh/_brand/audit.md</span> as the persistent source of truth.</li>
+  </ul>
+</section>
+
+<section id="raci" class="max-w-5xl mx-auto px-6 py-6">
+  <h2 class="text-2xl font-bold border-l-4 border-rose-600 pl-3">RACI — who decides, who does, who approves</h2>
+  <p class="mt-3 text-stone-800">Added v0.5.2 per review: previous versions left approval ownership split across multiple paragraphs. One table now, the rest of the doc defers here.</p>
+
+  <table class="w-full text-sm mt-3 border-collapse">
+    <thead>
+      <tr class="bg-rose-900 text-amber-50">
+        <th class="text-left p-2">Activity</th>
+        <th class="text-left p-2">Michelle</th>
+        <th class="text-left p-2">Jerel</th>
+        <th class="text-left p-2">System / AI</th>
+      </tr>
+    </thead>
+    <tbody class="align-top">
+      <tr class="bg-white border-b border-stone-200"><td class="p-2 font-bold">Strategy + positioning</td><td class="p-2"><strong>A</strong> · Accountable</td><td class="p-2">C · Consulted</td><td class="p-2">I · Informed</td></tr>
+      <tr class="bg-amber-50 border-b border-stone-200"><td class="p-2 font-bold">Funnel-goal wizard answers</td><td class="p-2"><strong>R</strong> · Responsible + <strong>A</strong></td><td class="p-2">C · Facilitates</td><td class="p-2">— writes file</td></tr>
+      <tr class="bg-white border-b border-stone-200"><td class="p-2 font-bold">Voice files (after Phase 1a interview)</td><td class="p-2"><strong>A</strong> · Final review</td><td class="p-2">R · Drafts from scrape + interview</td><td class="p-2">C · Drafts v1</td></tr>
+      <tr class="bg-amber-50 border-b border-stone-200"><td class="p-2 font-bold">T1 PDF content (LinkedIn Trust Leak Audit)</td><td class="p-2"><strong>A</strong> · The 7 leaks are hers</td><td class="p-2">R · Writes copy + sets up landing page</td><td class="p-2">C · Drafts</td></tr>
+      <tr class="bg-white border-b border-stone-200"><td class="p-2 font-bold">Weekly idea pool (which 3 to ship)</td><td class="p-2">C · Can veto / pin must-do</td><td class="p-2"><strong>R</strong> · Curates</td><td class="p-2">C · Generates options</td></tr>
+      <tr class="bg-amber-50 border-b border-stone-200"><td class="p-2 font-bold">Per-post approval (script + caption + visual)</td><td class="p-2"><strong>A</strong> · Final approver — <strong>nothing ships without this</strong></td><td class="p-2">R · Drafts + presents</td><td class="p-2">R · Drafts</td></tr>
+      <tr class="bg-white border-b border-stone-200"><td class="p-2 font-bold">Internal stage movement (ideate → script → produce)</td><td class="p-2">I · Informed</td><td class="p-2"><strong>A</strong> · Approves internal gates only</td><td class="p-2">R · Executes</td></tr>
+      <tr class="bg-amber-50 border-b border-stone-200"><td class="p-2 font-bold">Publishing (uploading to IG / LinkedIn)</td><td class="p-2"><strong>R</strong> · Uploads natively from her phone / desktop</td><td class="p-2">C · Available for help</td><td class="p-2">—</td></tr>
+      <tr class="bg-white border-b border-stone-200"><td class="p-2 font-bold">Analytics entry (manual screenshot → Sheet)</td><td class="p-2"><strong>R</strong> · ~5 min/post</td><td class="p-2">A · Audits weekly</td><td class="p-2">— (Phase 6: IG auto)</td></tr>
+      <tr class="bg-amber-50 border-b border-stone-200"><td class="p-2 font-bold">DM / hand-raise responses</td><td class="p-2"><strong>R</strong> · &lt;5 min target</td><td class="p-2">C · Coaches</td><td class="p-2">— (Phase 6: pings)</td></tr>
+      <tr class="bg-white border-b border-stone-200"><td class="p-2 font-bold">Schedule override (skip a week, change cadence)</td><td class="p-2"><strong>A</strong></td><td class="p-2">R · Implements</td><td class="p-2">—</td></tr>
+      <tr class="bg-amber-50 border-b border-stone-200"><td class="p-2 font-bold">Conflict / dispute resolution</td><td class="p-2"><strong>A</strong> · Client wins on taste + voice</td><td class="p-2">A · Operator wins on system + delivery</td><td class="p-2">—</td></tr>
+    </tbody>
+  </table>
+
+  <p class="text-sm text-stone-700 mt-3"><strong>Hard rule:</strong> nothing publishes to Michelle's IG or LinkedIn without an explicit Michelle approval. Jerel can move things forward through internal gates (script → produce → approve-queue) but the final publish gate is hers, always.</p>
+</section>
+
+<section id="data-handling" class="max-w-5xl mx-auto px-6 py-6">
+  <h2 class="text-2xl font-bold border-l-4 border-rose-600 pl-3">Data Handling + Privacy</h2>
+  <p class="mt-3 text-stone-800">Added v0.5.2 per review: the system stores voice memos, screenshots, DMs/comments, client materials, analytics, and approvals across multiple surfaces. This section is the operating policy before client sign-off.</p>
+
+  <table class="w-full text-sm mt-3 border-collapse">
+    <thead>
+      <tr class="bg-stone-100">
+        <th class="text-left p-2 border-b border-stone-200">Data class</th>
+        <th class="text-left p-2 border-b border-stone-200">What gets stored</th>
+        <th class="text-left p-2 border-b border-stone-200">Where</th>
+        <th class="text-left p-2 border-b border-stone-200">Who has access</th>
+        <th class="text-left p-2 border-b border-stone-200">Retention</th>
+      </tr>
+    </thead>
+    <tbody class="align-top">
+      <tr><td class="p-2 font-bold">Voice memos (Michelle's)</td><td class="p-2">.m4a / .mp3 + transcripts</td><td class="p-2">Phases 1-2: Google Drive (Michelle-shared folder). Phase 4+: here.now <span class="mono">michelle-koh</span> namespace.</td><td class="p-2">Michelle + Jerel only. No subagent calls expose audio to third-party LLMs except Whisper (transcription).</td><td class="p-2">12 months by default. Michelle can request delete any time.</td></tr>
+      <tr class="bg-stone-50"><td class="p-2 font-bold">DMs + comments (her audience)</td><td class="p-2"><strong>Summaries only by default.</strong> Raw paste only when Michelle explicitly pastes one for analysis.</td><td class="p-2">Google Sheet "DM signals" tab (counts + themes, not identifying text). Decomposition notes in <span class="mono">06_learn/</span>.</td><td class="p-2">Michelle + Jerel.</td><td class="p-2">Aggregated counts retained; raw text purged at end of each Friday review unless flagged "case study material" with Michelle's OK.</td></tr>
+      <tr><td class="p-2 font-bold">Analytics screenshots</td><td class="p-2">PNG / JPG of IG Insights + LinkedIn analytics panels.</td><td class="p-2">Google Drive (Michelle-shared). Phase 4+: <span class="mono">here.now://michelle-koh/06_learn/analytics/screenshots/</span>.</td><td class="p-2">Michelle + Jerel.</td><td class="p-2">12 months rolling. Numbers in the Sheet stay; screenshots can be purged at 12mo without losing the data.</td></tr>
+      <tr class="bg-stone-50"><td class="p-2 font-bold">Client identifying info</td><td class="p-2">Michelle's name, brand, IG/LI handles, bootcamp pricing, contact info.</td><td class="p-2"><span class="mono">clients/michelle-koh/_brand/</span> (local repo) + here.now once Phase 4 ships.</td><td class="p-2">Jerel only. Repo is private; here.now namespace is access-controlled.</td><td class="p-2">For duration of engagement + 90 days post-termination, then archive.</td></tr>
+      <tr><td class="p-2 font-bold">Michelle's <em>customers'</em> identifying info (case studies)</td><td class="p-2">Names, faces, quotes, screenshots of their results.</td><td class="p-2"><strong>Only when Michelle has written consent.</strong> Stored in <span class="mono">clients/michelle-koh/_assets/case-studies/&lt;name&gt;/</span> with a <span class="mono">consent.md</span> file.</td><td class="p-2">Jerel + Michelle.</td><td class="p-2">Per consent doc. Default: until customer requests removal.</td></tr>
+      <tr class="bg-stone-50"><td class="p-2 font-bold">Draft scripts, captions, assets</td><td class="p-2">Markdown + media files.</td><td class="p-2">Google Drive + local repo (Phases 1-2). here.now (Phase 4+).</td><td class="p-2">Michelle + Jerel.</td><td class="p-2">Indefinite (Michelle's content library is hers).</td></tr>
+      <tr><td class="p-2 font-bold">Approval log</td><td class="p-2">Immutable JSONL of who approved what + when + rejection reasons.</td><td class="p-2"><span class="mono">04_approve/log.jsonl</span> (repo, Phases 1-2) → here.now (Phase 4+).</td><td class="p-2">Michelle + Jerel.</td><td class="p-2">Indefinite (audit trail).</td></tr>
+    </tbody>
+  </table>
+
+  <h3 class="font-bold text-lg mt-6">Operating rules</h3>
+  <ul class="text-sm text-stone-800 mt-2 list-disc list-inside space-y-1">
+    <li><strong>Michelle owns her data.</strong> She can request a full export or full delete at any time. Jerel ships export within 7 days of request.</li>
+    <li><strong>No third-party LLM ingests Michelle's audience PII.</strong> When subagents process DM/comment data, identifying handles are redacted before send. Aggregated themes only.</li>
+    <li><strong>Case study consent is written.</strong> Customer names, faces, or quotes never appear in marketing without a <span class="mono">consent.md</span> in the file tree.</li>
+    <li><strong>Credentials never live in the repo.</strong> ConvertKit / Beehiiv / Clerk / IG API tokens stay in <span class="mono">~/.claude/.env</span> or here.now secrets (Phase 4+). The repo's <span class="mono">.gitignore</span> covers all <span class="mono">.env*</span> patterns.</li>
+    <li><strong>No automatic publishing.</strong> Even when Phase 6 adds dashboard-triggered execution, the publish step stays Michelle-manual until she explicitly opts in to automation per platform.</li>
+    <li><strong>PDPA-aware (Singapore).</strong> Both Michelle and her audience are likely SG-based. Standard PDPA practices apply: purpose limitation (data used only for content production), reasonable retention, deletion on request.</li>
+  </ul>
+</section>
+
+<section id="canonical-storage" class="max-w-5xl mx-auto px-6 py-6">
+  <h2 class="text-2xl font-bold border-l-4 border-rose-600 pl-3">Canonical Storage by Phase</h2>
+  <p class="mt-3 text-stone-800">Added v0.5.2 per review: prior text mentioned filesystem, Google Sheets, Drive, Google Docs, here.now, and Cloudflare across multiple sections without saying which is authoritative when. This is the answer.</p>
+
+  <table class="w-full text-sm mt-3 border-collapse">
+    <thead>
+      <tr class="bg-rose-900 text-amber-50">
+        <th class="text-left p-2">Asset class</th>
+        <th class="text-left p-2">Phases 1-2 (manual loop)</th>
+        <th class="text-left p-2">Phase 3 (CLI orchestrator)</th>
+        <th class="text-left p-2">Phase 4+ (dashboard live)</th>
+      </tr>
+    </thead>
+    <tbody class="align-top">
+      <tr class="bg-white border-b border-stone-200"><td class="p-2 font-bold">Approvals / draft review</td><td class="p-2"><strong>Shared Google Doc</strong> (Michelle ✓ / ✗ inline)</td><td class="p-2">Shared Google Doc continues</td><td class="p-2"><strong>here.now</strong> (dashboard UI writes approval log)</td></tr>
+      <tr class="bg-amber-50 border-b border-stone-200"><td class="p-2 font-bold">Analytics</td><td class="p-2"><strong>Google Sheet</strong> (manual entry)</td><td class="p-2">Google Sheet continues; CLI can read</td><td class="p-2"><strong>here.now</strong> (Sheet syncs in)</td></tr>
+      <tr class="bg-white border-b border-stone-200"><td class="p-2 font-bold">Assets (caption, cover, video)</td><td class="p-2"><strong>Google Drive</strong> (Michelle-shared folder)</td><td class="p-2">Drive continues; CLI writes mirror to local repo</td><td class="p-2"><strong>here.now</strong> (canonical; Drive becomes the read mirror Michelle uses to upload)</td></tr>
+      <tr class="bg-amber-50 border-b border-stone-200"><td class="p-2 font-bold">Config (funnel-goal.json, voice files, offer, ICP, buyer profile)</td><td class="p-2"><strong>Local repo</strong> at <span class="mono">clients/michelle-koh/_config/</span></td><td class="p-2">Local repo continues</td><td class="p-2"><strong>here.now</strong> (canonical; repo becomes the git-versioned mirror)</td></tr>
+      <tr class="bg-white border-b border-stone-200"><td class="p-2 font-bold">Scripts + decomposition outputs</td><td class="p-2"><strong>Local repo</strong> + Jerel hand-writes</td><td class="p-2"><strong>Local repo</strong> (CLI orchestrator writes)</td><td class="p-2"><strong>here.now</strong> (canonical)</td></tr>
+      <tr class="bg-amber-50 border-b border-stone-200"><td class="p-2 font-bold">Voice memos (audio + transcripts)</td><td class="p-2"><strong>Google Drive</strong> (Michelle uploads)</td><td class="p-2">Drive continues; CLI reads via Whisper</td><td class="p-2"><strong>here.now</strong> (upload surface)</td></tr>
+      <tr class="bg-white border-b border-stone-200"><td class="p-2 font-bold">Approval log (immutable)</td><td class="p-2"><span class="mono">04_approve/log.jsonl</span> in local repo</td><td class="p-2">Same</td><td class="p-2"><strong>here.now</strong> append-only</td></tr>
+      <tr class="bg-amber-50 border-b border-stone-200"><td class="p-2 font-bold">Credentials / secrets</td><td class="p-2"><span class="mono">~/.claude/.env</span> (local)</td><td class="p-2">Same</td><td class="p-2">here.now secrets layer (Clerk + ConvertKit + IG API)</td></tr>
+    </tbody>
+  </table>
+
+  <p class="text-sm text-stone-700 mt-3"><strong>Migration trigger</strong> = Phase 4 ships. Before that, "Drive + Sheet + local repo" is canonical and here.now is empty. When Phase 4 ships, Jerel runs a one-time migration script that copies snapshot of all three into the <span class="mono">michelle-koh</span> namespace, then Drive + Sheet become read mirrors (for Michelle's upload convenience) and the repo becomes the git-versioned config mirror.</p>
+  <p class="text-sm text-stone-700 mt-2"><strong>If you see a number / fact in two places after Phase 4:</strong> here.now wins. Sheet and Drive are convenience mirrors only.</p>
+</section>
+
+<section class="max-w-5xl mx-auto px-6 py-10">
+  <h2 class="text-2xl font-bold border-l-4 border-amber-500 pl-3">Sign-off — v0.5.2</h2>
+  <p class="mt-3 text-stone-800">Three adversarial review rounds absorbed. v0.5.2 is the stale-copy cleanup pass: versions normalized, NextAuth removed, Cloudflare relay confirmed Phase 6+ (not Phase 4), CTA language standardized on LinkedIn Trust Leak Audit, dashboard timing reframed as conditional, Stage 06 analytics replaced with manual IG/LinkedIn entry schema, client-facing promises softened to targets, and new RACI / Data Handling / Canonical Storage sections added.</p>
+
+  <p class="mt-3 text-stone-800">Final split recommendation for Michelle (from Decision Register):</p>
+  <ul class="mt-3 space-y-1 list-disc list-inside text-stone-800">
+    <li><strong>Short-form split:</strong> 60 TOFU / 30 MOFU / 10 BOFU (3 posts/week)</li>
+    <li><strong>Long-form add-on:</strong> 1 workshop replay clip/month + 1 podcast clip/month (Hormozi long-runway requirement)</li>
+    <li><strong>Pillar weighting:</strong> 40 Educate / 30 Sell / 20 Story / 10 Inspire (Iman)</li>
+    <li><strong>Hand-raise SLA:</strong> &lt; 5 min response to any signal (Hormozi 391% conversion lift)</li>
+  </ul>
+
+  <p class="mt-4 text-stone-800">Three things still need your call:</p>
+  <ol class="mt-2 space-y-2 list-decimal list-inside text-stone-800">
+    <li><strong>Confirm the domain.</strong> Plan assumes <span class="mono">genflos.com/content-os</span>. What's the actual domain?</li>
+    <li><strong>Confirm cadence.</strong> Locked at 3 short-form/week + 2 long-form/month. Iman wanted 4/week + daily stories. Stick with 3 + add stories as a separate workstream, or upgrade to 4?</li>
+    <li><strong>BOFU CTA strategy before the workshop ships.</strong> Hormozi's "Go for the jugular" CTA needs a landing destination. Phase 1b T1 PDF gives BOFU something to point at (DM AUDIT → audit landing page). Workshop in Phase 7 upgrades again. Confirm: keep BOFU soft in Phase 1a (before T1), activate "DM AUDIT" in Phase 1c+ (after T1), delay aggressive BOFU until workshop is live — OR point BOFU directly at the bootcamp page (if you've confirmed it converts)?</li>
+  </ol>
+
+  <p class="mt-6 text-stone-800">Then one of:</p>
+  <div class="grid md:grid-cols-3 gap-4 mt-3">
+    <div class="bg-emerald-50 border border-emerald-200 rounded-lg p-4 text-sm">
+      <p class="font-bold">A · Ship v0.5.2 as-is</p>
+      <p class="text-stone-700 mt-1">Start Phase 0.5 (org chart) → Phase 1a (distill + voice + sheet + paper wizard) against this final spec.</p>
+    </div>
+    <div class="bg-amber-50 border border-amber-200 rounded-lg p-4 text-sm">
+      <p class="font-bold">B · Adjust then ship</p>
+      <p class="text-stone-700 mt-1">Mark up the doc. I update to v0.5.3, then proceed to Phase 0.5.</p>
+    </div>
+    <div class="bg-rose-50 border border-rose-200 rounded-lg p-4 text-sm">
+      <p class="font-bold">C · Reframe</p>
+      <p class="text-stone-700 mt-1">Something is wrong at the strategy level. Re-interview, re-design.</p>
+    </div>
+  </div>
+</section>
+
+<footer class="bg-stone-900 text-stone-400 text-xs py-6 mono">
+  <div class="max-w-5xl mx-auto px-6">
+    v0.5.2 · 2026-05-12 SGT · Generated by Claude Code · Three adversarial review rounds absorbed · Sources: Jake's toolkit · Chase AI Agentic OS (pfPi04pIfaw — 23 frames decoded) · Brendan Ang (@brendanangg) · Iman Gadzhi (live Whop chatbot, 2026-05-12, basic + deep queries) · Hormozi NotebookLM "REAL Alex Hormozi" a17ef3ee-3b4e-40f2-9c2e-71a8bd0520dd (15 queries total, conversation 5de02d9f) · Michelle Koh audit + offer.md (clients/michelle-koh) · Marketing repo inventory · External docs: Vercel cron limits · Clerk pricing · Cloudflare Tunnel + Access
+  </div>
+</footer>
+
+</body>
+</html>
