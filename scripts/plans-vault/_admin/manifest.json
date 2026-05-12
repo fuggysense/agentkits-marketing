@@ -1,0 +1,101 @@
+{
+  "generated_at": "2026-05-12T08:11:52Z",
+  "domain": "plans.genflos.com",
+  "clients": [
+    {
+      "mount_path": "michelle-koh",
+      "slug": "earthy-opera-7wp3",
+      "local_dir": "/Users/jerel/plans-vault/michelle-koh",
+      "subpaths": [
+        {
+          "path": "/michelle-koh/",
+          "url": "https://plans.genflos.com/michelle-koh/",
+          "local_path": "/Users/jerel/plans-vault/michelle-koh/index.html"
+        },
+        {
+          "path": "/michelle-koh/onb/",
+          "url": "https://plans.genflos.com/michelle-koh/onb/",
+          "local_path": "/Users/jerel/plans-vault/michelle-koh/onb/index.html"
+        },
+        {
+          "path": "/michelle-koh/plan/",
+          "url": "https://plans.genflos.com/michelle-koh/plan/",
+          "local_path": "/Users/jerel/plans-vault/michelle-koh/plan/index.html"
+        }
+      ]
+    }
+  ],
+  "all_mounts": [
+    {
+      "mount_path": "",
+      "slug": "happy-sequin-9k6t",
+      "created_at": "2026-05-12T07:17:32.872Z"
+    },
+    {
+      "mount_path": "admin",
+      "slug": "silver-zephyr-83pf",
+      "created_at": "2026-05-12T07:17:34.718Z"
+    },
+    {
+      "mount_path": "michelle-koh",
+      "slug": "earthy-opera-7wp3",
+      "created_at": "2026-05-12T07:28:45.740Z"
+    }
+  ],
+  "all_publishes": [
+    {
+      "slug": "silver-zephyr-83pf",
+      "siteUrl": "https://silver-zephyr-83pf.here.now/",
+      "updatedAt": "2026-05-12T07:48:09.927Z",
+      "expiresAt": null,
+      "status": "active",
+      "currentVersionId": "01KRDJGMFX1XR60WAZZRVJ0G9J",
+      "pendingVersionId": null
+    },
+    {
+      "slug": "earthy-opera-7wp3",
+      "siteUrl": "https://earthy-opera-7wp3.here.now/",
+      "updatedAt": "2026-05-12T07:32:03.062Z",
+      "expiresAt": null,
+      "status": "pending",
+      "currentVersionId": "01KRDHCXNGKDZMZ15WWH9FPT11",
+      "pendingVersionId": "01KRDHK6BP2SN47MNKQ50HRPYC"
+    },
+    {
+      "slug": "nutmeg-ginger-462m",
+      "siteUrl": "https://nutmeg-ginger-462m.here.now/",
+      "updatedAt": "2026-05-12T07:17:15.674Z",
+      "expiresAt": null,
+      "status": "active",
+      "currentVersionId": "01KRDGR1ZEZ7XJASR772422P9R",
+      "pendingVersionId": null
+    },
+    {
+      "slug": "marine-maple-rhrw",
+      "siteUrl": "https://marine-maple-rhrw.here.now/",
+      "updatedAt": "2026-05-12T07:17:13.267Z",
+      "expiresAt": null,
+      "status": "active",
+      "currentVersionId": "01KRDGQZGQSE7ZVF5AMAE7FT63",
+      "pendingVersionId": null
+    },
+    {
+      "slug": "happy-sequin-9k6t",
+      "siteUrl": "https://happy-sequin-9k6t.here.now/",
+      "updatedAt": "2026-05-12T07:17:10.745Z",
+      "expiresAt": null,
+      "status": "active",
+      "currentVersionId": "01KRDGQV6SXSEY28DQ9FDP0DNZ",
+      "pendingVersionId": null
+    },
+    {
+      "slug": "mindful-medley-q2p8",
+      "siteUrl": "https://mindful-medley-q2p8.here.now/",
+      "updatedAt": "2026-05-01T07:13:11.793Z",
+      "expiresAt": null,
+      "status": "active",
+      "currentVersionId": "01KQH64MZ1VYCZT7W0PHNYMSAV",
+      "pendingVersionId": null
+    }
+  ]
+}

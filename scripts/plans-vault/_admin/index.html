@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex,nofollow,nosnippet,noarchive,noimageindex" />
+<title>plans.genflos.com — admin</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  body { font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+  pre.cmd { background:#0b1220; color:#e2e8f0; padding:0.75rem 1rem; border-radius:8px; font-size:0.8rem; overflow-x:auto; line-height:1.5; }
+  pre.cmd .comment { color:#64748b; }
+  .copyable { position:relative; }
+  .copyable .copy-btn { position:absolute; top:0.4rem; right:0.4rem; background:#1e293b; color:#cbd5e1; padding:0.15rem 0.5rem; border-radius:4px; font-size:0.7rem; cursor:pointer; }
+  .copyable .copy-btn:hover { background:#334155; }
+</style>
+</head>
+<body class="bg-stone-50 text-stone-900">
+
+<header class="bg-stone-900 text-stone-100 py-6">
+  <div class="max-w-6xl mx-auto px-6 flex items-baseline justify-between flex-wrap gap-2">
+    <div>
+      <p class="text-stone-400 text-xs uppercase tracking-widest">Content OS · admin</p>
+      <h1 class="text-2xl font-bold mt-1">plans.genflos.com</h1>
+    </div>
+    <div class="text-xs mono text-stone-400">
+      manifest: <span id="manifest-ts">…</span>
+      <button onclick="location.reload()" class="ml-3 underline hover:text-amber-300">refresh</button>
+    </div>
+  </div>
+</header>
+
+<main class="max-w-6xl mx-auto px-6 py-8">
+
+  <!-- Architecture explainer -->
+  <section class="bg-amber-50 border border-amber-300 rounded-lg p-4 mb-6 text-sm">
+    <p class="font-bold">How this admin works</p>
+    <p class="mt-1 text-stone-800">This page is a <strong>viewer + command generator</strong> — it reads <span class="mono">/admin/manifest.json</span> (refreshed every time you run <span class="mono">sync.sh</span>) and shows current state. For any change, fill the form and <strong>copy the generated CLI command</strong> into your terminal.</p>
+    <p class="text-stone-700 mt-2 text-xs">Why? here.now's API doesn't send CORS headers, so the browser can't call it directly. CLI commands (running on your Mac) work fine — and your API key never leaves <span class="mono">~/.herenow/credentials</span>.</p>
+  </section>
+
+  <!-- Scaffold new client -->
+  <section class="bg-white border border-stone-200 rounded-lg p-5 mb-6">
+    <h2 class="text-lg font-bold">Scaffold a new client vault</h2>
+    <div class="grid md:grid-cols-2 gap-4 mt-3">
+      <div>
+        <label class="text-xs uppercase text-stone-500">Client slug</label>
+        <input id="new-client" type="text" placeholder="acme-corp" maxlength="30" class="block w-full mt-1 px-3 py-2 border border-stone-300 rounded mono text-sm" oninput="genNewClientCmd()" />
+        <p class="text-xs text-stone-500 mt-1">lowercase a-z, 0-9, hyphens. Max 30 chars. This becomes <span class="mono">plans.genflos.com/&lt;slug&gt;</span>.</p>
+        <p id="new-client-validate" class="text-xs mt-1 mono"></p>
+      </div>
+      <div>
+        <label class="text-xs uppercase text-stone-500">Run this in your terminal</label>
+        <div class="copyable mt-1">
+          <span class="copy-btn" onclick="copyText('new-client-cmd')">copy</span>
+          <pre id="new-client-cmd" class="cmd"><span class="comment"># enter a client slug on the left</span></pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Client vaults -->
+  <section class="bg-white border border-stone-200 rounded-lg p-5 mb-6">
+    <h2 class="text-lg font-bold">Client vaults</h2>
+    <p class="text-xs text-stone-500 mt-1">Each vault = one site mounted at <span class="mono">/&lt;client&gt;</span>. Subpaths are folders inside the vault.</p>
+    <div id="vaults-body" class="mt-3 space-y-3 text-sm">
+      <p class="text-stone-500 text-center py-3">loading manifest…</p>
+    </div>
+  </section>
+
+  <!-- All mounts -->
+  <section class="bg-white border border-stone-200 rounded-lg p-5 mb-6">
+    <h2 class="text-lg font-bold">All URL mounts on plans.genflos.com</h2>
+    <table class="w-full text-sm mt-3 border-collapse">
+      <thead>
+        <tr class="bg-stone-100 text-left">
+          <th class="p-2 border-b border-stone-200">URL</th>
+          <th class="p-2 border-b border-stone-200">→ Slug</th>
+          <th class="p-2 border-b border-stone-200">Created</th>
+          <th class="p-2 border-b border-stone-200">Unmount command</th>
+        </tr>
+      </thead>
+      <tbody id="mounts-body">
+        <tr><td colspan="4" class="p-3 text-stone-500 text-center">loading manifest…</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- All publishes -->
+  <section class="bg-white border border-stone-200 rounded-lg p-5">
+    <h2 class="text-lg font-bold">All publishes (raw sites in your here.now account)</h2>
+    <p class="text-xs text-stone-500 mt-1">Each row = an underlying site at <span class="mono">{slug}.here.now</span>. Mounts above point at these.</p>
+    <table class="w-full text-sm mt-3 border-collapse">
+      <thead>
+        <tr class="bg-stone-100 text-left">
+          <th class="p-2 border-b border-stone-200">Slug</th>
+          <th class="p-2 border-b border-stone-200">Direct URL</th>
+          <th class="p-2 border-b border-stone-200">Delete command</th>
+        </tr>
+      </thead>
+      <tbody id="publishes-body">
+        <tr><td colspan="3" class="p-3 text-stone-500 text-center">loading manifest…</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+</main>
+
+<footer class="text-xs text-stone-500 max-w-6xl mx-auto px-6 py-6 mono">
+  Source of truth: ~/plans-vault on your Mac · live serve: here.now · all CRUD via <span class="mono">cd ~/plans-vault &amp;&amp; ./sync.sh</span>
+</footer>
+
+<script>
+const LOCATION_RE = /^[a-z0-9]+(-[a-z0-9]+)*$/;
+let MANIFEST = null;
+
+async function init() {
+  try {
+    const r = await fetch('/admin/manifest.json?cb=' + Date.now());
+    if (!r.ok) throw new Error('manifest fetch failed: ' + r.status);
+    MANIFEST = await r.json();
+    document.getElementById('manifest-ts').textContent = MANIFEST.generated_at || '(no timestamp)';
+    renderVaults();
+    renderMounts();
+    renderPublishes();
+  } catch (e) {
+    document.getElementById('manifest-ts').textContent = 'manifest unavailable — run ./sync.sh';
+    document.getElementById('vaults-body').innerHTML = `<p class="text-rose-700 text-center py-3">${escapeHtml(e.message)}</p>`;
+    document.getElementById('mounts-body').innerHTML = `<tr><td colspan="4" class="p-3 text-rose-700 text-center">${escapeHtml(e.message)}</td></tr>`;
+    document.getElementById('publishes-body').innerHTML = `<tr><td colspan="3" class="p-3 text-rose-700 text-center">${escapeHtml(e.message)}</td></tr>`;
+  }
+}
+
+function genNewClientCmd() {
+  const v = document.getElementById('new-client').value.trim();
+  const validate = document.getElementById('new-client-validate');
+  const cmd = document.getElementById('new-client-cmd');
+  if (!v) {
+    validate.textContent = '';
+    cmd.innerHTML = '<span class="comment"># enter a client slug on the left</span>';
+    return;
+  }
+  if (!LOCATION_RE.test(v) || v.length > 30) {
+    validate.textContent = '⚠ invalid — lowercase a-z, 0-9, hyphens only, max 30';
+    validate.className = 'text-xs mt-1 mono text-rose-700';
+    cmd.innerHTML = '<span class="comment"># fix the slug above</span>';
+    return;
+  }
+  validate.textContent = `→ will create plans.genflos.com/${v}`;
+  validate.className = 'text-xs mt-1 mono text-emerald-700';
+  cmd.innerHTML = `cd ~/plans-vault
+./sync.sh --new ${escapeHtml(v)}
+
+<span class="comment"># edit these (created as placeholders):</span>
+<span class="comment">#   ~/plans-vault/${escapeHtml(v)}/index.html       (landing)</span>
+<span class="comment">#   ~/plans-vault/${escapeHtml(v)}/plan/index.html  (operator plan)</span>
+<span class="comment">#   ~/plans-vault/${escapeHtml(v)}/onb/index.html   (client-facing onboarding)</span>
+
+<span class="comment"># then publish:</span>
+./sync.sh ${escapeHtml(v)}`;
+}
+
+function renderVaults() {
+  const body = document.getElementById('vaults-body');
+  const vaults = MANIFEST.clients || [];
+  if (!vaults.length) {
+    body.innerHTML = '<p class="text-stone-500 text-center py-3">no client vaults yet — scaffold one above</p>';
+    return;
+  }
+  body.innerHTML = vaults.map(v => {
+    const subpathRows = (v.subpaths || []).map(s => `
+      <li class="flex items-baseline justify-between border-b border-stone-100 py-1.5">
+        <span class="mono text-stone-700">${escapeHtml(s.path)}</span>
+        <div class="text-xs">
+          <a href="${escapeHtml(s.url)}" target="_blank" class="underline text-emerald-700">open ↗</a>
+          <span class="ml-3 text-stone-500">edit: <span class="mono">${escapeHtml(s.local_path || '')}</span></span>
+        </div>
+      </li>
+    `).join('');
+
+    return `
+      <div class="border border-stone-200 rounded p-4">
+        <div class="flex items-baseline justify-between flex-wrap gap-2">
+          <h3 class="font-bold text-base">/${escapeHtml(v.mount_path)}</h3>
+          <span class="mono text-xs text-stone-500">slug: ${escapeHtml(v.slug)}</span>
+        </div>
+        <p class="text-xs text-stone-500 mt-1">local: <span class="mono">${escapeHtml(v.local_dir || '')}</span></p>
+
+        <p class="text-xs uppercase text-stone-500 mt-3">Live subpaths</p>
+        <ul class="mt-1 text-xs">${subpathRows || '<li class="text-stone-500">(none — empty vault)</li>'}</ul>
+
+        <div class="grid md:grid-cols-2 gap-3 mt-4">
+          <div>
+            <p class="text-xs uppercase text-stone-500">Republish (after editing)</p>
+            <div class="copyable mt-1">
+              <span class="copy-btn" onclick="copyText('sync-${escapeJs(v.mount_path)}')">copy</span>
+              <pre id="sync-${escapeJs(v.mount_path)}" class="cmd">cd ~/plans-vault
+./sync.sh ${escapeHtml(v.mount_path)}</pre>
+            </div>
+          </div>
+          <div>
+            <p class="text-xs uppercase text-stone-500">Delete vault</p>
+            <div class="copyable mt-1">
+              <span class="copy-btn" onclick="copyText('del-${escapeJs(v.mount_path)}')">copy</span>
+              <pre id="del-${escapeJs(v.mount_path)}" class="cmd">cd ~/plans-vault
+./sync.sh --delete ${escapeHtml(v.mount_path)}</pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+function renderMounts() {
+  const body = document.getElementById('mounts-body');
+  const mounts = MANIFEST.all_mounts || [];
+  if (!mounts.length) {
+    body.innerHTML = '<tr><td colspan="4" class="p-3 text-stone-500 text-center">no mounts</td></tr>';
+    return;
+  }
+  body.innerHTML = mounts.map(m => {
+    const loc = m.mount_path || '';
+    const display = loc === '' ? '/ (root)' : '/' + loc;
+    const url = `https://plans.genflos.com/${loc}`;
+    const created = (m.created_at || '').slice(0, 10);
+    const cmdId = 'unmount-' + (loc || 'root').replace(/[^a-z0-9-]/gi, '-');
+    const isRoot = loc === '';
+    const unmountCmd = isRoot
+      ? `<span class="comment"># root mount — do not unmount</span>`
+      : `cd ~/plans-vault\n./sync.sh --unmount ${escapeHtml(loc)}`;
+    return `<tr class="border-b border-stone-100">
+      <td class="p-2 mono"><a href="${escapeHtml(url)}" target="_blank" class="underline text-emerald-700">${escapeHtml(display)}</a></td>
+      <td class="p-2 mono text-xs text-stone-600">${escapeHtml(m.slug || '')}</td>
+      <td class="p-2 text-stone-500 text-xs">${escapeHtml(created)}</td>
+      <td class="p-2">
+        <div class="copyable" style="width:fit-content;">
+          ${isRoot ? '' : `<span class="copy-btn" onclick="copyText('${cmdId}')">copy</span>`}
+          <pre id="${cmdId}" class="cmd" style="padding:0.3rem 0.6rem; font-size:0.7rem; ${isRoot ? '' : 'padding-right:3rem;'}">${unmountCmd}</pre>
+        </div>
+      </td>
+    </tr>`;
+  }).join('');
+}
+
+function renderPublishes() {
+  const body = document.getElementById('publishes-body');
+  const pubs = MANIFEST.all_publishes || [];
+  if (!pubs.length) {
+    body.innerHTML = '<tr><td colspan="3" class="p-3 text-stone-500 text-center">no publishes</td></tr>';
+    return;
+  }
+  body.innerHTML = pubs.map(p => {
+    const slug = p.slug || '';
+    const url = p.siteUrl || `https://${slug}.here.now`;
+    const cmdId = 'del-pub-' + slug;
+    return `<tr class="border-b border-stone-100">
+      <td class="p-2 mono text-xs">${escapeHtml(slug)}</td>
+      <td class="p-2"><a href="${escapeHtml(url)}" target="_blank" class="underline text-emerald-700 text-xs mono">${escapeHtml(url)}</a></td>
+      <td class="p-2">
+        <div class="copyable" style="width:fit-content;">
+          <span class="copy-btn" onclick="copyText('${cmdId}')">copy</span>
+          <pre id="${cmdId}" class="cmd" style="padding:0.3rem 0.6rem; font-size:0.7rem; padding-right:3rem;">KEY=$(cat ~/.herenow/credentials)
+curl -X DELETE "https://here.now/api/v1/publish/${escapeHtml(slug)}" \\
+  -H "Authorization: Bearer $KEY"</pre>
+        </div>
+      </td>
+    </tr>`;
+  }).join('');
+}
+
+function copyText(elId) {
+  const el = document.getElementById(elId);
+  if (!el) return;
+  const text = el.innerText;
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = el.parentElement.querySelector('.copy-btn');
+    if (btn) {
+      const orig = btn.textContent;
+      btn.textContent = 'copied ✓';
+      setTimeout(() => { btn.textContent = orig; }, 1200);
+    }
+  }).catch(e => alert('Copy failed: ' + e.message));
+}
+
+function escapeHtml(s) {
+  return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+function escapeJs(s) {
+  return String(s).replace(/[^a-z0-9-]/gi, '-');
+}
+
+init();
+</script>
+
+</body>
+</html>
