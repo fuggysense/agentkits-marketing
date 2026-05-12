@@ -55,6 +55,52 @@ command -v curl >/dev/null || { echo "curl required"; exit 1; }
 
 KEY=$(cat "$CRED")
 
+# Reserved client names — would collide with admin UI or other mount paths.
+RESERVED_NAMES=(admin api _admin _template index root)
+
+# Validate a client name against shell-/URL-/jq-safe regex and reserved list.
+# Exits non-zero with a clear message if invalid.
+validate_client_name() {
+  local name="$1"
+  if ! [[ "$name" =~ ^[a-z0-9](-?[a-z0-9])*$ ]]; then
+    echo "Invalid client name: '$name'"
+    echo "  Allowed: lowercase a-z, 0-9, internal hyphens. No leading/trailing/double hyphens."
+    exit 1
+  fi
+  for r in "${RESERVED_NAMES[@]}"; do
+    if [ "$name" = "$r" ]; then
+      echo "Reserved client name: '$name' would shadow the $r mount."
+      echo "  Pick a different slug (e.g. ${name}-co, ${name}-team)."
+      exit 1
+    fi
+  done
+}
+
+# URL-encode a single path segment (keeps regex-safe but defends against future drift).
+urlenc() {
+  jq -nr --arg s "$1" '$s | @uri'
+}
+
+# Atomic state writer with single-flight guard.
+# macOS lacks flock; we use a PID-bearing lockfile + staleness check (10 min).
+LOCKFILE="$VAULT_HOME/.sync.lock"
+acquire_lock() {
+  if [ -f "$LOCKFILE" ]; then
+    local pid mtime now age
+    pid=$(cat "$LOCKFILE" 2>/dev/null || echo "")
+    mtime=$(stat -f %m "$LOCKFILE" 2>/dev/null || stat -c %Y "$LOCKFILE" 2>/dev/null || echo 0)
+    now=$(date +%s)
+    age=$((now - mtime))
+    if [ -n "$pid" ] && kill -0 "$pid" 2>/dev/null && [ "$age" -lt 600 ]; then
+      echo "Another sync.sh is running (pid=$pid, age=${age}s). Aborting."
+      echo "  If you're sure no other process is active, rm $LOCKFILE and retry."
+      exit 1
+    fi
+  fi
+  echo $$ > "$LOCKFILE"
+  trap 'rm -f "$LOCKFILE"' EXIT INT TERM
+}
+
 # Init state if missing
 if [ ! -f "$STATE" ]; then
   cat > "$STATE" <<EOF
@@ -64,6 +110,30 @@ if [ ! -f "$STATE" ]; then
 }
 EOF
 fi
+
+# Validate state JSON before any operation reads it.
+if ! jq empty "$STATE" >/dev/null 2>&1; then
+  echo "ERROR: $STATE is corrupt (not valid JSON)."
+  echo "  Recovery: inspect the file, fix manually, or restore from backup."
+  echo "  Live mounts on here.now remain unaffected and can be listed via:"
+  echo "    curl -sS https://here.now/api/v1/domains/$DOMAIN -H 'Authorization: Bearer \$KEY' | jq"
+  exit 1
+fi
+
+# Atomic state writer — call via: write_state '<jq filter>'
+write_state() {
+  local filter="$1"
+  shift
+  local tmp
+  tmp=$(mktemp "$STATE.XXXXXX")
+  if jq "$@" "$filter" "$STATE" > "$tmp"; then
+    mv "$tmp" "$STATE"
+  else
+    rm -f "$tmp"
+    echo "ERROR: state write failed for filter: $filter"
+    return 1
+  fi
+}
 
 inject_noindex() {
   local file="$1"
@@ -101,16 +171,36 @@ run_publish() {
   echo "$out" | extract_slug
 }
 
+api_get() {
+  # Wrapper that fails loudly on non-2xx instead of silently returning error JSON.
+  local url="$1"
+  local body
+  local http_code
+  body=$(curl -sS -w "\n%{http_code}" "$url" -H "Authorization: Bearer $KEY" || true)
+  http_code=$(echo "$body" | tail -n1)
+  body=$(echo "$body" | sed '$d')
+  if [ "$http_code" != "200" ]; then
+    echo "ERROR: GET $url returned HTTP $http_code" >&2
+    echo "  Body: $body" >&2
+    return 1
+  fi
+  echo "$body"
+}
+
 refresh_admin_manifest() {
   echo "==> Refreshing admin manifest..."
 
   local dom_json
-  dom_json=$(curl -sS "https://here.now/api/v1/domains/$DOMAIN" \
-    -H "Authorization: Bearer $KEY")
+  dom_json=$(api_get "https://here.now/api/v1/domains/$(urlenc "$DOMAIN")") || {
+    echo "    Skipping manifest refresh — domain fetch failed."
+    return 1
+  }
 
   local pubs_json
-  pubs_json=$(curl -sS "https://here.now/api/v1/publishes" \
-    -H "Authorization: Bearer $KEY")
+  pubs_json=$(api_get "https://here.now/api/v1/publishes") || {
+    echo "    Skipping manifest refresh — publishes fetch failed."
+    return 1
+  }
 
   local clients_json="[]"
   for raw_dir in "$VAULT_HOME"/*/; do
@@ -121,7 +211,7 @@ refresh_admin_manifest() {
     [ "${name:0:1}" = "_" ] && continue
 
     local slug
-    slug=$(jq -r ".clients[\"$name\"].slug // \"\"" "$STATE")
+    slug=$(jq -r --arg n "$name" '.clients[$n].slug // ""' "$STATE")
     [ -z "$slug" ] && continue
 
     local subpaths="[]"
@@ -164,7 +254,7 @@ refresh_admin_manifest() {
   if [ -z "$admin_slug" ]; then
     admin_slug=$(echo "$dom_json" | jq -r '.mounts[] | select(.mount_path == "admin") | .slug' | head -1)
     if [ -n "$admin_slug" ]; then
-      jq --arg s "$admin_slug" '.admin_slug = $s' "$STATE" > "$STATE.tmp" && mv "$STATE.tmp" "$STATE"
+      write_state '.admin_slug = $s' --arg s "$admin_slug"
     fi
   fi
 
@@ -191,23 +281,25 @@ cmd_list() {
     name=$(basename "$d")
     [ "${name:0:1}" = "_" ] && continue
     local slug
-    slug=$(jq -r ".clients[\"$name\"].slug // \"(not published)\"" "$STATE")
+    slug=$(jq -r --arg n "$name" '.clients[$n].slug // "(not published)"' "$STATE")
     echo "  $name → https://$DOMAIN/$name  (slug: $slug)"
   done
   echo ""
   echo "Live mounts on here.now:"
-  curl -sS "https://here.now/api/v1/domains/$DOMAIN" \
-    -H "Authorization: Bearer $KEY" \
-  | jq -r '.mounts[] | "  /\(.mount_path // "(root)") → \(.slug)"'
+  api_get "https://here.now/api/v1/domains/$(urlenc "$DOMAIN")" \
+    | jq -r '.mounts[] | "  /\(.mount_path // "(root)") → \(.slug)"'
 }
 
 cmd_new() {
   local client="$1"
+  validate_client_name "$client"
   local dir="$VAULT_HOME/$client"
   [ -d "$dir" ] && { echo "Already exists: $dir"; exit 1; }
 
   cp -R "$TEMPLATE_DIR" "$dir"
-  find "$dir" -type f -name "*.html" -exec sed -i.bak "s/__CLIENT__/$client/g" {} \;
+  # Use a sed delimiter that can't appear in a valid client name to defend
+  # against future regex relaxation.
+  find "$dir" -type f -name "*.html" -exec sed -i.bak "s|__CLIENT__|$client|g" {} \;
   find "$dir" -type f -name "*.bak" -delete
 
   echo "✓ Scaffolded $dir"
@@ -224,32 +316,45 @@ cmd_new() {
 
 cmd_unmount() {
   local client="$1"
+  validate_client_name "$client"
+  acquire_lock
   echo "Unmounting /$client from $DOMAIN..."
-  curl -sS -X DELETE "https://here.now/api/v1/links/$client?domain=$DOMAIN" \
-    -H "Authorization: Bearer $KEY" | jq -c '.'
-  jq "del(.clients[\"$client\"])" "$STATE" > "$STATE.tmp" && mv "$STATE.tmp" "$STATE"
+  curl -sS --fail -X DELETE \
+    "https://here.now/api/v1/links/$(urlenc "$client")?domain=$(urlenc "$DOMAIN")" \
+    -H "Authorization: Bearer $KEY" | jq -c '.' || {
+      echo "  WARN: DELETE failed (mount may already be gone — continuing)" >&2
+    }
+  write_state 'del(.clients[$n])' --arg n "$client"
   echo "Done. Underlying site still exists (use --delete to remove)."
-  refresh_admin_manifest
+  refresh_admin_manifest || true
 }
 
 cmd_delete() {
   local client="$1"
+  validate_client_name "$client"
+  acquire_lock
   local slug
-  slug=$(jq -r ".clients[\"$client\"].slug // \"\"" "$STATE")
+  slug=$(jq -r --arg n "$client" '.clients[$n].slug // ""' "$STATE")
   echo "Unmounting /$client..."
-  curl -sS -X DELETE "https://here.now/api/v1/links/$client?domain=$DOMAIN" \
+  curl -sS -X DELETE \
+    "https://here.now/api/v1/links/$(urlenc "$client")?domain=$(urlenc "$DOMAIN")" \
     -H "Authorization: Bearer $KEY" | jq -c '.' || true
-  jq "del(.clients[\"$client\"])" "$STATE" > "$STATE.tmp" && mv "$STATE.tmp" "$STATE"
+  write_state 'del(.clients[$n])' --arg n "$client"
   if [ -n "$slug" ]; then
     echo "Deleting underlying site $slug..."
-    curl -sS -X DELETE "https://here.now/api/v1/publish/$slug" \
-      -H "Authorization: Bearer $KEY" | jq -c '.'
+    curl -sS --fail -X DELETE \
+      "https://here.now/api/v1/publish/$(urlenc "$slug")" \
+      -H "Authorization: Bearer $KEY" | jq -c '.' || {
+        echo "  WARN: site delete failed; orphan may remain at $slug.here.now" >&2
+      }
   fi
-  refresh_admin_manifest
+  refresh_admin_manifest || true
 }
 
 cmd_sync() {
   local client="$1"
+  validate_client_name "$client"
+  acquire_lock
   local dir="$VAULT_HOME/$client"
   [ -d "$dir" ] || { echo "No vault folder: $dir"; echo "Hint: ./sync.sh --new $client"; exit 1; }
 
@@ -258,7 +363,7 @@ cmd_sync() {
   find "$dir" -mindepth 1 -type d -empty -delete 2>/dev/null || true
 
   local existing_slug
-  existing_slug=$(jq -r ".clients[\"$client\"].slug // \"\"" "$STATE")
+  existing_slug=$(jq -r --arg n "$client" '.clients[$n].slug // ""' "$STATE")
 
   local slug
   echo ""
@@ -269,34 +374,58 @@ cmd_sync() {
   else
     echo "==> First publish for $client"
     slug=$(run_publish "$dir") || { echo "Publish failed"; exit 1; }
+    if [ -z "$slug" ]; then
+      echo "ERROR: publish.sh did not return a slug for first-time publish of '$client'."
+      echo "  This usually means publish.sh stdout format changed (extract_slug returned empty)."
+      echo "  Refusing to mount with an empty slug — state would loop on next sync."
+      echo "  Inspect publish.sh output and update extract_slug() if its format drifted."
+      exit 1
+    fi
     echo "==> New slug: $slug"
     echo "==> Mounting at /$client on $DOMAIN..."
-    curl -sS -X POST "https://here.now/api/v1/links" \
+    local mount_payload
+    mount_payload=$(jq -nc --arg loc "$client" --arg slug "$slug" --arg dom "$DOMAIN" \
+      '{location: $loc, slug: $slug, domain: $dom}')
+    curl -sS --fail -X POST "https://here.now/api/v1/links" \
       -H "Authorization: Bearer $KEY" \
       -H "Content-Type: application/json" \
       -H "X-HereNow-Client: claude-code/plans-vault-sync" \
-      -d "{\"location\":\"$client\",\"slug\":\"$slug\",\"domain\":\"$DOMAIN\"}" | jq -c '.'
+      -d "$mount_payload" | jq -c '.' || {
+        echo "ERROR: mount POST failed. Site published as $slug but not mounted." >&2
+        exit 1
+      }
   fi
 
   local now
   now=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
-  jq ".clients[\"$client\"] = {slug: \"$slug\", mounted_at: (.clients[\"$client\"].mounted_at // \"$now\"), last_published: \"$now\"}" \
-    "$STATE" > "$STATE.tmp" && mv "$STATE.tmp" "$STATE"
+  write_state \
+    '.clients[$n] = {slug: $slug, mounted_at: (.clients[$n].mounted_at // $now), last_published: $now}' \
+    --arg n "$client" --arg slug "$slug" --arg now "$now"
 
   echo ""
   echo "==> Smoke test:"
   sleep 2
+  local failures=0
   for sub in "" $(cd "$dir" && find . -mindepth 2 -name "index.html" -type f | sed -e 's|^\./||' -e 's|/index\.html$||' | sort); do
     local url="https://$DOMAIN/$client${sub:+/$sub}"
     local code
     code=$(curl -sSL -o /dev/null -w "%{http_code}" --max-time 10 "$url" || echo "---")
     printf "  %-60s  [%s]\n" "$url" "$code"
+    case "$code" in
+      2*) ;;
+      *) failures=$((failures + 1)) ;;
+    esac
   done
 
-  refresh_admin_manifest
+  refresh_admin_manifest || true
 
   echo ""
-  echo "✓ Sync complete."
+  if [ "$failures" -gt 0 ]; then
+    echo "⚠ Sync finished with $failures non-2xx response(s)."
+    echo "  here.now CDN propagation can take 5-30s — re-run smoke check in a minute."
+  else
+    echo "✓ Sync complete."
+  fi
   echo "  Live: https://$DOMAIN/$client"
   echo "  Admin: https://$DOMAIN/admin"
 }
