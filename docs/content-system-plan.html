@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Content OS for Michelle — Single-Tenant MVP v0.5.3</title>
+<title>Content OS for Michelle — Single-Tenant MVP v0.5.4</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <style>
   body { font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
@@ -25,7 +25,8 @@
     <p class="text-stone-400 text-sm uppercase tracking-widest">Content OS / Michelle Koh — Pilot</p>
     <h1 class="text-3xl md:text-4xl font-bold mt-2">Content OS for Michelle — Single-Tenant MVP</h1>
     <p class="text-stone-300 mt-3 max-w-3xl">A funnel-aware, client-tweakable, AI-led short-form content system. Single-tenant for Michelle as pilot, then generalizes. Storage = here.now. Frontend = Vercel on a subdirectory of your domain.</p>
-    <p class="mono text-xs text-stone-500 mt-4">v0.5.3 · 2026-05-12 · single source of truth · awaiting Jerel sign-off</p>
+    <p class="mono text-xs text-stone-500 mt-4">v0.5.4 · 2026-05-12 · single source of truth · awaiting Jerel sign-off</p>
+    <p class="text-amber-300 text-sm mt-3 max-w-3xl"><strong>v0.5.4 update (organic idea-source expansion):</strong> New <strong>PATH 5 — Sales Call Transcripts</strong> added to the 4 existing idea-injection paths. Michelle uploads sales-call audio (Zoom/Loom/in-person); Whisper transcribes; AI mines for buyer objections, hesitations, and reframes asked for. Each surfaces as a content idea tagged <span class="mono">sales-call-objection</span>, biased toward MOFU/BOFU (objection-handling is where these earn). Stage 01 (ideate) source-weighting updated: BOFU now pulls heavily from sales-call-objection. Privacy section extended — call transcripts inherit 12-month retention with explicit consent flow (caller agrees on the call OR you redact identifying details before upload). PATH 5 lives under "Jerel injects" because Michelle controls capture.</p>
     <p class="text-amber-300 text-sm mt-3 max-w-3xl"><strong>v0.5.3 update (Michelle-readiness pass):</strong> Commercial terms now live in the client deck (<code>michelle-onboarding.html § Investment + the deal</code>) — 4-week pilot framing, quality-bar guarantee (3 posts/week in voice, on time, else extra week free), no outcome guarantee, locked cadence at 3/wk, BOFU stays soft until T1 PDF ships. Pilot investment figure handled in onboarding call. Prior "open decisions" (cadence 3 vs 4, BOFU CTA, plan tone) are now <strong>resolved internally and reflected in the client deck</strong> rather than presented to Michelle as choices.</p>
     <p class="text-amber-300 text-sm mt-3 max-w-3xl"><strong>v0.5.2 update (stale-copy cleanup pass):</strong> Versions normalized across header/TL;DR/body/sign-off/footer. Auth standardized on Clerk (NextAuth references removed). Cloudflare relay confirmed Phase 6+ — Phase 4 dashboard is <strong>read/write only</strong> (config + approvals + manual analytics entry); headless Claude execution moves to Phase 6 with the relay. CTA language standardized on "LinkedIn Trust Leak Audit" (no more "FREE Q1 Brand Clarity Guide"); "DM AUDIT" only activates after T1 PDF + email gate ship. Dashboard timing reframed as conditional ("after manual + CLI pilot succeeds"), not week 5 promise. Stage 06 cron pull replaced with manual IG/LinkedIn entry schema. Client-facing booked-call language softened to targets/hypotheses. New sections: <strong>RACI</strong>, <strong>Data Handling / Privacy</strong>, <strong>Canonical Storage by Phase</strong>. The <a href="#decision-register" class="underline">Decision Register</a> remains the single source of truth.</p>
   </div>
@@ -106,7 +107,8 @@
   │   ─ niche swipe pool (Phase 6 cron)        ─ "Add an idea" form on dashboard    │
   │   ─ Michelle's offer × buyer profile       ─ Voice memo upload (Whisper)        │
   │   ─ Last week's winners (decomposed)       ─ Promote from swipe pool            │
-  │   ─ Comment/DM signals from her posts      ─ Override at the ideate gate        │
+  │   ─ Comment/DM signals from her posts      ─ Sales-call transcript objections   │
+  │                                            ─ Override at the ideate gate        │
   │                                                                                  │
   │                                ▼                                                 │
   │                        IDEA POOL (here.now)                                     │
@@ -434,7 +436,7 @@
       </tr>
     </thead>
     <tbody class="align-top">
-      <tr><td class="p-2 mono text-xs">01_ideate</td><td class="p-2">Ideas generated in the split ratio (e.g. 3 TOFU / 5 MOFU / 2 BOFU). Each idea tagged with stage. Source weighting also shifts: TOFU pulls more from outlier swipe; BOFU pulls more from offer angles + buyer-profile.</td></tr>
+      <tr><td class="p-2 mono text-xs">01_ideate</td><td class="p-2">Ideas generated in the split ratio (e.g. 3 TOFU / 5 MOFU / 2 BOFU). Each idea tagged with stage. Source weighting shifts by stage: <strong>TOFU</strong> pulls more from outlier swipe + winners. <strong>MOFU</strong> pulls from offer angles + buyer-profile + sales-call objections (where the buyer was 80% sold but hesitated). <strong>BOFU</strong> pulls heavily from sales-call objections + buyer-profile — these are the moments a real buyer voiced their last block. One sales-call objection often spawns 2-3 distinct posts (objection raw, the reframe, the case study that resolves it).</td></tr>
       <tr class="bg-stone-50"><td class="p-2 mono text-xs">02_script</td><td class="p-2">Hook template + body structure + CTA differ by stage. TOFU = curiosity hook + broad pain + soft follow CTA. MOFU = specific problem + new mechanism tease + DM-keyword CTA. BOFU = proof / case / objection + direct call-booking CTA.</td></tr>
       <tr><td class="p-2 mono text-xs">03_produce</td><td class="p-2">Caption length + hashtag set + cover image style adapt. TOFU caption is shorter, more curiosity; BOFU caption is longer, more proof-stacked. CTA copy mirrors script stage.</td></tr>
       <tr class="bg-stone-50"><td class="p-2 mono text-xs">06_learn</td><td class="p-2">Winner metric uses per-stage weights from funnel-goal.json. A TOFU post is judged by hook rate × follow rate; a BOFU post by DM keyword hits + call bookings. <strong>Apples-to-apples is forbidden.</strong></td></tr>
@@ -578,7 +580,7 @@
 </section>
 
 <section id="jerel-contribution" class="max-w-5xl mx-auto px-6 py-6">
-  <h2 class="text-2xl font-bold border-l-4 border-amber-500 pl-3">How Jerel contributes — 4 injection points</h2>
+  <h2 class="text-2xl font-bold border-l-4 border-amber-500 pl-3">How Jerel contributes — 5 injection points</h2>
   <p class="mt-3 text-stone-800">The system surfaces ideas <em>and</em> accepts yours. Both flows merge into one weekly idea pool. Each idea is tagged with its source so we can tune the mix over time.</p>
 
   <div class="grid md:grid-cols-2 gap-4 mt-4">
@@ -619,6 +621,29 @@
         <li>Swap an AI idea for one of yours</li>
         <li>Edit any idea's hook / pillar / stage before approving</li>
       </ul>
+    </div>
+
+    <div class="bg-white border border-rose-300 rounded-lg p-5 md:col-span-2">
+      <p class="pill bg-rose-600 text-white">PATH 5 · highest-leverage MOFU/BOFU source</p>
+      <h3 class="font-bold mt-2">Sales call transcripts — objection mining</h3>
+      <p class="text-sm text-stone-700 mt-2">Sales calls are where buyers reveal what's <em>actually</em> stopping them from saying yes — the exact hesitation, reframe, or piece of proof they needed. Mining them turns one call into 2-3 BOFU posts that pre-empt the same objection for the next 50 prospects.</p>
+
+      <p class="text-sm text-stone-700 mt-3"><strong>The workflow:</strong></p>
+      <ol class="text-sm text-stone-700 mt-1 list-decimal list-inside space-y-1">
+        <li>Michelle uploads a sales-call recording (<span class="mono text-xs">.mp4</span> / <span class="mono text-xs">.m4a</span> / <span class="mono text-xs">.mp3</span>) — Zoom export, Loom, iPhone recording, etc.</li>
+        <li>Whisper transcribes (already in the <code>transcribe</code> skill). Output stored at <span class="mono text-xs">clients/michelle-koh/_sales-calls/&lt;date&gt;-&lt;prospect-anon&gt;.md</span>.</li>
+        <li>AI mines the transcript for: (a) <strong>objections raised</strong> — "I'm worried about X", "I tried Y before and it didn't work", "How do I know this will work for me"; (b) <strong>reframes that landed</strong> — the sentence Michelle said that flipped their hesitation; (c) <strong>case-study moments</strong> — "your story about Z client really resonated"; (d) <strong>language to steal</strong> — verbatim phrases the buyer used to describe their pain or desire.</li>
+        <li>Each surface lands in the idea pool tagged <span class="mono">sales-call-objection</span> with provenance link back to the transcript.</li>
+        <li>Stage 01 ideate weights these toward MOFU/BOFU per the source-weighting table in Stage 01.</li>
+      </ol>
+
+      <p class="text-sm text-stone-700 mt-3"><strong>Why this is high-leverage:</strong> Outlier swipe gives you what worked for <em>someone else's</em> audience. Voice memo gives you Michelle's top-of-mind. Sales calls give you exactly what your real buyers said in the moment of highest commercial stakes. The objection-handling post that ships from this is anchored to a real conversation, not a hypothesis. Hormozi calls this "the cheat code" — selling content writes itself when you have the call transcripts.</p>
+
+      <p class="text-sm text-stone-700 mt-3"><strong>One post → many:</strong> A single 45-min discovery call typically yields 4-7 distinct content angles. The 80/20 split: 60% become MOFU/BOFU objection-handling, 20% become MOFU proof-driven, 20% become TOFU pain framing (the language the buyer used to describe their problem).</p>
+
+      <p class="text-sm text-stone-700 mt-3"><strong>Privacy + consent (non-negotiable):</strong> Two paths — (a) Michelle gets explicit verbal consent during the call ("Hey, mind if I anonymize this for content learning?"), then we anonymize all names/companies/specifics before mining; OR (b) Michelle uploads only her side of the call (audio with only her speaking, e.g. solo voice memo recapping objections from a recent call she just had). Path B sidesteps consent entirely. Default in MVP = <strong>path B</strong> (Michelle dictates objections she heard, solo). Path A is unlocked when she has the consent script integrated into her sales flow. See <a href="#data-handling" class="underline">Data Handling</a>.</p>
+
+      <p class="text-xs text-stone-500 mt-3">Storage: <span class="mono text-xs">clients/michelle-koh/_sales-calls/</span> (Phase 1-2) → here.now (Phase 4+). 12-month retention. Anonymization happens at the transcribe step, BEFORE the transcript hits the idea-pool. Subagents see anonymized text only.</p>
     </div>
   </div>
 
@@ -1536,6 +1561,7 @@ Skill uses only Claude-native tools + remote APIs  → REMOTE (Claude Code Routi
     </thead>
     <tbody class="align-top">
       <tr><td class="p-2 font-bold">Voice memos (Michelle's)</td><td class="p-2">.m4a / .mp3 + transcripts</td><td class="p-2">Phases 1-2: Google Drive (Michelle-shared folder). Phase 4+: here.now <span class="mono">michelle-koh</span> namespace.</td><td class="p-2">Michelle + Jerel only. No subagent calls expose audio to third-party LLMs except Whisper (transcription).</td><td class="p-2">12 months by default. Michelle can request delete any time.</td></tr>
+      <tr class="bg-stone-50"><td class="p-2 font-bold">Sales call transcripts (PATH 5)</td><td class="p-2">.m4a / .mp4 / .mp3 + transcripts. <strong>Default flow = solo dictation</strong> (Michelle recaps objections she heard, no other party on the audio). Two-party recordings only with explicit verbal consent captured on the recording itself.</td><td class="p-2">Phases 1-2: <span class="mono text-xs">clients/michelle-koh/_sales-calls/</span> (local repo, gitignored). Phase 4+: here.now <span class="mono">michelle-koh/_sales-calls/</span> namespace, access-controlled.</td><td class="p-2">Michelle + Jerel. Whisper transcribes locally where possible. Anonymization step strips names/companies/identifying detail BEFORE the transcript reaches the idea-mining subagent. Third-party LLMs see redacted text only.</td><td class="p-2">Audio: 30 days then auto-purge. Transcripts (anonymized): 12 months rolling. Michelle can request delete any time. Two-party recordings have an extra 7-day consent-revocation window — if the other party withdraws, both audio and transcript are deleted within 24h.</td></tr>
       <tr class="bg-stone-50"><td class="p-2 font-bold">DMs + comments (her audience)</td><td class="p-2"><strong>Summaries only by default.</strong> Raw paste only when Michelle explicitly pastes one for analysis.</td><td class="p-2">Google Sheet "DM signals" tab (counts + themes, not identifying text). Decomposition notes in <span class="mono">06_learn/</span>.</td><td class="p-2">Michelle + Jerel.</td><td class="p-2">Aggregated counts retained; raw text purged at end of each Friday review unless flagged "case study material" with Michelle's OK.</td></tr>
       <tr><td class="p-2 font-bold">Analytics screenshots</td><td class="p-2">PNG / JPG of IG Insights + LinkedIn analytics panels.</td><td class="p-2">Google Drive (Michelle-shared). Phase 4+: <span class="mono">here.now://michelle-koh/06_learn/analytics/screenshots/</span>.</td><td class="p-2">Michelle + Jerel.</td><td class="p-2">12 months rolling. Numbers in the Sheet stay; screenshots can be purged at 12mo without losing the data.</td></tr>
       <tr class="bg-stone-50"><td class="p-2 font-bold">Client identifying info</td><td class="p-2">Michelle's name, brand, IG/LI handles, bootcamp pricing, contact info.</td><td class="p-2"><span class="mono">clients/michelle-koh/_brand/</span> (local repo) + here.now once Phase 4 ships.</td><td class="p-2">Jerel only. Repo is private; here.now namespace is access-controlled.</td><td class="p-2">For duration of engagement + 90 days post-termination, then archive.</td></tr>
@@ -1553,6 +1579,7 @@ Skill uses only Claude-native tools + remote APIs  → REMOTE (Claude Code Routi
     <li><strong>Credentials never live in the repo.</strong> ConvertKit / Beehiiv / Clerk / IG API tokens stay in <span class="mono">~/.claude/.env</span> or here.now secrets (Phase 4+). The repo's <span class="mono">.gitignore</span> covers all <span class="mono">.env*</span> patterns.</li>
     <li><strong>No automatic publishing.</strong> Even when Phase 6 adds dashboard-triggered execution, the publish step stays Michelle-manual until she explicitly opts in to automation per platform.</li>
     <li><strong>PDPA-aware (Singapore).</strong> Both Michelle and her audience are likely SG-based. Standard PDPA practices apply: purpose limitation (data used only for content production), reasonable retention, deletion on request.</li>
+    <li><strong>Sales-call consent is mandatory for two-party recordings.</strong> Path A (recorded conversation with another party) requires explicit verbal consent captured on the audio itself ("Mind if I anonymize this call for content learning?") AND an anonymization step before mining. Path B (Michelle's solo dictation of what she heard) sidesteps this — it's Michelle speaking, no third-party voice. MVP default is Path B. Path A unlocks when she has the consent script integrated into her sales flow. PDPA exception: if the other party requests deletion within 7 days of mining, both audio and transcript are deleted within 24h.</li>
   </ul>
 </section>
 
