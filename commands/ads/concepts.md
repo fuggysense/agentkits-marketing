@@ -1,5 +1,5 @@
 ---
-description: Generate paid ad concepts (angles upstream of hooks) — Iman-grounded, hyper-specific persona, problem-aware target, proof front-loaded. Composes content-moat + unique-mechanism-* + persuasive-premise.
+description: Generate paid ad concepts (angles upstream of hooks) — Iman-grounded, hyper-specific persona, problem-aware target, proof front-loaded. Routes to ad-concept-engine (DCT batch orchestrator).
 version: "1.0.0"
 brand: AgentKits Marketing by AityTech
 argument-hint: <offer focus or "from-winner: <organic-concept-id>"> [--client <slug>]
@@ -7,8 +7,8 @@ argument-hint: <offer focus or "from-winner: <organic-concept-id>"> [--client <s
 
 # /ads:concepts
 
-**Underlying skills (composed):** `content-moat` + `unique-mechanism-problem` + `unique-mechanism-solution` + `persuasive-premise` + `problem-promise` + `usp-generator`.
-**Note:** `ad-concept-engine` was referenced in routing-table.md but doesn't exist in the repo. Until it does, this command composes the existing skills above.
+**Underlying skill:** `ad-concept-engine` (DCT batch orchestrator — 3 creatives × 2 headlines × 2 ad copies = 12 Meta combinations per batch, plus DCT tracker). Auxiliary: `content-moat` for originality scoring against existing ad-library library.
+**Status:** As of 2026-05-12, `ad-concept-engine` is the canonical paid-side skill. The earlier composition (`unique-mechanism-*`, `persuasive-premise`, `problem-promise`, `usp-generator`) referenced empty stub folders in `~/AI workflows/ghostwriteros-research/calibration/` — those were unbuilt placeholders. `ad-concept-engine` subsumes their intent via its big-angle-spotter Phase 0 + DCT pipeline.
 
 **Job-of-asset:** Efficiency + qualification. Make the right buyer self-select and keep moving toward conversion.
 **Output:** 5-7 paid ad concepts per batch (each becoming 3-5 hook variations downstream, total 15-35 testable creatives).

@@ -76,13 +76,14 @@
 | `verification-loops` | Spawn reviewer + resolver agents for quality assurance |
 | `multi-agent-consensus` | Poll N agents for strategic decisions and ranking |
 | `prompt-contracts` | Structured GOAL/CONSTRAINTS/FORMAT/FAILURE specs |
-| `agent-chatrooms` | Multi-round adversarial debate between agent roles |
+| `ad-concept-engine` | DCT-aware paid ad concept pipeline — per-avatar angles, complete DCT batches (12 Meta combos), DCT tracker. Used by `/ads:concepts` and `/copy:ad`. |
+| `agent-chatrooms` | UNBUILT — referenced for future adversarial-debate flows; no SKILL.md exists in `skills/` or globally |
 | `script-skill` | Video script writing in YOUR voice — voice capture, competitor hook scraping, hooks database, de-AI + humanizer passes (global: `~/.claude/skills/script-skill/`) |
 | `video-director` | AI video prompt generation — 14 types, 3 pipelines (Direct, Image-First, Localized), character bibles, seed management, UGC automation, HITL gates |
 | `analytics-usage` | Global skill/agent usage tracking, 80/20 pareto analysis, client breakdown |
 | `knowledge-hygiene` | Anti-decay system — freshness audit, learnings integration check, registry drift detection |
 | `autoresearch` | Autonomous skill optimization — generate → evaluate → mutate → keep/discard loops, per-client (global: `~/.claude/skills/autoresearch/`) |
-| `skill-amplifier` | Enhance existing skills/agents, conflict detection, merge suggestions (global: `~/.claude/skills/skill-amplifier/`) |
+| `skill-amplifier` | UNBUILT — claimed global at `~/.claude/skills/skill-amplifier/` but folder doesn't exist. Treat as TODO. |
 | `chrome-mcp` | Authenticated Chrome browser control — live dashboards, tracking verification, post-publish QA (global: `~/.claude/skills/chrome-mcp/`) |
 | `website-design` | Quad-mode website builds (Recreate, Create, Hybrid, Paper-First) with Paper.design MCP for bidirectional visual editing |
 | `unslop` | Domain-specific AI pattern detection — generates empirical avoidance profiles (Layer 1 of 4-layer de-AI stack) |
