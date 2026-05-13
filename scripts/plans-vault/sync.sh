@@ -168,7 +168,17 @@ run_publish() {
     return 1
   fi
 
-  echo "$out" | extract_slug
+  # When publish.sh skips all files as unchanged it prints no URL,
+  # so extract_slug's grep returns 1 and pipefail propagates. If we
+  # already know the slug (re-publish path), short-circuit with it.
+  if [ -n "$maybe_slug" ] && echo "$out" | grep -q "unchanged, skipped"; then
+    echo "$maybe_slug"
+    return 0
+  fi
+
+  # `|| true` guards against pipefail in the no-URL case for first-time
+  # publishes where caller has no maybe_slug to fall back to.
+  echo "$out" | extract_slug || true
 }
 
 api_get() {
