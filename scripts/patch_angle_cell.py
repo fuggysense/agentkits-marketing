@@ -37,9 +37,19 @@ CREDENTIALS_PATH = REPO_ROOT / "scripts" / "modal" / "credentials.json"
 
 
 def load_metrics_config(client_slug: str) -> dict:
-    path = REPO_ROOT / "clients" / client_slug / "metrics-config.json"
-    if not path.exists():
-        raise SystemExit(f"metrics-config.json not found for client: {path}")
+    # Config location drifted across the 260504 ICM reorg: older clients keep it at the
+    # client root, reorganised clients moved it under _brand/. Check root first
+    # (back-compat), then _brand/. First hit wins. (Back-ported from
+    # ad_concept_sheet_writer.py 260611.)
+    client_dir = REPO_ROOT / "clients" / client_slug
+    candidate_paths = [
+        client_dir / "metrics-config.json",
+        client_dir / "_brand" / "metrics-config.json",
+    ]
+    path = next((p for p in candidate_paths if p.exists()), None)
+    if path is None:
+        searched = " or ".join(str(p) for p in candidate_paths)
+        raise SystemExit(f"metrics-config.json not found for client (looked in: {searched})")
     return json.loads(path.read_text())
 
 

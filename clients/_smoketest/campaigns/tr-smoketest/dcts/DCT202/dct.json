@@ -1,0 +1,61 @@
+{
+  "dct_id": "DCT202",
+  "campaign": "tr-smoketest",
+  "campaign_type": "dct",
+  "metrics_campaign": "tr-smoketest",
+  "avatar": "avatar-2 (The Referral-Only Skeptic)",
+  "offer": "Free Overpaying Checklist (fictional)",
+  "meta_adset": "MER_DCT202_Flex_5angles",
+  "status": "DRAFT",
+  "dct_method": "10-5-5",
+  "format": "Meta Flexible Ad (10-5-5)",
+  "angles": [
+    {
+      "id": "A01",
+      "name": "Angle 1 \u2014 fee-clarity (fictional)",
+      "headline": "Headline 1 for DCT202 (fictional)",
+      "primary_text": "Primary text 1 for DCT202. Meridian flat-fee advisory, fictional copy.",
+      "market_awareness": "Solution Aware",
+      "market_sophistication": "Stage 3"
+    },
+    {
+      "id": "A02",
+      "name": "Angle 2 \u2014 fee-clarity (fictional)",
+      "headline": "Headline 2 for DCT202 (fictional)",
+      "primary_text": "Primary text 2 for DCT202. Meridian flat-fee advisory, fictional copy.",
+      "market_awareness": "Solution Aware",
+      "market_sophistication": "Stage 3"
+    },
+    {
+      "id": "A03",
+      "name": "Angle 3 \u2014 fee-clarity (fictional)",
+      "headline": "Headline 3 for DCT202 (fictional)",
+      "primary_text": "Primary text 3 for DCT202. Meridian flat-fee advisory, fictional copy.",
+      "market_awareness": "Solution Aware",
+      "market_sophistication": "Stage 3"
+    },
+    {
+      "id": "A04",
+      "name": "Angle 4 \u2014 fee-clarity (fictional)",
+      "headline": "Headline 4 for DCT202 (fictional)",
+      "primary_text": "Primary text 4 for DCT202. Meridian flat-fee advisory, fictional copy.",
+      "market_awareness": "Solution Aware",
+      "market_sophistication": "Stage 3"
+    },
+    {
+      "id": "A05",
+      "name": "Angle 5 \u2014 fee-clarity (fictional)",
+      "headline": "",
+      "primary_text": "",
+      "market_awareness": "Solution Aware",
+      "market_sophistication": "Stage 3"
+    }
+  ],
+  "image_pool": {
+    "images": [
+      "DCT202-img-01",
+      "DCT202-img-02",
+      "DCT202-img-03"
+    ]
+  }
+}

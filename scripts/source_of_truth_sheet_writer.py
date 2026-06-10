@@ -76,10 +76,19 @@ class SourceOfTruthSheetWriter:
     # ── Setup ───────────────────────────────────────────────────────────────
 
     def _load_config(self) -> dict:
-        config_path = self.client_dir / "metrics-config.json"
-        if not config_path.exists():
+        # Config location drifted across the 260504 ICM reorg: older clients keep it at
+        # the client root, reorganised clients moved it under _brand/ (neezanizam,
+        # eugene-chieng, harmony-wellness). Check root first (back-compat), then _brand/.
+        # First hit wins. (Back-ported from ad_concept_sheet_writer.py 260611.)
+        candidate_paths = [
+            self.client_dir / "metrics-config.json",
+            self.client_dir / "_brand" / "metrics-config.json",
+        ]
+        config_path = next((p for p in candidate_paths if p.exists()), None)
+        if config_path is None:
+            searched = " or ".join(str(p) for p in candidate_paths)
             raise FileNotFoundError(
-                f"No metrics-config.json at {config_path}. "
+                f"No metrics-config.json found (looked in: {searched}). "
                 "Run /sheets:provision for this client before writing source-of-truth."
             )
         raw = json.loads(config_path.read_text())

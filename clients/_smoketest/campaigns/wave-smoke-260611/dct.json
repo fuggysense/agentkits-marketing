@@ -9,6 +9,23 @@
   "owner_skill": "ad-concept-engine",
   "source_method": "skills/ad-concept-engine/SKILL.md (static creative briefs) + references/high-converting-static-brief.md",
   "_shape_note": "Brief-directed shape: 2 DCT entries, each carrying its OWN image_pool (2-3 prompts). This DEVIATES from the canonical dct.json (one flat top-level image_pool that Meta mixes across all 5 angles). Followed the brief literally for the baseline; structural friction logged 260611.",
+  "claims": [
+    {
+      "claim": "S$900k",
+      "source": "_brand/offer.md L13-L15 (T3 flat fee is the same regardless of purchase price) + copy/wave-smoke-260611.md A01; illustrative lower bound of the price band that brackets the flat fee. FICTIONAL but in-world consistent.",
+      "note": "Price-band example, not a market stat. Added to ledger 260611 (claim gate M1.1)."
+    },
+    {
+      "claim": "S$1.6m",
+      "source": "_brand/offer.md L13-L15 (flat fee identical at any price) + copy/wave-smoke-260611.md A01; illustrative upper bound of the same price band. FICTIONAL but in-world consistent.",
+      "note": "Price-band example, not a market stat. Added to ledger 260611 (claim gate M1.1)."
+    },
+    {
+      "claim": "S$12k",
+      "source": "_brand/offer.md L24 (hidden-commission mechanism) + L18 (S$30k+ overpay class); illustrative hidden agent commission on a ~S$1m purchase (~1-2%), contrasted against the S$4,500 visible flat fee in the A02 headline. FICTIONAL but in-world consistent.",
+      "note": "Illustrative commission figure, not a sourced statistic. Added to ledger 260611 (claim gate M1.1)."
+    }
+  ],
   "dcts": [
     {
       "dct_id": "DCT-SMOKE-01",

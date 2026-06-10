@@ -33,14 +33,33 @@ Every real render writes a `<image>.png.meta.json` sidecar — prompt, style, en
 
 ## Run it from a real pipeline output
 
-If a `dct-tracker.json` already holds `image_prompt` fields (from big-angle-spotter / ad-concept-engine), skip hand-crafting:
+If a `dct.json` already holds `image_prompt` fields (from ad-concept-engine / big-angle-spotter), skip hand-crafting. The current shape is an `image_pool.images[]` array where each image carries an `id`, `angle_id`, `variant_id`, and `image_prompt`:
 
 ```
-python3 render.py --from-tracker clients/<client>/campaigns/<slug>/dct-tracker.json \
+# one pool image by id
+python3 render.py \
+  --from-tracker clients/eugene-chieng/campaigns/upgrader-ads/dcts/dct-002-math-blind/dct.json \
+  --image DCT002-img-01 --style dr-clean-static --dry-run
+
+# the whole pool at once (dry-run resolves every prompt; a real render of >1 image needs --confirm-all)
+python3 render.py --from-tracker .../dct.json --style dr-clean-static --dry-run
+
+# filter the pool by angle, then variant
+python3 render.py --from-tracker .../dct.json --batch A02 --variant v1 --dry-run
+```
+
+It reads the prompt straight from the file (inline `image_prompt` or the `image_prompt_file` reference) and auto-targets `<dct-dir>/images/<id>.png` — the same path the pool already references.
+
+**Legacy shape.** The older `creatives[]` / `variations[]` tracker (`dct-tracker.json`) is auto-detected; force it with `--legacy-shape`. There `--batch` is the batch id and `--variant` is required:
+
+```
+python3 render.py --from-tracker .../dct-tracker.json \
         --batch DCT010-A01 --variant v1 --style dr-clean-static --dry-run
 ```
 
-It reads the prompt straight from the tracker (inline `image_prompt` or the `image_prompt_file` reference), auto-targets `campaigns/<slug>/image-prompts/renders/<batch>-<variant>.png`.
+Legacy renders auto-target `campaigns/<slug>/image-prompts/renders/<batch>-<variant>.png`.
+
+**Claim gate.** Before any tracker render, `render.py` runs `scripts/claim_gate.py --gate <tracker>` if that script exists. It is being built in parallel, so the hook NO-OPs with a warning when absent. `--skip-claim-gate` opts out explicitly (also logged).
 
 ## Add a new engine later
 

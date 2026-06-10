@@ -1,6 +1,6 @@
 # Routing Table (auto-generated — do not edit)
 
-_Generated: 2026-06-10T16:00:25.120Z • Project: 75 • Global: 58_
+_Generated: 2026-06-10T17:20:10.662Z • Project: 75 • Global: 58_
 
 Edit `routing-overrides.md` for manual disambiguation. Re-run `.claude/hooks/refresh-registry.js` to refresh.
 

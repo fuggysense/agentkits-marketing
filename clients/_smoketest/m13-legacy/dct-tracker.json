@@ -1,0 +1,12 @@
+{
+  "dct_id": "DCT010",
+  "creatives": [
+    {
+      "batch": "DCT010-A01",
+      "variations": [
+        {"variant_id": "v1", "image_prompt": "LEGACY PROMPT A01 v1 — kitchen table, documentary, square 1:1."},
+        {"variant": "v2", "image_prompt": "LEGACY PROMPT A01 v2 — typographic card."}
+      ]
+    }
+  ]
+}

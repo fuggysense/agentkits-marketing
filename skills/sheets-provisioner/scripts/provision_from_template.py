@@ -10,19 +10,28 @@ What it does:
   1. Auth via `gcloud auth print-access-token` (must carry Drive scope).
   2. For each requested tab, copy it from --source into the destination workbook with
      the Sheets `copyTo` API — preserving formatting, formulas, frozen rows, dimensions.
-  3. Rename the copies ("Copy of X" -> "X") and delete any pre-existing/placeholder tabs.
+  3. Rename the copies ("Copy of X" -> "X"). With --title, delete the one auto-created
+     "Sheet1" placeholder. With --into the run is APPEND-ONLY: pre-existing tabs are never
+     deleted or modified, and a name collision with an existing tab aborts the run loudly
+     (the colliding tab name is printed; no overwrite, no delete).
   4. Clear DATA rows below each tab's header rows, so the template client's numbers/copy
      never leak into the new workbook. Header depth = max(frozenRows, 1), per-tab override
      via --keep.
   5. Share with the given accounts (the service account MUST be one of them, as editor).
 
+Add --dry-run to read source+dest and print the plan without touching anything (no
+copy/rename/delete/clear/share). Use it to confirm an --into run is append-only.
+
 Examples:
-  # Reshape an existing (already-shared) workbook to mirror 9 tabs of a template
+  # Append 9 template tabs into an existing (already-shared) workbook — never deletes its tabs
   provision_from_template.py \
     --source 14bh8k6S-... --into 1KqWJP... \
     --tabs "DAILY CALLS,WEEKLY CALLS,MONTHLY CALLS,KPIs,APPT,CREATIVES,AVATARS,COPY,OBF DATA" \
     --keep "APPT=2" \
     --share "neezanizam@neezanizam-492212.iam.gserviceaccount.com=writer,ops@1upsalesai.com=writer"
+
+  # Preview the append plan first (no API writes)
+  provision_from_template.py --source 14bh8k6S-... --into 1KqWJP... --tabs "CREATIVES,COPY" --dry-run
 
   # Create a brand-new workbook from a template
   provision_from_template.py --source 14bh8k6S-... --title "THOMSON RESERVE | Buyers" \
@@ -67,6 +76,7 @@ def main() -> None:
     ap.add_argument("--share", default="", help='comma list of email=role (role: writer|reader)')
     ap.add_argument("--keep", default="", help='per-tab header rows to KEEP, e.g. "APPT=2,DAILY CALLS=2"')
     ap.add_argument("--no-clear", action="store_true", help="copy data too (do not clear rows below headers)")
+    ap.add_argument("--dry-run", action="store_true", help="read source+dest, print the plan, make NO changes (no copy/rename/delete/clear/share)")
     args = ap.parse_args()
 
     tabs = [t.strip() for t in args.tabs.split(",") if t.strip()]
@@ -90,19 +100,61 @@ def main() -> None:
         sys.exit(f"tabs not found in source: {missing}")
 
     # destination: existing or new
+    #   placeholder_tab_ids = tabs we created and must remove (the auto-added Sheet1 of a
+    #     brand-new workbook). For --into the workbook is pre-existing and operator-owned,
+    #     so this list stays EMPTY — we never delete or modify what was already there.
+    #   existing_tab_names  = names already present in an --into target, used only to fail
+    #     loud on a collision (no overwrite, no delete).
     if args.into:
         dest_id = args.into
         dmeta = sheets.spreadsheets().get(spreadsheetId=dest_id).execute()
         dest_url = dmeta["properties"].get("title")
-        old_tab_ids = [s["properties"]["sheetId"] for s in dmeta["sheets"]]
+        existing_tab_names = [s["properties"]["title"] for s in dmeta["sheets"]]
+        placeholder_tab_ids = []  # --into is append-only: never delete pre-existing tabs
+        collisions = [t for t in tabs if t in existing_tab_names]
+        if collisions:
+            sys.exit(
+                "REFUSING to provision: these tabs already exist in the --into target "
+                f"(no overwrite, no delete): {collisions}. "
+                "Rename the incoming tabs or pick a clean destination."
+            )
     else:
-        created = sheets.spreadsheets().create(
-            body={"properties": {"title": args.title}},
-            fields="spreadsheetId,spreadsheetUrl,sheets(properties(sheetId))",
-        ).execute()
-        dest_id = created["spreadsheetId"]
-        dest_url = created["spreadsheetUrl"]
-        old_tab_ids = [s["properties"]["sheetId"] for s in created["sheets"]]  # the default Sheet1
+        existing_tab_names = []
+        if args.dry_run:
+            dest_id = "<dry-run-new-workbook-id>"
+            dest_url = f"https://docs.google.com/spreadsheets/d/{dest_id}/edit"
+            placeholder_tab_ids = ["<dry-run-default-Sheet1>"]
+        else:
+            created = sheets.spreadsheets().create(
+                body={"properties": {"title": args.title}},
+                fields="spreadsheetId,spreadsheetUrl,sheets(properties(sheetId))",
+            ).execute()
+            dest_id = created["spreadsheetId"]
+            dest_url = created["spreadsheetUrl"]
+            # the default Sheet1 we just caused to exist — safe to delete after the copies land
+            placeholder_tab_ids = [s["properties"]["sheetId"] for s in created["sheets"]]
+
+    # dry-run: print the plan and stop BEFORE any mutating API call (copyTo onward)
+    if args.dry_run:
+        mode = "append into existing workbook" if args.into else "create new workbook"
+        plan = {
+            "mode": mode,
+            "dest_id": dest_id,
+            "dest_title": dest_url,
+            "tabs_to_add": tabs,
+            "tabs_already_present": existing_tab_names,
+            "preexisting_tabs_to_delete": [] if args.into else placeholder_tab_ids,
+            "would_clear_data_below_headers": not args.no_clear,
+            "would_share_with": [p for p in args.share.split(",") if p.strip()],
+        }
+        print(json.dumps(plan, indent=2))
+        if args.into:
+            print(
+                f"[dry-run] APPEND-ONLY: {len(tabs)} tab(s) added, "
+                f"{len(existing_tab_names)} pre-existing tab(s) left untouched, 0 deletes.",
+                file=sys.stderr,
+            )
+        return
 
     # 1) copy each tab in, capturing its new sheetId + dims
     new_props = {}
@@ -113,12 +165,14 @@ def main() -> None:
         ).execute()
         new_props[t] = cp  # {sheetId,title="Copy of T",gridProperties{rowCount,columnCount,frozenRowCount}}
 
-    # 2) rename copies -> original names; 3) delete placeholders/default tabs
+    # 2) rename copies -> original names; 3) delete ONLY the placeholder Sheet1 of a NEW
+    #    workbook. placeholder_tab_ids is empty for --into, so an --into run never deletes
+    #    a pre-existing tab.
     requests = []
     for t, cp in new_props.items():
         requests.append({"updateSheetProperties": {
             "properties": {"sheetId": cp["sheetId"], "title": t}, "fields": "title"}})
-    for sid in old_tab_ids:
+    for sid in placeholder_tab_ids:
         requests.append({"deleteSheet": {"sheetId": sid}})
     sheets.spreadsheets().batchUpdate(spreadsheetId=dest_id, body={"requests": requests}).execute()
 

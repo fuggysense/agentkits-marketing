@@ -379,7 +379,7 @@ For each micro-persona, compile the pasted research into the standardized Micro-
 | Buying Trigger | [event that pushes action now] |
 | Awareness Level | [Schwartz level] |
 | Sophistication Level | [1-5] |
-| Language | [specific phrases, objections, vocabulary, or self-talk] |
+| Language | [specific phrases, objections, vocabulary, or self-talk — every verbatim phrase needs an inline source pointer, see Quote Provenance below] |
 | Proof | [proof elements that this segment trusts] |
 | What Makes This Segment Distinct | [why this is not just a demographic split] |
 | Source Confidence | [high / medium / low + reason] |
@@ -390,7 +390,7 @@ For each micro-persona, compile the pasted research into the standardized Micro-
 - **Primary fear:** [from buyer-profile mapping]
 - **Beliefs to overcome:** [beliefs and counters]
 - **Past solutions tried:** [what they tried and why it failed]
-- **Raw inner dialogue:** [verbatim or inferred self-talk]
+- **Raw inner dialogue:** [verbatim self-talk — each line needs an inline source pointer, see Quote Provenance below. Inferred self-talk with no source must be tagged `[HYPOTHESIS - not customer language]`]
 - **Relationship impact:** [family/work/self-worth effects]
 
 #### Market Behavior
@@ -403,7 +403,38 @@ For each micro-persona, compile the pasted research into the standardized Micro-
 - **Evidence sources:** [links, pasted research, quotes, or source notes]
 ```
 
+#### Quote Provenance (HARD RULE — no source, no quote)
+
+Every quote or verbatim language pattern written into `buyer-profile.md` or any avatar/`_brand/avatars/*.md` file MUST carry a source pointer. A source pointer is a relative path plus a line number or anchor into a real research file, transcript, or research-vault doc — something a downstream reader can open and verify. Format it inline, right after the quote:
+
+```markdown
+- **Raw inner dialogue:** "honestly i'd pay a flat fee just to have one person look at my shortlist who doesn't earn more if i spend more" — `00_inputs/research/voc-reddit-dump-260611.md:47`
+```
+
+The pointer can also name an external source the file already records (`research-vault/markets/sg-property-buyer/frustrations.md:L12`, a dated transcript line, a pasted-research block ID). What it cannot be: a platform name with no line ("Grok", "from Reddit"), "synthesized from research", or no attribution at all.
+
+**If there is no source, you MUST NOT write the quote.** When tempted to invent a buyer line, take one of two paths:
+
+1. **Find a real quote.** Go back to the research inputs (Phase 0 vault check, Phase 2 pasted research, Phase 1.5 copy extraction) and pull an actual verbatim line that says the same thing. Cite it with a pointer.
+2. **Mark it as a hypothesis.** If no customer ever said it, write the inferred line and tag it `[HYPOTHESIS - not customer language]`. Downstream skills (`ad-concept-engine`, `headline-bank`, `copywriting`, `big-angle-spotter`) MUST NOT quote a `[HYPOTHESIS]` line in any ad, headline, script, or page. It is a working assumption for segmentation, never customer voice-of-customer to put in front of a buyer.
+
+A quote with no pointer and no `[HYPOTHESIS]` tag is a refuse-to-write condition. Stop, surface the gap to the operator, and offer the two paths above. Do not silently emit an unsourced quote — that is how an invented line ("I want this mental burden off my shoulders") propagates from one avatar file into live DCT JSON, spotter prompts, dashboards, and rendered ad copy with no buyer ever having said it.
+
+**Worked example (smoke client):** Meridian Property Advisory's flat-fee-curious micro-persona. The VOC dump at `clients/_smoketest/00_inputs/research/voc-reddit-dump-260611.md` line 47 records:
+
+> "honestly i'd pay a flat fee just to have one person look at my shortlist who doesn't earn more if i spend more. the commission thing poisons everything."
+> — r/singaporefi · 2026-03-22
+
+So the Language field is written WITH the pointer:
+
+```markdown
+| Language | "i'd pay a flat fee just to have one person look at my shortlist who doesn't earn more if i spend more" — `00_inputs/research/voc-reddit-dump-260611.md:47`; "the commission thing poisons everything" — same line |
+```
+
+The buyer-truth ("fix the incentive and I'm in") is grounded the same way — it traces to `voc-reddit-dump-260611.md:114`. A line like "I just want peace of mind about the biggest purchase of my life" — which no quote in the dump actually says — would be written as `[HYPOTHESIS - not customer language]` until a real source is found, and no ad may quote it.
+
 **Quality checks during compilation:**
+- Every quote and verbatim language pattern carries a source pointer (path + line/anchor) or a `[HYPOTHESIS - not customer language]` tag. No unsourced, untagged quotes — see Quote Provenance above. This is the first check, not the last: an unsourced quote blocks the write.
 - Flag any section where external research was thin — offer to fill from buyer-profile.md
 - Cross-check demographics against icp.md for consistency
 - Verify Schwartz level assignment matches the research evidence
@@ -438,15 +469,19 @@ User actions:
 
 | Date | Action | Reason | Sources |
 |------|--------|--------|---------|
-| YYMMDD | Created/Refreshed | Initial avatar research | Perplexity, Grok, ChatGPT |
+| YYMMDD | Created/Refreshed | Initial avatar research | `00_inputs/research/<file>:Lnn`, `research-vault/markets/<market>/<aspect>.md` |
 ```
 
-5. Ensure the buyer-profile.md header says:
+Name the actual files mined, not bare platform names. "Perplexity, Grok, ChatGPT" is not a source — it tells a downstream reader nothing they can open.
+
+5. **Provenance gate before save.** Scan every quote and verbatim language pattern in the map. Each one must end in a source pointer (path + line/anchor) or carry the `[HYPOTHESIS - not customer language]` tag. If any quote is bare, do not save — stop, list the offending lines, and resolve via the two paths in Quote Provenance (find a real source, or tag it as a hypothesis). This gate also applies when refreshing an existing map: legacy unsourced quotes inherited from a prior run must be sourced or tagged before the refresh is written.
+
+6. Ensure the buyer-profile.md header says:
    `> Micro-personas for ad targeting live in this file under ## MICRO-PERSONA MAP.`
 
-6. Do not create or update `_brand/avatars/*.md` for targeting unless the user explicitly asks for legacy/tooling exports.
+7. Do not create or update `_brand/avatars/*.md` for targeting unless the user explicitly asks for legacy/tooling exports.
 
-7. Inform user: "Buyer-profile micro-personas ready. Run `/ads:concepts [project]` to generate DCT batches."
+8. Inform user: "Buyer-profile micro-personas ready. Run `/ads:concepts [project]` to generate DCT batches."
 
 ---
 

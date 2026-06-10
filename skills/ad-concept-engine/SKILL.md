@@ -615,9 +615,35 @@ Save to: `clients/<project>/campaigns/dct-YYMMDD/batch-NN/video/`
 
 For now, route Phase 3b to AI-generated video by default.
 
+### Claim Gate (machine precondition — runs BEFORE HITL Gate 3)
+
+Every number a creative asserts is a liability if no source backs it. A fabricated stat baked into an image is the worst case: it ships inside a pixel where no reviewer re-reads the body copy. So before the human ever sees the batch, run the claim gate on the assembled `dct.json`. It is a hard precondition for HITL Gate 3, not a suggestion.
+
+```bash
+python3 scripts/claim_gate.py --gate clients/<project>/campaigns/<campaign>/dcts/<dct-slug>/dct.json
+```
+
+The gate reads every claim-bearing field (primary text, headlines, copy, `text_on_image_hook`, `bridge_line`, `image_prompt`, `visual_style`) and extracts checkable claims: currency figures, percentages, "X out of Y" ratios, and quantified superlatives. It resolves each one in order against (1) a `claims:` ledger block in the dct itself, (2) prices that appear in `_brand/offer.md`, then (3) an auto-trace through the client research dirs and the research vault. Years, image dimensions, and layout percentages are not claims, so they pass untouched.
+
+Exit 0 means every claim is sourced and the batch may move to HITL Gate 3. Exit 1 means at least one claim is unsourced, and the gate prints each one in plain language: the claim, the field it lives in, the file, and the three ways to clear it.
+
+```
+CLAIM GATE — FAIL  (3 unsourced of 27 claims)
+
+  UNSOURCED: "73%"  (percent)
+    at: DCT-SMOKE-01-image:DCT-SMOKE-01-img-03.text_on_image_hook
+    in: clients/_smoketest/campaigns/wave-smoke-260611/dct.json
+    fix one of: (a) add a source to the dct.json `claims:` ledger (path + line/anchor),
+                (b) reword without the number, or (c) cut the claim.
+```
+
+On a fail, do exactly one of three things per claim: add a real source to the `claims:` ledger (a path plus line or anchor), reword the copy so the number is gone, or cut the claim. Then re-run the gate. Run `--audit` instead of `--gate` to see the full claim-by-source table without failing the build.
+
+Never wave a failing gate through silently. If an operator decides to ship an unsourced number anyway, that is a recorded HITL override with a reason, never a skipped step.
+
 ### HITL Gate 3: Creative Approval
 
-Show generated images and video previews grouped by batch. User approves or requests regeneration.
+Show generated images and video previews grouped by batch. User approves or requests regeneration. Do not enter this gate until the Claim Gate above has returned exit 0 (or carries a recorded operator override).
 
 ---
 
