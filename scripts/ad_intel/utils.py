@@ -213,3 +213,26 @@ def detect_country(phone: str = "", domain: str = "", address: str = "") -> str:
 def chunk_list(lst: list, size: int) -> list[list]:
     """Split a list into chunks of given size."""
     return [lst[i : i + size] for i in range(0, len(lst), size)]
+
+
+# ── Phone Normalization ─────────────────────────────────────────────────────
+
+def normalize_sg_phone(raw: str) -> str:
+    """Normalize a phone number to 65XXXXXXXXX format.
+
+    Handles +65, bare 8-digit, and extra-length inputs.
+    Shared across contact_scraper and sheets_export.
+    """
+    if not raw:
+        return ""
+    digits = raw.strip().replace(" ", "").replace("-", "").replace("+", "").replace("(", "").replace(")", "")
+    # Already has 65 prefix and correct length
+    if digits.startswith("65") and len(digits) == 10:
+        return digits
+    # Bare 8-digit SG number
+    if len(digits) == 8 and digits[0] in "689":
+        return "65" + digits
+    # Has country code but maybe extra chars
+    if digits.startswith("65") and len(digits) > 10:
+        return digits[:10]
+    return digits

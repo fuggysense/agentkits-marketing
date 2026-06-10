@@ -1,0 +1,24 @@
+{
+  "run_date": "2026-03-30T08:41:16.810081",
+  "verticals_processed": [
+    "dental"
+  ],
+  "per_vertical": {
+    "dental": {
+      "keywords_generated": 300,
+      "google_ads_found": 8,
+      "google_failed": false,
+      "meta_ads_found": 27,
+      "scored_businesses": 12,
+      "after_vertical_filter": 12,
+      "contacts_extracted": 12,
+      "phones_found": 12,
+      "emails_found": 12,
+      "decision_makers_found": 0,
+      "after_dedup": 12
+    }
+  },
+  "blocklist_additions": [],
+  "output_format": "sheets",
+  "sheet_url": "https://docs.google.com/spreadsheets/d/1yN_2rHkM9fBJMhg8R_6ummD-0qFhFCvUAVJ3D1YN2U0"
+}

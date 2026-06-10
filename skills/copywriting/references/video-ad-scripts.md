@@ -590,11 +590,11 @@ Click the link to find out how you can [result].
 
 These frameworks write what the person **SAYS** — the script, dialogue, and persuasion structure.
 
-For the visual prompt (what the video **LOOKS LIKE**), pair with the `video-director` skill. It generates ready-to-paste prompts for Sora, Kling, and VEO covering camera work, lighting, environment, realism, and negative prompts.
+For the visual prompt (what the video **LOOKS LIKE**), pair with the `video-router` skill — it routes your objective to the right model + prompt framework, then compiles ready-to-paste prompts for Sora, Kling, and VEO covering camera work, lighting, environment, realism, and negative prompts.
 
 **Workflow:**
 1. Write the script here (choose Straight-For-The-Kill, Personal Story, or Don't Do That)
-2. Feed the dialogue into the video-director prompt template (usually Street Interview, Podcast, or Shock Hook type)
+2. Feed the dialogue into the video-router prompt template (usually Street Interview, Podcast, or Shock Hook type)
 3. Review the combined script + visual prompt through the HITL gate
 4. Paste approved prompt into the AI video tool
 

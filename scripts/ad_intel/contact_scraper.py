@@ -22,10 +22,10 @@ from config import (
     GROQ_API_KEY, GROQ_MODEL, GROQ_RPM,
     FIRECRAWL_API_KEY, FIRECRAWL_FALLBACK_BUDGET,
     SCRAPECREATORS_API_KEY, SCRAPECREATORS_RATE_LIMIT,
-    CRAWL4AI_CONCURRENCY,
+    CRAWL4AI_CONCURRENCY, CRAWL4AI_PAGE_TIMEOUT,
     DATA_DIR,
 )
-from utils import extract_sg_phones, extract_emails, extract_whatsapp, extract_sg_postals
+from utils import extract_sg_phones, extract_emails, extract_whatsapp, extract_sg_postals, normalize_sg_phone
 
 # ── Metadata Extractor ───────────────────────────────────────────────────────
 
@@ -108,6 +108,7 @@ async def _crawl_pages(domains: list[str]) -> dict[str, dict]:
     crawl_cfg = CrawlerRunConfig(
         word_count_threshold=10,
         exclude_external_links=True,
+        page_timeout=CRAWL4AI_PAGE_TIMEOUT,
     )
 
     async with AsyncWebCrawler(config=browser_cfg) as crawler:
@@ -116,8 +117,7 @@ async def _crawl_pages(domains: list[str]) -> dict[str, dict]:
                 combined_html = ""
                 pages_crawled = []
 
-                for path in ["", "/contact", "/about", "/about-us", "/contact-us",
-                             "/team", "/our-team", "/locations"]:
+                for path in ["", "/contact", "/about"]:
                     url = f"https://{domain}{path}"
                     try:
                         result = await crawler.arun(url, config=crawl_cfg)
@@ -353,7 +353,7 @@ async def extract_contacts(
         fb_phone_val = fb_data.get("fb_phone", "")
         regex_phone_val = regex_phones[0] if regex_phones else ""
 
-        phone = (
+        phone = normalize_sg_phone(
             (groq_phone if _valid_sg_phone(groq_phone) else "")
             or (fb_phone_val if _valid_sg_phone(fb_phone_val) else "")
             or (regex_phone_val if _valid_sg_phone(regex_phone_val) else "")

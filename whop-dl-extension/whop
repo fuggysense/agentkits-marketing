@@ -1,0 +1,253 @@
+#!/bin/bash
+set -euo pipefail
+
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+PID_FILE="$HOME/.whop-grabber/server.pid"
+LOG_FILE="$HOME/.whop-grabber/server.log"
+TRANSCRIPTS_DIR="$HOME/.whop-grabber/transcripts"
+SERVER_SCRIPT="$SCRIPT_DIR/server.py"
+PYTHON="/Library/Frameworks/Python.framework/Versions/3.14/bin/python3"
+
+export PATH="/usr/local/bin:/opt/homebrew/bin:/Library/Frameworks/Python.framework/Versions/3.14/bin:$PATH"
+
+mkdir -p "$HOME/.whop-grabber" "$TRANSCRIPTS_DIR"
+
+case "${1:-help}" in
+  start)
+    if [ -f "$PID_FILE" ] && kill -0 "$(cat "$PID_FILE")" 2>/dev/null; then
+      echo "Server already running (PID $(cat "$PID_FILE"))"
+      exit 0
+    fi
+    echo "Starting server..."
+    nohup "$PYTHON" "$SERVER_SCRIPT" > "$LOG_FILE" 2>&1 &
+    echo $! > "$PID_FILE"
+    sleep 1
+    if kill -0 "$(cat "$PID_FILE")" 2>/dev/null; then
+      echo "✓ Server running on http://localhost:8765 (PID $(cat "$PID_FILE"))"
+    else
+      echo "✗ Server failed to start. Check: cat $LOG_FILE"
+      exit 1
+    fi
+    ;;
+
+  stop)
+    if [ -f "$PID_FILE" ]; then
+      PID=$(cat "$PID_FILE")
+      if kill -0 "$PID" 2>/dev/null; then
+        kill "$PID"
+        rm -f "$PID_FILE"
+        echo "✓ Server stopped"
+      else
+        rm -f "$PID_FILE"
+        echo "Server was not running (stale PID)"
+      fi
+    else
+      echo "Server is not running"
+    fi
+    ;;
+
+  status)
+    if [ -f "$PID_FILE" ] && kill -0 "$(cat "$PID_FILE")" 2>/dev/null; then
+      echo "✓ Server running (PID $(cat "$PID_FILE"))"
+    else
+      echo "✗ Server not running"
+    fi
+    # Show active background jobs
+    ACTIVE=$(ls "$TRANSCRIPTS_DIR"/*.pid 2>/dev/null | wc -l | tr -d ' ')
+    if [ "$ACTIVE" -gt 0 ]; then
+      echo ""
+      echo "Active transcriptions:"
+      for pidfile in "$TRANSCRIPTS_DIR"/*.pid; do
+        NAME=$(basename "$pidfile" .pid)
+        PID=$(cat "$pidfile")
+        if kill -0 "$PID" 2>/dev/null; then
+          echo "  ⏳ $NAME (PID $PID)"
+        else
+          rm -f "$pidfile"
+          if [ -f "$TRANSCRIPTS_DIR/${NAME}.txt" ]; then
+            echo "  ✓ $NAME (done)"
+          fi
+        fi
+      done
+    fi
+    ;;
+
+  grab)
+    URL="${2:?Usage: whop grab <m3u8-url> [name]}"
+    NAME="${3:-$(date +%Y%m%d-%H%M%S)}"
+    TRANSCRIPT_FILE="$TRANSCRIPTS_DIR/${NAME}.txt"
+    TMPDIR=$(mktemp -d)
+    VIDEO="$TMPDIR/video.mp4"
+
+    echo "[$NAME] Starting in background..."
+
+    # Run in background
+    (
+      echo "[$NAME] [1/2] Downloading..."
+      yt-dlp --no-playlist --concurrent-fragments 16 \
+        -f 'bv*+ba/b' --merge-output-format mp4 \
+        --postprocessor-args 'ffmpeg:-movflags +faststart' \
+        -o "$VIDEO" "$URL" 2>&1
+
+      if [ ! -f "$VIDEO" ]; then
+        echo "[$NAME] ✗ Download failed"
+        rm -rf "$TMPDIR"
+        exit 1
+      fi
+
+      echo "[$NAME] [2/2] Transcribing..."
+      "$PYTHON" -c "
+from faster_whisper import WhisperModel
+model = WhisperModel('base', device='cpu', compute_type='int8')
+segments, info = model.transcribe('$VIDEO', language='en')
+lines = [seg.text.strip() for seg in segments]
+transcript = '\n'.join(lines)
+with open('$TRANSCRIPT_FILE', 'w') as f:
+    f.write(transcript)
+print(f'[${NAME}] ✓ Done — {len(transcript)} chars → $TRANSCRIPT_FILE')
+"
+      rm -rf "$TMPDIR"
+      rm -f "$TRANSCRIPTS_DIR/${NAME}.pid"
+    ) &
+
+    echo $! > "$TRANSCRIPTS_DIR/${NAME}.pid"
+    echo "✓ Transcription running in background (PID $!)"
+    echo "  Check progress: whop status"
+    echo "  List transcripts: whop list"
+    ;;
+
+  list)
+    FILES=$(ls -t "$TRANSCRIPTS_DIR"/*.txt 2>/dev/null)
+    if [ -z "$FILES" ]; then
+      echo "No transcripts yet. Run: whop grab <url> [name]"
+      exit 0
+    fi
+
+    echo "Transcripts:"
+    echo ""
+    i=1
+    while IFS= read -r f; do
+      NAME=$(basename "$f" .txt)
+      SIZE=$(wc -c < "$f" | tr -d ' ')
+      DATE=$(stat -f "%Sm" -t "%Y-%m-%d %H:%M" "$f")
+      echo "  [$i] $NAME  ($SIZE chars, $DATE)"
+      i=$((i + 1))
+    done <<< "$FILES"
+
+    echo ""
+    echo "Copy one:  whop copy <name>"
+    echo "Open one:  whop open <name>"
+    echo "Copy by #: whop copy $i  (not yet supported, use name)"
+    ;;
+
+  copy)
+    TARGET="${2:?Usage: whop copy <name>}"
+
+    # Check if it's a number (index from list)
+    if [[ "$TARGET" =~ ^[0-9]+$ ]]; then
+      FILE=$(ls -t "$TRANSCRIPTS_DIR"/*.txt 2>/dev/null | sed -n "${TARGET}p")
+      if [ -z "$FILE" ]; then
+        echo "No transcript at index $TARGET"
+        exit 1
+      fi
+    else
+      FILE="$TRANSCRIPTS_DIR/${TARGET}.txt"
+    fi
+
+    if [ -f "$FILE" ]; then
+      cat "$FILE" | pbcopy
+      echo "✓ Copied $(basename "$FILE" .txt) to clipboard ($(wc -c < "$FILE" | tr -d ' ') chars)"
+    else
+      echo "Transcript not found: $TARGET"
+      echo "Run 'whop list' to see available transcripts"
+    fi
+    ;;
+
+  open)
+    TARGET="${2:?Usage: whop open <name>}"
+
+    if [[ "$TARGET" =~ ^[0-9]+$ ]]; then
+      FILE=$(ls -t "$TRANSCRIPTS_DIR"/*.txt 2>/dev/null | sed -n "${TARGET}p")
+    else
+      FILE="$TRANSCRIPTS_DIR/${TARGET}.txt"
+    fi
+
+    if [ -f "$FILE" ]; then
+      open "$FILE"
+    else
+      echo "Transcript not found: $TARGET"
+    fi
+    ;;
+
+  pdf)
+    SOURCE="${2:?Usage: whop pdf <url-or-file> [name]}"
+    NAME="${3:-$(date +%Y%m%d-%H%M%S)}"
+    TRANSCRIPT_FILE="$TRANSCRIPTS_DIR/${NAME}.txt"
+
+    # Download if URL, otherwise use as local file
+    if [[ "$SOURCE" == http* ]]; then
+      echo "Downloading PDF..."
+      TMPFILE=$(mktemp /tmp/whop-pdf-XXXXX.pdf)
+      curl -sL -o "$TMPFILE" "$SOURCE"
+      PDF_PATH="$TMPFILE"
+    else
+      PDF_PATH="$SOURCE"
+      TMPFILE=""
+    fi
+
+    if [ ! -f "$PDF_PATH" ]; then
+      echo "✗ File not found: $PDF_PATH"
+      exit 1
+    fi
+
+    echo "Extracting text..."
+    "$PYTHON" -c "
+from pypdf import PdfReader
+reader = PdfReader('$PDF_PATH')
+text = '\n\n'.join(page.extract_text() or '' for page in reader.pages)
+text = text.strip()
+with open('$TRANSCRIPT_FILE', 'w') as f:
+    f.write(text)
+print(f'✓ Extracted {len(text)} chars from {len(reader.pages)} pages')
+"
+    cat "$TRANSCRIPT_FILE" | pbcopy
+    echo "✓ Saved to $TRANSCRIPT_FILE and copied to clipboard"
+
+    # Clean up temp file
+    [ -n "$TMPFILE" ] && rm -f "$TMPFILE"
+    ;;
+
+  clean)
+    COUNT=$(ls "$TRANSCRIPTS_DIR"/*.txt 2>/dev/null | wc -l | tr -d ' ')
+    if [ "$COUNT" -eq 0 ]; then
+      echo "Nothing to clean"
+    else
+      rm -f "$TRANSCRIPTS_DIR"/*.txt "$TRANSCRIPTS_DIR"/*.pid
+      echo "✓ Cleared $COUNT transcript(s)"
+    fi
+    ;;
+
+  help|*)
+    echo "Whop Grabber — download & transcribe Whop course videos"
+    echo ""
+    echo "Commands:"
+    echo "  whop grab <url> [name]       Download + transcribe video in background"
+    echo "  whop pdf <url|file> [name]   Extract text from PDF → clipboard"
+    echo "  whop list                    Show all transcripts"
+    echo "  whop copy <name|#>           Copy a transcript to clipboard"
+    echo "  whop open <name|#>           Open a transcript in TextEdit"
+    echo "  whop status                  Show server + active transcriptions"
+    echo "  whop start                   Start the server (for browser extension)"
+    echo "  whop stop                    Stop the server"
+    echo "  whop clean                   Delete all saved transcripts"
+    echo "  whop help                    Show this help"
+    echo ""
+    echo "Examples:"
+    echo "  whop grab 'https://stream.mux.com/...m3u8?token=...' lesson1"
+    echo "  whop pdf 'https://example.com/slides.pdf' slides"
+    echo "  whop pdf ~/Downloads/notes.pdf chapter3"
+    echo "  whop list"
+    echo "  whop copy lesson1"
+    echo "  whop copy 1"
+    ;;
+esac

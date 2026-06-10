@@ -1,10 +1,12 @@
 """Phase 3: Merge & Score — cross-reference Google + Meta results, assign 1-10 score."""
 
+import asyncio
 import json
 from collections import defaultdict
 from pathlib import Path
+from datetime import date
 
-from config import DATA_DIR, VERTICALS, load_blocklist
+from config import DATA_DIR, VERTICALS, GROQ_API_KEY, GROQ_MODEL, GROQ_RPM, BLOCKLIST_FILE, load_blocklist, load_prompts
 from utils import normalize_domain, fuzzy_business_match, clean_business_name, detect_country
 
 
@@ -286,6 +288,35 @@ def score_businesses(
         if not country and fb_country:
             country = fb_country[:2].upper()
 
+        # SG filter: since all keywords include "singapore" and Meta search
+        # is scoped to SG, accept everything UNLESS positively confirmed non-SG.
+        # Additional SG signals from name/domain/ad copy.
+        is_confirmed_non_sg = country and country not in ("SG", "")
+
+        if is_confirmed_non_sg:
+            continue  # Definitely not SG (MY, VN, AU, etc.)
+
+        # If country is unknown, check for SG signals — accept if any found OR if unknown
+        # (since keyword + Meta SG scope already imply SG relevance)
+        if not country:
+            # Additional SG signals from name, domain, and ad copy
+            _name_lower = name.lower()
+            _domain_lower = domain.lower()
+            _ad_copy_lower = entry.get("sample_ad_copy", "").lower()
+            has_sg_signal = (
+                any(domain.endswith(tld) for tld in (".sg", ".com.sg", ".org.sg", ".edu.sg"))
+                or "singapore" in _name_lower or "singapore" in _domain_lower
+                or "singapore" in _ad_copy_lower
+                or " sg" in _name_lower or _name_lower.endswith(" sg")
+            )
+            # Even without SG signal, accept — Meta SG-scoped search implies relevance
+            if has_sg_signal:
+                country = "SG"  # Set for export
+
+        # Skip businesses with no domain and no FB page (uncontactable)
+        if not domain and not entry.get("meta_fb_page_url"):
+            continue
+
         # Collect advertiser name for decision-maker extraction in Phase 4
         meta_advertiser = entry.get("meta_advertiser_name", "")
 
@@ -343,6 +374,167 @@ def load_scored(path: Path | None = None) -> list[dict]:
     p = path or (DATA_DIR / "scored_businesses.json")
     data = json.loads(p.read_text())
     return data["businesses"]
+
+
+# ── Phase 3.1: Vertical Relevance Filter (Groq LLM) ─────────────────────────
+
+async def filter_vertical_relevance(
+    businesses: list[dict],
+    vertical: str,
+) -> list[dict]:
+    """Use Groq LLM to filter businesses by vertical relevance (batched).
+
+    Batches 5-10 businesses per API call to reduce request count.
+    Removes businesses that don't actually belong to the target vertical.
+    Auto-adds high-confidence irrelevant domains to blocklist.
+    Saves filter log to data/vertical_filter_log.json.
+    """
+    if not GROQ_API_KEY:
+        print("    WARNING: No Groq API key — skipping vertical filter")
+        return businesses
+
+    if not businesses:
+        return businesses
+
+    from groq import Groq
+
+    prompts = load_prompts()
+    batch_prompt_template = prompts.get("vertical_filter_batch", "")
+    if not batch_prompt_template:
+        print("    WARNING: Batch prompt not found — skipping vertical filter")
+        return businesses
+
+    client = Groq(api_key=GROQ_API_KEY)
+    kept = []
+    removed = []
+    auto_blocklist = []
+
+    # Batch businesses (5-10 per batch)
+    batch_size = 7
+    for batch_start in range(0, len(businesses), batch_size):
+        batch_end = min(batch_start + batch_size, len(businesses))
+        batch = businesses[batch_start:batch_end]
+
+        # Build batch JSON for Groq
+        batch_data = []
+        for biz in batch:
+            batch_data.append({
+                "name": biz.get("business_name", ""),
+                "domain": biz.get("domain", ""),
+                "categories": ", ".join(biz.get("verticals", [])),
+                "ad_copy": (biz.get("sample_ad_copy", "") or "")[:200],
+            })
+
+        prompt = batch_prompt_template.format(
+            vertical=vertical,
+            businesses_json=json.dumps(batch_data),
+        )
+
+        try:
+            response = await asyncio.to_thread(
+                client.chat.completions.create,
+                model=GROQ_MODEL,
+                messages=[{"role": "user", "content": prompt}],
+                temperature=0.1,
+                max_tokens=500,
+                response_format={"type": "json_object"},
+            )
+
+            # Parse response
+            try:
+                results_str = response.choices[0].message.content
+                # Handle potential wrapping in ```json ```
+                if results_str.startswith("```"):
+                    results_str = results_str.split("```")[1].lstrip("json").strip()
+                results = json.loads(results_str)
+            except json.JSONDecodeError as e:
+                print(f"    Warning: Failed to parse Groq response: {e}")
+                # Treat all businesses in batch as relevant on parse error
+                kept.extend(batch)
+                await asyncio.sleep(60 / GROQ_RPM)
+                continue
+
+            # Process results
+            for i, biz in enumerate(batch):
+                domain = biz.get("domain", "")
+                name = biz.get("business_name", "")
+
+                # Find matching result by domain
+                result_entry = None
+                if isinstance(results, list) and i < len(results):
+                    result_entry = results[i].get("classification", {})
+                elif isinstance(results, dict):
+                    result_entry = results.get(domain, {})
+
+                if not result_entry:
+                    # No classification — keep (benefit of doubt)
+                    kept.append(biz)
+                    continue
+
+                is_relevant = result_entry.get("is_relevant", True)
+                confidence = result_entry.get("confidence", "low")
+                reason = result_entry.get("reason", "")
+
+                if is_relevant:
+                    kept.append(biz)
+                else:
+                    removed.append({
+                        "business_name": name,
+                        "domain": domain,
+                        "confidence": confidence,
+                        "reason": reason,
+                    })
+                    # Auto-blocklist high-confidence irrelevant domains
+                    if confidence == "high" and domain:
+                        auto_blocklist.append(domain)
+
+        except Exception as e:
+            # On error, keep the batch (benefit of doubt)
+            kept.extend(batch)
+            print(f"    Vertical filter batch error ({batch_start}-{batch_end}): {e}")
+
+        # Rate limit between batches
+        await asyncio.sleep(60 / GROQ_RPM)
+
+        if batch_end % 20 < batch_size or batch_end == len(businesses):
+            print(f"    Filtered {batch_end}/{len(businesses)}...")
+
+    # Auto-add to blocklist
+    if auto_blocklist:
+        _auto_update_blocklist(auto_blocklist)
+        print(f"    Auto-blocklisted {len(auto_blocklist)} domains")
+
+    # Save filter log
+    log = {
+        "vertical": vertical,
+        "total_input": len(businesses),
+        "kept": len(kept),
+        "removed_count": len(removed),
+        "removed": removed,
+        "auto_blocklisted": auto_blocklist,
+    }
+    log_path = DATA_DIR / "vertical_filter_log.json"
+    log_path.write_text(json.dumps(log, indent=2))
+
+    return kept
+
+
+def _auto_update_blocklist(new_domains: list[str]):
+    """Append high-confidence irrelevant domains to blocklist.json."""
+    if not new_domains:
+        return
+    if BLOCKLIST_FILE.exists():
+        data = json.loads(BLOCKLIST_FILE.read_text())
+    else:
+        data = {"domains": [], "updated": "", "notes": ""}
+
+    existing = set(data.get("domains", []))
+    added = [d for d in new_domains if d not in existing]
+    if added:
+        data["domains"].extend(added)
+        data["domains"].sort()
+        data["updated"] = str(date.today())
+        BLOCKLIST_FILE.write_text(json.dumps(data, indent=2))
 
 
 # ── CLI ──────────────────────────────────────────────────────────────────────

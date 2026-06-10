@@ -4,7 +4,7 @@ version: "1.0.0"
 brand: AgentKits Marketing by AityTech
 category: content
 difficulty: intermediate
-description: "Generate AI images and photos. Use this skill when the user wants to produce any still visual \u2014 product hero shots, ad creatives, UGC-style photos, selfie-style content, lifestyle shots, headshots, before/after comparisons, carousel slides, or video first-frame references. Key trigger: the user says they NEED, WANT, or asks you to GENERATE/CREATE/MAKE an image, photo, picture, or shot. This includes \"I need images for my campaign\", \"make me a product shot\", \"generate a selfie photo for an ad\", or \"create a before/after image\". This is the ONLY skill that produces still image files. Do NOT use for video creation, copywriting, scripting, analytics, or code."
+description: "Tier-1 image-gen orchestrator: routes intent + Vertex/NB2 direct backend + HITL prompt review + carousel mode + video reference frames. Routes to `higgsfield` skill (sub-areas: product-photoshoot, marketplace-cards, soul-id, generate) or `gpt-image-2-director` peer. NOT for: video, copywriting, scripting."
 triggers:
   - generate image
   - create image
@@ -21,14 +21,14 @@ related_skills:
   - copywriting
   - social-media
   - paid-advertising
-  - video-director
+  - video-factory
 agents:
   - copywriter
   - attraction-specialist
 ---
 
 ## Graph Links
-- **Feeds into:** [[video-director]], [[tiktok-slideshows]]
+- **Feeds into:** [[video-factory]], [[tiktok-slideshows]]
 - **Draws from:** (independent — visual pipeline entry point)
 - **Used by agents:** [[copywriter]]
 - **Related:** [[content-moat]], [[social-media]]
@@ -37,9 +37,34 @@ agents:
 
 Generate high-quality marketing images using structured JSON prompts with AI image generation models. ~$0.07 per image via Nano Banana 2 + Claude Code.
 
+## Tier-1 Architecture Note
+
+This skill is **Tier 1** in the image-generation pipeline:
+- **Tier 1 (this skill):** Intent routing + HITL prompt review + Vertex API direct backend + carousel templates + video reference frame mode
+- **Tier 2 (`higgsfield` skill at `~/.claude/skills/higgsfield/`):** CLI router with sub-areas in `references/<area>/`
+- **Tier 3 (`higgsfield-prompts/skills/media/image-generation/`):** Higgsfield CLI payload formatter, IMAGE_HANDOFF schema receiver
+- **Peer (`gpt-image-2-director`):** Independent GPT Image 2.0 prompt engineer
+
+Never format `higgsfield_generate` payloads here — that's Tier 3's job. Never invent storyboards — that's the workflow-generation flows in higgsfield-prompts.
+
+## Thin-Stack Routing Gate
+
+Before drafting a prompt or asking for a backend, route by intent. Sub-areas below are **reference packages inside the global `higgsfield` skill** at `~/.claude/skills/higgsfield/references/<area>/`, NOT standalone skills. Invoke the `higgsfield` skill with intent context; the router dispatches the sub-area.
+
+| User intent | Route |
+|---|---|
+| Product photos, studio shots, lifestyle product images, product ad creatives, Meta/TikTok/Pinterest static ads, hero banners, product carousels, virtual try-on | `higgsfield` skill → sub-area `product-photoshoot` |
+| Marketplace listing images, A+ modules, secondary product cards, marketplace infographics, listing compliance visuals | `higgsfield` skill → sub-area `marketplace-cards` |
+| Train a face/Soul Character, digital twin, identity model, persistent face-lock setup | `higgsfield` skill → sub-area `soul-id` |
+| Dense layouts, diagrams, UI mockups, posters with exact text, infographics, character sheets, labeled grids | `gpt-image-2-director` skill (peer) |
+| Generic Higgsfield image generation, image edits/remixes, cinematic stills, no-product illustrations, Marketing Studio image/video with avatar + product | `higgsfield` skill → sub-area `generate` |
+| Full video, UGC ad video, image-to-video, animation, Seedance/Kling/Veo prompts | Route to the video skill stack; use this skill only for deliberate still keyframes/reference frames. |
+
+Stay in this skill only when the user explicitly wants Vertex/Nano Banana, a quick batch prompt engine, or a still-image job that does not fit a narrower owner above.
+
 ## Vertex AI Direct Generation
 
-This skill can generate images directly via API (no external tool needed). See `../video-director/references/vertex-ai-api.md` for full setup.
+This skill can generate images directly via API (no external tool needed). See `references/vertex-ai-api.md` for full setup (local copy maintained; identical file also exists at `../video-director/references/vertex-ai-api.md` for the video-director skill).
 
 | Model | Cost | Best For |
 |-------|------|----------|
@@ -48,6 +73,46 @@ This skill can generate images directly via API (no external tool needed). See `
 | Nano Banana Pro | $0.134/img | Higher fidelity when NB2 isn't enough |
 
 NB2 uses Generative Language API with API key. Imagen uses Vertex AI with gcloud auth. Both are configured on project `lexical-tide-491204-b4` (jerel@1upsalesai.com).
+
+## Backend selection (MANDATORY gate - after routing gate)
+
+If the Thin-Stack Routing Gate keeps the work in this skill, ask before calling any generator when cost or backend choice is ambiguous. Do not silently route to the retired browser Higgsfield flow.
+
+### Vertex API (this file, above tables)
+- Fast (seconds per image), small per-image cost
+- Best for: quick iteration, batch runs, script-driven pipelines
+- Models: Imagen 4 Fast, Nano Banana 2, Nano Banana Pro
+- Cost is real: $0.02–$0.13 per image
+
+### Higgsfield CLI routes
+
+Do not use the retired project-local browser skill `skills/higgsfield/`.
+
+When the user wants Higgsfield specifically, invoke the global `higgsfield` skill at `~/.claude/skills/higgsfield/` with the appropriate intent — the router dispatches to the right sub-area in `references/<area>/`. Conceptual map:
+- Generic image/video generation, image edits/remixes, cinematic stills, Marketing Studio image/video → sub-area `generate`
+- Product photos, product ad creatives, lifestyle product shots, virtual try-on → sub-area `product-photoshoot`
+- Marketplace listing cards and A+ modules → sub-area `marketplace-cards`
+- Soul/face-lock/identity training → sub-area `soul-id`
+
+These are NOT standalone skill names — do not write `Skill("higgsfield-product-photoshoot")`; write `Skill("higgsfield")` with intent context.
+
+### Ask-the-user prompt template
+
+When invoked, unless the user already specified a backend in the request, ask:
+
+```
+Which backend for this image?
+  1) Vertex API (fast, ~$0.02–$0.13/img, good for batch)
+  2) Higgsfield CLI stack (model-specific route; may use credits)
+
+And briefly: what's the intent — photoreal ad, cartoon/stylized, text-heavy, product shot, headshot, something else?
+```
+
+Route on the answer:
+- Vertex → continue in this file
+- Higgsfield → delegate to the matching global CLI-backed Higgsfield skill above.
+
+**Never silently pick a backend.** Even experienced users forget their credit balance; the ask is fast and the cost of getting it wrong is higher.
 
 ## Language & Quality Standards
 
@@ -64,6 +129,8 @@ NB2 uses Generative Language API with API key. Imagen uses Vertex AI with gcloud
 - Carousel cover slides for social media
 - Before/after transformation visuals
 - Any marketing visual that needs to look professional without a photographer
+
+> **Ad-creative quality bar:** when generating ad-image prompt SETS (DCT variants / statics), apply `references/gut-wrenching-ad-format.md` — the 9-rule "Gut-Wrenching FORMAT" standard (unique formats, real-not-AI Singaporean/locale casting, headline on the ad, scroll-stopping gut-punch). Always reconcile against the active client's brand kill-list.
 
 ## How It Works
 
@@ -190,11 +257,54 @@ See `references/nano-banana-examples.md` for complete JSON templates:
 - Specify camera model and lens for photographic realism
 - Include imperfections: "slightly off-shoulder", "loose strands", "casual imperfect framing"
 
+### For Character Consistency (Face-Lock)
+
+When generating multiple images of the same person (campaign, carousel, UGC sequence, thumbnail set), prepend this block to every prompt:
+
+> **CRITICAL CHARACTER LIKENESS:** Same person as the reference image(s). Same face, same eye colour, same jawline, same skin tone, same hair colour and texture. Do not reinterpret or idealise. Match the reference exactly.
+
+Pair with:
+- Reference images tagged `@Image1` (and `@Image2` for a secondary angle)
+- Specify exact hair/clothing if they stay the same across shots
+- If face drifts anyway, strengthen with named features: "same slightly crooked smile", "same gap between front teeth", "same beauty mark on left cheek"
+
+Used by: video-director image-first pipelines, avatar-research → ad handoffs, big-angle-spotter step 11-12, any multi-image campaign with a single talent.
+
 ### Cost Optimization
 - ~$0.07 per image with Nano Banana 2
 - Use "thinking_level": "minimal" for simple product shots
 - Use "thinking_level": "high" for complex scenes with people
 - Batch generate variations — cheap enough to test multiple creatives
+
+## Iteration Protocol
+
+When generation misses, don't infinitely regenerate. Protocol:
+
+### Post-render dimension gate
+
+For any asset with a required aspect ratio or platform placement:
+
+1. Generate with explicit canvas wording in the prompt (`TRUE 4:5 social-feed canvas`, `square 1:1 canvas`, etc.).
+2. Check the saved output dimensions after render.
+3. If the ratio is wrong, mark it as a renderer-control failure, not a prompt-quality success.
+4. Rerender within the hard cap or normalize/export deterministically before calling it feed-safe.
+
+Do not rely on prompt text alone for exact ratios. The AutoResearch loop showed that the same prompt can alternate between correct 4:5 and taller portrait crops.
+
+**Hard cap:** 2 regeneration attempts per prompt. On the third failure, show the user the best of the batch and ask what to change. Cost control is non-negotiable — regen loops are how $0.07 images become $7 campaigns.
+
+**Failure diagnostics (if-then):**
+
+| Symptom | Root cause | Prompt mutation |
+|---|---|---|
+| Face drifts from reference | Character Likeness block weak or missing | Add/strengthen the block with named features |
+| Composition wrong despite good subject | Layer order in prompt is off | Move camera/framing block higher |
+| Tone feels off (too polished for UGC, too casual for premium) | Vibe keywords clashing | Strip aesthetic keywords back to one anchor word |
+| Text/overlay garbled | Typography block missing explicit font + size | Re-add typography block from `clients/<slug>/typography.md` |
+| Generated people look AI-slick | Realism block too thin | Add "natural skin texture, visible pores, slight asymmetry, casual imperfect framing" |
+| Props appear that you didn't ask for | Prompt too sparse — model fills gaps | Specify what's NOT on the surface ("nothing else on the counter, no phone, no mug") |
+
+Log recurring failures for a client to `clients/<slug>/image-generation-gotchas.md` so future batches inherit the learnings.
 
 ## Setup for Image Generation
 
@@ -414,3 +524,12 @@ For character-based accounts needing maximum consistency:
 - `/content:social` — Social content (pair with generated visuals)
 - `/social:viral` — Viral content strategy
 - `/tiktok:batch` — TikTok slideshow batch pipeline (uses carousel slide set mode)
+
+<!-- skill-graph:start -->
+
+## Related
+<!-- auto-generated by scripts/link-skills.py — do not edit by hand -->
+
+- [[video-director]] (skill, 0.13)
+
+<!-- skill-graph:end -->

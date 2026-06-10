@@ -1,0 +1,60 @@
+{
+  "results": [
+    {
+      "label": "1C_specificity",
+      "ok": true,
+      "path": "/Users/jerel/Documents/Jerel's brain/jerel's brain/Marketing/.claude/references/copywriting-os/reviewers/specificity-audit.md",
+      "dt": 227.226645,
+      "out_tok": 8752,
+      "cache_read": 98059,
+      "cost": 0.4088757
+    },
+    {
+      "label": "1D_buyer_language_fidelity",
+      "ok": true,
+      "path": "/Users/jerel/Documents/Jerel's brain/jerel's brain/Marketing/.claude/references/copywriting-os/reviewers/buyer-language-fidelity-audit.md",
+      "dt": 260.862681,
+      "out_tok": 6646,
+      "cache_read": 229315,
+      "cost": 0.40341899999999997
+    },
+    {
+      "label": "1A_claim_verification",
+      "ok": true,
+      "path": "/Users/jerel/Documents/Jerel's brain/jerel's brain/Marketing/.claude/references/copywriting-os/reviewers/claim-verification-audit.md",
+      "dt": 272.34241,
+      "out_tok": 7255,
+      "cache_read": 249982,
+      "cost": 0.47501460000000006
+    },
+    {
+      "label": "1B_forbidden_content",
+      "ok": true,
+      "path": "/Users/jerel/Documents/Jerel's brain/jerel's brain/Marketing/.claude/references/copywriting-os/reviewers/forbidden-content-audit.md",
+      "dt": 284.505567,
+      "out_tok": 7284,
+      "cache_read": 384051,
+      "cost": 0.5252943
+    },
+    {
+      "label": "2B_objection_matrix_builder",
+      "ok": true,
+      "path": "/Users/jerel/Documents/Jerel's brain/jerel's brain/Marketing/.claude/references/copywriting-os/builders/objection-matrix-builder.md",
+      "dt": 294.216089,
+      "out_tok": 7561,
+      "cache_read": 318600,
+      "cost": 0.44394675
+    },
+    {
+      "label": "2A_proof_inventory_builder",
+      "ok": true,
+      "path": "/Users/jerel/Documents/Jerel's brain/jerel's brain/Marketing/.claude/references/copywriting-os/builders/proof-inventory-builder.md",
+      "dt": 543.403699,
+      "out_tok": 21291,
+      "cache_read": 119073,
+      "cost": 0.6784636500000001
+    }
+  ],
+  "total_dt": 543.438248,
+  "total_cost": 2.9350140000000002
+}

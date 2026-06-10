@@ -99,6 +99,12 @@ def _parse_ad_results(response: dict, keyword: str, blocklist: set[str]) -> list
             "grocery store", "retail company", "clothing store",
             "app page", "community", "nonprofit organization",
             "government organization", "political organization",
+            "pet store", "pet service", "pet supplies",
+            "restaurant", "food & beverage", "bar",
+            "furniture store", "home improvement",
+            "automotive dealership", "car dealership",
+            "travel agency", "hotel",
+            "veterinarian", "animal hospital",
         }
         if any(cat in excluded_categories for cat in page_cats):
             continue

@@ -1,0 +1,69 @@
+{
+  "video_path": "/Users/jerel/Documents/Jerel's brain/jerel's brain/Marketing/_swipe/winning-ads/ferrovia-1265224062095729.mp4",
+  "gcs_uri": "gs://video-analyzer-jerel-sg/1b308ff365a3/ferrovia-1265224062095729.mp4",
+  "analyzed_at": "2026-05-21T04:36:01Z",
+  "backend": "vertex-ai",
+  "location": "global",
+  "model": "gemini-3.1-pro-preview",
+  "media_resolution": "MEDIA_RESOLUTION_MEDIUM",
+  "duration_sec": 110.642993,
+  "size_bytes": 8246857,
+  "usage": {
+    "input_tokens": 10265,
+    "output_tokens": 1214,
+    "total_tokens": 14890,
+    "cost_usd_estimate": "0.0205"
+  },
+  "summary": "The video is a fast-paced, aggressive advertisement for a liquid supplement called 'Lymphoria,' designed for lymphatic drainage. It uses a 3D animated character—a skeleton covered in muscles wearing a red headband—to illustrate the purported 60-day transformation process. A small cartoon doctor character is superimposed in the bottom right corner throughout most of the video. The ad combines these animations with internal biological visualizations and concludes with real-life product shots and a before-and-after photo to drive sales.",
+  "scenes": [
+    {
+      "start": "00:00",
+      "end": "00:15",
+      "description": "The video starts with a split screen showing a fat man and a muscular skeleton, both wearing red headbands. The skeleton is then shown taking drops from a bottle labeled 'Lymphoria.' The skeleton flexes its muscles, and a close-up of its abdominal muscles is shown. A cartoon doctor is present in the bottom right."
+    },
+    {
+      "start": "00:15",
+      "end": "00:23",
+      "description": "Text 'DAY 1' appears. The skeleton takes the drops, looks at its reflection in a bathroom mirror, and then sits on a couch with its head in its hands, appearing frustrated."
+    },
+    {
+      "start": "00:23",
+      "end": "00:41",
+      "description": "Text 'WEEK 1' appears. The skeleton is shown running outdoors, then looking in a locker room mirror. A close-up of the abdomen is shown. An animation depicts a white root-like structure breaking apart black clumps inside a vessel. The skeleton is shown eating a burger, drinking in a neon-lit club, and sitting on a couch surrounded by junk food. An animation shows yellow glowing material trapped in a ribcage."
+    },
+    {
+      "start": "00:41",
+      "end": "00:58",
+      "description": "Text 'WEEK 2' appears. The skeleton runs with a glowing yellow abdomen. A close-up of a fat belly transitions to muscular abs. The skeleton eats cauliflower. An animation shows green leaves and bark moving through a red blood vessel. The skeleton is shown standing at a urinal, then flexing in a locker room."
+    },
+    {
+      "start": "00:58",
+      "end": "01:07",
+      "description": "Text 'MONTH 1' appears. An animation shows a glowing pink stomach, followed by a close-up of the skeleton's skull with glowing blue eyes and smoke. The skeleton works on a laptop in an office setting, then stands in the office while coworkers look at it."
+    },
+    {
+      "start": "01:07",
+      "end": "01:23",
+      "description": "Text 'DAY 60' appears. The skeleton flexes in a mirror, followed by a close-up of its abs. An animation shows red clover flowers in bubbles over the skeleton's chest. The skeleton stands on a scale showing '70.0 kg'. The skeleton is shown with a glowing blue lymphatic system. An animation shows a black clump blocking a vessel."
+    },
+    {
+      "start": "01:23",
+      "end": "01:38",
+      "description": "The skeleton is in a pharmacy, throwing a pill bottle. An animation shows a red and white capsule dissolving in a stomach. A stylized shot of the Lymphoria bottle with floating herbs appears. A real-life man is shown taking drops under his tongue. The skeleton holds a glowing bottle of Lymphoria."
+    },
+    {
+      "start": "01:38",
+      "end": "01:50",
+      "description": "A before-and-after photo of a real man is shown. Hands hold two bottles of Lymphoria with a gold '60 DAYS MONEY BACK' badge on screen. A woman's hands are shown holding the bottle, and then dropping the liquid into a glass of water."
+    }
+  ],
+  "visual_elements": [
+    "3D animated skeleton character with visible musculature and a red headband",
+    "2D cartoon doctor character in a white coat, consistently placed in the lower right corner",
+    "On-screen text indicating the timeline (e.g., 'DAY 1', 'WEEK 1', 'MONTH 1', 'DAY 60')",
+    "3D animations of internal bodily processes (blood vessels, stomach, brain, lymphatic system)",
+    "The product bottle, 'Lymphoria,' featuring a brown glass bottle with a black dropper",
+    "A gold '60 DAYS MONEY BACK' guarantee badge"
+  ],
+  "audio_summary": "The audio consists of a single, fast-paced male voiceover delivering an aggressive and informal sales pitch. The narrator uses profanity (e.g., 'What the fuck happens,' 'this shit is not,' 'scammed as fuck') to create an edgy tone. The script details a 60-day timeline of using the 'Lymphoria' drops, describing the physical and mental changes, such as reduced bloating, increased energy, and loss of 'man boobs.' The narrator explicitly criticizes pill capsules, stating they 'die in your stomach acid,' and promotes the liquid drops for better absorption. There is no prominent background music, keeping the focus entirely on the urgent voiceover."
+}

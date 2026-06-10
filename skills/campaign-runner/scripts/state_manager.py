@@ -18,14 +18,14 @@ import sys
 import os
 import json
 import shutil
+import subprocess
 from datetime import datetime
 from pathlib import Path
 
 try:
     import yaml
 except ImportError:
-    print("PyYAML not installed. Install with: pip install pyyaml")
-    sys.exit(1)
+    yaml = None
 
 # Resolve paths relative to repo root
 SCRIPT_DIR = Path(__file__).resolve().parent
@@ -34,14 +34,117 @@ CLIENTS_DIR = REPO_ROOT / "clients"
 TEMPLATES_DIR = SCRIPT_DIR.parent / "templates"
 
 
+def read_yaml(path: Path) -> dict:
+    """Read YAML without requiring PyYAML in the default macOS Python."""
+    if yaml is not None:
+        with open(path, "r") as f:
+            return yaml.safe_load(f)
+
+    try:
+        result = subprocess.run(
+            ["ruby", "-ryaml", "-rjson", "-e", "puts YAML.load(STDIN.read).to_json"],
+            input=path.read_text(),
+            text=True,
+            capture_output=True,
+            check=True,
+        )
+    except (FileNotFoundError, subprocess.CalledProcessError) as exc:
+        print("ERROR: PyYAML is not installed and Ruby YAML fallback failed.")
+        print("Install PyYAML with: python3 -m pip install pyyaml")
+        print(f"Details: {exc}")
+        sys.exit(1)
+
+    return json.loads(result.stdout)
+
+
+def write_yaml(path: Path, data: dict) -> None:
+    """Write YAML. JSON is valid YAML when PyYAML is unavailable."""
+    with open(path, "w") as f:
+        if yaml is not None:
+            yaml.dump(data, f, default_flow_style=False, sort_keys=False, allow_unicode=True)
+        else:
+            json.dump(data, f, indent=2, ensure_ascii=False)
+            f.write("\n")
+
+
+def write_json(path: Path, data: dict) -> None:
+    """Write deterministic JSON for agent-readable state contracts."""
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with open(path, "w") as f:
+        json.dump(data, f, indent=2, ensure_ascii=False)
+        f.write("\n")
+
+
 def today() -> str:
     """Return today's date in YYMMDD format."""
     return datetime.now().strftime("%y%m%d")
 
 
+def timestamp() -> str:
+    """Return an ISO-like local timestamp for append-only event logs."""
+    return datetime.now().isoformat(timespec="seconds")
+
+
 def campaign_dir(project: str, campaign: str) -> Path:
     """Return the campaign directory path."""
     return CLIENTS_DIR / project / "campaigns" / campaign
+
+
+def update_client_campaign_registry(project: str, slug: str, campaign_type: str) -> None:
+    """Append/update the client-level campaign registry created by /project:new."""
+    registry_path = CLIENTS_DIR / project / "campaigns" / "_campaigns-index.json"
+    registry_path.parent.mkdir(parents=True, exist_ok=True)
+
+    if registry_path.exists():
+        try:
+            registry = json.loads(registry_path.read_text())
+        except json.JSONDecodeError:
+            registry = {}
+    else:
+        registry = {}
+
+    registry.setdefault("schema_version", "1.0")
+    registry.setdefault("client", project)
+    registry.setdefault("purpose", "Client-level campaign registry. Use this to discover campaign-index.json files instead of guessing campaign paths.")
+    campaigns = registry.setdefault("campaigns", [])
+
+    entry = {
+        "campaign_slug": slug,
+        "campaign_type": campaign_type,
+        "campaign_index": f"campaigns/{slug}/campaign-index.json",
+        "state_file": f"campaigns/{slug}/state.yaml",
+        "event_log": f"campaigns/{slug}/event-log.jsonl",
+        "status": "active",
+        "created": today(),
+    }
+
+    campaigns[:] = [item for item in campaigns if item.get("campaign_slug") != slug]
+    campaigns.append(entry)
+    write_json(registry_path, registry)
+
+
+def default_campaign_selection(project: str, slug: str, campaign_type: str) -> dict:
+    """Create the campaign-level source-of-truth input selection manifest."""
+    return {
+        "schema_version": "1.0",
+        "client": project,
+        "campaign": slug,
+        "campaign_type": campaign_type,
+        "created": today(),
+        "purpose": "Campaign-level selection of client inputs. Concept workspaces reference these paths instead of copying raw inputs.",
+        "client_input_root": "../../00_inputs/",
+        "buyer_profile": "../../_brand/buyer-profile.md",
+        "micro_persona_rule": "Use one buyer-profile.md as the source of truth for all micro-personas; select persona IDs here and in concept manifests.",
+        "selected_top_level_inputs": [],
+        "selected_micro_personas": [],
+        "concept_selection_manifest_template": {
+            "path": "video-concepts/<concept-slug>/concept-brief.json",
+            "allowed_concept_input_files": [
+                "concept-brief.json"
+            ],
+            "rule": "Do not duplicate raw client inputs inside concept workspaces. Store only the concept brief with path/ID references to selected top-level inputs."
+        }
+    }
 
 
 def load_state(project: str, campaign: str) -> dict:
@@ -50,8 +153,7 @@ def load_state(project: str, campaign: str) -> dict:
     if not state_path.exists():
         print(f"ERROR: No state file at {state_path}")
         sys.exit(1)
-    with open(state_path, "r") as f:
-        return yaml.safe_load(f)
+    return read_yaml(state_path)
 
 
 def save_state(project: str, campaign: str, state: dict) -> None:
@@ -64,8 +166,7 @@ def save_state(project: str, campaign: str, state: dict) -> None:
     if state_path.exists():
         shutil.copy2(state_path, backup_path)
 
-    with open(state_path, "w") as f:
-        yaml.dump(state, f, default_flow_style=False, sort_keys=False, allow_unicode=True)
+    write_yaml(state_path, state)
 
     print(f"State saved: {state_path}")
 
@@ -88,10 +189,89 @@ def new_campaign(project: str, slug: str, campaign_type: str) -> dict:
     cdir.mkdir(parents=True, exist_ok=True)
     (cdir / "assets").mkdir(exist_ok=True)
     (cdir / "metrics").mkdir(exist_ok=True)
+    (cdir / "event-log.jsonl").write_text(
+        json.dumps({
+            "schema_version": "1.0",
+            "event": "campaign_created",
+            "client": project,
+            "campaign": slug,
+            "campaign_type": campaign_type,
+            "created_at": timestamp(),
+        }, ensure_ascii=False) + "\n"
+    )
+
+    campaign_index = {
+        "schema_version": "1.0",
+        "client": project,
+        "campaign": slug,
+        "campaign_type": campaign_type,
+        "created": today(),
+        "purpose": "Campaign-level discovery file. Read this before guessing artifact paths.",
+        "state_file": "state.yaml",
+        "event_log": "event-log.jsonl",
+        "campaign_selection": "campaign-selection.json",
+        "active_concept_slug": None,
+        "concept_workspace_scaffold": "video-concepts/<concept-slug>/",
+        "concept_workspace_template_source": "../../_templates/video-concept-workspace/",
+        "required_concept_workspace_files": [
+            "pipeline-state.json",
+            "artifact-manifest.json",
+            "event-log.jsonl",
+            "concept-brief.json",
+            "04_input-images/input-image-manifest.json"
+        ],
+        "input_source_contract": {
+            "client_input_root": "../../00_inputs/",
+            "buyer_profile": "../../_brand/buyer-profile.md",
+            "campaign_selection": "campaign-selection.json",
+            "concept_rule": "Concept workspaces use root concept-brief.json. Do not create concept-level 00_inputs folders or copy raw input folders into concepts."
+        },
+        "concept_workspaces": [],
+        "fixed_system_paths": {
+            "video_factory": "/Users/jerel/.claude/skills/video-factory/",
+            "higgsfield_prompts": "/Users/jerel/AI workflows/higgsfield-prompts/",
+            "higgsfield_repo_claude": "/Users/jerel/AI workflows/higgsfield-prompts/CLAUDE.md",
+            "higgsfield_video_generation": "/Users/jerel/AI workflows/higgsfield-prompts/skills/media/video-generation/SKILL.md",
+            "higgsfield_image_generation": "/Users/jerel/AI workflows/higgsfield-prompts/skills/media/image-generation/SKILL.md",
+            "higgsfield_viral_presets": "/Users/jerel/AI workflows/higgsfield-prompts/skills/media/viral-presets/"
+        }
+    }
+    write_json(cdir / "campaign-index.json", campaign_index)
+    write_json(cdir / "campaign-selection.json", default_campaign_selection(project, slug, campaign_type))
+    update_client_campaign_registry(project, slug, campaign_type)
+
+    if campaign_type == "video-content":
+        # Canonical video-content campaign layout (per client-onboarding SKILL.md):
+        # all work lives under video-concepts/<concept-slug>/{01_strategy..07_review}.
+        # The pre-Jake 0X_stage/output folders were removed 2026-05-18 — they caused
+        # path drift (artifacts nested under 02_script/output/video-concepts/<concept>/).
+        for rel in (
+            "render-requests",
+            "video-runs",
+            "video-concepts",
+        ):
+            (cdir / rel).mkdir(parents=True, exist_ok=True)
+        (cdir / "video-concepts" / "README.md").write_text(
+            "# Video Concepts\n\n"
+            "Before creating concepts, fill `../campaign-selection.json` with the selected "
+            "top-level client inputs from `../../00_inputs/` and selected micro-persona IDs "
+            "from `../../_brand/buyer-profile.md`.\n\n"
+            "Create concept workspaces here:\n\n"
+            "```text\n"
+            "video-concepts/<concept-slug>/\n"
+            "```\n\n"
+            "Create each workspace by copying `../../_templates/video-concept-workspace/`, "
+            "then replacing `{{campaign_slug}}` and `{{concept_slug}}` in the copied files.\n\n"
+            "Every active concept workspace must contain `pipeline-state.json`, "
+            "`artifact-manifest.json`, `event-log.jsonl`, `01_strategy/` through `07_review/`, "
+            "`concept-brief.json`, and `04_input-images/input-image-manifest.json`. "
+            "Do not create concept-level `00_inputs/` folders or copy raw input folders "
+            "there. Register each workspace in `../campaign-index.json` before asking "
+            "agents to work inside it.\n"
+        )
 
     # Load template
-    with open(type_template, "r") as f:
-        state = yaml.safe_load(f)
+    state = read_yaml(type_template)
 
     # Fill in metadata
     state["campaign"]["project"] = project

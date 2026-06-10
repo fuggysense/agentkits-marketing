@@ -1,0 +1,55 @@
+{
+  "problem": "Jerel wants to build a Singapore property data monetization business. The core asset is free public data from OpenAgent.sg (39,000+ agent database, 20,000+ property database, agent transaction histories, performance rankings, agency movement tracking) combined with URA/HDB/CEA public transaction records. The delivery mechanism is an AI bot (Telegram and/or WhatsApp) serving multiple personas: homeowners (buyers, sellers, investors, renters) and property agents. Three strategic questions to resolve: (1) Can this business serve BOTH homeowners AND agents? Or must it pick one side? (2) Can it position as a middleman and capture transaction value? Or is it an information/SaaS play? (3) What business model creates a genuine win-win where all parties benefit? Bonus: Is this a NEW venture or Fuggy's Media 2.0?",
+  "context": {
+    "data_sources": "OpenAgent.sg (free, public, 39K agents, 20K properties, transaction histories, agent rankings, agency movements) + URA/HDB/CEA public APIs via data.gov.sg",
+    "competitors": {
+      "PropertyGuru": "82% market share, S$86M revenue, agent packages $118-5000/mo, agents hate cost and Verified Leads feature, poor app reviews",
+      "99.co": "#2 player, AI-forward (Vision AI, Smart Description), cheaper ($700+), better UX, growing fast",
+      "MAIA_MOGUL": "First AI property agent (Feb 2025), WhatsApp, free for buyers, 0.2% commission, Google Cloud AI, searches 100K+ properties"
+    },
+    "market_facts": {
+      "market_size": "SG real estate growing to USD 62.6B by 2029",
+      "agents": "39,000+ licensed agents, top agencies: PropNex (12K), ERA (8K), Huttons (4.5K), OrangeTee (3.5K)",
+      "commissions": "Seller 2%, Buyer 1% (HDB). New July 2024 rules: buyer agents charge 0.5-1% directly from buyers",
+      "progression": "80% start in HDB, aspire to condo. MOP (5-year minimum occupation) creates predictable upgrade windows",
+      "channels": "WhatsApp dominant (85%+ adoption), Telegram secondary",
+      "regulations": "CEA licensing required for agents. No dual representation. PDPA governs data use."
+    },
+    "fuggys_media": {
+      "what": "Jerel's existing lead gen agency targeting SG property agents",
+      "offer": "$5,997 setup + $150/qualified show-up (Premium) or $4,997 + $100/show-up (Standard)",
+      "mechanism": "Meta Ads + Presell Landing Page + AI WhatsApp Setter",
+      "guarantee": "30 qualified show-ups in 90 days or work for free until delivered",
+      "ICP": "Solo agents or small teams (1-5 pax), $20-50K/mo commissions, wanting to scale to $100K/mo"
+    }
+  },
+  "agents": [
+    {
+      "name": "Agent Marcus",
+      "role": "SG Property Agent",
+      "framing": "You are a top-10% Singapore property agent doing $50K/month in commissions. You currently spend $1,200/month on PropertyGuru and hate it. You evaluate every new tool by one question: 'Will this help me close more deals?' You are skeptical of tech startups. You've seen 10 PropTech disruptors come and go. You specialize in HDB resale in Tampines/Pasir Ris."
+    },
+    {
+      "name": "Agent Sarah",
+      "role": "HDB Upgrader (Homeowner)",
+      "framing": "You are a 35-year-old Singaporean couple hitting your 5-year MOP on a 4-room HDB in Tampines. Combined household income $12K/month. You want to upgrade to a condo but you're terrified of the financials — ABSD, mortgage, cash outlay. You don't trust agents because you think they just want to close deals for commission. You've browsed PropertyGuru and 99.co but feel overwhelmed by the options and conflicting advice."
+    },
+    {
+      "name": "Agent Wei",
+      "role": "Marketplace Strategist",
+      "framing": "You've built and scaled two-sided marketplaces in Southeast Asia. You think in supply/demand dynamics, chicken-and-egg problems, network effects, and unit economics. You know that most marketplace startups die because they try to serve both sides at once. You are blunt about what doesn't make money. You've studied PropertyGuru's business model intimately and know why it prints money."
+    },
+    {
+      "name": "Agent Priya",
+      "role": "PropTech Competitor Analyst",
+      "framing": "You work at MAIA/MOGUL.sg and know the SG PropTech landscape intimately. You evaluate new entrants by asking: 'What data moat do you have? What's your distribution advantage? Can PropertyGuru copy this in 3 months?' You've watched dozens of SG PropTech startups fail. You respect data advantages but are skeptical of 'AI wrapper' businesses built on public data."
+    },
+    {
+      "name": "Agent Daniel",
+      "role": "CEA Compliance Advisor",
+      "framing": "You are a CEA-licensed compliance officer with 15 years in Singapore real estate regulation. You know PDPA inside out. You know exactly where the line is between 'property information service' and 'estate agent activity' under the Estate Agents Act. You've seen startups get cease-and-desist letters. You are cautious but not obstructionist — you find legal paths to aggressive business models. You know CEA Section 28 defines estate agent work."
+    }
+  ],
+  "rounds": [],
+  "final_output": null
+}

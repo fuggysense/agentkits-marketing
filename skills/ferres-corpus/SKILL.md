@@ -1,0 +1,45 @@
+---
+name: ferres-corpus
+description: "Query Sean Ferres' AI Ads Lab course corpus + distilled rulebooks. Triggers: Ferres, AI Ads Lab, what does the course say, swipe vault pattern, statics playbook, control challenge, Ferres research flow, hook rubric, roast call. Rule: distilled files first, qmd only for verbatim quotes/timestamps."
+---
+
+# Ferres Corpus — course library access
+
+Sean Ferres' "The AI Ads Lab" (25 lectures, ~163K transcript words, 82-creative swipe vault), captured as a queryable local corpus and distilled into operational rulebooks.
+
+## The one rule
+
+**Distilled files first, qmd for deep lookup.** The distilled layer is citation-verified (every rule carries `(lecture-slug [h:mm:ss])` or `(text/<file>)`). Drop to the corpus only when you need a verbatim quote, an exact timestamp, or detail the distillation omitted.
+
+## Layer 1 — distilled rulebooks (start here)
+
+`_shared-knowledge/ferres/` in this repo. Map: `_shared-knowledge/ferres/_index.md` (one line per file, when to load).
+Highlights: `02-research-flow.md` (his research SOP as a runnable stage map), `05-quality-bar-critique-rubric.md` (pre-launch critique checklist from his live roast calls), `06-statics-playbook.md` (5 static formats + 25-before-lunch workflow), `patterns/statics-pattern-library.md` + `patterns/video-pattern-library.md` (named patterns with replication recipes from the 82-ad swipe vault), `ferres-pipeline-stage-map.md` (his whole process, one row per stage).
+
+## Layer 2 — the corpus (deep lookup)
+
+Location: `~/corpora/sean-ferres` (private clone of `ops-commits/sean-ferres`; refresh with `git -C ~/corpora/sean-ferres pull`).
+
+- `transcripts/*.md` — timestamped (`[h:mm:ss]` per line); `.txt` siblings = clean prose
+- `text/` — slide/PDF text, lecture notes, master prompt list (`text/18_*`), swipe-vault vision layer (`text/swipe_vault/STATICS_*.md`, `VIDEO_*.md`), deck visuals (`text/deck_visuals/`)
+- `INDEX.md` — all 25 lectures mapped to files
+- `videos/` and swipe `.mp4`s are intentionally absent (size); Drive links in `meta/swipe_media_manifest.json`
+
+## Querying (QMD, runs fully local)
+
+```bash
+export PATH="$HOME/.bun/bin:$PATH"   # qmd installed via bun
+cd ~/corpora/sean-ferres
+qmd search "objection handling" -c ferres-docs -n 5        # BM25, fast — DEFAULT
+qmd search "native static" -c ferres-visuals -n 5          # swipe-vault + deck visuals
+qmd query "how does he pick hooks" -c ferres-talks         # semantic; SLOW on this machine (CPU fallback) — use sparingly
+qmd get "qmd://ferres-talks/<doc>:<chunk>" -l 20           # pull fuller passage around a hit
+```
+
+Collections: `ferres-talks` (transcripts .md), `ferres-docs` (text .txt), `ferres-visuals` (text .md vision layer). After a corpus re-capture: `qmd update && qmd embed`.
+
+## Hard rules
+
+1. **Corpus is read-only.** A library, never a pipeline step. Never write into it, never wire it into automation.
+2. **Cite or drop.** Anything you carry from the corpus into client work keeps its citation.
+3. **Dated/platform tags are load-bearing.** Distilled rules marked ⚠️DATED / ⚠️PLATFORM (Meta-specific, tool-specific, 2025-2026 era) must not be treated as timeless gospel.

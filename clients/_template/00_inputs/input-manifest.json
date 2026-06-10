@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "client": "{{client_slug}}",
+  "purpose": "Top-level reusable client input bank. Read this before campaigns select product, buyer, market, competitor, or research inputs.",
+  "folders": {
+    "product": "product",
+    "market": "market",
+    "research": "research"
+  },
+  "canonical_outputs": {
+    "brand_truth": "../_brand/",
+    "campaign_registry": "../campaigns/_campaigns-index.json"
+  },
+  "inputs": {
+    "product": [],
+    "market": [],
+    "competitors": [],
+    "research": [],
+    "winning_ads": []
+  },
+  "updated_at": "{{today}}"
+}

@@ -1,0 +1,182 @@
+{
+  "schema_version": "0.1",
+  "purpose": "Compact progressive-disclosure map for video-hook-variants. Agents load the selected loadout instead of bulk-reading every reference.",
+  "path_base": "marketing_repo_root",
+  "receipt_required": true,
+  "nodes": {
+    "skill_entry": {
+      "path": "skills/video-hook-variants/SKILL.md",
+      "role": "entrypoint and boundary"
+    },
+    "index": {
+      "path": "skills/video-hook-variants/INDEX.md",
+      "role": "human-readable routing map"
+    },
+    "three_hook_types": {
+      "path": "skills/video-hook-variants/references/frameworks/three-hook-types.md",
+      "role": "Visual / Text / Verbal hook type definitions and rules"
+    },
+    "three_elements": {
+      "path": "skills/video-hook-variants/references/frameworks/three-elements.md",
+      "role": "Relatability / Sensationalism / Stakes framework"
+    },
+    "lego_bricks": {
+      "path": "skills/video-hook-variants/references/frameworks/lego-bricks.md",
+      "role": "Visual + Text + Verbal layer alignment rules"
+    },
+    "four_horsemen": {
+      "path": "skills/video-hook-variants/references/frameworks/four-horsemen.md",
+      "role": "Pre-flight Delay / Confusion / Irrelevance / Disinterest audit"
+    },
+    "modern_w_order": {
+      "path": "skills/video-hook-variants/references/frameworks/modern-w-order.md",
+      "role": "W-order rearrangement — What+Why first, defer Who+How, drop Where+When"
+    },
+    "forbidden_openers": {
+      "path": "skills/video-hook-variants/references/frameworks/forbidden-openers.md",
+      "role": "Auto-reject opener patterns — pre-flight gate"
+    },
+    "six_question_checklist": {
+      "path": "skills/video-hook-variants/references/checks/six-question-checklist.md",
+      "role": "Operator's 6-Q pass/fail checklist for every hook"
+    },
+    "common_mistakes": {
+      "path": "skills/video-hook-variants/references/checks/common-mistakes.md",
+      "role": "Four common hook mistakes: Delay / Confusion / Irrelevance / Disinterest"
+    },
+    "three_element_checklist": {
+      "path": "skills/video-hook-variants/references/checks/three-element-checklist.md",
+      "role": "Agent's Three-Element pre-flight check with claim_risk guardrails"
+    },
+    "examples_visual": {
+      "path": "skills/video-hook-variants/references/examples/by-type/visual-hooks.md",
+      "role": "Operator-supplied visual hook examples"
+    },
+    "examples_text": {
+      "path": "skills/video-hook-variants/references/examples/by-type/text-hooks.md",
+      "role": "Operator-supplied text hook examples"
+    },
+    "examples_verbal": {
+      "path": "skills/video-hook-variants/references/examples/by-type/verbal-hooks.md",
+      "role": "Operator-supplied verbal/audio hook examples"
+    },
+    "examples_relatability": {
+      "path": "skills/video-hook-variants/references/examples/by-element/relatability.md",
+      "role": "Operator-supplied relatability hook examples"
+    },
+    "examples_sensationalism": {
+      "path": "skills/video-hook-variants/references/examples/by-element/sensationalism.md",
+      "role": "Operator-supplied sensationalism hook examples"
+    },
+    "examples_stakes": {
+      "path": "skills/video-hook-variants/references/examples/by-element/stakes.md",
+      "role": "Operator-supplied stakes hook examples"
+    },
+    "nuclear_hooks": {
+      "path": "skills/video-hook-variants/references/examples/combined/nuclear-hooks.md",
+      "role": "Operator-supplied hooks hitting all 3 elements simultaneously"
+    }
+  },
+  "loadouts": {
+    "standard_hook_variant": {
+      "when": "standard A/B hook pair — at least one element (Relatability, Sensationalism, or Stakes), all 6-Q questions 1–4 must pass",
+      "required_nodes": [
+        "three_hook_types",
+        "three_elements",
+        "lego_bricks",
+        "four_horsemen",
+        "modern_w_order",
+        "forbidden_openers",
+        "six_question_checklist",
+        "three_element_checklist"
+      ],
+      "conditional_nodes": [
+        "examples_visual",
+        "examples_text",
+        "examples_verbal"
+      ],
+      "writes": [
+        "02_ag1-options/hook-variants-draft.json"
+      ],
+      "downstream_consumers": [
+        "video-hook-variant-generator",
+        "vid-director"
+      ]
+    },
+    "elite_hook_variant": {
+      "when": "A/B hook pair where all 3 elements are required — operator confirmed or brief demands maximum engagement",
+      "extends": "standard_hook_variant",
+      "required_nodes": [
+        "nuclear_hooks",
+        "examples_relatability",
+        "examples_sensationalism",
+        "examples_stakes"
+      ],
+      "downstream_consumers": [
+        "video-hook-variant-generator",
+        "vid-director"
+      ]
+    },
+    "multi_clip_hook_pair": {
+      "when": "multi_clip_flow=true — A/B paired hook variants that share body clips (clip_2, clip_3, clip_4); refuses if multi_clip_flow=false",
+      "extends": "standard_hook_variant",
+      "required_nodes": [
+        "examples_visual",
+        "examples_text",
+        "examples_verbal"
+      ],
+      "rules": [
+        "multi_clip_flow must be true — refuse the task if false",
+        "Both hook_a and hook_b must cut seamlessly into the same body_beats[clip 2]",
+        "A and B must differ on hook ANGLE (not just word choice) per Three-Element Checklist",
+        "Produce exactly 2 hooks per concept — A/B only",
+        "Write output to 02_ag1-options/hook-variants-draft.json"
+      ],
+      "output_schema_fields": [
+        "verbal", "visual", "rendered_text", "subtitle_policy", "strategy_trace",
+        "elements_hit", "contrast_axis", "lego_brick_alignment", "four_horsemen_check",
+        "w_order_compliant", "topic_clarity_passes_six_year_old_test",
+        "on_target_curiosity_passes", "dominant_layer", "forbidden_opener_check",
+        "differentiation_axis"
+      ],
+      "downstream_consumers": [
+        "video-hook-variant-generator",
+        "vid-director",
+        "eval-video-universal"
+      ]
+    },
+    "hook_audit_only": {
+      "when": "audit existing hooks for quality — no generation, checklist + Four Horsemen pass/fail only",
+      "required_nodes": [
+        "six_question_checklist",
+        "common_mistakes",
+        "four_horsemen",
+        "three_element_checklist",
+        "forbidden_openers"
+      ],
+      "writes": [
+        "audit report only — no hook-variants-draft.json written"
+      ],
+      "downstream_consumers": [
+        "vid-director",
+        "routing-tester"
+      ]
+    }
+  },
+  "receipt_schema": {
+    "methodology_loadout_id": "<loadout id>",
+    "graph_path": "skills/video-hook-variants/REFERENCE_GRAPH.json",
+    "loaded_files": [],
+    "skipped_files": [],
+    "missing_files": [],
+    "reason": "<brief routing reason>"
+  },
+  "rules": [
+    "Read only the selected loadout plus explicitly triggered conditionals.",
+    "Do not bulk-load all references.",
+    "concept-brief.json is canonical for claim_risk + allowed/forbidden expressions.",
+    "Record methodology_receipt in agent return.",
+    "multi_clip_hook_pair loadout refuses if multi_clip_flow=false — no exceptions.",
+    "Claim safety overrides hook intensity — a weaker hook beats a flagged one."
+  ]
+}

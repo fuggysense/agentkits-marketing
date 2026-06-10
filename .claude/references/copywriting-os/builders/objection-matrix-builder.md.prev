@@ -1,0 +1,18 @@
+# Objection Matrix Builder — Pre-Write Builder
+
+**STATUS:** SKELETON — populated by Phase 2 worker 2B (Sonnet 4.6 via `claude -p`) on 2026-04-24.
+
+**Layer:** Pre-write grounding-support builder. Produces a populated `clients/<slug>/copy-system/objection-matrix.md`.
+
+**Core principle:** Before writing, map every objection category to an actual handler grounded in client context. This becomes the reference B4 and the main draft writer use to pre-empt objections rather than ignore them.
+
+**Agent model:** Sub-agent, fresh `claude -p` Sonnet 4.6 worker. Reads:
+- `clients/<slug>/buyer-profile.md`
+- `clients/<slug>/learnings.md`
+- `clients/<slug>/source-of-truth.md` (§7.5 Misconceptions if present)
+- `clients/<slug>/faqs.md` if exists
+- Mark Masters cai #36 — 6 objection categories + variations
+
+**Output:** Structured matrix — for each of the 6 objection categories, list real objections heard from this client's buyers + the specific handler grounded in context.
+
+_(Full spec to be populated by builder agent 2B.)_

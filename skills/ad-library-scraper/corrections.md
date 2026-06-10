@@ -1,0 +1,7 @@
+# ad-library-scraper — Corrections Log
+
+Format: `- YYMMDD | what was wrong → what was right | context`
+
+- 260419 | generate_stage_analysis.py call_kilo() returned raw stdout including the {"provider","result":"...","tokens_used"} envelope — written verbatim to stage-analysis.draft.md, breaking markdown rendering | Fixed by parsing envelope and returning `envelope["result"]`. Same root cause as the enrich_scraped_ads bug below — research-llm.sh wraps every response.
+- 260419 | enrich_scraped_ads.py classifier parser read the OUTER `research-llm.sh` envelope JSON instead of the escaped `result` string → got `classified_at` set but all detected_* / schwartz_* fields stayed None → had to re-run on 8 ads | research-llm.sh wraps model output as `{"provider","model","success","result":"<escaped JSON>","tokens_used"}` — must parse envelope first, then re-parse `envelope["result"]`. Fix in `call_classifier()`. Re-run via `--threshold-days 30` is idempotent (re-classifies because text_for_classifier is recovered from existing transcripts on disk).
+- 260421 | claimed transcripts live on the `ads` row → actually live in a separate `transcripts` table joined by `ad_archive_id`, and are ONLY populated for winners (`days_running > 30`) via Groq whisper-large-v3 | Use `v_winning_ads` view for one-shot query of ads + transcript + classification. Non-winners have no transcript in Ghost — transcribe separately via the `transcribe` skill if needed. Image ads get `ocr_text` on `ads` row (Gemini 2.5 Flash), not in a separate table.

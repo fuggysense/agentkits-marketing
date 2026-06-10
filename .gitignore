@@ -123,3 +123,6 @@ skills/design-system/package-lock.json
 # binaries don't belong in git.
 swipe-files/**/ads/assets/
 swipe-files/**/assets/
+
+# embedded git repo at root — canonical-location decision pending (rebuild M4.5, see AUDIT-REPORT.md)
+/propwise-sg/

@@ -1,0 +1,21 @@
+[
+  {
+    "id": "b1776564-4091-48f7-86bc-f83ccce9748e",
+    "status": "completed",
+    "display_name": "GPT Image 2",
+    "job_set_type": "imagegen_2_0",
+    "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_2z2bozEwzKwxJNgkH3IQQ4lTkuw/hf_20260513_034654_b1776564-4091-48f7-86bc-f83ccce9748e.png",
+    "created_at": 1778644014.905852,
+    "params": {
+      "width": 752,
+      "height": 1344,
+      "prompt": "Create a 9:16 clean DTC motion-design storyboard grid for a premium finance app onboarding sequence: 2x2 layout, 4 panels on a plain black canvas, thin black gutters only, no panel labels, no captions, no timestamps, no title banner, no footer, no visible words.\n\nOverarching scene theme: a liquid-glass mobile finance interface evolves from an empty dashboard into clear spending insight cards. The same tall smartphone screen is centered in every panel, floating against a soft graphite background with subtle reflections, translucent frosted-glass cards, gentle cyan and mint highlights, precise rounded rectangles, and polished app-store promo quality. Use abstract interface blocks only: simple bars, circles, charts, cards, and icon-like shapes. Avoid tiny unreadable UI text and avoid any legible typography.\n\nPanels, read left-to-right, top-to-bottom:\n\nPanel 1: an empty onboarding dashboard shows a frosted glass phone screen with only soft placeholder blocks and a calm blank state.\n\nPanel 2: translucent liquid-glass cards begin rising from the lower screen area, with simple abstract spending blocks forming in layers.\n\nPanel 3: the dashboard morphs into organized insight cards, including smooth rounded graph shapes, category dots, and clean budget tiles without text.\n\nPanel 4: the final app screen feels complete and reassuring, with balanced spending insight cards, one highlighted savings tile, and a subtle glow around the active card.\n\nEnvironment: premium studio product render, soft graphite background, clear weather equivalent, midday studio light. Mood: hopeful, focused, clean. Visual style: polished app promo, photorealistic glass material, sharp interface geometry, restrained cyan and mint accent colors, high-end fintech aesthetic.\n\nCamera/lens feel: Sony FX3-inspired product render, spherical 50mm standard lens feel, natural reflections, crisp depth, no motion blur.\n\nForbidden: no readable UI text, no numbers, no logo, no brand name, no captions, no overlays, no subtitles, no timestamps, no panel numbers, no hands, no people, no director notes, no sound cues, no music cues, no camera movement commands, no production table. Plain black canvas with 4 visual panels arranged in a 2x2 grid.\n\nRender at 9:16 aspect ratio.",
+      "medias": [],
+      "aspect_ratio": "9:16",
+      "quality": "medium",
+      "resolution": "1k",
+      "model": "videotape-alpha",
+      "reference_elements": []
+    }
+  }
+]

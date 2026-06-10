@@ -1,234 +1,90 @@
-# Competitor Analysis — 8 Sales Page Scrape (2026-04-21)
-
-Raw findings from 8 live competitor pages across real estate, roofing, coaching, funding, and cash-buyer verticals. Used to validate the 12-component framework and populate `copy-gems.md`.
-
+---
+file_type: reference
+load_when: reviewer is grading a draft and needs to know what the modern competitor set does and does not do; writer wants to know what their letter is being measured against
+loads_from_research: research/strong-exemplars/annotated/*.md (Phase 0b Stream A), research/classical-exemplars/annotated/*.md (cross-era gap evidence)
+last_updated: 2026-05-27
 ---
 
-## Pages Analyzed
+# Competitor Analysis — what the modern set teaches us
 
-| # | Client | Vertical | Market | Page Type |
-|---|--------|----------|--------|-----------|
-| 1 | Brendon Luu | Mortgage broker | US | Long-form letter |
-| 2 | Syncom Miami | Property investment | US/Israel | Book funnel |
-| 3 | RoofGrow | Roofing lead gen | US | Long-form letter |
-| 4 | Green Industry Masterminds | Lawn care coaching | US | Long-form letter + VSL |
-| 5 | Syncom Funding | Business loans | US | Long-form letter |
-| 6 | Syncom Mortgage | Private mortgage | US | Long-form letter |
-| 7 | Syncom Polk | Cash buyer | US | Long-form letter |
-| 8 | Damien Tan | Property investment | SG | Long-form letter |
+## What this file is for
 
----
+We scraped 8 live long-form sales pages from real estate, roofing, coaching, lending, and cash-buyer markets. The annotated breakdowns live in `research/strong-exemplars/annotated/`. This file tells you what those 8 letters share, where they fail together, and which ones are worth studying in detail.
 
-## Universal Patterns (what they ALL do)
+Use this when you grade a draft — to check it against the field, not against an ideal. Use it when you want to know "what does the market already do, and what is the easy moat?"
 
-1. **"I Will / We Will + mechanism + outcome" hero formula** (5/8)
-2. **Dear [avatar] letter opener** (4/8 — Halbert pattern)
-3. **"PLEASE READ THIS LETTER IF" pain-persona ❌ checklist** (3/8 — Syncom template)
-4. **Founder credibility anchor** (backstory + $ number + years) (8/8)
-5. **CTA repetition 3-6×** throughout page (8/8)
-6. **"I will NEVER" triple-negative commitment** (3/8 — Syncom template)
-7. **Bolded keywords for scanners** (8/8)
-8. **Pain bullet lists before offer** (7/8)
+For the 11 named techniques pulled from this same set, go to `copy-gems.md`. This file does not repeat them. It tells you the structural story behind them.
 
----
+## Honest corpus note — read this first
 
-## Universal Gaps (what NONE execute well)
+Five of the eight letters are clones of the same Syncom GHL template. Brendon Luu, Syncom Miami, Syncom Funding, Syncom Mortgage, Syncom Polk all share headline grammar, the "PLEASE READ THIS LETTER IF" checklist, the "I will NEVER" stack, and the same CTA layout. So when we say "8/8 do X," we are often really saying "1 template plus 3 outliers do X."
 
-| Component | Missing in |
-|-----------|------------|
-| FAQ section (5 core objections) | **8/8** |
-| PS line | **8/8** |
-| Explicit scarcity/countdown | 6/8 |
-| Price anchoring (intentional — none of these disclose price) | 5/8 |
-| Guarantee stack (unconditional + conditional) | 6/8 |
-| Integrity tie-down | 4/8 |
+What this means in practice:
 
-**The money finding:** Hormozi's back-half (FAQ → PS → Scarcity → Stack) is missing across the board. Our skill's moat is enforcing these as non-negotiables.
+- Patterns marked "5/8" or higher may just be Syncom-template inheritance, not a market signal.
+- The 3 outliers — RoofGrow, Green Industry, George Ten — carry more weight as independent evidence.
+- Do not treat Syncom-template moves as universal best practice. They are one shop's preferences.
 
----
+## What they all do (structural overlap)
 
-## Per-Page Detail
+- **Founder credibility anchor** — backstory, dollar number, years in business. All 8.
+- **CTA repeated 3-6 times** down the page. All 8.
+- **Bolded keywords for scanners.** All 8.
+- **Pain bullet lists before the offer.** 7/8.
+- **"I Will + mechanism + outcome" hero formula.** 5/8 (mostly Syncom clones).
+- **Pain-persona checklist with ❌ bullets.** 3/8 (Syncom template).
+- **"I will NEVER" triple-negative commitment.** 3/8 (Syncom template).
 
-### 1. Brendon Luu (Mortgage Broker)
+## Where they fail together (the moat)
 
-**Headline:** "I Will Help You Get A Mortgage APPROVED & CLOSED For Your New Home in **17 Days Or Less** Using My **'Vast Network' Of Lenders** All Over America MAKING SURE You Get The Best Rates Ever"
+This is the section that earns the file. Comparing the modern set against the classical set (Halbert, Schwartz, Stansberry, Caples, Hopkins, Ogilvy, Karbo) surfaces four gaps the modern letters share:
 
-**Components present:** 1, 2, 3, 5, 6, 11 (weak 10)
-**Missing:** 4, 7, 8, 9, 12, 13
+| Gap | Modern (n=8) | Classical (n=7) | What it costs you |
+|---|---|---|---|
+| **No P.S. block** | 8/8 missing | Present in Halbert, Schwartz, Stansberry | Second-most-read part of the letter, dropped entirely |
+| **No named mechanism** | 6/8 missing, 2 soft-named | Karbo names "Lazy Man's Way", Schwartz names the disease frame | The mechanism becomes generic ("vast network", "we buy houses") and forgettable |
+| **No damaging admission** | 0/8 | Karbo opens with his own failure, Halbert admits the offer feels strange | No vulnerability anchor, so the trust climb is steeper |
+| **Weak or no guarantee** | 6/8 missing real guarantee | Stansberry and Karbo stack risk-reversal | Reader bears all the risk of the call, the read, or the buy |
 
-**Standout quotes:**
-- "The dream of being a homeowner SOON starts to feel like a **nightmare**"
-- "Retail banks will do MORE harm than good"
+The P.S. absence is the cleanest, easiest fix — see `best-practices/ps-architecture.md` for the rebuild.
 
-**Unique technique:** Mechanism-as-proof (process diagram = credential)
+## The three outliers — why they are worth studying
 
-**Scroll-stoppers:** 3 video testimonials, bolded pain words, CTA repeated 5×
+The 5 Syncom clones teach you a template. The 3 outliers teach you craft.
 
----
+**RoofGrow** — only letter with a semi-named mechanism ("4-Step Google Ads Secrets" with sub-step names). Four detailed case studies with named clients. Hammers "ownership" language 15+ times. Closest to a classical structure of the modern set.
 
-### 2. Syncom Miami (Property Investment Book Funnel)
+**Green Industry Masterminds** — only letter with a fully named mechanism ("7 Sales Laws"). Graduated case study ladder ($1.3M → $4.75M → $4.9M). $55M founder credibility carries the whole proof load. Largest letter in the corpus.
 
-**Headline:** "3 Secret Property Deals In Miami That Israel's Wealthiest Investors Are Using to Multiply Their Wealth…"
+**George Ten** — modern stripped Hemingway-clipped style. The offer IS the lead — no warm-up. Innovative conditional pricing ($97 today + $97 only if worth it). Anchored against $2,500. The mechanism is concrete but not branded (a real miss for him).
 
-**Components present:** 1, 2, 3 (implicit), 5, 6, 8, 11
-**Missing:** 4, 7 (no price), 9, 10, 12, 13
+If you only read three annotations, read these three.
 
-**Standout quotes:**
-- "How the pandemic has created a unique opportunity window for Passive Income Investors in Miami – This is a 'once-in-a-lifetime' rare situation"
-- "27.4% appreciation rate in 1 year"
+## What modern letters do better than classics
 
-**Unique technique:** Celebrity validation by proxy (Beckham/Messi as market signal)
+Be honest where the modern set wins:
 
-**Scroll-stoppers:** ✅ checkmarks (9 bullets), team photo carousel, privacy seal
+- **Pain-persona checklists.** Halbert wrote "you have a problem." Syncom-template writes a 6-line ❌ bullet list naming the exact symptoms. Sharper.
+- **CTA repetition.** Classical letters often had one CTA. Modern letters repeat 3-6 times. This is now table-stakes.
+- **Scanner-friendly formatting.** Bold keywords, bullet lists, short paragraphs. Classical wall-of-text does not survive mobile.
 
----
+These three are upgrades the modern set has earned. Keep them.
 
-### 3. RoofGrow
+## Reviewer checks — questions to ask against this set
 
-**Headline:** "OPEN THE 'FLOODGATES' OF 'QUALIFIED LOCAL ROOFING JOBS' USING GOOGLE ADS™ SECRETS AND GET CONSISTENT LEAD FLOW FOR YOUR ROOFING BUSINESS"
+When you grade a draft, run it past these:
 
-**Components present:** 1, 2, 3, 4, 5, 6, 11
-**Missing:** 7 (weak), 8, 9, 10, 12, 13 (weak PS)
+1. **Does it have a P.S.?** If the modern set drops the P.S. 8/8 and yours has one, you are ahead of the field on the easiest fix. If yours also drops it, the draft is field-average, not field-leading.
+2. **Is the mechanism named?** Not "our system" or "vast network." A real name — "The Entry Price Pattern," "7 Sales Laws," "The 48-Hour Validation Test." If the name does not exist, draft three options and pick one.
+3. **Is there a damaging admission anywhere?** A line where the writer concedes a real weakness, a past failure, or a thing the reader might object to. If 0/8 competitors do this, even one credible admission moves the draft above the field.
+4. **Is there a real guarantee?** Not "satisfaction promise" hand-waving. A specific reversal: refund window, do-not-pay-if-X, conditional pricing like George Ten's PWYW.
+5. **Is the draft inheriting Syncom template moves without earning them?** "I will NEVER" stacks and ❌ checklists work, but if 5/8 competitors already use them, your letter sounds like everyone else's. Earn the pattern or swap it.
+6. **If you cut the founder credibility anchor, does the letter still work?** All 8 lean on founder backstory. If yours collapses without it, you are one removed testimonial away from a broken letter.
 
-**Standout quotes:**
-- "A highly advanced MACHINE — that less than 3% marketing agencies on this planet know how to build"
-- "You need to OWN your leads, have absolute CONTROL over your deal flow"
+## Linked files
 
-**Unique technique:** Ownership repetition (exclusive / OWNED / CONTROL / NEVER shared 15+ times)
-
-**Scroll-stoppers:** 4 detailed case studies, CTA repeated 6×, all-caps emphasis
-
----
-
-### 4. Green Industry Masterminds
-
-**Headline:** "How To Grow Your Lawn Care & Landscaping Business To 10M In Revenue Using Our _7 Sales Laws_ While Experiencing 'Stress Free' Operations"
-
-**Components present:** 1, 2, 3, 5, 6, 7, 11
-**Missing:** 4, 8, 9, 10, 12, 13
-
-**Standout quotes:**
-- "YOU WILL START SEEING RESULTS WITHIN THE 1ST MONTH OF JOINING"
-- "There's just NO WAY you will not see results when you work with me"
-
-**Unique technique:** Graduated case study proof ($1.3M → $4.75M → $4.9M progression)
-
-**Scroll-stoppers:** Video placeholder, $55M founder credibility, CTA repeated 3×
-
----
-
-### 5. Syncom Funding (Business Loans)
-
-**Headline:** "Get Your Business Funded Same Day"
-**Sub:** "For Businesses Doing 1M+ in Annual Revenues… I Will Use My Vast Network Of 'Private Money Lenders' To Get You a Business Loan & Make Sure You GROW Your Company Fast"
-
-**Components present:** 1, 2, 3, 5, 6, 8, 10, 11
-**Missing:** 4, 7 (no price), 9, 12, 13
-
-**Standout quotes:**
-- "BAD capital can kill your business faster than you think. And there are more BAD loans than good loans"
-- "I do not over promise. And I most certainly do not under deliver"
-
-**Unique technique:** Mechanism-as-pain-relief (process = stress elimination)
-
-**Scroll-stoppers:** Founder credibility (30 years Wall Street), "I will NEVER" triple commitment
-
----
-
-### 6. Syncom Mortgage (Private Mortgage)
-
-**Headline:** "I Will Help You Secure A **Private Mortgage** Using My VAST NETWORK Of 'Qualified Lenders' And Make Sure You **GET APPROVED Fast**"
-
-**Components present:** 1, 2, 3, 4, 5, 6, 7, 8, 10, 11
-**Missing:** 9 (implied only), 12, 13
-
-**Standout quotes:**
-- "You do not have to stress about securing funds anymore…"
-- "I can get you approved WITHOUT a credit report — within 24 hours"
-
-**Unique technique:** Pain-persona ❌ checklist ("PLEASE READ THIS LETTER IF" pattern)
-
-**Scroll-stoppers:** Testimonial photos, checkmark badges, emoji pain points
-
----
-
-### 7. Syncom Polk (Cash Buyer)
-
-**Headline:** "GET A FAIR VALUE FOR YOUR POLK PROPERTY AND SELL DIRECTLY TO INVESTORS"
-**Sub:** "…And the best part? We Buy Your Property in ANY Condition!"
-
-**Components present:** 1, 2, 3, 5, 8, 11
-**Missing:** 4, 6, 7, 9, 10, 12, 13
-
-**Standout quotes:**
-- "Middlemen charge ridiculous fees to get you a deal… so you never get a FAIR PRICE!"
-- "You DON'T need to worry about closing costs… DON'T need to worry about renovations… There is NO CATCH!"
-
-**Unique technique:** Inversion-via-negation (stack DON'Ts before CATCH)
-
-**Scroll-stoppers:** Property photos, ALL CAPS emphasis, checkbox lists
-
----
-
-### 8. Damien Tan (SG Property Investment)
-
-**Headline:** "HOW TO **RETIRE 8 YEARS EARLIER** WITHOUT WORKING **ANY** EXTRA HOURS BY IDENTIFYING PROPERTIES THAT **MATCH** THE **SAME ENTRY PRICE PATTERNS** AS EVERY TOP PERFORMER IN SINGAPORE'S HISTORY"
-**Anchor:** "Earn up to **$526K every 4 years** using a **Proven System** that averaged **19.56% Per Year Returns** Across **812 Singaporeans**"
-
-**Components present:** 1, 3, 4, 5, 6, 8, 9, 11
-**Missing:** 2 (weak Lead), 7, 10, 12, 13
-
-**Standout quotes:**
-- "But it's wrong. Not because MRTs are bad, but because it is EASY TO SELL."
-- "Transformation doesn't predict profit. Entry price does."
-- "We only accept 30 bookings per month as we are maintaining the quality of analysis"
-
-**Unique techniques:**
-- Entry Price Pattern (contrarian intellectual position, not just a process)
-- Two-Column Truth Session (popular launch vs hidden gem)
-- Quality-gated scarcity ("30 bookings/month AS we maintain quality")
-
-**Scroll-stoppers:** 5 video testimonials (play-on-hover), $526K anchor repeated 2×, 30-bookings scarcity
-
-**SG-specific levers used:**
-- "record-setting price for our condo" (en-bloc anxiety)
-- "Best reviewed real estate teams in Singapore" (hyper-local)
-- 812 Singaporeans (hyper-local proof)
-
-**SG levers MISSED (worth adding):** MOP, CPF withdrawal rules, BTO pricing, school zone premium, en-bloc collective sale mechanics
-
----
-
-## Synthesis — What Our Skill Must Do Better
-
-### Enforce what 8/8 miss
-- FAQ section (5 core objections)
-- PS line
-- Guarantee Stack (2-3 variants, not just one)
-- Integrity tie-down (missing in 4/8)
-
-### Steal what works
-- "I Will / We Will + mechanism + outcome" hero formula
-- Dear [avatar] opener (Halbert)
-- Pain-persona ❌ checklist
-- "I will NEVER" triple-negative commitment
-- Mechanism naming ("The [X] Method")
-- Specificity discipline (numbers, names, timeframes)
-- CTA repetition 3-6×
-
-### Avoid what hurts
-- Forcing all 12 components when 8 fit
-- Vague benefit promises with no numbers
-- Heavy urgency (countdown timers)
-- Fake testimonials
-- Price anchoring on no-price funnels (irrelevant)
-
----
-
-## Re-Scrape Schedule
-
-These findings are a point-in-time snapshot (2026-04-21). Re-scrape every 6 months to detect shifts:
-- New copy patterns adopted
-- Guarantee language evolution
-- Scarcity tactic changes (regulatory or platform-driven)
-- New successful verticals
+- `copy-gems.md` — 11 named techniques + verbatim quotes from this same set. Use for technique-level detail.
+- `best-practices/ps-architecture.md` — how to rebuild the missing P.S.
+- `best-practices/mechanism-naming.md` (if it exists) — how to name a mechanism so it is not generic.
+- `research/strong-exemplars/annotated/*.md` — the 8 full 12-component annotations.
+- `research/classical-exemplars/annotated/*.md` — the 7 classical letters that prove the gap patterns are not style choices.

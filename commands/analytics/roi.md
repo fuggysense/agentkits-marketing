@@ -11,7 +11,7 @@ Before running this command, ensure you have:
 - [ ] Campaign or channel name to analyze
 - [ ] Access to spend data (ad accounts or manual records)
 - [ ] Revenue/conversion data available
-- [ ] MCP configured: `meta-ads`, `hubspot`, `google-analytics`
+- [ ] MCP configured: `hubspot`, `google-analytics`; `meta` CLI for ad spend
 
 ## Context Loading
 
@@ -145,7 +145,7 @@ echo "ROI Analysis Date: $CURRENT_DATE"
 ### Required Data Sources
 | Data | MCP Server | Required |
 |------|------------|----------|
-| Ad spend | `meta-ads` | Yes - for paid ROI |
+| Ad spend | `meta` CLI (not MCP) | Yes - for paid ROI |
 | Revenue | `hubspot` or user input | Yes |
 | Traffic | `google-analytics` | For attribution |
 

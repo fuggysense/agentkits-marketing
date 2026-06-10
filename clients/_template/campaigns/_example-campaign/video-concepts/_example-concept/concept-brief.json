@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.0",
+  "workspace": "clients/{{client_slug}}/campaigns/{{campaign_slug}}/video-concepts/{{concept_slug}}",
+  "workspace_slug": "{{concept_slug}}",
+  "generated_date": "{{today}}",
+  "micro_persona_id": "{{persona_id_in_campaign_selection_scope}}",
+  "creative_pattern": "{{pattern_name_from_brand_patterns}}",
+  "big_idea_premise": "{{one_sentence_central_premise}}",
+  "spine_angle_family": "{{angle_family_id}}",
+  "allowed_expressions": [
+    "{{phrase_or_framing_permitted_1}}",
+    "{{phrase_or_framing_permitted_2}}"
+  ],
+  "forbidden_expressions": [
+    "{{phrase_explicitly_off_limits_1}}"
+  ],
+  "language_to_use": [
+    "{{buyer_voice_term_1}}",
+    "{{buyer_voice_term_2}}"
+  ],
+  "language_to_avoid": [
+    "{{jargon_or_AI_tell_1}}"
+  ],
+  "style_lanes": [
+    "{{lane_id_1}}",
+    "{{lane_id_2}}"
+  ],
+  "style_lane_split": null,
+  "proof_hooks": [
+    "{{proof_beat_or_evidence_hook_1}}"
+  ],
+  "workflow_flow": null,
+  "script_mode": "spoken",
+  "visual_character_id": "none",
+  "target_video_frame": "{{9:16|1:1|16:9}}",
+  "primary_platform": "{{meta|tiktok|youtube|...}}",
+  "product": "{{product_name}}",
+  "claim_risk": "{{low|medium|high}}"
+}

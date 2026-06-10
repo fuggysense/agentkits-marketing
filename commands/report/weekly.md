@@ -150,7 +150,7 @@ echo "Current Week: W$CURRENT_WEEK ($WEEK_START to $WEEK_END)"
 |---------|------------|----------|
 | Traffic | `google-analytics` | ⚠️ NOT AVAILABLE |
 | Search | `google-search-console` | ⚠️ NOT AVAILABLE |
-| Campaigns | `meta-ads` | ⚠️ NOT AVAILABLE |
+| Campaigns | `meta` CLI (not MCP) | ⚠️ NOT AVAILABLE |
 | Leads | `hubspot` | ⚠️ NOT AVAILABLE |
 | Social | `twitter`, `tiktok` | ⚠️ NOT AVAILABLE |
 

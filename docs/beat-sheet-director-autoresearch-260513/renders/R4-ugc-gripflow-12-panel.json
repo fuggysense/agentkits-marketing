@@ -1,0 +1,21 @@
+[
+  {
+    "id": "0865ad75-56a6-45aa-b7e9-d966665be6f2",
+    "status": "completed",
+    "display_name": "GPT Image 2",
+    "job_set_type": "imagegen_2_0",
+    "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_2z2bozEwzKwxJNgkH3IQQ4lTkuw/hf_20260513_030425_0865ad75-56a6-45aa-b7e9-d966665be6f2.png",
+    "created_at": 1778641465.741269,
+    "params": {
+      "width": 752,
+      "height": 1344,
+      "prompt": "Create a 9:16 iPhone 15 front-facing camera UGC storyboard grid for Scene 1 of \"GRIPFLOW S Apartment Workout\" - 3x4 layout, exactly 12 panels on a clean black canvas, panels separated by thin black gutters only. Overarching scene theme: A creator films herself in a small apartment before a workout, using handheld phone angles, mirror reflections, and imperfect floor-level shots. The sock packaging label must read exactly \"GRIPFLOW S\" whenever visible. Keep the product and sock grip texture visible, with real apartment clutter, uneven window light, and authentic phone-camera motion blur. Panels left-to-right top-to-bottom: Panel 1 creator points phone at socks on messy floor. Panel 2 GRIPFLOW S package held close, label readable. Panel 3 bare feet beside socks before changing. Panel 4 creator pulls one sock over foot. Panel 5 close-up of silicone grip texture under sock. Panel 6 second sock goes on near floor mirror. Panel 7 creator stands on slippery-looking wood floor. Panel 8 foot plants firmly during a lunge. Panel 9 close-up of sock gripping floor. Panel 10 creator checks balance in mirror. Panel 11 package and worn socks appear together. Panel 12 creator nods at camera, packaging label readable. Environment: small apartment living room, midday, clear. Mood: hopeful. Visual style: raw UGC photorealism, iPhone handheld framing, real skin texture, natural apartment clutter. Below each panel: narrow black caption band with panel number, time code, and two plain-English visual captions. Forbidden: no title banner, no footer, no colored gridlines, no director notes, no SFX, no BGM, no voiceover or dialogue text. Render at 9:16 aspect ratio, 1K, medium quality.",
+      "medias": [],
+      "aspect_ratio": "9:16",
+      "quality": "medium",
+      "resolution": "1k",
+      "model": "videotape-alpha",
+      "reference_elements": []
+    }
+  }
+]

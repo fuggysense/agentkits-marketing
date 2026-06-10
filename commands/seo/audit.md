@@ -154,48 +154,91 @@ echo "SEO Audit Date: $CURRENT_DATE"
 
 ---
 
-## Workflow
+## Workflow: Parallel Subagent Architecture
 
-1. **Technical SEO Analysis**
-   - Site speed assessment
-   - Mobile-friendliness check
-   - Crawlability analysis
-   - Schema markup review
-   - Core Web Vitals evaluation
+**Pattern:** Adapted from `deep-research` MECE decomposition. Spawn 4-6 specialized agents IN PARALLEL using the Agent tool, each covering one audit category with explicit boundaries. After all return, run gap analysis and synthesize.
 
-2. **On-Page Analysis**
-   - Title tag optimization
-   - Meta description review
-   - Heading structure analysis
-   - Content quality assessment
-   - Internal linking audit
+### Step 1: Spawn Parallel Audit Agents
 
-3. **Content Analysis**
-   - Thin content identification
-   - Duplicate content check
-   - Content gap analysis
-   - Keyword mapping review
+Spawn these agents **in a single message** (all tool calls in one response) so they run concurrently:
 
-4. **Off-Page Analysis**
-   - Backlink profile overview
-   - Domain authority assessment
-   - Toxic link identification
+| Agent | Focus | Boundaries | Tools |
+|-------|-------|-----------|-------|
+| **1: Technical** | Crawlability, indexability, Core Web Vitals, mobile, site speed, XML sitemap, robots.txt, HTTPS, redirects | NOT content quality, NOT backlinks | Chrome MCP, WebFetch, DataForSEO `onpage_task_post` |
+| **2: On-Page** | Title tags, meta descriptions, headers, content structure, image optimization, internal linking, URL structure | NOT external links, NOT technical infra | Chrome MCP snapshot, WebFetch |
+| **3: Content** | E-E-A-T signals, thin content detection, keyword mapping, content gaps, search intent match, duplicate content | NOT technical SEO, NOT link building | WebFetch, DataForSEO `labs_google_keyword_ideas` |
+| **4: Off-Page** | Backlink profile, link velocity, domain authority, referring domains, toxic links | NOT on-page, NOT technical | DataForSEO `backlinks_summary`, `backlinks_backlinks` |
 
-5. **Competitive Positioning**
-   - SERP position tracking
-   - Share of voice analysis
-   - Competitor comparison
+**Optional agents** (include for "Complete" scope or if user selected):
 
----
+| Agent | Focus | When to Include |
+|-------|-------|-----------------|
+| **5: GEO/AEO** | AI search visibility, answer block readiness, FAQ schema, citation-friendly structure, speakable markup | Complete scope, or user asked for GEO |
+| **6: Competitive** | SERP positions, content gaps vs competitors, competitor backlink opportunities | Complete scope, or user asked for competitors |
 
-## Agent Delegation
+### Agent Prompt Template
 
-| Task | Agent | Trigger |
-|------|-------|---------|
-| SEO audit | `attraction-specialist` | Full audit |
-| Technical analysis | `seo-specialist` | Technical issues |
-| Content gaps | `researcher` | Content analysis |
-| Competitive intel | `researcher` | Competitor comparison |
+Each agent receives this structured prompt:
+
+```
+You are performing a [CATEGORY] SEO audit for [URL/SITE].
+
+TODAY'S DATE: [CURRENT_DATE]
+
+YOUR FOCUS: [specific scope from table above]
+BOUNDARIES: Do NOT cover [other categories] — other agents handle those.
+
+TOOLS AVAILABLE:
+- Chrome MCP (mcp__chrome__*) for live page analysis and screenshots
+- WebFetch for page content
+- DataForSEO MCP (if available) for metrics — see skills/seo-mastery/references/dataforseo-commands.md
+- If DataForSEO unavailable, note "⚠️ DataForSEO not configured" and do manual analysis
+
+REFERENCE:
+- skills/seo-mastery/references/seo-audit-checklist.md — your category's checklist items
+- skills/seo-mastery/references/geo-optimization.md — if you are Agent 5 (GEO)
+- skills/seo-mastery/references/dataforseo-commands.md — API reference
+
+OUTPUT FORMAT:
+## [Category] Audit Findings
+
+### Critical Issues (fix immediately)
+- [Issue]: [Impact] | [Fix]
+
+### High Priority (this week)
+- [Issue]: [Impact] | [Fix]
+
+### Medium Priority (this month)
+- [Issue]: [Impact] | [Fix]
+
+### Low Priority (next quarter)
+- [Issue]: [Impact] | [Fix]
+
+### Metrics Captured
+| Metric | Value | Target | Status |
+|--------|-------|--------|--------|
+
+### Recommendations (top 3)
+1. [Specific, actionable recommendation]
+2. [Specific, actionable recommendation]
+3. [Specific, actionable recommendation]
+```
+
+### Step 2: Gap Analysis
+
+After ALL agents return:
+1. Review all findings — check if any category has insufficient data
+2. Look for contradictions between agents (e.g., technical says site is fast, but content agent found slow pages)
+3. If significant gaps exist, spawn 1 targeted follow-up agent
+
+### Step 3: Synthesize
+
+Cross-reference all agent findings into ONE audit document:
+- Deduplicate issues found by multiple agents
+- Create unified priority matrix
+- Calculate overall Health Score (weight: Technical 30%, On-Page 25%, Content 25%, Off-Page 20%)
+- Generate executive summary
+- Output to `./docs/seo/audits/[domain]-audit-[YYYY-MM-DD].md`
 
 ---
 

@@ -283,7 +283,16 @@ def cmd_facebook(args, client):
     elif cmd == "ads-search":
         output_result(client.facebook_ads_search(args.query, args.country), args, "ad")
     elif cmd == "company-ads":
-        output_result(client.facebook_company_ads(args.company), args, "ad")
+        output_result(
+            client.facebook_company_ads(
+                page_id=args.company if args.company.isdigit() else None,
+                company_name=None if args.company.isdigit() else args.company,
+                country=getattr(args, "country", None),
+                status=getattr(args, "status", "ACTIVE"),
+            ),
+            args,
+            "ad",
+        )
     elif cmd == "group":
         output_result(client.facebook_group_posts(args.group_id), args, "post")
 
@@ -531,7 +540,9 @@ def build_parser():
     p.add_argument("--country", default=None, help="Country code (e.g., US)")
 
     p = fb_subs.add_parser("company-ads", help="Get company's ads from Ad Library")
-    p.add_argument("company")
+    p.add_argument("company", help="Page ID (digits) or company name")
+    p.add_argument("--country", default=None, help="2-letter country code (e.g., SG, US)")
+    p.add_argument("--status", default="ACTIVE", help="ACTIVE | INACTIVE | ALL")
 
     p = fb_subs.add_parser("group", help="Get group posts")
     p.add_argument("group_id")

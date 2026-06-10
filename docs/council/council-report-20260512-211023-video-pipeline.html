@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Council Report — Video Pipeline Restructure (2026-05-12)</title>
+<style>
+  :root {
+    --bg:#fafaf7; --ink:#1a1a1a; --muted:#666; --line:#e5e5e0;
+    --accent:#7a4eaa; --warn:#c0392b; --ok:#1f8a4c; --soft:#fbf6e9;
+    --contrarian:#c0392b; --principles:#7a4eaa; --expansionist:#1f8a4c;
+    --outsider:#d68910; --executor:#1565c0;
+  }
+  *{box-sizing:border-box}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+       background:var(--bg);color:var(--ink);line-height:1.55;max-width:880px;margin:0 auto;padding:32px 28px;font-size:15px}
+  h1{font-size:28px;margin:0 0 4px}
+  h2{font-size:20px;margin:32px 0 12px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+  h3{font-size:16px;margin:18px 0 8px}
+  .meta{color:var(--muted);font-size:13px;margin-bottom:24px}
+  .question{background:var(--soft);border-left:3px solid var(--accent);padding:14px 18px;border-radius:4px;margin:18px 0}
+  .verdict{background:#fff;border:1px solid var(--line);border-radius:6px;padding:22px 24px;margin:18px 0;box-shadow:0 1px 2px rgba(0,0,0,0.03)}
+  .verdict h3{margin-top:0}
+  .verdict-headline{background:#1a1a1a;color:#fafaf7;padding:18px 22px;border-radius:6px;margin:18px 0;font-size:16px}
+  .verdict-headline strong{color:#fce96a}
+  details{background:#fff;border:1px solid var(--line);border-radius:5px;margin:10px 0;padding:0}
+  details summary{padding:12px 16px;cursor:pointer;font-weight:600;font-size:14px;list-style:none;display:flex;align-items:center;justify-content:space-between}
+  details summary::-webkit-details-marker{display:none}
+  details summary::after{content:"›";font-size:20px;transition:transform 0.2s}
+  details[open] summary::after{transform:rotate(90deg)}
+  details > div{padding:0 20px 16px;border-top:1px solid var(--line)}
+  .advisor-tag{display:inline-block;font-size:11px;padding:2px 8px;border-radius:3px;color:#fff;margin-right:8px;text-transform:uppercase;letter-spacing:0.04em;font-weight:600}
+  .tag-contrarian{background:var(--contrarian)}
+  .tag-principles{background:var(--principles)}
+  .tag-expansionist{background:var(--expansionist)}
+  .tag-outsider{background:var(--outsider)}
+  .tag-executor{background:var(--executor)}
+  .confidence{display:inline-block;font-size:12px;color:var(--muted);margin-left:12px}
+  .confidence strong{color:var(--ink)}
+  blockquote{margin:8px 0;padding-left:14px;border-left:2px solid var(--line);color:#333}
+  .grid-vote{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:14px 0}
+  .grid-vote .cell{background:#fff;border:1px solid var(--line);border-radius:4px;padding:10px;text-align:center;font-size:12px}
+  .cell strong{display:block;font-size:14px;margin-bottom:4px}
+  .vote-strong{background:#e6f4ea;border-color:#1f8a4c}
+  .vote-blind{background:#fde8e6;border-color:#c0392b}
+  .alignment-row{display:flex;align-items:center;gap:10px;padding:6px 0;font-size:13px}
+  .alignment-row .dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+  ul.tight{margin:4px 0 4px 18px}
+  ul.tight li{margin:3px 0}
+  .footer{margin-top:48px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--muted)}
+  code{font-family:ui-monospace,SFMono-Regular,monospace;background:#f0ece4;padding:1px 5px;border-radius:3px;font-size:12.5px}
+  .step{display:flex;gap:14px;padding:10px 0;border-top:1px dashed var(--line)}
+  .step:first-of-type{border-top:none}
+  .step .label{flex-shrink:0;width:80px;font-weight:600;color:var(--accent)}
+</style>
+</head>
+<body>
+
+<h1>LLM Council Verdict</h1>
+<div class="meta">Video Pipeline Restructure · 2026-05-12 21:10 SGT · 5 advisors → 5 reviewers → 1 chairman</div>
+
+<div class="question">
+<strong>The question.</strong> Jerel has 12+ video-related skills in his Marketing repo (three competing orchestrators, two storyboard tools, four UGC entry points). He proposed 9 consolidation moves — merge orchestrators, merge storyboard tools, auto-inject an OriSilver DP-profile macro, build a per-project ledger + autoresearch learning loop, bridge the external Trigger.dev UGC pipeline, promote video-director into an agent. He asked the council whether the restructure is safe, where the biggest risk lives, whether the learning loop is real, and how to handle the OriSilver split + Trigger.dev integration.
+</div>
+
+<div class="verdict-headline">
+<strong>VERDICT:</strong> The Executor's 4-week sequence is the spine, with a 60-min Outsider warm-up and a 30-min First-Principles insert before Week 2. The Expansionist's productization vision is correct but premature — defer to Month 3+. The ledger is theater on day 0; build it on real run-data, not anticipated schema. Don't auto-default the OriSilver DP macro; codify it as one preset among 3-4.
+</div>
+
+<h2>Where the council agrees</h2>
+
+<div class="verdict">
+<ul>
+<li><strong>E's sequencing is correct.</strong> 4 of 5 reviewers picked E as strongest. Ship one real client video on a minimally-merged stack <em>before</em> designing ledger, autoresearch, agent council, or productized offer.</li>
+<li><strong>D's productization is premature.</strong> 5 of 5 reviewers flagged "Branded Video Engine as a Service" before one repeatable internal delivery violates CLAUDE.md §14 (only automate proven processes).</li>
+<li><strong>Ledger needs ground-truth signal first.</strong> Without a win/loss label per gen, autoresearch compounds noise. Kill autoresearch v1. Manual triage 60-90 days.</li>
+<li><strong>OriSilver DP macro = one preset among 3-4.</strong> Auto-injecting Alexa 35 + UV anamorphic + Pro-Mist + Vision3 250D would homogenize every client's videos into the same indie-film look.</li>
+</ul>
+</div>
+
+<h3>Advisor alignment at a glance</h3>
+<div class="grid-vote">
+  <div class="cell"><strong>Outsider</strong>C:7<br>Naming + JTBD focus</div>
+  <div class="cell"><strong>Contrarian</strong>C:8<br>Anti-consolidation</div>
+  <div class="cell"><strong>1st Principles</strong>C:8<br>Contract before merge</div>
+  <div class="cell"><strong>Expansionist</strong>C:7<br>Category-creation</div>
+  <div class="cell vote-strong"><strong>Executor</strong>C:9<br>Ship Monday</div>
+</div>
+
+<h3>Peer-review verdicts</h3>
+<div class="grid-vote">
+  <div class="cell vote-strong"><strong>STRONGEST</strong>Executor<br>5 of 5 reviewers</div>
+  <div class="cell vote-blind"><strong>BLIND SPOT</strong>Expansionist<br>5 of 5 reviewers</div>
+  <div class="cell"><strong>SHARPEST</strong>Contrarian<br>diagnosis</div>
+  <div class="cell"><strong>CLEANEST</strong>1st Principles<br>frame</div>
+  <div class="cell"><strong>HONEST</strong>Outsider<br>naming maze</div>
+</div>
+
+<h2>Where the council clashes</h2>
+
+<div class="verdict">
+<h3>Merge now vs contract-first vs ship-first</h3>
+<p><strong>Contrarian:</strong> Don't merge — narrative film direction ≠ ad storyboarding; a <code>--director</code> flag won't bridge real craft distinctions.</p>
+<p><strong>First Principles:</strong> Stop merging until <code>brief.json</code> + <code>video-ledger.json</code> contracts exist. Then mergers become obvious or unnecessary.</p>
+<p><strong>Expansionist:</strong> Don't merge — two orchestrators feeding one ledger = 2x training signal.</p>
+<p><strong>Executor:</strong> Merge orchestrators Week 1 because the orchestrator is the front door routing decision. Defer everything else.</p>
+<p><strong>Chairman resolution:</strong> Execute E's Week 1. Slip in C's contract design (30 min) before Week 2 so the 5 baseline videos feed a usable schema. B's veto on beat-sheet/ai-filmmaking merge stands — keep separate.</p>
+</div>
+
+<div class="verdict">
+<h3>Bridge skill vs full integration for Trigger.dev pipeline</h3>
+<p><strong>Contrarian:</strong> Half-bridge is a trap — commit to submodule or stay manual.</p>
+<p><strong>Executor:</strong> Don't bridge at all yet. CLI call is fine for current volume.</p>
+<p><strong>Chairman resolution:</strong> Executor wins on volume. Decide bridge based on actual call frequency after Week 4's 5 runs.</p>
+</div>
+
+<h2>Blind spots only the peer-review caught</h2>
+
+<div class="verdict">
+<p>These NONE of the 5 advisors named — they only surfaced when reviewers compared takes:</p>
+<ol>
+<li><strong>No unit economics anywhere.</strong> Nobody priced a single end-to-end run. Wrong default engine could 5x per-video cost silently. Architecture decisions without unit economics are taste arguments in system-design costume.</li>
+<li><strong>Ground-truth signal is upstream of the ledger.</strong> "What makes a video good?" must be answered before the ledger schema is designed. Candidates: Jerel approval, render quality, Meta CTR/CPA (lagging, needs instrumentation), or operator taste verdict.</li>
+<li><strong>Existing learnings infra collides with the new ledger.</strong> Per-skill <code>corrections.md</code>, <code>learnings/session-state.md</code>, global <code>autoresearch</code> already exist. Adding parallel <code>video-ledger.json</code> = two competing memories that drift apart.</li>
+<li><strong>Live campaign protection.</strong> Skills are wired into <code>routing-table.md</code>, <code>skill-graph.json</code>. Nobody costed breakage to in-flight client deliverables mid-merge.</li>
+<li><strong>Operator taste-authority rule.</strong> When ledger says "worked" but Jerel's gut says no — who wins? 80/20 HITL should govern ledger writes, not just approvals.</li>
+<li><strong>Failure-mode catalog missing.</strong> Where does the pipeline currently break? Prompt drift, identity-lock failures, audio sync, revision loops? Ledger needs a failure-mode field per gen, not just good/bad.</li>
+</ol>
+</div>
+
+<h2>The recommendation</h2>
+
+<div class="verdict">
+<p>Run E's 4-week plan with three surgical inserts.</p>
+
+<div class="step"><div class="label">Week 0</div>
+<div>
+<strong>60-min foundation.</strong> (a) Write the 3-sentence "what is this" using ONE metaphor — recommend <strong>"the video studio"</strong>. (b) Define ground-truth signal: <em>"A video is good if Jerel approves it on first review."</em> Upgrade later. (c) Fence off in-flight client work — list every active video, freeze touched skills until W2.
+</div></div>
+
+<div class="step"><div class="label">Week 1</div>
+<div>
+<strong>Mon:</strong> Orchestrator merge. <code>video-factory</code> gets <code>--engine={sora|kling|veo|seedance}</code>. Deprecate <code>video-director</code> skill in frontmatter; update <code>routing-table.md</code>; rebuild <code>link-skills.py</code>.<br>
+<strong>Tue:</strong> Codify stills → motion HITL doctrine in <code>video-factory/SKILL.md</code>.<br>
+<strong>Wed–Fri:</strong> Ship one real client video end-to-end on the new stack. Log to <code>docs/video-runs/run-001.md</code>: brief + engine + prompts + outputs + cost + time + Jerel verdict + failure modes.
+</div></div>
+
+<div class="step"><div class="label">Week 1.5</div>
+<div>
+<strong>30-min C insert.</strong> Extract from <code>run-001.md</code> the fields that mattered. Draft <code>video-brief.schema.json</code> and <code>video-ledger.schema.json</code> from actual usage — schema follows behavior. Audit: does the new ledger duplicate <code>corrections.md</code> / <code>learnings/session-state.md</code> / <code>autoresearch</code>? If yes, fold into existing infra.
+</div></div>
+
+<div class="step"><div class="label">Week 2</div>
+<div>
+Beat-sheet/ai-filmmaking — <strong>don't merge</strong> (B veto). Document boundary: <code>ai-filmmaking</code> = narrative/brand; <code>beat-sheet-director</code> = ad-frame. UGC path = documentation only, no code change. Ship 2 more videos.
+</div></div>
+
+<div class="step"><div class="label">Week 3</div>
+<div>
+Inline OriSilver back-ports only into skills that <em>actually fired</em> in W1–W2 runs. DP profile = one preset among 3–4 (B correction), not auto-default. Ship 2 more videos.
+</div></div>
+
+<div class="step"><div class="label">Week 4</div>
+<div>
+Build the ledger. Schema already drafted from W1.5. 5 real runs to seed. Manual weekly triage. <strong>No autoresearch yet.</strong> If Trigger.dev pipeline ran any of the 5 → decide bridge by call frequency. If 0 → leave island-mode.
+</div></div>
+
+<div class="step"><div class="label">Month 3+</div>
+<div>
+Defer until 20 ship-runs prove the stack: D's productized offer, per-brand DP-as-moat, pre-render agent council, global cross-client ledger pool.
+</div></div>
+
+</div>
+
+<h2>The one thing to do first</h2>
+
+<div class="verdict-headline">
+Write the <strong>3-sentence "what is this"</strong> document. Today. Before any code change. If you cannot describe the video pipeline to a stranger in 3 sentences using ONE metaphor, the merge will not fix it — it will rename it.
+</div>
+
+<div class="verdict">
+<p><strong>Suggested draft to react to:</strong></p>
+<blockquote>
+The video studio. Tell the studio what you want (the brief). The studio picks the right crew and gear (engine + DP profile + skills), shoots it (generates), and shows you takes for approval (HITL). Every shipped video teaches the studio what worked for this client, so the next one starts smarter.
+</blockquote>
+<p>If that sentence lands, the rest of the plan executes itself. If it doesn't, fix it before Monday.</p>
+</div>
+
+<h2>Full advisor responses</h2>
+
+<details>
+<summary><span class="advisor-tag tag-outsider">Outsider</span>"The names are a maze. Pick one metaphor and commit." <span class="confidence">Confidence <strong>7/10</strong></span></summary>
+<div>
+<blockquote>
+Wait. Stop. I'm reading this as a normal person and I have questions before I can even answer yours.<br><br>
+<strong>What is a "skill"?</strong> You say twelve "skills." Are these files? Prompts? Apps? Folders? I genuinely don't know what I'd click on.<br><br>
+<strong>The names are a maze.</strong> <code>video-factory</code>, <code>video-director</code>, <code>video-producer</code> (new), <code>video-director skill</code> separate from <code>video-director agent</code>. Four things with "video" + "director/factory/producer" and I cannot keep them straight reading it once. A new client would bounce. Future-you in six months will Slack present-you asking "wait which one do I open."<br><br>
+<strong>Pick one metaphor and commit.</strong> Is this a kitchen (recipes), a film set (director/crew), or a factory (assembly line)? A 12-year-old should be able to say: "Oh, I tell the [thing] what I want, and it makes a video." That's the test.<br><br>
+<strong>The cinematography preset scares me.</strong> Alexa 35 + anamorphic + Pro-Mist + Vision3 + 20° dutch tilt as the DEFAULT? Every video looks like a moody indie film now? What if I want a bright kitchen UGC ad? Defaults that override intent are a trap.<br><br>
+<strong>"Learning ledger"</strong> — sounds like theater until you tell me: who reads it, when, and what changes because of it? If the answer is "I'll review it someday," it's a journal, not a system.<br><br>
+<strong>OriSilver</strong> — never heard of him. If his split (stills vs motion) is genuinely how the work flows, copy it. If it's his branding, don't.<br><br>
+<strong>My one ask:</strong> before merging anything, write the 3-sentence "what is this" a stranger would read first.
+</blockquote>
+</div>
+</details>
+
+<details>
+<summary><span class="advisor-tag tag-contrarian">Contrarian</span>"The 'ONE of everything' instinct is the fatal flaw." <span class="confidence">Confidence <strong>8/10</strong></span></summary>
+<div>
+<blockquote>
+The "ONE of everything" instinct is the fatal flaw. You're optimizing for a tidy diagram, not for the actual cost of being wrong.<br><br>
+<strong>The landmine in Question A:</strong> Narrative film direction and ad-frame storyboarding are not the same craft. ARQ + director profiles encode <em>causality and character arc</em>; beat-sheet-director encodes <em>attention curves and product reveals</em>. A <code>--director</code> flag does not make Villeneuve's pacing useful for a 15-second hook. In 6 months you'll have a bloated skill where the director profiles are dead weight on ad work and the ad-retention heuristics are corrupting narrative pacing.<br><br>
+<strong>The orchestrator merge is the real risk.</strong> <code>video-director</code> has 14 video types and a working Vertex path. <code>video-factory</code> is a router. You're folding a <em>production system</em> into a <em>traffic cop</em>. Seams will show — at the worst possible time, on a paid client deliverable.<br><br>
+<strong>Question D — the loop is theater as currently described.</strong> Without a hard win/loss label per generation, autoresearch will mutate toward whatever pattern got logged most, not what worked. MVP: kill autoresearch from v1. Manually triage ledger entries weekly for 90 days. THEN automate.<br><br>
+<strong>Question F — bridge skill is a trap.</strong> A bridge skill creates a dependency you can't grep, version, or roll back atomically. When Trigger breaks at 2am, your skills break silently. Either pull it in as submodule or leave it explicitly external — don't half-bridge.<br><br>
+<strong>Unnamed 12-month landmine:</strong> OriSilver's defaults become <em>your</em> defaults across every client. The DP macro is a starting point, not a house style. Codify it as a preset among 3-4, not the auto-injected default.
+</blockquote>
+</div>
+</details>
+
+<details>
+<summary><span class="advisor-tag tag-principles">First Principles</span>"You're asking the wrong question. Build the spine first." <span class="confidence">Confidence <strong>8/10</strong></span></summary>
+<div>
+<blockquote>
+The frame is wrong. "Consolidate 12 skills into N" is an org-chart problem dressed up as architecture. It optimizes for Jerel's mental load when picking a skill, not for the machine getting better at making video.<br><br>
+Strip everything. The job-to-be-done: <strong>turn a marketing intent into a finished video that performs, and let every finished video make the next one cheaper, faster, and better.</strong><br><br>
+Three primitives fall out:
+<ol>
+<li>A <strong>brief</strong> (intent + constraints + DP profile + client context)</li>
+<li>A <strong>generator</strong> (whatever model/pipeline produces the asset)</li>
+<li>A <strong>ledger</strong> (what was made, what worked, what to copy/avoid)</li>
+</ol>
+Skills are interchangeable hands. The ledger is the spine. Right now Jerel has 12 hands and no spine — that's why it feels broken.<br><br>
+<strong>Minimum machine:</strong> <code>brief.json</code> (input contract) → router (picks generator by content-type, not by skill name) → <code>video-ledger.json</code> (output + scoring + learnings). Everything else becomes swappable executor behind that contract.<br><br>
+Consolidation is downstream of contract design. Build the contract first, and the skill mergers become obvious (and mostly unnecessary).<br><br>
+<strong>Re D:</strong> ledger isn't theater <em>if</em> it's the input to the next brief. MVP = three fields — <code>what_we_tried</code>, <code>what_worked</code>, <code>dp_overrides_that_stuck</code> — auto-prepended to the next brief in the same project.
+</blockquote>
+</div>
+</details>
+
+<details>
+<summary><span class="advisor-tag tag-expansionist">Expansionist</span>"Don't build a video stack. Build a compounding visual brand engine." <span class="confidence">Confidence <strong>7/10</strong></span></summary>
+<div>
+<blockquote>
+The 10x version: Jerel isn't building a video skill stack. He's building <strong>the world's first compounding visual brand engine</strong> — a system that gets more valuable every time anyone in his roster ships a frame.<br><br>
+<strong>Global ledger > per-project ledger.</strong> Every winning prompt across every client becomes a typed template in a shared pool. New client onboarding: "pick a DP profile, the system suggests the 12 highest-converting prompt skeletons it's ever produced in your vertical." 100x cold-start advantage.<br><br>
+<strong>Per-brand DP profiles = an actual moat.</strong> Fuggy's Media looks like Fuggy's. NeezaNizam looks like NeezaNizam. Same prompt, different fingerprint. Clients can't churn — their visual DNA lives in your repo.<br><br>
+<strong>The agent council is the real unlock.</strong> script-doctor + storyboard-critic + DP + colorist + retention-analyst reviewing every gen <em>before</em> render burn = fewer turds, less credit spend, every rejection trains the ledger.<br><br>
+<strong>The offer hiding in plain sight:</strong> "Branded Video Engine as a Service." $5K setup (DP profile + 50-prompt seed library) + $2K/mo (10 production-ready videos against their encoded brand). Higgsfield API drops, you're already the workflow layer on top.<br><br>
+<strong>Don't merge the orchestrators yet.</strong> Build the ledger first. Two orchestrators feeding one ledger = twice the training signal. Merge after 100 ships of data tells you which patterns dominate.<br><br>
+The video stack isn't infrastructure. It's a category creation move.
+</blockquote>
+</div>
+</details>
+
+<details>
+<summary><span class="advisor-tag tag-executor">Executor</span>"You have 9 changes and a client backlog. Pick ONE." <span class="confidence">Confidence <strong>9/10</strong></span></summary>
+<div>
+<blockquote>
+Stop. You have 9 changes and a client backlog. Pick ONE that unblocks shipping. Everything else waits.<br><br>
+<strong>This week (ship only):</strong> Do #1 (orchestrator merge) and #4 (stills→motion HITL doctrine). The orchestrator is the front door — fix it once, every downstream skill inherits routing.<br><br>
+<strong>Concrete week-1 sequence:</strong>
+<ul>
+<li>Mon: Add <code>--engine={sora|kling|veo|seedance}</code> flag to <code>video-factory</code>. Mark <code>video-director</code> deprecated in frontmatter. Update <code>routing-table.md</code>.</li>
+<li>Tue: Codify stills→motion HITL gate inside <code>video-factory/SKILL.md</code>.</li>
+<li>Wed–Fri: <strong>Run one real client video end-to-end on the new stack.</strong> This is the baseline. No baseline = no learning loop.</li>
+</ul>
+<strong>DEFER (until baseline exists):</strong>
+<ul>
+<li>#5 <code>dp-profile.json</code> — premature; you don't know which params matter yet</li>
+<li>#6 <code>ugc-pipeline-bridge</code> — wrapper for a thing you've run 3 times; CLI is fine</li>
+<li>#7 ledger + autoresearch — <strong>worthless without 5+ baseline runs.</strong> Theater until then.</li>
+<li>#8 <code>video-producer</code> agent — promotion ceremony, zero new capability</li>
+<li>#9 OriSilver back-ports — inline edits when you hit the relevant skill, not a sweep</li>
+</ul>
+<strong>Brutal truth:</strong> the ledger loop is the sexiest item and the most useless one on day 0. Build the runway before the autopilot.
+</blockquote>
+</div>
+</details>
+
+<details>
+<summary><strong>Peer review highlights</strong> — 5 anonymized reviewers</summary>
+<div>
+<p><strong>Strongest pick:</strong> <em>Executor</em> (5 of 5 reviewers). "Only response with a falsifiable week-by-week sequence and a ship gate." "Inverts build order: ship → observe → codify → systematize."</p>
+<p><strong>Biggest blind spot:</strong> <em>Expansionist</em> (5 of 5 reviewers). "Productizing $5K + $2K/mo before a single repeatable video has shipped — selling the brochure for a factory that doesn't exist." "Treats a half-built internal tool as category-creation play."</p>
+<p><strong>All five missed:</strong></p>
+<ul>
+<li>Unit economics per video — Sora/Kling/Seedance credits + operator time wildly different; wrong default could 5x cost</li>
+<li>Ground-truth signal definition — what makes a video "good" must be answered before the ledger schema</li>
+<li>Existing learnings infra collision — <code>corrections.md</code> + <code>session-state.md</code> + <code>autoresearch</code> already exist; new ledger risks drift</li>
+<li>Live campaign protection during merge — in-flight client work needs fencing</li>
+<li>Operator taste-authority rule — who wins when ledger and gut disagree</li>
+<li>Failure-mode catalog — what's actually breaking now? Prompt drift, identity-lock, audio sync, revisions?</li>
+</ul>
+</div>
+</details>
+
+<div class="footer">
+Generated 2026-05-12 21:10 SGT · 5 advisors (Outsider, Contrarian, First Principles, Expansionist, Executor) → 5 anonymized peer reviewers → Chairman synthesis · Transcript: <code>docs/council/council-transcript-20260512-211023-video-pipeline.md</code>
+</div>
+
+</body>
+</html>

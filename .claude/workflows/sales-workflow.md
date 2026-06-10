@@ -323,16 +323,16 @@ would it be helpful if I sent you [relevant resource]?"
 
 ## Agent Delegation
 
-| Task | Agent | Trigger |
-|------|-------|---------|
+| Task | Agent / Skill | Trigger |
+|------|---------------|---------|
 | Lead research | `researcher` | New lead assigned |
-| Lead scoring | `lead-qualifier` | New lead or engagement |
+| Lead scoring | `leads:score` skill | New lead or engagement |
 | Prospect company analysis | `researcher` | Pre-call prep |
-| Lead generation | `attraction-specialist` | Pipeline building |
-| Pitch customization | `sales-enabler` | Meeting scheduled |
-| Objection scripts | `sales-enabler` | Post-call request |
-| Case study matching | `sales-enabler` | Industry/use case match |
+| Lead generation | `ad-library-scraper` / `attraction` skills | Pipeline building |
+| Pitch customization | `sales:pitch` skill | Meeting scheduled |
+| Objection scripts | `sales:battlecard` skill | Post-call request |
+| Case study matching | `sales:battlecard` skill | Industry/use case match |
 | Proposal generation | `copywriter` | Deal at proposal stage |
-| Follow-up sequences | `email-wizard` | Post-meeting |
+| Follow-up sequences | `email-sequence` skill | Post-meeting |
 | Lost deal analysis | `researcher` | Deal marked lost |
-| Competitive intel | `researcher` | Competitor mentioned |
+| Competitive intel | `researcher` / `competitor:deep` | Competitor mentioned |

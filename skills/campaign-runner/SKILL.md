@@ -1,10 +1,10 @@
 ---
 name: campaign-runner
-version: "1.0.0"
+version: "1.1.0"
 brand: AgentKits Marketing by AityTech
 category: campaign
 difficulty: intermediate
-description: "Full-stack campaign execution framework. Tracks campaign state across sessions, routes tasks to agents, manages assets, and publishes/schedules content via Postiz. Use when user wants to start, continue, or manage a marketing campaign end-to-end."
+description: "Campaign execution framework. Tracks state across sessions, routes tasks to agents, manages assets, publishes/schedules via Postiz, creates discovery files for video/email/funnel/landing/ad-concept workspaces. Triggers: start, continue, manage marketing campaign end-to-end."
 triggers:
   - campaign
   - run campaign
@@ -25,6 +25,8 @@ related_skills:
   - email-sequence
   - paid-advertising
   - copywriting
+  - video-concept-lab
+  - video-brief-normalizer
   - page-cro
   - image-generation
 agents:
@@ -77,10 +79,71 @@ Each campaign lives in `clients/<project>/campaigns/<campaign-slug>/` with this 
 
 ```
 campaigns/<campaign-slug>/
-├── state.yaml       # Progress tracker ("save file")
-├── assets/          # Generated content, images, copy
-└── metrics/         # Weekly metric snapshots
+├── campaign-index.json   # Option B discovery contract
+├── campaign-selection.json # Selected top-level client inputs + buyer micro-personas
+├── state.yaml            # Progress tracker ("save file")
+├── event-log.jsonl       # Append-only campaign events
+├── assets/               # Generated content, images, copy
+└── metrics/              # Weekly metric snapshots
 ```
+
+Campaigns may contain typed deliverable workspaces. Use this generic pattern for new output types:
+
+```text
+campaigns/<campaign-slug>/<artifact-family>/<artifact-slug>/
+├── pipeline-state.json
+├── artifact-manifest.json
+├── event-log.jsonl
+├── workspace-brief.json
+├── 01_strategy/
+├── 02_drafts/
+├── 03_assets/
+├── 04_variants/
+├── 05_packages/
+├── 06_runs/
+└── 07_review/
+```
+
+Recommended `artifact-family` names:
+
+```text
+video-concepts/
+email-sequences/
+funnel-pages/
+landing-pages/
+ad-concepts/
+lead-magnets/
+social-posts/
+```
+
+For `video-content` campaigns, also create:
+
+```text
+campaigns/<campaign-slug>/
+└── video-concepts/
+    └── README.md
+```
+
+Actual AI-video concept workspaces are a specialized deliverable workspace and must use:
+
+```text
+campaigns/<campaign-slug>/video-concepts/<concept-slug>/
+├── pipeline-state.json
+├── artifact-manifest.json
+├── event-log.jsonl
+├── concept-brief.json
+├── 01_strategy/
+├── 02_ag1-options/
+├── 03_scripts/
+├── 04_input-images/
+├── 05_prompt-packs/
+├── 06_generation-runs/
+└── 07_review/
+```
+
+Client-level raw inputs live at `clients/<project>/00_inputs/`. Buyer psychology and micro-personas live in one file: `clients/<project>/_brand/buyer-profile.md`. Campaigns select from those sources in `campaign-selection.json`; deliverable workspaces reference the campaign selection in their root-level workspace brief and must not duplicate raw input folders.
+
+Agents must read `campaign-index.json` before guessing campaign paths. Read `campaign-selection.json` before creating or updating any deliverable workspace. Once a workspace exists, read its `artifact-manifest.json`, `pipeline-state.json`, and workspace brief before reading or writing any phase artifact.
 
 **State file** (`state.yaml`) tracks:
 - Campaign metadata (name, type, phase, dates)
@@ -201,9 +264,9 @@ For each task in the campaign:
 Are all prerequisite tasks `done`? If not, flag as blocked.
 
 ### 2. Load Context
-- Read project files (icp.md, offer.md, brand-voice.md)
-- Read `clients/<project>/learnings.md` for client-specific patterns (winning creative, audience insights, mistakes to avoid)
-- Check `clients/<project>/assets/` for reusable creative from prior campaigns
+- Read project files (`_brand/icp.md`, `_brand/offer.md`, `_brand/brand-voice.md`, `_brand/buyer-profile.md`)
+- Read `clients/<project>/_brand/learnings.md` for client-specific patterns (winning creative, audience insights, mistakes to avoid)
+- Check `clients/<project>/00_inputs/` and `_brand/asset-map.md` for reusable source inputs and creative from prior campaigns
 - Load V.O.I.C.E. files from voice/<person>/
 - Load the assigned skill's SKILL.md
 
@@ -239,6 +302,9 @@ Types available:
 - `content-seo` — 7 tasks, keyword-to-traffic pipeline
 - `lead-gen` — 10 tasks, lead generation funnel
 - `retention` — 8 tasks, churn reduction + engagement
+- `video-content` — AI-video concept and prompt-pack campaign
+- `email-sequence` — lifecycle/nurture/onboarding sequence workspace
+- `funnel-build` — landing page, lead magnet, email follow-up, and ad-entry workspace
 
 ### Custom
 Start with blank `state-template.yaml` and add tasks manually.
@@ -322,3 +388,12 @@ Sources:
 - Postiz → social engagement, reach, impressions
 - HubSpot → email opens, clicks, replies
 - Meta Ads → ROAS, CPC, CPL, conversions
+
+<!-- skill-graph:start -->
+
+## Related
+<!-- auto-generated by scripts/link-skills.py — do not edit by hand -->
+
+- [[client-onboarding]] (skill, 0.14)
+
+<!-- skill-graph:end -->

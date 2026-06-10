@@ -1,0 +1,21 @@
+[
+  {
+    "id": "328bbdbb-c574-4163-b7be-8b172e9a5652",
+    "status": "completed",
+    "display_name": "GPT Image 2",
+    "job_set_type": "imagegen_2_0",
+    "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_2z2bozEwzKwxJNgkH3IQQ4lTkuw/hf_20260513_034626_328bbdbb-c574-4163-b7be-8b172e9a5652.png",
+    "created_at": 1778643986.41045,
+    "params": {
+      "width": 1024,
+      "height": 1024,
+      "prompt": "Create a 1:1 clean DTC commercial, Sony FX3, 35mm prime lens, soft natural daylight, polished color grading, brand-forward storyboard grid for Scene 1 of \"Solara SPF 50 Bathroom Ledge Demo\" — 2x2 layout, 4 panels on a clean black canvas, panels separated by thin black gutters only.\n\nOverarching scene theme: a premium mineral sunscreen product demo in a calm modern bathroom. The same matte off-white squeeze tube sits on a pale limestone bathroom ledge beside a softly blurred chrome faucet and warm neutral tile. Soft morning daylight comes from frame left, creating clean highlights, gentle shadows, and accurate product color. Product packaging stays consistent across all panels, and the readable tube label is exactly \"SOLARA SPF 50\".\n\nPanels (left-to-right, top-to-bottom):\n\nPanel 1: The SOLARA SPF 50 tube rests upright on the stone ledge with a clean bathroom reflection behind it.\n\nPanel 2: A well-groomed hand reaches in and tilts the tube toward camera, label still readable.\n\nPanel 3: The hand squeezes a neat ribbon of white mineral sunscreen onto two fingertips above the ledge.\n\nPanel 4: Final hero composition with the tube standing beside the smooth sunscreen ribbon on the stone ledge.\n\nProduct label lock: the only readable product text is exactly \"SOLARA SPF 50\". Keep the label large, straight, flat to camera, and readable in product-facing panels. Do not add extra words, logos, badges, seals, ratings, certifications, slogans, SPF claims beyond the exact label, reef-safe claims, water-resistant claims, medical claims, or decorative marketing copy.\n\nClaim hygiene: no additional readable text anywhere in the image except \"SOLARA SPF 50\" on the tube. Avoid visual or written performance claims, clinical symbols, doctor-approved cues, award badges, sustainability cues, or before/after implications.\n\nAction evidence: at least two panels show active product use, including hand interaction and squeeze texture.\n\nEnvironment: modern bathroom stone ledge, Midday, Clear. Mood: Hopeful. Visual style: clean DTC commercial photography, premium skincare ad, soft natural daylight, polished warm-neutral grade, shallow but not aggressive depth of field, realistic hand texture, real bathroom materials, accurate product color.\n\nCamera/lens feel: shot on Sony FX3, Spherical Cooke, 50mm Standard, natural.\n\nBelow each panel: no caption bands, no subtitles, no timestamps, no panel numbers, no explanatory overlays.\n\nForbidden: no title banner, no footer, no colored gridlines, no director's note, no VO or dialogue text, no SFX or music cue, no camera-movement commands, no production tables, no overlay text, no timestamps. Plain black canvas with 4 visual panels arranged in 2x2, and the only readable text is the product label \"SOLARA SPF 50\".\n\nRender at 1:1 aspect ratio.",
+      "medias": [],
+      "aspect_ratio": "1:1",
+      "quality": "medium",
+      "resolution": "1k",
+      "model": "videotape-alpha",
+      "reference_elements": []
+    }
+  }
+]

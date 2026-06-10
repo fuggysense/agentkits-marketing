@@ -1,0 +1,10 @@
+{
+  "label": "1D_buyer_language_fidelity",
+  "dt_sec": 118.033983,
+  "in_tok": 3,
+  "out_tok": 6404,
+  "cache_read": 9504,
+  "cost_usd": 0.21388395,
+  "session": "bb80f27b-3379-4b29-b2f3-fd16c0e315e2",
+  "output_path": "/Users/jerel/Documents/Jerel's brain/jerel's brain/Marketing/.claude/references/copywriting-os/reviewers/buyer-language-fidelity-audit.md"
+}

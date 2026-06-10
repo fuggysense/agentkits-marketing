@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "default_style": "dr-clean-static",
+  "note": "Swap styles by key with render.py --style <key>, or load the .md file into the orchestrator when crafting a prompt. Add a new style = drop a new .md here + one entry below. Nothing else to wire.",
+  "styles": {
+    "dr-clean-static": {
+      "file": "dr-clean-static.md",
+      "label": "Clean Singapore DR static ad",
+      "use_when": "Direct-response Meta static ads for a real client offer. Editorial/documentary look, real SG faces, headline baked into the image. This is the default for client ad waves.",
+      "awareness_fit": "L1-L4",
+      "source": "high-converting-static-brief.md (260418, Jerel) + the 9-rule static-ad format"
+    },
+    "chumbox-native": {
+      "file": "chumbox-native.md",
+      "label": "Uncanny chumbox / native ad",
+      "use_when": "Cold-traffic curiosity clicks. Raw, weird, 'wait, what am I looking at' native-ad images that sit at the bottom of an article. Pattern-interrupt over beauty. NOT for premium/brand-trust offers.",
+      "awareness_fit": "L1-L2 cold",
+      "source": "Master Direct Response Visual Director prompt (operator-supplied)"
+    }
+  }
+}

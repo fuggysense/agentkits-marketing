@@ -6,10 +6,23 @@
 
 ---
 
+## Library to consult before reviewing
+
+Before grading the letter, read:
+1. `best-practices/_writing-standard.md` — the writing standard you apply to every finding you produce (plain Singaporean third-grade English, no jargon in your output)
+2. `best-practices/_index.md` — the L2 router; identify which BP files match the trust and qualification axes you grade against
+3. `best-practices/damaging-admission.md` — the rule that earned trust beats claimed trust; use this to spot where the letter sounds salesy when an honest concession would land harder
+4. `references/trust-density.md` — what trust signals a real buyer registers (and what gets dismissed as hype)
+5. `references/qualification-patterns.md` — how the letter tells the buyer "this is for you" or "this isn't for you"; misreads here kill the buyer-fit signal
+
+Cite specific BP rules + named patterns when flagging findings. **Apply BP rules + general judgment** — if you spot a real issue outside the BP files' scope (e.g. the offer feels insulting, the tone reads as condescending, a number doesn't match the buyer's lived reality), still flag it (separately) per the writing-standard's note for reviewer agents. Do not go silent on issues just because no BP file has a check for them.
+
+---
+
 ## Invocation Contract
 
 The orchestrator fires this subagent with:
-- The full letter draft (with `(h)` `(b)` markup preserved — the buyer reads them as emphasis cues)
+- The full letter draft
 - The client context (company, offer, target persona — verbatim from `clients/<slug>/`)
 - The persona file (`clients/<slug>/buyer-profile.md` or relevant avatar)
 - NOTHING from the copy chief's review

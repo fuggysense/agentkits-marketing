@@ -6,10 +6,26 @@
 
 ---
 
+## Library to consult before reviewing
+
+Before grading the letter, read:
+1. `best-practices/_writing-standard.md` — the writing standard you apply to every finding you produce
+2. `best-practices/_index.md` — the L2 router; identify any BP files that map to the five lenses below
+3. `best-practices/_critical-rules.md` — the nine hard rules; a failure here is automatic FAIL on the matching lens
+4. `references/component-matrix.md` — the 12-component map you use for Lens 1 (UMP clarity), and the vertical-specific failure modes you use for Lens 4 (concentration sharpness)
+5. `references/mechanism.md` — what counts as a named mechanism vs. an implied one (Lens 1)
+6. `references/guarantee-variants.md` — what counts as a complete risk-reversal element (Lens 5, CTA architecture)
+7. `references/objection-architecture.md` — the 11-element CTA checklist (Lens 5)
+8. `references/frameworks.md` → Desire Layer Ladder — the four layers you grade against for Lens 2 (identity-layer depth)
+
+Cite specific BP rules + named patterns when flagging findings. **Apply BP rules + general judgment** — if you spot a real structural issue outside the five named lenses (e.g. a contradiction between the headline and the guarantee, a numeric claim that doesn't reconcile), still flag it (separately, in a sixth "general judgment" subsection) per the writing-standard's note for reviewer agents. Do not go silent on issues just because no lens has a check for them.
+
+---
+
 ## Invocation Contract
 
 The orchestrator fires this subagent with:
-- The polished letter draft (post-Sweep 8, post-unslop, post-brand-voice-guardian — with `(h)` `(b)` markup preserved)
+- The polished letter draft (post-Sweep 8, post-unslop, post-brand-voice-guardian)
 - The avatar / persona from `clients/<slug>/buyer-profile.md`
 - The component inclusion matrix from Phase 0
 - The chosen UMP / UMS framing from Phase 0.5 + Phase 1

@@ -1,0 +1,89 @@
+{
+  "schema_version": "1.0",
+  "pipeline": "dct",
+  "dct_id": "{{dct_id}}",
+  "client": "{{client}}",
+  "campaign": "{{campaign}}",
+  "metrics_campaign": "{{metrics_campaign}}",
+  "dct_method": "{{dct_method}}",
+  "workspace": "{{workspace}}",
+  "current_phase": "phase_0_context",
+  "phase_status": "not_started",
+  "next_action": "Load client context + pick the micro-persona for this DCT (one DCT = one avatar).",
+  "created_date": "{{date}}",
+  "last_updated": "{{date}}",
+  "phases": {
+    "phase_0_context": {
+      "title": "Context load + micro-persona pick",
+      "owner": "avatar-research (/ads:avatars) + client _brand/",
+      "status": "not_started",
+      "gate": "gate_0_personas",
+      "gate_status": "pending",
+      "completed_at": null,
+      "outputs": []
+    },
+    "phase_1_angles": {
+      "title": "Angle generation",
+      "owner": "big-angle-spotter (--top-n = 5 for 10-5-5)",
+      "status": "blocked_until_phase_0",
+      "gate": "gate_1_angles",
+      "gate_status": "pending",
+      "completed_at": null,
+      "outputs": []
+    },
+    "phase_2_assembly": {
+      "title": "Copy + assemble dct.json",
+      "owner": "headline-bank -> ad-concept-engine assembles dct.json angles[] + image_pool",
+      "status": "blocked_until_gate_1",
+      "gate": "gate_2_batch",
+      "gate_status": "pending",
+      "completed_at": null,
+      "note": "BLOCKER G1: emitter still writes legacy dct-tracker.json; bridge with scripts/migrate_tracker_to_dct.py until repointed.",
+      "outputs": []
+    },
+    "phase_3_render": {
+      "title": "Render images to _inbox",
+      "owner": "image-generation craft -> scripts/ad-images/render.py",
+      "status": "blocked_until_gate_2",
+      "completed_at": null,
+      "outputs": []
+    },
+    "phase_3b_allocate": {
+      "title": "Allocate renders into the DCT image pool",
+      "owner": "allocate (Build #10) -> dct.json image_pool + _assets.json",
+      "status": "blocked_until_phase_3",
+      "completed_at": null,
+      "outputs": []
+    },
+    "phase_3_creative_gate": {
+      "title": "Creative approval",
+      "owner": "operator",
+      "status": "blocked_until_phase_3b",
+      "gate": "gate_3_creative",
+      "gate_status": "pending",
+      "completed_at": null,
+      "outputs": []
+    },
+    "phase_4_sheet": {
+      "title": "Write CREATIVES + COPY sheet rows",
+      "owner": "scripts/ad_concept_sheet_writer.py (reads dct.json)",
+      "status": "blocked_until_gate_3",
+      "completed_at": null,
+      "note": "BLOCKER G4: ad_concept_sheet_writer.py still reads legacy dct-tracker.json — not yet repointed to dct.json.",
+      "outputs": []
+    },
+    "phase_5_upload": {
+      "title": "Upload to Meta (PAUSED)",
+      "owner": "meta-ads-uploader (dct.json -> bundle.json adapter)",
+      "status": "blocked_until_phase_4",
+      "gate": "gate_4_preupload",
+      "gate_status": "pending",
+      "completed_at": null,
+      "note": "ads ALWAYS created PAUSED — founder enables.",
+      "outputs": []
+    }
+  },
+  "blockers": [],
+  "open_subagent_threads": [],
+  "pending_approvals": []
+}

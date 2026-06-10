@@ -1,0 +1,130 @@
+---
+name: problem-promise
+version: "0.1.0-skeleton"
+brand: AgentKits Marketing by AityTech
+category: copywriting-foundation
+difficulty: intermediate
+description: "Generate a two-line setup-payoff structure (Halbert/Hormozi style). Problem line articulates pain so specific the audience says 'that's me.' Promise line inverts pain into outcome with mechanism + time + effort + sacrifice equation. Both reference same audience and context. Run AFTER buyer-language-researcher."
+triggers:
+  - problem promise
+  - "/copy:problem-promise"
+  - hormozi promise
+  - dream outcome
+  - setup payoff
+prerequisites:
+  - buyer-language-researcher
+related_skills:
+  - persuasive-premise
+  - usp-generator
+  - unique-mechanism-solution
+  - offer-builder
+  - headline-bank
+  - copywriting
+  - sales-letter-method
+agents:
+  - copywriter
+  - brainstormer
+mcp_integrations: {}
+success_metrics:
+  - pain_specificity
+  - promise_specificity
+  - audience_match
+  - mechanism_link
+output_schema: problem-promise-v1
+status: skeleton-pending-calibration
+---
+
+# Problem & Promise
+
+You produce a two-line setup-payoff structure. Halbert lead-gen + Hormozi grand-slam DNA.
+
+- **Problem line:** pain so specific the audience says "that's me."
+- **Promise line:** outcome × mechanism × time × effort × sacrifice (Hormozi's Grand Slam equation, inverted from the pain).
+
+Both lines must reference the **same** audience and the **same** context. No bait-and-switch.
+
+**Source:** Gary Halbert lead-generation letters + Alex Hormozi *$100M Offers* "Dream Outcome" framework. See `references/canonical-sources.md` (TODO).
+
+## Angle = problem + person + timing + proof
+
+Keep it human. An angle is just:
+
+`Angle = problem + person + timing + proof`
+
+- **Problem (the barrier):** the real thing blocking them. Name it FIRST.
+- **Person + awareness:** who they are, and how aware they already are of the problem and the options.
+- **Timing:** what makes it matter *now* (the trigger).
+- **Proof:** the evidence THIS person will actually believe.
+
+**Example — speaking coach:** Barrier: they freeze on stage · Awareness: they know they need to speak better · Frame: "say less, land harder" · Proof: before/after clips, testimonials, speaking results.
+
+**Example — iron supplement:** Barrier: they feel tired and foggy · Awareness: they know low energy is the problem · Frame: "steady energy without caffeine crashes" · Proof: ingredient credibility, reviews, results.
+
+**The biggest mistake is starting with the frame before you understand the barrier.** Barrier first, frame last.
+
+## Required Inputs
+- `clients/<project>/research/buyer-language-dossier.md` — REQUIRED (verbatim pain language)
+- `clients/<project>/offer.md` — REQUIRED
+- `clients/<project>/research/mechanism-solution.md` — REQUIRED if exists (mechanism feeds the promise)
+
+## Hard Rules
+1. Problem line = max 1 sentence. Specific enough that the right audience self-identifies in 2 seconds.
+2. Promise line = outcome + mechanism + time + effort + sacrifice. Numbers required.
+3. Both lines reference the SAME audience descriptor. No drift.
+4. Both lines reference the SAME context (location, role, situation).
+5. No vague language. Concrete numbers, time, specifics, named outcomes.
+6. The mechanism in the Promise must match `mechanism-solution.md` if it exists.
+
+## Anti-patterns (REJECT these)
+- Vague pain ("Tired of feeling stuck?").
+- Generic promise ("Transform your life").
+- Audience drift (pain is about founders, promise is about teams).
+- Context drift (pain is about cold outbound, promise is about warm referrals).
+- Promise without mechanism (just an outcome floating in space).
+- "Without X, Y, Z" stacked too long (3 max).
+
+## Output Schema (`problem-promise-v1`)
+```yaml
+problem:
+  line: <one sentence>
+  pain_specificity_check: [<concrete details: numbers, situations, behaviors>]
+  audience_descriptor: <who has this pain>
+promise:
+  line: <one sentence>
+  outcome: <named result>
+  mechanism: <how — links to mechanism-solution.md if exists>
+  time: <within X days/weeks/months>
+  effort: <how much work the buyer does>
+  sacrifice: <what they DON'T have to give up — max 3>
+audience_match:
+  problem_audience: <descriptor>
+  promise_audience: <descriptor>
+  match: <yes/no — must be yes>
+context_match:
+  problem_context: <situation>
+  promise_context: <situation>
+  match: <yes/no — must be yes>
+buyer_language_used: [<verbatim phrases pulled from dossier>]
+```
+
+## Worked Examples
+TODO — populate after Ghostwriter calibration. Need 3 good + 2 bad.
+
+## Calibration Set
+TODO — 10 pairs at `evals/problem-promise/calibration.jsonl`.
+
+## Lock Criteria
+Average ≥ 8/10. Beats Ghostwriter on ≥ 5/10. Audience-match + context-match pass 100%.
+
+## Downstream Handoff
+Save to `clients/<project>/research/problem-promise.md`. Feeds `headline-bank`, `copywriting`, `ad-concept-engine`, `sales-letter-method`.
+
+<!-- skill-graph:start -->
+
+## Related
+<!-- auto-generated by scripts/link-skills.py — do not edit by hand -->
+
+- [[persuasive-premise]] (skill, 0.37)
+- [[usp-generator]] (skill, 0.12)
+
+<!-- skill-graph:end -->

@@ -1,10 +1,10 @@
 ---
 name: website-design
-version: "5.0.0"
+version: "6.0.0"
 brand: AgentKits Marketing by AityTech
 category: content
 difficulty: intermediate
-description: "Quad-mode website skill: Recreation (pixel-perfect from reference), Creation (bold aesthetics from scratch), Hybrid (recreate + improve), Paper-First (import from Paper.design). Paper.design MCP for bidirectional visual editing — push HTML to Paper, read back JSX/Tailwind, extract precise design tokens. Single index.html with Tailwind CDN. Automated screenshot comparison loops. Anti-generic guardrails."
+description: "5-mode website builder: Recreation (pixel-perfect), Creation (from scratch), Hybrid (improve), Paper-First (Paper.design import), Cold-Traffic CRO. Single index.html + Tailwind. Screenshot loops. Anti-generic."
 triggers:
   - website design
   - build website
@@ -33,6 +33,13 @@ triggers:
   - paper to code
   - import from paper
   - paper file
+  - cold traffic landing page
+  - conversion landing page
+  - cold traffic cro
+  - meta ads landing page
+  - tiktok landing page
+  - ship sales letter as page
+  - convert sales letter to landing page
 prerequisites: []
 related_skills:
   - page-cro
@@ -41,6 +48,8 @@ related_skills:
   - brand-building
   - schema-markup
   - userinterface-wiki
+  - sales-letter-method
+  - sales-letter-audit
 agents:
   - copywriter
   - brand-voice-guardian
@@ -62,14 +71,15 @@ output_schema: website-build
 
 ## Graph Links
 - **Feeds into:** [[page-cro]]
-- **Draws from:** [[copywriting]], [[brand-building]]
-- **Post-build audit:** [[userinterface-wiki]] (UX quality pass — animation, timing, typography, visual design, UX laws)
+- **Draws from:** [[copywriting]], [[brand-building]], [[design-system]] (reads `designlang/*-design-tokens.json` in Mode A as ground truth)
+- **Post-build audit:** [[userinterface-wiki]] (UX quality pass — animation, timing, typography, visual design, UX laws; also audits `designlang/*-motion-tokens.json` when present)
+- **Video output (sibling stack):** Hyperframes at `/Users/jerel/AI workflows/hyperframes-student-kit/` — `/website-to-hyperframes` for URL→video, `/make-a-video` for concept→video. This skill builds static HTML sites; Hyperframes renders motion graphics MP4s. Different output, same brand tokens (via design-system).
 - **Used by agents:** [[conversion-optimizer]]
 - **Related:** [[image-generation]]
 
-# Website Design v5.0 — Quad Mode (Recreate + Create + Hybrid + Paper-First)
+# Website Design v6.0 — Penta Mode (Recreate + Create + Hybrid + Paper-First + Cold-Traffic CRO)
 
-Four modes, one skill. Recreate pixel-perfect, create from scratch, hybrid redesign, or import from Paper.design.
+Five modes, one skill. Recreate pixel-perfect, create from scratch, hybrid redesign, import from Paper.design, or engineer a cold-traffic conversion page from a strategy brief / sales-letter-method output.
 
 ---
 
@@ -83,6 +93,7 @@ Detect mode automatically from user input:
 | User describes what to build (no reference) | **B: Creation** | Design from scratch with bold aesthetics |
 | Reference + "make it better" / "redesign" | **C: Hybrid** | Recreate structure, apply creation aesthetics |
 | User says "from Paper" / has Paper file open | **D: Paper-First** | Read design from Paper, generate code, iterate bidirectionally |
+| User wants a cold-traffic conversion page (Meta/Google/TikTok ads → CTA) — OR — passes a `sales-letter-method` output and says "ship as page" | **E: Cold-Traffic CRO** | Engineer a conversion argument as HTML+CSS. Anti-template, 8-step strategy, banned-words sweep, 7-question QC filter |
 
 ---
 
@@ -265,9 +276,20 @@ When the user provides a reference image (screenshot) and optionally CSS classes
 **Philosophy:** Match the reference exactly — don't improve it, don't add to it.
 
 ### Step 1: Analyze Reference
-- Run `design-analyze` on the reference screenshot to extract design tokens (colors, typography, layout, sections)
+
+**Check designlang outputs FIRST** (ground truth beats vision):
+- Look for `clients/<slug>/brand/reference/designlang/` — if the `design-system` skill has run, these files are the authoritative source:
+  - `*-design-tokens.json` — W3C design tokens (colors, typography, spacing) — use these hex/px values verbatim, don't re-derive from screenshot
+  - `*-motion-tokens.json` — durations, easings, springs, scroll-linked flag, `feel` fingerprint — drives Tailwind `transition-duration` / `ease-*` choices and GSAP defaults
+  - `*-anatomy.tsx` — typed component stubs (slots × variants × states) — maps which components to build (buttons, cards, nav, etc.) with their variants pre-enumerated
+  - `*-design-language.md` — narrative summary for cross-checking
+
+**Fallback when no designlang outputs exist:**
+- Run `design-analyze` on the reference screenshot to extract design tokens via Gemini vision
 - If no Gemini API key, Claude analyzes the screenshot visually
 - Note exact colors (hex), font sizes, spacing, layout structure, border radii, shadows
+
+**Token precedence when both exist:** designlang JSON > Gemini vision > manual inspection. Screenshots stay useful for layout/composition even when JSON tokens are authoritative.
 
 ### Step 2: Generate
 - Create a single `index.html` using Tailwind CSS via CDN
@@ -474,6 +496,205 @@ When user has an existing Paper.design file to convert to code, or says "from Pa
 
 ---
 
+## Mode E: Cold-Traffic CRO
+
+**When to use:**
+- Cold paid traffic (Meta / Google / TikTok / LinkedIn / email / organic) → conversion page
+- Single primary CTA (book call, claim offer, opt-in, demo)
+- Operator has either (a) a strategy brief OR (b) a `sales-letter-method` output ready to ship as a page
+- Output must be a self-contained, mobile-first HTML+CSS file — not just copy
+
+**When NOT to use Mode E (route elsewhere):**
+- Long-form text sales letter (no page yet) → `/copy:sales-letter` (`sales-letter-method`)
+- Audit existing letter through fresh-eyes lens → `sales-letter-audit` skill (direct) or `sales-letter-auditor` agent (called from `sales-letter-method` ship-gate)
+- Pixel-perfect reproduction of a reference → Mode A
+- Brand/marketing site with multiple pages → Mode B
+- Optimize an EXISTING live page → `page-cro`
+
+**Bidirectional link to `sales-letter-method`:**
+- **Forward:** sales-letter-method writes the letter → Mode E ships it as a coded page
+- **Backward:** if Mode E is invoked without a letter, the operator can branch to `/copy:sales-letter` first to generate body content, then return here
+
+### Step 1: Strategy (mandatory — do not skip)
+
+Lock these BEFORE writing any code. If passed a `sales-letter-method` output, extract from it; otherwise interview the operator.
+
+| Field | What it is | Where to source |
+|---|---|---|
+| CLIENT | Business + 1-sentence description | `clients/<slug>/context-profile.json` |
+| OFFER | What the CTA delivers (outcome, not price) | `clients/<slug>/offer.md` |
+| GOAL | Primary metric (e.g. opt-in rate > baseline × 1.5) | Operator |
+| PERSONA | Avatar — pull verbatim | `clients/<slug>/buyer-profile.md` or `avatars/` |
+| MARKET AWARENESS | Schwartz level (1–5) | `buyer-profile.md` |
+| MARKET SOPHISTICATION | Schwartz sophistication (1–5) | `buyer-profile.md` |
+| BRAND COLOURS | Hex + usage roles | `clients/<slug>/brand/` or `brand-voice.md` |
+| BRAND STYLE | premium clinic / fintech dashboard / luxury / minimal Apple / etc. | Operator + brand-voice |
+| PROOF | Testimonials, results, case studies, credentials | `clients/<slug>/` |
+| CTA | Exact button text + destination URL | Operator |
+| TRAFFIC SOURCE | Meta / Google / TikTok / LinkedIn / Email / Organic | Operator |
+
+Then derive the conversion argument:
+
+1. **CORE ANGLE (one only)** — The big idea this page is built around
+2. **CORE PAIN** — The specific frustrating situation
+3. **FALSE BELIEF TO BREAK** — What they currently believe that's wrong
+4. **NEW MECHANISM** — The unique way this works
+5. **CONVERSION GOAL PSYCHOLOGY** — What they need to believe before clicking
+6. **VISUAL CONCEPT** — What this should FEEL like
+
+### Step 2: Choose Experience Format (one only)
+
+The page must follow ONE format end-to-end. Generic landing pages = failed Mode E.
+
+| Format | Use when |
+|---|---|
+| **Diagnostic / self-identification** | "This is why you're stuck" — works for stuck-in-research personas |
+| **Breakdown / expose** | "What's actually going wrong" — high-suspicion or burned-before audiences |
+| **System reveal** | "Here's how this really works" — solution-aware, want mechanism |
+| **Dashboard / data-driven** | Numbers/proof/metrics feel — B2B, finance, performance-marketing |
+| **Timeline transformation** | "Before → after journey" — outcome-focused personas |
+| **Contrarian rant → rebuild** | Most-aware audiences who've heard everything |
+| **Case study immersion** | Reader feels INSIDE the result — coaching, real estate, agency |
+| **Visual system** | Step-by-step mechanism focus — technical / process-driven offers |
+
+### Step 3: Structure (anti-template — design from the angle, not a template)
+
+Pick ONE flow that fits the angle. Examples:
+- Problem → Shock → Mechanism → Proof → Offer
+- Outcome-first → Proof → Why it works → CTA
+- Contrarian hook → Breakdown → Rebuild → Offer
+- Diagnostic checklist → "If 3+ apply..." → Mechanism → CTA
+
+**Forbidden:** generic "Hero → Features → Testimonials → CTA" template.
+
+### Step 4: Copy
+
+Write like:
+- **Eugene Schwartz** (awareness calibration)
+- **Gary Halbert** (pull + emotion)
+- **David Ogilvy** (clarity + authority)
+
+Rules:
+- First screen must hook HARD
+- Every section moves the sale forward
+- Specific, real, visual language
+- Short mobile paragraphs (≤ 3 lines on phone)
+- Skimmable
+
+**Banned words (hard list — never use):**
+```
+life changer, breakthrough, game changer, unlock your potential, revolutionary,
+let's dive in, in today's fast-paced world, crystal clear, journey, synergy,
+leverage, landscape (as metaphor)
+```
+Plus all entries in `clients/<slug>/brand-voice.md` banned list and the project's `corrections.md`.
+
+If `sales-letter-auditor` (or `sales-letter-audit` skill direct) has been run on the body content earlier, **manually review** its JSON sidecar (`<letter-name>-audit-<YYMMDD>-<NN>.json` under `clients/<slug>/copy/audits/`) before writing this step's copy. Surface each `issues[]` entry to the operator with severity (`[H]/[M]/[L]`) and `suggested_fix`; the operator selects which to apply. **Never auto-apply.** Free-form markdown reports are for human review only — do not parse them for automated edits.
+
+### Step 5: Design Execution
+
+The page MUST look:
+- Premium · Modern · Clean · Intentional · Mobile-first · Not cluttered · Not template-like
+
+Use:
+- Strong section contrast
+- Card-based layouts
+- Soft shadows + rounded corners
+- Clean spacing + visual hierarchy
+- Large readable text
+- CTA visibility above the fold
+- Alternating layout styles
+- Visual proof blocks
+- Subtle gradients ONLY if premium
+
+Avoid:
+- Big text walls · Generic layouts · Ugly spacing · Tiny fonts · Repetitive sections
+
+### Step 6: Code Output
+
+Output ONE full HTML file with internal CSS (not Tailwind CDN here — Mode E ships standalone for pasting into GHL / Webflow / wherever):
+
+- Wrapped in ONE parent class (avoid GHL conflicts)
+- Mobile-first CSS
+- Fully responsive
+- Clean class naming
+- No external libraries
+- No JS unless essential
+- CTA buttons use `#claim` placeholder if no link provided
+- Section comments throughout
+
+### Step 7: Scroll Psychology
+
+- Every 1–2 screen heights must introduce a new "reason to continue"
+- Curiosity loops between sections
+- Pattern breaks (layout shifts, cards, contrast changes)
+- Micro-hooks between sections
+- Avoid predictable flow
+
+The reader should feel: *"I need to keep scrolling."*
+
+### Step 8: Conversion Intensity
+
+- Remove ALL ambiguity
+- Outcome must be obvious in 3 seconds
+- Make the next step frictionless
+- Pre-sell BEFORE the CTA
+- Make clicking feel like the logical next step
+
+If the user has to "think" about clicking → fail.
+
+### Step 9: Anti-Template Enforcement
+
+**Every time Mode E is used, the page MUST look completely different.**
+
+Vary:
+- Hero layout
+- Section flow
+- Visual style
+- Card design
+- Structure
+- Typography scale
+
+If two consecutive Mode E builds look like the same template → operator should reject and re-run.
+
+### Step 10: Quality Control Filter (non-negotiable)
+
+Before outputting the final page, internally verify ALL 7:
+
+1. Would this page convert cold traffic at scale? — if no, improve
+2. Does the hero stop someone scrolling? — if no, rewrite
+3. Does this look like something a beginner could have made? — if yes, redesign
+4. Is the value obvious within 3 seconds? — if no, sharpen
+5. Any generic or vague copy? — if yes, replace with specific concrete language
+6. Does the page feel like a distinct experience? — if no, rebuild using a stronger experience format
+7. Fully optimised for mobile-first? — if no, fix spacing, font sizes, layout
+
+Iterate before outputting. **Do not output average work.**
+
+### Step 11: Output Format
+
+1. **STRATEGY BREAKDOWN** — the Step 1 decisions, in writing, before the code
+2. **EXPERIENCE FORMAT CHOSEN** + 1-line justification
+3. **FULL HTML + CSS CODE** in one file
+4. **MOBILE-FIRST VERIFICATION** — confirm tested at 375px and 768px breakpoints in the screenshot loop
+
+Save to: `clients/<slug>/deliverables/landing-pages/<page-name>-<YYMMDD>.html`
+
+### Step 12: Screenshot & Compare Loop (Shared Foundation)
+
+Run the standard screenshot loop (per Shared Foundation section above) — minimum 1 mobile + 1 desktop pass. If the operator passed a reference, also run a comparison.
+
+### Mode E Rules
+
+- **Strategy Step 1 is non-negotiable.** No code before strategy is locked. If operator skips, ask once, then refuse.
+- **One angle, one experience format.** Don't blend formats — that's how generic pages happen.
+- **Anti-template enforcement is real.** If you've used the same hero pattern in the last 2 builds, change it.
+- **Banned words are HARD blockers** — auto-fail QC, do not output.
+- **Linked to `sales-letter-method`:** if the operator has a letter, ingest it as the body content for the chosen experience format. Don't rewrite voice — preserve the letter's wording where it fits the page section.
+- **Linked to `sales-letter-auditor` (manual handoff only):** if `sales-letter-auditor` agent was run on the body content, parse the JSON sidecar (`schema_version: "1.0"`) — never the markdown report. Present each `issues[]` entry to the operator with `severity` (`[H]/[M]/[L]`) and `suggested_fix`. The operator decides which findings to apply. **No auto-apply, even with structured input.** This is an HITL gate, not a machine-driven patch loop.
+
+---
+
 ## File Structure
 
 ```
@@ -603,3 +824,12 @@ SHOULD FIX:
 ## Learnings
 
 (Updated as patterns are confirmed during website builds — see `learnings.md`)
+
+<!-- skill-graph:start -->
+
+## Related
+<!-- auto-generated by scripts/link-skills.py — do not edit by hand -->
+
+- [[sales-letter-method]] (skill, 0.12)
+
+<!-- skill-graph:end -->

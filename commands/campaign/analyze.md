@@ -127,7 +127,7 @@ echo "Campaign Analysis Date: $CURRENT_DATE"
 ### Required MCP Sources
 | Data | MCP Server | Required |
 |------|------------|----------|
-| Campaign metrics | `meta-ads` | For paid campaigns |
+| Campaign metrics | `meta` CLI (not MCP) | For paid campaigns |
 | Traffic/conversions | `google-analytics` | For attribution |
 | Revenue | `hubspot` | For ROI calculation |
 

@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DCT Pipeline — Where You Are & What's Next</title>
+<style>
+  :root{
+    --bg:#0c1018; --panel:#141b27; --panel2:#1b2536; --line:#283447;
+    --ink:#e8edf4; --muted:#9aa7bd; --faint:#6b7890;
+    --done:#3fb950; --next:#58a6ff; --risk:#f0883e; --blocked:#8b949e; --accent:#bc8cff;
+    --done-bg:#0f2a16; --next-bg:#0d2238; --risk-bg:#2e1c0c; --park-bg:#1c2230;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:linear-gradient(180deg,#0a0e15,#0c1018 240px);color:var(--ink);
+    font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased;padding:0 0 90px}
+  .wrap{max-width:980px;margin:0 auto;padding:0 22px}
+  header{padding:46px 22px 30px;text-align:center;border-bottom:1px solid var(--line);
+    background:radial-gradient(1200px 300px at 50% -40%,rgba(88,166,255,.14),transparent)}
+  header h1{margin:0 0 8px;font-size:30px;letter-spacing:-.4px}
+  header p{margin:0;color:var(--muted);font-size:16px}
+  .tag{display:inline-block;margin-top:14px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--faint);border:1px solid var(--line);border-radius:30px;padding:5px 14px}
+  h2{font-size:21px;margin:48px 0 6px;letter-spacing:-.3px}
+  h2 .n{color:var(--accent);font-variant-numeric:tabular-nums;margin-right:10px}
+  .sub{color:var(--muted);margin:0 0 20px;font-size:15px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:22px 24px;margin:16px 0}
+  .legend{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0 0;justify-content:center}
+  .chip{display:inline-flex;align-items:center;gap:7px;font-size:13px;color:var(--muted);
+    border:1px solid var(--line);border-radius:30px;padding:5px 12px;background:var(--panel)}
+  .dot{width:10px;height:10px;border-radius:50%}
+  .d-done{background:var(--done)} .d-next{background:var(--next)} .d-risk{background:var(--risk)}
+  .d-blocked{background:var(--blocked)} .d-accent{background:var(--accent)}
+  .mermaid{background:var(--panel2);border:1px solid var(--line);border-radius:14px;padding:24px;margin:14px 0;text-align:center;overflow-x:auto}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  @media(max-width:720px){.two{grid-template-columns:1fr}}
+  .col{border-radius:14px;padding:20px 22px;border:1px solid var(--line)}
+  .col.good{background:var(--done-bg);border-color:#1d5e2c}
+  .col.bad{background:var(--risk-bg);border-color:#6e4216}
+  .col h3{margin:0 0 12px;font-size:16px;display:flex;align-items:center;gap:8px}
+  .col ul{margin:0;padding-left:2px;list-style:none}
+  .col li{position:relative;padding:7px 0 7px 28px;border-top:1px dashed rgba(255,255,255,.07);font-size:14.5px;color:#d7deea}
+  .col li:first-child{border-top:none}
+  .col.good li::before{content:"✓";position:absolute;left:2px;color:var(--done);font-weight:700}
+  .col.bad li::before{content:"✕";position:absolute;left:2px;color:var(--risk);font-weight:700}
+  .path{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-top:8px}
+  @media(max-width:720px){.path{grid-template-columns:1fr}}
+  .pathcard{border-radius:14px;padding:18px 18px 16px;border:1px solid var(--line);background:var(--panel)}
+  .pathcard .lbl{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);margin-bottom:6px}
+  .pathcard h4{margin:0 0 8px;font-size:16px}
+  .pathcard p{margin:0;font-size:13.5px;color:var(--muted)}
+  .pathcard.rec{border-color:#1d5e2c;background:var(--done-bg)}
+  .pathcard.warn{border-color:#6e4216}
+  .badge{display:inline-block;font-size:11px;padding:2px 8px;border-radius:20px;margin-top:10px;font-weight:600}
+  .badge.rec{background:#0f2a16;color:var(--done);border:1px solid #1d5e2c}
+  .badge.risk{background:#2e1c0c;color:var(--risk);border:1px solid #6e4216}
+  .badge.park{background:#1c2230;color:var(--blocked);border:1px solid var(--line)}
+  .shape{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  @media(max-width:720px){.shape{grid-template-columns:1fr}}
+  .shapebox{border:1px solid var(--line);border-radius:12px;padding:18px;background:var(--panel2)}
+  .shapebox h4{margin:0 0 4px;font-size:16px}
+  .shapebox .meta{font-size:12px;color:var(--faint);margin-bottom:12px}
+  .shapebox.live{border-color:#6e4216}
+  .shapebox.proven{border-color:#1d5e2c}
+  .grid5{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+  .pill{font-size:11px;background:#0d2238;border:1px solid #1b3a5c;color:#9fc7f5;border-radius:6px;padding:3px 8px}
+  .pill.alt{background:#241a30;border-color:#3d2b52;color:#c9a9ee}
+  code,kbd{font-family:"SF Mono",ui-monospace,Menlo,Consolas,monospace}
+  .cmd{background:#0a0e15;border:1px solid var(--line);border-left:3px solid var(--next);
+    border-radius:8px;padding:12px 14px;margin:10px 0;font-size:13px;overflow-x:auto;white-space:pre;color:#cdd7e6}
+  .cmd .c{color:var(--faint)}
+  .step{display:flex;gap:14px;padding:14px 0;border-top:1px solid var(--line)}
+  .step:first-child{border-top:none}
+  .step .num{flex:none;width:30px;height:30px;border-radius:50%;background:var(--panel2);border:1px solid var(--line);
+    display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:var(--next)}
+  .step .b{flex:1}
+  .step h4{margin:0 0 3px;font-size:15px}
+  .step p{margin:0;font-size:14px;color:var(--muted)}
+  .step .tool{font-size:11px;color:var(--faint);margin-top:5px}
+  .status-in{color:var(--done);font-weight:600} .status-no{color:var(--risk);font-weight:600}
+  .gl{display:grid;grid-template-columns:160px 1fr;gap:0;font-size:14px}
+  .gl dt{font-weight:600;color:#cbd5e6;padding:10px 0;border-top:1px solid var(--line)}
+  .gl dd{margin:0;color:var(--muted);padding:10px 0;border-top:1px solid var(--line)}
+  @media(max-width:560px){.gl{grid-template-columns:1fr}.gl dd{padding-top:0}}
+  .files{font-size:13px;color:var(--muted)}
+  .files code{color:#9fc7f5}
+  footer{margin-top:50px;padding-top:22px;border-top:1px solid var(--line);color:var(--faint);font-size:13px;text-align:center}
+  .callout{background:var(--next-bg);border:1px solid #1b3a5c;border-radius:12px;padding:16px 18px;margin:16px 0;font-size:14.5px}
+  .callout b{color:#9fc7f5}
+</style>
+</head>
+<body>
+<header>
+  <h1>DCT Pipeline — Where You Are & What's Next</h1>
+  <p>NeezaNizam · "Deferred #8" tracker split + "Build #10" allocate · status as of 8 Jun 2026</p>
+  <span class="tag">internal map — read top to bottom</span>
+  <div class="legend">
+    <span class="chip"><span class="dot d-done"></span>Done / proven</span>
+    <span class="chip"><span class="dot d-next"></span>Next, lower risk</span>
+    <span class="chip"><span class="dot d-risk"></span>Touches live ads</span>
+    <span class="chip"><span class="dot d-blocked"></span>Parked / future</span>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <section>
+    <h2><span class="n">01</span>In one sentence</h2>
+    <p class="sub">What this whole thing is, before the diagrams.</p>
+    <div class="card">
+      You're moving how each ad test is stored from <b>one big messy file per test</b> (<code>dct-tracker.json</code>)
+      to <b>one clean file per test</b> (<code>dct.json</code>) — so your scripts stop tripping over each other — and then
+      adding a one-command tool (<code>allocate</code>) that files a finished image into the right test safely.
+      I proved the first half works on a <b>safe draft test</b>. The live tests and the automation are still ahead.
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">02</span>The full pipeline (how an ad gets made)</h2>
+    <p class="sub">Where every piece sits — and which parts are automated vs. still manual. The two blue diamonds are the projects in flight.</p>
+    <pre class="mermaid">
+flowchart TD
+    IDEA["You run /ads:concepts<br/>(the emitter)"] --> OLD["DCT saved as<br/>dct-tracker.json<br/>(OLD format)"]
+    OLD --> SPLIT{"DEFERRED #8<br/>split the file"}
+    SPLIT --> NEW["dct.json<br/>(NEW: 1 clean file per test)"]
+    NEW --> REND["Render the images<br/>render.py → PNG"]
+    REND --> INBOX["lands in _inbox/<br/>(unfiled pool)"]
+    INBOX --> ALLOC{"BUILD #10<br/>allocate"}
+    ALLOC --> SLOT["image MOVES into<br/>dcts/DCT/images/<br/>+ _assets.json updated"]
+    SLOT --> SHEET["written to Google Sheet<br/>(CREATIVES + COPY tabs)"]
+    SHEET --> META["uploaded to Meta<br/>PAUSED — you approve"]
+
+    classDef done fill:#0f2a16,stroke:#3fb950,color:#e8edf4;
+    classDef proj fill:#241a30,stroke:#bc8cff,color:#e8edf4;
+    classDef todo fill:#161d2a,stroke:#39455c,color:#c4cede;
+    class IDEA,OLD todo;
+    class SPLIT,ALLOC proj;
+    class NEW done;
+    class REND,INBOX,SLOT,SHEET,META todo;
+    </pre>
+    <div class="callout">
+      <b>Read it like this:</b> the only box that's green (done) is <code>dct.json</code> — and only for one draft test.
+      Everything downstream still runs on the old format. The two purple diamonds (#8 and #10) are the work that turns
+      this whole chain on.
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">03</span>What the proof DID and DID NOT do</h2>
+    <p class="sub">This is the "honest limits" question — laid out side by side.</p>
+    <div class="two">
+      <div class="col good">
+        <h3>✅ Proven on the draft test</h3>
+        <ul>
+          <li>Converter built, cold-reviewed, hardened</li>
+          <li>Draft DCT (DCT010) converted to the new <code>dct.json</code></li>
+          <li>Zero data lost — every word of copy byte-identical</li>
+          <li>Recovered 10 image prompts the old file had dropped</li>
+          <li>The 1 already-rendered image kept its link</li>
+          <li>Backup made — one-command undo</li>
+          <li>Schema (the agreed shape) written down + locked</li>
+        </ul>
+      </div>
+      <div class="col bad">
+        <h3>✕ NOT done yet</h3>
+        <ul>
+          <li>The <b>3-2-2 converter</b> for your LIVE tests — unbuilt</li>
+          <li>Your 5 live DCT files — untouched, still old format</li>
+          <li>The 6 scripts still read the OLD format only</li>
+          <li>The emitter still WRITES the old format (new tests born old)</li>
+          <li><b>allocate</b> (Build #10) — not built</li>
+          <li>Nothing live / no ads touched this session</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">04</span>Why "two shapes" matters</h2>
+    <p class="sub">The converter only understands one of these. That's the whole reason the live tests are a separate job.</p>
+    <div class="shape">
+      <div class="shapebox proven">
+        <h4>10-5-5 &nbsp;<span style="color:var(--done);font-size:12px">✓ converter handles this</span></h4>
+        <div class="meta">the new method · your DRAFT test is this</div>
+        5 angles · 1 copy + 1 headline each · 10 images in a shared pool that Meta mixes.
+        <div class="grid5">
+          <span class="pill">A01</span><span class="pill">A02</span><span class="pill">A03</span><span class="pill">A04</span><span class="pill">A05</span>
+        </div>
+      </div>
+      <div class="shapebox live">
+        <h4>3-2-2 &nbsp;<span style="color:var(--risk);font-size:12px">✕ needs a separate tool</span></h4>
+        <div class="meta">the older method · your LIVE tests are this</div>
+        3 angles · 2 copies + 2 headlines each · images tied to creatives. Different math, plus revision history the new shape has to preserve.
+        <div class="grid5">
+          <span class="pill alt">A01</span><span class="pill alt">A02</span><span class="pill alt">A03</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">05</span>What you can do next</h2>
+    <p class="sub">Three honest paths. Pick one — they're not all equal in risk.</p>
+    <pre class="mermaid">
+flowchart TD
+    NOW["✅ Proof banked<br/>(draft converted, converter ready)"] --> Q{"What next?"}
+    Q -->|Path A| A["Build the 3-2-2 converter<br/>→ convert your LIVE tests"]
+    Q -->|Path B| B["Repoint the 6 scripts<br/>to read the new dct.json"]
+    Q -->|Path C| C["Stop here<br/>(safe, resume later)"]
+    A --> NEXT["then → Build #10: allocate"]
+    B -.needs dual-read until live tests move.-> A
+    NEXT --> FULL["full pipeline live"]
+
+    classDef now fill:#0f2a16,stroke:#3fb950,color:#e8edf4;
+    classDef a fill:#2e1c0c,stroke:#f0883e,color:#e8edf4;
+    classDef b fill:#0d2238,stroke:#58a6ff,color:#e8edf4;
+    classDef c fill:#1c2230,stroke:#8b949e,color:#e8edf4;
+    classDef f fill:#161d2a,stroke:#39455c,color:#c4cede;
+    class NOW now; class A a; class B b; class C c; class NEXT,FULL f;
+    </pre>
+    <div class="path">
+      <div class="pathcard warn">
+        <div class="lbl">Path A</div>
+        <h4>Convert the live tests</h4>
+        <p>Build the 3-2-2 converter, migrate the 5 live DCTs. Finishes the data move — but it's the half that touches live ad data.</p>
+        <span class="badge risk">needs a fresh "go"</span>
+      </div>
+      <div class="pathcard">
+        <div class="lbl">Path B</div>
+        <h4>Repoint the 6 scripts</h4>
+        <p>Teach render.py, the sheet writer, etc. to read <code>dct.json</code>. Lower risk — but until live tests move, scripts need to read BOTH formats (extra complexity).</p>
+        <span class="badge park">do after Path A, ideally</span>
+      </div>
+      <div class="pathcard rec">
+        <div class="lbl">Path C — my lean</div>
+        <h4>Stop here for now</h4>
+        <p>Proof + converter + schema are banked and safe. Pick up the live migration next session with a clear head. Nothing rots.</p>
+        <span class="badge rec">recommended unless you want to push</span>
+      </div>
+    </div>
+    <div class="callout" style="margin-top:18px">
+      <b>My honest read:</b> don't start Path B before Path A — repointing scripts while the live files are still old forces
+      a messy "read both formats" stage you'd otherwise skip. If you want to keep moving, <b>Path A</b> (the 3-2-2 converter)
+      is the higher-value next build — but it touches live ads, so I'll want you to explicitly say go.
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">06</span>How to use the pipeline (commands)</h2>
+    <p class="sub">The actual steps, in order. <span class="status-in">green = works now</span>, <span class="status-no">orange = not built / being changed</span>.</p>
+
+    <div class="card">
+      <div class="step">
+        <div class="num">1</div>
+        <div class="b">
+          <h4>Inspect a conversion (safe — changes nothing) <span class="status-in">✓ works now</span></h4>
+          <p>Run the converter in look-only mode. It writes a candidate to a scratch path so you can eyeball it before committing.</p>
+          <div class="cmd"><span class="c"># 10-5-5 tests only; refuses 3-2-2 by design</span>
+python3 scripts/migrate_tracker_to_dct.py \
+  --tracker clients/neezanizam/.../dct-tracker.json \
+  --out /tmp/candidate.json</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="num">2</div>
+        <div class="b">
+          <h4>Commit the conversion <span class="status-in">✓ works now (10-5-5)</span></h4>
+          <p>Overwrites the live <code>dct.json</code>, after auto-backing-up and running a lossless audit. Aborts if anything is unaccounted.</p>
+          <div class="cmd">python3 scripts/migrate_tracker_to_dct.py \
+  --tracker clients/neezanizam/.../dct-tracker.json \
+  --write</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="num">3</div>
+        <div class="b">
+          <h4>Render an image from a prompt <span class="status-in">✓ works now</span></h4>
+          <p>Turns a text prompt into a PNG via GPT Image 2 (Azure). The <code>--from-tracker</code> mode is being repointed to read the new <code>dct.json</code> (Path B work).</p>
+          <div class="cmd">python3 scripts/ad-images/render.py \
+  --prompt "documentary still, couple at dining table…" \
+  --out _inbox/DCT010-A01-v1.png</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="num">4</div>
+        <div class="b">
+          <h4>File the image into a test <span class="status-no">✕ not built — Build #10</span></h4>
+          <p>The image-first move: <code>allocate</code> picks the next free slot, MOVES the render into the test's <code>images/</code>, and updates both ledgers in one safe step. Refuses an 11th image, never discards.</p>
+          <div class="cmd"><span class="c"># the future one-command flow:</span>
+allocate DCT010 _inbox/DCT010-A01-v1.png</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="num">5</div>
+        <div class="b">
+          <h4>Push to sheet, then Meta <span class="status-no">✕ scripts read old format</span></h4>
+          <p>The sheet writer pushes copy + creatives to your Google Sheet; the uploader creates the ads <b>PAUSED</b> for you to approve. Both still expect the old format until Path B is done.</p>
+          <div class="cmd">python3 scripts/ad_concept_sheet_writer.py --client neezanizam … --mode preview</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">07</span>The image-first rule (why allocate matters)</h2>
+    <p class="sub">One image = one file = one place. No copies, no orphans.</p>
+    <pre class="mermaid">
+flowchart LR
+    R["render.py<br/>makes a PNG"] --> I["_inbox/<br/>status: available"]
+    I --> AL{"allocate"}
+    AL --> M["MOVES (not copies) into<br/>dcts/DCT010/images/DCT010-img-NN.png"]
+    M --> ST["_assets.json:<br/>available → allocated"]
+    AL -.->|pool already has 10| RE["REFUSE → suggest a<br/>similar test with room<br/>(never delete the image)"]
+
+    classDef a fill:#0d2238,stroke:#58a6ff,color:#e8edf4;
+    classDef b fill:#161d2a,stroke:#39455c,color:#c4cede;
+    classDef r fill:#2e1c0c,stroke:#f0883e,color:#e8edf4;
+    class R,I b; class AL a; class M,ST b; class RE r;
+    </pre>
+  </section>
+
+  <section>
+    <h2><span class="n">08</span>Plain-English glossary</h2>
+    <div class="card">
+      <dl class="gl">
+        <dt>DCT</dt><dd>One ad test = one audience (avatar) + one offer. Holds the angles, copy, and a pool of images Meta mixes.</dd>
+        <dt>dct-tracker.json</dt><dd>The OLD storage file. One big file per test, bundling everything — the thing we're moving away from.</dd>
+        <dt>dct.json</dt><dd>The NEW storage file. One clean file per test, holding only that test's facts. The thing we're moving to.</dd>
+        <dt>converter / normalizer</dt><dd>The script that turns an old file into a new one without losing anything. Built for 10-5-5; the 3-2-2 one is still to do.</dd>
+        <dt>emitter</dt><dd>Whatever creates a brand-new test (the <code>ad-concept-engine</code> behind <code>/ads:concepts</code>). Still writes the old format today.</dd>
+        <dt>allocate</dt><dd>The unbuilt one-command tool that files a finished image into the right test, safely (Build #10).</dd>
+        <dt>_assets.json</dt><dd>The campaign-wide list of every image and its status (available / allocated / published).</dd>
+        <dt>10-5-5 / 3-2-2</dt><dd>Two ad-test recipes. 10-5-5 = 5 angles, 10 mixed images (new). 3-2-2 = 3 angles, 2 copies + 2 headlines each (older, your live ones).</dd>
+      </dl>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">09</span>Where the real files live</h2>
+    <div class="card files">
+      <p>• <b>The converter:</b> <code>scripts/migrate_tracker_to_dct.py</code></p>
+      <p>• <b>The locked shape (schema):</b> <code>docs/dct-json-schema.md</code></p>
+      <p>• <b>The migrated draft test:</b> <code>clients/neezanizam/campaigns/buyer-funnel/dcts/dct-10-5-5-proof-260603/dct.json</code> (backup: <code>…/dct.json.pre-migrate-260608.bak</code>)</p>
+      <p>• <b>The audit trail:</b> <code>…/dct.migration-report.json</code></p>
+      <p>• <b>The overlap analysis &amp; allocate spec:</b> <code>docs/ad-image-tooling-overlap-260608.md</code></p>
+      <p>• <b>The full handoff:</b> <code>clients/neezanizam/SESSION-HANDOFF-260608.md</code></p>
+    </div>
+  </section>
+
+  <footer>
+    Internal pipeline map · generated 8 Jun 2026 · open in any browser · nothing here is live or client-facing
+  </footer>
+
+</div>
+
+<script type="module">
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+  mermaid.initialize({ startOnLoad:true, theme:'dark', securityLevel:'loose',
+    flowchart:{ curve:'basis', useMaxWidth:true } });
+</script>
+</body>
+</html>

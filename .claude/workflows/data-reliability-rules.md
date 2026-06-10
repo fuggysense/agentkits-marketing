@@ -20,7 +20,7 @@ Real-time data from configured MCP servers:
 | Web Analytics | `google-analytics` | `run_report`, `get_realtime` |
 | SEO Keywords | `semrush` | `keyword_overview`, `domain_overview` |
 | SERP Data | `dataforseo` | `serp_api`, `keyword_data` |
-| Ad Performance | `meta-ads` | `get_campaign_insights` |
+| Ad Performance | `meta` CLI (not MCP) | `meta ads insights get`, `meta ads campaign list` (auth: `ACCESS_TOKEN=$META_ACCESS_TOKEN`) |
 | CRM Data | `hubspot` | `get_contacts`, `get_deals` |
 | Social Metrics | `twitter`, `tiktok` | Platform-specific tools |
 
@@ -167,18 +167,18 @@ Provide data manually or upload CSV from Search Console export.
 ### When Data is Partial:
 ```markdown
 ## Marketing Performance
-**Data Completeness:** 60%
+**Data Completeness:** 80%
 
 ### Available Data ✅
 | Source | Status | Data |
 |--------|--------|------|
 | Google Analytics | ✅ Connected | Traffic, users |
 | Search Console | ✅ Connected | Search metrics |
+| Meta Ads | ✅ `meta` CLI | Campaigns, spend, ROAS |
 
 ### Missing Data ⚠️
 | Source | Status | Action Needed |
 |--------|--------|---------------|
-| Meta Ads | ❌ Not configured | Add META_ACCESS_TOKEN |
 | HubSpot | ❌ Not configured | Add HUBSPOT_ACCESS_TOKEN |
 
 ### Report (Partial)
@@ -193,7 +193,7 @@ Provide data manually or upload CSV from Search Console export.
 
 ```
 Step 1: Identify required data sources
-Step 2: Check MCP availability via mcp-manager
+Step 2: Check MCP availability (per `.claude/rules/mcp-integrations.md`)
 Step 3: Call MCP tools for available sources
 Step 4: For unavailable sources, clearly mark as NOT AVAILABLE
 Step 5: Never fill gaps with assumptions
@@ -270,3 +270,14 @@ DATA AVAILABLE?
 ```
 
 **Remember: An honest "not available" is infinitely better than a fabricated number.**
+
+---
+
+## The [PLACEHOLDER] token (copy contexts)
+
+When writing copy — sales letters, ads, emails, landing pages — the same no-fabrication rule applies, but the failure mode is different. Specifics sell, vague numbers don't, and the temptation to invent a plausible-looking figure is highest right before a deadline.
+
+- **Never invent** product claims, revenue figures, testimonials, customer names, dates, statistics, or market data. Not even "round" placeholders that look real.
+- **If a specific number is needed** and none exists in `_brand/` or any source you can read, write `[PLACEHOLDER: insert real figure]` directly in the copy and flag it in your response.
+- **A fabricated specific is worse than an honest vague.** "$47,329 in 90 days" you made up is a lie; "real results vary" is just weak copy — the first damages trust permanently, the second can be rewritten.
+- **When uncertain whether a claim is provable**, say so out loud: *"I'm not certain this is accurate — can you confirm or give me the source?"* Don't hedge it in the copy itself.

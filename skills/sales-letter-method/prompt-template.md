@@ -33,20 +33,6 @@ This is a long-form asset (800-2,000+ words). Not a landing page. Not a VSL. A s
 
 ---
 
-## MARKUP OUTPUT REQUIREMENT (apply inline as you write — not optional)
-
-Every draft must be delivered with inline bracket markup. Full spec: `references/markup-convention.md`.
-
-- `(h)word(h)` = highlight (gold bg in render) — reserved for outcome/desire words. Max 1 per 200 words.
-- `(b)word(b)` = bold (skimmer anchor) — every 2-3 sentences on numbers, outcomes, specific claims.
-- `(u)word(u)` = underline (expert markup) — ONLY for transactional terms ("Closed in 14 Days"). 3-5 per letter max.
-- `*word*` = italics (aside / concession / quiet authority) — use native markdown.
-- Stack as `(h,b)word(h,b)` for double emphasis.
-
-Deliver copy WITH markup inline. Plain text = auto-reject.
-
----
-
 ## CROSS-CUTTING REQUIREMENTS (thread through components — all required)
 
 1. **Objection Architecture** — Preempt the 10 canonical objections across body + FAQ (`references/objection-architecture.md`). Risk → Guarantee. Fit → Qualification + FAQ.Preference. Prior-failure → Pain Cycle. Trust → Proof + Trust Density.
@@ -398,7 +384,6 @@ If a component lands outside its budget, the drafter must either tighten or surf
 - Fake testimonials or invented proof
 - AI-pattern language (detected via Sweep 8 + unslop profile)
 - Forcing components that don't fit the offer
-- **Markup missing** (zero `(h)` highlights, or fewer than 4 `(b)` bold anchors in body copy)
 - **Self-contained experience failures** (any of the following is auto-reject — these map directly to the three questions the self-contained reviewer asks every create + review):
   - Broken argument beat: a cold reader cannot follow the letter top to bottom without confusion
   - Orphaned idea: a metaphor, acronym, branded term, or job title introduced and never explained or paid off

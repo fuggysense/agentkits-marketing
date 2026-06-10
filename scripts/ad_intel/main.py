@@ -269,12 +269,12 @@ async def run_per_vertical(
     """
     from collections import Counter
     from keywords import generate_keywords, save_keywords, load_keywords
-    from google_scan import scan_google_ads, save_google_results, load_google_results
+    from google_scan import scan_google_ads, save_google_results, load_google_results, check_balance
     from meta_scan import (
         scan_meta_ads, save_meta_results, load_meta_results,
         resolve_missing_domains,
     )
-    from scorer import score_businesses, save_scored, load_scored
+    from scorer import score_businesses, save_scored, load_scored, filter_vertical_relevance
     from contact_scraper import extract_contacts, save_contacts
     from dedup import deduplicate, save_deduped
     from sheets_export import (
@@ -283,6 +283,19 @@ async def run_per_vertical(
     )
 
     target_verticals = verticals or VERTICALS
+    run_summary: dict[str, dict] = {}  # per-vertical stats for run_summary.json
+
+    # ── Pre-flight: DataForSEO balance check ──
+    print("Pre-flight: Checking DataForSEO balance...")
+    try:
+        balance_info = await check_balance(min_balance=0.50)
+        print(f"  DataForSEO balance: ${balance_info['balance']:.2f} ✓")
+    except RuntimeError as e:
+        print(f"  ✗ {e}")
+        print("  Aborting — fix DataForSEO balance before running.")
+        return
+    except Exception as e:
+        print(f"  WARNING: Could not check balance ({e}) — proceeding anyway")
 
     # Reuse existing sheet or create one
     # Persist sheet URL so subsequent runs auto-reuse it
@@ -352,7 +365,7 @@ async def run_per_vertical(
 
         # ── Phase 2b: Meta ──
         print(f"  Phase 2b: Meta Ad Library scan...")
-        max_kw = sample_size or 50
+        max_kw = sample_size or 300
         meta_results = await scan_meta_ads(kw_all, progress=False, max_keywords_per_vertical=max_kw)
         meta_results = await resolve_missing_domains(meta_results, progress=False)
         save_meta_results(meta_results)
@@ -372,7 +385,14 @@ async def run_per_vertical(
         scored = score_businesses(google_results, meta_results)
         save_scored(scored)
         tiers = Counter(b["tier"] for b in scored)
+        scored_before_filter = len(scored)
         print(f"    {len(scored)} businesses (Hot: {tiers['hot']} | Warm: {tiers['warm']} | Cold: {tiers['cold']})")
+
+        # ── Phase 3.1: Vertical Relevance Filter ──
+        print(f"  Phase 3.1: Vertical relevance filter (Groq)...")
+        scored = await filter_vertical_relevance(scored, vertical)
+        save_scored(scored)
+        print(f"    Vertical filter: {scored_before_filter} → {len(scored)}")
 
         # ── Phase 3.7: HITL Review (optional) ──
         if not no_review and scored:
@@ -419,7 +439,45 @@ async def run_per_vertical(
             csv_path = export_to_csv(deduped, OUTPUT_DIR / f"sg_ad_intel_{vertical}.csv")
             print(f"  Phase 5: CSV exported: {csv_path}")
 
+        # ── Run Summary (per vertical) ──
+        run_summary[vertical] = {
+            "keywords_generated": kw_count,
+            "google_ads_found": g_total if not google_failed else 0,
+            "google_failed": google_failed,
+            "meta_ads_found": m_total,
+            "scored_businesses": scored_before_filter,
+            "after_vertical_filter": len(scored),
+            "contacts_extracted": len(contacts),
+            "phones_found": phones,
+            "emails_found": emails,
+            "decision_makers_found": dm,
+            "after_dedup": len(deduped),
+        }
+
         print(f"  {display} complete.\n")
+
+    # ── Save Run Summary ──
+    summary_path = DATA_DIR / "run_summary.json"
+    # Load existing blocklist additions from this run
+    filter_log_path = DATA_DIR / "vertical_filter_log.json"
+    auto_blocklisted = []
+    if filter_log_path.exists():
+        try:
+            fl = json.loads(filter_log_path.read_text())
+            auto_blocklisted = fl.get("auto_blocklisted", [])
+        except Exception:
+            pass
+
+    run_summary_payload = {
+        "run_date": datetime.now().isoformat(),
+        "verticals_processed": list(run_summary.keys()),
+        "per_vertical": run_summary,
+        "blocklist_additions": auto_blocklisted,
+        "output_format": output_format,
+        "sheet_url": sheet_url or "",
+    }
+    summary_path.write_text(json.dumps(run_summary_payload, indent=2))
+    print(f"\nRun summary saved: {summary_path}")
 
     _print_header("All Verticals Complete")
     if sheet_url:

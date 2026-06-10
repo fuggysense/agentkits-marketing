@@ -1,0 +1,98 @@
+{
+  "skill_name": "sales-letter-method",
+  "skill_path": "/Users/jerel/Documents/Jerel's brain/jerel's brain/Marketing/skills/sales-letter-method/SKILL.md",
+  "purpose": "Test the Phase 3 conversion gate (5-reviewer stack) catches the right things on real sales letter drafts. Compare iteration N (3 reviewers) vs iteration N+1 (5 reviewers including wired-in eval-halbert + eval-sales-letter).",
+  "created": "2026-05-27 SGT",
+  "evals": [
+    {
+      "id": 1,
+      "name": "neezanizam-v4-firsttime",
+      "prompt": "Run sales-letter-method Phase 3 conversion gate on this draft. Use the brand context at clients/neezanizam/_brand/. Return all reviewer outputs + synthesized priority fix stack.",
+      "draft_path": "/Users/jerel/Documents/Jerel's brain/jerel's brain/Marketing/skills/sales-letter-audit/tests/v4-firsttime.md",
+      "brand_context_dir": "/Users/jerel/Documents/Jerel's brain/jerel's brain/Marketing/clients/neezanizam/_brand/",
+      "expected_output": "5 reviewer reports + synthesizer's ranked Priority Fix Stack. Must catch: mechanism naming conflict (No-Viewings-First Method vs RAM/SPOT in offer.md), audience mismatch (letter targets first-time vs brand targets HDB upgraders), 30-min vs 60-min consult mismatch, placeholder still visible, weasel words (properly, full picture, structural gap, plain English).",
+      "files": []
+    },
+    {
+      "id": 2,
+      "name": "PLACEHOLDER-second-letter",
+      "prompt": "Run sales-letter-method Phase 3 conversion gate on this draft. Use the brand context at <client>/_brand/. Return all reviewer outputs + synthesized priority fix stack.",
+      "draft_path": "TODO — pick a second real client letter (different vertical to test cross-vertical robustness, e.g. coaching or B2B SaaS)",
+      "brand_context_dir": "TODO",
+      "expected_output": "TODO — list 5-8 expected findings before running, so we can score what each reviewer actually caught",
+      "files": []
+    },
+    {
+      "id": 3,
+      "name": "PLACEHOLDER-third-letter",
+      "prompt": "Run sales-letter-method Phase 3 conversion gate on this draft. Use the brand context at <client>/_brand/. Return all reviewer outputs + synthesized priority fix stack.",
+      "draft_path": "TODO — pick a known-strong letter that should mostly SHIP, to test calibration (do reviewers over-flag?)",
+      "brand_context_dir": "TODO",
+      "expected_output": "TODO",
+      "files": []
+    }
+  ],
+  "assertions_to_add_during_grading": [
+    {
+      "id": "catches_mechanism_naming_conflict",
+      "type": "programmable",
+      "description": "Output mentions both 'No-Viewings-First Method' AND 'RAM/SPOT' (or current brand mechanism name), explicitly flagging the conflict. Pre-wiring: only eval-sales-letter caught this. Post-wiring: still only eval-sales-letter — but it's now part of Phase 3.",
+      "check": "regex: 'No.Viewings.First.*(RAM|SPOT|conflict|mismatch|brand)'"
+    },
+    {
+      "id": "catches_audience_mismatch",
+      "type": "programmable",
+      "description": "Output flags discrepancy between letter's stated audience and brand docs' stated audience (first-time private buyers vs HDB upgraders).",
+      "check": "regex: 'audience.*(mismatch|conflict)|HDB.*upgrader.*first.*time|first.*time.*HDB.*upgrader'"
+    },
+    {
+      "id": "catches_weasel_words",
+      "type": "programmable",
+      "description": "Output flags at least 3 of these weasels: 'properly', 'full picture', 'plain English', 'structural gap'. Pre-wiring: copy-chief missed all. Post-wiring: eval-halbert catches all 4.",
+      "check": "count >= 3 of ['properly', 'full picture', 'plain English', 'structural gap'] flagged with critique"
+    },
+    {
+      "id": "catches_placeholder",
+      "type": "programmable",
+      "description": "Output flags the '[INSERT: first-timer cohort number]' placeholder in the draft as a ship-blocker.",
+      "check": "regex: '\\[INSERT.*\\]|placeholder.*ship'"
+    },
+    {
+      "id": "verdict_present_and_decisive",
+      "type": "programmable",
+      "description": "Synthesizer output has a decisive verdict (SHIP / HOLD / REWRITE), not 'mostly good' hedging.",
+      "check": "regex at top of synthesized output: 'SHIP|HOLD|REWRITE|KILL IT|FIX IT|MAIL IT'"
+    },
+    {
+      "id": "halbert_voice_preserved",
+      "type": "judge",
+      "description": "eval-halbert's output reads in Halbert's voice (kitchen-table, racetrack metaphors, fatherly bluntness) — not generic 'elite DR strategist' prose. Judge: does this read like Halbert wrote it, or like a consultant?",
+      "check": "judge subagent reads eval-halbert output + Halbert reference letters (Boron Letters style) + verdicts pass/fail with evidence"
+    },
+    {
+      "id": "specific_quoted_rewrites",
+      "type": "judge",
+      "description": "Every flagged finding includes (a) a verbatim quote from the draft AND (b) a specific rewrite or replacement. No abstract 'make it stronger' feedback.",
+      "check": "judge subagent samples 5 findings per reviewer and pass/fails based on quote + rewrite presence"
+    },
+    {
+      "id": "no_false_positives_on_strong_lines",
+      "type": "judge",
+      "description": "Reviewers do NOT flag lines that the operator has explicitly marked as 'working' in the draft's Reviewer Note. False-positive on a strong line indicates the reviewer is over-flagging.",
+      "check": "judge cross-references reviewer flags against Reviewer Note section of the draft"
+    }
+  ],
+  "iteration_protocol": {
+    "iteration_1_baseline": "Current Phase 3 (3 reviewers: buyer-lens, copy-chief, self-contained). Run all 3 evals. Grade. Save to workspace/iteration-1/.",
+    "iteration_2_wired": "Phase 3 with eval-halbert + eval-sales-letter wired in (5 reviewers). Run all 3 evals. Grade. Save to workspace/iteration-2/.",
+    "compare": "Use skill-creator's eval-viewer with --previous-workspace pointing at iteration-1. Look for: assertion delta (which got caught in iter-2 that wasn't caught in iter-1), cost delta (~+$0.40 per eval), false-positive delta (any new over-flagging).",
+    "decision_gate": "If iteration-2 catches mechanism naming conflict + audience mismatch + ≥3 weasel words AND iteration-1 missed them, keep the wiring. If iteration-2 introduces false positives without commensurate finding gains, revert."
+  },
+  "workspace_root": "/Users/jerel/Documents/Jerel's brain/jerel's brain/Marketing/skills/sales-letter-method-workspace/",
+  "notes": [
+    "This evals.json conforms to skill-creator's schema (see ~/.claude/skills/skill-creator/SKILL.md line 138-152).",
+    "Assertions are intentionally drafted AFTER the first run, per skill-creator's workflow (line 180-184).",
+    "For the iteration-1 vs iteration-2 comparison, use skill-creator's run_loop pattern OR the manual subagent dispatch we ran on 2026-05-27.",
+    "The first eval (neezanizam-v4-firsttime) has already been run manually with 3 reviewers — outputs are in this session's conversation log. Formalizing via the workspace structure is the next step."
+  ]
+}

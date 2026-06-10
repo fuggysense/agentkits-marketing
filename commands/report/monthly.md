@@ -10,7 +10,7 @@ argument-hint: [client-or-project]
 Before running this command, ensure you have:
 - [ ] Client or project identified
 - [ ] Month to report defined
-- [ ] MCP configured: `google-analytics`, `hubspot`, `meta-ads` (for data)
+- [ ] MCP configured: `google-analytics`, `hubspot` (for data); `meta` CLI for paid campaigns
 
 ## Context Loading
 
@@ -166,7 +166,7 @@ echo "Date context loaded: Current=$CURRENT_MONTH_NAME"
 |---------|------------|----------|
 | Traffic/Funnel | `google-analytics` | ⚠️ NOT AVAILABLE |
 | Revenue/Deals | `hubspot` | ⚠️ NOT AVAILABLE |
-| Paid Campaigns | `meta-ads` | ⚠️ NOT AVAILABLE |
+| Paid Campaigns | `meta` CLI (not MCP) | ⚠️ NOT AVAILABLE |
 | SEO/Search | `google-search-console` | ⚠️ NOT AVAILABLE |
 | Social | `twitter`, `tiktok` | ⚠️ NOT AVAILABLE |
 

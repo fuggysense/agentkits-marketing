@@ -1,0 +1,4 @@
+- [NeezaNizam Research State](project_neezanizam_research.md) — dossier path, gaps (riba/halal unresolved), spouse dynamic, next refresh actions
+- [Reddit SG Property Research Patterns](feedback_reddit_research_patterns.md) — ScrapeCreators url= fix, high-signal subs, what NOT to search
+- [Stackworks Buyer Research State](project_stackworks_research.md) — dossier complete; 5 avatars; key gaps flagged; core reframe: property investor NOT trader
+- [SG HNW Research Patterns](feedback_sg_hnwi_research_patterns.md) — r/singaporefi > r/fatFIRE for SG; sleep > yield; CPF 4% benchmark; scam pattern-match hardwired

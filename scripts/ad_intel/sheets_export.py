@@ -10,6 +10,7 @@ from config import (
     GSHEETS_CREDENTIALS_FILE, GSHEETS_SHARE_EMAIL,
     VERTICALS, VERTICAL_DISPLAY_NAMES, DATA_DIR, OUTPUT_DIR,
 )
+from utils import normalize_sg_phone
 
 
 SCOPES = [
@@ -101,7 +102,7 @@ def _biz_to_row(biz: dict) -> list:
         biz.get("fb_page_url", ""),
         biz.get("decision_maker_full_name", ""),
         biz.get("decision_maker_first_name", ""),
-        biz.get("phone", ""),
+        normalize_sg_phone(biz.get("phone", "")),
         biz.get("email", ""),
         biz.get("whatsapp", ""),
         biz.get("full_address", ""),
@@ -286,17 +287,21 @@ def add_vertical_tab(
     """
     display_name = VERTICAL_DISPLAY_NAMES.get(vertical, vertical)
 
-    # If placeholder tab still exists, rename and use it instead of adding
+    # Reuse existing tab with same name, placeholder, or create new
     try:
-        placeholder = spreadsheet.worksheet("_placeholder")
-        placeholder.update_title(display_name)
-        ws = placeholder
+        ws = spreadsheet.worksheet(display_name)
+        ws.clear()  # Tab exists — clear and overwrite
     except gspread.exceptions.WorksheetNotFound:
-        ws = spreadsheet.add_worksheet(
-            title=display_name,
-            rows=max(len(businesses) + 1, 2),
-            cols=len(HEADERS),
-        )
+        try:
+            placeholder = spreadsheet.worksheet("_placeholder")
+            placeholder.update_title(display_name)
+            ws = placeholder
+        except gspread.exceptions.WorksheetNotFound:
+            ws = spreadsheet.add_worksheet(
+                title=display_name,
+                rows=max(len(businesses) + 1, 2),
+                cols=len(HEADERS),
+            )
 
     rows = [HEADERS] + [_biz_to_row(b) for b in businesses]
     ws.update(rows, value_input_option="USER_ENTERED")

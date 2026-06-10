@@ -25,32 +25,35 @@ If provided as argument, use it. Otherwise list available projects from `clients
 
 ### Step 2: Read Project Files
 
-Read all 4 files:
-- `clients/<project>/icp.md`
-- `clients/<project>/offer.md`
-- `clients/<project>/brand-voice.md`
-- `clients/<project>/channels.json`
+Read these Jake-style files first:
+- `clients/<project>/context-profile.json`
+- `clients/<project>/_brand/icp.md`
+- `clients/<project>/_brand/offer.md`
+- `clients/<project>/_brand/brand-voice.md`
+- `clients/<project>/_brand/channels.json`
+
+For legacy clients, fall back to root-level `icp.md`, `offer.md`, `brand-voice.md`, and `channels.json`.
 
 ### Step 3: Run Readiness Checklist
 
 Score each section per Phase 4 of the client-onboarding skill:
 
-**ICP (icp.md):**
+**ICP (`_brand/icp.md`):**
 - [ ] Demographics: Industry + Company Size filled
 - [ ] Psychographics: at least 2 specific pain points
 - [ ] Where They Congregate: at least 1 entry
 
-**Offer (offer.md):**
+**Offer (`_brand/offer.md`):**
 - [ ] Price or pricing model listed
 - [ ] One-Line Description filled
 - [ ] At least 1 proof element
 - [ ] Primary benefit stated
 
-**Brand Voice (brand-voice.md):**
+**Brand Voice (`_brand/brand-voice.md`):**
 - [ ] At least 2 messaging pillars or tone adjustments
 - [ ] At least 1 on-brand example
 
-**Channels (channels.json):**
+**Channels (`_brand/channels.json`):**
 - [ ] At least 1 primary channel listed
 
 **Voice Profile:**

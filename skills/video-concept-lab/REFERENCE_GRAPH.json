@@ -1,0 +1,261 @@
+{
+  "schema_version": "0.1",
+  "purpose": "Compact progressive-disclosure map for video-concept-lab. Agents load the selected loadout instead of bulk-reading every reference.",
+  "path_base": "marketing_repo_root",
+  "receipt_required": true,
+  "nodes": {
+    "skill_entry": {
+      "path": "skills/video-concept-lab/SKILL.md",
+      "role": "entrypoint and boundary"
+    },
+    "index": {
+      "path": "skills/video-concept-lab/INDEX.md",
+      "role": "human-readable routing map"
+    },
+    "dr_runtime": {
+      "path": "skills/video-concept-lab/references/direct-response/dr-foundation.md",
+      "role": "single runtime DR concept methodology"
+    },
+    "dr_source_core": {
+      "path": "skills/video-concept-lab/references/direct-response/core-framework.md",
+      "role": "audit/source reference, not default runtime"
+    },
+    "dr_source_lf8": {
+      "path": "skills/video-concept-lab/references/direct-response/lf8-market-translation.md",
+      "role": "audit/source reference, not default runtime"
+    },
+    "dr_source_checks": {
+      "path": "skills/video-concept-lab/references/direct-response/concept-stage-mandatory-checks.md",
+      "role": "audit/source reference, not default runtime"
+    },
+    "taxonomy": {
+      "path": "skills/video-concept-lab/references/general/concept-taxonomy.json",
+      "role": "required concept field taxonomy"
+    },
+    "concept_generation": {
+      "path": "skills/video-concept-lab/references/general/concept-generation.md",
+      "role": "seed structure and diversity rules"
+    },
+    "hook_rules": {
+      "path": "skills/video-concept-lab/references/general/hook-and-format-rules.md",
+      "role": "hook, rendered text, subtitle policy"
+    },
+    "artifact_hooks": {
+      "path": "skills/video-concept-lab/references/general/artifact-anchored-hooks.md",
+      "role": "first-frame thumbstop lift via buyer-owned object hooks (empirical port from creative-director-skill comparison 260520)"
+    },
+    "scoring": {
+      "path": "skills/video-concept-lab/references/general/scoring-and-analysis.md",
+      "role": "concept scoring"
+    },
+    "success_criteria": {
+      "path": "skills/video-concept-lab/references/general/success-criteria.md",
+      "role": "AG1 quality bar"
+    },
+    "output_schema": {
+      "path": "skills/video-concept-lab/references/general/output-schema.md",
+      "role": "concept pack shape"
+    },
+    "brand_awareness": {
+      "path": "skills/video-concept-lab/references/general/brand-awareness-methodology.md",
+      "role": "brand-lift concept methodology"
+    },
+    "singing_layer": {
+      "path": "skills/video-concept-lab/references/direct-response/singing-ads-layer.md",
+      "role": "singing script_mode extension"
+    },
+    "stage4_discrediting": {
+      "path": "skills/video-concept-lab/references/general/stage-4-discrediting.md",
+      "role": "solution-aware L3+ discrediting moves"
+    },
+    "common_enemy": {
+      "path": "skills/video-concept-lab/references/general/common-enemy-bridge.md",
+      "role": "named enemy composition"
+    },
+    "six_proof_types": {
+      "path": ".claude/references/copywriting-os/frameworks/six-proof-types.md",
+      "role": "proof type taxonomy"
+    },
+    "proof_density": {
+      "path": ".claude/references/copywriting-os/reviewers/proof-density-audit.md",
+      "role": "proof stack density audit"
+    },
+    "duration": {
+      "path": "skills/video-concept-lab/references/general/video-compression-by-duration.md",
+      "role": "duration-based beat compression"
+    },
+    "lanes": {
+      "path": "skills/video-concept-lab/references/general/creative-lanes-methodology.md",
+      "role": "client funnel lane mapping"
+    },
+    "context_pack": {
+      "path": "skills/video-concept-lab/references/general/context-pack.md",
+      "role": "intake repair only"
+    },
+    "concept_input_packet": {
+      "path": "skills/video-concept-lab/references/general/concept-input-packet.md",
+      "role": "intake repair and legacy alias reference"
+    },
+    "image_handoff": {
+      "path": "skills/video-concept-lab/references/general/image-handoff.md",
+      "role": "initial image/style-sheet requirement gate"
+    },
+    "diversity_audit": {
+      "path": "skills/video-concept-lab/references/direct-response/growthhub-creative-diversity-2026.md",
+      "role": "pack-level diversity audit"
+    }
+  },
+  "loadouts": {
+    "brand_awareness_concept": {
+      "when": "brand-lift or awareness brief with no immediate conversion CTA",
+      "required_nodes": [
+        "brand_awareness",
+        "taxonomy",
+        "concept_generation",
+        "hook_rules",
+        "scoring",
+        "success_criteria",
+        "output_schema"
+      ],
+      "conditional_nodes": [
+        "lanes",
+        "duration"
+      ],
+      "writes": [
+        "02_ag1-options/concepts-draft.json",
+        "02_ag1-options/inputs-used.json"
+      ],
+      "downstream_consumers": [
+        "video-concept-seeder",
+        "eval-video-universal",
+        "eval-video-flow-compliance"
+      ]
+    },
+    "dr_standard_concept": {
+      "when": "direct-response concept generation for unaware, problem-aware, or standard solution-aware briefs",
+      "required_nodes": [
+        "dr_runtime",
+        "taxonomy",
+        "concept_generation",
+        "hook_rules",
+        "scoring",
+        "success_criteria",
+        "output_schema",
+        "diversity_audit"
+      ],
+      "conditional_nodes": [
+        "lanes",
+        "duration",
+        "artifact_hooks"
+      ],
+      "source_nodes_available_on_conflict": [
+        "dr_source_core",
+        "dr_source_lf8",
+        "dr_source_checks"
+      ],
+      "writes": [
+        "02_ag1-options/concepts-draft.json",
+        "02_ag1-options/inputs-used.json"
+      ],
+      "downstream_consumers": [
+        "video-concept-seeder",
+        "eval-video-universal",
+        "eval-video-flow-compliance",
+        "video-prompt-pack-builder"
+      ]
+    },
+    "dr_singing_concept": {
+      "when": "direct-response concept generation where concept-brief.json script_mode is singing",
+      "extends": "dr_standard_concept",
+      "required_nodes": [
+        "singing_layer"
+      ],
+      "forbidden_nodes": [
+        "script-and-music.md",
+        "suno-manual-target.md"
+      ],
+      "downstream_consumers": [
+        "video-concept-seeder",
+        "video-prompt-pack-builder"
+      ]
+    },
+    "dr_solution_aware_l3_concept": {
+      "when": "direct-response concept generation where awareness_stage is solution-aware and sophistication_level is L3 or higher",
+      "extends": "dr_standard_concept",
+      "required_nodes": [
+        "stage4_discrediting",
+        "common_enemy",
+        "six_proof_types",
+        "proof_density",
+        "artifact_hooks"
+      ],
+      "downstream_consumers": [
+        "video-concept-seeder",
+        "eval-buyer-fit"
+      ]
+    },
+    "dr_singing_solution_aware_l3_concept": {
+      "when": "direct-response concept generation where concept-brief.json script_mode is singing and awareness_stage is solution-aware with sophistication_level L3 or higher",
+      "extends": "dr_solution_aware_l3_concept",
+      "required_nodes": [
+        "singing_layer"
+      ],
+      "forbidden_nodes": [
+        "script-and-music.md",
+        "suno-manual-target.md"
+      ],
+      "downstream_consumers": [
+        "video-concept-seeder",
+        "eval-buyer-fit",
+        "video-prompt-pack-builder"
+      ]
+    },
+    "pack_audit": {
+      "when": "audit an existing concept pack for diversity or quality without generating new concepts",
+      "required_nodes": [
+        "diversity_audit",
+        "scoring",
+        "success_criteria",
+        "output_schema"
+      ],
+      "writes": [
+        "audit report only unless explicitly asked"
+      ],
+      "downstream_consumers": [
+        "routing-tester",
+        "eval-video-universal"
+      ]
+    },
+    "image_handoff_only": {
+      "when": "define initial image/style-sheet requirements after concept direction is chosen",
+      "required_nodes": [
+        "image_handoff"
+      ],
+      "conditional_nodes": [
+        "taxonomy",
+        "success_criteria"
+      ],
+      "writes": [
+        "04_input-images/image-handoff.md or equivalent AG1 handoff notes"
+      ],
+      "downstream_consumers": [
+        "video-brief-normalizer",
+        "video-prompt-pack-builder"
+      ]
+    }
+  },
+  "receipt_schema": {
+    "methodology_loadout_id": "<loadout id>",
+    "graph_path": "skills/video-concept-lab/REFERENCE_GRAPH.json",
+    "loaded_files": [],
+    "skipped_files": [],
+    "missing_files": [],
+    "reason": "<brief routing reason>"
+  },
+  "rules": [
+    "Read only the selected loadout plus explicitly triggered conditionals.",
+    "Do not bulk-load all references just because they are listed in SKILL.md.",
+    "Use concept-brief.json as canonical; concept-input-packet.json is a legacy alias.",
+    "Record methodology_receipt in the subagent return and in inputs-used.json when concept seeding runs."
+  ]
+}

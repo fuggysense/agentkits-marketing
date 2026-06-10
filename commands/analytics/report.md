@@ -9,7 +9,7 @@ argument-hint: [timeframe]
 
 Before running this command, ensure you have:
 - [ ] Time period defined
-- [ ] MCP configured: `google-analytics`, `google-search-console`, `meta-ads`, `hubspot`
+- [ ] MCP configured: `google-analytics`, `google-search-console`, `hubspot`; `meta` CLI for ad data
 - [ ] Targets/goals defined for comparison
 
 ## Context Loading
@@ -144,7 +144,7 @@ echo "Report Date: $CURRENT_DATE"
 |--------|------------|----------|
 | Traffic | `google-analytics` | ⚠️ NOT AVAILABLE |
 | Search | `google-search-console` | ⚠️ NOT AVAILABLE |
-| Ads | `meta-ads` | ⚠️ NOT AVAILABLE |
+| Ads | `meta` CLI (not MCP) | ⚠️ NOT AVAILABLE |
 | CRM | `hubspot` | ⚠️ NOT AVAILABLE |
 
 ### Rules

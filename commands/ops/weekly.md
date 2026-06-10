@@ -147,7 +147,7 @@ echo "Current Week: W$CURRENT_WEEK ($WEEK_START to $WEEK_END)"
 Use MCP for metrics; if unavailable show "⚠️ NOT AVAILABLE":
 - `google-analytics` - Traffic, conversions
 - `hubspot` - Leads, CRM data
-- `meta-ads` - Ad performance
+- `meta` CLI (not MCP) - Ad performance
 - `twitter`, `tiktok` - Social metrics
 
 ---

@@ -6,10 +6,21 @@
 
 ---
 
+## Library to consult before reviewing
+
+Before grading the cross-document thread, read:
+1. `best-practices/_writing-standard.md` — the writing standard you apply to every patch you propose (so the patch itself ships in plain Singaporean third-grade English)
+2. `best-practices/_index.md` — the L2 router; identify any BP files that match the trigger/identity/UMP elements you're tracking across documents
+3. `references/cohesion-check.md` — the transition, bridge, and verbatim-phrase patterns that hold a thread together across documents; this is your primary working file for severity grading
+
+Cite specific BP rules + named patterns when flagging gaps. **Apply BP rules + general judgment** — if you spot a real cross-document break outside the BP files' scope (e.g. a tonal break, a promise-to-payoff mismatch, an identity invitation that flips between documents), still flag it (separately) per the writing-standard's note for reviewer agents. Do not go silent on issues just because no BP file has a check for them.
+
+---
+
 ## Invocation Contract
 
 The orchestrator fires this subagent with:
-- The full letter draft (with `(h)` `(b)` markup preserved)
+- The full letter draft
 - All companion documents (ad creative copy, advertorial HTML, email sequence, checkout page copy — whatever exists)
 - The avatar / persona from `clients/<slug>/buyer-profile.md`
 - The desire(s) the letter activates (from Phase 0)

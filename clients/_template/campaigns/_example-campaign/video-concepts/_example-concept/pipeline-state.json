@@ -1,0 +1,55 @@
+{
+  "schema_version": "1.0",
+  "workspace": "clients/{{client_slug}}/campaigns/{{campaign_slug}}/video-concepts/{{concept_slug}}",
+  "workspace_slug": "{{concept_slug}}",
+  "script_mode": "spoken",
+  "current_phase": "phase_0_preflight",
+  "phase_status": "not_started",
+  "created_date": "{{today}}",
+  "last_updated": "{{today}}",
+  "current_stage": "phase_0_preflight",
+  "live_review_url": null,
+  "publisher_source": null,
+  "phases": {
+    "phase_0_preflight": {
+      "status": "not_started",
+      "completed_at": null,
+      "outputs": []
+    },
+    "phase_1_strategy": {
+      "status": "not_started",
+      "completed_at": null,
+      "outputs": []
+    },
+    "phase_2_ag1_options": {
+      "status": "not_started",
+      "completed_at": null,
+      "outputs": []
+    },
+    "phase_3_scripts": {
+      "status": "not_started",
+      "completed_at": null,
+      "outputs": []
+    },
+    "phase_4_synthesis": {
+      "status": "not_started",
+      "completed_at": null,
+      "outputs": []
+    },
+    "phase_5_ag1": {
+      "status": "blocked_until_phase_4",
+      "completed_at": null,
+      "outputs": []
+    },
+    "phase_6_refinement": {
+      "status": "blocked_until_ag1_approval",
+      "completed_at": null
+    },
+    "phase_7_ag2": {
+      "status": "blocked_until_refinement_and_normalization",
+      "completed_at": null
+    }
+  },
+  "open_subagent_threads": [],
+  "pending_approvals": []
+}

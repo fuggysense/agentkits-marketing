@@ -1,0 +1,94 @@
+{
+  "industry": "property-sg",
+  "version": 1,
+  "last_updated": "2026-05-01T08:24:55Z",
+  "_note": "Research POOL is shared — all clients in property-sg benefit from every mine. Phrase CLAIMS are exclusive — only one client at a time may use a phrase in copy. See claim_rule below.",
+  "sources_mined": [
+    {
+      "_example": true,
+      "_note": "[EXAMPLE — replace with real data]",
+      "type": "subreddit",
+      "identifier": "r/singaporefi",
+      "url": "https://reddit.com/r/singaporefi",
+      "first_mined_at": "2026-04-17T00:00:00Z",
+      "first_mined_by_client": "neezanizam",
+      "scrape_depth": "deep",
+      "last_refreshed_at": "2026-04-17T00:00:00Z",
+      "phrase_count_extracted": 23,
+      "notes": "High-intent upgrader anxiety. Best threads: 'should I sell HDB now' + 'EC vs condo math'"
+    },
+    {
+      "_example": true,
+      "_note": "[EXAMPLE — replace with real data]",
+      "type": "subreddit",
+      "identifier": "r/singapore",
+      "url": "https://reddit.com/r/singapore",
+      "first_mined_at": "2026-04-17T00:00:00Z",
+      "first_mined_by_client": "neezanizam",
+      "scrape_depth": "shallow",
+      "last_refreshed_at": "2026-04-17T00:00:00Z",
+      "phrase_count_extracted": 14,
+      "notes": "Broader SG property sentiment. Good for Schwartz Stage 2-3 language."
+    },
+    {
+      "_example": true,
+      "_note": "[EXAMPLE — replace with real data]",
+      "type": "fb_group",
+      "identifier": "HDB Upgraders Singapore (private group)",
+      "url": "https://www.facebook.com/groups/hdbupgraders",
+      "first_mined_at": "2026-04-17T00:00:00Z",
+      "first_mined_by_client": "neezanizam",
+      "scrape_depth": "shallow",
+      "last_refreshed_at": "2026-04-17T00:00:00Z",
+      "phrase_count_extracted": 10,
+      "notes": "Manual paste — not API accessible. Update requires manual scrape."
+    }
+  ],
+  "phrases": [
+    {
+      "_example": true,
+      "_note": "[EXAMPLE — replace with real data from buyer-language-dossier.md]",
+      "id": "ph-001",
+      "verbatim": "I'm scared I'll sell at the wrong time and end up with nothing left after CPF refund",
+      "source_url": "https://reddit.com/r/singaporefi/comments/example",
+      "source_type": "reddit_comment",
+      "extracted_at": "2026-04-17T00:00:00Z",
+      "extracted_by_client": "neezanizam",
+      "claimed_by_client": "neezanizam",
+      "claimed_in_copy": [],
+      "topic_tags": ["timing-fear", "cpf-anxiety", "upgrade-paralysis"],
+      "avatar_relevance": ["hdb-upgrader-mid-30s-with-kids"]
+    },
+    {
+      "_example": true,
+      "_note": "[EXAMPLE — replace with real data]",
+      "id": "ph-002",
+      "verbatim": "Every agent tells me I can afford it but nobody actually shows me the numbers",
+      "source_url": "https://reddit.com/r/singapore/comments/example",
+      "source_type": "reddit_comment",
+      "extracted_at": "2026-04-17T00:00:00Z",
+      "extracted_by_client": "neezanizam",
+      "claimed_by_client": "neezanizam",
+      "claimed_in_copy": [],
+      "topic_tags": ["agent-distrust", "financial-clarity", "proof-gap"],
+      "avatar_relevance": ["hdb-upgrader-mid-30s-with-kids", "dual-income-anxious"]
+    },
+    {
+      "_example": true,
+      "_note": "[EXAMPLE — replace with real data]",
+      "id": "ph-003",
+      "verbatim": "Been putting it off for 2 years because I don't know where to start",
+      "source_url": "https://reddit.com/r/singaporefi/comments/example",
+      "source_type": "reddit_comment",
+      "extracted_at": "2026-04-17T00:00:00Z",
+      "extracted_by_client": "neezanizam",
+      "claimed_by_client": "neezanizam",
+      "claimed_in_copy": [],
+      "topic_tags": ["procrastination", "decision-paralysis", "upgrade-anxiety"],
+      "avatar_relevance": ["hdb-upgrader-mid-30s-with-kids"]
+    }
+  ],
+  "phrase_claim_rule": "A phrase can be CITED in research by multiple clients but CLAIMED FOR USE IN COPY by only one client at a time. To reclaim a phrase from another client: set claimed_by_client to the new client and remove the old client's claimed_in_copy entries. Reclamation requires explicit decision — it does not happen automatically.",
+  "refresh_rule": "Do NOT re-mine a source if last_refreshed_at is within 30 days. Focus new mining on sources not yet in sources_mined. After each mine, append new phrases and update last_refreshed_at + phrase_count_extracted.",
+  "populate_instructions": "Replace all entries marked _example:true with real data extracted from clients/neezanizam/research/buyer-language-dossier.md and swipe-file-buyers.md. Run /ads:source-of-truth to trigger auto-append on next client onboarding."
+}

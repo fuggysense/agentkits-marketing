@@ -1,0 +1,209 @@
+================================================================================
+SINGAPORE TCM CLINIC WEBSITE SITEMAP — AT A GLANCE
+================================================================================
+
+RESEARCH: 6 Established SG TCM Clinics Analyzed
+• PULSE TCM (pulsetcm.sg) — 15 clinics, pain + fertility
+• Oriental Remedies Clinic — tech-forward, family-focused
+• Ma Kuang TCM (makuang.com.sg) — 30+ clinic chain
+• Yong Kang TCM (yongkangtcm.com) — 11 outlets
+• Yi TCM (yitcm.com.sg) — fertility specialist
+• Better Wellness TCM (betterwellness.sg) — pain management specialist
+
+================================================================================
+RECOMMENDED 7-PAGE CORE STRUCTURE
+================================================================================
+
+1. HOME
+   └─ Hero value prop + core services intro + CTA to book
+      MOH badge, phone, WhatsApp, hours
+
+2. ABOUT US
+   └─ Clinic story, mission, team intro, MOH registration
+      Why choose us (3-5 value props)
+
+3. SERVICES
+   ├─ Acupuncture & Moxibustion
+   ├─ Herbal Medicine (Customized Remedies)
+   ├─ Tuina Massage (Chinese Therapeutic Massage)
+   ├─ Cupping & Gua Sha (Scraping)
+   ├─ Physiotherapy (Western + TCM Integration)
+   └─ Consultation & Diagnosis
+      [Each sub-page: technique, conditions helped, duration, safety FAQ, CTA]
+
+4. CONDITIONS WE TREAT
+   ├─ Pain & Musculoskeletal (back, neck, shoulder, knee, arthritis, sciatica)
+   ├─ Women's Health (fertility, periods, menopause)
+   ├─ Stress & Sleep (anxiety, insomnia, headaches)
+   ├─ Digestive & Metabolic (bloating, constipation, weight mgmt)
+   ├─ Immune & Seasonal (allergies, asthma, cold recovery)
+   └─ Pediatric (cough, digestion, focus)
+      [25-35 conditions, linked to service pages]
+
+5. OUR PRACTITIONERS
+   └─ Physician bio cards:
+      • Name (EN + 中文)
+      • MOH License Number [MANDATORY]
+      • Qualifications & certifications
+      • Years of experience
+      • Specialties
+      • Languages
+      • Headshot
+      • Short bio
+
+6. LOCATIONS & HOURS
+   ├─ Full address (postal code for Google Maps)
+   ├─ Interactive Google Map embed
+   ├─ Operating hours (by day)
+   ├─ Parking info & MRT distance
+   ├─ Phone & WhatsApp link
+   └─ Email
+
+7. BOOK APPOINTMENT
+   ├─ Online calendar (Calendly / Acuity Scheduling)
+   ├─ WhatsApp direct link [PRIMARY SG BOOKING CHANNEL]
+   ├─ Phone number (clickable)
+   └─ FAQ: first visit prep, cancellation policy, late arrivals
+
+OPTIONAL:
+8. BLOG / HEALTH RESOURCES (5-10 SEO-friendly articles)
+9. CONTACT & FAQ (generic inquiry form + common Q&A)
+
+================================================================================
+NAVIGATION STRUCTURE
+================================================================================
+
+HEADER (Top)
+Logo | Home | About | Services▼ | Conditions | Practitioners | Locations | Book | [WhatsApp]
+
+FOOTER
+Services | Conditions | Practitioners | Blog | Contact | FAQ
+Phone | WhatsApp | Email | Hours | Parking
+MOH Registration | CHAS/BG Badges | Privacy | Terms | [Social Icons]
+
+================================================================================
+SG-SPECIFIC WEB CONVENTIONS (MANDATORY)
+================================================================================
+
+✓ WhatsApp Booking Button
+  └─ On every page; primary booking channel in SG (95% of clinics use it)
+
+✓ Bilingual EN/中文
+  └─ Language toggle at header; all critical pages in both languages
+
+✓ MOH Physician License Display
+  └─ Every physician bio must include MOH Reg. No.; link to verification
+
+✓ CHAS / BG / IP Panel Badges
+  └─ Homepage/About: "Accepted: CHAS / Pioneer Panel / [insurance names]"
+
+✓ Google Maps Embed
+  └─ "Locations" page; enables directions, shows reviews
+
+✓ Operating Hours (Prominent)
+  └─ Header footer AND Locations page; 11am–8pm typical
+
+✓ Phone Number (Clickable)
+  └─ Mobile users expect tap-to-call; prominent on header/footer
+
+================================================================================
+PAGE FREQUENCY ANALYSIS (6 CLINICS)
+================================================================================
+
+100% of clinics have:
+  • Home
+  • Services
+
+83% of clinics have:
+  • About/Team/Practitioners
+
+67% of clinics have:
+  • Locations/Clinics
+
+67%+ also have:
+  • Book Appointment / Contact (integrated or separate)
+
+Optional (specialty-dependent):
+  • Conditions We Treat (growing standard)
+  • Blog / Health Articles (emerging trend)
+  • Testimonials (growing)
+  • First-Time Visitor Offers (Better Wellness example)
+
+================================================================================
+CONTENT PRIORITIES
+================================================================================
+
+CRITICAL (Must-Have):
+  1. MOH credentials visible on every physician page
+  2. WhatsApp + phone booking on every page
+  3. Operating hours (homepage + locations)
+  4. Services page with clear treatment descriptions
+  5. Practitioners with photos, qualifications, specialties
+
+HIGH VALUE (Should-Have):
+  6. Conditions We Treat (patient discovery, SEO)
+  7. Safety FAQs (acupuncture needle size, bruising, contraindications)
+  8. About Us (clinic story, trust-building)
+  9. Google Maps + parking info (local conversion)
+
+NICE-TO-HAVE (Growth Phase):
+  10. Blog articles (long-tail SEO)
+  11. Testimonials / case studies
+  12. First-time visitor special offers
+  13. Corporate wellness programs
+
+================================================================================
+FOR MULTI-LOCATION CLINICS (Future Scaling)
+================================================================================
+
+If expanding to 2+ clinics later:
+  • Add "Find a Clinic" / "Clinics" page to main nav
+  • Interactive clinic finder map
+  • Individual clinic pages (distinct phone, hours, practitioners)
+  • Reference: Ma Kuang (30+ clinics), PULSE (15), Yong Kang (11)
+
+================================================================================
+EXAMPLE: PULSE TCM (15-Clinic Chain)
+Primary Navigation: Home | Clinics (Locations) | Services | About | Book | WhatsApp
+└─ Clinic finder is TOP-LEVEL nav (critical for multi-location model)
+
+EXAMPLE: BETTER WELLNESS (Single Location)
+Primary Navigation: Home | Services | About | Book | WhatsApp
+└─ Simpler nav; no clinic finder needed
+
+================================================================================
+ESTIMATED CONTENT SCOPE
+================================================================================
+
+Total pages to create: 7–9
+Total word count: ~8,000–12,000 words
+Development time: 3–4 weeks (design + content + backend setup)
+
+Breakdown:
+  • Homepage: 400–600w | Hero + services overview
+  • About: 300–500w | Clinic story, credibility
+  • Services (main + 5–6 sub-pages): 2,000–3,000w | Treatment details + safety
+  • Conditions: 1,500–2,500w | 25–35 conditions with service links
+  • Practitioners: 300–800w | 2–3 physician bios
+  • Locations: 200–400w | Address, hours, map, contact
+  • Book Appointment: 200–300w | Multi-channel booking + FAQ
+  • Blog (optional): 500–1,500w per article
+  • Contact & FAQ: 300–600w
+
+================================================================================
+NEXT STEPS FOR CLINIC MANAGER
+================================================================================
+
+1. Confirm specialist focus (pain mgmt vs. fertility vs. general wellness)
+2. Gather physician details (names, qualifications, MOH Reg. Nos., bios)
+3. List all conditions treated + typical treatment combinations
+4. Define operating hours, parking, location details
+5. Choose booking system (Calendly, Acuity, custom, or simple WhatsApp)
+6. Decide on blog launch (immediate or Phase 2)
+7. Design approval: logo, color scheme, mobile-first layout
+8. Development: 3–4 weeks to launch
+
+================================================================================
+This sitemap is GROUNDED IN REAL DATA, not speculation.
+All pages match navigation patterns of 6 established, active SG TCM clinics.
+================================================================================

@@ -1,0 +1,21 @@
+[
+  {
+    "id": "d8863ce5-0293-47c6-b034-abcbc733f197",
+    "status": "completed",
+    "display_name": "GPT Image 2",
+    "job_set_type": "imagegen_2_0",
+    "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_2z2bozEwzKwxJNgkH3IQQ4lTkuw/hf_20260513_034631_d8863ce5-0293-47c6-b034-abcbc733f197.png",
+    "created_at": 1778643991.37959,
+    "params": {
+      "width": 1344,
+      "height": 752,
+      "prompt": "Create a 16:9 live-action cinematic photoreal storyboard grid for Scene 1 of \"Neon Memory Courier\" - 2x3 layout, 6 panels on a clean black canvas, panels separated by thin black gutters only.\n\nOverarching scene theme: A tense cyberpunk noir alley at Neon Night during heavy rain, pavement glossy with reflected magenta and cyan signage. The same courier appears in every panel: young adult, androgynous build, wet black hooded raincoat, dark utility sling bag, fingerless gloves, alert expression. The courier carries one small transparent hard-shell memory chip case glowing electric blue from within. Keep the case, wardrobe, alley geometry, wet reflections, and neon palette consistent across all panels. Show the first sign of pursuit building from quiet suspicion to visible threat.\n\nPanels, left-to-right, top-to-bottom:\n\nPanel 1: The courier steps into a narrow rain-slick service alley, shoulders hunched beneath neon spill.\nPanel 2: A gloved hand opens the sling bag just enough to reveal the glowing memory chip case.\nPanel 3: The courier pauses beside a puddle, noticing a second silhouette reflected far behind.\nPanel 4: The blue case lights the courier's tense face as rain beads on the transparent shell.\nPanel 5: A red scanner beam sweeps across wet brick behind the courier's shoulder.\nPanel 6: The courier snaps the case shut and turns toward the alley exit as two pursuers emerge in haze.\n\nCharacter: one courier with wet black hooded raincoat, dark utility sling bag, fingerless gloves, rain-darkened hair partly hidden by hood, sharp anxious eyes; two distant pursuers only as indistinct dark silhouettes with red visor glints.\n\nEnvironment: rain-slick alley, Neon Night, Heavy Rain. Mood: Tense. Visual style: live-action cinematic photorealism, shot on ARRI Alexa 65 with IMAX 70mm lenses, prestige cyberpunk noir, naturalistic volumetric lighting, deep cinematic shadows, subtle film grain, muted color grading, readable faces and silhouettes.\n\nCamera/lens feel: ARRI Alexa 65, Anamorphic Primo, 50mm Standard, Natural Flares.\n\nBelow each panel: no captions, no timestamps, no action text; optional tiny white panel number in one corner only if needed for sequence clarity.\n\nForbidden: no title banner, no footer, no colored gridlines, no director's note, no VO/dialogue text, no SFX/BGM/music cue, no camera-movement commands, no production tables. Plain black canvas with 6 visual panels arranged in 2x3.\n\nRender at 16:9 aspect ratio.",
+      "medias": [],
+      "aspect_ratio": "16:9",
+      "quality": "medium",
+      "resolution": "1k",
+      "model": "videotape-alpha",
+      "reference_elements": []
+    }
+  }
+]

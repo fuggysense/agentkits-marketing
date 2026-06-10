@@ -147,12 +147,12 @@ Before any analytics/performance report:
 ## Agent Delegation Rules
 
 ### When to Delegate
-- Use `attraction-specialist` for TOFU content and SEO
-- Use `lead-qualifier` for lead scoring and segmentation
-- Use `email-wizard` for email campaigns and sequences
-- Use `sales-enabler` for sales collateral and case studies
-- Use `continuity-specialist` for retention campaigns
-- Use `upsell-maximizer` for expansion revenue
+- Use `researcher` agent + `seo-mastery` / `content-strategy` skills for TOFU content and SEO
+- Use `leads:score` / `crm:segment` skills for lead scoring and segmentation
+- Use `email-sequence` skill for email campaigns and sequences
+- Use `sales:battlecard` / `sales:pitch` skills for sales collateral and case studies
+- Use `crm:lifecycle` skill for retention campaigns
+- Use `pricing-strategy` / `offer-builder` skills for expansion revenue
 
 ### Handoff Protocol
 - Pass context and relevant data between agents

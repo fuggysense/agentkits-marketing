@@ -121,7 +121,7 @@ The first thing they see — must earn attention in <1 second for image, <2 seco
 
 > **For full talking-head video ad scripts**, see [`video-ad-scripts.md`](./video-ad-scripts.md) — 3 complete A-to-Z frameworks (Straight-For-The-Kill, Personal Story, Don't Do That) with step-by-step breakdowns and fill-in templates.
 
-> **For AI-generated video ads**, see the `video-director` skill (11 video types, 3 pipelines). Use script frameworks here for dialogue and copy; use video-director for visual generation prompts that you paste into Sora, Kling, or VEO.
+> **For AI-generated video ads**, see the `video-router` skill — it routes your objective to the right model + prompt framework. Use script frameworks here for dialogue and copy; use video-router to compile the visual generation prompts that you paste into Sora, Kling, or VEO.
 
 ### UGC-Style Creative Guidelines
 - Film vertically (9:16) for Reels/Stories, square (1:1) for Feed

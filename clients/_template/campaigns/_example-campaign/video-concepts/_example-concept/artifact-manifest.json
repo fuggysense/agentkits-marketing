@@ -1,0 +1,32 @@
+{
+  "schema_version": "1.0",
+  "workspace": "clients/{{client_slug}}/campaigns/{{campaign_slug}}/video-concepts/{{concept_slug}}",
+  "workspace_slug": "{{concept_slug}}",
+  "script_mode": "spoken",
+  "created_date": "{{today}}",
+  "last_updated": "{{today}}",
+  "artifacts": {
+    "concept_brief": {"path": "concept-brief.json", "status": "not_started"},
+    "creative_diversity_map": {"path": "01_strategy/creative-diversity-map.json", "status": "not_started"},
+    "concepts_draft": {"path": "02_ag1-options/concepts-draft.json", "status": "not_started"},
+    "hook_variants_draft": {"path": "02_ag1-options/hook-variants-draft.json", "status": "not_started"},
+    "inputs_used": {"path": "02_ag1-options/inputs-used.json", "status": "not_started"},
+    "concepts": {"path": "02_ag1-options/concepts.json", "status": "not_started"},
+    "concept_pack": {"paths": ["02_ag1-options/concept-pack.json", "02_ag1-options/concept-pack.md", "02_ag1-options/concept-pack.html"], "status": "not_started"},
+    "approval_1": {"path": "02_ag1-options/approval-1.json", "status": "not_started"},
+    "script_drafts": {"path": "03_scripts/script-drafts.json", "status": "not_started"},
+    "script_pack": {"path": "03_scripts/script-pack.md", "status": "not_started"},
+    "ag1_review": {
+      "status": "not_started",
+      "live_url": null,
+      "source_provenance": null,
+      "last_verified": null
+    },
+    "input_image_manifest": {"path": "04_input-images/input-image-manifest.json", "status": "not_started"},
+    "canonical_prompt_pack": {"paths": ["05_prompt-packs/canonical-prompt-pack.json", "05_prompt-packs/canonical-prompt-pack.md"], "status": "blocked_until_ag1_approval"},
+    "model_adapters": {"path": "05_prompt-packs/model-adapters/", "status": "blocked_until_ag1_approval"},
+    "manual_run_guide": {"path": "05_prompt-packs/manual-run-guide.md", "status": "blocked_until_ag1_approval"},
+    "ag2_review": {"paths": ["07_review/approval-gate-2.html", "07_review/approval-2.json"], "status": "blocked_until_refinement_and_normalization"},
+    "generation_runs": {"path": "06_generation-runs/", "status": "blocked_until_ag2_approval"}
+  }
+}

@@ -29,7 +29,8 @@ GSHEETS_SHARE_EMAIL = os.getenv("GSHEETS_SHARE_EMAIL", "")  # email to share she
 DATAFORSEO_BATCH_SIZE = 100       # keywords per batch POST
 DATAFORSEO_PARALLEL_BATCHES = 8   # concurrent batch requests
 SCRAPECREATORS_RATE_LIMIT = 2     # seconds between requests
-CRAWL4AI_CONCURRENCY = 50         # concurrent website scrapes
+CRAWL4AI_CONCURRENCY = 10         # concurrent website scrapes (lower = more stable)
+CRAWL4AI_PAGE_TIMEOUT = 20000     # ms per page — skip slow/dead sites
 GROQ_MODEL = "llama-3.3-70b-versatile"
 GROQ_RPM = 30                     # requests per minute (free tier)
 FIRECRAWL_FALLBACK_BUDGET = 200   # max firecrawl credits to use
@@ -87,6 +88,14 @@ def load_blocklist() -> set[str]:
         data = json.loads(BLOCKLIST_FILE.read_text())
         return set(data.get("domains", []))
     return set()
+
+
+def load_prompts() -> dict[str, str]:
+    """Load LLM prompts from data/prompts.json."""
+    prompts_file = DATA_DIR / "prompts.json"
+    if prompts_file.exists():
+        return json.loads(prompts_file.read_text())
+    return {}
 
 
 def check_credentials() -> dict[str, bool]:

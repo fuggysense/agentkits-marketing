@@ -1,10 +1,10 @@
 ---
 name: client-onboarding
-version: "2.1.0"
+version: "3.2.0"
 brand: AgentKits Marketing by AityTech
 category: core
 difficulty: beginner
-description: "Guided client/project onboarding flow. Scaffolds project, builds structured JSON business context profile via interactive interview (30 questions in 9 sections), populates marketing files, routes to agents for enrichment, validates readiness, and activates session context. Supports quit-and-resume at any point via checkpoints."
+description: "Two-path onboarding orchestrator. Path A (research-first): scrape → summary. Path B (interview-first): 21-question intake. Outputs Jake-structure project + campaign discovery indexes + workspace templates. Supports resume. Triggers: new project, onboard client, project setup."
 triggers:
   - new project
   - onboard client
@@ -12,12 +12,9 @@ triggers:
   - set up project
   - create project
   - project setup
-  - business profile
-  - context profile
-  - project profile
-  - update profile
 prerequisites: []
 related_skills:
+  - business-profile
   - brand-building
   - campaign-runner
   - marketing-fundamentals
@@ -38,598 +35,478 @@ output_schema: project-readiness
 
 ## Graph Links
 - **Feeds into:** [[campaign-runner]], [[offer-builder]], [[copywriting]], [[brand-building]]
-- **Draws from:** (independent — onboarding flow)
+- **Draws from:** [[business-profile]] (Path B), [[scrapling]] + [[scrapecreators]] (Path A)
 - **Used by agents:** [[project-manager]]
 - **Related:** [[brand-building]], [[persona-builder]]
 
-# Client Onboarding
+# Client Onboarding (v3.1)
 
-You are a project onboarding engine. You turn "I have a new client" into a fully configured project directory ready for campaigns — through guided interview, agent enrichment, and readiness validation.
+You are a project onboarding orchestrator. You turn "I have a new client" into a fully configured Jake-style marketing client directory ready for campaigns — through one of two paths:
 
-The centerpiece is the **Business Context Profile** — a structured JSON file that captures WHO this business is. Every downstream skill and agent reads this file first. Without it, AI gives generic answers. With it, the AI can say: "Given that you're a $8k/month SaaS agency with 4 clients targeting e-commerce brands, here's what I'd do next."
+- **Path A — Research-first** for clients with a public footprint (LinkedIn / Instagram / website). Spawns parallel scraper agents, then a synthesizer that produces a business summary, content patterns, and a brainstorm-agent prompt ready to paste into a Claude Project / Gemini Gem / ChatGPT GPT.
+- **Path B — Interview-first** for cold-start clients or paid clients wanting a formal intake. Delegates to the `business-profile` skill (Fuggy's Media 21-question form).
+
+Both paths output to the Jake Full Toolkit marketing folder structure: identity files in `_brand/`, engagement operating context in `_config/`, reusable frameworks in `_references/`, research in `_swipe/research/`, client-level inputs in `00_inputs/`, and in-flight campaign work in `campaigns/<campaign>/`.
 
 ## Core Philosophy
 
-Every campaign depends on solid foundations. Bad ICP = bad targeting. Vague offer = weak copy. Missing channels = nowhere to publish. This skill ensures those foundations are solid before any campaign begins.
-
-**Principles:**
-- Ask, don't assume — interview the user for every field
-- Ask in sections, not all at once — one section per AskUserQuestion
-- Accept partial answers — mark unknowns as `null` in JSON, `[TBD]` in markdown
-- Reuse existing agents for deep work (persona-builder, researcher, brand-voice-guardian)
-- Validate before activating — catch gaps early
-- **Save early, save often** — checkpoint after every section so nothing is lost
-- **Quit anytime** — user can stop at any section boundary and resume later
-
----
-
-## Checkpoint Protocol
-
-**CRITICAL: This protocol applies to ALL phases. Never wait until the end to save.**
-
-### How Checkpoints Work
-
-1. **After every section** in Phase 2 (Business Context Profile):
-   - Immediately write/update `clients/<project>/context-profile.json` with everything collected so far
-   - Empty fields stay as defaults (`""`, `[]`, `false`)
-   - Set `last_updated` to current date
-   - Show a 1-line confirmation: `Saved. Section X/9 complete. (say "quit" to stop, or continue)`
-
-2. **After every file** in Phase 3 (Marketing Deep Dive):
-   - Write the file immediately after its interview section finishes
-   - Show: `Saved icp.md. 2/4 marketing files done. (say "quit" to stop, or continue)`
-
-3. **After every agent** in Phase 4 (Enrich):
-   - Each agent writes its own output file — checkpoint is automatic
-   - Show: `buyer-profile.md saved. Want to run another enrichment or move to validation?`
-
-4. **Phase-level checkpoint** — after completing any full phase, update the progress tracker in `context-profile.json`:
-   ```json
-   "_onboarding_progress": {
-     "current_phase": 3,
-     "phase_2_sections_completed": [1, 2, 3, 4, 5, 6, 7, 8, 9],
-     "phase_3_files_completed": ["icp.md"],
-     "phase_4_agents_run": [],
-     "last_checkpoint": "2026-03-27T14:30:00"
-   }
-   ```
-
-### Quit Handling
-
-At ANY point the user says "quit", "stop", "done for now", "I'll come back", "save and exit", or similar:
-
-1. **Save immediately** — write everything collected so far to the relevant files
-2. **Show resume summary:**
-   ```
-   Progress saved. Here's where you left off:
-
-   Phase 2 (Business Context Profile): 5/9 sections done
-     Done: Identity, Products, People, Market, Operations
-     Remaining: Growth, Brand, Proof, Vision
-
-   Phase 3 (Marketing Deep Dive): not started
-   Phase 4 (Enrich): not started
-
-   To resume: `/project:new` or `/project:profile` — I'll pick up where you left off.
-   ```
-3. **Do NOT ask follow-up questions** — respect the quit immediately
-
-### Resume Detection
-
-On invocation, BEFORE asking any questions:
-
-1. Check if `clients/<project>/context-profile.json` exists
-2. If yes, read the `_onboarding_progress` field
-3. Determine what's done vs what's remaining
-4. Show a compact status and ask: "Want to continue from where you left off, or start fresh?"
-5. If continuing, skip completed sections and jump to the first incomplete one
+- **Match path to reality** — don't force a 21-question interview on a client whose entire business is visible online.
+- **Output structure is fixed at the layers, flexible at the deliverable type** — stable identity lives in `_brand/`, engagement context in `_config/`, reusable frameworks in `_references/`, research reservoir in `_swipe/`, reusable source inputs in `00_inputs/`, and active campaign work in `campaigns/`.
+- **Discovery, not prompt memory** — folder navigation is deterministic. Future agents should read `clients/_template/CONTEXT.md` first for the high-level folder map, `clients/_template/campaigns/README.md` second for campaign/workspace rules, and the whole `clients/_template/` folder for actual scaffold files. Per-campaign `campaign-index.json` is created by `/campaign:new`. Workspaces use the same root contract: `pipeline-state.json`, `artifact-manifest.json`, `event-log.jsonl`, and a workspace brief that selects from `00_inputs/` and `_brand/`.
+- **Reuse, don't reinvent** — Path B delegates to `business-profile` skill, Path A reuses the storyboard scraper pattern.
+- **Save early, save often** — checkpoint after every phase. User can quit at any phase boundary and resume.
+- **Stop at the brainstorm prompt** — onboarding ends when the client has a paste-ready strategy prompt. Funnel architecture decisions happen OUTSIDE this skill (in the operator's Claude Project).
 
 ---
 
 ## Mode Detection
 
-On invocation, detect which mode to run:
+On invocation:
 
 ### New Project Mode
-Trigger: No `clients/<project>/` directory exists, or user explicitly says "new project/client"
-Flow: Phase 1 → Phase 2 → Phase 3 → Phase 4 → Phase 5 → Phase 6
+**Trigger:** No `clients/<project>/` exists, or user explicitly says "new project / new client"
+**Flow:** Phase 1 → Path A or B → Phase 3 (enrichment, optional) → Phase 4 (validate) → Phase 5 (activate)
 
 ### Resume Mode
-Trigger: `clients/<project>/` exists AND `_onboarding_progress` shows incomplete phases
-Flow: Show progress summary → pick up at first incomplete section/phase → continue through remaining phases
+**Trigger:** `clients/<project>/context-profile.json` exists AND `_onboarding_progress.completed_steps` shows incomplete work
+**Flow:** Show progress summary → resume at first incomplete step → continue through remaining phases
 
-### Update Profile Mode
-Trigger: `clients/<project>/context-profile.json` exists with all phases complete, and user says "update profile" or `/project:profile`
-Flow: Show current profile summary → ask which sections to update → run only those sections → merge into existing JSON → bump version
+### Update Mode
+**Trigger:** `context-profile.json` fully populated AND user says "update profile" or runs `/project:profile`
+**Flow:** Show current summary → ask which sections to update → run targeted updates only
 
 ### Validate-Only Mode
-Trigger: User runs `/project:validate` explicitly
-Flow: Jump directly to Phase 5 (Validate)
+**Trigger:** User runs `/project:validate`
+**Flow:** Jump directly to Phase 4
 
 ---
 
-## Phase 1: Scaffold
+## Phase 1: Scaffold (both paths)
 
-### Step 1: Get Project Name
+### Step 1: Get project slug + name
 
-**Question:** "What's the project name? Use slug format (lowercase, hyphens)."
-**Examples:** `acme-plumbing`, `saas-startup`, `fitness-coach`
+**Question:** "What's the client slug? (lowercase, hyphens, no spaces — e.g. `michelle-koh`)"
+**Validation:** lowercase, hyphens only. If invalid, ask again.
 
-### Step 2: Copy Template
+**Question:** "Display name? (e.g. `Michelle Koh`)"
+
+### Step 2: Run scaffold script
 
 ```bash
-cp -r "clients/_template/" "clients/<project-name>/"
-mkdir -p "clients/<project-name>/campaigns"
-mkdir -p "clients/<project-name>/feedback"
-mkdir -p "clients/<project-name>/assets"
+./scripts/scaffold-client.sh <slug> "<Name>"
 ```
 
-### Step 3: Check Voice Profile
+This:
+- Copies `clients/_template/` → `clients/<slug>/`
+- Swaps `{{client_slug}}`, `{{client_name}}`, `{{today}}` placeholders in all `.md`, `.json`, and `.jsonl` files
+- Sets `_created` date in `context-profile.json`
+- Creates the Jake-style stage and context structure because `clients/_template/` is the single source of truth
+- Creates top-level `00_inputs/` for raw client inputs that downstream campaign/video skills select by reference
+- Uses one `_brand/buyer-profile.md` as the source of truth for buyer psychology and all micro-personas
+- Keeps `_brand/icp.md` separate as the market-boundary and qualification file: demographics, firmographics, geography, exclusions, and category buying behavior
+- Creates `_brand/visual-characters/` for generated presenters, mascots, recurring faces, actor references, and face-lock assets; `_brand/avatars/` remains legacy/tooling only
+- Creates scalable discovery scaffolds so future agents do not infer paths from prompt memory:
+  - `CONTEXT.md` as the first routing explanation and high-level folder map
+  - `campaigns/_campaigns-index.json`
+  - `campaigns/README.md` as the campaign/workspace rules file
+  - A generic deliverable workspace convention: `campaigns/<campaign>/<artifact-family>/<artifact-slug>/`
+  - Workspace families may include `video-concepts/`, `email-sequences/`, `funnel-pages/`, `landing-pages/`, `ad-concepts/`, `lead-magnets/`, and future campaign-specific folders
+  - Every deliverable workspace must contain `pipeline-state.json`, `artifact-manifest.json`, `event-log.jsonl`, and a workspace brief such as `concept-brief.json`, `sequence-brief.json`, or `workspace-brief.json`
+  - `_templates/video-concept-workspace/pipeline-state.json`
+  - `_templates/video-concept-workspace/artifact-manifest.json`
+  - `_templates/video-concept-workspace/event-log.jsonl`
+  - `_templates/video-concept-workspace/concept-brief.json` as the concept-level selected-input contract
+  - `_templates/video-concept-workspace/CONTEXT.md` as the concept-level routing document (points to phase templates in `_templates/concept-phases/`)
+  - `_templates/video-concept-workspace/00_inputs/` + its `input-manifest.json` as the concept-scoped input staging folder
+  - `_templates/video-concept-workspace/01_strategy/` through `07_review/`, each with a thin `CONTEXT.md` pointer to the matching `_templates/concept-phases/0N_*-CONTEXT.md`
+  - `_templates/video-concept-workspace/eval/` + its thin `CONTEXT.md` pointer
+  - `_templates/video-concept-workspace/04_input-images/input-image-manifest.json` as an optional image-upload manifest, required only when executor payloads use uploaded images
+  - `_templates/video-concept-workspace/06_generation-runs/` as the lean clip-run location for `run-manifest.json`, clip payloads, generated MP4s, human review decisions, and ffmpeg stitch output
+- Creates ICM (Identity Context Map) room-level `CONTEXT.md` files — 14 total — so every room is agent-navigable without prompt memory:
+  - `_brand/CONTEXT.md`, `_brand/avatars/CONTEXT.md`, `_brand/big-ideas/CONTEXT.md`, `_brand/visual-characters/CONTEXT.md`, `_brand/brand-assets/CONTEXT.md`, `_brand/funnel-research/CONTEXT.md`
+  - `_config/CONTEXT.md`, `_references/CONTEXT.md`, `_swipe/CONTEXT.md`, `_swipe/winning-ads/CONTEXT.md`, `_templates/CONTEXT.md`
+  - `campaigns/CONTEXT.md`, `campaigns/<first-campaign>/video-concepts/CONTEXT.md`, `campaigns/<first-campaign>/explorations/CONTEXT.md`
+- Creates `_templates/concept-phases/` with 9 stage-contract CONTEXT.md files (one per phase: `00_inputs`, `01_strategy`, `02_ag1-options`, `03_scripts`, `04_input-images`, `05_prompt-packs`, `06_generation-runs`, `07_review`, `eval`)
+- Creates `_templates/CONTEXT-md-pattern.md` — the meta pattern document describing the CONTEXT.md authoring convention used across the entire client tree
+- Creates `_config/refresh-claude-map.sh` — hook script that regenerates the `<!-- AUTO-GENERATED: campaigns -->` block in `CLAUDE.md` from live folder state
+- Creates `_config/claude-md-drift-log.md` — initialized with a header-only entry recording the scaffold date; subsequent auto-updates append drift events
 
-Check if a voice profile exists in `voice/` (exclude `README.md` and templates).
+### Step 3: Path selection
 
-- If exists: note which person's voice will be linked
-- If not: flag as pending — "No voice profile found. You can create one later with `/brand:voice`"
+**Question:** "Does this client have a public footprint we can scrape (LinkedIn / Instagram / website), or starting from cold?"
 
-### Step 4: Initialize Progress Tracker
+| Answer | Route to |
+|---|---|
+| Public footprint | **Path A — Research-first** |
+| Cold start / paid client wanting formal intake | **Path B — Interview-first** |
+| Both / mixed | **Path A first, then Path B for missing fields** |
 
-Write initial `context-profile.json` with empty schema + progress tracker:
-```json
-{
-  "_onboarding_progress": {
-    "current_phase": 2,
-    "phase_2_sections_completed": [],
-    "phase_3_files_completed": [],
-    "phase_4_agents_run": [],
-    "last_checkpoint": "<now>"
-  },
-  "business_name": "",
-  ...
-}
-```
-
-**CHECKPOINT:** Phase 1 complete. Show: `Project scaffolded. Starting business profile interview — you can quit anytime and resume later.`
+**CHECKPOINT:** Update `context-profile.json` → `_onboarding_progress.current_phase = 2`, `_onboarding_progress.path = "A" | "B" | "hybrid"`. Show: `Scaffolded clients/<slug>/. Path: <A|B|hybrid>. (say "quit" to stop, or continue)`
 
 ---
 
-## Phase 2: Business Context Profile
+## Path A — Research-first
 
-This is the core interview. Walk through 30 questions organized in 9 sections using AskUserQuestion. Present all questions in a section as a numbered list. User answers in plain text — numbers don't need to match, just answer in order.
+### Step A1: Collect public URLs
 
-**Pre-population rule:** If existing project files (icp.md, offer.md, channels.json) already have content, extract what you can and SKIP those questions. Tell the user: "I pulled X fields from your existing project files. I'll only ask what's missing."
+Ask in one batch:
+- LinkedIn URL (if any)
+- Instagram URL (if any)
+- TikTok URL (if any)
+- YouTube channel URL (if any)
+- Website / featured landing page URL (if any)
+- Any other public profiles
 
-### Section 1: Business Identity
-1. What is the name of your business?
-2. Do you have a slogan or tagline?
-3. When was it founded?
-4. Where is your business headquartered? Do you operate in other regions?
-5. Do you serve clients internationally?
-6. In 1-2 sentences, what does your business do?
-7. What is your mission or big picture goal?
+User answers with whatever they have. Skip anything they don't have.
 
-**CHECKPOINT:** Save to context-profile.json. Update `phase_2_sections_completed: [1]`. Show: `Saved. Section 1/9 done.`
+### Step A2: Spawn parallel scraper agents
 
-### Section 2: Products & Services
-8. What services or products do you offer? (Include deliverables and value for each)
-9. What are your current offers, products, or programs? (Include pricing if comfortable)
-10. What is your business model? (e.g., SaaS, service-based, info product, agency, marketplace, e-commerce)
+For each public URL provided, spawn a `general-purpose` agent in parallel (single message, multiple Agent tool uses).
 
-**CHECKPOINT:** Save. Update `phase_2_sections_completed: [1, 2]`. Show: `Saved. Section 2/9 done.`
+Each agent prompt should:
+- Use the **scrapling** skill first (`StealthyFetcher` for IG / LI which have anti-bot).
+- Fall back to **scrapecreators** skill if Scrapling returns thin / blocked data.
+- For Instagram Reels: pull captions + view counts. If transcripts available via ScrapeCreators, capture them. Otherwise invoke `transcribe` skill on the TOP 3 highest-view Reels only (cap to control cost).
+- Output to: `clients/<slug>/_swipe/research/<platform>-profile-scrape.md`
+- Report back: under 200 words summary.
 
-### Section 3: People
-11. Who are the founders? What are their roles and brief bios?
-12. How is your team structured? Do you use contractors or employees? Where are they based?
+**Light-scrape rule:** Don't dump everything. Each agent should pull:
+- Profile basics (bio, follower count, current role)
+- Last 10-15 posts (mix of formats)
+- Top 3 by engagement (transcripts if Reels)
+- Any featured / pinned content with chained scrape of the linked landing page
 
-**CHECKPOINT:** Save. Update `phase_2_sections_completed: [1, 2, 3]`. Show: `Saved. Section 3/9 done.`
+Standard scrape prompts: see `references/scraper-prompts.md`.
 
-### Section 4: Market & Customers
-13. Who are your ideal clients? (Industry, company size, monthly revenue, problems they have)
-14. Who are your top 2-3 competitors? What do they do differently?
-15. How do customers currently find you? (Referrals, ads, organic, cold outreach, partnerships, etc.)
-16. What does your sales process look like? (Self-serve, demo call, consultation, proposal, etc.)
+### Step A3: Spawn synthesizer (after scrapers complete)
 
-**CHECKPOINT:** Save. Update `phase_2_sections_completed: [1, 2, 3, 4]`. Show: `Saved. Section 4/9 done.`
+Spawn a `researcher` subagent that reads all scrape outputs + the parent `CLAUDE.md` + `context-profile.json`, then writes:
 
-### Section 5: Operations
-17. What tools or platforms are core to your operations? (CRM, email tool, project management, etc.)
-18. What are your current goals and KPIs?
+1. `clients/<slug>/_swipe/research/<slug>-business-summary.md`
+   — Who they are, offer ladder (T1/T2/T3), ICP, voice + positioning, current funnel mechanics, gaps + strategic risks, strategic decisions the operator must make.
 
-**CHECKPOINT:** Save. Update `phase_2_sections_completed: [1, 2, 3, 4, 5]`. Show: `Saved. Section 5/9 done.`
+2. `clients/<slug>/_swipe/research/<slug>-content-patterns.md`
+   — Format mix, posting cadence, hook patterns, caption style, gap analysis vs benchmarks (if benchmark playbook provided), leverage point.
 
-### Section 6: Growth & Status
-19. Are you pre-launch or launched? When is/was the launch? How ready are you?
-20. What's your current monthly revenue range? (Even a rough bracket: <$5K, $5-20K, $20-50K, $50K+)
-21. What growth stage are you in? (Bootstrapping, seed, scaling, established)
-22. What is your biggest current challenge or bottleneck?
+3. `clients/<slug>/output/deliverables/brainstorm-agent-prompt.md`
+   — Platform-agnostic markdown prompt. Self-contained. Designed to be pasted into Claude Project / Gemini Gem / ChatGPT GPT. Sections: Role / Context / Strategic tensions / Constraints / Benchmark anchors / Task / Interview protocol (5-8 sharp questions) / Tone / Output format.
 
-**CHECKPOINT:** Save. Update `phase_2_sections_completed: [1, 2, 3, 4, 5, 6]`. Show: `Saved. Section 6/9 done.`
+Synthesizer **must stop here**. Do NOT write 30-day calendars, Reel concepts, or update `_brand/` files. Those happen after the brainstorm loop decides funnel architecture.
 
-### Section 7: Brand & Content
-23. What tone best describes your brand? (Formal, casual, witty, authoritative, friendly, provocative, etc.)
-24. What content do you already produce? (Blog, video, podcast, newsletter, social posts)
-25. Do you have existing brand assets? (Logo, brand colors, style guide, photography)
+**CHECKPOINT:** Update progress → `completed_steps: ["scaffold", "scrape", "synthesize"]`. Show: `Path A complete. Brainstorm prompt at output/deliverables/brainstorm-agent-prompt.md. Paste into your Claude Project. (say "validate" to run readiness check, or "enrich" to run optional agent enrichment)`
 
-**CHECKPOINT:** Save. Update `phase_2_sections_completed: [1, 2, 3, 4, 5, 6, 7]`. Show: `Saved. Section 7/9 done.`
+---
 
-### Section 8: Proof & Differentiation
-26. What makes your business unique from others in your space?
-27. What measurable results do your clients get? (Specific numbers, percentages, timeframes)
-28. What have some past clients said about your business? (Testimonials, reviews, quotes)
+## Path B — Interview-first
 
-**CHECKPOINT:** Save. Update `phase_2_sections_completed: [1, 2, 3, 4, 5, 6, 7, 8]`. Show: `Saved. Section 8/9 done.`
+### Step B1: Invoke business-profile skill
 
-### Section 9: Vision & Values
-29. What core values guide your work?
-30. What inspired you to start this business? (Origin story — 2-3 sentences)
+Delegate to the `business-profile` skill v2.0+ — runs the Fuggy's Media 6-section / 21-question intake.
 
-**CHECKPOINT:** Save. Update `phase_2_sections_completed: [1, 2, 3, 4, 5, 6, 7, 8, 9]`, `current_phase: 3`. Show: `Business Context Profile complete. 30/30 questions answered. Moving to Marketing Deep Dive — or say "quit" to stop here.`
+Outputs: `clients/<slug>/context-profile.json` (populated with intake answers).
 
-### Interview Rules
-- Ask one section at a time via AskUserQuestion
-- After each section, confirm answers and save before moving to next
-- If user says "skip" for a section → leave those fields as defaults, still mark section as completed in progress, move on
-- If user says "quit" / "stop" / "done for now" → save immediately, show resume summary, stop
-- Accept partial answers — never invent content to fill gaps
+The `business-profile` skill handles its own checkpointing per section. Don't duplicate that logic here.
+
+### Step B2: Marketing Deep Dive (optional but recommended)
+
+After intake completes, ask: "Run the Marketing Deep Dive? (fills `_brand/icp.md`, `_brand/offer.md`, `_brand/brand-voice.md` with depth the JSON doesn't cover) — yes / skip"
+
+If yes, ask the depth questions from `references/discovery-questions.md` and write to:
+
+- `clients/<slug>/_brand/icp.md` — psychographics, buying behavior, communities, dream client
+- `clients/<slug>/_brand/offer.md` — value prop, risk reversal, urgency / scarcity
+- `clients/<slug>/_brand/brand-voice.md` — tone, voice rules, do/don't word lists
+
+**Pre-population rule:** if `context-profile.json` already answers a question, skip it. Tell user: "I pulled N fields from the intake. Only asking what's missing."
+
+**CHECKPOINT** after each file written. Update `completed_steps`.
+
+---
+
+## Phase 3: Enrichment (optional, both paths)
+
+Present optional agent routing:
+
+| Goal | Agent | Output |
+|---|---|---|
+| Deep buyer persona | `persona-builder` | `_brand/buyer-profile.md` |
+| Competitor / market research | `researcher` | `_swipe/research/competitor-<topic>.md` |
+| Voice profile validation | `brand-voice-guardian` | reviews `_brand/brand-voice.md`, suggests edits |
+| Story bank | `researcher` | `_brand/story-bank.md` (mines public content for narrative arcs) |
+| Skip | — | move to Phase 4 |
+
+User picks zero or more. Each agent writes its own output file → automatic checkpoint.
+
+---
+
+## Phase 4: Validation
+
+Run readiness checklist:
+
+### Required (must exist + non-empty)
+- `CLAUDE.md` — placeholders swapped (no `{{...}}` remaining); must contain `<!-- AUTO-GENERATED: campaigns -->` marker block for `refresh-claude-map.sh` to update
+- `context-profile.json` — at minimum `client_slug`, `client_name`, `links` populated
+- `_brand/offer.md` — T1/T2/T3 ladder defined (T1 can be null if to-be-designed)
+
+### Recommended (warn if missing)
+- `_brand/icp.md` — ICP defined
+- `_brand/brand-voice.md` — voice direction set
+- `_brand/buyer-profile.md` (Path A: optional, populated from research; Path B: from intake)
+- `_brand/idea-bank.md` — cross-channel idea/angle capture ledger (auto-copied from `_template/_brand/`). Confirm `CLAUDE.md` carries the **Idea & Angle Capture (always-on)** section pointing to it, and `CONTEXT.md` lists it in the Brand Foundation Map. This is the single living space for founder intel that feeds letters, emails, and ads.
+- `output/deliverables/brainstorm-agent-prompt.md` (Path A only)
+
+### Structural compliance — ICM linter (Interpretable Context Methodology)
+
+Run the global ICM structural linter against the scaffolded folder. This is the
+**Interpretable Context Methodology** structure check — not to be confused with this
+skill's own "ICM" label for the ×14 room-level `CONTEXT.md` files (see Output Locations).
+
+```bash
+bash ~/.claude/skills/icm/marketing-scaffold/scripts/validate-icm.sh clients/<slug> --json
+```
+
+It checks 7 structural rules the content checklist above does NOT: `CLAUDE.md` ≤100 lines,
+root + `_brand/` `CONTEXT.md` exist, no `CONTEXT.md` over 100 lines, no global rules
+duplicated into room-level `CONTEXT.md`, no broken relative pointers. Verdict is one of
+`PASS` / `PASS — Minor Issues` / `PARTIAL` / `FAIL` (exit 0 only on full pass). The script
+lives at a global absolute path, so it runs fine from inside the Marketing repo even though
+this skill is not installed globally.
+
+### Compute score
+- 100% = all required + all recommended
+- 70% = all required + half recommended
+- 50% = required only
+- <50% = missing required fields → blocking
+
+Show BOTH verdicts, clearly labelled — they measure different things (content completeness
+vs structural compliance) and may disagree; never collapse them into one number:
+
+`Readiness: X% (content). ICM structure: <PASS/PARTIAL/FAIL>. Required: ✓/✗. Recommended: <gap list>. (continue to Phase 5 / fix gaps)`
+
+---
+
+## Phase 5: Activate
+
+- Set `clients/<slug>/` as active session context for downstream skills
+- Load `_brand/` + `_swipe/` into session as needed
+- Suggest first move:
+  - Path A: "Paste `brainstorm-agent-prompt.md` into your Claude Project. Come back with the chosen funnel architecture."
+  - Path B: "Run `/campaign:new` to start the first campaign, or `/brand:voice` to refine voice profile."
+
+**CHECKPOINT:** Mark `_onboarding_progress.current_phase = 5`, `completed_steps` includes `["activate"]`. Strip `_onboarding_progress` field from `context-profile.json` on full completion (preserves clean profile for downstream skills).
+
+---
+
+## Checkpoint Protocol
+
+**CRITICAL: applies to ALL phases. Never wait until the end to save.**
+
+### Save points
+- After every phase boundary → update `context-profile.json` → `_onboarding_progress.completed_steps`
+- After every agent output (Path A scrapers / synthesizer / Phase 3 enrichment) → that agent writes its own file = automatic checkpoint
+- Show 1-line confirmation after each save: `Saved. Step X/N complete. (say "quit" to stop)`
+
+### Quit handling
+
+At any point the user says `quit / stop / done for now / save and exit / I'll come back`:
+
+1. Save immediately — flush everything collected to disk
+2. Show resume summary:
+   ```
+   Progress saved. Where you left off:
+
+   Phase 1 (Scaffold): ✓
+   Path A — Research:
+     Scrape (LinkedIn): ✓
+     Scrape (Instagram): ✓
+     Synthesize: pending
+   Phase 3 (Enrichment): not started
+   Phase 4 (Validate): not started
+
+   To resume: /project:new <slug> — I'll pick up at synthesize.
+   ```
+3. Stop. Do NOT ask follow-up questions.
+
+### Resume detection
+
+On invocation, BEFORE asking new questions:
+
+1. Read `clients/<slug>/context-profile.json` → `_onboarding_progress`
+2. If `completed_steps` is non-empty AND incomplete:
+   - Show compact status
+   - Ask: "Resume from `<first-incomplete-step>` or start fresh?"
+3. If resuming, skip completed steps and jump to first incomplete one
+
+---
+
+## Output Locations (Jake marketing — fixed)
+
+| Artifact | Path |
+|---|---|
+| Client identity | `clients/<slug>/CLAUDE.md` |
+| Folder navigation | `clients/<slug>/CONTEXT.md` |
+| Business JSON | `clients/<slug>/context-profile.json` |
+| Raw client inputs | `clients/<slug>/00_inputs/` |
+| ICP | `clients/<slug>/_brand/icp.md` |
+| Offer | `clients/<slug>/_brand/offer.md` |
+| Brand voice | `clients/<slug>/_brand/brand-voice.md` |
+| Buyer profile + micro-personas | `clients/<slug>/_brand/buyer-profile.md` |
+| Story bank | `clients/<slug>/_brand/story-bank.md` |
+| Video style | `clients/<slug>/_brand/video-style.md` |
+| Visual characters | `clients/<slug>/_brand/visual-characters/` |
+| Legacy avatar exports | `clients/<slug>/_brand/avatars/` |
+| Big ideas store | `clients/<slug>/_brand/big-ideas/` |
+| Funnel research | `clients/<slug>/_brand/funnel-research/` |
+| Brand assets | `clients/<slug>/_brand/brand-assets/` |
+| Channels | `clients/<slug>/_brand/channels.json` |
+| Engagement brief | `clients/<slug>/_config/client-brief.md` |
+| Engagement terms | `clients/<slug>/_config/engagement-terms.md` |
+| Scope agreement | `clients/<slug>/_config/scope-agreement.md` |
+| CLAUDE.md refresh hook | `clients/<slug>/_config/refresh-claude-map.sh` |
+| CLAUDE.md drift log | `clients/<slug>/_config/claude-md-drift-log.md` |
+| Reusable references | `clients/<slug>/_references/` |
+| Scrape outputs | `clients/<slug>/_swipe/research/<platform>-profile-scrape.md` |
+| Business summary | `clients/<slug>/_swipe/research/<slug>-business-summary.md` |
+| Content patterns | `clients/<slug>/_swipe/research/<slug>-content-patterns.md` |
+| Brainstorm prompt | `clients/<slug>/output/deliverables/brainstorm-agent-prompt.md` |
+| Campaign registry | `clients/<slug>/campaigns/_campaigns-index.json` |
+| Campaign rules | `clients/<slug>/campaigns/README.md` |
+| Explorations room | `clients/<slug>/campaigns/<campaign>/explorations/` |
+| Deliverable workspace convention | `clients/<slug>/campaigns/<campaign>/<artifact-family>/<artifact-slug>/` |
+| Video concept workspace scaffold | `clients/<slug>/_templates/video-concept-workspace/` |
+| Phase-template CONTEXT.md (×9) | `clients/<slug>/_templates/concept-phases/` |
+| CONTEXT.md authoring pattern | `clients/<slug>/_templates/CONTEXT-md-pattern.md` |
+| ICM room-level CONTEXT.md (×14) | all `_brand/`, `_config/`, `_references/`, `_swipe/`, `_templates/`, `campaigns/` subdirs |
+
+### Template source-of-truth order
+
+When changing folder structure or onboarding behavior, preserve downstream compatibility by editing in this order:
+
+1. `clients/_template/CONTEXT.md` — high-level folder map and routing explanation.
+2. `clients/_template/campaigns/README.md` — campaign/workspace discovery rules.
+3. `clients/_template/` — actual scaffold files copied into each client.
+4. `skills/client-onboarding/SKILL.md` — onboarding behavior that copies or explains the template.
+
+Prefer additive fields and alias notes over folder renames. If a folder becomes optional, mark it optional in the manifest/readme rather than removing it.
+
+### Scalable campaign discovery contract
+
+For any campaign, `/campaign:new <project> <type>` creates:
+
+```text
+clients/<slug>/campaigns/<campaign-slug>/
+├── campaign-index.json
+├── campaign-selection.json
+├── state.yaml
+├── event-log.jsonl
+└── <artifact-family>/
+    └── README.md
+```
+
+Each deliverable workspace follows:
+
+```text
+clients/<slug>/campaigns/<campaign-slug>/<artifact-family>/<artifact-slug>/
+├── pipeline-state.json
+├── artifact-manifest.json
+├── event-log.jsonl
+├── workspace-brief.json              # or a typed alias such as concept-brief.json / sequence-brief.json
+├── 01_strategy/
+├── 02_drafts/
+├── 03_assets/
+├── 04_variants/
+├── 05_packages/
+├── 06_runs/
+└── 07_review/
+```
+
+Video concept workspaces are the specialized video version:
+
+```text
+clients/<slug>/campaigns/<campaign-slug>/video-concepts/<concept-slug>/
+├── pipeline-state.json
+├── artifact-manifest.json
+├── event-log.jsonl
+├── concept-brief.json
+├── CONTEXT.md                          # concept routing, points to phase templates
+├── 00_inputs/
+│   └── input-manifest.json
+├── 01_strategy/
+│   └── CONTEXT.md                      # → _templates/concept-phases/01_strategy-CONTEXT.md
+├── 02_ag1-options/
+│   └── CONTEXT.md                      # → _templates/concept-phases/02_ag1-options-CONTEXT.md
+├── 03_scripts/
+│   └── CONTEXT.md
+├── 04_input-images/
+│   ├── input-image-manifest.json
+│   └── CONTEXT.md
+├── 05_prompt-packs/
+│   └── CONTEXT.md
+├── 06_generation-runs/
+│   └── CONTEXT.md
+├── 07_review/
+│   └── CONTEXT.md
+└── eval/
+    └── CONTEXT.md                      # → _templates/concept-phases/eval-CONTEXT.md
+```
+
+`clients/<slug>/00_inputs/` is the raw input source for every campaign. `/campaign:new` creates `campaign-selection.json` to select which top-level inputs and which `_brand/buyer-profile.md` micro-personas are in scope. Deliverable workspaces use their root-level brief to reference those selections; never duplicate the top-level raw input folders into a workspace.
+
+When a workspace exists, agents must read client `CONTEXT.md` first, client `CLAUDE.md` if present, `campaigns/README.md`, then `campaign-index.json`, `campaign-selection.json`, the workspace `artifact-manifest.json`, `pipeline-state.json`, and the workspace brief. For image uploads in video workspaces, adapters must read `04_input-images/input-image-manifest.json`; do not scan random folders or guess latest images. If no images are used by the executor payload, do not require the image manifest.
+
+`06_generation-runs/` uses the lean clip-run contract by default: `run-manifest.json`, `payloads/`, `clips/`, `review/review.json`, and `stitch/`. Create stills, beat sheets, motion prompts, or rerender folders only inside a run that actually needs them.
+
+`02_ag1-options/` stores candidate directions and Approval Gate 1 review artifacts inside a video concept workspace. The workspace root remains the concept/project container; this folder is only the option set evaluated before approval.
+
+**Never write client identity files to the client root anymore.** Always `_brand/<file>.md`.
+
+---
+
+## Interview Rules (Path B)
+
+- Ask one section at a time via `AskUserQuestion`
+- Confirm answers and save before moving to next
+- "skip" → leave fields as defaults, mark section complete, move on
+- "quit" → save immediately, show resume summary, stop
+- Accept partial answers — never invent content
 - After saving each checkpoint, remind: `(say "quit" to stop anytime)`
 
-### JSON Output Schema
+---
 
-```json
-{
-  "_onboarding_progress": {
-    "current_phase": 2,
-    "phase_2_sections_completed": [],
-    "phase_3_files_completed": [],
-    "phase_4_agents_run": [],
-    "last_checkpoint": ""
-  },
-  "business_name": "",
-  "tagline": "",
-  "founded": "",
-  "headquarters": "",
-  "operational_locations": [],
-  "serves_clients_internationally": false,
-  "description": "",
-  "mission": "",
-  "business_model": "",
-  "core_services": [
-    {
-      "name": "",
-      "description": "",
-      "deliverables": [],
-      "value_proposition": ""
-    }
-  ],
-  "current_offers": [
-    {
-      "name": "",
-      "price": "",
-      "description": ""
-    }
-  ],
-  "ideal_clients": {
-    "industries": [],
-    "company_size": "",
-    "revenue_threshold": "",
-    "pain_points": []
-  },
-  "competitors": [
-    {
-      "name": "",
-      "differentiator": ""
-    }
-  ],
-  "founders": [
-    {
-      "name": "",
-      "role": "",
-      "bio": ""
-    }
-  ],
-  "team": {
-    "structure": "",
-    "type": "",
-    "size": "",
-    "locations": []
-  },
-  "tools_and_platforms": [],
-  "goals_and_kpis": {
-    "primary_goal": "",
-    "kpis": [],
-    "timeline": ""
-  },
-  "launch_status": {
-    "stage": "",
-    "launch_date": "",
-    "readiness": ""
-  },
-  "revenue": {
-    "range": "",
-    "growth_stage": "",
-    "primary_source": ""
-  },
-  "sales_process": {
-    "acquisition_channels": [],
-    "sales_model": "",
-    "avg_deal_size": "",
-    "sales_cycle": ""
-  },
-  "biggest_challenge": "",
-  "brand_identity": {
-    "tone": "",
-    "content_types": [],
-    "existing_assets": []
-  },
-  "unique_differentiator": "",
-  "measurable_results": [],
-  "testimonials": [
-    {
-      "quote": "",
-      "attribution": ""
-    }
-  ],
-  "core_values": [],
-  "origin_story": "",
-  "profile_version": "1.0",
-  "last_updated": ""
-}
-```
+## Anti-patterns (don't do)
 
-#### Field Rules
-- **Strings:** Use `""` for unanswered, never invent content
-- **Arrays:** Use `[]` for unanswered, populate with as many entries as user provides
-- **Booleans:** Use `false` as default, only `true` if explicitly confirmed
-- **Nested objects:** Include structure even if all fields are empty
-- **`last_updated`:** Set to current date in ISO format (YYYY-MM-DD)
-- **`profile_version`:** Start at "1.0", increment minor on updates (1.0 → 1.1 → 1.2)
-- **`_onboarding_progress`:** Internal tracking field — always update, never delete. Stripped from context-profile when onboarding is fully complete.
+- Don't write `icp.md` / `offer.md` to client root — always `_brand/`.
+- Don't pre-include `copy-system/` framework templates in client folders — frameworks live globally at `.claude/references/copywriting-os/`, filled artifacts get written on-demand into `_brand/copy/` when copy work begins.
+- Don't run the 21-question interview on Path A clients — research already captured most of it.
+- Don't synthesize a 30-day content calendar — synthesizer stops at the brainstorm prompt.
+- Don't update `_brand/` files from the synthesizer — those updates happen AFTER the operator's Claude Project decides funnel architecture.
+- Don't scaffold manually with `mkdir + Write` — use `scripts/scaffold-client.sh` for placeholder substitution + single source of truth.
 
 ---
 
-## Phase 3: Marketing Deep Dive
+## Migration notes (from v2.x)
 
-Now fill the marketing-specific files that go DEEPER than the business profile. The context profile gives the business identity — this phase adds the marketing intelligence layer.
-
-**Rule:** Skip any question the context profile already answered. Only ask what's NEW.
-
-**Phase intro:** Show: `Phase 3: Marketing Deep Dive — 4 files to fill (ICP, Offer, Brand Voice, Channels). Say "quit" anytime.`
-
-### ICP Deep Dive (icp.md)
-Questions NOT covered by the profile — pull from `references/discovery-questions.md`:
-- Psychographics: What have they tried before? What does success look like in 6-12 months? What do they secretly desire?
-- Buying behavior: Budget range? Decision timeline? What triggers the search? Top objections?
-- Where they congregate: Communities, forums, publications, podcasts, conferences?
-- Dream client: If you could clone one client, who and why?
-
-Write answers to `clients/<project>/icp.md`. Auto-populate demographics from context-profile.json.
-
-**CHECKPOINT:** Save icp.md. Update `phase_3_files_completed: ["icp.md"]`. Show: `Saved icp.md. 1/4 marketing files done.`
-
-### Offer Deep Dive (offer.md)
-Questions NOT covered by the profile:
-- Value proposition: #1 benefit? 3 supporting benefits? What makes you different (not better — different)?
-- Risk reversal: Guarantee? How do you reduce buyer risk?
-- Urgency/scarcity: Natural urgency? Limited spots, seasonal, price increase?
-
-Write answers to `clients/<project>/offer.md`. Auto-populate core offer fields from context-profile.json.
-
-**CHECKPOINT:** Save offer.md. Update `phase_3_files_completed: ["icp.md", "offer.md"]`. Show: `Saved offer.md. 2/4 marketing files done.`
-
-### Brand Voice (brand-voice.md)
-Questions NOT covered by the profile:
-- Tone adjustments specific to this project vs personal voice?
-- Terms you always use? Terms to avoid?
-- Core messaging pillars (3-4 themes)?
-- 1-2 on-brand example sentences? 1-2 off-brand examples?
-
-Write answers to `clients/<project>/brand-voice.md`. Auto-populate tone from context-profile.json.
-
-**CHECKPOINT:** Save brand-voice.md. Update `phase_3_files_completed: ["icp.md", "offer.md", "brand-voice.md"]`. Show: `Saved brand-voice.md. 3/4 marketing files done.`
-
-### Channels (channels.json)
-Questions NOT covered by the profile:
-- Social posting frequency?
-- Paid ad platforms and monthly budget?
-- Content types and publishing cadence?
-- Primary market, language, currency, timezone?
-
-Write answers to `clients/<project>/channels.json`. Auto-populate acquisition channels from context-profile.json.
-
-**CHECKPOINT:** Save channels.json. Update `phase_3_files_completed: ["icp.md", "offer.md", "brand-voice.md", "channels.json"]`, `current_phase: 4`. Show: `All marketing files saved. Moving to enrichment options — or say "quit" to stop here.`
-
-**Interview rules:**
-- Ask one file at a time (all questions for ICP, then Offer, etc.)
-- Accept partial answers — fill what's given, mark empty fields as `[TBD]`
-- Don't over-explain — keep questions conversational
-- If user says "skip" for a file, leave template defaults, mark as completed, move on
-- If user says "quit" → save immediately, show resume summary, stop
+- Old v2.x flat structure (`clients/<slug>/icp.md`) is **forward-only deprecated**. Existing clients (neezanizam, fuggysmedia, etc.) stay on old structure. Only new clients use the Jake marketing structure.
+- The 9-section inline interview in v2.x Phase 2 is REMOVED. Path B always delegates to `business-profile` skill.
+- The `_template/copy-system/` folder is REMOVED. Frameworks live at `.claude/references/copywriting-os/`. Filled artifacts → `_brand/copy/` on demand.
+- `_config/` is restored as an engagement-operating layer. `_brand/` owns stable brand/product/buyer truth; `_config/` owns brief, terms, scope, and active priorities.
 
 ---
 
-## Phase 4: Enrich (Optional — Agent Routing)
+## Related files
+- `references/discovery-questions.md` — Marketing Deep Dive question bank (Path B Step B2)
+- `references/scraper-prompts.md` — standardized agent prompts for Path A scrapers (TODO if missing)
+- `clients/_template/` — the source-of-truth scaffold
+- `clients/_template/CONTEXT.md` — first routing document for high-level folder map
+- `clients/_template/campaigns/README.md` — campaign/workspace rules
+- `scripts/scaffold-client.sh` — placeholder-substituting copy script
+- `skills/business-profile/SKILL.md` — Path B intake backend
 
-After core files are populated, present enrichment options:
+<!-- skill-graph:start -->
 
-**Question:** "Core files are filled. Want to go deeper on any of these? (or say 'skip' to go straight to validation)"
+## Related
+<!-- auto-generated by scripts/link-skills.py — do not edit by hand -->
 
-| Option | Agent / Skill | What it does |
-|--------|--------------|--------------|
-| **Deep buyer profile** *(recommended)* | `persona-builder` agent | Buyer psychology deep dive — emotions, fears, relationship impacts, Schwartz awareness mapping. Saves to `buyer-profile.md` |
-| **Competitor research** | `researcher` agent | Research top 2-3 competitors — positioning, pricing, channels |
-| **Voice profile** | `/brand:voice` skill | Build full V.O.I.C.E. files in `voice/<person>/` |
-| **Deep offer build** | `offer-builder` skill | Full 15-step offer construction — discovery, viability scoring, identity extraction, micro offer, audit |
-| **Brand validation** | `brand-voice-guardian` agent | Review messaging consistency across all files |
-| **Skip** | — | Move straight to validation |
+- [[campaign-runner]] (skill, 0.14)
 
-User picks which (if any) to run. Each is a HITL gate — propose the agent call, get approval, execute.
-
-Multiple selections allowed. Run them sequentially.
-
-**CHECKPOINT:** After each agent/skill completes, update `phase_4_agents_run` and save. Show: `[agent] done. Run another, or move to validation?`
-
-After all selected enrichments (or skip): Update `current_phase: 5`.
-
----
-
-## Phase 5: Validate
-
-Run readiness checklist against project files. Read each file and score:
-
-### Readiness Checklist
-
-**Context Profile (context-profile.json):**
-- [ ] File exists and is valid JSON
-- [ ] `business_name` and `description` are populated
-- [ ] At least 1 `core_services` entry with name and description
-- [ ] At least 1 `founders` entry
-- [ ] `ideal_clients` has at least 1 industry and 1 pain point
-- [ ] `revenue` range is populated
-- [ ] `goals_and_kpis` has a primary goal
-
-**ICP (icp.md):**
-- [ ] Demographics section has at least Industry + Company Size filled
-- [ ] Psychographics has at least 2 pain points (specific, not generic)
-- [ ] "Where They Congregate" has at least 1 entry
-
-**Offer (offer.md):**
-- [ ] Price or pricing model listed
-- [ ] One-Line Description filled (not empty)
-- [ ] At least 1 proof element (case study, testimonial, or data point)
-- [ ] Primary benefit stated
-
-**Brand Voice (brand-voice.md):**
-- [ ] At least 2 messaging pillars or tone adjustments
-- [ ] At least 1 on-brand example provided
-
-**Channels (channels.json):**
-- [ ] At least 1 primary channel listed
-- [ ] Market info present (if channels.json has market fields)
-
-**Buyer Profile (buyer-profile.md):** *(recommended, not blocking)*
-- [ ] `buyer-profile.md` exists and is not empty template
-- [ ] At least Core Problem + Top 5 Emotions populated
-- [ ] Schwartz Awareness Level Map filled
-- If empty: flag "Buyer profile not built yet — run persona-builder for deeper copy and messaging foundations"
-
-**Learnings & Assets:**
-- [ ] `learnings.md` exists in project directory
-- [ ] `assets/` directory exists
-
-**Voice Profile:**
-- [ ] Voice directory exists in `voice/` and is linked
-
-### Asset Inventory Scan
-
-After the checklist, scan ALL locations where marketing assets may exist for this project.
-
-**Scan these locations (non-empty files only):**
-
-| Location | What lives here |
-|----------|----------------|
-| `clients/<project>/assets/` | Client-specific assets (images, PDFs, downloads) |
-| `clients/<project>/campaigns/` | Campaign state files, plans, briefs |
-| `docs/content/ads/` | Ad copy, ad scripts, image generation prompts |
-| `docs/content/emails/` | Email sequences, templates |
-| `docs/content/landing-pages/` | Landing page copy |
-| `docs/content/social/` | Social media posts, calendars |
-| `docs/content/blog/` | Blog posts, articles |
-| `docs/content/` | Any other content subdirectories |
-
-**How to scan:** List all non-`.gitkeep` files in each location. For each file found, read the first 5 lines to extract: title, date, type/format, and which project it's for.
-
-**Output an asset inventory table:**
-
-```
-## Generated Assets
-
-| Asset | Location | Date | Type |
-|-------|----------|------|------|
-| Meta Lead Gen Ads (8 variants) | docs/content/ads/meta-lead-gen-... | 260312 | Ad copy |
-| Image Prompts (5 prompts) | docs/content/ads/meta-lead-gen-image-... | 260312 | Image prompts |
-
-Total: X assets found
-```
-
-If no assets found: "No generated assets found yet."
-
-### Scoring
-
-Count passing checks out of total. Output:
-
-```
-Readiness: X/Y sections complete
-Passing: [list]
-Missing: [list with specific gaps]
-Next actions: [what to fill to reach 100%]
-
-## Generated Assets
-[asset inventory table from scan above]
-```
-
-**CHECKPOINT:** Update `current_phase: 6`.
-
----
-
-## Phase 6: Activate
-
-After validation (even if not 100%):
-
-1. **Set active context** — This project is now the session's active project
-2. **Clean up progress tracker** — Remove `_onboarding_progress` from context-profile.json (onboarding is complete)
-3. **Load context in order:**
-   - `context-profile.json` (business identity — WHO)
-   - Voice files from `voice/<person>/` (writing voice — HOW)
-   - `icp.md`, `offer.md`, `brand-voice.md` (marketing specifics — WHAT)
-4. **Suggest next action** — Based on channels + offer + existing assets from the inventory scan:
-   - Has existing ad copy but no landing page → suggest building the landing page next
-   - Has existing ad copy + landing page but no email sequence → suggest building nurture sequence
-   - Has paid channels + proof elements but no ad copy → suggest `lead-gen` template
-   - Has content channels (blog, newsletter) → suggest `content-seo` template
-   - Has social platforms → suggest starting with organic social
-   - New product / no traction yet → suggest `product-launch` template
-5. **Show the suggestion:**
-
-```
-Project "<name>" is active and fully onboarded.
-
-Suggested first move: `/campaign:new <project> <type>`
-Reason: [why this type fits their setup]
-```
-
----
-
-## Update Profile Mode (`/project:profile`)
-
-When `context-profile.json` already exists AND onboarding is complete (no `_onboarding_progress`):
-
-1. Read the existing JSON
-2. Show a summary: "Here's your current profile (30 fields, X populated, Y empty)"
-3. Ask: "Which sections do you want to update? (1-9, or 'all', or 'gaps' to fill empty fields only)"
-4. Only ask questions for selected sections
-5. Merge new answers into existing JSON (don't wipe fields the user didn't update)
-6. Bump `profile_version` and `last_updated`
-7. Check if updated answers should also update marketing files (icp.md, offer.md, etc.) — suggest but don't auto-update without confirmation
-
----
-
-## Context Load Order (for all downstream skills)
-
-When any skill or agent loads project context, follow this order:
-
-```
-1. context-profile.json  → business identity (WHO)
-2. voice/<person>/       → writing voice (HOW)
-3. icp.md, offer.md, brand-voice.md, channels.json → marketing specifics (WHAT)
-4. buyer-profile.md      → buyer psychology (TO WHOM)
-5. learnings.md          → accumulated intelligence (WHAT WORKS)
-```
-
----
-
-## Error Handling
-
-- If `clients/<project-name>/` already exists: warn and ask to overwrite or pick a different name
-- If template directory is missing: error — "Template not found at `clients/_template/`"
-- If user quits mid-interview: files are already saved via checkpoints — resume by running `/project:new` or `/project:profile` again
-- If JSON already exists and user runs create mode → warn and offer: overwrite, update, or cancel
-- If context-profile.json has `_onboarding_progress` but user invokes `/project:profile` → route to Resume Mode, not Update Mode
+<!-- skill-graph:end -->

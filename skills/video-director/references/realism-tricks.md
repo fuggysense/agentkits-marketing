@@ -373,6 +373,76 @@ Sarah speaks confidently, leaning forward with one hand on the desk:
 
 ---
 
+## UGC Selfie Imperfection Block
+
+For any UGC-style selfie video or still image. Pick **4–5 of these per prompt** — without them the output looks too polished.
+
+- `slight motion blur on hair strands`
+- `slightly overexposed highlights on forehead and nose`
+- `visible image grain and noise`
+- `iPhone front camera wide-angle lens distortion on the extended arm`
+- `slightly off-center framing, tilted a few degrees`
+- `washed out flat color grading`
+- `soft focus — nothing is tack sharp`
+- `uneven ambient indoor lighting with one side of face slightly in shadow`
+- `caught mid-blink or mid-word, not a perfect expression`
+
+**Negative cues (always append):**
+```
+No retouching, no beauty filter, no studio lighting, not a professional photo, not overly polished,
+not perfectly composed, not tack sharp. No airbrushed skin, no flawless complexion.
+```
+
+---
+
+## UGC Skin Realism Block
+
+Distinct from character anatomy anchors — this is about making skin read as "real person, not retouched." Add **3–4 of these inline with the character description.**
+
+- `natural skin with visible pores`
+- `slight unevenness in skin tone`
+- `minor undereye shadows`
+- `a hint of shine on the nose and forehead from natural oils`
+- `slight pinkness on cheeks and nose` (fair skin)
+- `minor skin texture variation`
+- `the kind of skin you see on a real person's unfiltered front camera`
+
+**DO NOT use:** acne, pimples, breakouts, blemishes, redness — goal is "real and unretouched" not "person with skin problems."
+
+---
+
+## Natural Human Motion Cue Library
+
+AI video models default to a frozen mannequin staring at camera. **Always include at least 3–4 cues per UGC prompt.**
+
+### Eye Behavior
+- `Briefly breaks eye contact with the camera, glances down or to the side, then looks back`
+- `Eyes dart to something off-screen for a moment before refocusing on the lens`
+- `Looks at the product in their hand, then back to camera`
+- `Blinks naturally, not a fixed stare`
+
+### Head & Face
+- `Slight head tilts while talking, not perfectly still`
+- `Nods along with their own words`
+- `Raises eyebrows for emphasis mid-sentence`
+- `Purses lips or pauses to think before continuing`
+- `Caught mid-thought, slight hesitation`
+
+### Body Movement
+- `Shifts weight from one foot to the other`
+- `Leans toward camera for emphasis, then leans back`
+- `Adjusts their grip on the product`
+- `Fidgets with their hair or touches their face briefly`
+- `Turns the product to show a different angle`
+- `Takes a small step back or repositions`
+
+### Selfie Arm
+- `Holding the camera at arm's length, arm extended naturally, clearly visible in the frame`
+- `Adjusts phone angle mid-video`
+- `Quick handheld adjustments, slightly shaky one-hand grip`
+
+---
+
 ## Quick Realism Checklist
 
 Before finalizing any video prompt:

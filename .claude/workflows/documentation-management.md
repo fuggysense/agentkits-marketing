@@ -63,7 +63,7 @@
 
 ## Documentation Triggers
 
-The `docs-manager` agent MUST update documentation when:
+Documentation MUST be updated when:
 - Campaign type completed (update playbooks)
 - Brand refresh or voice update (update guidelines)
 - New channel added (update channel strategies)
@@ -91,13 +91,13 @@ The `docs-manager` agent MUST update documentation when:
 
 ## Agent Responsibilities
 
-| Agent | Documentation Duties |
-|-------|---------------------|
-| `docs-manager` | All documentation updates, organization |
+| Agent / Skill | Documentation Duties |
+|---------------|---------------------|
+| Orchestrator (main session) | All documentation updates, organization |
 | `copywriter` | Content style guide updates |
-| `planner` | Campaign playbook templates |
+| `campaign-runner` skill | Campaign playbook templates |
 | `researcher` | Channel strategy insights |
-| `project-manager` | Roadmap and project docs |
+| Orchestrator (main session) | Roadmap and project docs |
 
 ## Quality Checklist
 

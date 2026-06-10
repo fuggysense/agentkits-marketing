@@ -1,0 +1,21 @@
+[
+  {
+    "id": "1b3657ea-4686-475a-8c9c-570de19adfa0",
+    "status": "completed",
+    "display_name": "GPT Image 2",
+    "job_set_type": "imagegen_2_0",
+    "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_2z2bozEwzKwxJNgkH3IQQ4lTkuw/hf_20260513_034554_1b3657ea-4686-475a-8c9c-570de19adfa0.png",
+    "created_at": 1778643954.932429,
+    "params": {
+      "width": 752,
+      "height": 1344,
+      "prompt": "Create a single 9:16 storyboard reference image arranged as six separate still panels in a 2x3 grid. Raw iPhone 15 front-facing camera UGC aesthetic, photorealistic, slight handheld blur, imperfect selfie framing, small lived-in apartment bathroom, off-white sink, mirror with water spots, toothbrush cup, folded towel, ordinary overhead bathroom light plus weak window light. Same founder in every panel: early-30s founder, tired but natural face, casual gray T-shirt, slightly messy hair, real skin texture, no beauty retouching, no studio lighting, no polished product-ad symmetry. The product is a small caffeine eye serum tube or pump bottle with the label text exactly \"WAKE C15\" visible and stable whenever the product faces camera. Panel 1: founder holds phone close in the bathroom mirror with tired under-eyes and the WAKE C15 serum partly visible near the sink. Panel 2: founder leans toward mirror, touching under-eye area with one finger, cluttered sink visible. Panel 3: founder picks up the WAKE C15 serum from the sink, label readable, casual grip. Panel 4: founder applies a tiny amount of serum under one eye using fingertip, mirror selfie angle, realistic bathroom lighting. Panel 5: founder checks the skin under both eyes in the mirror, expression curious and cautiously impressed, serum on sink. Panel 6: founder holds WAKE C15 closer to the phone beside their face, label readable, bathroom still messy and real. No captions, no subtitles, no timestamps, no UI overlays, no arrows, no stickers, no badges, no extra product claims, no added text except the physical product label \"WAKE C15\".",
+      "medias": [],
+      "aspect_ratio": "9:16",
+      "quality": "medium",
+      "resolution": "1k",
+      "model": "videotape-alpha",
+      "reference_elements": []
+    }
+  }
+]

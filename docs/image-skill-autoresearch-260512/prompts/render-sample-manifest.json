@@ -1,0 +1,68 @@
+{
+  "experiment": "image-skill-autoresearch-260512",
+  "render_profile": "codex_imagegen_1k_medium",
+  "rendered_at": "2026-05-12",
+  "sample_budget": 4,
+  "samples": [
+    {
+      "candidate_id": "A-001",
+      "skill": "image-generation",
+      "use_case": "product ad creative",
+      "aspect_ratio": "4:5",
+      "render_path": "/Users/jerel/Documents/Jerel's brain/jerel's brain/Marketing/docs/image-skill-autoresearch-260512/renders/A-001-image-generation-product-ad.png",
+      "prompt_primary": "Create a photorealistic 4:5 Meta ad creative for a premium matte-black insulated water bottle called VoltSip. The bottle is centered on a wet charcoal stone surface with small condensation droplets, a sliced lime and crushed ice nearby, and a bright citrus-green accent light reflecting subtly on the bottle edge. Use studio product-ad lighting: large softbox from upper left, controlled rim light from right, shallow depth of field, 70mm lens, crisp commercial photography. Add clean readable headline text at the top: \"Cold All Day\" and small subtext near bottom: \"Leakproof. Minimal. Built for motion.\" Leave safe margins for social feed cropping.",
+      "prompt_negative": "stock photo, cartoon, illustration, 3D render look, warped bottle, misspelled text, unreadable text, extra logos, watermark, cluttered background, plastic shine, low resolution",
+      "expected_checks": [
+        "Single matte-black bottle is the hero subject",
+        "Headline reads exactly Cold All Day",
+        "Subtext reads exactly Leakproof. Minimal. Built for motion.",
+        "No extra logos or watermarks"
+      ]
+    },
+    {
+      "candidate_id": "B-006",
+      "skill": "gpt-image-2-director",
+      "use_case": "diagram with exact labels",
+      "aspect_ratio": "1:1",
+      "render_path": "/Users/jerel/Documents/Jerel's brain/jerel's brain/Marketing/docs/image-skill-autoresearch-260512/renders/B-006-gpt-image-diagram.png",
+      "prompt_primary": "Create a clean technical process diagram in a 1:1 square canvas. White background, black lines, blue active nodes, one orange warning callout, exact readable labels, no decorative illustration. Title at top center: \"Creative Learning Loop\". Exactly seven nodes: A Brief at top, B Hypothesis at upper right, C Asset at right, D Launch at lower right, E Signal at bottom, F Decision at left, G Memory in the center. Arrange A-F clockwise in a circular outer loop with arrows: Brief -> Hypothesis -> Asset -> Launch -> Signal -> Decision -> Brief. Add center links Decision -> Memory and Memory -> Brief. Bottom-right warning callout text: \"Break here = repeated mistakes\" with an arrow pointing to the Signal -> Decision transition.",
+      "prompt_negative": "Do not add extra nodes, do not change labels, do not miss arrows, do not render text as symbols, do not create 3D effects.",
+      "expected_checks": [
+        "Exactly seven nodes",
+        "All labels correct",
+        "Outer arrows form a loop",
+        "Warning callout points to Signal -> Decision"
+      ]
+    },
+    {
+      "candidate_id": "C-002",
+      "skill": "ugc-creator",
+      "use_case": "UGC product review still",
+      "aspect_ratio": "9:16",
+      "render_path": "/Users/jerel/Documents/Jerel's brain/jerel's brain/Marketing/docs/image-skill-autoresearch-260512/renders/C-002-ugc-product-review.png",
+      "prompt_primary": "Fictional UGC creator Mara Vale reviewing a skincare serum in an iPhone front-camera selfie still. Use this synthetic actor lock: 27 year old mixed Filipino and white woman, warm light-olive skin, faint freckles across nose bridge, slightly asymmetrical smile, almond hazel eyes, straight medium nose, full lower lip, dark brown shoulder-length wavy hair with loose flyaways, small gold hoop earrings, thin gold chain. Head and shoulders framing at arm's length, slight wide-angle front-camera distortion, product bottle held at chest height with fingers wrapped naturally around it. She looks mildly impressed but skeptical, eyebrows slightly raised, lips parted as if about to explain. Bathroom counter background with a charging cable, water bottle, hair tie, folded towel, and soap dispenser. Mixed warm bathroom light and cool window spill, slight shadow noise, soft background edges, visible pores on forehead and nose, under-eye texture, natural nail ridges and slightly chipped pale polish. Product label text: \"DEW SERUM\".",
+      "prompt_negative": "Avoid real-person likeness, celebrity resemblance, beauty filter, porcelain skin, lifeless eyes, default smile, floating product, impossible grip, extra fingers, garbled product label, empty sterile background, perfectly even lighting, oversaturated skin tones.",
+      "expected_checks": [
+        "Bathroom selfie framing",
+        "Serum held visibly",
+        "Label reads DEW SERUM",
+        "Natural skin texture and plausible hand anatomy"
+      ]
+    },
+    {
+      "candidate_id": "HF-003",
+      "skill": "higgsfield-style marketplace",
+      "use_case": "marketplace card",
+      "aspect_ratio": "1:1",
+      "render_path": "/Users/jerel/Documents/Jerel's brain/jerel's brain/Marketing/docs/image-skill-autoresearch-260512/renders/HF-003-marketplace-card.png",
+      "prompt_primary": "Clean marketplace product infographic for a fictional compact stainless steel lunch box. Square 1:1 canvas. White background, product centered with subtle gray shadows, neat e-commerce layout, crisp product photography, simple blue accent icons. Add exactly three small callout lines near the product: \"Leak-safe\", \"900 ml\", \"Dishwasher safe\".",
+      "prompt_negative": "No real marketplace logos, no Amazon badge, no price tags, no review stars, no fake certifications, no cluttered background, no tiny unreadable paragraphs.",
+      "expected_checks": [
+        "Lunch box centered on white background",
+        "Exactly three callouts",
+        "Callouts read Leak-safe, 900 ml, Dishwasher safe",
+        "No marketplace badges or logos"
+      ]
+    }
+  ]
+}

@@ -1,144 +1,86 @@
+---
+file_type: reference
+component: objection-handling
+load_when: reviewer is grading objection coverage in a sales letter; writer is mapping where to handle reader pushback
+loads_from_research: classical-exemplars (Karbo, Halbert), strong-exemplars (Syncom, Green Industry)
+last_updated: 2026-05-27
+---
+
 # Objection Architecture
 
-The teardown's #1 conversion upgrade. The current skill handles objections only inside the FAQ (5 slots). That's insufficient. Serious buyers raise objections *while reading*, not only at the bottom. Handle them inline with scaffolded preempts, then consolidate remaining skepticism in FAQ.
+## What this file is about
 
-**Rule:** objection handling is now a **required** component (promoted from partial coverage).
+Readers raise pushback while they read, not only at the end. A letter that piles all the pushback into a FAQ at the bottom loses anyone who quit at paragraph three. The fix is to handle the big ten worries in three places — inline in the body, in a FAQ block, and in the P.S. — so each worry meets the reader where they feel it.
 
----
+`copy-gems.md` (Universal Gaps section) lists the FAQ block and the P.S. as two of the four moves modern letters miss. This file is the map for how to use both, plus inline preempts, against the ten worries that show up over and over.
 
-## The 10 Objections Every Long Letter Must Resolve
+## The ten worries every long letter must answer
 
-Ordered by frequency in post-click drop-off analysis (across 8 competitor pages scraped + Hormozi/Halbert diagnostic patterns):
+| # | Worry | What the reader thinks |
+|---|-------|------------------------|
+| 1 | Time | "How long until I see something?" |
+| 2 | Money | "Is this worth the price?" |
+| 3 | Authority | "Who are you to say this?" |
+| 4 | Stall | "Let me think about it." |
+| 5 | Preference | "Why this and not the other thing?" |
+| 6 | Fit | "Was this built for someone like me?" |
+| 7 | Risk | "What if it doesn't work for me?" |
+| 8 | Effort | "How much work is on me?" |
+| 9 | Prior failure | "I tried something like this. It didn't work." |
+| 10 | Post-click reality | "What actually happens after I sign up?" |
 
-| # | Objection | Typical thought | Where to resolve |
-|---|-----------|-----------------|------------------|
-| 1 | **Fit** | "This wasn't built for someone like me." | Lead + Qualification block + FAQ.Preference |
-| 2 | **Trust** | "Why should I believe the claims?" | Proof Stack + Trust Density markers + FAQ.Authority |
-| 3 | **Timing** | "Is now the right time?" | Pain Cycle (cost of waiting) + PS line |
-| 4 | **Risk** | "What if this doesn't work for me?" | Guarantee Stack (primary) + FAQ.Money |
-| 5 | **Effort** | "How much work is required from me?" | Mechanism + Offer Breakdown (timeline + role) |
-| 6 | **Speed** | "How long until meaningful progress?" | Mechanism (time anchors) + Proof (time windows) |
-| 7 | **Prior failure** | "I've tried similar things before." | Pain Cycle (dismantle old way) + Mechanism (why this is different) |
-| 8 | **Alternatives** | "Why this instead of competitor/DIY?" | Mechanism (differentiation) + FAQ.Preference |
-| 9 | **Authority/decision** | "Do I need someone else's buy-in?" | FAQ.Authority + CTA friction reducer |
-| 10 | **Post-click reality** | "What actually happens after I book?" | CTA + FAQ.Stall + PS line |
+The first five are the FAQ five from `copy-gems.md`. The last five are the ones a body and P.S. handle better than a FAQ.
 
----
+## Three places to handle a worry
 
-## Resolution Pattern Template
+Every worry can be handled in one of three spots. Pick the spot by where the reader feels the worry hardest.
 
-For every objection addressed in body copy (not just FAQ), use this micro-structure:
+**Inline in the body.** Name the worry in the reader's own words, then answer it in the same paragraph. Best for worries that block the next section — fit, prior failure, effort, money.
 
-```
-1. NAME the concern in their own words (2-5 words, italicized or set off):
-   *"But will this work for my specific situation?"*
+**In a FAQ block near the close.** A short list of five worries, each with a two-sentence answer. Best for the leftover worries that did not block reading but might block buying — time, authority, stall, preference, money.
 
-2. LEGITIMIZE it without patronizing:
-   That's the right question to ask — most approaches break down here.
+**In the P.S.** One worry, the biggest one, handled in one short note at the bottom. Best for fit reassurance, deadline pressure, or the "what if I'm not ready" fear. See `best-practices/ps-architecture.md` for the P.S. job list.
 
-3. RESOLVE it with mechanism, proof, or qualification (pick one, not all):
-   The [Mechanism Name] handles [specific sub-case] because [cause-and-effect logic].
-   OR: Out of [N] clients we've worked with, [X%] fit [this exact profile].
-   OR: This is built specifically for [criteria] — if that's not you, this isn't for you.
+## How proven letters handled each worry — verbatim
 
-4. BRIDGE back to momentum:
-   Which is why, instead of [failed alternative], we [distinct move].
-```
+**Fit — Green Industry letter (Stream A).** Opens the letter with a one-line bracket: *"(If you're under $500,000 in annual revenue this is not for you)."* The fit worry is killed before paragraph one. Wrong-fit readers leave. Right-fit readers feel chosen.
 
-**Not every objection needs all 4 steps.** Mid-body preempts can compress to NAME + RESOLVE. FAQ entries should be NAME + RESOLVE (2 sentences).
+**Fit — Syncom "Please Read This Letter If" pattern (Stream A).** Six bullets, each starting "You need…" or "You have…" — the reader self-selects in. Same job as Green Industry, longer form.
 
----
+**Money + Authority — Karbo, "Lazy Man's Way" (Classical).** Opening paragraph: *"I'm going to ask you to send me ten dollars for something that'll cost me no more than 50 cents. And I'll try to make it so irresistible that you'd be a darned fool not to do it."* Names the money worry and the manipulation worry in the same breath. Disarms both by admitting them out loud.
 
-## Placement Map
+**Preference — Karbo "It's Not's" list (Classical).** Six bullets: *"It's not chain letters. It's not stocks, bonds or any get-rich-quick scheme. It's not real estate, mail order, franchises. It's not gambling. It's not 'positive thinking.' It's not selling."* Kills six wrong mental brackets in twelve seconds.
 
-Wire objections into the existing 12-component flow:
+**Risk — Karbo guarantee (Classical).** *"I won't even cash your check or money order for 31 days after I've sent you my material."* Not a refund — escrow. The friction of asking for a refund is removed.
 
-| Component | Objections resolved inline |
-|-----------|----------------------------|
-| 1-2 Headline + Sub | None (too early — raises objections, doesn't resolve) |
-| 3 Pain Cycle | Prior failure (7), Timing (3) |
-| 4 Integrity Tie-Down | Fit (1) — soft preempt |
-| 5 Mechanism | Effort (5), Speed (6), Alternatives (8), Prior failure (7) |
-| 6 Proof Stack | Trust (2) |
-| 7 Offer Breakdown | Effort (5), Post-click reality (10) |
-| 9 Scarcity | Timing (3) — only if real cap |
-| 10 Guarantee | Risk (4) — primary lever |
-| 11 CTA | Post-click reality (10) via friction reducer |
-| 12 FAQ | Consolidates residual: Time, Money, Authority, Stall, Preference |
-| 13 PS | Timing (3) final push, Fit (1) reassurance |
+**Money + Post-click reality — Halbert P.S. (Classical).** *"P.S. If you are ordering only one report, send two dollars ($2.00). Additional reports ordered at the same time and sent to the same address are one dollar each. Please make checks payable to me, Nancy L. Halbert."* The whole price and order detail lives in the P.S. The body stays about the family name. The money worry meets the reader at the very bottom, when they are ready to act.
 
----
+## What reviewers should check
 
-## Failure Modes (auto-reject in Conversion Gate)
+Score yes/no on each. Five "no" or more = the letter has an objection-handling gap.
 
-- Listing objections without resolving them (acknowledgment ≠ answer)
-- Using FAQ as dumping ground for objections that should've been resolved inline
-- Resolving with claims alone, no mechanism or proof
-- Overhandling — if 10+ objection preempts appear, the letter sounds defensive
-- Generic reassurance ("we've got you covered") — always substitute specific answer
+1. Is each of the ten worries handled somewhere — inline, FAQ, or P.S.? *(yes / no)*
+2. Is the fit worry handled in the lead or first 200 words? *(yes / no)*
+3. Is the risk worry handled by a real guarantee, not just a line that says "you're safe"? *(yes / no)*
+4. Is the prior-failure worry named in the body, with a clear reason this is different? *(yes / no)*
+5. Is the money worry handled either in the body or in the P.S., not skipped? *(yes / no)*
+6. Is the FAQ block carrying the leftover five (time, authority, stall, preference, plus one more), each in two sentences? *(yes / no)*
+7. Is the P.S. carrying one worry on purpose — not a generic sign-off? *(yes / no)*
+8. Does each handled worry give a reason or proof, not just a claim? *(yes / no)*
 
----
+## Failure patterns to avoid
 
-## Anti-Patterns to Avoid
+- Listing a worry without answering it. Naming it is not handling it.
+- Using the FAQ as a dump for worries that should have been killed inline. If the fit worry is still alive at the FAQ, half the readers already left.
+- "Some might say…" and "You might be wondering…" — these distance the reader. Use *"I know that sounds like…"* or just name the worry flat.
+- Stacking five preempts in a row. Spread them across the letter so the rhythm holds.
+- Handling a worry with a slogan — "we've got you covered," "you're in good hands." Use a specific reason.
 
-- **"Some might say..."** — distances the reader; they are the some
-- **"You might be wondering..."** — fine once, tedious repeated
-- **"I know what you're thinking..."** — presumptuous; use only if you'll answer with specificity
-- **Stacking 5 objections in a row** — breaks narrative rhythm; spread them across components
+## Linked files
 
----
-
-## Diagnostic Test
-
-Before Conversion Gate approves the letter, verify:
-
-- [ ] Each of the 10 objections appears somewhere (inline resolution OR FAQ)
-- [ ] Risk objection is resolved in Guarantee Stack, not just mentioned
-- [ ] Fit objection appears in at least 2 places (body + FAQ)
-- [ ] Prior-failure objection is explicit in Pain Cycle (old way names the failure pattern)
-- [ ] Post-click reality is described specifically ("30-minute call with our strategist, no pitch")
-- [ ] No objection is "handled" by assertion alone — mechanism/proof/qualification is present
-
-If any box unchecked → Conversion Gate fails → loop back to Phase 2.
-
----
-
-## CTA Architecture (11-Element Checklist)
-
-The CTA closing block is where objection resolution becomes commitment. `prompt-template.md` §11 sets the goals; this checklist is the structural audit.
-
-**Target length:** 180-210 words for the closing CTA block (excluding PS).
-
-**The 11 required elements** (every long-form letter's closing block should contain at least 8 of these — under 8 = WEAK; under 6 = FAIL):
-
-| # | Element | What it does | Word budget |
-|---|---------|--------------|-------------|
-| 1 | **Mirror their situation** | Restate where the reader is right now in 1-2 sentences. Recognition before request. | 40-50 |
-| 2 | **Reframe what's at stake** | Name the actual cost of staying stuck — not generic "you'll fall behind" but the specific consequence in their world. | 15-25 |
-| 3 | **Brief mechanism reminder** | One-line callback to the UMP/UMS. Not a re-explanation — a touchpoint. | 25-35 |
-| 4 | **Consequences of inaction** | What happens in 30/60/90 days if nothing changes. Concrete, sensory, tied to the avatar's life. | 35-45 |
-| 5 | **Pivot to fixable** | Explicit reframe: "This is fixable" / "This stops here" / "There's a way out." 5-10 words. | 5-10 |
-| 6 | **Guarantee or risk reversal** | The primary conversion lever. See `references/guarantee-variants.md`. | 35-45 |
-| 7 | **Self-validation checkpoint** | Give the reader a way to self-test their fit before clicking ("If you nodded to any of the above…", "If you're at the point where…"). | 20-30 |
-| 8 | **Permission language** | Lower the threshold: "Only book if you're actually ready to…", "If now isn't right, this can wait." Permission is conversion's lubricant. | 25-35 |
-| 9 | **Urgency with specific cost-of-waiting** | If real scarcity exists, name it concretely. If not, name the daily/weekly cost of inaction instead. | 25-35 |
-| 10 | **Mission completion frame** | The identity the reader steps into by booking — not a feature, an identity move. | 25-35 |
-| 11 | **The link** | Standalone line. The actual CTA. Not buried in a paragraph. | 1 line |
-
-**Self-audit procedure (run before Conversion Gate):**
-
-1. Count CTA block words. If > 210 → tighten. If > 250 → restructure (likely rehashing body).
-2. Mark which of the 11 elements are present. Count.
-3. If guarantee element is absent → auto-fail. The guarantee is the primary conversion lever; it cannot live only in the body.
-4. If self-validation checkpoint is absent → flag. The reader needs a way to self-test fit; without it, fit-objection traffic clicks off.
-5. If mission completion frame is absent → identity-layer letters lose their identity payoff. Add it.
-
-**Common failure patterns:**
-
-- CTA under 100 words missing most elements (operator treated CTA as "the button")
-- CTA over 250 words rehashing the body (operator hid the action behind one more pitch)
-- PS overloaded because main CTA underbuilt (PS doing CTA's structural job)
-- Pivot-to-fixable missing — letter ends in pain instead of agency
-- Mission completion missing — letter ends at outcome, not identity
-
-**Reference back to `prompt-template.md` §11:** §11 gives the goal (benefit-oriented copy + friction reducer). This checklist is the structural audit. Both apply — §11 governs the button + below-button copy; this checklist governs the full closing block leading into it.
+- `best-practices/ps-architecture.md` — the P.S. as an objection handler (price, deadline, fit, fear)
+- `references/copy-gems.md` — Universal Gaps section, FAQ + P.S. as two of four missed moves
+- `research/classical-exemplars/annotated/karbo-lazy-mans-way.md` — damaging admission + "It's Not's" + escrow guarantee
+- `research/classical-exemplars/annotated/halbert-coat-of-arms.md` — P.S. carrying the price and order
+- `research/strong-exemplars/annotated/04-green-industry.md` — fit-bracket disqualifier in the lead
+- `research/strong-exemplars/annotated/05-syncom-9yce.md` — "Please Read This Letter If" self-select pattern

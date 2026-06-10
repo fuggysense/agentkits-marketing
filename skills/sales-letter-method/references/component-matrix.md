@@ -1,276 +1,145 @@
-# Component Inclusion Matrix
+---
+file_type: reference
+component: all-12 + 5-cross-cutting
+load_when: Phase 0 Context Scan picks which components to write; reviewer asks "is this letter missing a required move?"
+loads_from_research: classical-exemplars (7 letters), strong-exemplars (8 modern letters)
+last_updated: 2026-05-27
+---
 
-Context-aware logic for Phase 0 Context Scan. The orchestrator reads client files, evaluates the offer, and decides which of the 12 components to include, skip, or modify.
+# The 12-Component Matrix
 
-**Rule:** Context-first, framework-second. Never force a component that doesn't fit.
+## What this file is about
+
+A sales letter is built from a fixed set of moves. Twelve of them. Not every letter uses all twelve — Phase 0 picks the ones that fit the offer. This file tells you which ones to include, which ones to cut, and which ones to bend per industry.
+
+On top of the twelve there are five threads that must run through every letter — objection handling, who-it's-for, trust signals, mechanism proof, and section-to-section flow. Miss one and the Conversion Gate auto-rejects.
+
+**Rule:** the offer picks the components. Don't force a move that doesn't fit. A transactional cash-buy letter (Syncom XiJt) has no mechanism because there is no transformation — just "we buy, we pay cash." Forcing one would read fake.
 
 ---
 
-## Evaluation Matrix
+## The 12 components
 
-| # | Component | Include By Default | Skip If... | Modify If... |
-|---|-----------|-------------------|------------|--------------|
-| 1 | Headline + Sub | ALWAYS | Never skip | — |
-| 2 | Lead | ALWAYS | Never skip | — |
-| 3 | Pain Cycle / Why Most Fail | YES | Audience has no clear "old way" to dismantle (rare) | Audience is solution-aware → soften into "most approaches fall short because" |
-| 4 | Integrity Tie-Down | YES for cold traffic | Warm/branded/existing-relationship traffic | — |
-| 5 | Mechanism | ALWAYS | Never skip | No named system → invent one that fits |
-| 6 | Proof Stack | YES if results exist | — | No results yet → pivot entire stack to credentials/methodology/sample work |
-| 7 | Offer Breakdown | ALWAYS | Never skip | — |
-| 8 | Bonus Stack | YES if real bonuses | No real bonuses offered | Convert to "what's included" list if no bonuses but multi-part offer |
-| 9 | Light Scarcity | YES if real capacity limit | No real cap → SKIP ENTIRELY (fake scarcity destroys trust) | — |
-| 10 | Guarantee Stack | ALWAYS | Never skip — primary conversion lever | No money-back possible → use no-pitch / value-pay / outcome variants |
-| 11 | CTA | ALWAYS | Never skip | — |
-| 12 | FAQ (5 objections) | ALWAYS | Never skip — this is the moat | — |
-| 13 | PS Line | ALWAYS | Never skip | — |
+| # | Component | Include by default | Skip if | Modify if |
+|---|---|---|---|---|
+| 1 | Headline + sub | ALWAYS | never | — |
+| 2 | Lead | ALWAYS | never | — |
+| 3 | Pain cycle / why most fail | YES | audience has no "old way" to dismantle (rare) | solution-aware → soften to "most approaches fall short because" |
+| 4 | Integrity tie-down | YES for cold | warm / branded / existing relationship | — |
+| 5 | Mechanism | USUALLY | transactional offer with no transformation (e.g. cash-buy real estate) | no named system → invent one |
+| 6 | Proof stack | YES if results exist | — | no results → pivot to credentials, methodology, sample work |
+| 7 | Offer breakdown | ALWAYS | never | — |
+| 8 | Bonus stack | YES if real bonuses | no real bonuses — never invent | multi-part offer with no bonuses → convert to "what's included" |
+| 9 | Light scarcity | YES if real cap | no real cap → SKIP (fake scarcity destroys trust) | — |
+| 10 | Guarantee stack | ALWAYS | never — primary conversion lever | no money-back possible → no-pitch / value-pay / outcome / PWYW |
+| 11 | CTA | ALWAYS | never | — |
+| 12 | P.S. block | ALWAYS for letters 1,500+ words | very short letters (under 800 words) | full spec → `best-practices/ps-architecture.md` |
 
----
-
-## Phase 0 Scan — What To Read
-
-Auto-read these client files and extract signals:
-
-### `clients/<slug>/context-profile.json`
-- `business_type` → service / consulting / coaching / real estate / agency
-- `offer_type` → consultation / audit / strategy session / discovery call
-- `traffic_source` → FB / IG / Google / LinkedIn (Schwartz level inference)
-- `results_available` → boolean (drives component 6)
-- `capacity_limit` → integer or null (drives component 9)
-
-### `clients/<slug>/offer.md`
-- Deliverables list → feeds component 7
-- Bonuses listed → drives component 8 (skip if empty)
-- Guarantee language → feeds component 10 (flag if missing, require user input)
-- Timeframe → "results in X days" anchor for component 5
-
-### `clients/<slug>/buyer-profile.md`
-- Pain points → feeds components 3 + 11 (FAQ)
-- Past attempts → feeds component 3 (old way to dismantle)
-- Objections → feeds component 11 (FAQ structure)
-- Awareness level → Schwartz level → drives component 1 headline approach
-
-### `clients/<slug>/avatars/` (if exists)
-- Top 5 Deep Fears → feed into PS line (component 13)
-- Raw Inner Dialogue → tone for Lead (component 2)
-- Desired Transformation → Dream Outcome for Headline (component 1)
-- Relationship Impact → emotional layers for Pain Cycle (component 3)
-
-### `clients/<slug>/source-of-truth.md` (if exists)
-- Section 5.5 Golden Nuggets → steal-worthy copy angles
-- Section 5.7 ICP Language → verbatim phrasing for Lead + Pain
-- Section 7.5 Misconceptions → fuel for component 3 dismantling
-
-### `clients/<slug>/brand-voice.md`
-- Tone anchors → every component
-- Forbidden words/phrases → hard constraints
-- Signature moves → weave into Lead + PS
+The full 12-row checklist evidence sits in `research/classical-exemplars/annotated/*.md` and `research/strong-exemplars/annotated/*.md`. Every annotated letter scores each component PRESENT / IMPLIED / ABSENT with verbatim evidence.
 
 ---
 
-## HITL Gate Output Format
+## What the evidence shows
 
-After auto-scan, present this to user for 1-screen review:
-
-```
-PHASE 0 CONTEXT SCAN — [client-slug]
-
-Offer type: [consultation / audit / strategy session]
-Traffic: Cold [FB/IG] → Schwartz Level [2-3]
-Baseline metrics: Opt-in [X%], CTR [Y%], CPC [$Z]
-Target: Opt-in > [baseline × 1.5]
-
-COMPONENT INCLUSION:
-✓ 1 Headline + Sub        [confirmed]
-✓ 2 Lead                  [confirmed]
-✓ 3 Pain Cycle            [confirmed — uses "cold lead chase" loop]
-✓ 4 Integrity Tie-Down    [cold traffic → include]
-✓ 5 Mechanism             [confirmed — "[X] Method"]
-✓ 6 Proof Stack           [12 client testimonials available]
-✓ 7 Offer Breakdown       [confirmed]
-✗ 8 Bonus Stack           [SKIP — no bonuses in offer.md]
-✓ 9 Light Scarcity        [5 consultations/month confirmed]
-✓ 10 Guarantee Stack      [using value-pay variant — $100 Grab]
-✓ 11 CTA                  [confirmed]
-✓ 12 FAQ (5 objections)   [confirmed]
-✓ 13 PS Line              [confirmed]
-
-MISSING INPUTS:
-- [ ] Specific client result numbers for proof stack (have testimonials, need $ figures)
-- [ ] Guarantee amount for value-pay variant (recommend $100 Grab or similar)
-
-Proceed? [Y/n] Adjust? [specify which component]
-```
-
-User confirms or adjusts → drafters receive finalized matrix → Phase 1 begins.
+- **Headline, Lead, CTA**: present in all 15 annotated letters. Non-negotiable.
+- **P.S. block**: present in 7/7 classical letters, **0/8** modern letters. The single biggest gap modern letters carry. See `best-practices/ps-architecture.md`.
+- **Mechanism**: named in 5/7 classical, 2/8 modern. Modern letters lean on "vast network of lenders" or "advanced machine" — descriptive language, no brand. Naming the mechanism is the strongest under-used move.
+- **Guarantee**: present in 6/7 classical (often hard money-back), present in 6/8 modern (mostly soft behavioral promises). Verbal-only guarantees are weaker than money-back or PWYW.
+- **Scarcity**: present in 4/7 classical, 2/8 modern. Modern letters are missing real time pressure. Forced scarcity reads worse than no scarcity — only include if real.
 
 ---
 
-## Decision Heuristics
+## 5 cross-cutting requirements
 
-### When to SKIP a component entirely
+These are NOT new components. They are threads that must run through the existing 12. Conversion Gate rejects letters that miss them.
 
-- **Bonus Stack (8):** No real bonuses exist. Don't invent them.
-- **Light Scarcity (9):** No real capacity limit. Fake scarcity reads as manipulation.
+**R1. Objection architecture** — Full spec: `references/objection-architecture.md`. The top 5-7 of 10 canonical objections handled inline in the body; the rest in FAQ. Risk handled in guarantee, never raised-without-answered.
 
-### When to MODIFY a component
+**R2. Qualification** — Full spec: `references/qualification-patterns.md`. At least one of: "who this is for" (testable conditions), "who this isn't for" (real disqualifiers), or readiness criteria. Chester Buczynski's "if you're under $500,000 in annual revenue this is not for you" is a clean disqualifier — gates by size and signals confidence.
 
-- **Proof Stack (6) with no proof:** Pivot to methodology-credentials. List what frameworks inform the method (Hormozi, Kennedy, Halbert), who mentored the founder, industry data supporting the approach.
-- **Guarantee Stack (10) for free consultation:** Can't offer money-back. Use no-pitch ("if we can't help in 10 min, we end the call"), value-pay ("waste your time = we pay you"), or outcome ("3 insights or we pay").
-- **Mechanism (5) with no named system:** Invent one. "The [Client Name] Method" or "The [Industry] Framework." Must be branded.
+**R3. Trust density** — Full spec: `references/trust-density.md`. 5+ distinct signal types across 3+ components. Every confident claim paired with a credibility signal within 3 sentences. Hopkins-Schlitz is the masterclass: 50-year reputation, 4,000-ft wells, 1,200 yeast experiments, plate glass, twice-daily cleaning — six trust signals in two paragraphs.
 
-### When to DEMAND user input before drafting
+**R4. Mechanism justification** — Full spec: `references/mechanism-justification.md`. Mechanism (component 5) has 5 jobs now: name it, describe function, visualize journey, **justify** (cause-effect / contrast / first-principles / constraint), anchor with numbers + time.
 
-- Offer.md missing concrete deliverables
-- Buyer-profile.md missing specific objections
-- No guarantee mechanic specified AND client won't offer money-back
-- Claimed results have no backing documents
-
-Do NOT proceed with drafting if any of these are missing. Surface to user and wait.
-
-### Voice register / narrator POV (ask upfront — auto-reject if guessed)
-
-Long-form letters fail when the narrator's identity is ambiguous. The reader can tell the voice was guessed and the register drifts mid-letter. Resolve narrator POV BEFORE drafting:
-
-> Who narrates this letter?
->
-> 1. **The avatar themselves** — high relatability, low authority. Best for emotional-led offers.
-> 2. **A peer who solved the same problem** — relatable + outcome-credible. Most letters work here.
-> 3. **A former clinician / former operator / retired specialist** — high authority. **MEDIUM regulatory risk in medical/financial verticals.**
-> 4. **A current clinician / current licensed operator** — **DO NOT recommend.** FTC disclosure issues + Meta ad-policy risks. Use "former" framing or "peer who consulted with their clinician" instead.
-> 5. **A journalist / independent researcher** — high authority, requires real credentials.
-> 6. **The operator (the person selling)** — direct, common in service / agency / coaching. Halbert's "Dear [avatar]" pattern lives here.
-> 7. **Custom** — operator specifies (founder origin story, partner POV, etc.)
-
-**Capture the choice in Phase 0 output.** All drafters in Phase 1 receive the chosen register and must hold it consistently. Mid-letter register drift = auto-reject in Conversion Gate.
-
-**Regulatory warning:** If the operator chooses option 4 (current clinician) or any narrator making product recommendations in a regulated vertical (health / finance / legal), surface the compliance risk before drafting. Default to option 3 ("former") or option 2 ("peer who consulted") instead.
+**R5. Cohesion** — Full spec: `references/cohesion-check.md`. Phase 2 Stitcher runs the 11-boundary check. `jump` rate ≤ 15% total, 0 at the 5 critical boundaries (H→S, S→L, L→P, P→M, CTA→PS).
 
 ---
 
-## Industry Tweaks (not client-specific — industry-level guidance)
+## Industry tweaks
 
-### Real Estate (SG)
-- Weave MOP / CPF / en-bloc / school zone language where relevant
-- Component 3: dismantle "traditional agent approach" (prospecting, cold calls, Zillow leads)
-- Component 5: name the methodology (Entry Price Pattern, Transaction Timing, etc.)
-- Component 6: include local client names + districts for hyper-local proof
+Each vertical has its own emphasis. The named mechanism, the proof type that matters, the scarcity that's real.
 
-### Real Estate (US)
-- Weave MLS / off-market / cash buyer language
-- Component 3: dismantle "list and wait" or "Zillow-dependent" workflows
-- Component 5: tech-forward mechanism framing (AI, data, automation)
+### Info products / coaching (high-ticket)
+- **Component 5**: numbered framework. Chester Buczynski named his "7 Sales Laws." Karbo invented "Dyna/Psyc." Coaches need a proprietary label — descriptive language ("our coaching method") reads generic.
+- **Component 6**: graduated case study ladder (small → large wins). George Ten anchored his $97 offer against his "$2,500 program, 81 students paid" Stripe screenshot.
+- **Component 9**: qualifier scarcity beats deadline scarcity. "Under $500K — not for you" (Green Industry) signals confidence and filters the list.
 
-### Consulting / Agency
-- Component 4: strong integrity tie-down (audience is skeptical)
-- Component 5: emphasize DONE-FOR-YOU over DIY
-- Component 6: case studies with $ figures > testimonial quotes
+### Agency / consulting / B2B
+- **Component 4**: strong integrity tie-down — this audience is the most skeptical in the corpus.
+- **Component 5**: DONE-FOR-YOU over DIY framing.
+- **Component 6**: named-client case studies with $ figures. RoofGrow's "DTH Roofing NY, Mike's Roofing NM, Cool Roofs OH, Keystone Exterior — $300k in 30 days" is the template. Aggregate proof ("150+ roofers") is weak; specific names are strong.
 
-### Coaching / Info Product
-- Component 5: numbered framework ("7 Laws," "5 Keys," "3 Phases")
-- Component 6: graduated case study ladder (small → large wins)
-- Component 1: outcome + timeframe ("retire X years earlier")
+### Financial services / lending
+- **Component 5**: usually descriptive, not branded ("vast network of lenders" — Joe Bellantuono, Brendon Luu). The credential carries the load instead.
+- **Component 6**: tenure proof. "30 years on Wall Street" (Bellantuono). "500+ home buyers" (Luu).
+- **Component 10**: behavioral promise instead of money-back. "I will NEVER waste your time / NEVER hit you with hidden fees" (Luu). Lender-paid models can't offer refunds — the guarantee has to be a stance.
+- Compliance: extra care on claim language. Loose words in the body re-appear in the P.S.
 
----
+### Real estate (transactional cash-buy)
+- **Component 5**: SKIP. "We buy, we pay cash, period" (Syncom XiJt). No transformation, no mechanism. Forcing one reads fake.
+- **Component 6**: geographic affinity beats credentials. "We are Polk County residents" outperforms "we have 20 years of experience."
+- **Component 7**: explicit deliverable list ("no closing costs, no renovations, no hidden fees, no commissions, no catch") functions as the guarantee.
 
-## Vertical-Specific Failure Modes (Phase 0 enrichment)
-
-Industry Tweaks (above) tells you what to *emphasize* per vertical. Failure Modes tells you what specific *prior-attempt scenes* to dramatize in the Pain Cycle (Component 3).
-
-Every vertical has 2–3 canonical "tried-and-failed" stories the prospect has already lived through. If your letter doesn't name one of these specifically — with sensory detail the prospect would recognize — the Pain Cycle reads as generic. The reader feels seen only when their exact failure scene appears on the page.
-
-**Phase 0 must extract these from `buyer-profile.md` (or interview the operator) BEFORE drafting.**
-
-### Real Estate (SG first-time buyers)
-- **Excel-sheet research spiral** — couple builds a spreadsheet, runs the math, builds another, never decides
-- **Showflat-tour exhaustion** — 5+ weekends of viewings, "let's sleep on it," nothing closes
-- **Calculator-only research** — bank affordability calc shows what they'll lend, not what to actually buy
-- **Conflicting agent advice** — three agents, three different "best" districts, paralysis
+### Real estate (advisor / agent / first-time buyer)
+- **Component 3**: dramatize a named failure scene. SG: Excel-sheet research spiral, showflat-tour exhaustion, conflicting agent advice. US: list-and-wait, Zillow-dependent. Generic Pain Cycles auto-reject.
+- **Component 5**: name the methodology — Entry Price Pattern, Transaction Timing.
+- **Component 6**: local client names + districts for hyper-local proof.
 
 ### DTC supplements / wellness
-- **Stack-and-pray** — 4-6 supplements running simultaneously, no idea which is doing what
-- **Doctor dismissal** — "your numbers are normal, you're just stressed" with no path forward
-- **Melatonin / first-line failure** — tried the obvious, brief help, then back to baseline (or worse)
-- **Brand-hopping** — switching brands of the same category looking for the one that works
-
-### B2B SaaS / agency / consulting
-- **Tool-stack consolidation attempt** — bought 4 tools, integration broke, back to spreadsheets
-- **In-house hire that didn't stick** — hired a specialist, 6 months in, output below DIY baseline
-- **DIY-then-burn-out** — operator tried to learn it themselves, lost 3 months, still on square one
-- **"We just need better processes"** — wrote the SOP, nobody follows it, drift returns within weeks
-
-### Coaching / info product
-- **Course-graveyard** — 3+ courses purchased, none completed past Module 2
-- **Free content paralysis** — saved 100+ YouTube videos, watched none, still stuck
-- **Mentor-mismatch** — paid for 1:1 coaching that didn't fit the operator's actual context
-- **Identity-incongruent method** — tried a system designed for someone with a different starting identity (extrovert system applied to introvert operator)
-
-### Application
-
-Pick 2-3 failure modes that match the avatar in `buyer-profile.md`. Drop them into Component 3 (Pain Cycle) as named scenes — verbatim language, sensory detail, the specific moment of recognition. Test: would the prospect read this and think "that's exactly what happened to me"? If not, the failure mode isn't sharp enough.
-
-If `buyer-profile.md` doesn't surface concrete prior-attempt failures, **halt drafting and surface to operator** before Phase 1. Generic Pain Cycles auto-reject in Conversion Gate.
+- **Component 3**: name the prior-attempt failure — stack-and-pray (4-6 supplements at once), doctor dismissal ("your numbers are normal"), first-line failure (melatonin → back to baseline), brand-hopping.
+- **Component 5**: must be science-anchored AND safe-feeling. Schwartz's "modern Chinese Medicine" hit both — ancient authority plus "modern" safety prefix.
+- **Component 6**: process specificity. Hopkins-Schlitz proved this for any consumable: "plate-glass rooms, filtered air, white-wood pulp, 4,000-foot wells, 1,200 experiments." Stats do the work testimonials would in coaching.
+- **Component 10**: must clear FTC. No "cure" language. Money-back is standard.
 
 ---
 
-## Cross-Cutting Requirements (NEW — promoted from partial coverage)
+## Voice register / narrator POV (resolve BEFORE drafting)
 
-These are NOT new components — they are **threads that must run through existing components**. Conversion Gate will auto-reject letters that miss them.
+Letters fail when the narrator's identity is ambiguous. Mid-letter drift = auto-reject. Pick one and hold it:
 
-### R1. Objection Architecture (required)
+1. **The avatar themselves** — high relatability, low authority.
+2. **A peer who solved the same problem** — relatable + outcome-credible. Most letters work here.
+3. **A former clinician / former operator / retired specialist** — high authority. MEDIUM regulatory risk in medical/financial.
+4. **A current clinician / current licensed operator** — DO NOT recommend. FTC + Meta ad-policy risk.
+5. **A journalist / independent researcher** — high authority, real credentials required.
+6. **The operator** — direct. Halbert's "Dear [avatar]" pattern lives here. Most modern letters in the corpus use this.
+7. **Custom** — operator specifies (founder origin story, partner POV, etc.)
 
-Full spec: `references/objection-architecture.md`.
-
-10 canonical objections mapped to placement across components 3, 5, 6, 7, 9, 10, 11, 12, 13. Body copy preempts the top 5-7 inline; FAQ consolidates residual. Risk objection is resolved in Guarantee Stack, never mentioned-without-handled.
-
-### R2. Qualification (required — at least 1 block)
-
-Full spec: `references/qualification-patterns.md`.
-
-At minimum one of these blocks must appear:
-- **Who this is for** (testable conditions) — in Lead or mid-body
-- **Who this isn't for** (real disqualifiers) — after Offer or before Guarantee
-- **Readiness criteria** — immediately before final CTA
-
-Letter length determines how many blocks to include (see qualification-patterns.md calibration table).
-
-### R3. Trust Density (required — 5+ signals minimum)
-
-Full spec: `references/trust-density.md`.
-
-≥ 5 distinct signal types across the 10 listed (constraint disclosure, realistic timeline, named conditions, transparent process, proof with context, who-it-isn't-for, operator realism, specific numbers, operational visibility, appropriate hedging). Distributed across 3+ components. Every confident claim paired with a credibility signal within 3 sentences.
-
-### R4. Mechanism Justification (extends Component 5)
-
-Full spec: `references/mechanism-justification.md`.
-
-Component 5 (Mechanism) now has **5 jobs**, not 4:
-1. Name the system
-2. Describe function
-3. Visualize + compress journey
-4. **JUSTIFY** — use 1-2 of 4 patterns (Cause-and-Effect / Contrast / First-Principles / Constraint)
-5. Anchor with numbers + time
-
-### R5. Cohesion (stitcher requirement)
-
-Full spec: `references/cohesion-check.md`.
-
-Phase 2 Stitcher must run a cohesion check across all 11 section boundaries. `jump` rate ≤ 15% total; 0 `jump` at the 5 critical boundaries (H→S, S→L, L→P, P→M, CTA→PS).
+Capture in Phase 0. All drafters in Phase 1 receive the chosen register.
 
 ---
 
-## Updated Conversion Gate Checks
+## Reviewer checks (Conversion Gate)
 
-Conversion Gate now verifies (in addition to existing checks):
-
-- [ ] All 10 canonical objections addressed somewhere (inline or FAQ)
-- [ ] At least 1 qualification block present with testable conditions
-- [ ] ≥ 5 trust signal types used, distributed across 3+ components
-- [ ] Mechanism section contains at least 1 of the 4 justification patterns
-- [ ] Cohesion report shows ≤ 15% `jump` transitions, 0 at critical boundaries
-- [ ] Markup convention applied: `(h)`, `(b)`, `(u)` per `references/markup-convention.md`
+- [ ] All 10 canonical objections addressed (inline or FAQ)
+- [ ] At least 1 qualification block with testable conditions
+- [ ] 5+ trust signal types, distributed across 3+ components
+- [ ] Mechanism has at least 1 of the 4 justification patterns
+- [ ] Cohesion ≤ 15% jump transitions, 0 at critical boundaries- [ ] P.S. block present for letters 1,500+ words (see `best-practices/ps-architecture.md`)
+- [ ] Narrator POV held consistently end to end
 
 ---
 
-## Reminder
+## Linked files
 
-Do not cargo-cult Hormozi. His 13 components were designed for high-ticket info products with disclosed prices. This skill is for lead-gen consultations where the price isn't disclosed. Adapt, don't obey.
+- `best-practices/ps-architecture.md` — full P.S. spec (Component 12)
+- `best-practices/fact-headlines.md` — Component 1 craft
+- `best-practices/damaging-admission.md` — cross-cutting trust move
+- `best-practices/cohesion-check.md` — Phase 2 boundary check (R5)
+- `references/qualification-patterns.md` — Component 2 + R2 spec
+- `references/trust-density.md` — R3 spec
+- `references/objection-architecture.md` — R1 spec
+- `references/mechanism-justification.md` — R4 spec
+- `references/copy-gems.md` — universal-gap inventory (line ~184: P.S. listed as one of four moves 8/8 modern letters missed)
+- `research/classical-exemplars/annotated/*.md` — 7 letters, full 12-row checklist each
+- `research/strong-exemplars/annotated/*.md` — 8 modern letters, same checklist

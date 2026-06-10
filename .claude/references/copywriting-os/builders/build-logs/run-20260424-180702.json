@@ -1,0 +1,51 @@
+{
+  "results": [
+    {
+      "label": "1B_forbidden_content",
+      "ok": true,
+      "path": "/Users/jerel/Documents/Jerel's brain/jerel's brain/Marketing/.claude/references/copywriting-os/reviewers/forbidden-content-audit.md",
+      "dt": 73.333925,
+      "out_tok": 2616,
+      "cache_read": 11911,
+      "cost": 0.14378355
+    },
+    {
+      "label": "2A_proof_inventory_builder",
+      "ok": true,
+      "path": "/Users/jerel/Documents/Jerel's brain/jerel's brain/Marketing/.claude/references/copywriting-os/builders/proof-inventory-builder.md",
+      "dt": 83.75178,
+      "out_tok": 4795,
+      "cache_read": 9504,
+      "cost": 0.18882644999999998
+    },
+    {
+      "label": "1A_claim_verification",
+      "ok": true,
+      "path": "/Users/jerel/Documents/Jerel's brain/jerel's brain/Marketing/.claude/references/copywriting-os/reviewers/claim-verification-audit.md",
+      "dt": 88.423476,
+      "out_tok": 3150,
+      "cache_read": 0,
+      "cost": 0.18213525
+    },
+    {
+      "label": "2B_objection_matrix_builder",
+      "ok": true,
+      "path": "/Users/jerel/Documents/Jerel's brain/jerel's brain/Marketing/.claude/references/copywriting-os/builders/objection-matrix-builder.md",
+      "dt": 95.825515,
+      "out_tok": 5259,
+      "cache_read": 8748,
+      "cost": 0.1946934
+    },
+    {
+      "label": "1D_buyer_language_fidelity",
+      "ok": true,
+      "path": "/Users/jerel/Documents/Jerel's brain/jerel's brain/Marketing/.claude/references/copywriting-os/reviewers/buyer-language-fidelity-audit.md",
+      "dt": 118.033983,
+      "out_tok": 6404,
+      "cache_read": 9504,
+      "cost": 0.21388395
+    }
+  ],
+  "total_dt": 118.037017,
+  "total_cost": 0.9233226
+}

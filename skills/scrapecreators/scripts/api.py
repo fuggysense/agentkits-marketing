@@ -536,9 +536,42 @@ class ScrapeCreatorsClient:
             params["country"] = country
         return self.request("/v1/facebook/adLibrary/search/ads", params)
 
-    def facebook_company_ads(self, company):
-        """Get ads from a specific company in Facebook Ad Library."""
-        return self.request("/v1/facebook/adLibrary/company/ads", {"company": company})
+    def facebook_company_ads(self, page_id=None, company_name=None, country=None,
+                             status="ACTIVE", media_type=None, language=None,
+                             sort_by=None, start_date=None, end_date=None,
+                             cursor=None, trim=None):
+        """Get ads from a specific company in Facebook Ad Library.
+
+        Pass either page_id (preferred — from Search For Companies endpoint or FB
+        Ad Library URL `view_all_page_id` param) or company_name. country is the
+        2-letter code (e.g. "SG"). status defaults to "ACTIVE".
+        """
+        if not page_id and not company_name:
+            raise ValueError("facebook_company_ads requires page_id or company_name")
+        params = {}
+        if page_id:
+            params["pageId"] = str(page_id)
+        if company_name:
+            params["companyName"] = company_name
+        if country:
+            params["country"] = country
+        if status:
+            params["status"] = status
+        if media_type:
+            params["media_type"] = media_type
+        if language:
+            params["language"] = language
+        if sort_by:
+            params["sort_by"] = sort_by
+        if start_date:
+            params["start_date"] = start_date
+        if end_date:
+            params["end_date"] = end_date
+        if cursor:
+            params["cursor"] = cursor
+        if trim is not None:
+            params["trim"] = "true" if trim else "false"
+        return self.request("/v1/facebook/adLibrary/company/ads", params)
 
     def facebook_ads_companies(self, query):
         """Search for companies in Facebook Ad Library."""

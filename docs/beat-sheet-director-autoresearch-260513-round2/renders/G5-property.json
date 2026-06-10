@@ -1,0 +1,21 @@
+[
+  {
+    "id": "69155906-fc69-4abd-8d08-f9e50bd60345",
+    "status": "completed",
+    "display_name": "GPT Image 2",
+    "job_set_type": "imagegen_2_0",
+    "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_2z2bozEwzKwxJNgkH3IQQ4lTkuw/hf_20260513_034700_69155906-fc69-4abd-8d08-f9e50bd60345.png",
+    "created_at": 1778644020.461883,
+    "params": {
+      "width": 1344,
+      "height": 752,
+      "prompt": "Create a 16:9 photorealistic cinematic real-estate walkthrough storyboard grid, 2x2 layout, four panels on a clean black canvas with thin black gutters only.\n\nOverarching scene theme: a bright modern Singapore condominium living room in midday tropical daylight, high-floor city view, warm neutral interiors, polished stone floor, pale wood accents, indoor plants, clean staging, one confident property agent in smart casual beige blazer and dark trousers. Keep the same room layout, agent identity, wardrobe, lighting direction, and upscale condo finish across all panels.\n\nPanels, left-to-right, top-to-bottom:\n\nPanel 1: the living room opens wide and airy, sofa and coffee table foreground, floor-to-ceiling windows glowing behind.\nPanel 2: the balcony doors are open, revealing a high-floor Singapore skyline view and lush balcony greenery.\nPanel 3: the kitchen island appears crisp and functional, pendant lights, integrated appliances, breakfast stools, tidy countertop.\nPanel 4: the property agent stands near the balcony threshold, arm extended in a welcoming gesture toward the view.\n\nCharacter: one Singapore property agent, early 30s, professional and approachable, neat dark hair, beige blazer, white shirt, dark trousers, natural expression.\n\nEnvironment: modern Singapore condo living room connected to balcony and open kitchen, Midday, Clear. Mood: Hopeful and premium. Visual style: clean property-commercial photorealism, bright natural daylight, accurate interior scale, realistic glass reflections, real fabrics, real surfaces, no exaggerated luxury fantasy.\n\nCamera/lens feel: shot on Sony FX3, Spherical Cooke lens, 24mm Wide, natural lens effects.\n\nBelow each panel: no caption bands, no panel labels, no subtitles, no timestamps, no explanatory overlays.\n\nForbidden: no title banner, no footer, no colored gridlines, no written labels, no visible UI, no captions, no timestamps, no dialogue text, no SFX or music text, no camera notes, no production table. Plain black canvas with four visual panels arranged in a 2x2 grid.\n\nRender at 16:9 aspect ratio.",
+      "medias": [],
+      "aspect_ratio": "16:9",
+      "quality": "medium",
+      "resolution": "1k",
+      "model": "videotape-alpha",
+      "reference_elements": []
+    }
+  }
+]

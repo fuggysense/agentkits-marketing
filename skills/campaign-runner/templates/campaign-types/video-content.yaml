@@ -1,13 +1,13 @@
-# Video Content Campaign Template (Script-to-Video Pipeline)
-# Full pipeline: Research → Script → Prompt → Image → Generate → Schedule
+# Video Content Campaign Template (Option B Video Prompt-Pack Pipeline)
+# Full pipeline: Research → creative-diversity map → concepts/hooks → AG1 → scripts/input-image plan/canonical prompt pack/adapters → AG2 → optional render → review
 #
-# VIDEO GENERATION API: Kie.ai — API access to Sora 2 Pro, Kling, VEO
-# Pricing: $0.75-$3.15 per clip (varies by model and duration)
+# RENDER SURFACE: Higgsfield CLI now; future external APIs later.
+# Only approved render surfaces are listed here.
 #
 # AUTOMATION NOTE: Currently manual via Claude Code.
 # Future automation target: trigger.dev / inngest / modal.com (NOT n8n)
 #
-# HITL GATES: Script approval + final video review
+# HITL GATES: AG1 concept/hook approval, AG2 prompt/input package approval, optional input/render approval, final video review
 
 campaign:
   name: ""
@@ -20,9 +20,9 @@ status:
   last_session: ""
   last_action: "Campaign created from video-content template"
   next_actions:
-    - "Research competitor videos and trending formats"
-    - "Load ICP and offer from project files"
-    - "Define video types and models for this campaign"
+    - "Research market awareness, buyer language, competitor videos, and style references"
+    - "Load top-level 00_inputs, _brand/offer.md, _brand/icp.md, _brand/buyer-profile.md micro-personas, avatars, asset map, and video style"
+    - "Read campaign-index.json and campaign-selection.json, create a video-concepts/<concept-slug>/ workspace with only a concept brief and selection manifest in 00_inputs, then run creative-diversity map before concepts"
   blockers: []
 
 tasks:
@@ -32,66 +32,102 @@ tasks:
     status: planned
     agent: researcher
     skill: deep-research
-    description: "Competitor video analysis — scrape top-performing video ads in niche. Analyze hooks, pacing, visual style, CTAs. Identify patterns to replicate and gaps to exploit"
+    description: "Competitor and market-awareness research — scrape top-performing video ads in niche, collect buyer language, classify awareness/sophistication, analyze hooks, pacing, visual style, CTAs, and claim-risk boundaries. Reference selected client inputs from campaign-selection.json; do not copy raw 00_inputs into concept folders"
     dependencies: []
-    asset: assets/research/competitor-videos.md
+    asset: 01_research/output/competitor-and-awareness-research.md
 
   - id: format-selection
     phase: research
     status: planned
     agent: planner
-    skill: video-director
-    description: "Select video types from catalog (1-14), model pairings, and pipeline routing for this campaign. Consider: target platform, audience temperature, product type, budget"
+    skill: video-concept-lab
+    description: "Select video concept routes, style profiles, target platform, audience temperature, product type, budget, likely render model family, top-level input paths, and buyer-profile.md micro-persona IDs. Keep this prompt-pack-first; no render call here. Record route in campaign-index.json, campaign-selection.json, and concept workspace pipeline-state.json"
     dependencies: [competitor-scrape]
-    asset: assets/video/format-selection.md
+    asset: video-concepts/<concept-slug>/01_strategy/video-concept-routes.md
 
   - id: character-setup
     phase: research
     status: planned
     agent: copywriter
-    skill: video-director
-    description: "Create character bible(s) for recurring talent. Facial profile + context profile + expression matrix. Choose method: Sora Characters API or text-based block. Reference: character-bible-template.md"
+    skill: avatar-research
+    description: "Create or validate avatar/character hypotheses for recurring talent. Include customer avatar, performer notes, visual continuity needs, and reusable input-asset requirements"
     dependencies: []
-    asset: assets/video/character-bibles.md
+    asset: 01_research/output/avatar-character-notes.md
 
-  # --- SCRIPT PHASE (2 tasks) ---
-  - id: script-writing
+  # --- CONCEPT + SCRIPT PHASE (5 tasks) ---
+  - id: video-concept-lab
     phase: script
     status: planned
     agent: copywriter
-    skill: copywriting
-    description: "Write video scripts using emotional block structure. Hook → story → soft sell → CTA. Include dialogue with delivery cues, beat descriptions, and timing. Load V.O.I.C.E. files for voice matching"
-    extra_skills: [content-moat, video-director]
+    skill: video-concept-lab
+    description: "Generate five Meta-first AI-video concepts from an approved creative-diversity map, score them, recommend one winner, draft hook direction, and list early image/style-sheet requirements. Each concept must cite selected top-level input paths and buyer-profile.md micro-persona IDs. Do not create scripts, canonical prompts, adapters, renders, or copied input folders here"
     dependencies: [format-selection, character-setup]
-    asset: assets/video/scripts.md
+    asset: video-concepts/<concept-slug>/02_ag1-options/concepts-draft.json
 
-  - id: hitl-script-approval
+  - id: hitl-concept-approval
     phase: script
     status: planned
     agent: ""
     skill: ""
-    description: "HITL gate — present scripts for review. Format: | # | Type | Hook | Duration | Platform | Script Preview | Action |. Jerel approves/edits/cuts each"
-    dependencies: [script-writing]
+    description: "Approval Gate 1 — approve concept direction, hook direction, strategy-map trace, recommended format, duration, and prompt/input preview stubs. AG1 does not approve rendering"
+    dependencies: [video-concept-lab]
     hitl: true
 
-  # --- PROMPT PHASE (2 tasks) ---
-  - id: video-prompts
+  - id: script-visual-refinement
+    phase: script
+    status: planned
+    agent: copywriter
+    skill: script-skill
+    description: "Post-AG1: refine approved concept into scripts-draft.json and script-pack.md. Lock final hook, script, scene logic, rendered-text/subtitle policy, acting/VO/music/SFX notes, and revised image/style-sheet implications. Keep source references as paths/IDs from campaign-selection.json and concept-brief.json"
+    extra_skills: [copywriting, video-concept-lab]
+    dependencies: [hitl-concept-approval]
+    asset: video-concepts/<concept-slug>/03_scripts/scripts-draft.json
+
+  - id: brief-pack
+    phase: script
+    status: planned
+    agent: copywriter
+    skill: video-brief-normalizer
+    description: "Create the AG2 prompt/input package from the approved concept and scripts: input-image-plan, canonical-prompt-pack, model adapters, manual-run-guide, and approval-2.json pending. Use selected top-level inputs and buyer-profile.md micro-personas by reference. Do not create render jobs until AG2 is approved"
+    dependencies: [script-visual-refinement]
+    asset: video-concepts/<concept-slug>/05_prompt-packs/canonical-prompt-pack.json
+
+  - id: hitl-brief-pack-approval
+    phase: script
+    status: planned
+    agent: ""
+    skill: ""
+    description: "Approval Gate 2 — approve scripts, input-image plan, canonical prompt pack, manual guide, and model adapters. Rendering is optional and illegal before this gate"
+    dependencies: [brief-pack]
+    hitl: true
+
+  # --- INPUT ASSET + PROMPT PHASE (3 tasks) ---
+  - id: input-asset-plan
     phase: prompt
     status: planned
     agent: copywriter
-    skill: video-director
-    description: "Generate video prompts from approved scripts using Universal 5-Part Schema. Include: cinematography, subject (from character bible), action/dialogue, context, style. Add seed from seed library if available"
-    dependencies: [hitl-script-approval]
-    asset: assets/video/prompts.md
+    skill: video-factory
+    description: "After Approval Gate 2, create or refine the input-asset manifest: brand/product assets, approved AI assets, scene-specific generated stills, beat-sheet PNGs, optional audio/video references, and proposed reference order for Higgsfield or another model adapter"
+    dependencies: [hitl-brief-pack-approval]
+    asset: video-concepts/<concept-slug>/04_input-images/input-image-plan.json
+
+  - id: beat-sheet-and-render-prompts
+    phase: prompt
+    status: planned
+    agent: copywriter
+    skill: video-factory
+    description: "Generate beat-sheet instructions and model-adapter prompts from the canonical prompt pack. Seedance/Higgsfield adapter must preserve canonical intent and reference ordering; non-Higgsfield adapters must not add claims or beats"
+    dependencies: [input-asset-plan]
+    asset: video-concepts/<concept-slug>/05_prompt-packs/model-adapters/
 
   - id: image-prompts
     phase: prompt
     status: planned
     agent: copywriter
     skill: image-generation
-    description: "For image-first types: generate reference image prompts. For all types: generate first-frame anchor images if using image input. Cross-image consistency checklist required"
-    dependencies: [hitl-script-approval]
-    asset: assets/video/image-prompts.md
+    description: "Generate image prompts for required input assets: product sheets, character sheets, style sheets, scene plates, start/end frames where the selected model needs them. Cross-image consistency checklist required"
+    dependencies: [hitl-brief-pack-approval]
+    asset: video-concepts/<concept-slug>/04_input-images/input-image-plan.md
 
   # --- GENERATION PHASE (3 tasks) ---
   - id: image-generation
@@ -99,27 +135,36 @@ tasks:
     status: planned
     agent: ""
     skill: image-generation
-    description: "Generate reference images and first-frame anchors using Nano Banana. Batch review all images before proceeding to video generation"
+    description: "Generate required input images with the selected image tool. Batch review all input images before proceeding to beat sheets or video render"
     dependencies: [image-prompts]
-    asset: assets/video/images/
+    asset: video-concepts/<concept-slug>/04_input-images/generated-input-assets/
+
+  - id: hitl-input-and-prompt-approval
+    phase: generation
+    status: planned
+    agent: ""
+    skill: ""
+    description: "HITL gate — approve input images, beat sheets, reference ordering, and render prompts before any Higgsfield CLI call"
+    dependencies: [image-generation, beat-sheet-and-render-prompts]
+    hitl: true
 
   - id: video-generation
     phase: generation
     status: planned
     agent: ""
-    skill: ""
-    description: "Generate videos via Kie.ai API (or direct model access). Feed prompts + reference images. Use seed from seed library. Run seed bracket test for new styles (seeds 1000-1010)"
-    dependencies: [video-prompts, image-generation]
-    asset: assets/video/raw/
+    skill: video-factory
+    description: "Create renderRequest.json and flexible Higgsfield CLI command template from the approved prompt pack and input-asset manifest. Do not call the renderer until explicit approval"
+    dependencies: [hitl-input-and-prompt-approval]
+    asset: video-concepts/<concept-slug>/06_generation-runs/render-requests/
 
   - id: post-production
     phase: generation
     status: planned
     agent: ""
     skill: ""
-    description: "Post-production pipeline: grain/texture (CapCut) → upscale 1.25-1.75x (Topaz) → voice/audio (11 Labs). Assemble clips, add captions, music, CTA end cards"
+    description: "Post-production pipeline after approved renders: assemble clips, add captions, music, CTA end cards, optional grain/upscale/audio. Preserve renderRequest and source prompt lineage"
     dependencies: [video-generation]
-    asset: assets/video/final/
+    asset: video-concepts/<concept-slug>/06_generation-runs/output/
 
   # --- REVIEW & PUBLISH PHASE (3 tasks) ---
   - id: hitl-video-review
@@ -145,10 +190,10 @@ tasks:
     phase: review
     status: planned
     agent: ""
-    skill: video-director
-    description: "Update seed library with winning seeds from this batch. Log seed scores and platform assignments to clients/<project>/assets/video/seed-library.md"
+    skill: video-factory
+    description: "Update video learnings with winning prompts, reference orders, input-asset combinations, render commands, and platform assignments"
     dependencies: [hitl-video-review]
-    asset: assets/video/seed-library.md
+    asset: 05_handoff/video-learnings.md
 
   # --- OPTIMIZATION PHASE (2 tasks) ---
   - id: campaign-audit

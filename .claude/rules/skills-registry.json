@@ -1,0 +1,943 @@
+{
+  "generated": "2026-06-10T16:00:25.119Z",
+  "counts": {
+    "project": 75,
+    "global": 58,
+    "total": 133
+  },
+  "skills": [
+    {
+      "name": "ab-test-setup",
+      "description": "\"Plan, design, and validate A/B tests and experiments. Triggers: A/B test, split test, experiment, multivariate test, hypothesis testing, statistical significance, variant copy.\"",
+      "triggers": [],
+      "source": "project",
+      "path": ".claude/skills/ab-test-setup/SKILL.md"
+    },
+    {
+      "name": "ad-concept-engine",
+      "description": "\"DCT-aware ad concept pipeline: 3 creatives × 2 headlines × 2 copies = 12 Meta combinations per batch. Per-micro-persona angles, visual style variety, standalone text hooks. Triggers: ad concepts, new ad angles, DCT, dynamic creative testing, ad brainstorm, meta ad concepts.\"",
+      "triggers": [],
+      "source": "project",
+      "path": ".claude/skills/ad-concept-engine/SKILL.md"
+    },
+    {
+      "name": "ad-library-scraper",
+      "description": "\"Build industry-level Meta Ad Library swipe-file database + Schwartz 5-stage market brief. One scrape per industry, reusable for all clients. Triggers: scrape ad library, competitor ads database, market sophistication, blue ocean angles, winners by duration, industry ad pool, sta",
+      "triggers": [],
+      "source": "project",
+      "path": ".claude/skills/ad-library-scraper/SKILL.md"
+    },
+    {
+      "name": "agents-sdk",
+      "description": "Build AI agents on Cloudflare Workers using the Agents SDK. Load when creating stateful agents, durable workflows, real-time WebSocket apps, scheduled tasks, MCP servers, chat applications, voice agents, or browser automation. Covers Agent class, state management, callable RPC, W",
+      "triggers": [],
+      "source": "global",
+      "path": "../../../../.claude/skills/agents-sdk/SKILL.md"
+    },
+    {
+      "name": "ai-filmmaking",
+      "description": "\"Director-driven film production: brief→storyboard→prompt cards. Load profile (Fincher, Villeneuve, Anderson, Scorsese, custom). 7-step ARQ pipeline. NOT for: direct-response ads, UGC, talking heads. Triggers: ai film, short film, cinematic, director style, storyboard, shoot like",
+      "triggers": [],
+      "source": "global",
+      "path": "../../../../.claude/skills/ai-filmmaking/SKILL.md"
+    },
+    {
+      "name": "analytics-attribution",
+      "description": "Performance measurement, attribution modeling, and marketing ROI analysis. Use when setting up tracking, analyzing campaign performance, building attribution models, or creating marketing reports.",
+      "triggers": [],
+      "source": "project",
+      "path": ".claude/skills/analytics-attribution/SKILL.md"
+    },
+    {
+      "name": "analytics-usage",
+      "description": "Track and analyze which skills and agents you use most. Find your 80/20 — which 20% of tools drive 80% of your results. Global tracking across all clients/projects.",
+      "triggers": [],
+      "source": "project",
+      "path": ".claude/skills/analytics-usage/SKILL.md"
+    },
+    {
+      "name": "auto-broll",
+      "description": "\"Script→B-roll plan: extract scenes with TYPE TAGS (hook/problem/education/product/proof/credibility/cta), fetch stock clips, generate Higgsfield prompts. Phrases: find clips, get B-roll, pull footage, stock video, clips to match. Built for Node.js pipelines. See also: ugc-broll-",
+      "triggers": [],
+      "source": "global",
+      "path": "../../../../.claude/skills/auto-broll/SKILL.md"
+    },
+    {
+      "name": "avatar-research",
+      "description": "\"Build/refresh buyer-profile.md with 3-7 micro-personas (motivation/pain/outcome/context/trigger) for video, static ads, email, landing pages, funnels. Feeds campaign-selection.json + downstream workspaces. Triggers: avatar research, build avatars, DCT avatars, audience segments,",
+      "triggers": [],
+      "source": "project",
+      "path": ".claude/skills/avatar-research/SKILL.md"
+    },
+    {
+      "name": "beat-sheet-director",
+      "description": "\"Concept+duration→annotated beat sheet: GPT Image 2 grids, character/prop/product style sheets, video renderer handoff. 15s max/scene. Triggers: storyboard, shot grid, panel breakdown, style sheet, Seedance/Veo/Sora handoff. Outputs: beat-indexed annotation lanes + model-agnostic",
+      "triggers": [],
+      "source": "global",
+      "path": "../../../../.claude/skills/beat-sheet-director/SKILL.md"
+    },
+    {
+      "name": "big-angle-spotter",
+      "description": "\"12-step ad-creative pipeline: Opus orchestrator → 12 Sonnet steps → 3 angle prompts + 3 image-gen prompts (parallel). Generates high-converting angles, headlines, static ad copy per offer/persona. Triggers: big angle spotter, spot angles, ad pipeline, 10 angles, ad creative, scr",
+      "triggers": [],
+      "source": "project",
+      "path": ".claude/skills/big-angle-spotter/SKILL.md"
+    },
+    {
+      "name": "brand-building",
+      "description": "Brand strategy, identity, positioning, and voice development. Use when developing brand guidelines, creating positioning statements, defining brand voice, or building brand architecture.",
+      "triggers": [],
+      "source": "project",
+      "path": ".claude/skills/brand-building/SKILL.md"
+    },
+    {
+      "name": "brand-scaffolder",
+      "description": "\"Synthesize missing _brand/ files (brand-voice, offer, icp, buyer-profile, channels, content-pillars, story-bank) from research, transcripts, content, competitor data. HITL gate. Triggers: scaffold brand, fill _brand folder, preflight scaffold.\"",
+      "triggers": [],
+      "source": "global",
+      "path": "../../../../.claude/skills/brand-scaffolder/SKILL.md"
+    },
+    {
+      "name": "bullshit-detector",
+      "description": "\"Reality-check articles, posts, tech, business models, pitches. 3-step: baseline questions → parallel research → plain-English verdict (why-it-works vs failure modes). Hemingway Level 4. Triggers: bs detect, is this real, honest read, paste content + ask viability.\"",
+      "triggers": [],
+      "source": "global",
+      "path": "../../../../.claude/skills/bullshit-detector/SKILL.md"
+    },
+    {
+      "name": "business-profile",
+      "description": "\"Fuggy's Media intake: 6 sections, ~21 questions + custom deep-dives. Outputs JSON context profile. Ad-optimized: big promise, objections, pain points, 90-day goals. Foundation for all downstream skills. Triggers: business profile, context profile, client intake, onboarding form.",
+      "triggers": [],
+      "source": "project",
+      "path": ".claude/skills/business-profile/SKILL.md"
+    },
+    {
+      "name": "campaign-runner",
+      "description": "\"Campaign execution framework. Tracks state across sessions, routes tasks to agents, manages assets, publishes/schedules via Postiz, creates discovery files for video/email/funnel/landing/ad-concept workspaces. Triggers: start, continue, manage marketing campaign end-to-end.\"",
+      "triggers": [],
+      "source": "project",
+      "path": ".claude/skills/campaign-runner/SKILL.md"
+    },
+    {
+      "name": "chrome-mcp",
+      "description": "\"Chrome DevTools inspection ONLY: Lighthouse audits, perf traces, network/console inspection, heap snapshots on a real logged-in Chrome. NOT for automation — use dev-browser for click/fill/multi-step flows. Never invoke inside sub-agents (round-trips stall and get watchdog-killed",
+      "triggers": [],
+      "source": "global",
+      "path": "../../../../.claude/skills/chrome-mcp/SKILL.md"
+    },
+    {
+      "name": "claude-md-architect",
+      "description": "\"V4 marketing-scoped CLAUDE.md architect for AgentKits client onboarding: 100-point rubric audit, surgical updates, nested-CLAUDE.md scaffolding tied to V4 ICM structure. For generic CLAUDE.md work use plugin claude-md-management:claude-md-improver instead. Triggers: V4 claude.md",
+      "triggers": [],
+      "source": "project",
+      "path": ".claude/skills/claude-md-architect/SKILL.md"
+    },
+    {
+      "name": "client-onboarding",
+      "description": "\"Two-path onboarding orchestrator. Path A (research-first): scrape → summary. Path B (interview-first): 21-question intake. Outputs Jake-structure project + campaign discovery indexes + workspace templates. Supports resume. Triggers: new project, onboard client, project setup.\"",
+      "triggers": [],
+      "source": "project",
+      "path": ".claude/skills/client-onboarding/SKILL.md"
+    },
+    {
+      "name": "cloudflare",
+      "description": "Comprehensive Cloudflare platform skill covering Workers, Pages, storage (KV, D1, R2), AI (Workers AI, Vectorize, Agents SDK), feature flags (Flagship), networking (Tunnel, Spectrum), security (WAF, DDoS), and infrastructure-as-code (Terraform, Pulumi). Use for any Cloudflare dev",
+      "triggers": [],
+      "source": "global",
+      "path": "../../../../.claude/skills/cloudflare/SKILL.md"
+    },
+    {
+      "name": "cloudflare-email-service",
+      "description": "Send and receive transactional emails with Cloudflare Email Service (Email Sending + Email Routing). Use when building email sending (Workers binding or REST API), email routing, Agents SDK email handling, or integrating email into any app — Workers, Node.js, Python, Go, etc. Als",
+      "triggers": [],
+      "source": "global",
+      "path": "../../../../.claude/skills/cloudflare-email-service/SKILL.md"
+    },
+    {
+      "name": "competitor-alternatives",
+      "description": "\"Create comparison/alternative pages for SEO + sales enablement. Four formats: singular alternative, plural alternatives, you vs competitor, competitor vs competitor. Modular architecture, deep research. Triggers: alternative page, vs page, competitor comparison, comparison page,",
+      "triggers": [],
+      "source": "project",
+      "path": ".claude/skills/competitor-alternatives/SKILL.md"
+    },
+    {
+      "name": "content-moat",
+      "description": "Content ideation, originality-first frameworks, and layer stacking for defensible creative moat. Copycat resistance scoring. Triggers: content ideation, content moat, copycat protection, creative layering, layer stacking, original content, content differentiation, viral content s",
+      "triggers": [],
+      "source": "project",
+      "path": ".claude/skills/content-moat/SKILL.md"
+    },
+    {
+      "name": "content-strategy",
+      "description": "Content planning, creation, and distribution strategy. Use when planning content calendars, developing content pillars, creating editorial strategies, or optimizing content for different funnel stages.",
+      "triggers": [],
+      "source": "project",
+      "path": ".claude/skills/content-strategy/SKILL.md"
+    },
+    {
+      "name": "copy-coach",
+      "description": "\"Find/expand a Big Idea (page spine, chorus, belief chain, monkey's fist) and line-stylize prose (tug, cadence, voice, register, kill list, cold-reader). Plus multi-pass versioned rewrite. NOT for: writing copy from scratch (use copywriting), polish sweeps (use copy-editing), or ",
+      "triggers": [],
+      "source": "project",
+      "path": ".claude/skills/copy-coach/SKILL.md"
+    },
+    {
+      "name": "copy-editing",
+      "description": "\"Edit and polish marketing copy via systematic multi-pass review. Triggers: edit copy, review copy, copy feedback, proofread, polish, make this better, copy sweep, improve writing, humanize text, de-ai, remove ai patterns, sound more human.\"",
+      "triggers": [],
+      "source": "project",
+      "path": ".claude/skills/copy-editing/SKILL.md"
+    },
+    {
+      "name": "copywriting",
+      "description": "\"Write or rewrite marketing copy for any page (landing, pricing, homepage, product, about). Triggers: write copy, marketing copy, headline, CTA copy, landing page copy, homepage copy, rewrite, improve copy. NOT for: email (use email-sequence), popup copy (use popup-cro).\"",
+      "triggers": [],
+      "source": "project",
+      "path": ".claude/skills/copywriting/SKILL.md"
+    },
+    {
+      "name": "deep-research",
+      "description": "\"Multi-agent parallel research: decomposes topic into 3-6 MECE angles, spawns sub-agents, runs gap analysis, synthesizes comprehensive findings. 90.2% better than single-agent (Anthropic eval). Triggers: deep research, thorough research, research everything about, cover every ang",
+      "triggers": [],
+      "source": "project",
+      "path": ".claude/skills/deep-research/SKILL.md"
+    },
+    {
+      "name": "design",
+      "description": ">- Create or refine a spec-compliant DESIGN.md — YAML design tokens plus an ordered markdown body. Triggers: \"create a DESIGN.md\", \"design system spec\", \"design tokens\", \"brand design contract\", \"convert design system to spec\", \"/design\", \"turn CSS/Tailwind into design tokens\". G",
+      "triggers": [],
+      "source": "global",
+      "path": "../../../../.claude/skills/design/SKILL.md"
+    },
+    {
+      "name": "dev-browser",
+      "description": "\"Playwright automation CLI: new/authenticated browsers, multi-page workflows, click/fill/screenshot/scrape. QuickJS sandbox. Triggers: go to, click, fill form, screenshot, scrape, automate, test, log into, navigate.\"",
+      "triggers": [],
+      "source": "global",
+      "path": "../../../../.claude/skills/dev-browser/SKILL.md"
+    },
+    {
+      "name": "durable-objects",
+      "description": "Create and review Cloudflare Durable Objects. Use when building stateful coordination (chat rooms, multiplayer games, booking systems), implementing RPC methods, SQLite storage, alarms, WebSockets, or reviewing DO code for best practices. Covers Workers integration, wrangler conf",
+      "triggers": [],
+      "source": "global",
+      "path": "../../../../.claude/skills/durable-objects/SKILL.md"
+    },
+    {
+      "name": "email-marketing",
+      "description": "Email campaign strategy, automation, and optimization. Use when creating email sequences, improving deliverability, designing automation workflows, or optimizing email performance.",
+      "triggers": [],
+      "source": "project",
+      "path": ".claude/skills/email-marketing/SKILL.md"
+    },
+    {
+      "name": "email-sequence",
+      "description": "\"Create/optimize email sequences, drip campaigns, nurture/onboarding/lifecycle flows. Triggers: email sequence, drip, nurture, welcome, onboarding, re-engagement, email automation. NOT for: in-app onboarding (use onboarding-cro).\"",
+      "triggers": [],
+      "source": "project",
+      "path": ".claude/skills/email-sequence/SKILL.md"
+    },
+    {
+      "name": "feedback-router",
+      "description": "\"Closes creative pipeline after DCT wave. Reads performance data, routes to NEW (research refresh), BETTER (angle refinement), or MORE (scale variants). Auto-appends learnings. Triggers: feedback router, wave feedback, dct feedback, performance routing, new better more, /ads:feed",
+      "triggers": [],
+      "source": "project",
+      "path": ".claude/skills/feedback-router/SKILL.md"
+    },
+    {
+      "name": "ferres-corpus",
+      "description": "\"Query Sean Ferres' AI Ads Lab course corpus + distilled rulebooks. Triggers: Ferres, AI Ads Lab, what does the course say, swipe vault pattern, statics playbook, control challenge, Ferres research flow, hook rubric, roast call. Rule: distilled files first, qmd only for verbatim ",
+      "triggers": [],
+      "source": "project",
+      "path": ".claude/skills/ferres-corpus/SKILL.md"
+    },
+    {
+      "name": "form-cro",
+      "description": "\"Optimize non-signup forms: lead capture, contact, demo, application, survey, checkout. Triggers: form optimization, lead form, contact form, form fields, form friction, completion rate. NOT for: signup flows (use signup-flow-cro) or forms in popups (use popup-cro).\"",
+      "triggers": [],
+      "source": "project",
+      "path": ".claude/skills/form-cro/SKILL.md"
+    },
+    {
+      "name": "free-tool-strategy",
+      "description": "\"Plan & build free marketing tools for lead gen, SEO, brand awareness. Engineering-as-marketing bridge. Triggers: free tool, calculator, generator, interactive tool, lead gen tool, marketing tool. For founders & technical marketers.\"",
+      "triggers": [],
+      "source": "project",
+      "path": ".claude/skills/free-tool-strategy/SKILL.md"
+    },
+    {
+      "name": "gpt-image-2-director",
+      "description": "\"Concept→production-ready GPT Image 2.0 prompts. JSON for layouts (UI, infographics, character sheets), prose for cinematic images, meta-prompts for concepts. Realism checklist for people. Reference acquisition from social URLs. Triggers: gpt image 2 prompt, make gpt image prompt",
+      "triggers": [],
+      "source": "global",
+      "path": "../../../../.claude/skills/gpt-image-2-director/SKILL.md"
+    },
+    {
+      "name": "hazecraft",
+      "description": "Edit any Hazecraft-hosted site by ID or handle, straight from chat. Pull a page's live HTML, make big changes (popups, sections, rewrites), push it back, and publish on Jerel's OK — without keeping the HTML locally. Triggers — edit site <id/handle>, edit a live site, pull/push a ",
+      "triggers": [],
+      "source": "global",
+      "path": "../../../../.claude/skills/hazecraft/SKILL.md"
+    },
+    {
+      "name": "headline-bank",
+      "description": "\"Curiosity-led Meta ad copy generator. Per angle: a ~150w PRIMARY on the six-emotional-states sequence (hook -> pain -> agitate -> hope -> loop CTA) + a ~50w compression, with 3-5w headlines. Funnel-aware, brand-conditional emoji. Feeds DCT COPY tab 1:1. Triggers: meta copy, meta",
+      "triggers": [],
+      "source": "project",
+      "path": ".claude/skills/headline-bank/SKILL.md"
+    },
+    {
+      "name": "here-now",
+      "description": "\"Publish websites & store private files in cloud Drives. Sites: publish to {slug}.here.now or custom domains. Drives: cloud folders for docs, memory, plans, assets, media, code. Triggers: publish, host, deploy, share on web, make a website, generate URL, save to Drive, share fold",
+      "triggers": [],
+      "source": "global",
+      "path": "../../../../.claude/skills/here-now/SKILL.md"
+    },
+    {
+      "name": "higgsfield",
+      "description": "\"Router for all Higgsfield generation work: image, video, Soul character training, product photography, marketplace, Marketing Studio ads. Triggers: Higgsfield, Soul, Seedance, Kling, GPT Image 2, Nano Banana, product photoshoot, any generation via higgsfield CLI.\"",
+      "triggers": [],
+      "source": "global",
+      "path": "../../../../.claude/skills/higgsfield/SKILL.md"
+    },
+    {
+      "name": "icm",
+      "description": "\"Interpretable Context Methodology (ICM, arXiv:2603.16021v2) — five-layer folder/context architecture that loads minimum context per step; fixes token bloat, duplication drift, context discovery. Includes a V4 Marketing Scaffold Mode (validate-icm.sh, delegates to client-onboardi",
+      "triggers": [],
+      "source": "global",
+      "path": "../../../../.claude/skills/icm/SKILL.md"
+    },
+    {
+      "name": "ig-reel-script-writer",
+      "description": "\"Instagram Reel scripts via Jason's viral framework (Hook → Build-Up → Value → Payoff → CTA). 100+ proven hooks + psychology. Triggers: write reel script, turn idea into reel, draft reel, write hook, script IG reel, improve reel script, brainstorm hooks, short-form content.\"",
+      "triggers": [],
+      "source": "global",
+      "path": "../../../../.claude/skills/ig-reel-script-writer/SKILL.md"
+    },
+    {
+      "name": "ig-scorecard",
+      "description": "\"Analyze last 10 Instagram posts: engagement metrics, winners/losers analysis, content strategy. Browser automation + .xlsx scorecard. Triggers: Instagram audit, IG analytics, post performance, rank my posts, content strategy, check my Instagram, best posts, what content is worki",
+      "triggers": [],
+      "source": "global",
+      "path": "../../../../.claude/skills/ig-scorecard/SKILL.md"
+    },
+    {
+      "name": "image-generation",
+      "description": "\"Tier-1 image-gen orchestrator: routes intent + Vertex/NB2 direct backend + HITL prompt review + carousel mode + video reference frames. Routes to `higgsfield` skill (sub-areas: product-photoshoot, marketplace-cards, soul-id, generate) or `gpt-image-2-director` peer. NOT for: vid",
+      "triggers": [],
+      "source": "project",
+      "path": ".claude/skills/image-generation/SKILL.md"
+    },
+    {
+      "name": "knowledge-hygiene",
+      "description": "\"Anti-decay system that detects stale docs, unintegrated learnings, and registry drift. Surfaces hygiene reports inside existing ops commands — not as standalone maintenance. Updates happen as byproducts of doing the work.\"",
+      "triggers": [],
+      "source": "project",
+      "path": ".claude/skills/knowledge-hygiene/SKILL.md"
+    },
+    {
+      "name": "launch-strategy",
+      "description": "\"Plan product launches, feature releases, announcements, go-to-market strategy. Covers phased launches, channel strategy, momentum. Triggers: launch, Product Hunt, feature release, announcement, go-to-market, beta launch, early access, waitlist, product update.\"",
+      "triggers": [],
+      "source": "project",
+      "path": ".claude/skills/launch-strategy/SKILL.md"
+    },
+    {
+      "name": "linkedin-content",
+      "description": "\"LinkedIn content pipeline: reverse-interview profiling, story mining, SIREN-framework drafting, virality engineering. Triggers: write LinkedIn post, ghostwriting, story bank, content creation, client interview, engagement, unfindable content.\"",
+      "triggers": [],
+      "source": "project",
+      "path": ".claude/skills/linkedin-content/SKILL.md"
+    },
+    {
+      "name": "linkedin-optimization",
+      "description": "\"LinkedIn organic: profile audit, algorithm, content playbooks, creator mode, B2B sales, engagement, newsletters, organic-to-paid. Tools: profile analyzer, banner designer, content idea generator. Triggers: LinkedIn profile, optimization, strategy, algorithm, audit, newsletter.\"",
+      "triggers": [],
+      "source": "project",
+      "path": ".claude/skills/linkedin-optimization/SKILL.md"
+    },
+    {
+      "name": "llm-council",
+      "description": "\"5-advisor council: independent analysis, peer review, final verdict (Karpathy methodology). TRIGGERS: council this, war room, pressure-test, should I X or Y, which option, validate, get perspectives, I'm torn. NOT: trivial yes/no, factual lookups, casual 'should I' without stake",
+      "triggers": [],
+      "source": "global",
+      "path": "../../../../.claude/skills/llm-council/SKILL.md"
+    },
+    {
+      "name": "marketing-fundamentals",
+      "description": "\"Foundational marketing: funnels, customer journey, positioning, value propositions, psychology. Triggers: marketing basics, TOFU/MOFU/BOFU, funnel, customer journey, positioning, value proposition, framework.\"",
+      "triggers": [],
+      "source": "project",
+      "path": ".claude/skills/marketing-fundamentals/SKILL.md"
+    },
+    {
+      "name": "marketing-ideas",
+      "description": "\"140 proven marketing approaches by category. Triggers: marketing ideas, growth ideas, how to market, marketing strategies, tactics, ways to promote, ideas to grow, growth hacking.\"",
+      "triggers": [],
+      "source": "project",
+      "path": ".claude/skills/marketing-ideas/SKILL.md"
+    },
+    {
+      "name": "marketing-psychology",
+      "description": "\"70+ mental models for marketing. Triggers: psychology, mental models, cognitive bias, persuasion, behavioral science, why people buy, decision-making, consumer behavior, first principles, JTBD.\"",
+      "triggers": [],
+      "source": "project",
+      "path": ".claude/skills/marketing-psychology/SKILL.md"
+    },
+    {
+      "name": "meta-ads-uploader",
+      "description": "\"End-to-end Meta (Facebook/Instagram) ad creative uploader. Bridges copy generation to live ads. Triggers: upload ads, create meta ads, bulk upload, publish, launch ads, deploy, upload creatives, push ads.\"",
+      "triggers": [],
+      "source": "project",
+      "path": ".claude/skills/meta-ads-uploader/SKILL.md"
+    },
+    {
+      "name": "multi-agent-consensus",
+      "description": "\"Spawn N agents on same prompt (framing variations) to find consensus, divergences, outliers. Filters hallucinations, surfaces ideas. Triggers: consensus, poll agents, stochastic consensus, multi-agent vote, compare approaches.\"",
+      "triggers": [],
+      "source": "project",
+      "path": ".claude/skills/multi-agent-consensus/SKILL.md"
+    },
+    {
+      "name": "notebooklm",
+      "description": "\"Google NotebookLM API: create notebooks, add sources (URLs, PDFs, video, audio), generate all artifact types (podcasts, guides, FAQs, timelines), download formats. Triggers: /notebooklm, create podcast, NotebookLM.\"",
+      "triggers": [],
+      "source": "global",
+      "path": "../../../../.claude/skills/notebooklm/SKILL.md"
+    },
+    {
+      "name": "notion-cli",
+      "description": "\"Notion CLI (`ntn`): query databases, create/update pages from Markdown, upload files, raw API. Auth via OS keychain (ntn login). 3 req/sec sustained, 10 burst. Triggers: notion, ntn, query database, push to notion, sync to notion, create page.\"",
+      "triggers": [],
+      "source": "global",
+      "path": "../../../../.claude/skills/notion-cli/SKILL.md"
+    },
+    {
+      "name": "offer-builder",
+      "description": "\"5-phase offer framework: discovery, viability scoring, identity extraction, micro offers, documents, audits, deployment. Triggers: build offer, offer builder, positioning, micro offer, viability, audit, score, create offer.\"",
+      "triggers": [],
+      "source": "project",
+      "path": ".claude/skills/offer-builder/SKILL.md"
+    },
+    {
+      "name": "onboarding-cro",
+      "description": "\"Post-signup onboarding optimization: activation, first-run, time-to-value, empty states, aha moment, NUX. Triggers: onboarding, activation, first-run, aha moment, time to value, checklist, empty states. NOT for: signup flow (signup-flow-cro) or email sequences (email-sequence).\"",
+      "triggers": [],
+      "source": "project",
+      "path": ".claude/skills/onboarding-cro/SKILL.md"
+    },
+    {
+      "name": "onboarding-strategy-pdf",
+      "description": "\"Generate client-ready 7-page onboarding strategy PDF (Hormozi framework). Merges context + avatar research + optional paid-media-audit. For paid calls. Triggers: onboarding strategy pdf, strategy report pdf, generate onboarding report, onboarding deliverable.\"",
+      "triggers": [],
+      "source": "project",
+      "path": ".claude/skills/onboarding-strategy-pdf/SKILL.md"
+    },
+    {
+      "name": "one",
+      "description": "| Use the One CLI (`one`) to interact with 3rd-party platforms — Gmail, Slack, Stripe, Notion, etc. through their APIs. One handles auth, request building, and execution.  TRIGGER when: - Interact with ANY 3rd-party platform or external service (e.g., \"send an email\", \"create a S",
+      "triggers": [],
+      "source": "global",
+      "path": "../../../../.claude/skills/one/SKILL.md"
+    },
+    {
+      "name": "page-cro",
+      "description": "\"Optimize any marketing page (homepage, landing, pricing, feature, blog) for conversions. Triggers: CRO, conversion rate optimization, improve conversions, bounce rate, page optimization. NOT for: signup flows (signup-flow-cro), post-signup activation (onboarding-cro), forms (for",
+      "triggers": [],
+      "source": "project",
+      "path": ".claude/skills/page-cro/SKILL.md"
+    },
+    {
+      "name": "paid-advertising",
+      "description": "Paid media strategy and optimization across platforms. Use when planning paid campaigns, optimizing ad performance, managing budgets, or setting up tracking for paid channels.",
+      "triggers": [],
+      "source": "project",
+      "path": ".claude/skills/paid-advertising/SKILL.md"
+    },
+    {
+      "name": "paid-media-audit",
+      "description": "Systematic audit framework for evaluating paid advertising accounts across Google Ads, Meta Ads, LinkedIn Ads, and TikTok Ads. Covers 200+ checkpoints spanning account structure, tracking, bidding, targeting, creative, landing pages, and competitive ad intelligence.",
+      "triggers": [],
+      "source": "project",
+      "path": ".claude/skills/paid-media-audit/SKILL.md"
+    },
+    {
+      "name": "paywall-upgrade-cro",
+      "description": "\"Create/optimize in-app paywalls, upgrade screens, upsells, feature gates. Triggers: paywall, upgrade screen, upsell modal, feature gate, freemium conversion, trial expiration, upgrade prompt, in-app pricing. NOT for: public pricing pages (page-cro).\"",
+      "triggers": [],
+      "source": "project",
+      "path": ".claude/skills/paywall-upgrade-cro/SKILL.md"
+    },
+    {
+      "name": "persuasive-premise",
+      "description": "\"Generate the single belief that makes an offer inevitable (Schwartz framework). Outputs: core_belief + contrast + evidence + implication. Feeds: headline-bank, ad-concept-engine, sales-letter-method. NOT a benefit list — premises are disagreeable beliefs. Run after offer-builder",
+      "triggers": [],
+      "source": "project",
+      "path": ".claude/skills/persuasive-premise/SKILL.md"
+    },
+    {
+      "name": "pinterest",
+      "description": "Pinterest profile inventory + image extraction via two CLIs — pin-scrape (no-auth public scraper, default) or pinterest-pp-cli (official v5 API). Triggers — pinterest, my pins, my boards, scrape pinterest, pinterest profile, moodboard from pinterest, get images from pinterest, pi",
+      "triggers": [],
+      "source": "global",
+      "path": "../../../../.claude/skills/pinterest/SKILL.md"
+    },
+    {
+      "name": "plan-for-goal",
+      "description": "\"Brief → locked /goal plan: size triage, premise challenge, scope selection, 0-10 critique. Outputs: markdown plan + paste-ready /goal one-liner. Locked sections: Brief, Stack, Scope, Out of Scope, Constraints, DoD, Acceptance, Verification, Turn Budget. Engine-agnostic.\"",
+      "triggers": [],
+      "source": "global",
+      "path": "../../../../.claude/skills/plan-for-goal/SKILL.md"
+    },
+    {
+      "name": "plans-vault",
+      "description": "\"Per-client HTML plan vaults at plans.genflos.com/<client>/ via here.now. TRIGGERS: use here.now (client-bound), publish plan for <client>, update <client> page, scaffold vault, deploy onboarding. NOT: raw here.now work outside plans.genflos.com pattern (use here-now skill).\"",
+      "triggers": [],
+      "source": "global",
+      "path": "../../../../.claude/skills/plans-vault/SKILL.md"
+    },
+    {
+      "name": "popup-cro",
+      "description": "\"Create/optimize popups, modals, overlays, slide-ins, banners. Triggers: popup, modal, overlay, exit intent, email popup, lead capture popup, announcement banner. NOT for: standalone forms (use form-cro) or page optimization (use page-cro).\"",
+      "triggers": [],
+      "source": "project",
+      "path": ".claude/skills/popup-cro/SKILL.md"
+    },
+    {
+      "name": "pp-recall",
+      "description": "\"Recall Printing Press CLI: read-only API for your AI encyclopedia/second brain. List cards, fetch, search. NOTE: --offline/local mode is metadata-only (chunks missing); use live mode (default) for full content. Triggers: recall, my cards, second brain, printing press.\"",
+      "triggers": [],
+      "source": "global",
+      "path": "../../../../.claude/skills/pp-recall/SKILL.md"
+    },
+    {
+      "name": "pp-scrape-creators",
+      "description": "\"Scrape Creators CLI: TikTok/Instagram/YouTube profiles, Facebook ad library, cross-platform creator data, offline search. Triggers: scrape creators, tiktok profile, instagram profile, youtube channel, creator on every platform.\"",
+      "triggers": [],
+      "source": "global",
+      "path": "../../../../.claude/skills/pp-scrape-creators/SKILL.md"
+    },
+    {
+      "name": "pricing-strategy",
+      "description": "\"Design pricing, tiers, packaging, monetization. Triggers: pricing, pricing tiers, freemium, free trial, packaging, price increase, value metric, Van Westendorp, willingness to pay. Covers research, tier structure, packaging.\"",
+      "triggers": [],
+      "source": "project",
+      "path": ".claude/skills/pricing-strategy/SKILL.md"
+    },
+    {
+      "name": "problem-promise",
+      "description": "\"Generate a two-line setup-payoff structure (Halbert/Hormozi style). Problem line articulates pain so specific the audience says 'that's me.' Promise line inverts pain into outcome with mechanism + time + effort + sacrifice equation. Both reference same audience and context. Run ",
+      "triggers": [],
+      "source": "project",
+      "path": ".claude/skills/problem-promise/SKILL.md"
+    },
+    {
+      "name": "problem-solving",
+      "description": "\"Systematic problem-solving for marketing: simplification cascades (complexity), collision-zone thinking (creative blocks), meta-pattern recognition (recurring patterns), inversion (assumptions), scale game (audience scaling). Triggers: stuck, problem, challenge, creative block, ",
+      "triggers": [],
+      "source": "project",
+      "path": ".claude/skills/problem-solving/SKILL.md"
+    },
+    {
+      "name": "programmatic-seo",
+      "description": "\"Create SEO-driven pages at scale via templates & data. Triggers: pSEO 2.0, JSON-first pages, niche taxonomy, schema-driven content, template pages, directory/location/comparison pages, GEO, generative engine optimization. NOT for: SEO audits (use seo-audit).\"",
+      "triggers": [],
+      "source": "project",
+      "path": ".claude/skills/programmatic-seo/SKILL.md"
+    },
+    {
+      "name": "prompt-contracts",
+      "description": "\"Define success, constraints, output format, and failure conditions in a single structured contract. Auto-triggers on high-stakes work. Contract library + Reverse Prompt to extract contracts from winning assets. Triggers: prompt contract, define success, failure conditions, what ",
+      "triggers": [
+        "high-stakes work"
+      ],
+      "source": "project",
+      "path": ".claude/skills/prompt-contracts/SKILL.md"
+    },
+    {
+      "name": "reddit",
+      "description": "\"Reddit CLI: scrape, search, user, subreddit, trending, submission. No API key. 97-100% comment coverage, JSON + markdown output. Anonymous, 60 req/min. For buyer language discovery & competitive intel.\"",
+      "triggers": [],
+      "source": "project",
+      "path": ".claude/skills/reddit/SKILL.md"
+    },
+    {
+      "name": "referral-program",
+      "description": "\"Referral program design & optimization. Triggers: referral, affiliate, ambassador, word of mouth, viral loop, refer a friend, partner program. Covers incentive structure, viral coefficient, and conversion.\"",
+      "triggers": [],
+      "source": "project",
+      "path": ".claude/skills/referral-program/SKILL.md"
+    },
+    {
+      "name": "research",
+      "description": "Buyer-language + market-research orchestrator. Routes to channel sub-agents (Exa, Reddit, Linkup, Firecrawl) across quick/standard/deep/buyer-language/crawl modes. Writes per-aspect market files with provenance. Triggers — /research, market research, buyer-language dossier, ICP r",
+      "triggers": [],
+      "source": "global",
+      "path": "../../../../.claude/skills/research/SKILL.md"
+    },
+    {
+      "name": "responsive-error-audit",
+      "description": "Post-build mobile/responsive QA audit for any web page. Headless multi-viewport sweep detecting horizontal overflow, clipped elements, broken images, tap targets under 44px, bad viewport meta, tiny text, missing srcset, console/JS errors, CLS/LCP, and axe-core WCAG violations. Us",
+      "triggers": [],
+      "source": "global",
+      "path": "../../../../.claude/skills/responsive-error-audit/SKILL.md"
+    },
+    {
+      "name": "routing-tester",
+      "description": "\"Stress-test a skill/agent/system-prompt's routing by spawning sub-agents IN THE CORRECT PERSONA (worker, orchestrator, end-user) to navigate it cold. Surfaces missing entry points, ambiguous routing, redundant file loads, persona-mismatch tests. Triggers: test routing, audit rou",
+      "triggers": [],
+      "source": "global",
+      "path": "../../../../.claude/skills/routing-tester/SKILL.md"
+    },
+    {
+      "name": "sales-letter-audit",
+      "description": "\"Audit finished sales letters via Schwartz/Halbert lens: awareness, sophistication, channel, A/B-pile, specificity. Diagnostic + client briefs. NOT for greenfield — for judgment only. Hand rewrites to sales-letter-method.\"",
+      "triggers": [],
+      "source": "project",
+      "path": ".claude/skills/sales-letter-audit/SKILL.md"
+    },
+    {
+      "name": "sales-letter-method",
+      "description": "\"Write 800-2000+ word direct-response sales letters for cold paid traffic. 5+ min engagement → booked consultations. Real estate, consulting, coaching, agency, high-ticket. NOT: landing pages, pricing pages, email sequences.\"",
+      "triggers": [],
+      "source": "project",
+      "path": ".claude/skills/sales-letter-method/SKILL.md"
+    },
+    {
+      "name": "sandbox-sdk",
+      "description": "Build sandboxed applications for secure code execution. Load when building AI code execution, code interpreters, CI/CD systems, interactive dev environments, or executing untrusted code. Covers Sandbox SDK lifecycle, commands, files, code interpreter, and preview URLs. Biases tow",
+      "triggers": [],
+      "source": "global",
+      "path": "../../../../.claude/skills/sandbox-sdk/SKILL.md"
+    },
+    {
+      "name": "schema-markup",
+      "description": "\"Add, fix, optimize schema markup & structured data. Triggers: schema markup, JSON-LD, rich snippets, FAQ schema, product schema, review schema, breadcrumb schema. For broad SEO, see seo-mastery.\"",
+      "triggers": [],
+      "source": "project",
+      "path": ".claude/skills/schema-markup/SKILL.md"
+    },
+    {
+      "name": "scrapecreators",
+      "description": "\"V4 marketing only — Scrape Creators wrapper at skills/scrapecreators/scripts/scrape.py with V4 brand/research integration. For global Scrape Creators access use pp-scrape-creators instead. Covers profiles, videos, posts, comments, transcripts, ad library across 25+ platforms. Tr",
+      "triggers": [],
+      "source": "project",
+      "path": ".claude/skills/scrapecreators/SKILL.md"
+    },
+    {
+      "name": "scrapling",
+      "description": "\"Python scraping library: three fetcher tiers (static/dynamic/stealth) + adaptive CSS selectors. Handles bot detection (DataDome, Cloudflare). Triggers: scrape, html extraction, adaptive selectors, stealth fetch.\"",
+      "triggers": [],
+      "source": "global",
+      "path": "../../../../.claude/skills/scrapling/SKILL.md"
+    },
+    {
+      "name": "screenwriter",
+      "description": "\"Write screenplays, episodes, scenes, beat sheets using McKee/Campbell/Aristotle. Outputs Hollywood .docx, bilingual dialogue, structure audit. Triggers: screenplay, episode breakdown, beat sheet, dialogue, screen time, characters.\"",
+      "triggers": [],
+      "source": "global",
+      "path": "../../../../.claude/skills/screenwriter/SKILL.md"
+    },
+    {
+      "name": "script-skill",
+      "description": "\"Video scripts, speech patterns, hooks. Extract creator voice, scrape competitor hooks, query hooks database, voice-matched scripts, de-AI passes. Triggers: video script, my voice, how I talk, speech patterns, hooks, scroll-stopper, first 3 seconds, write me a hook.\"",
+      "triggers": [],
+      "source": "global",
+      "path": "../../../../.claude/skills/script-skill/SKILL.md"
+    },
+    {
+      "name": "seedance-director",
+      "description": "\"Seedance 2.0 video prompts via TechHalla 4-block call sheet. 15s single-clip. Cinematic/broadcast/UGC/2D animation. Triggers: seedance, ugc ad, motion graphics, liquid glass, app promo, i2v, character sheet, viral satire. NOT for: 30s+ multi-segment (use video-factory) or image ",
+      "triggers": [],
+      "source": "global",
+      "path": "../../../../.claude/skills/seedance-director/SKILL.md"
+    },
+    {
+      "name": "seo-mastery",
+      "description": "Search engine optimization strategies and tactics for organic growth. Use when optimizing content for search, conducting keyword research, performing SEO audits, or building link strategies.",
+      "triggers": [],
+      "source": "project",
+      "path": ".claude/skills/seo-mastery/SKILL.md"
+    },
+    {
+      "name": "session-handoff",
+      "description": "\"End-of-session summary: decisions, shipped changes, key files, running state, deferrals, open questions for fresh agent continuity. Triggers: session handoff, wrap up, hand off, handoff summary.\"",
+      "triggers": [],
+      "source": "global",
+      "path": "../../../../.claude/skills/session-handoff/SKILL.md"
+    },
+    {
+      "name": "sheets-provisioner",
+      "description": "\"Provision Google Sheet + LP funnel tabs per campaign. Scaffolds new client folders or appends to existing metrics-config.json. Triggers: new campaign, new LP sheet, add campaign, provision sheet, onboard client.\"",
+      "triggers": [],
+      "source": "project",
+      "path": ".claude/skills/sheets-provisioner/SKILL.md"
+    },
+    {
+      "name": "sheets-updater",
+      "description": "\"Pull Meta Ads metrics → client Google Sheet. HITL preview, protected columns. Daily/weekly/monthly/on-demand updates via metrics-config.json.\"",
+      "triggers": [],
+      "source": "project",
+      "path": ".claude/skills/sheets-updater/SKILL.md"
+    },
+    {
+      "name": "signup-flow-cro",
+      "description": "\"Optimize signup/registration/account creation/trial activation flows. Triggers: signup conversions, registration friction, signup form optimization, signup dropoff. NOT: onboarding (use onboarding-cro) or lead forms (use form-cro).\"",
+      "triggers": [],
+      "source": "project",
+      "path": ".claude/skills/signup-flow-cro/SKILL.md"
+    },
+    {
+      "name": "skill-cleaner",
+      "description": "\"Audit Claude Code skills: find duplicates across global/plugin/project roots, flag bloated descriptions, surface unused/retired husks, forecast prompt-budget savings. Adapted from steipete/agent-scripts (Codex original) for Claude Code's skill roots and ~4000-token / 2% skills b",
+      "triggers": [],
+      "source": "global",
+      "path": "../../../../.claude/skills/skill-cleaner/SKILL.md"
+    },
+    {
+      "name": "skill-creator",
+      "description": "\"Create, edit, optimize, and benchmark skills. Test & eval, variance analysis, improve triggering accuracy. Triggers: create skill, build skill, edit skill, optimize skill, eval skill.\"",
+      "triggers": [],
+      "source": "global",
+      "path": "../../../../.claude/skills/skill-creator/SKILL.md"
+    },
+    {
+      "name": "source-of-truth",
+      "description": "\"Generate 26-section paid ads source-of-truth. Auto-triage input, parallel research (scrapecreators, buyer-language, deep-research, product), synthesize via business-profile/avatar-research/ab-test. 4 checkpoints. Output: md + 5 derivatives for downstream skills.\"",
+      "triggers": [],
+      "source": "project",
+      "path": ".claude/skills/source-of-truth/SKILL.md"
+    },
+    {
+      "name": "tiktok-slideshows",
+      "description": "\"TikTok slideshows, Photo Mode, content calendar, trending hooks, batch production. Triggers: TikTok + (slideshows, carousels, Photo Mode, hooks, batches, calendar, performance, competitor). Also: story ledger, batch 01/02, narrative threads. Lifecycle: research \\u2192 prompt \\u2",
+      "triggers": [],
+      "source": "project",
+      "path": ".claude/skills/tiktok-slideshows/SKILL.md"
+    },
+    {
+      "name": "transcribe",
+      "description": "Transcribe any audio or video to text. Groq Whisper by default (fast/cheap); ElevenLabs Scribe for word-level timestamps (--words); local faster-whisper fallback.",
+      "triggers": [],
+      "source": "global",
+      "path": "../../../../.claude/skills/transcribe/SKILL.md"
+    },
+    {
+      "name": "trigger-agents",
+      "description": "\"AI agent patterns with Trigger.dev: orchestration, parallelization, routing, evaluator-optimizer, human-in-the-loop. Triggers: ai agent, parallel workers, approval gates, agent workflow.\"",
+      "triggers": [],
+      "source": "global",
+      "path": "../../../../.claude/skills/trigger-agents/SKILL.md"
+    },
+    {
+      "name": "trigger-config",
+      "description": "\"Configure Trigger.dev with trigger.config.ts: build extensions (Prisma, Playwright, FFmpeg, Python), deployment. Triggers: trigger config, build extension, deployment.\"",
+      "triggers": [],
+      "source": "global",
+      "path": "../../../../.claude/skills/trigger-config/SKILL.md"
+    },
+    {
+      "name": "trigger-cost-savings",
+      "description": "\"Optimize Trigger.dev costs: analyze runs, machine sizes, task efficiency, audit spend. Triggers: reduce spend, optimize costs, cost audit, right-size machines.\"",
+      "triggers": [],
+      "source": "global",
+      "path": "../../../../.claude/skills/trigger-cost-savings/SKILL.md"
+    },
+    {
+      "name": "trigger-realtime",
+      "description": "Subscribe to Trigger.dev task runs in real-time from frontend and backend. Use when building progress indicators, live dashboards, streaming AI/LLM responses, or React components that display task status.",
+      "triggers": [],
+      "source": "global",
+      "path": "../../../../.claude/skills/trigger-realtime/SKILL.md"
+    },
+    {
+      "name": "trigger-setup",
+      "description": "Set up Trigger.dev in your project. Use when adding Trigger.dev for the first time, creating trigger.config.ts, or initializing the trigger directory.",
+      "triggers": [],
+      "source": "global",
+      "path": "../../../../.claude/skills/trigger-setup/SKILL.md"
+    },
+    {
+      "name": "trigger-tasks",
+      "description": "Build AI agents, workflows and durable background tasks with Trigger.dev. Use when creating tasks, triggering jobs, handling retries, scheduling cron jobs, or implementing queues and concurrency control.",
+      "triggers": [],
+      "source": "global",
+      "path": "../../../../.claude/skills/trigger-tasks/SKILL.md"
+    },
+    {
+      "name": "trim-the-fat",
+      "description": "trim",
+      "triggers": [],
+      "source": "global",
+      "path": "../../../../.claude/skills/trim-the-fat/SKILL.md"
+    },
+    {
+      "name": "tweak",
+      "description": "Wrap any sales letter or HTML artifact in a browser inline editor — edit text, resize/move elements, add review notes, export clean HTML. Triggers: tweak this, make it editable, inline edit, let me edit the page, edit and export.",
+      "triggers": [],
+      "source": "global",
+      "path": "../../../../.claude/skills/tweak/SKILL.md"
+    },
+    {
+      "name": "ugc-creator",
+      "description": "\"Persistent actor UGC studio on Higgsfield — face-locked talking heads + product reviews, GRWM, unboxing. Triggers: UGC generation, actor creation, talent, product-review prompts, routine videos. NOT for: Seedance 2.0 ads (use seedance-director), motion graphics (use seedance-mot",
+      "triggers": [],
+      "source": "global",
+      "path": "../../../../.claude/skills/ugc-creator/SKILL.md"
+    },
+    {
+      "name": "unique-mechanism-problem",
+      "description": "\"Generate new root-cause explanation for WHY the problem exists—distinct from market consensus. Schwartz Sophistication Stages 3-4. Outputs: hidden_cause, named_label, proof_basis, competitor gap. Mirror: unique-mechanism-solution.\"",
+      "triggers": [],
+      "source": "project",
+      "path": ".claude/skills/unique-mechanism-problem/SKILL.md"
+    },
+    {
+      "name": "unique-mechanism-solution",
+      "description": "\"Generate new explanation for HOW solution works—distinct from market alternatives. Schwartz Stages 3-4. Outputs: how_it_works, named_label, moat, proof. Mirror: unique-mechanism-problem. Solution mechanism resolves problem mechanism.\"",
+      "triggers": [],
+      "source": "project",
+      "path": ".claude/skills/unique-mechanism-solution/SKILL.md"
+    },
+    {
+      "name": "unslop",
+      "description": "\"Domain-specific AI flaw detection. Generates empirical avoidance profiles via model sampling. Outputs: patterns to avoid, failure modes, cost/quality trade-offs. Run once per domain to produce a do-not-do-this list.\"",
+      "triggers": [],
+      "source": "project",
+      "path": ".claude/skills/unslop/SKILL.md"
+    },
+    {
+      "name": "userinterface-wiki",
+      "description": "\"152 UI/UX rules across 12 categories: animations, easing, springs, CSS, typography, spacing, Laws of UX. Triggers: feels janky, improve UX, polish UI, review CSS, make smoother, animation feels off, button wrong.\"",
+      "triggers": [],
+      "source": "project",
+      "path": ".claude/skills/userinterface-wiki/SKILL.md"
+    },
+    {
+      "name": "usp-generator",
+      "description": "\"Rosser Reeves USP generator: definite proposition + uniqueness + sales pull (3-part test, all required). Outputs: proposition, claim, pull, weakest link. Triggers: usp, unique selling proposition, what's the USP, rosser reeves.\"",
+      "triggers": [],
+      "source": "project",
+      "path": ".claude/skills/usp-generator/SKILL.md"
+    },
+    {
+      "name": "verification-loops",
+      "description": "\"Post-task review loop: spawn reviewer agents to audit output for correctness, edge cases, simplification. Spawn resolver agent to reconcile conflicts. 2-3x quality via agent-reviews-agent. Chain: Implement → Review → Resolve.\"",
+      "triggers": [],
+      "source": "project",
+      "path": ".claude/skills/verification-loops/SKILL.md"
+    },
+    {
+      "name": "vid-director",
+      "description": "Paid-video director brain — concept ideation, hook/spine/beat, route Higgsfield/Seedance/Veo/Kling/Sora, dispatch subagents, gate AG0/AG1/AG2. Triggers: vid-director, AG0/AG1/AG2, concept seeder, hook variant, prompt pack builder, eval-buyer-fit, html-publisher, paid video concep",
+      "triggers": [],
+      "source": "project",
+      "path": ".claude/skills/vid-director/SKILL.md"
+    },
+    {
+      "name": "video-brief-normalizer",
+      "description": "\"Bridge component: approved Video Concept Lab winner → client Google Docs brief + internal AI production brief. In Option B it feeds video-prompt-pack-builder, which owns the full AG2 prompt/input package. NOT for upstream ideation, parsing, images, beat sheets, or Meta copy.\"",
+      "triggers": [],
+      "source": "project",
+      "path": ".claude/skills/video-brief-normalizer/SKILL.md"
+    },
+    {
+      "name": "video-concept-lab",
+      "description": "\"Paid AI-video concept methodology for the main video-concept-seeder agent: 5 concepts + winner scoring before render. Hooks, narrative format, proof mode, strategic angle. Approval Gate 1. In the v0.5 pipeline this is a rubric/reference, not a second runtime concept generator.\"",
+      "triggers": [],
+      "source": "project",
+      "path": ".claude/skills/video-concept-lab/SKILL.md"
+    },
+    {
+      "name": "video-director",
+      "description": "\"REDIRECT / signpost (consolidated 2026-05-30). AI-video ad prompt-craft no longer lives here — it moved to the higgsfield-prompts video infra. This skill now only points you to the right place: model+framework routing → video-router; per-model prompt-craft → kling-3 / sora-2 / v",
+      "triggers": [],
+      "source": "project",
+      "path": ".claude/skills/video-director/SKILL.md"
+    },
+    {
+      "name": "video-factory",
+      "description": "\"Video clip production harness: model-ready prompts/payloads, render via selected executor, human review of MP4s, ffmpeg stitching. Triggers: video factory, pipeline, approved prompts to clips, end-to-end video, AI video production.\"",
+      "triggers": [],
+      "source": "global",
+      "path": "../../../../.claude/skills/video-factory/SKILL.md"
+    },
+    {
+      "name": "video-hook-variants",
+      "description": "\"Hook engineering for multi-clip paid video ads. Produces 2 paired hook variants per concept (clip_1A + clip_1B) — each variant is verbal (VO line) + visual (shot description) + rendered_text + subtitle_policy. Single-clip flows are refused. Dispatched by vid-director at Phase 2 ",
+      "triggers": [],
+      "source": "project",
+      "path": ".claude/skills/video-hook-variants/SKILL.md"
+    },
+    {
+      "name": "video-new-concept",
+      "description": "\"Scaffold a video-concept workspace from clients/_template/_templates/video-concept-workspace/ for AG1/AG2 ideation work. Use /video:new for Video Factory render-projects instead. Triggers: new concept workspace, scaffold concept, video concept scaffold, /video:new-concept.\"",
+      "triggers": [],
+      "source": "global",
+      "path": "../../../../.claude/skills/video-new-concept/SKILL.md"
+    },
+    {
+      "name": "viral-presets-index",
+      "description": "\"34 viral Seedance 2.0 I2V preset recipes (Soul Fighter, Disintegration, Earth Zoom, Baseball Game, Magic Spell, Face Punch + 28 more). Thin router — loads recipe library from higgsfield-prompts repo. Triggers: viral preset, viral video, TikTok clip, Reels, I2V, which Seedance op",
+      "triggers": [],
+      "source": "global",
+      "path": "../../../../.claude/skills/viral-presets-index/SKILL.md"
+    },
+    {
+      "name": "web-perf",
+      "description": "Analyzes web performance using Chrome DevTools MCP. Measures Core Web Vitals (LCP, INP, CLS) and supplementary metrics (FCP, TBT, Speed Index), identifies render-blocking resources, network dependency chains, layout shifts, caching issues, and accessibility gaps. Use when asked t",
+      "triggers": [],
+      "source": "global",
+      "path": "../../../../.claude/skills/web-perf/SKILL.md"
+    },
+    {
+      "name": "website-design",
+      "description": "\"5-mode website builder: Recreation (pixel-perfect), Creation (from scratch), Hybrid (improve), Paper-First (Paper.design import), Cold-Traffic CRO. Single index.html + Tailwind. Screenshot loops. Anti-generic.\"",
+      "triggers": [],
+      "source": "project",
+      "path": ".claude/skills/website-design/SKILL.md"
+    },
+    {
+      "name": "workers-best-practices",
+      "description": "Reviews and authors Cloudflare Workers code against production best practices. Load when writing new Workers, reviewing Worker code, configuring wrangler.jsonc, or checking for common Workers anti-patterns (streaming, floating promises, global state, secrets, bindings, observabil",
+      "triggers": [],
+      "source": "global",
+      "path": "../../../../.claude/skills/workers-best-practices/SKILL.md"
+    },
+    {
+      "name": "wrangler",
+      "description": "Cloudflare Workers CLI for deploying, developing, and managing Workers, KV, R2, D1, Vectorize, Hyperdrive, Workers AI, Containers, Queues, Workflows, Pipelines, and Secrets Store. Load before running wrangler commands to ensure correct syntax and best practices. Biases towards re",
+      "triggers": [],
+      "source": "global",
+      "path": "../../../../.claude/skills/wrangler/SKILL.md"
+    },
+    {
+      "name": "youtube-content",
+      "description": "\"Generate YouTube descriptions from transcripts: timestamps, tool links, brand-consistent copy. Triggers: youtube description, describe this video, video metadata, youtube metadata, youtube timestamps.\"",
+      "triggers": [],
+      "source": "project",
+      "path": ".claude/skills/youtube-content/SKILL.md"
+    },
+    {
+      "name": "yt-ideator",
+      "description": "\"YouTube ideation via Linden Chasteen packaging methodology: ramblings → polished concepts + TAM analysis + 50+ title variations + thumbnail direction. Triggers: YouTube ideas, concepts, brainstorm, package video, title variations, thumbnail concepts, filter/rank ideas, is this a",
+      "triggers": [],
+      "source": "global",
+      "path": "../../../../.claude/skills/yt-ideator/SKILL.md"
+    },
+    {
+      "name": "yt-scorecard",
+      "description": "\"YouTube Scorecard: browser-automates YouTube Studio, collects 10-video analytics, outputs .xlsx (Full Scorecard, Winners/Losers Analysis, Takeaways, Strategy). Triggers: YouTube audit, video performance, YT analytics, which videos hit, content strategy, channel audit, how's my Y",
+      "triggers": [],
+      "source": "global",
+      "path": "../../../../.claude/skills/yt-scorecard/SKILL.md"
+    },
+    {
+      "name": "yt-scriptwriter",
+      "description": "\"Full YouTube scripts via Chasteen retention methodology: hooks, intros, story structure, loops, payoffs, emotional arcs, CTAs. Based on MrBeast/Colin & Samir/Johnny Harris. Triggers: YouTube script, video script, write a script, hook, intro, outline, flesh out, long-form script,",
+      "triggers": [],
+      "source": "global",
+      "path": "../../../../.claude/skills/yt-scriptwriter/SKILL.md"
+    }
+  ]
+}

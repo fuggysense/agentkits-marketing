@@ -1,0 +1,30 @@
+{
+  "schema_version": "1.0",
+  "client": "{{client_slug}}",
+  "campaign_slug": "{{campaign_slug}}",
+  "status": "active",
+  "last_updated": "{{today}}",
+  "campaign_brief": "campaign-brief.md",
+  "campaign_selection": "campaign-selection.json",
+  "state_file": "state.yaml",
+  "current_stage": "{{stage_id}}",
+  "current_gate": "{{gate_id}}",
+  "operator_review_required": false,
+  "live_review_url": null,
+  "source_provenance": null,
+  "workspace_registry": [
+    {
+      "workspace_slug": "{{concept_slug}}",
+      "script_mode": "spoken",
+      "path": "video-concepts/{{concept_slug}}/",
+      "pipeline_state": "video-concepts/{{concept_slug}}/pipeline-state.json",
+      "artifact_manifest": "video-concepts/{{concept_slug}}/artifact-manifest.json",
+      "event_log": "video-concepts/{{concept_slug}}/event-log.jsonl",
+      "current_stage": "phase_0_preflight",
+      "review_url": null
+    }
+  ],
+  "next_action": "{{describe_next_action}}",
+  "after_ag1_approval": [],
+  "archived_or_secondary_workspaces": []
+}

@@ -1,4 +1,29 @@
 {
+  "permissions": {
+    "allow": [
+      "mcp__chrome__wait_for",
+      "mcp__chrome__take_snapshot",
+      "mcp__chrome__take_screenshot",
+      "mcp__chrome__list_pages",
+      "mcp__chrome__list_network_requests",
+      "Bash(notebooklm use *)",
+      "Bash(notebooklm ask *)",
+      "Bash(notebooklm list)",
+      "Bash(notebooklm list *)",
+      "Bash(notebooklm query *)",
+      "Bash(gh search *)",
+      "Bash(one actions *)",
+      "mcp__plugin_context-mode_context-mode__ctx_fetch_and_index",
+      "mcp__plugin_context-mode_context-mode__ctx_search",
+      "mcp__paper__get_screenshot",
+      "mcp__paper__get_node_info",
+      "mcp__paper__get_selection",
+      "mcp__paper__get_computed_styles",
+      "mcp__paper__get_guide",
+      "mcp__paper__get_basic_info",
+      "mcp__paper__get_tree_summary"
+    ]
+  },
   "includeCoAuthoredBy": false,
   "statusLine": {
     "type": "command",
@@ -6,6 +31,23 @@
     "padding": 0
   },
   "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node .claude/hooks/refresh-registry.js",
+            "timeout": 5000
+          },
+          {
+            "type": "command",
+            "command": "bash -c '[[ -f \"$PWD/clients/takekine/_config/refresh-claude-map.sh\" ]] && bash \"$PWD/clients/takekine/_config/refresh-claude-map.sh\" || true'",
+            "timeout": 5000
+          }
+        ]
+      }
+    ],
     "UserPromptSubmit": [
       {
         "matcher": "",
@@ -17,6 +59,21 @@
           }
         ]
       }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": ".claude/hooks/smart-ctx-guard.sh",
+            "timeout": 2000
+          }
+        ]
+      }
     ]
+  },
+  "worktree": {
+    "bgIsolation": "none"
   }
 }

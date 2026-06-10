@@ -1,0 +1,21 @@
+[
+  {
+    "id": "129018cb-c70d-46be-94e7-c4e8921ac412",
+    "status": "completed",
+    "display_name": "GPT Image 2",
+    "job_set_type": "imagegen_2_0",
+    "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_2z2bozEwzKwxJNgkH3IQQ4lTkuw/hf_20260513_030425_129018cb-c70d-46be-94e7-c4e8921ac412.png",
+    "created_at": 1778641465.6977,
+    "params": {
+      "width": 1024,
+      "height": 1024,
+      "prompt": "Create a 1:1 clean DTC commercial storyboard grid for Scene 1 of \"SOLARA SPF Ritual\" - 2x2 layout, exactly 4 panels on a clean black canvas, panels separated by thin black gutters only. Overarching scene theme: a premium mineral sunscreen ritual on a bathroom stone ledge, consistent soft daylight, accurate white 50ml squeeze tube, matte coral cap, and exact readable label \"SOLARA SPF 50 PA++++\" with small line \"mineral sunscreen\"; no extra claims, no badges, no awards, no reef safe, no SPF 70, no dermatologist language. Panels left-to-right top-to-bottom: Panel 1 product tube standing upright with water beads around the cap. Panel 2 a fingertip dispenses a clean white ribbon of sunscreen beside the tube. Panel 3 tube lies diagonally on stone, label squarely readable, coral cap catching light. Panel 4 final product hero with tube centered, cap forward, label sharp and unaltered. Environment: bathroom stone ledge, midday, clear. Mood: hopeful. Visual style: clean DTC commercial photography, accurate product colors, premium skincare brand polish, Sony FX3, 35mm prime lens, soft natural daylight, shallow depth of field. Below each panel: narrow black caption band with panel number, time code, and two caption sentences. Forbidden: no title banner, no footer, no colored gridlines, no director notes, no invented label copy. Render at 1:1 aspect ratio, 1K, medium quality.",
+      "medias": [],
+      "aspect_ratio": "1:1",
+      "quality": "medium",
+      "resolution": "1k",
+      "model": "videotape-alpha",
+      "reference_elements": []
+    }
+  }
+]

@@ -122,7 +122,7 @@ Check `.claude/skills/integrations/_registry.md` for full list.
 | `google-analytics` | Web analytics | "Get traffic report for this month" |
 | `semrush` | SEO, keywords, backlinks | "Get keyword overview for term" |
 | `dataforseo` | SERP, keyword data | "Get SERP results for query" |
-| `meta-ads` | Facebook/Instagram ads | "Get campaign insights" |
+| `meta` CLI (not MCP) | Facebook/Instagram ads | `meta ads insights get` · `meta ads campaign list` |
 | `hubspot` | CRM, contacts, deals | "Get leads from last week" |
 | `slack` | Team notifications | "Post message to channel" |
 | `notion` | Documentation | "Create page in database" |

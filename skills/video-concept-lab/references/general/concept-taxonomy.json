@@ -1,0 +1,460 @@
+{
+  "schema_version": "1.3",
+  "purpose": "Agency-wide paid-video concept taxonomy. Keep analytical knobs as controlled dropdowns; generate only the premise, hooks, descriptors, scripts, and campaign-specific language.",
+  "fields": {
+    "campaign_specific_premise": {
+      "type": "generated_object",
+      "definition": "The one-sentence ad hypothesis for this campaign and concept. This is generated text built from the selected dropdowns, buyer micro-persona, offer, mechanism, and proof.",
+      "shape": {
+        "line": "For [avatar/context], [desired result] is blocked not by [old belief], but by [problem mechanism], which is why [solution mechanism] creates [outcome] backed by [proof].",
+        "problem_mechanism": "",
+        "solution_mechanism": "",
+        "promise": "",
+        "proof_mode": ""
+      }
+    },
+    "recommended_ad_format": {
+      "type": "enum",
+      "definition": "The primary narrative arc or core persuasion job of the video. This answers what belief shift the ad is designed to create, not how it is filmed, styled, voiced, or delivered.",
+      "allowed_values": [
+        {
+          "id": "problem_agitation",
+          "label": "Problem Agitation",
+          "definition": "Exposes a painful problem and makes it feel urgent."
+        },
+        {
+          "id": "teach_and_explain",
+          "label": "Teach And Explain",
+          "definition": "Educational breakdown of a concept, mistake, myth, opportunity, or mechanism."
+        },
+        {
+          "id": "demo_walkthrough",
+          "label": "Demo / Walkthrough",
+          "definition": "Product demo, screen share, process walkthrough, or step-by-step visual explanation."
+        },
+        {
+          "id": "proof_case_study",
+          "label": "Proof / Case Study",
+          "definition": "Evidence-led video built around results, transformation, proof, or social validation."
+        },
+        {
+          "id": "comparison_contrast",
+          "label": "Comparison / Contrast",
+          "definition": "Shows why one approach, method, product, belief, or outcome is better than another."
+        },
+        {
+          "id": "offer_invitation",
+          "label": "Offer / Invitation",
+          "definition": "Clear pitch for the product, service, event, call, or next step."
+        },
+        {
+          "id": "origin_story",
+          "label": "Origin Story",
+          "definition": "A personal, founder, customer, or business origin story framed as the hook."
+        },
+        {
+          "id": "scenario_dramatization",
+          "label": "Scenario Dramatization",
+          "definition": "A scripted scene or situation dramatizes the buyer problem, belief shift, or offer relevance."
+        },
+        {
+          "id": "testimony_or_experience",
+          "label": "Testimony / Experience",
+          "definition": "A first-person, customer, client, user, or lived-experience story carries the core persuasion arc."
+        },
+        {
+          "id": "vsl_direct_response",
+          "label": "VSL / Direct Response",
+          "definition": "A direct-response belief-change arc built around hook, problem, mechanism, proof, objections, and CTA."
+        }
+      ],
+      "collapse_rules": [
+        "VSL, sales letter, and pitch video collapse into offer_invitation.",
+        "Tutorial, training, how-to, and explainer collapse into teach_and_explain.",
+        "Testimonial, case study, client win, and results story collapse into proof_case_study.",
+        "Screen recording, walkthrough, and demo collapse into demo_walkthrough.",
+        "Myth-busting, mistake video, and objection handling usually map to teach_and_explain or problem_agitation.",
+        "Talking head is not a format; use presentation_context or script_mode.",
+        "Founder story should usually be origin_story plus a founder/operator persona."
+      ]
+    },
+    "presentation_context": {
+      "type": "enum",
+      "definition": "The delivery wrapper. This answers where the viewer feels the message is coming from.",
+      "allowed_values": [
+        {
+          "id": "ugc_creator",
+          "label": "UGC Creator",
+          "definition": "Native-feeling creator content."
+        },
+        {
+          "id": "founder_direct_address",
+          "label": "Founder Direct Address",
+          "definition": "Founder, operator, practitioner, or brand principal speaks directly to the viewer."
+        },
+        {
+          "id": "selfie_cam",
+          "label": "Selfie Cam",
+          "definition": "Single-person phone camera delivery."
+        },
+        {
+          "id": "studio_direct_address",
+          "label": "Studio Direct Address",
+          "definition": "Controlled camera setup where a person addresses the viewer."
+        },
+        {
+          "id": "podcast_clip",
+          "label": "Podcast Clip",
+          "definition": "Podcast, interview, or conversation excerpt."
+        },
+        {
+          "id": "webinar_clip",
+          "label": "Webinar Clip",
+          "definition": "Workshop, training, live session, or webinar excerpt."
+        },
+        {
+          "id": "interview_clip",
+          "label": "Interview Clip",
+          "definition": "Question-and-answer or interview-style delivery."
+        },
+        {
+          "id": "screen_recording",
+          "label": "Screen Recording",
+          "definition": "Software, website, document, spreadsheet, or dashboard visible on screen."
+        },
+        {
+          "id": "product_demo_capture",
+          "label": "Product Demo Capture",
+          "definition": "The viewer is mainly watching the product, service, workflow, or physical demo being shown."
+        },
+        {
+          "id": "performance_capture",
+          "label": "Performance Capture",
+          "definition": "The viewer is mainly watching a performed song, chant, routine, skit, or staged performance."
+        },
+        {
+          "id": "brand_voiceover",
+          "label": "Brand Voiceover",
+          "definition": "Brand-narrated video without a visible speaking persona."
+        },
+        {
+          "id": "fictional_scene",
+          "label": "Fictional Scene",
+          "definition": "Scripted or dramatized scene with fictional characters."
+        },
+        {
+          "id": "mixed_media_montage",
+          "label": "Mixed Media Montage",
+          "definition": "Multiple media types or sources assembled into one narrative."
+        }
+      ]
+    },
+    "style_profile": {
+      "type": "enum_with_custom",
+      "definition": "The visual and tonal treatment. This answers what the video looks and feels like, not what the ad is structurally doing or who is speaking.",
+      "allowed_values": [
+        {
+          "id": "ugc_realism",
+          "label": "UGC Realism",
+          "definition": "Native-phone, imperfect, real-life paid social look."
+        },
+        {
+          "id": "clean_educational",
+          "label": "Clean Educational",
+          "definition": "Readable, calm, explainer-first visual style."
+        },
+        {
+          "id": "premium_brand_realism",
+          "label": "Premium Brand Realism",
+          "definition": "Controlled, polished, brand-safe realism."
+        },
+        {
+          "id": "cinematic_realism",
+          "label": "Cinematic Realism",
+          "definition": "Narrative, filmic, scene-driven realism."
+        },
+        {
+          "id": "raw_documentary",
+          "label": "Raw Documentary",
+          "definition": "Unpolished observational realism with documentary texture."
+        },
+        {
+          "id": "clean_motion_graphics",
+          "label": "Clean Motion Graphics",
+          "definition": "2D/kinetic text, diagrams, UI, clean graphic animation."
+        },
+        {
+          "id": "playful_3d_animation",
+          "label": "Playful 3D Animation",
+          "definition": "Bright, stylized, broad-market 3D animation."
+        },
+        {
+          "id": "mascot_character",
+          "label": "Mascot Character",
+          "definition": "Recurring branded character, mascot, or anthropomorphic guide."
+        },
+        {
+          "id": "handcrafted_crochet",
+          "label": "Handcrafted Crochet",
+          "definition": "Fully handmade crocheted or knitted miniature diorama world."
+        },
+        {
+          "id": "handcrafted_claymation",
+          "label": "Handcrafted Claymation",
+          "definition": "Handmade clay, stop-motion, tactile miniature look."
+        },
+        {
+          "id": "mixed_media_collage",
+          "label": "Mixed Media Collage",
+          "definition": "Composited collage of footage, stills, UI, documents, graphics, or cutouts."
+        },
+        {
+          "id": "custom_style_profile",
+          "label": "Custom Style Profile",
+          "definition": "Temporary one-off style. Promote to a named style profile only after reuse."
+        }
+      ],
+      "custom_rules": [
+        "custom_style_profile requires custom_style_profile_label and custom_style_profile_definition.",
+        "Promote custom styles to a saved style profile only after repeated use or explicit user approval."
+      ]
+    },
+    "angle_family": {
+      "type": "enum",
+      "definition": "The reusable strategic persuasion bucket being tested across campaigns.",
+      "allowed_values": [
+        {
+          "id": "status_quo_contrast",
+          "label": "Status Quo Contrast",
+          "definition": "Contrasts what the market accepts today with what the buyer actually experiences or needs."
+        },
+        {
+          "id": "routine_friction",
+          "label": "Routine Friction",
+          "definition": "Shows repeated practical friction that prevents follow-through."
+        },
+        {
+          "id": "symptom_overlap",
+          "label": "Symptom Overlap",
+          "definition": "Shows how similar signals can be misread, mislabeled, or hard to interpret."
+        },
+        {
+          "id": "mechanism_reveal",
+          "label": "Mechanism Reveal",
+          "definition": "Makes the product, process, or hidden mechanism understandable and believable."
+        },
+        {
+          "id": "belief_reframe",
+          "label": "Belief Reframe",
+          "definition": "Changes how the buyer explains the problem, cause, or next step."
+        },
+        {
+          "id": "authority_gap",
+          "label": "Authority Gap",
+          "definition": "Shows the gap between institutional/category language and the buyer's lived reality."
+        },
+        {
+          "id": "identity_validation",
+          "label": "Identity Validation",
+          "definition": "Makes the buyer feel seen, sane, capable, or understood before introducing the solution."
+        },
+        {
+          "id": "objection_reversal",
+          "label": "Objection Reversal",
+          "definition": "Turns a common objection into the reason the offer is relevant."
+        },
+        {
+          "id": "product_format_upgrade",
+          "label": "Product Format Upgrade",
+          "definition": "Positions the offer as a better format, delivery method, workflow, or usage experience."
+        },
+        {
+          "id": "hidden_cost",
+          "label": "Hidden Cost",
+          "definition": "Shows the cost of continuing with the old behavior, old tool, or old assumption."
+        },
+        {
+          "id": "risk_reframe",
+          "label": "Risk Reframe",
+          "definition": "Changes how the buyer understands the risk of action versus inaction."
+        },
+        {
+          "id": "category_misconception",
+          "label": "Category Misconception",
+          "definition": "Corrects a common misunderstanding about the category, product type, or buyer problem."
+        },
+        {
+          "id": "social_norm_shift",
+          "label": "Social Norm Shift",
+          "definition": "Shows that what the buyer assumed was normal is changing, outdated, or misread."
+        }
+      ]
+    },
+    "creative_mechanism": {
+      "type": "enum_with_descriptor",
+      "definition": "The visible storytelling device that makes the ad feel specific. Choose a base type, then add a short generated descriptor.",
+      "allowed_values": [
+        "quote_to_broll_visualization",
+        "search_spiral",
+        "split_screen_contrast",
+        "before_after_reveal",
+        "checklist_countdown",
+        "teardown_overlay",
+        "diagnostic_quiz",
+        "framework_reveal",
+        "myth_bust_sequence",
+        "product_in_action_sequence",
+        "social_proof_montage",
+        "benchmark_line_shift",
+        "challenge_experiment",
+        "transformation_map",
+        "objection_flip_scene",
+        "receipt_cost_reveal",
+        "screen_audit",
+        "prop_metaphor",
+        "silent_visual_sequence",
+        "musical_hook_performance",
+        "roleplay_scene"
+      ],
+      "shape": {
+        "type": "one allowed value",
+        "descriptor": "short generated text explaining the campaign-specific execution"
+      }
+    },
+    "proof_mode": {
+      "type": "enum",
+      "definition": "The credibility source used to make the viewer believe the claim.",
+      "allowed_values": [
+        {
+          "id": "product_demonstration",
+          "label": "Product Demonstration",
+          "definition": "The product, workflow, or process visibly demonstrates the claim."
+        },
+        {
+          "id": "authority_explanation",
+          "label": "Authority Explanation",
+          "definition": "Credibility comes from an expert, founder, practitioner, or informed narrator."
+        },
+        {
+          "id": "customer_story",
+          "label": "Customer Story",
+          "definition": "Credibility comes from a customer, client, user, or buyer story."
+        },
+        {
+          "id": "quantified_result",
+          "label": "Quantified Result",
+          "definition": "Credibility comes from metrics, counts, timelines, financials, or quantified results."
+        },
+        {
+          "id": "visual_comparison",
+          "label": "Visual Comparison",
+          "definition": "Credibility comes from seeing two alternatives side by side."
+        },
+        {
+          "id": "screen_evidence",
+          "label": "Screen Evidence",
+          "definition": "Credibility comes from showing the actual interface, website, dashboard, document, or spreadsheet."
+        },
+        {
+          "id": "before_after_evidence",
+          "label": "Before / After Evidence",
+          "definition": "Credibility comes from a clear before/after contrast."
+        },
+        {
+          "id": "social_proof",
+          "label": "Social Proof",
+          "definition": "Credibility comes from reviews, reactions, comments, crowd behavior, or visible adoption."
+        },
+        {
+          "id": "process_walkthrough",
+          "label": "Process Walkthrough",
+          "definition": "Credibility comes from showing the system, method, steps, or operating process."
+        },
+        {
+          "id": "third_party_validation",
+          "label": "Third-Party Validation",
+          "definition": "Credibility comes from external validation, publication, certification, marketplace, or authority."
+        },
+        {
+          "id": "guarantee_or_risk_reversal",
+          "label": "Guarantee / Risk Reversal",
+          "definition": "Credibility comes from reducing the risk of taking the next step."
+        },
+        {
+          "id": "research_or_data_reference",
+          "label": "Research / Data Reference",
+          "definition": "Credibility comes from data, labs, reports, studies, or structured research references."
+        },
+        {
+          "id": "narrative_plausibility",
+          "label": "Narrative Plausibility",
+          "definition": "Credibility comes from a believable sequence of events the viewer recognizes."
+        }
+      ]
+    },
+    "script_mode": {
+      "type": "enum",
+      "definition": "How the script is executed. This prevents no-dialogue, singing, voiceover, and dialogue from leaking into the format field.",
+      "allowed_values": [
+        "voiceover",
+        "direct_to_camera",
+        "dialogue",
+        "singing",
+        "no_dialogue"
+      ]
+    },
+    "format_recipe": {
+      "type": "recipe_pointer",
+      "definition": "Optional reusable prompt scaffold from references/general/format-prompt-recipes.md. This bundles multiple knobs but does not replace any taxonomy field.",
+      "shape": {
+        "recipe_id": "ugc_selfie_talking_head | two_person_podcast_clip | flat_2d_motion_graphic | handcrafted_claymation_scene | handcrafted_crochet_diorama | custom_recipe | none",
+        "recipe_label": "",
+        "recipe_source": "user_supplied | reverse_engineered | internal | none",
+        "knob_mapping": {
+          "recommended_ad_format": "",
+          "presentation_context": "",
+          "style_profile": "",
+          "angle_family": "",
+          "creative_mechanism_type": "",
+          "proof_mode": "",
+          "script_mode": ""
+        },
+        "prompt_fill_notes": []
+      }
+    },
+    "psychological_engine": {
+      "type": "generated_sentence",
+      "definition": "Required plain-English explanation of the emotional or cognitive reason the ad should work.",
+      "writing_rules": [
+        "Explain why the buyer responds, not the plot.",
+        "Do not repeat the hook.",
+        "Do not make clinical, legal, financial, or performance claims unless approved."
+      ]
+    }
+  },
+  "per_concept_required_keys": [
+    "campaign_specific_premise",
+    "recommended_ad_format",
+    "presentation_context",
+    "style_profile",
+    "angle_family",
+    "creative_mechanism",
+    "proof_mode",
+    "script_mode",
+    "format_recipe",
+    "psychological_engine"
+  ],
+  "api_validation_rules": [
+    "campaign_specific_premise.line and psychological_engine are generated text, not enums.",
+    "recommended_ad_format must match one allowed_values.id and cannot contain UGC, founder, podcast, selfie, cinematic, singing, no-dialogue, voiceover, or material/style words.",
+    "presentation_context must match one allowed_values.id and cannot describe persuasion strategy, proof source, or visual style.",
+    "style_profile must match one allowed_values.id; use custom_style_profile only with a label and definition.",
+    "angle_family must match one allowed_values.id and cannot be a visual device, proof type, or industry-specific claim.",
+    "creative_mechanism.type must match one allowed value; creative_mechanism.descriptor must be generated and campaign-specific.",
+    "proof_mode must match one allowed_values.id and must match actual proof assets or approved claim support.",
+    "script_mode must match one allowed value; script_mode=no_dialogue requires subtitle_policy=none; script_mode=singing requires music_brief.",
+    "format_recipe.recipe_id is optional and must not be copied into recommended_ad_format.",
+    "Hard or quantified proof requires source evidence, otherwise mark claim as blocked or downgrade proof_mode.",
+    "Do not encode industry-specific claims in dropdown values. Put them in campaign_specific_premise, creative_mechanism.descriptor, hook, or claim_constraints."
+  ]
+}

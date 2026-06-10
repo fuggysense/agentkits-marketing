@@ -11,11 +11,7 @@
     },
 
     "_comment_ads": "=== ADVERTISING ===",
-    "meta-ads": {
-      "command": "npx",
-      "args": ["-y", "@anthropic/mcp-meta-ads"],
-      "env": { "META_ACCESS_TOKEN": "YOUR_TOKEN" }
-    },
+    "_meta_ads_note": "Meta/Facebook Ads has NO MCP server — use the `meta` CLI (~/.local/bin/meta). Auth via META_ACCESS_TOKEN in ~/.claude/.env. See .claude/rules/mcp-integrations.md.",
     "google-ads": {
       "command": "npx",
       "args": ["-y", "@anthropic/mcp-google-ads"],

@@ -1,0 +1,135 @@
+{
+  "_comment": "Onboarding Strategy Report input schema. Values below are NeezaNizam (SG property) placeholders for illustration — the schema is vertical-agnostic. See SKILL.md + references/page-layouts.md for field semantics. Remove all _comment fields before passing to generate_pdf.py.",
+
+  "report_metadata": {
+    "client_name": "Client Name",
+    "project_slug": "client-slug",
+    "report_date": "YYMMDD",
+    "prepared_by": "Your Name / Agency",
+    "engagement_type": "onboarding_strategy"
+  },
+
+  "business_context": {
+    "industry": "Human-readable industry description",
+    "offer_summary": "One-sentence offer statement",
+    "current_stage": "pre-paid-media | has-run-ads | scaling",
+    "has_run_ads_before": false,
+    "vertical": "sg_property | saas_b2b | ecommerce_dtc | local_service | info_products | real_estate_us | healthcare | agency | default"
+  },
+
+  "dream_translation": {
+    "client_exact_words": "The client's own words from discovery — quoted verbatim on the cover",
+    "surface_goal": "What they asked for (the stated problem)",
+    "underlying_why": "The real driver beneath the stated problem"
+  },
+
+  "diagnostic": {
+    "primary_constraint": "creative_direction",
+    "primary_constraint_rationale": "One sentence explaining why this is the single bottleneck",
+    "monthly_cost_of_constraint_usd": 0,
+    "annual_ignorance_tax_usd": 0,
+    "calculator_close_note": "Plain-language derivation of the dollar figure using the per-vertical benchmark",
+    "dimensions": {
+      "audience_clarity":     { "score": 0, "band": "red|yellow|green", "action": "One-line prescribed action" },
+      "creative_direction":   { "score": 0, "band": "red|yellow|green", "action": "One-line prescribed action", "is_primary_constraint": false },
+      "funnel_architecture":  { "score": 0, "band": "red|yellow|green", "action": "One-line prescribed action" },
+      "competitive_position": { "score": 0, "band": "red|yellow|green", "action": "One-line prescribed action" },
+      "budget_readiness":     { "score": 0, "band": "red|yellow|green", "action": "One-line prescribed action" }
+    }
+  },
+
+  "avatars": [
+    {
+      "name": "Avatar Name",
+      "awareness": "L1 | L2 | L3 | L4 | L5",
+      "sophistication": "L1 | L2 | L3 | L4 | L5",
+      "top_pains": ["Pain 1", "Pain 2", "Pain 3"],
+      "buying_trigger": "Life event or realization that triggers the buy",
+      "preview_angles": ["Angle theme 1", "Angle theme 2", "Angle theme 3"]
+    }
+  ],
+
+  "existing_ads_audit": {
+    "enabled": false,
+    "zero_blame_header": "Nothing that happened before today is anyone's fault. This page exists so we can solve the problem together.",
+    "findings_aaa": [
+      {
+        "finding": "Factual statement of what we observed",
+        "acknowledge": "Validate past logic — it was reasonable at the time",
+        "associate": "Link to a peer with the same issue who solved it",
+        "ask_pivot": "Can I share what changed for them?",
+        "skill_deficiency_reframe": "The platform works — the gap is a learnable skill in X",
+        "monthly_cost_usd": 0
+      }
+    ],
+    "total_spend_at_risk_monthly": 0
+  },
+
+  "strategy_preview": {
+    "positioning_angle": "One paragraph on positioning",
+    "mechanism_name": "Your Named Mechanism",
+    "angle_themes_per_avatar": [
+      {
+        "avatar": "Avatar Name",
+        "themes": ["Theme 1", "Theme 2", "Theme 3"]
+      }
+    ],
+    "differentiation_wedge": "Why you, not them",
+    "note": "Angle THEMES only. No finished copy. No headlines. No playbooks. Those are the engagement."
+  },
+
+  "plus_minus_map": {
+    "work_with_us": {
+      "more": ["More of the dream outcome", "More of desired state"],
+      "less": ["Less of the pain", "Less of the current friction"]
+    },
+    "stay_current": {
+      "more": ["More of the pain that compounds", "More of the current friction"],
+      "less": ["Less of the dream outcome", "Less of the desired state"]
+    }
+  },
+
+  "ninety_day_roadmap": {
+    "activation_days_1_30": {
+      "focus": "Activation — micro-promises + activation points",
+      "micro_promises_first_48h": ["Promise 1 delivered within 48h", "Promise 2", "Promise 3", "Promise 4"],
+      "activation_points": ["Activation action 1", "Activation action 2", "Activation action 3"],
+      "deliverables": ["Deliverable 1", "Deliverable 2"]
+    },
+    "value_days_31_60": {
+      "focus": "Value — quick win + monthly value reminder",
+      "quick_win_target": "One specific leading indicator",
+      "leading_indicator": "Measurable signal of success",
+      "deliverables": ["Value reminder", "Iteration on winners"]
+    },
+    "lock_in_days_61_90": {
+      "focus": "Lock-In — documented wins + QBR",
+      "documented_wins": ["Quantified win 1", "Quantified win 2"],
+      "deliverables": ["QBR deck", "Next-quarter scope"]
+    },
+    "expectation_language": {
+      "anchor": "bottom_25_percent_of_past_results",
+      "example": "On average, clients who complete X see Y within Z. Half see it faster, half see it slower. This is what we'll aim for, not guarantee."
+    }
+  },
+
+  "black_book_handoff": {
+    "assets_included": [
+      { "name": "Asset name (e.g., swipe file, cultural guidelines)", "perceived_value_usd": 0 }
+    ],
+    "total_perceived_value_usd": 0
+  },
+
+  "next_meeting_bamfam": {
+    "prompt_text": "Next meeting booked for: ___________________",
+    "purpose": "Brief statement of what the next meeting will cover"
+  },
+
+  "appendix": {
+    "buyer_profile_excerpts": [],
+    "benchmark_references": [
+      "Source 1 for the Calculator Close numbers",
+      "Source 2 for any other stats cited"
+    ]
+  }
+}

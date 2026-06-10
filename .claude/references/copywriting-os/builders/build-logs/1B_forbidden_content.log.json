@@ -1,0 +1,10 @@
+{
+  "label": "1B_forbidden_content",
+  "dt_sec": 73.333925,
+  "in_tok": 3,
+  "out_tok": 2616,
+  "cache_read": 11911,
+  "cost_usd": 0.14378355,
+  "session": "1b2545ea-672e-4d1e-a1ea-d7553bbf859e",
+  "output_path": "/Users/jerel/Documents/Jerel's brain/jerel's brain/Marketing/.claude/references/copywriting-os/reviewers/forbidden-content-audit.md"
+}

@@ -1,0 +1,43 @@
+{
+  "client_slug": "{{client_slug}}",
+  "client_name": "{{client_name}}",
+  "client_type": "",
+  "specialty": "",
+  "geo": "",
+  "engagement_type": "",
+  "deadline": null,
+  "stopping_criteria": "",
+  "links": {
+    "website": null,
+    "linkedin": null,
+    "instagram": null,
+    "tiktok": null,
+    "youtube": null,
+    "featured_landing_page": null
+  },
+  "offer_ladder": {
+    "t1_lead_magnet": null,
+    "t2_mid_funnel": null,
+    "t3_back_end": null
+  },
+  "current_funnel_state": {
+    "email_list": false,
+    "email_provider": null,
+    "lead_magnet": false,
+    "current_path": ""
+  },
+  "production_capability": {
+    "heygen": null,
+    "can_film_self": null,
+    "ai_assisted_video_edit": null
+  },
+  "tools_available": [],
+  "research_status": "not-started",
+  "_created": "",
+  "_last_updated": "",
+  "_onboarding_progress": {
+    "current_phase": 0,
+    "path": null,
+    "completed_steps": []
+  }
+}

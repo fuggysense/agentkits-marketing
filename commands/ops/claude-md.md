@@ -5,6 +5,9 @@ argument-hint: "[what changed, 'create', or folder path for nested]"
 
 # CLAUDE.md Architect
 
+**Skill:** `skills/claude-md-architect/SKILL.md` — read for full workflow, memory hierarchy, and benchmarks.
+**References:** `skills/claude-md-architect/references/` — quality-criteria.md, update-guidelines.md, templates.md.
+
 Manage CLAUDE.md files — root and nested. Auto-detect what's needed and act.
 No questions unless genuinely ambiguous — infer most answers from the codebase.
 
@@ -100,6 +103,50 @@ After writing or editing, re-read the full file and check:
 
 Then sync: `cp CLAUDE.md AGENTS.md` (cross-tool convention for Codex, OpenCode, Cursor).
 
+## Quality Scoring (Audit Mode)
+
+When argument is `audit` or `score`, run a quality assessment on all CLAUDE.md files.
+
+**Scoring Rubric (100 points):**
+
+| Criterion | Points | What to Check |
+|-----------|--------|---------------|
+| Workflows & Routing | 20 | Skill routing present? Agent delegation clear? Key commands documented? |
+| Architecture Clarity | 20 | Context load order? Memory hierarchy? File relationships? |
+| Non-Obvious Patterns | 15 | Gotchas from real incidents? Workarounds? "Because" clauses? |
+| Conciseness | 15 | Under 200 lines? No filler? Each line passes one-line test? |
+| Currency | 15 | File references valid? Skills/agents still exist? Reflects current setup? |
+| Actionability | 15 | Commands copy-pasteable? Paths real? Steps concrete? |
+
+**Grades:** A (90-100) | B (70-89) | C (50-69) | D (30-49) | F (0-29). Target: B+ (75+).
+
+**Red Flags** (auto-fail items):
+- References to deleted files/skills
+- Generic framework knowledge (not project-specific)
+- Over 300 lines without extraction to `.claude/rules/`
+- "TODO" items never completed
+- Duplicate content across CLAUDE.md files
+
+**Output format:**
+```
+## CLAUDE.md Quality Report
+Files found: X | Average: XX/100
+
+### ./CLAUDE.md — XX/100 (Grade)
+| Criterion | Score | Notes |
+Specific issues + proposed fixes (diff format)
+```
+
+After scoring, offer to fix issues found. Apply the "When Updating" prune logic to any fixes.
+
+---
+
 ## Arguments
 
-If the user passed `$ARGUMENTS`, treat it as what changed and go directly to update mode.
+| Argument | Mode |
+|----------|------|
+| _(empty)_ | Auto-detect (create/update/fix) |
+| `create` | Create mode — interview + generate |
+| `audit` or `score` | Quality audit with scoring rubric |
+| `[what changed]` | Update mode — surgical edits |
+| `[folder path]` | Nested file mode |

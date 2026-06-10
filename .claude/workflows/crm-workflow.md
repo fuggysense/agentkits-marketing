@@ -276,15 +276,15 @@ Subscriber → Lead → MQL → SQL → Opportunity → Customer → Advocate
 
 ## Agent Delegation
 
-| Task | Agent | Trigger |
-|------|-------|---------|
-| Lead scoring review | `lead-qualifier` | Weekly audit |
-| Segment analysis | `lead-qualifier` | Monthly review |
-| Sequence creation | `email-wizard` | New campaign |
+| Task | Agent / Skill | Trigger |
+|------|---------------|---------|
+| Lead scoring review | `leads:score` skill | Weekly audit |
+| Segment analysis | `crm:segment` skill | Monthly review |
+| Sequence creation | `email-sequence` skill | New campaign |
 | Re-engagement copy | `copywriter` | Win-back campaign |
-| Churn analysis | `continuity-specialist` | At-risk segment |
-| Upsell opportunities | `upsell-maximizer` | Customer review |
+| Churn analysis | `crm:lifecycle` skill | At-risk segment |
+| Upsell opportunities | `pricing-strategy` / `offer-builder` skills | Customer review |
 | Data enrichment | `researcher` | New leads batch |
-| Lead generation | `attraction-specialist` | Pipeline building |
-| Sales enablement | `sales-enabler` | MQL → SQL handoff |
-| Competitive intel | `researcher` | Market analysis |
+| Lead generation | `ad-library-scraper` skill | Pipeline building |
+| Sales enablement | `sales:battlecard` / `sales:pitch` skills | MQL → SQL handoff |
+| Competitive intel | `researcher` / `competitor:deep` | Market analysis |

@@ -28,11 +28,40 @@ from utils import normalize_domain, chunk_list
 SERP_URL = "https://api.dataforseo.com/v3/serp/google/organic/live/advanced"
 KW_VOLUME_URL = "https://api.dataforseo.com/v3/keywords_data/google_ads/search_volume/live"
 RANKED_KW_URL = "https://api.dataforseo.com/v3/dataforseo_labs/google/ranked_keywords/live"
+BALANCE_URL = "https://api.dataforseo.com/v3/appendix/user_data"
 
 
 def _auth_header() -> str:
     creds = f"{DATAFORSEO_LOGIN}:{DATAFORSEO_PASSWORD}"
     return "Basic " + base64.b64encode(creds.encode()).decode()
+
+
+async def check_balance(min_balance: float = 0.50) -> dict:
+    """Check DataForSEO account balance. Returns {balance, ok, error}.
+
+    Raises RuntimeError if balance < min_balance.
+    """
+    if not DATAFORSEO_LOGIN or not DATAFORSEO_PASSWORD:
+        return {"balance": 0, "ok": False, "error": "No credentials"}
+
+    headers = {"Authorization": _auth_header(), "Content-Type": "application/json"}
+    async with aiohttp.ClientSession(headers=headers) as session:
+        try:
+            async with session.get(BALANCE_URL) as resp:
+                resp.raise_for_status()
+                data = await resp.json()
+                tasks = data.get("tasks", [{}])
+                result = (tasks[0].get("result") or [{}])[0] or {}
+                balance = result.get("money", {}).get("balance", 0)
+
+                if balance < min_balance:
+                    raise RuntimeError(
+                        f"DataForSEO balance too low: ${balance:.2f} (minimum: ${min_balance:.2f}). "
+                        f"Top up at https://app.dataforseo.com/billing"
+                    )
+                return {"balance": balance, "ok": True, "error": None}
+        except aiohttp.ClientError as e:
+            return {"balance": 0, "ok": False, "error": str(e)}
 
 
 # ── Step 1: SERP Organic — find businesses ────────────────────────────────────

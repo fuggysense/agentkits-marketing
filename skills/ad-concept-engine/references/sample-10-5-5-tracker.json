@@ -1,0 +1,128 @@
+{
+  "_comment": "FIXTURE — structural test of the 10-5-5 writer path. Content is placeholder, NOT real ad copy. Delete with the _10-5-5-verify client after Phase 3.",
+  "_owner_skill": "ad-concept-engine",
+  "_method": "10-5-5",
+  "client_slug": "_10-5-5-verify",
+  "metrics_campaign": "default",
+  "wave": 1,
+  "dct_number": 10,
+  "meta_ad_account_id": "act_FIXTURE",
+  "meta_campaign_name": "FIXTURE_Flex_Test",
+  "meta_adset_name": "W1_DCT010_Flex_5angles",
+  "dct_structure": {
+    "method": "10-5-5",
+    "angle_model": "five_x_two",
+    "angles": 5,
+    "variations_per_angle": 2,
+    "copies_per_angle": 1,
+    "headlines_per_angle": 1,
+    "headlines_drafted_per_angle": 5,
+    "total_creatives": 10,
+    "total_copies": 5,
+    "total_headlines": 5,
+    "meta_format": "flex"
+  },
+  "creatives": [
+    {
+      "batch": "DCT010-A01",
+      "format": "Static",
+      "ad_name": "DCT010-A01_FIXTURE_angle-one",
+      "market_awareness": "Problem-Aware",
+      "market_sophistication": "Stage 3",
+      "angle": "FIXTURE angle 1 title",
+      "persona": "avatar-1 (FIXTURE)",
+      "status": "DRAFT",
+      "copy_1": "FIXTURE locked copy for angle 1 — placeholder, not real.",
+      "copy_2": "",
+      "headline_1": "FIXTURE headline 1",
+      "headline_2": "",
+      "headline_drafts": ["draft a", "draft b", "draft c", "draft d", "draft e"],
+      "canva_link": "https://www.canva.com/design/FIXTURE-A01/view",
+      "variations": [
+        { "variant_id": "v1", "visual_style": "FIXTURE style A", "image_prompt": "FIXTURE prompt v1" },
+        { "variant_id": "v2", "visual_style": "FIXTURE style B", "image_prompt": "FIXTURE prompt v2" }
+      ]
+    },
+    {
+      "batch": "DCT010-A02",
+      "format": "Static",
+      "ad_name": "DCT010-A02_FIXTURE_angle-two",
+      "market_awareness": "Problem-Aware",
+      "market_sophistication": "Stage 3",
+      "angle": "FIXTURE angle 2 title",
+      "persona": "avatar-1 (FIXTURE)",
+      "status": "DRAFT",
+      "copy_1": "FIXTURE locked copy for angle 2 — placeholder, not real.",
+      "copy_2": "",
+      "headline_1": "FIXTURE headline 2",
+      "headline_2": "",
+      "headline_drafts": ["draft a", "draft b", "draft c", "draft d", "draft e"],
+      "canva_link": "https://www.canva.com/design/FIXTURE-A02/view",
+      "variations": [
+        { "variant_id": "v1", "visual_style": "FIXTURE style A", "image_prompt": "FIXTURE prompt v1" },
+        { "variant_id": "v2", "visual_style": "FIXTURE style B", "image_prompt": "FIXTURE prompt v2" }
+      ]
+    },
+    {
+      "batch": "DCT010-A03",
+      "format": "Static",
+      "ad_name": "DCT010-A03_FIXTURE_angle-three",
+      "market_awareness": "Solution-Aware",
+      "market_sophistication": "Stage 4",
+      "angle": "FIXTURE angle 3 title",
+      "persona": "avatar-1 (FIXTURE)",
+      "status": "DRAFT",
+      "copy_1": "FIXTURE locked copy for angle 3 — placeholder, not real.",
+      "copy_2": "",
+      "headline_1": "FIXTURE headline 3",
+      "headline_2": "",
+      "headline_drafts": ["draft a", "draft b", "draft c", "draft d", "draft e"],
+      "canva_link": "https://www.canva.com/design/FIXTURE-A03/view",
+      "variations": [
+        { "variant_id": "v1", "visual_style": "FIXTURE style A", "image_prompt": "FIXTURE prompt v1" },
+        { "variant_id": "v2", "visual_style": "FIXTURE style B", "image_prompt": "FIXTURE prompt v2" }
+      ]
+    },
+    {
+      "batch": "DCT010-A04",
+      "format": "Static",
+      "ad_name": "DCT010-A04_FIXTURE_angle-four",
+      "market_awareness": "Solution-Aware",
+      "market_sophistication": "Stage 4",
+      "angle": "FIXTURE angle 4 title",
+      "persona": "avatar-1 (FIXTURE)",
+      "status": "DRAFT",
+      "copy_1": "FIXTURE locked copy for angle 4 — placeholder, not real.",
+      "copy_2": "",
+      "headline_1": "FIXTURE headline 4",
+      "headline_2": "",
+      "headline_drafts": ["draft a", "draft b", "draft c", "draft d", "draft e"],
+      "canva_link": "https://www.canva.com/design/FIXTURE-A04/view",
+      "variations": [
+        { "variant_id": "v1", "visual_style": "FIXTURE style A", "image_prompt": "FIXTURE prompt v1" },
+        { "variant_id": "v2", "visual_style": "FIXTURE style B", "image_prompt": "FIXTURE prompt v2" }
+      ]
+    },
+    {
+      "batch": "DCT010-A05",
+      "format": "Static",
+      "ad_name": "DCT010-A05_FIXTURE_angle-five",
+      "market_awareness": "Solution-Aware",
+      "market_sophistication": "Stage 4",
+      "angle": "FIXTURE angle 5 title",
+      "persona": "avatar-1 (FIXTURE)",
+      "status": "DRAFT",
+      "copy_1": "FIXTURE locked copy for angle 5 — placeholder, not real.",
+      "copy_2": "",
+      "headline_1": "FIXTURE headline 5",
+      "headline_2": "",
+      "headline_drafts": ["draft a", "draft b", "draft c", "draft d", "draft e"],
+      "canva_link": "https://www.canva.com/design/FIXTURE-A05/view",
+      "variations": [
+        { "variant_id": "v1", "visual_style": "FIXTURE style A", "image_prompt": "FIXTURE prompt v1" },
+        { "variant_id": "v2", "visual_style": "FIXTURE style B", "image_prompt": "FIXTURE prompt v2" }
+      ]
+    }
+  ],
+  "sheet_write_plan": { "row_count": 5, "metrics_campaign": "default" }
+}

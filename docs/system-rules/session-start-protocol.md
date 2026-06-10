@@ -19,7 +19,7 @@ Project health:
 ```
 
 ## 4. Active campaigns
-Check `clients/*/campaigns/` for campaigns with `phase: execution` or `phase: optimization`. Surface any that need attention.
+Read `.claude/active-work.json` if present, then check `clients/*/campaigns/_campaigns-index.json` for `status: active`. For older clients without `_campaigns-index.json`, fall back to `clients/*/campaigns/*/state.yaml`. Surface the active client, campaign, current gate, live review URL if present, and next action.
 
 ## 5. Cron restore
 If running with `--channels` (Telegram bot active), read `cron-registry.json` and re-register all `enabled: true` jobs via CronCreate. Crons are session-only and auto-expire after 7 days, so this must happen every session. Log how many were restored.

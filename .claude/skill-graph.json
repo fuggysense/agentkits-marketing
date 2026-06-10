@@ -1,0 +1,1088 @@
+{
+  "ab-test-setup": {
+    "kind": "skill",
+    "path": "skills/ab-test-setup/SKILL.md",
+    "neighbours": []
+  },
+  "ad-concept-engine": {
+    "kind": "skill",
+    "path": "skills/ad-concept-engine/SKILL.md",
+    "neighbours": [
+      {
+        "name": "headline-bank",
+        "kind": "skill",
+        "score": 0.1353
+      }
+    ]
+  },
+  "ad-library-scraper": {
+    "kind": "skill",
+    "path": "skills/ad-library-scraper/SKILL.md",
+    "neighbours": []
+  },
+  "analytics-attribution": {
+    "kind": "skill",
+    "path": "skills/analytics-attribution/SKILL.md",
+    "neighbours": [
+      {
+        "name": "paid-advertising",
+        "kind": "skill",
+        "score": 0.1731
+      },
+      {
+        "name": "marketing-fundamentals",
+        "kind": "skill",
+        "score": 0.1416
+      },
+      {
+        "name": "content-strategy",
+        "kind": "skill",
+        "score": 0.1226
+      }
+    ]
+  },
+  "analytics-usage": {
+    "kind": "skill",
+    "path": "skills/analytics-usage/SKILL.md",
+    "neighbours": []
+  },
+  "avatar-research": {
+    "kind": "skill",
+    "path": "skills/avatar-research/SKILL.md",
+    "neighbours": [
+      {
+        "name": "persona-builder",
+        "kind": "agent",
+        "score": 0.1223
+      }
+    ]
+  },
+  "big-angle-spotter": {
+    "kind": "skill",
+    "path": "skills/big-angle-spotter/SKILL.md",
+    "neighbours": []
+  },
+  "brand-building": {
+    "kind": "skill",
+    "path": "skills/brand-building/SKILL.md",
+    "neighbours": []
+  },
+  "business-profile": {
+    "kind": "skill",
+    "path": "skills/business-profile/SKILL.md",
+    "neighbours": [
+      {
+        "name": "onboarding-strategy-pdf",
+        "kind": "skill",
+        "score": 0.1722
+      },
+      {
+        "name": "source-of-truth",
+        "kind": "skill",
+        "score": 0.1201
+      }
+    ]
+  },
+  "campaign-runner": {
+    "kind": "skill",
+    "path": "skills/campaign-runner/SKILL.md",
+    "neighbours": [
+      {
+        "name": "client-onboarding",
+        "kind": "skill",
+        "score": 0.1443
+      }
+    ]
+  },
+  "claude-md-architect": {
+    "kind": "skill",
+    "path": "skills/claude-md-architect/SKILL.md",
+    "neighbours": []
+  },
+  "client-onboarding": {
+    "kind": "skill",
+    "path": "skills/client-onboarding/SKILL.md",
+    "neighbours": [
+      {
+        "name": "campaign-runner",
+        "kind": "skill",
+        "score": 0.1443
+      }
+    ]
+  },
+  "competitor-alternatives": {
+    "kind": "skill",
+    "path": "skills/competitor-alternatives/SKILL.md",
+    "neighbours": []
+  },
+  "content-moat": {
+    "kind": "skill",
+    "path": "skills/content-moat/SKILL.md",
+    "neighbours": []
+  },
+  "content-strategy": {
+    "kind": "skill",
+    "path": "skills/content-strategy/SKILL.md",
+    "neighbours": [
+      {
+        "name": "marketing-fundamentals",
+        "kind": "skill",
+        "score": 0.1554
+      },
+      {
+        "name": "seo-mastery",
+        "kind": "skill",
+        "score": 0.1326
+      },
+      {
+        "name": "analytics-attribution",
+        "kind": "skill",
+        "score": 0.1226
+      }
+    ]
+  },
+  "copy-coach": {
+    "kind": "skill",
+    "path": "skills/copy-coach/SKILL.md",
+    "neighbours": []
+  },
+  "copy-editing": {
+    "kind": "skill",
+    "path": "skills/copy-editing/SKILL.md",
+    "neighbours": []
+  },
+  "copywriting": {
+    "kind": "skill",
+    "path": "skills/copywriting/SKILL.md",
+    "neighbours": [
+      {
+        "name": "copywriter",
+        "kind": "agent",
+        "score": 0.1612
+      },
+      {
+        "name": "unslop",
+        "kind": "skill",
+        "score": 0.1362
+      }
+    ]
+  },
+  "deep-research": {
+    "kind": "skill",
+    "path": "skills/deep-research/SKILL.md",
+    "neighbours": []
+  },
+  "email-marketing": {
+    "kind": "skill",
+    "path": "skills/email-marketing/SKILL.md",
+    "neighbours": [
+      {
+        "name": "email-sequence",
+        "kind": "skill",
+        "score": 0.1349
+      }
+    ]
+  },
+  "email-sequence": {
+    "kind": "skill",
+    "path": "skills/email-sequence/SKILL.md",
+    "neighbours": [
+      {
+        "name": "email-marketing",
+        "kind": "skill",
+        "score": 0.1349
+      }
+    ]
+  },
+  "feedback-router": {
+    "kind": "skill",
+    "path": "skills/feedback-router/SKILL.md",
+    "neighbours": []
+  },
+  "ferres-corpus": {
+    "kind": "skill",
+    "path": "skills/ferres-corpus/SKILL.md",
+    "neighbours": []
+  },
+  "form-cro": {
+    "kind": "skill",
+    "path": "skills/form-cro/SKILL.md",
+    "neighbours": [
+      {
+        "name": "signup-flow-cro",
+        "kind": "skill",
+        "score": 0.2353
+      },
+      {
+        "name": "popup-cro",
+        "kind": "skill",
+        "score": 0.1206
+      }
+    ]
+  },
+  "free-tool-strategy": {
+    "kind": "skill",
+    "path": "skills/free-tool-strategy/SKILL.md",
+    "neighbours": []
+  },
+  "headline-bank": {
+    "kind": "skill",
+    "path": "skills/headline-bank/SKILL.md",
+    "neighbours": [
+      {
+        "name": "ad-concept-engine",
+        "kind": "skill",
+        "score": 0.1353
+      }
+    ]
+  },
+  "image-generation": {
+    "kind": "skill",
+    "path": "skills/image-generation/SKILL.md",
+    "neighbours": [
+      {
+        "name": "video-director",
+        "kind": "skill",
+        "score": 0.1272
+      }
+    ]
+  },
+  "knowledge-hygiene": {
+    "kind": "skill",
+    "path": "skills/knowledge-hygiene/SKILL.md",
+    "neighbours": []
+  },
+  "launch-strategy": {
+    "kind": "skill",
+    "path": "skills/launch-strategy/SKILL.md",
+    "neighbours": []
+  },
+  "linkedin-content": {
+    "kind": "skill",
+    "path": "skills/linkedin-content/SKILL.md",
+    "neighbours": []
+  },
+  "linkedin-optimization": {
+    "kind": "skill",
+    "path": "skills/linkedin-optimization/SKILL.md",
+    "neighbours": []
+  },
+  "marketing-fundamentals": {
+    "kind": "skill",
+    "path": "skills/marketing-fundamentals/SKILL.md",
+    "neighbours": [
+      {
+        "name": "content-strategy",
+        "kind": "skill",
+        "score": 0.1554
+      },
+      {
+        "name": "analytics-attribution",
+        "kind": "skill",
+        "score": 0.1416
+      },
+      {
+        "name": "paid-advertising",
+        "kind": "skill",
+        "score": 0.1253
+      }
+    ]
+  },
+  "marketing-ideas": {
+    "kind": "skill",
+    "path": "skills/marketing-ideas/SKILL.md",
+    "neighbours": []
+  },
+  "marketing-psychology": {
+    "kind": "skill",
+    "path": "skills/marketing-psychology/SKILL.md",
+    "neighbours": []
+  },
+  "meta-ads-uploader": {
+    "kind": "skill",
+    "path": "skills/meta-ads-uploader/SKILL.md",
+    "neighbours": []
+  },
+  "multi-agent-consensus": {
+    "kind": "skill",
+    "path": "skills/multi-agent-consensus/SKILL.md",
+    "neighbours": []
+  },
+  "offer-builder": {
+    "kind": "skill",
+    "path": "skills/offer-builder/SKILL.md",
+    "neighbours": []
+  },
+  "onboarding-cro": {
+    "kind": "skill",
+    "path": "skills/onboarding-cro/SKILL.md",
+    "neighbours": [
+      {
+        "name": "signup-flow-cro",
+        "kind": "skill",
+        "score": 0.1379
+      }
+    ]
+  },
+  "onboarding-strategy-pdf": {
+    "kind": "skill",
+    "path": "skills/onboarding-strategy-pdf/SKILL.md",
+    "neighbours": [
+      {
+        "name": "business-profile",
+        "kind": "skill",
+        "score": 0.1722
+      }
+    ]
+  },
+  "page-cro": {
+    "kind": "skill",
+    "path": "skills/page-cro/SKILL.md",
+    "neighbours": [
+      {
+        "name": "conversion-optimizer",
+        "kind": "agent",
+        "score": 0.1386
+      },
+      {
+        "name": "popup-cro",
+        "kind": "skill",
+        "score": 0.1296
+      }
+    ]
+  },
+  "paid-advertising": {
+    "kind": "skill",
+    "path": "skills/paid-advertising/SKILL.md",
+    "neighbours": [
+      {
+        "name": "analytics-attribution",
+        "kind": "skill",
+        "score": 0.1731
+      },
+      {
+        "name": "marketing-fundamentals",
+        "kind": "skill",
+        "score": 0.1253
+      },
+      {
+        "name": "paid-media-audit",
+        "kind": "skill",
+        "score": 0.1237
+      }
+    ]
+  },
+  "paid-media-audit": {
+    "kind": "skill",
+    "path": "skills/paid-media-audit/SKILL.md",
+    "neighbours": [
+      {
+        "name": "paid-advertising",
+        "kind": "skill",
+        "score": 0.1237
+      }
+    ]
+  },
+  "paywall-upgrade-cro": {
+    "kind": "skill",
+    "path": "skills/paywall-upgrade-cro/SKILL.md",
+    "neighbours": []
+  },
+  "persuasive-premise": {
+    "kind": "skill",
+    "path": "skills/persuasive-premise/SKILL.md",
+    "neighbours": [
+      {
+        "name": "problem-promise",
+        "kind": "skill",
+        "score": 0.366
+      },
+      {
+        "name": "usp-generator",
+        "kind": "skill",
+        "score": 0.1229
+      },
+      {
+        "name": "unique-mechanism-problem",
+        "kind": "skill",
+        "score": 0.1224
+      }
+    ]
+  },
+  "popup-cro": {
+    "kind": "skill",
+    "path": "skills/popup-cro/SKILL.md",
+    "neighbours": [
+      {
+        "name": "page-cro",
+        "kind": "skill",
+        "score": 0.1296
+      },
+      {
+        "name": "form-cro",
+        "kind": "skill",
+        "score": 0.1206
+      }
+    ]
+  },
+  "pricing-strategy": {
+    "kind": "skill",
+    "path": "skills/pricing-strategy/SKILL.md",
+    "neighbours": []
+  },
+  "problem-promise": {
+    "kind": "skill",
+    "path": "skills/problem-promise/SKILL.md",
+    "neighbours": [
+      {
+        "name": "persuasive-premise",
+        "kind": "skill",
+        "score": 0.366
+      },
+      {
+        "name": "usp-generator",
+        "kind": "skill",
+        "score": 0.1243
+      }
+    ]
+  },
+  "problem-solving": {
+    "kind": "skill",
+    "path": "skills/problem-solving/SKILL.md",
+    "neighbours": []
+  },
+  "programmatic-seo": {
+    "kind": "skill",
+    "path": "skills/programmatic-seo/SKILL.md",
+    "neighbours": []
+  },
+  "prompt-contracts": {
+    "kind": "skill",
+    "path": "skills/prompt-contracts/SKILL.md",
+    "neighbours": []
+  },
+  "reddit": {
+    "kind": "skill",
+    "path": "skills/reddit/SKILL.md",
+    "neighbours": []
+  },
+  "referral-program": {
+    "kind": "skill",
+    "path": "skills/referral-program/SKILL.md",
+    "neighbours": []
+  },
+  "sales-letter-audit": {
+    "kind": "skill",
+    "path": "skills/sales-letter-audit/SKILL.md",
+    "neighbours": [
+      {
+        "name": "sales-letter-auditor",
+        "kind": "agent",
+        "score": 0.1534
+      }
+    ]
+  },
+  "sales-letter-method": {
+    "kind": "skill",
+    "path": "skills/sales-letter-method/SKILL.md",
+    "neighbours": []
+  },
+  "schema-markup": {
+    "kind": "skill",
+    "path": "skills/schema-markup/SKILL.md",
+    "neighbours": []
+  },
+  "scrapecreators": {
+    "kind": "skill",
+    "path": "skills/scrapecreators/SKILL.md",
+    "neighbours": []
+  },
+  "seo-mastery": {
+    "kind": "skill",
+    "path": "skills/seo-mastery/SKILL.md",
+    "neighbours": [
+      {
+        "name": "content-strategy",
+        "kind": "skill",
+        "score": 0.1326
+      }
+    ]
+  },
+  "sheets-provisioner": {
+    "kind": "skill",
+    "path": "skills/sheets-provisioner/SKILL.md",
+    "neighbours": [
+      {
+        "name": "sheets-updater",
+        "kind": "skill",
+        "score": 0.137
+      }
+    ]
+  },
+  "sheets-updater": {
+    "kind": "skill",
+    "path": "skills/sheets-updater/SKILL.md",
+    "neighbours": [
+      {
+        "name": "sheets-provisioner",
+        "kind": "skill",
+        "score": 0.137
+      }
+    ]
+  },
+  "signup-flow-cro": {
+    "kind": "skill",
+    "path": "skills/signup-flow-cro/SKILL.md",
+    "neighbours": [
+      {
+        "name": "form-cro",
+        "kind": "skill",
+        "score": 0.2353
+      },
+      {
+        "name": "onboarding-cro",
+        "kind": "skill",
+        "score": 0.1379
+      }
+    ]
+  },
+  "source-of-truth": {
+    "kind": "skill",
+    "path": "skills/source-of-truth/SKILL.md",
+    "neighbours": [
+      {
+        "name": "business-profile",
+        "kind": "skill",
+        "score": 0.1201
+      }
+    ]
+  },
+  "tiktok-slideshows": {
+    "kind": "skill",
+    "path": "skills/tiktok-slideshows/SKILL.md",
+    "neighbours": []
+  },
+  "unique-mechanism-problem": {
+    "kind": "skill",
+    "path": "skills/unique-mechanism-problem/SKILL.md",
+    "neighbours": [
+      {
+        "name": "unique-mechanism-solution",
+        "kind": "skill",
+        "score": 0.3701
+      },
+      {
+        "name": "usp-generator",
+        "kind": "skill",
+        "score": 0.1967
+      },
+      {
+        "name": "persuasive-premise",
+        "kind": "skill",
+        "score": 0.1224
+      }
+    ]
+  },
+  "unique-mechanism-solution": {
+    "kind": "skill",
+    "path": "skills/unique-mechanism-solution/SKILL.md",
+    "neighbours": [
+      {
+        "name": "unique-mechanism-problem",
+        "kind": "skill",
+        "score": 0.3701
+      },
+      {
+        "name": "usp-generator",
+        "kind": "skill",
+        "score": 0.239
+      }
+    ]
+  },
+  "unslop": {
+    "kind": "skill",
+    "path": "skills/unslop/SKILL.md",
+    "neighbours": [
+      {
+        "name": "copywriting",
+        "kind": "skill",
+        "score": 0.1362
+      }
+    ]
+  },
+  "userinterface-wiki": {
+    "kind": "skill",
+    "path": "skills/userinterface-wiki/SKILL.md",
+    "neighbours": []
+  },
+  "usp-generator": {
+    "kind": "skill",
+    "path": "skills/usp-generator/SKILL.md",
+    "neighbours": [
+      {
+        "name": "unique-mechanism-solution",
+        "kind": "skill",
+        "score": 0.239
+      },
+      {
+        "name": "unique-mechanism-problem",
+        "kind": "skill",
+        "score": 0.1967
+      },
+      {
+        "name": "problem-promise",
+        "kind": "skill",
+        "score": 0.1243
+      },
+      {
+        "name": "persuasive-premise",
+        "kind": "skill",
+        "score": 0.1229
+      }
+    ]
+  },
+  "verification-loops": {
+    "kind": "skill",
+    "path": "skills/verification-loops/SKILL.md",
+    "neighbours": []
+  },
+  "vid-director": {
+    "kind": "skill",
+    "path": "skills/vid-director/SKILL.md",
+    "neighbours": [
+      {
+        "name": "video-concept-lab",
+        "kind": "skill",
+        "score": 0.1951
+      }
+    ]
+  },
+  "video-brief-normalizer": {
+    "kind": "skill",
+    "path": "skills/video-brief-normalizer/SKILL.md",
+    "neighbours": [
+      {
+        "name": "video-concept-lab",
+        "kind": "skill",
+        "score": 0.2108
+      }
+    ]
+  },
+  "video-concept-lab": {
+    "kind": "skill",
+    "path": "skills/video-concept-lab/SKILL.md",
+    "neighbours": [
+      {
+        "name": "video-brief-normalizer",
+        "kind": "skill",
+        "score": 0.2108
+      },
+      {
+        "name": "vid-director",
+        "kind": "skill",
+        "score": 0.1951
+      }
+    ]
+  },
+  "video-director": {
+    "kind": "skill",
+    "path": "skills/video-director/SKILL.md",
+    "neighbours": [
+      {
+        "name": "image-generation",
+        "kind": "skill",
+        "score": 0.1272
+      }
+    ]
+  },
+  "video-hook-variants": {
+    "kind": "skill",
+    "path": "skills/video-hook-variants/SKILL.md",
+    "neighbours": []
+  },
+  "website-design": {
+    "kind": "skill",
+    "path": "skills/website-design/SKILL.md",
+    "neighbours": []
+  },
+  "youtube-content": {
+    "kind": "skill",
+    "path": "skills/youtube-content/SKILL.md",
+    "neighbours": []
+  },
+  "brand-voice-guardian-attribution": {
+    "kind": "agent",
+    "path": "agents/brand-voice-guardian-attribution.md",
+    "neighbours": [
+      {
+        "name": "conversion-optimizer-attribution",
+        "kind": "agent",
+        "score": 0.916
+      },
+      {
+        "name": "researcher-attribution",
+        "kind": "agent",
+        "score": 0.7511
+      },
+      {
+        "name": "copywriter-attribution",
+        "kind": "agent",
+        "score": 0.7317
+      },
+      {
+        "name": "persona-builder-attribution",
+        "kind": "agent",
+        "score": 0.7288
+      },
+      {
+        "name": "eval-halbert-attribution",
+        "kind": "agent",
+        "score": 0.3363
+      }
+    ]
+  },
+  "brand-voice-guardian": {
+    "kind": "agent",
+    "path": "agents/brand-voice-guardian.md",
+    "neighbours": [
+      {
+        "name": "conversion-optimizer",
+        "kind": "agent",
+        "score": 0.2695
+      },
+      {
+        "name": "researcher",
+        "kind": "agent",
+        "score": 0.2409
+      },
+      {
+        "name": "copywriter",
+        "kind": "agent",
+        "score": 0.2275
+      }
+    ]
+  },
+  "conversion-optimizer-attribution": {
+    "kind": "agent",
+    "path": "agents/conversion-optimizer-attribution.md",
+    "neighbours": [
+      {
+        "name": "brand-voice-guardian-attribution",
+        "kind": "agent",
+        "score": 0.916
+      },
+      {
+        "name": "copywriter-attribution",
+        "kind": "agent",
+        "score": 0.7514
+      },
+      {
+        "name": "researcher-attribution",
+        "kind": "agent",
+        "score": 0.7342
+      },
+      {
+        "name": "persona-builder-attribution",
+        "kind": "agent",
+        "score": 0.7301
+      },
+      {
+        "name": "eval-halbert-attribution",
+        "kind": "agent",
+        "score": 0.3801
+      }
+    ]
+  },
+  "conversion-optimizer": {
+    "kind": "agent",
+    "path": "agents/conversion-optimizer.md",
+    "neighbours": [
+      {
+        "name": "researcher",
+        "kind": "agent",
+        "score": 0.2873
+      },
+      {
+        "name": "brand-voice-guardian",
+        "kind": "agent",
+        "score": 0.2695
+      },
+      {
+        "name": "copywriter",
+        "kind": "agent",
+        "score": 0.201
+      },
+      {
+        "name": "page-cro",
+        "kind": "skill",
+        "score": 0.1386
+      },
+      {
+        "name": "persona-builder",
+        "kind": "agent",
+        "score": 0.1233
+      }
+    ]
+  },
+  "copywriter-attribution": {
+    "kind": "agent",
+    "path": "agents/copywriter-attribution.md",
+    "neighbours": [
+      {
+        "name": "researcher-attribution",
+        "kind": "agent",
+        "score": 0.8496
+      },
+      {
+        "name": "persona-builder-attribution",
+        "kind": "agent",
+        "score": 0.8009
+      },
+      {
+        "name": "conversion-optimizer-attribution",
+        "kind": "agent",
+        "score": 0.7514
+      },
+      {
+        "name": "brand-voice-guardian-attribution",
+        "kind": "agent",
+        "score": 0.7317
+      },
+      {
+        "name": "eval-halbert-attribution",
+        "kind": "agent",
+        "score": 0.4577
+      }
+    ]
+  },
+  "copywriter": {
+    "kind": "agent",
+    "path": "agents/copywriter.md",
+    "neighbours": [
+      {
+        "name": "brand-voice-guardian",
+        "kind": "agent",
+        "score": 0.2275
+      },
+      {
+        "name": "conversion-optimizer",
+        "kind": "agent",
+        "score": 0.201
+      },
+      {
+        "name": "researcher",
+        "kind": "agent",
+        "score": 0.1856
+      },
+      {
+        "name": "copywriting",
+        "kind": "skill",
+        "score": 0.1612
+      }
+    ]
+  },
+  "eval-halbert-attribution": {
+    "kind": "agent",
+    "path": "agents/eval-halbert-attribution.md",
+    "neighbours": [
+      {
+        "name": "eval-sales-letter-attribution",
+        "kind": "agent",
+        "score": 1.0
+      },
+      {
+        "name": "copywriter-attribution",
+        "kind": "agent",
+        "score": 0.4577
+      },
+      {
+        "name": "researcher-attribution",
+        "kind": "agent",
+        "score": 0.4572
+      },
+      {
+        "name": "persona-builder-attribution",
+        "kind": "agent",
+        "score": 0.457
+      },
+      {
+        "name": "conversion-optimizer-attribution",
+        "kind": "agent",
+        "score": 0.3801
+      }
+    ]
+  },
+  "eval-halbert": {
+    "kind": "agent",
+    "path": "agents/eval-halbert.md",
+    "neighbours": [
+      {
+        "name": "eval-sales-letter",
+        "kind": "agent",
+        "score": 0.2806
+      }
+    ]
+  },
+  "eval-sales-letter-attribution": {
+    "kind": "agent",
+    "path": "agents/eval-sales-letter-attribution.md",
+    "neighbours": [
+      {
+        "name": "eval-halbert-attribution",
+        "kind": "agent",
+        "score": 1.0
+      },
+      {
+        "name": "copywriter-attribution",
+        "kind": "agent",
+        "score": 0.4577
+      },
+      {
+        "name": "researcher-attribution",
+        "kind": "agent",
+        "score": 0.4572
+      },
+      {
+        "name": "persona-builder-attribution",
+        "kind": "agent",
+        "score": 0.457
+      },
+      {
+        "name": "conversion-optimizer-attribution",
+        "kind": "agent",
+        "score": 0.3801
+      }
+    ]
+  },
+  "eval-sales-letter": {
+    "kind": "agent",
+    "path": "agents/eval-sales-letter.md",
+    "neighbours": [
+      {
+        "name": "eval-halbert",
+        "kind": "agent",
+        "score": 0.2806
+      }
+    ]
+  },
+  "persona-builder-attribution": {
+    "kind": "agent",
+    "path": "agents/persona-builder-attribution.md",
+    "neighbours": [
+      {
+        "name": "researcher-attribution",
+        "kind": "agent",
+        "score": 0.8136
+      },
+      {
+        "name": "copywriter-attribution",
+        "kind": "agent",
+        "score": 0.8009
+      },
+      {
+        "name": "conversion-optimizer-attribution",
+        "kind": "agent",
+        "score": 0.7301
+      },
+      {
+        "name": "brand-voice-guardian-attribution",
+        "kind": "agent",
+        "score": 0.7288
+      },
+      {
+        "name": "eval-halbert-attribution",
+        "kind": "agent",
+        "score": 0.457
+      }
+    ]
+  },
+  "persona-builder": {
+    "kind": "agent",
+    "path": "agents/persona-builder.md",
+    "neighbours": [
+      {
+        "name": "researcher",
+        "kind": "agent",
+        "score": 0.1296
+      },
+      {
+        "name": "conversion-optimizer",
+        "kind": "agent",
+        "score": 0.1233
+      },
+      {
+        "name": "avatar-research",
+        "kind": "skill",
+        "score": 0.1223
+      }
+    ]
+  },
+  "researcher-attribution": {
+    "kind": "agent",
+    "path": "agents/researcher-attribution.md",
+    "neighbours": [
+      {
+        "name": "copywriter-attribution",
+        "kind": "agent",
+        "score": 0.8496
+      },
+      {
+        "name": "persona-builder-attribution",
+        "kind": "agent",
+        "score": 0.8136
+      },
+      {
+        "name": "brand-voice-guardian-attribution",
+        "kind": "agent",
+        "score": 0.7511
+      },
+      {
+        "name": "conversion-optimizer-attribution",
+        "kind": "agent",
+        "score": 0.7342
+      },
+      {
+        "name": "eval-halbert-attribution",
+        "kind": "agent",
+        "score": 0.4572
+      }
+    ]
+  },
+  "researcher": {
+    "kind": "agent",
+    "path": "agents/researcher.md",
+    "neighbours": [
+      {
+        "name": "conversion-optimizer",
+        "kind": "agent",
+        "score": 0.2873
+      },
+      {
+        "name": "brand-voice-guardian",
+        "kind": "agent",
+        "score": 0.2409
+      },
+      {
+        "name": "copywriter",
+        "kind": "agent",
+        "score": 0.1856
+      },
+      {
+        "name": "persona-builder",
+        "kind": "agent",
+        "score": 0.1296
+      }
+    ]
+  },
+  "sales-letter-auditor": {
+    "kind": "agent",
+    "path": "agents/sales-letter-auditor.md",
+    "neighbours": [
+      {
+        "name": "sales-letter-audit",
+        "kind": "skill",
+        "score": 0.1534
+      }
+    ]
+  }
+}

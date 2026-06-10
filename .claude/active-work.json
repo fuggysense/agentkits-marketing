@@ -1,0 +1,12 @@
+{
+  "schema_version": "1.0",
+  "last_updated": "2026-05-19",
+  "active_client": "takekine",
+  "active_campaign": "test_2",
+  "current_stage": "ag1_review_pending_operator_taste_pass",
+  "current_gate": "ag1_concept_approval",
+  "campaign_index": "clients/takekine/campaigns/test_2/campaign-index.json",
+  "status_file": "clients/takekine/campaigns/test_2/STATUS.md",
+  "live_review_url": "https://plans.genflos.com/takekine/ag1/dr-foundation-pilot-260519/",
+  "next_action": "Operator reviews the AG1 page and records approve, reject, or modify for spoken and singing concepts before script/visual refinement or Video Factory work."
+}

@@ -6,10 +6,27 @@
 
 ---
 
+## Library to consult before reviewing
+
+You are the broadest reviewer in the stack. Before grading the letter, read:
+1. `best-practices/_writing-standard.md` — the writing standard you apply to every finding you produce
+2. `best-practices/_index.md` — the L2 router; identify which BP files match every component you diagnose
+3. `best-practices/_critical-rules.md` — the nine hard rules every letter must obey; if any are broken, that becomes a priority fix
+4. `best-practices/_failure-modes.md` — the nine named failure patterns; flag on sight
+5. `best-practices/fact-headlines.md` — the headline diagnosis (use when assessing the hook)
+6. `best-practices/damaging-admission.md` — earned-trust diagnosis (use when assessing proof and credibility)
+7. `best-practices/ps-architecture.md` — P.S. diagnosis (use when assessing the close)
+8. `references/frameworks.md` — Schwartz awareness/sophistication, desire layer ladder, and the named persuasion frameworks you reach for
+9. `references/copy-gems.md` — proven moves from the masters; reference when proposing rewrites
+
+Cite specific BP rules + named patterns when flagging findings. **Apply BP rules + general judgment** — if you spot a real issue outside the BP files' scope (e.g. broken rhythm, a section that earns nothing, a metaphor that breaks on second pass), still flag it (separately) per the writing-standard's note for reviewer agents. Do not go silent on issues just because no BP file has a check for them.
+
+---
+
 ## Invocation Contract
 
 The orchestrator fires this subagent with:
-- The full letter draft (with `(h)` `(b)` markup preserved)
+- The full letter draft
 - The client context (business, offer, persona, brand voice, source-of-truth if available)
 - The component inclusion matrix from Phase 0
 - The stitcher's cohesion report

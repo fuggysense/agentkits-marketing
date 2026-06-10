@@ -1,0 +1,92 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "dct-tracker-10-5-5.schema.json",
+  "title": "DCT Tracker — 10-5-5 (Meta Flex) mode",
+  "description": "Opt-in 10-5-5 shape (5 angles x 2 variations = 10 creatives, 5 copies, 5 headlines). 3-2-2 trackers remain valid against the legacy shape; this schema governs trackers where dct_structure.method == '10-5-5'. The sheet writer (scripts/ad_concept_sheet_writer.py) consumes creatives[] one-row-per-entry, so each ANGLE is one creatives[] entry -> one CREATIVES row + one COPY row (5 rows per wave). Full method spec: docs/methods/10-5-5/SPEC.md.",
+  "type": "object",
+  "required": ["client_slug", "metrics_campaign", "dct_structure", "creatives"],
+  "properties": {
+    "_owner_skill": { "type": "string", "const": "ad-concept-engine" },
+    "_method": { "type": "string", "const": "10-5-5", "description": "Mirror of dct_structure.method for quick grep." },
+    "client_slug": { "type": "string" },
+    "metrics_campaign": { "type": "string", "description": "Routes the sheet write (buyer-funnel | asset-progression | ...). MUST match a metrics-config.json campaigns[].campaign_slug." },
+    "wave": { "type": "integer" },
+    "dct_number": { "type": ["integer", "string"], "description": "The Flex wave id number (the 5 angles share this wave)." },
+    "meta_ad_account_id": { "type": "string" },
+    "meta_campaign_name": { "type": "string" },
+    "meta_adset_name": { "type": "string", "description": "One Flex ad set holds all 5 angles' 10 images + 5 texts + 5 headlines." },
+    "dct_structure": {
+      "type": "object",
+      "required": ["method", "angle_model", "angles", "variations_per_angle", "total_creatives", "total_copies", "total_headlines", "meta_format"],
+      "properties": {
+        "method": { "type": "string", "const": "10-5-5" },
+        "angle_model": { "type": "string", "enum": ["five_x_two", "ten_distinct"], "description": "five_x_two is the locked default (D1, 2026-06-03). ten_distinct reserved for future discovery-mode waves." },
+        "angles": { "type": "integer", "const": 5 },
+        "variations_per_angle": { "type": "integer", "const": 2 },
+        "copies_per_angle": { "type": "integer", "const": 1 },
+        "headlines_per_angle": { "type": "integer", "const": 1 },
+        "headlines_drafted_per_angle": { "type": "integer", "minimum": 1, "description": "Over-draft pool (~5) narrowed to 1 locked. Drafts retained in creatives[].headline_drafts for audit." },
+        "total_creatives": { "type": "integer", "const": 10 },
+        "total_copies": { "type": "integer", "const": 5 },
+        "total_headlines": { "type": "integer", "const": 5 },
+        "meta_format": { "type": "string", "const": "flex" }
+      }
+    },
+    "creatives": {
+      "type": "array",
+      "minItems": 5,
+      "maxItems": 5,
+      "description": "Exactly 5 entries, one per angle. Each -> one CREATIVES row + one COPY row.",
+      "items": {
+        "type": "object",
+        "required": ["batch", "format", "ad_name", "angle", "persona", "copy_1", "headline_1", "canva_link", "variations"],
+        "properties": {
+          "batch": { "type": "string", "description": "Unique per angle, e.g. DCT010-A01 .. DCT010-A05. Writer keys CREATIVES dup-detection on this." },
+          "format": { "type": "string", "description": "Typically 'Static' for image-variant testing." },
+          "ad_name": { "type": "string" },
+          "market_awareness": { "type": "string" },
+          "market_sophistication": { "type": "string" },
+          "angle": { "type": "string", "description": "Short angle title." },
+          "angle_rationale": { "type": "string", "description": "Optional 3-paragraph strategic rationale (big-angle-spotter 07b). Preferred for the ANGLE sheet column when present." },
+          "persona": { "type": "string", "description": "Canonical avatar id + display name, e.g. 'avatar-1 (The Hesitant Calculator)'. See clients/<client>/_brand/avatars/_index.md." },
+          "status": { "type": "string", "default": "DRAFT" },
+          "copy_1": { "type": "string", "description": "The single LOCKED copy for this angle. (copy_2 stays empty in 10-5-5.)" },
+          "copy_2": { "type": "string", "description": "Unused in 10-5-5 (kept for 3-2-2 back-compat). Leave empty." },
+          "headline_1": { "type": "string", "description": "The single LOCKED headline for this angle. (headline_2 stays empty.)" },
+          "headline_2": { "type": "string", "description": "Unused in 10-5-5. Leave empty." },
+          "headline_drafts": { "type": "array", "items": { "type": "string" }, "description": "~5 drafted headlines for this angle before narrowing to headline_1. Audit trail; NOT written to the sheet." },
+          "canva_link": { "type": "string", "description": "Real Canva URL. Writer refuses placeholder values (tbd/todo/pending/none/null/empty)." },
+          "why_am_i_testing_this": { "type": "string" },
+          "variations": {
+            "type": "array",
+            "minItems": 2,
+            "maxItems": 2,
+            "description": "The 2 image variants of THIS angle (same copy + headline). Feed image-gen; NOT written to the sheet (the row is angle-level).",
+            "items": {
+              "type": "object",
+              "required": ["variant_id", "visual_style"],
+              "properties": {
+                "variant_id": { "type": "string", "description": "v1 | v2" },
+                "visual_style": { "type": "string" },
+                "image_prompt": { "type": "string" },
+                "canva_link": { "type": "string" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "sheet_write_plan": {
+      "type": "object",
+      "properties": {
+        "row_count": { "type": "integer", "const": 5, "description": "5 CREATIVES rows + 5 COPY rows per 10-5-5 wave." },
+        "metrics_campaign": { "type": "string" },
+        "tabs": { "type": "object" }
+      }
+    },
+    "kpi_targets": { "type": "object" },
+    "kill_rules": { "type": "array" },
+    "known_blockers": { "type": "array" },
+    "next_commands": { "type": "array" }
+  }
+}

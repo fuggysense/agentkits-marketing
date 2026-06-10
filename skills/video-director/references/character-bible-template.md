@@ -135,4 +135,74 @@ For creators building character-based accounts (fictional personas, mascots):
 
 ---
 
+## 10-Angle AI Influencer Character Sheet
+
+For creating reusable AI influencer reference sets. Generates 10 images that become the identity anchor for all future generations with that character.
+
+### Required Flow (do NOT skip steps)
+
+1. User describes the influencer in plain English
+2. Expand description into detailed visual prompt (see structure below)
+3. Present expanded prompt for user review
+4. Generate **hero image only** (full body front) — WAIT for approval
+5. Use approved hero as `referenceImages` to generate remaining 9 angles
+6. QA all images for cross-angle consistency
+7. Save to `references/influencers/{name}-{hair}-{style}-{feature}-{eyes}-{skin}/`
+
+### Hero Prompt Structure
+
+```
+A {age}-year-old {gender} influencer with {hair color} {hair texture} {hair length} hair,
+{skin tone} skin with {distinguishing features}, {eye color} eyes, {build} build,
+{makeup level}, wearing {clothing}. Clean white studio background, photorealistic,
+visible skin texture, individual hair strands catching light.
+```
+
+Start the hero with: `Full body front view, head to toe.` — full body gives the model complete context (face, build, clothing, proportions) so all 9 angles stay consistent. A portrait crop forces the model to invent the lower half.
+
+### The 10 Angles
+
+| # | File | Angle | Prompt prefix | Lighting notes |
+|---|------|-------|---------------|----------------|
+| 1 | `01-hero-front.jpg` | Full body front (hero) | `Full body front view, head to toe.` | Soft even lighting from both sides |
+| 2 | `02-3q-left.jpg` | 3/4 left | `Three-quarter view from the left.` | Directional light from camera-right |
+| 3 | `03-3q-right.jpg` | 3/4 right | `Three-quarter view from the right.` | Directional light from camera-left |
+| 4 | `04-profile-left.jpg` | Profile left | `Left profile view.` | Soft rim light from behind |
+| 5 | `05-profile-right.jpg` | Profile right | `Right profile view.` | Soft rim light from behind |
+| 6 | `06-face-closeup.jpg` | Face close-up | `Face close-up, tight crop.` | Soft beauty lighting, catchlights in both eyes |
+| 7 | `07-back-shoulder.jpg` | Back/over shoulder | `Back view, looking over shoulder.` | Hair visible from behind |
+| 8 | `08-medium-portrait.jpg` | Medium portrait | `Front-facing medium portrait, waist up.` | Soft even lighting |
+| 9 | `09-full-body-3q.jpg` | Full body 3/4 | `Full body three-quarter view.` | Same full outfit visible |
+| 10 | `10-above-angle.jpg` | Above angle | `Slightly above angle, looking up at camera.` | Soft overhead lighting |
+
+### Generation Rules
+
+- **Hero first, then angles.** Upload hero as `referenceImages` for all 9 subsequent generations
+- Each angle prompt must reference: `"The exact same person from the reference image — same face, same [hair], same [distinguishing features], same [eyes], same [build], same [clothing]."`
+- White studio background on all 10 — character sheet is about the person, not the setting
+- Fire 9 angle generations sequentially (not parallel — rate limits). Poll concurrently.
+- **QA for cross-image consistency:** same hair color, face shape, skin tone, distinguishing features, clothing
+
+### Folder Naming Convention
+
+```
+references/influencers/{name}-{hair_color}-{hair_style}-{feature}-{eye_color}-{skin_tone}/
+```
+
+Example: `emma-redhead-wavy-freckles-green-eyes-fair/`
+
+### Credit Cost (Nano Banana 2)
+- Hero: 1 generation = 0.03 credits
+- 9 angles: 9 generations = 0.27 credits
+- **Total: 0.30 credits** (plus retries for QA failures at 0.03 each)
+
+### Using the Character Sheet Downstream
+
+Once saved, the character sheet feeds:
+- UGC selfie stills → use `01-hero-front.jpg` as primary `referenceImages` + product photo + style refs
+- I2V animation → upload any angle as first frame for Veo 3.1 / Kling
+- Multi-video campaigns → character identity stays locked across all productions
+
+---
+
 *Sources: Mikoslab facial engineering framework (Plan A #3), OpenAI Sora Characters API documentation (Plan B #17). Combined for maximum model coverage.*

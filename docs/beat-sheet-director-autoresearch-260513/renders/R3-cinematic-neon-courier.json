@@ -1,0 +1,21 @@
+[
+  {
+    "id": "41939129-66cc-4d91-8a0d-335fdad0fb87",
+    "status": "completed",
+    "display_name": "GPT Image 2",
+    "job_set_type": "imagegen_2_0",
+    "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_2z2bozEwzKwxJNgkH3IQQ4lTkuw/hf_20260513_030425_41939129-66cc-4d91-8a0d-335fdad0fb87.png",
+    "created_at": 1778641465.697852,
+    "params": {
+      "width": 1344,
+      "height": 752,
+      "prompt": "Create a 16:9 live-action cinematic, photorealistic storyboard grid for Scene 1 of \"Neon Memory Courier\" - 3x3 layout, exactly 9 panels on a clean black canvas, panels separated by thin black gutters only. Overarching scene theme: a solitary courier in a dark waterproof coat moves through a rain-slick neon city at night, carrying a small glowing memory chip case close to their chest; reflections ripple across pavement, steam rises from street vents, and the mood is tense, deliberate, and mysterious. Panels progress from quiet preparation to the first signs of pursuit. Shot on ARRI Alexa 65 with anamorphic lenses, muted cyberpunk color grading, volumetric neon light, real skin texture, practical rain, deep shadows. Panels left-to-right top-to-bottom show: quiet alley start, chip case close-up, courier checking reflection, neon crosswalk, suspicious figure appearing, courier turning, rain on case, first chase step, door reveal at frame edge. Below each panel: a narrow black caption band with panel number, time code, and two short plain-English caption sentences. No title banner, no footer, no colored gridlines, no SFX or BGM columns. Render at 16:9 aspect ratio, 1K, medium quality.",
+      "medias": [],
+      "aspect_ratio": "16:9",
+      "quality": "medium",
+      "resolution": "1k",
+      "model": "videotape-alpha",
+      "reference_elements": []
+    }
+  }
+]

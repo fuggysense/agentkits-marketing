@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Council Verdict — Zinc7 Pattern Integration</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+    background: #fafaf8;
+    color: #1a1a1a;
+    line-height: 1.55;
+    margin: 0;
+    padding: 40px 24px 80px;
+  }
+  .wrap { max-width: 880px; margin: 0 auto; }
+  header {
+    border-bottom: 2px solid #1a1a1a;
+    padding-bottom: 18px;
+    margin-bottom: 32px;
+  }
+  .meta { font-size: 13px; color: #6b6b6b; text-transform: uppercase; letter-spacing: 0.08em; }
+  h1 { font-size: 32px; line-height: 1.2; margin: 6px 0 4px; font-weight: 700; }
+  .subtitle { font-size: 15px; color: #4a4a4a; margin-top: 4px; }
+  .question-block {
+    background: #fff;
+    border: 1px solid #e2e0d8;
+    border-left: 4px solid #1a1a1a;
+    padding: 18px 22px;
+    margin-bottom: 32px;
+    font-size: 15px;
+  }
+  .question-block .label { font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; color: #6b6b6b; margin-bottom: 6px; }
+  h2 {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #6b6b6b;
+    margin: 40px 0 12px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid #e2e0d8;
+  }
+  .verdict {
+    background: #fff;
+    border: 1px solid #e2e0d8;
+    border-radius: 4px;
+    padding: 28px 28px 18px;
+    margin-bottom: 12px;
+  }
+  .verdict h3 {
+    font-size: 15px;
+    font-weight: 700;
+    margin: 18px 0 6px;
+    color: #1a1a1a;
+  }
+  .verdict h3:first-child { margin-top: 0; }
+  .verdict p { margin: 6px 0 12px; font-size: 15px; }
+  .one-thing {
+    background: #1a1a1a;
+    color: #f5f3ea;
+    padding: 18px 22px;
+    border-radius: 4px;
+    margin: 24px 0;
+  }
+  .one-thing .label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.14em; color: #c2a85f; }
+  .one-thing p { margin: 6px 0 0; font-size: 15px; line-height: 1.55; }
+  /* Position spectrum */
+  .spectrum {
+    background: #fff;
+    border: 1px solid #e2e0d8;
+    padding: 22px;
+    border-radius: 4px;
+    margin-bottom: 24px;
+  }
+  .spectrum-title { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: #6b6b6b; margin-bottom: 14px; }
+  .spectrum-bar {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1px;
+    background: #e2e0d8;
+    border: 1px solid #e2e0d8;
+  }
+  .spectrum-col { background: #fafaf8; padding: 14px; }
+  .spectrum-col h4 { margin: 0 0 8px; font-size: 13px; font-weight: 700; }
+  .spectrum-col ul { padding-left: 16px; margin: 0; font-size: 13px; }
+  .spectrum-col li { margin: 4px 0; }
+  .lean-diagnose { background: #f3f1e6; }
+  .lean-build { background: #faf6ea; }
+  .lean-middle { background: #fafaf8; }
+  /* Advisor cards */
+  details {
+    background: #fff;
+    border: 1px solid #e2e0d8;
+    border-radius: 4px;
+    margin-bottom: 8px;
+    padding: 0;
+  }
+  details summary {
+    padding: 14px 18px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 15px;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  details summary::-webkit-details-marker { display: none; }
+  details summary::after {
+    content: '＋';
+    font-size: 18px;
+    color: #6b6b6b;
+  }
+  details[open] summary::after { content: '−'; }
+  details[open] summary { border-bottom: 1px solid #e2e0d8; }
+  details .body { padding: 16px 22px 18px; font-size: 14px; }
+  details .body p { margin: 8px 0; }
+  details .body ul { padding-left: 18px; }
+  .conf {
+    display: inline-block;
+    font-size: 11px;
+    background: #e2e0d8;
+    padding: 2px 8px;
+    border-radius: 8px;
+    color: #4a4a4a;
+    margin-left: 8px;
+  }
+  .lens {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #c2a85f;
+    margin-right: 8px;
+  }
+  /* Peer review */
+  .reviewer { font-size: 14px; padding: 10px 0; border-bottom: 1px solid #f0eee5; }
+  .reviewer:last-child { border-bottom: none; }
+  .reviewer strong { color: #1a1a1a; }
+  footer {
+    margin-top: 60px;
+    padding-top: 18px;
+    border-top: 1px solid #e2e0d8;
+    font-size: 12px;
+    color: #8a8a8a;
+  }
+  footer a { color: #6b6b6b; }
+  code {
+    background: #f3f1e6;
+    padding: 1px 5px;
+    border-radius: 3px;
+    font-size: 13px;
+    font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="meta">LLM Council · 2026-05-11 · Singapore</div>
+  <h1>Zinc7 Pattern Integration</h1>
+  <div class="subtitle">Should 7 patterns from a supplement VSL teardown be added to the sales-letter pipeline? Do they generalize across industries?</div>
+</header>
+
+<div class="question-block">
+  <div class="label">The Question</div>
+  Jerel tore down a Zinc7 supplement letter and surfaced 7 gaps in his sales-letter pipeline (already running Schwartz/Halbert/Collier/Hormozi/Legend + 5-phase method + 3-reviewer audit). The 7 proposed gaps: Enemy/Villain Architecture, Symptom-Stack Checklist, False-Solution Forecloser, Mechanism Education as a phase, Bundled-Promise Architecture, Dual Future-Pace Closer, 10-State Emotional Arc. Industries served: SG property agent lead gen, B2B SaaS, info products, services, ecom.
+</div>
+
+<h2>Council Verdict</h2>
+
+<div class="verdict">
+  <h3>Where the council agrees</h3>
+  <p>4 of 5 advisors (Contrarian, First Principles, Executor, Outsider) agree most "gaps" are renames of existing primitives: Enemy = Schwartz Channeling, Mechanism Education = Phase 3, False-Solution = Sophistication Stage 4, Bundled-Promise = Hormozi Stack, Dual Future-Pace = 6 Emotional States end-state. 4 of 5 say skip the 10-State Arc — theory bloat with no canonical source. 3 reviewers independently flag the sample-size-of-one problem. <strong>Strongest convergence: this is an audit/surfacing problem, not a framework-inventory problem.</strong></p>
+
+  <h3>Where the council clashes</h3>
+  <p><strong>Build vs. diagnose.</strong> Executor + 2 reviewers say ship Monday (Files 1+2 in 2hrs, falsifiable test). First Principles + Contrarian + 3 reviewers say diagnose first — adding 5-7 files when underlying primitives already cover the territory creates audit fatigue.</p>
+  <p><strong>Enemy/Villain in B2B.</strong> Expansionist says it's the highest-leverage move precisely because B2B avoids it. Contrarian says weaponizing enemies in SG property gets you a MAS complaint, not differentiation. Genre-dependent.</p>
+  <p><strong>Vertical overlay vs. one field.</strong> Expansionist wants a 100-letter teardown library across 10 verticals (6-month project). Contrarian wants one Phase 1 field — "category sensitivity tier" (10-minute edit). Same diagnosis, opposite scale.</p>
+  <p><em>For this question — system architecture and cross-industry generalization — the <strong>Contrarian and First Principles lenses dominate</strong>. Executor's veto matters most on what ships first, not whether to ship the full 7.</em></p>
+
+  <h3>Blind spots the council caught</h3>
+  <ul>
+    <li><strong>Regulatory dialect (Reviewer 1):</strong> Supplement VSL moves are FTC/FDA scar tissue, not persuasion innovations. Porting them to SaaS/property imports manipulation-coded patterns into unregulated categories.</li>
+    <li><strong>corrections.md diff (Reviewer 2):</strong> If these 7 gaps haven't been logged as corrections on real client work, they haven't earned framework status. n=1.</li>
+    <li><strong>Detector failure (Reviewer 4):</strong> The audit didn't flag these on prior letters — that's a reviewer-coverage bug, not a parts-catalog shortage.</li>
+    <li><strong>Conversion data (Reviewer 5):</strong> Nobody asked if Zinc7 actually converted. These 7 elements might be correlation, not causation.</li>
+  </ul>
+
+  <h3>The recommendation</h3>
+  <p><strong>Do NOT build 5-7 new framework files.</strong> 5 of 7 are renames, 10-State is bloat, and the audit instrument is the real bug. But don't stop at the single-field fix either — that ships nothing testable.</p>
+  <p>Three-step sequence:</p>
+  <ol>
+    <li><strong>Diff before build.</strong> Pull <code>corrections.md</code> for sales-letter-method and sales-letter-audit. Check which of the 7 gaps were ever flagged on real client work. Anything not logged = drop it.</li>
+    <li><strong>Fix the detector, not the catalog.</strong> Add discrete-artifact gates inside existing phases: Phase 2 must output "named adversary"; Phase 3 must output "false-solution discredit block"; Phase 1 must output "category sensitivity tier." These are reviewer gates, not new frameworks.</li>
+    <li><strong>Teardown 3-5 winners per industry</strong> (SG property, B2B SaaS, info, services, ecom) <strong>before generalizing.</strong> One Zinc7 doesn't justify pipeline changes for 5 industries.</li>
+  </ol>
+  <p>Skip the 100-letter library — maintenance graveyard. Skip Phase 2.5 Mechanism Education — it's already Phase 3.</p>
+</div>
+
+<div class="one-thing">
+  <div class="label">The one thing to do first</div>
+  <p>Open <code>agents/copywriter-learnings.md</code> and the <code>sales-letter-method</code> / <code>sales-letter-audit</code> <code>corrections.md</code> files. Diff the 7 proposed gaps against what's actually been logged from real client work. Anything not appearing there is n=1 theory and gets dropped before a single new file is written.</p>
+</div>
+
+<h2>Advisor Positions</h2>
+
+<div class="spectrum">
+  <div class="spectrum-title">Where the 5 lenses land</div>
+  <div class="spectrum-bar">
+    <div class="spectrum-col lean-diagnose">
+      <h4>Diagnose first</h4>
+      <ul>
+        <li><strong>First Principles</strong> — primitives exist; surfacing problem; add discrete-artifact gates</li>
+        <li><strong>Contrarian</strong> — 5/7 are renames; add ONE field (category tier), not 7 frameworks</li>
+      </ul>
+    </div>
+    <div class="spectrum-col lean-middle">
+      <h4>Selective integration</h4>
+      <ul>
+        <li><strong>Outsider</strong> — rename in plain English; ship maybe 3; skip villain in B2B</li>
+      </ul>
+    </div>
+    <div class="spectrum-col lean-build">
+      <h4>Build &amp; ship</h4>
+      <ul>
+        <li><strong>Executor</strong> — Monday plan, build 5 files, skip 1, merge 2</li>
+        <li><strong>Expansionist</strong> — vertical overlay system + 100-letter teardown library</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<h2>Full Advisor Responses</h2>
+
+<details>
+  <summary><span><span class="lens">Contrarian</span>Already covered — you're renaming<span class="conf">conf 8</span></span></summary>
+  <div class="body">
+    <p>Zinc7 is a supplement VSL — the most overfit, most regulated, most psychologically manipulative corner of direct response. Reverse-engineering from a sample size of ONE is cargo culting.</p>
+    <p><strong>Already covered:</strong> Enemy/Villain = Schwartz Channeling + Halbert A-pile. Symptom-Stack = State 2 (Pain) + One-Person Rule. False-Solution Forecloser = Objection Category 3 + Sophistication Stage 4/5. Mechanism Education = existing Phase 3. 10-State Arc (worst offender): Anger inside Pain, Validation inside Belief, "Productive-Confusion" = Collier renamed.</p>
+    <p><strong>Dangerous outside supplements:</strong> Bundled-Promise backfires in B2B/SaaS (buyers want ONE outcome). Dual Future-Pace dystopia→utopia reads as fearmongering in B2B.</p>
+    <p><strong>Real answer:</strong> Don't add frameworks. Add ONE field to Phase 1 Context Scan: "category sensitivity tier" (regulated/B2B/info/ecom). Existing reviewers gate which tactics fire. One line of structure vs 7 new artifacts. You're solving a maintenance problem by adding maintenance.</p>
+  </div>
+</details>
+
+<details>
+  <summary><span><span class="lens">First Principles</span>Surfacing problem, not framework gap<span class="conf">conf 8</span></span></summary>
+  <div class="body">
+    <p>Wrong question. Most "gaps" are costumes on primitives you already have. Enemy/Villain = Schwartz Channeling + named adversary slot. Symptom-Stack = Halbert one-person + specificity gate. False-Solution = Schwartz Sophistication Stage 4. Mechanism Education = literally Phase 3 of pipeline. Bundled-Promise = Hormozi Offer stack. Dual Future-Pace = 6 Emotional States end-state variant. 10-State = 6-state sliced thinner.</p>
+    <p><strong>Real gap:</strong> You don't have a missing-framework problem. You have a surfacing problem. Your primitives exist but the pipeline doesn't force them to produce discrete, named artifacts the writer can audit. Zinc7 feels different because it executes the same frameworks with brutal specificity and discrete on-page beats.</p>
+    <p><strong>Right shape:</strong> Framework primitives (universal) + execution overlays per category (supplement / SaaS / property / info). Build supplement overlay as template. Add discrete-artifact gates to existing phases (Phase 2 must output "named adversary," Phase 3 must output "false-solution discredit block"). Don't add phases. Stop adding phases. Audit checklist too soft.</p>
+  </div>
+</details>
+
+<details>
+  <summary><span><span class="lens">Expansionist</span>Vertical overlay system + teardown library<span class="conf">conf 8</span></span></summary>
+  <div class="body">
+    <p>The bigger play isn't 7 gaps — Zinc7 just handed you the seed of a vertical overlay system. Base pipeline stays universal; each vertical gets a JSON overlay swapping in category-specific scaffolding.</p>
+    <p><strong>Highest-leverage outside supplements: Enemy/Villain in B2B SaaS.</strong> B2B is allergic to enemies — sanitized vendor-neutral mush. Weaponizing legacy CRMs / "best practices" cargo cult / analytics-industrial complex = instant tonal differentiation.</p>
+    <p><strong>Generalization ranking:</strong> 1) Enemy Architecture → Phase 0.8. 2) Mechanism Education → Phase 1.5. 3) Bundled-Promise → Hormozi extension. 4) Dual Future-Pace → universal closer. 5) 10-State Arc → long-form only. 6) False-Solution Forecloser → new objection category. 7) Symptom-Stack → supplement/health/finance only — quarantine.</p>
+    <p><strong>Real moat:</strong> Teardown LIBRARY. 100 winning letters across 10 verticals → pattern extraction → vertical overlays. Every client letter produces a reusable teardown asset.</p>
+  </div>
+</details>
+
+<details>
+  <summary><span><span class="lens">Outsider</span>Names will rot — rename in plain English<span class="conf">conf 6</span></span></summary>
+  <div class="body">
+    <p>Half these names are invented and will rot. "10-State Emotional Arc" — invented terminology, no canonical source. In 6 months Jerel won't remember state order.</p>
+    <p>"Symptom-Stack Checklist" is supplement-speak — B2B SaaS would never reach for that name (would say "pain audit" or "the 7 things you're probably doing wrong"). "Bundled-Promise" overlaps Hormozi Stack — juniors will pick wrong tool.</p>
+    <p>"False-Solution" and "Enemy" already implicit in Schwartz Sophistication 4-5 and Halbert us-vs-them. Are you adding tools, or making implicit moves explicit? If latter, write that down — changes how you teach the system.</p>
+    <p>Scam-adjacent supplement letters targeting older women is a hyper-specific genre. SaaS buyer reading "7 warning signs your CRM is failing" with same energy smells manipulation. Half are genre artifacts. Integrate maybe 3 (false-solution, mechanism education, dual future-pace). Skip villain for B2B. Rename everything plain English.</p>
+  </div>
+</details>
+
+<details>
+  <summary><span><span class="lens">Executor</span>Build 5, skip 1, merge 2 (Monday)<span class="conf">conf 8</span></span></summary>
+  <div class="body">
+    <p><strong>Monday morning sequence:</strong></p>
+    <ol>
+      <li><code>frameworks/conflict-architecture.md</code> (45min) — merge Enemy/Villain + False-Solution Forecloser</li>
+      <li><code>builders/symptom-stack-builder.md</code> (30min) — checklist generator, highest ROI</li>
+      <li><code>frameworks/bundled-promise.md</code> (30min) — extract from hormozi-offer.md</li>
+      <li>Edit <code>skills/sales-letter-method/SKILL.md</code> (45min) — Phase 2.5 Mechanism Education (risky)</li>
+      <li><code>frameworks/dual-future-pace.md</code> (20min)</li>
+    </ol>
+    <p>Skip 10-State Arc — theory bloat.</p>
+    <p><strong>2-hour MVP:</strong> Files 1+2 only. Test on Zinc7-style + SG property letter. <strong>Test:</strong> re-audit 3 existing client letters; if specificity/believability scores rise without rewriting the rubric, it worked.</p>
+    <p><strong>Value ranking:</strong> Symptom-Stack &gt; Conflict Architecture &gt; Mechanism Education phase &gt; Bundled Promise &gt; Dual Future-Pace. Build 5, skip 1, merge 2.</p>
+  </div>
+</details>
+
+<h2>Peer Review Highlights</h2>
+
+<details>
+  <summary><span>Strongest vs. biggest blind spot — 5 reviewers anonymized</span></summary>
+  <div class="body">
+    <div class="reviewer"><strong>Reviewer 1:</strong> Strongest = Contrarian. Biggest blind spot = Executor (builds without testing whether gaps are real). All missed: <strong>regulatory dialect</strong> — supplement VSL moves are FTC/FDA scar tissue; porting to SaaS/property imports manipulation-coded patterns.</div>
+    <div class="reviewer"><strong>Reviewer 2:</strong> Strongest = First Principles. Biggest blind spot = Executor (execution velocity on unvalidated spec). All missed: <strong>corrections.md diff</strong> — if gaps haven't been logged on real client work, they haven't earned framework status.</div>
+    <div class="reviewer"><strong>Reviewer 3:</strong> Strongest = First Principles. Biggest blind spot = Executor (5-day build with no kill criteria). All missed: <strong>n=1 epistemic problem</strong> — teardown 3-5 winners per industry before integrating.</div>
+    <div class="reviewer"><strong>Reviewer 4:</strong> Strongest = Executor (only one executable Monday). Biggest blind spot = Expansionist (100-letter library is maintenance graveyard; Enemy in B2B is wrong). All missed: <strong>detector failure</strong> — the audit didn't flag these on prior letters; fix the detector before expanding the parts catalog.</div>
+    <div class="reviewer"><strong>Reviewer 5:</strong> Strongest = Executor. Biggest blind spot = Expansionist (Jerel's industries can't run villain architecture without brand damage — SG property + MAS complaint). All missed: <strong>conversion data</strong> — did Zinc7 actually convert? Correlation vs. causation.</div>
+  </div>
+</details>
+
+<footer>
+  Generated 2026-05-11 11:30:48 SGT · LLM Council session · 5 advisors · 5 anonymized peer reviewers · 1 chairman synthesis<br>
+  Transcript: <code>docs/council/zinc7-integration-20260511-113048.md</code> · Source teardown: <code>.claude/references/copywriting-os/case-studies/zinc7-teardown.md</code>
+</footer>
+
+</div>
+</body>
+</html>

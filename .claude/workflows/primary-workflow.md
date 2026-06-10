@@ -16,33 +16,32 @@ Research → Insights → Creative → Plan → Create → Edit → Publish → 
 
 ### Phase 1: Research
 - Delegate to `researcher` agent for market analysis
-- Delegate to `attraction-specialist` for competitor intel
-- Use `research` skill for methodology
+- Use `deep-research` / `competitor-alternatives` / `ad-library-scraper` skills as needed
 - Output: Research reports in `./research/` directory
 
 ### Phase 2: Insights
-- Delegate to `lead-qualifier` for audience analysis
+- Use `avatar-research` / `persona-builder` for audience analysis
 - Synthesize research findings
 - Identify opportunities and gaps
 - Output: Insights summary
 
 ### Phase 3: Creative
-- Delegate to `brainstormer` for ideation
+- Use `marketing-ideas` / `marketing-psychology` for ideation
 - Delegate to `copywriter` for messaging concepts
 - Use `content-strategy` skill
 - Output: Creative brief
 
 ### Phase 4: Plan
-- Delegate to `planner` agent for campaign planning
+- Use `campaign-runner` / `plan-for-goal` for campaign planning
 - Create content calendar
 - Define KPIs and success metrics
 - Output: Campaign plan in `./plans/`
 
 ### Phase 5: Create
 - Delegate to `copywriter` for content creation
-- Delegate to `email-wizard` for email sequences
-- Delegate to `sales-enabler` for sales collateral
-- Use `ai-multimodal` for visual content
+- Use `email-sequence` skill for email sequences
+- Use `sales-letter-method` / `headline-bank` skills for sales collateral
+- Use image/video skills (`image-generation`, `video-factory`) for visual content
 - Output: Content assets
 
 ### Phase 6: Edit
@@ -79,15 +78,15 @@ Research → Insights → Creative → Plan → Create → Edit → Publish → 
 - **[IMPORTANT]** Document research findings in `./research/` directory
 
 #### 2. Campaign Planning
-- Delegate to `planner` agent to create campaign plan with TODO tasks in `./plans/` directory
+- Use `campaign-runner` / `plan-for-goal` skills to create campaign plan with TODO tasks in `./plans/` directory
 - Define campaign objectives, KPIs, and success metrics
 - Create content calendar and timeline
 - Identify required channels and resources
 
 #### 3. Content Creation
 - Delegate to `copywriter` for content creation
-- Delegate to `email-wizard` for email sequences
-- Delegate to `sales-enabler` for sales collateral
+- Use `email-sequence` skill for email sequences
+- Use `sales-letter-method` / `headline-bank` skills for sales collateral
 - **DO NOT** create duplicate content, repurpose existing content across channels
 - **[IMPORTANT]** After creating content, review for brand consistency
 

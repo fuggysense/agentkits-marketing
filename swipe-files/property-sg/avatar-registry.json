@@ -1,0 +1,42 @@
+{
+  "industry": "property-sg",
+  "version": 1,
+  "last_updated": "2026-05-01T08:24:55Z",
+  "_note": "Avatar SLICES are exclusive per client. A new client cannot claim a slice already in claimed_slices. The niche research pool is shared; the psychographic territory is not.",
+  "claimed_slices": [
+    {
+      "slice_id": "av-001",
+      "client": "neezanizam",
+      "claimed_at": "2026-04-17T00:00:00Z",
+      "demographic": "HDB upgraders, 32-38, married, 1-2 kids, Malay-Singaporean, dual income S$8k-14k household",
+      "psychographic": "Aspirational but paralysed — wants private property / EC but anxious about timing, CPF refund math, and agent self-interest. Procrastinating 1-2 years. Responds to systematic clarity frameworks over hard sell.",
+      "schwartz_awareness": "problem-aware",
+      "schwartz_sophistication": "stage-3",
+      "deep_fears_top3": [
+        "Selling HDB at the wrong time and losing the profit window",
+        "Missing the BTO / post-MOP timing and being priced out permanently",
+        "Agent pushing them into a purchase for commission, not their benefit"
+      ],
+      "core_desire": "Upgrade without getting screwed — mathematical certainty before committing",
+      "exclusivity_zone": ["hdb-upgrader-mid-30s-malay-sg", "dual-income-upgrade-anxiety"],
+      "messaging_owns": ["clarity framework", "RAM methodology", "2-minute assessment", "22 years / 729 upgrades proof"],
+      "phrase_ids_claimed": ["ph-001", "ph-002", "ph-003"]
+    }
+  ],
+  "available_slices_property_sg": [
+    "BTO ballot losers — waited 5+ years, now forced into resale / private market unexpectedly",
+    "Expat PR holders eyeing landed or good-class bungalow — different income profile, different fear set",
+    "Empty nesters downsizing — condo or private to HDB, equity release driven",
+    "Investment-grade rental yield buyers — pure numbers decision, yield vs capital appreciation",
+    "Divorce-driven forced sellers — emotionally loaded, time-pressured, need non-judgmental advisory",
+    "Inheritance property inheritors — unsure whether to sell, rent, or move in",
+    "First-time private buyers (no HDB history) — younger, higher income, different CPF considerations",
+    "Singles under 35 buying resale HDB — MOP clock starts late, want to know exit strategy early",
+    "Pre-retirement downsize planners — 55+ selling large private to unlock CPF OA",
+    "Cross-ethnic upgrader couples — mixed financial profiles, navigating HDB ethnic quota",
+    "EC buyers riding TOP window — just got keys, deciding on immediate sell vs rent vs hold"
+  ],
+  "claim_rule": "A new client CANNOT claim a slice already listed in claimed_slices. They must either: (a) pick from available_slices_property_sg, or (b) propose a NEW slice with a written non-overlap justification validated against existing claimed_slices. Both demographic AND psychographic must be meaningfully distinct — same demographic with a different emotional entry point counts as a new slice if the psychographic is genuinely different.",
+  "overlap_check_prompt": "Before finalising a new client's avatar, run this check: does the proposed slice share (1) the same demographic band AND (2) the same core fear / core desire as any existing claimed_slices entry? If yes to both, it is not a new slice — redirect the client to an unclaimed segment or split the demographic more narrowly.",
+  "reclaim_rule": "A slice can be released back to available by setting the client field to null and documenting the release_reason + release_date. Released slices return to the available pool after 90 days (to allow creative assets to age out of market)."
+}

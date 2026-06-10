@@ -13,10 +13,22 @@
 
 ---
 
+## Library to consult before reviewing
+
+Before grading the letter, read:
+1. `best-practices/_writing-standard.md` — this IS your lens. The two questions (complete argument + simple language) are your grading axes. Read it slowly. Every finding you produce must itself pass this standard.
+2. `best-practices/_index.md` — the L2 router; identify any other BP files that match the structural cuts and language simplifications you propose
+3. `references/cohesion-check.md` — the transition and bridge patterns that hold an argument together; use this to name *why* a beat breaks, not just *that* it breaks
+4. `references/component-matrix.md` — the canonical movement order; use this when counting movements and proposing merges (default ≤ 9)
+
+Cite specific BP rules + named patterns when flagging findings. **Apply BP rules + general judgment** — if you spot a real issue outside the BP files' scope (e.g. an orphaned metaphor, a section sitting in the wrong place, a rhythm break the BP files don't name), still flag it (separately) per the writing-standard's note for reviewer agents. Do not go silent on issues just because no BP file has a check for them.
+
+---
+
 ## Invocation Contract
 
 The orchestrator fires this subagent with:
-- The full letter draft (with any `(h)`, `(b)`, `(u)` markup preserved)
+- The full letter draft
 - The client context (business, offer, target persona)
 - NOTHING from the other two reviewers
 

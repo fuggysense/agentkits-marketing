@@ -143,7 +143,7 @@ echo "Current Month: $CURRENT_MONTH_NAME"
 Use MCP for all metrics; if unavailable show "⚠️ NOT AVAILABLE":
 - `google-analytics` - Traffic, funnel, conversions
 - `hubspot` - Leads, revenue, CRM data
-- `meta-ads` - Ad performance, ROAS
+- `meta` CLI (not MCP) - Ad performance, ROAS
 - `google-search-console` - SEO rankings
 - `semrush` - Competitive data
 
@@ -268,6 +268,15 @@ Include in monthly report:
 - Trust level changes (any graduations or demotions)
 - Top 3 priority skills for next month's rotation
 - Winner content produced (count, any published via campaign-runner)
+
+---
+
+## CLAUDE.md Quality Audit
+
+Run `/ops:claude-md audit` to score all CLAUDE.md files (100-point rubric, target B+ 75+).
+
+Include a one-liner in the monthly report:
+> **CLAUDE.md health:** root 85/100 (B+), 3 client CLAUDE.md files scored. No extraction needed.
 
 ---
 

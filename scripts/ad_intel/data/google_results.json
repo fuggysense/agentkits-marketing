@@ -1,9 +1,202 @@
 {
-  "total_businesses": 0,
+  "total_businesses": 8,
   "verticals": {
     "dental": {
-      "count": 0,
-      "ads": []
+      "count": 8,
+      "ads": [
+        {
+          "keyword": "24 hour dentist singapore",
+          "domain": "ndcs.com.sg",
+          "title": "Emergency Dental Services",
+          "description": "National Dental Centre Singapore (NDCS) offers 24-hours emergency dental services at the SingHealth Outram campus. 1. During clinic operating hours (Monday to\u00a0... Read more",
+          "url": "https://www.ndcs.com.sg/clinic-visit/emergency-dental-services",
+          "display_url": "",
+          "position": 1,
+          "is_top": true,
+          "serp_type": "organic",
+          "phone": "",
+          "keyword_count": 1,
+          "keywords": [
+            "24 hour dentist singapore"
+          ],
+          "top_positions": 1,
+          "avg_cpc": 0,
+          "has_paid_ads": false,
+          "paid_keyword_count": 0,
+          "total_paid_in_db": 0,
+          "extensions": {
+            "sitelinks": []
+          }
+        },
+        {
+          "keyword": "24 hour dentist singapore",
+          "domain": "rafflesmedicalgroup.com",
+          "title": "Dental Specialists \u00bb 24-Hour Emergency Service",
+          "description": "Raffles Dental is open daily including weeknights and weekends \u00b7 Raffles Dental and Patient Safety Promise \u00b7 Raffles Dental is an accredited dental clinic for the\u00a0... Read more",
+          "url": "https://www.rafflesmedicalgroup.com/services/dental/",
+          "display_url": "",
+          "position": 3,
+          "is_top": true,
+          "serp_type": "organic",
+          "phone": "",
+          "keyword_count": 1,
+          "keywords": [
+            "24 hour dentist singapore"
+          ],
+          "top_positions": 1,
+          "avg_cpc": 0,
+          "has_paid_ads": true,
+          "paid_keyword_count": 20,
+          "total_paid_in_db": 48,
+          "extensions": {
+            "sitelinks": []
+          }
+        },
+        {
+          "keyword": "24 hour dentist singapore",
+          "domain": "ashforddentalcentre.com.sg",
+          "title": "Emergency Dentist in Singapore | 24 Hour Dental Clinic",
+          "description": "Need an emergency dentist in Singapore? Ashford Dental Centre offers 24-hour dental services for urgent care. Trust our skilled team to address dental\u00a0...",
+          "url": "https://ashforddentalcentre.com.sg/emergency-dentistry/",
+          "display_url": "",
+          "position": 4,
+          "is_top": true,
+          "serp_type": "organic",
+          "phone": "",
+          "keyword_count": 1,
+          "keywords": [
+            "24 hour dentist singapore"
+          ],
+          "top_positions": 1,
+          "avg_cpc": 0,
+          "has_paid_ads": true,
+          "paid_keyword_count": 2,
+          "total_paid_in_db": 2,
+          "extensions": {
+            "sitelinks": []
+          }
+        },
+        {
+          "keyword": "24 hour dentist singapore",
+          "domain": "nightdental.com.sg",
+          "title": "HOME - The Night Dental. Emergency Dentist. 24 Hours ...",
+          "description": "We operate an urgent dental service, ensuring you are seen on the same day. You can simply drop us a call, and you can see an emergency dentist late at night. Read more",
+          "url": "https://www.nightdental.com.sg/",
+          "display_url": "",
+          "position": 7,
+          "is_top": false,
+          "serp_type": "organic",
+          "phone": "",
+          "keyword_count": 1,
+          "keywords": [
+            "24 hour dentist singapore"
+          ],
+          "top_positions": 0,
+          "avg_cpc": 0,
+          "has_paid_ads": false,
+          "paid_keyword_count": 0,
+          "total_paid_in_db": 0,
+          "extensions": {
+            "sitelinks": []
+          }
+        },
+        {
+          "keyword": "24 hour dentist singapore",
+          "domain": "nuffielddental.com.sg",
+          "title": "Emergency & Night Dentistry In Singapore",
+          "description": "Nuffield is dedicated towards serving the local community with emergency dental services up to 2:30am daily while our response lines are open 24 hours. Read more",
+          "url": "https://www.nuffielddental.com.sg/emergency-dentist",
+          "display_url": "",
+          "position": 8,
+          "is_top": false,
+          "serp_type": "organic",
+          "phone": "",
+          "keyword_count": 1,
+          "keywords": [
+            "24 hour dentist singapore"
+          ],
+          "top_positions": 0,
+          "avg_cpc": 0,
+          "has_paid_ads": true,
+          "paid_keyword_count": 12,
+          "total_paid_in_db": 12,
+          "extensions": {
+            "sitelinks": []
+          }
+        },
+        {
+          "keyword": "24 hour dentist singapore",
+          "domain": "nucohs.com.sg",
+          "title": "Urgent Care Clinic - National University Centre for Oral ...",
+          "description": "8 Jul 2025 \u2014 The NUCOHS Urgent Care Clinic (UCC) is set up for patients with serious and acute dental or oral & maxillofacial emergencies. Read more",
+          "url": "https://www.nucohs.com.sg/for-patients-and-visitors/urgent-care-clinic",
+          "display_url": "",
+          "position": 9,
+          "is_top": false,
+          "serp_type": "organic",
+          "phone": "",
+          "keyword_count": 1,
+          "keywords": [
+            "24 hour dentist singapore"
+          ],
+          "top_positions": 0,
+          "avg_cpc": 0,
+          "has_paid_ads": false,
+          "paid_keyword_count": 0,
+          "total_paid_in_db": 0,
+          "extensions": {
+            "sitelinks": []
+          }
+        },
+        {
+          "keyword": "24 hour dentist singapore",
+          "domain": "singhealth.com.sg",
+          "title": "Dental Services | SingHealth Polyclinics",
+          "description": "For urgent/emergency treatment, please call 6643 6969 or email singhealthpolyclinics@singhealth.com.sg. Emergency dental services are also available at. Read more",
+          "url": "https://polyclinic.singhealth.com.sg/our-clinic-services/dental-services",
+          "display_url": "",
+          "position": 10,
+          "is_top": false,
+          "serp_type": "organic",
+          "phone": "",
+          "keyword_count": 1,
+          "keywords": [
+            "24 hour dentist singapore"
+          ],
+          "top_positions": 0,
+          "avg_cpc": 0,
+          "has_paid_ads": false,
+          "paid_keyword_count": 0,
+          "total_paid_in_db": 0,
+          "extensions": {
+            "sitelinks": []
+          }
+        },
+        {
+          "keyword": "24 hour dentist singapore",
+          "domain": "gentlesmiledentalstudio.com.sg",
+          "title": "Accident & Emergency Dental Services",
+          "description": "We provide urgent dental attention to accident and emergency situations. Call our hotline at +65-9321-3232 to arrange for an appointment. Read more",
+          "url": "https://gentlesmiledentalstudio.com.sg/emergency/",
+          "display_url": "",
+          "position": 11,
+          "is_top": false,
+          "serp_type": "organic",
+          "phone": "",
+          "keyword_count": 1,
+          "keywords": [
+            "24 hour dentist singapore"
+          ],
+          "top_positions": 0,
+          "avg_cpc": 0,
+          "has_paid_ads": false,
+          "paid_keyword_count": 0,
+          "total_paid_in_db": 0,
+          "extensions": {
+            "sitelinks": []
+          }
+        }
+      ]
     }
   }
 }

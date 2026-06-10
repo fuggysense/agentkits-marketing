@@ -1,0 +1,41 @@
+{
+  "manifest_version": 3,
+  "name": "Whop Stream Grabber",
+  "version": "3.0.0",
+  "description": "Auto-captures Mux .m3u8 stream URLs from Whop courses — one-click download + transcription",
+  "permissions": [
+    "webRequest",
+    "storage",
+    "activeTab",
+    "scripting"
+  ],
+  "host_permissions": [
+    "*://stream.mux.com/*",
+    "*://*.whop.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://*.whop.com/*"],
+      "js": ["bridge.js"],
+      "run_at": "document_start"
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}

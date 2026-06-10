@@ -55,42 +55,41 @@ Spawn multiple agents simultaneously for independent tasks:
 
 ---
 
-## Agent Handoffs
+## Agent + Skill Handoffs
 
 | From | To | Trigger |
 |------|-----|---------|
-| researcher | attraction-specialist | SEO insights needed |
-| researcher | planner | Research complete, planning begins |
-| attraction-specialist | copywriter | Content creation phase |
-| copywriter | email-wizard | Email sequences needed |
-| copywriter | sales-enabler | Sales collateral needed |
-| lead-qualifier | sales-enabler | MQL to SQL handoff |
-| lead-qualifier | email-wizard | Segment-specific campaigns |
-| continuity-specialist | upsell-maximizer | Expansion opportunity identified |
-| upsell-maximizer | sales-enabler | Upsell collateral needed |
+| `researcher` | `seo-mastery` skill | SEO insights needed |
+| `researcher` | `campaign-runner` / `plan-for-goal` skills | Research complete, planning begins |
+| `seo-mastery` skill | `copywriter` | Content creation phase |
+| `copywriter` | `email-sequence` skill | Email sequences needed |
+| `copywriter` | `sales:battlecard` skill | Sales collateral needed |
+| `leads:score` skill | `sales:pitch` skill | MQL to SQL handoff |
+| `crm:segment` skill | `email-sequence` skill | Segment-specific campaigns |
+| `crm:lifecycle` skill | `offer-builder` / `pricing-strategy` skills | Expansion opportunity identified |
 
 ---
 
 ## Funnel Stage Routing
 
 ### TOFU (Top of Funnel) - Awareness
-**Primary:** `attraction-specialist`
-**Supporting:** `researcher`, `copywriter`
+**Skills:** `seo-mastery`, `content-strategy`, `linkedin-content`, `tiktok-slideshows`
+**Agents:** `researcher`, `copywriter`
 **Focus:** SEO content, thought leadership, social media
 
 ### MOFU (Middle of Funnel) - Consideration
-**Primary:** `lead-qualifier`, `email-wizard`
-**Supporting:** `copywriter`, `ui-ux-designer`
+**Skills:** `email-sequence`, `leads:score`, `crm:segment`, `lead magnets`
+**Agents:** `copywriter`
 **Focus:** Lead magnets, email nurtures, webinars
 
 ### BOFU (Bottom of Funnel) - Decision
-**Primary:** `sales-enabler`
-**Supporting:** `copywriter`, `lead-qualifier`
+**Skills:** `sales-letter-method`, `sales:battlecard`, `sales:pitch`, `headline-bank`
+**Agents:** `copywriter`, `sales-letter-auditor`
 **Focus:** Case studies, demos, proposals
 
 ### Post-Purchase
-**Primary:** `continuity-specialist`, `upsell-maximizer`
-**Supporting:** `email-wizard`, `sales-enabler`
+**Skills:** `crm:lifecycle`, `offer-builder`, `pricing-strategy`, `referral-program`
+**Agents:** `copywriter`
 **Focus:** Onboarding, retention, expansion
 
 ---
@@ -99,25 +98,25 @@ Spawn multiple agents simultaneously for independent tasks:
 
 ### Product Launch
 1. `researcher` → Market analysis
-2. `planner` → Launch plan
-3. `attraction-specialist` → Landing pages, SEO
+2. `campaign-runner` / `plan-for-goal` → Launch plan
+3. `seo-mastery` + `website-design` → Landing pages, SEO
 4. `copywriter` → Announcement content
-5. `email-wizard` → Launch sequences
-6. `sales-enabler` → Sales materials
+5. `email-sequence` → Launch sequences
+6. `sales-letter-method` / `headline-bank` → Sales materials
 7. Parallel: Social + PR + Ads
 
 ### Lead Generation
 1. `researcher` → Audience research
-2. `attraction-specialist` → SEO strategy, landing pages
+2. `seo-mastery` + `website-design` → SEO strategy, landing pages
 3. `copywriter` → Lead magnet content
-4. `email-wizard` → Nurture sequences
-5. `lead-qualifier` → Scoring and routing
+4. `email-sequence` → Nurture sequences
+5. `leads:score` → Scoring and routing
 
 ### Retention Campaign
-1. `continuity-specialist` → Churn analysis
-2. `planner` → Retention strategy
-3. `email-wizard` → Re-engagement sequences
-4. `upsell-maximizer` → Expansion opportunities
+1. `crm:lifecycle` → Churn analysis
+2. `campaign-runner` → Retention strategy
+3. `email-sequence` → Re-engagement sequences
+4. `offer-builder` / `pricing-strategy` → Expansion opportunities
 
 ---
 
@@ -186,12 +185,11 @@ Skills are specialized knowledge modules that agents load for specific tasks. Us
 | Agent | Primary Skills |
 |-------|---------------|
 | conversion-optimizer | page-cro, form-cro, popup-cro, signup-flow-cro, onboarding-cro, paywall-upgrade-cro, ab-test-setup |
-| attraction-specialist | seo-mastery, programmatic-seo, schema-markup, content-strategy, paid-advertising, competitor-alternatives |
-| copywriter | copywriting, copy-editing, email-sequence |
-| email-wizard | email-marketing, email-sequence |
-| seo-specialist | seo-mastery, programmatic-seo, schema-markup |
+| copywriter | copywriting, copy-editing, email-sequence, sales-letter-method |
 | brand-voice-guardian | brand-building, copywriting, copy-editing |
-| brainstormer | marketing-ideas, marketing-psychology, problem-solving |
+| researcher | deep-research, competitor-alternatives, ad-library-scraper |
+| persona-builder | avatar-research |
+| sales-letter-auditor | sales-letter-audit |
 
 ### MCP Integration Resolution
 
@@ -261,3 +259,45 @@ When task complexity warrants multiple skills:
 2. Review recommended skills
 3. Confirm or adjust selection
 4. Execute with selected skills
+
+---
+
+## Conversation modes (one-shot vs iterative subagents)
+
+Subagents can run in two modes. Pick deliberately.
+
+**One-shot mode (default).** Single dispatch, single response, fresh context every call.
+- Use for: parallel evaluator dispatches, simple generation jobs, structural audits, anything where independence is the feature.
+- Pattern: `Agent(subagent_type, prompt)` — no name, no `run_in_background`.
+
+**Iterative mode.** Subagent stays alive across turns, accumulating context in its own thread.
+- Use for: concept development, draft refinement over multiple revisions, deep critic Q&A on specific findings, anything that benefits from back-and-forth in shared memory.
+- Pattern: `Agent(name: "<slug-v1>", subagent_type, run_in_background: true, prompt: <briefing>)` then `SendMessage(to: "<slug-v1>", content: <follow-up>)` to continue the same thread. Optional: leave alive (visible in `claude agents`) or terminate when done.
+
+Choosing the mode:
+- **Generators benefit from iterative.** A sales letter writer or VSL scripter that goes through 3–5 revisions in one shared thread produces tighter work than 3–5 cold one-shots.
+- **Evaluators stay one-shot.** Independence is the feature. Halbert and Schwartz must not see each other's notes.
+- `"let's develop this together"` / `"iterate with me"` → iterative.
+- `"give me your take"` / `"audit this"` → one-shot.
+
+Name iterative subagents descriptively with a version suffix: `concept-ssl-hdb-v1`, `vsl-propwise-launch`, `halbert-deep-hook`. The name appears in `claude agents` so the thread is findable later.
+
+**Never** use iterative mode for parallel evaluator dispatches — cross-pollination via shared memory destroys the independent-audit value.
+
+---
+
+## Orchestrator response shape
+
+How orchestrator responses to the user should look:
+
+- **Dispatch announcements:** one sentence. *"Dispatching `copy-sales-letter` because the brief is 800+ words cold traffic."* No preamble, no "I'm going to..."
+- **Critique synthesis:** numbered punch list, one item per critic finding. Max 8 items. Each item: severity (P0/P1/P2), one-line fix, attribution (which evaluator flagged it).
+- **Presenting copy for review:** paste copy in a fenced markdown block. NO commentary before the block. Commentary AFTER, max 3 bullets — what you'd change, what you're proud of, what's open.
+- **Asking the user a question:** one question per turn. No preamble. No "I just want to make sure..."
+- **Status updates mid-loop:** one short line per state change. *"Awareness call locked: Schwartz L2."* / *"3 evaluators dispatched."* / *"All 3 back."*
+
+### Guardrails (make tradeoffs visible)
+
+If the user asks to skip evaluators, bypass the brand voice check, ignore the awareness/sophistication call, or override the methodology — comply, but note it in one line: *"Skipping `eval-deAI` — output may carry AI-pattern residue."* / *"Bypassing brand voice — voice may drift."* Then proceed. The user is in charge; the orchestrator's job is to make the trade-off visible, not refuse.
+
+Never apologize for the orchestrator's methodology. If a step feels slow, name it and offer to skip it — don't water it down silently.

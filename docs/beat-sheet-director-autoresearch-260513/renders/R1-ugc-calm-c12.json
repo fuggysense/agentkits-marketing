@@ -1,0 +1,21 @@
+[
+  {
+    "id": "f8d2b74e-b528-4f35-8e6a-8d875d71a147",
+    "status": "completed",
+    "display_name": "GPT Image 2",
+    "job_set_type": "imagegen_2_0",
+    "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_2z2bozEwzKwxJNgkH3IQQ4lTkuw/hf_20260513_030425_f8d2b74e-b528-4f35-8e6a-8d875d71a147.png",
+    "created_at": 1778641465.69415,
+    "params": {
+      "width": 752,
+      "height": 1344,
+      "prompt": "Create a 9:16 iPhone 15 front-facing camera UGC storyboard grid for Scene 1 of \"CALM C12 Bathroom Test\" - 3x3 layout, exactly 9 panels on a clean black canvas, panels separated by thin black gutters only. Overarching scene theme: A real founder films herself in a small bathroom mirror with harsh overhead light, damp hair, bare skin, mirror smudges, and slight handheld shake. The scene progresses from visibly irritated cheek redness to applying a serum bottle labeled exactly \"CALM C12\" to a believable calmer finish. Keep the aesthetic raw, phone-shot, imperfect, and not commercial-polished. The product bottle must remain readable whenever it appears. Panels left-to-right top-to-bottom: Panel 1 founder leans close to mirror showing red cheek patches. Panel 2 fingertip points to the worst patch. Panel 3 she lifts the CALM C12 bottle beside her face, label readable. Panel 4 dropper hovers over cheek. Panel 5 serum is rubbed across both cheeks. Panel 6 phone reflection shows the bottle on sink beside messy toiletries. Panel 7 same mirror angle, cheeks look calmer but still natural. Panel 8 founder compares cheek texture in close-up. Panel 9 she holds CALM C12 at chest height, label facing camera. Environment: small bathroom mirror, midday, clear. Mood: hopeful. Visual style: raw UGC photorealism, real skin texture, slight motion blur, authentic iPhone color science. Camera/lens feel: shot on iPhone 15, iPhone built-in, natural. Below each panel: a narrow black caption band with panel number, time code, and two plain-English visual captions. Forbidden: no title banner, no footer, no colored gridlines, no director notes, no SFX, no BGM, no voiceover text. Render at 9:16 aspect ratio, 1K, medium quality.",
+      "medias": [],
+      "aspect_ratio": "9:16",
+      "quality": "medium",
+      "resolution": "1k",
+      "model": "videotape-alpha",
+      "reference_elements": []
+    }
+  }
+]

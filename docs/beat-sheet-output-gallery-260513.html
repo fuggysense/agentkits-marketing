@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Beat Sheet Outputs - 2026-05-13</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #151515;
+      --muted: #5d626b;
+      --line: #d8dbe0;
+      --bg: #f6f7f8;
+      --panel: #ffffff;
+      --accent: #214f7a;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.45;
+    }
+    header {
+      padding: 28px 32px 18px;
+      background: var(--panel);
+      border-bottom: 1px solid var(--line);
+    }
+    h1, h2, h3 { margin: 0; line-height: 1.15; }
+    h1 { font-size: 28px; }
+    h2 { font-size: 21px; margin-top: 28px; }
+    h3 { font-size: 17px; margin-top: 18px; color: var(--accent); }
+    p { margin: 8px 0; color: var(--muted); }
+    main { padding: 24px 32px 44px; max-width: 1280px; margin: 0 auto; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 18px;
+      margin-top: 16px;
+    }
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .card-body { padding: 14px 16px 16px; }
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+      background: #e9ebef;
+      border-bottom: 1px solid var(--line);
+    }
+    code, pre {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 12.5px;
+    }
+    pre {
+      white-space: pre-wrap;
+      background: #101318;
+      color: #f1f3f6;
+      border-radius: 8px;
+      padding: 14px;
+      overflow: auto;
+      max-height: 520px;
+      border: 1px solid #272b32;
+    }
+    .note {
+      border-left: 4px solid var(--accent);
+      background: #eef5fb;
+      padding: 10px 12px;
+      color: #23384c;
+      margin: 14px 0;
+    }
+    a { color: var(--accent); }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Beat Sheet Outputs - 2026-05-13</h1>
+    <p>Actual PNGs rendered during the beat-sheet tests plus the no-context agent video prompts for the three latest edge cases.</p>
+  </header>
+
+  <main>
+    <section>
+      <h2>Updated Character Style Sheet Samples</h2>
+      <div class="note">These are text-to-image fallback samples generated after removing the old wardrobe/accessory/workstation-heavy character prompt. They use the same two-row structure as Option A, but they are not true Option A outputs because no uploaded person reference image was supplied for strict identity derivation.</div>
+      <div class="grid">
+        <article class="card">
+          <img src="beat-sheet-reference-package-260513/assets/saas-character-style-v3-option-b.png" alt="SaaS operator realistic character style sheet">
+          <div class="card-body">
+            <h3>SaaS Operator - Character Sheet v3</h3>
+            <p>UGC-seeded text-to-image fallback. Two rows: full-body turnaround plus portrait detail views.</p>
+            <p><a href="beat-sheet-reference-package-260513/assets/saas-character-style-v3-option-b.png">Open PNG</a></p>
+          </div>
+        </article>
+
+        <article class="card">
+          <img src="beat-sheet-reference-package-260513/assets/supercar-character-style-v3-option-b.png" alt="Supercar driver realistic character style sheet">
+          <div class="card-body">
+            <h3>Supercar Driver - Character Sheet v3</h3>
+            <p>Incidental driver identity lock without vehicle, helmet, workstation, or extra props.</p>
+            <p><a href="beat-sheet-reference-package-260513/assets/supercar-character-style-v3-option-b.png">Open PNG</a></p>
+          </div>
+        </article>
+
+        <article class="card">
+          <img src="beat-sheet-reference-package-260513/assets/action-character-style-v3-option-b.png" alt="Original action character realistic style sheet">
+          <div class="card-body">
+            <h3>Original Action Character - Character Sheet v3</h3>
+            <p>Original non-IP action character with no weapons, no extra characters, and no background scene.</p>
+            <p><a href="beat-sheet-reference-package-260513/assets/action-character-style-v3-option-b.png">Open PNG</a></p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <h2>Rendered PNG Outputs</h2>
+      <div class="note">The latest edge-case agents produced prompt packages only. These are the PNGs actually rendered earlier in the same beat-sheet test run.</div>
+      <div class="grid">
+        <article class="card">
+          <img src="file:///Users/jerel/.codex/generated_images/019e1a7d-2315-7082-9635-7a3b82d27730/ig_02f8d0bc658b1ecf016a043bb4cdb8819181cc76062174c223.png" alt="Bookstore mystery subscription beat sheet">
+          <div class="card-body">
+            <h3>Bookstore Mystery Box - 6 beats, 16:9</h3>
+            <p>Right-side annotation column. Tested separate text lane and row-major beat order.</p>
+            <p><a href="file:///Users/jerel/.codex/generated_images/019e1a7d-2315-7082-9635-7a3b82d27730/ig_02f8d0bc658b1ecf016a043bb4cdb8819181cc76062174c223.png">Open PNG</a></p>
+          </div>
+        </article>
+
+        <article class="card">
+          <img src="file:///Users/jerel/.codex/generated_images/019e1a7d-2315-7082-9635-7a3b82d27730/ig_02f8d0bc658b1ecf016a043c1f8ef08191a5a987a1257002a5.png" alt="Climbing gym energy drink beat sheet">
+          <div class="card-body">
+            <h3>Energy Drink Climbing Gym - 9 beats, 9:16</h3>
+            <p>Bottom annotation band. Stress-tested dense 9-beat vertical layout.</p>
+            <p><a href="file:///Users/jerel/.codex/generated_images/019e1a7d-2315-7082-9635-7a3b82d27730/ig_02f8d0bc658b1ecf016a043c1f8ef08191a5a987a1257002a5.png">Open PNG</a></p>
+          </div>
+        </article>
+
+        <article class="card">
+          <img src="file:///Users/jerel/.codex/generated_images/019e1a7d-2315-7082-9635-7a3b82d27730/ig_02f8d0bc658b1ecf016a043c934e30819199fdcc45e9db2376.png" alt="Emergency plumbing service beat sheet">
+          <div class="card-body">
+            <h3>Emergency Plumbing Service - 4 beats, 16:9</h3>
+            <p>Right-side annotation column. Tested a simpler 4-beat service ad.</p>
+            <p><a href="file:///Users/jerel/.codex/generated_images/019e1a7d-2315-7082-9635-7a3b82d27730/ig_02f8d0bc658b1ecf016a043c934e30819199fdcc45e9db2376.png">Open PNG</a></p>
+          </div>
+        </article>
+
+        <article class="card">
+          <img src="file:///Users/jerel/.codex/generated_images/019e1a7d-2315-7082-9635-7a3b82d27730/ig_02f8d0bc658b1ecf016a043d3fb62081919a637449b3f39c0c.png" alt="Voiceover annotation experiment">
+          <div class="card-body">
+            <h3>Voiceover Annotation Experiment - 4 beats, 16:9</h3>
+            <p>Tested an optional VO column in the annotation lane. It worked for 4 beats but should not be default for 9 or 12 beats.</p>
+            <p><a href="file:///Users/jerel/.codex/generated_images/019e1a7d-2315-7082-9635-7a3b82d27730/ig_02f8d0bc658b1ecf016a043d3fb62081919a637449b3f39c0c.png">Open PNG</a></p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <h2>Generated Video Prompts</h2>
+
+      <h3>1. Supercar Ad - Higgsfield / Seedance Handoff</h3>
+      <pre>Use [ref_1 / @Image1] as the full annotated beat sheet for this 15.0s 16:9 video. Use [ref_3 / @Image3] to lock vehicle design, road environment, lighting, palette, props, camera language, and world rules. LOCK duration never over 15.0s.
+
+Follow numeric row-major beat order only: left-to-right across each row, then top-to-bottom. Do not use clockwise, anticlockwise, spiral, radial, or column-major traversal.
+
+The annotation lane is a production instruction only. Do not render any visible text, labels, captions, beat numbers, time ranges, SFX words, readable license plates, logos, or signage in the final video.
+
+Beat 1 (0.0s to 1.7s): Supercar waits in mist at tunnel mouth. Motion: low static front three-quarter. SFX: low rumble.
+Beat 2 (1.7s to 3.3s): LED headlights ignite through haze. Motion: slow push-in. SFX: electric click.
+Beat 3 (3.3s to 5.0s): Wheel and driver hand tense before launch. Motion: macro detail cut. SFX: tire creak.
+Beat 4 (5.0s to 6.7s): Supercar launches out of tunnel. Motion: fast low dolly. SFX: engine roar.
+Beat 5 (6.7s to 8.3s): Car tracks along cliffside road. Motion: side chase tracking. SFX: wind rush.
+Beat 6 (8.3s to 10.0s): Rear wing deploys cleanly. Motion: rear closeup with vibration. SFX: servo snap.
+Beat 7 (10.0s to 11.7s): Brake calipers glow through corner. Motion: low rear pan. SFX: brake hiss.
+Beat 8 (11.7s to 13.3s): Car crests road into hero frame. Motion: wide crane reveal. SFX: rising swell.
+Beat 9 (13.3s to 15.0s): Tail lights vanish into mist. Motion: locked rear road shot. SFX: echo fade.
+
+Maintain continuity across beats: same graphite supercar, same coastal road world, same blue-hour lighting progression, no visible text in final video.</pre>
+
+      <h3>2. SaaS Product Demo - Higgsfield / Seedance Handoff</h3>
+      <pre>Use [ref_1 / @Image1] as the full annotated beat sheet for this 15.0s 16:9 video. LOCK duration never over 15.0s. Follow numeric row-major beat order only: left-to-right across each row, then top-to-bottom. Do not use clockwise, anticlockwise, spiral, radial, or column-major traversal.
+
+Use [ref_2 / @Image2] to lock character identity, wardrobe, expression range, posture, and body language. Use [ref_3 / @Image3] to lock product/UI design, workstation environment, lighting, palette, dashboard motion rules, and non-readable UI treatment.
+
+The annotation lane is a production instruction only. Do not render any visible annotation text, captions, labels, beat numbers, time ranges, SFX words, or readable UI text in the final video.
+
+Beat 1 (0.0s to 1.7s): dashboard fills with amber surge cards. Motion: fast push into widescreen UI. SFX: alert swell.
+Beat 2 (1.7s to 3.3s): support lead notices spike. Motion: rack focus screen to face. SFX: soft clicks.
+Beat 3 (3.3s to 5.0s): AI triage panel opens. Motion: smooth lateral UI reveal. SFX: clean whoosh.
+Beat 4 (5.0s to 6.7s): tickets auto-cluster. Motion: cards sort into groups. SFX: card snaps.
+Beat 5 (6.7s to 8.3s): reply drafts appear. Motion: macro push on grey rows. SFX: typing shimmer.
+Beat 6 (8.3s to 10.0s): priority flow routes. Motion: teal nodes move across lanes. SFX: pulse clicks.
+Beat 7 (10.0s to 11.7s): queue drops fast. Motion: graph and queue compress. SFX: descending blips.
+Beat 8 (11.7s to 13.3s): launch panel steadies. Motion: dashboard settles into stable state. SFX: calm tone.
+Beat 9 (13.3s to 15.0s): lead nods relieved. Motion: pull back to operator and screen. SFX: resolve chime.
+
+SFX to follow exactly:
+Beat 1 (0.0s to 1.7s): alert swell
+Beat 2 (1.7s to 3.3s): soft clicks
+Beat 3 (3.3s to 5.0s): clean whoosh
+Beat 4 (5.0s to 6.7s): card snaps
+Beat 5 (6.7s to 8.3s): typing shimmer
+Beat 6 (8.3s to 10.0s): pulse clicks
+Beat 7 (10.0s to 11.7s): descending blips
+Beat 8 (11.7s to 13.3s): calm tone
+Beat 9 (13.3s to 15.0s): resolve chime
+
+Maintain continuity across all beats. Keep the same support lead, same workstation, same dashboard shell, same UI shape language, and same lighting.</pre>
+
+      <h3>3. Original Superhero Team Fight - Higgsfield / Seedance Handoff</h3>
+      <pre>Use [ref_1 / @Image1] as the full annotated beat sheet for this 15.0s 16:9 video. LOCK duration never over 15.0s. Follow numeric row-major beat order only: left-to-right across each row, then top-to-bottom. Do not use clockwise, anticlockwise, spiral, radial, or column-major traversal.
+
+[ref_2 / @Image2]: character style sheet. LOCK identity, wardrobe, expression range, posture, and body language.
+[ref_3 / @Image3]: video and prop style sheet. LOCK prop design, drone design, environment continuity, lighting, palette, power effects, and world rules.
+
+The annotation lane is a production instruction only. Do not render any visible text, labels, captions, beat numbers, time ranges, SFX words, logos, readable signs, or annotation text in the final video.
+
+Beat 1 (0.0s to 1.7s): Triangular drones dive toward civilians near an overturned blank bus. Motion: low street-level push through rain. SFX: sirens, drone whine.
+Beat 2 (1.7s to 3.3s): Solari descends and opens white-gold disc shields around the bus. Motion: aerial drop into stabilized hero frame. SFX: shield flare, rain hiss.
+Beat 3 (3.3s to 5.0s): Gravemarch plants copper gauntlets and stops a charging drone wave. Motion: handheld ground impact. SFX: pavement crack, bass hit.
+Beat 4 (5.0s to 6.7s): Vesper wall-runs and redirects two drones with violet blade constructs. Motion: fast whip pan. SFX: blade zip, metal scrape.
+Beat 5 (6.7s to 8.3s): Dynamo Saint bends metal debris upward in cyan magnetic arcs. Motion: orbit around floating debris. SFX: magnetic hum, sparks.
+Beat 6 (8.3s to 10.0s): The four heroes converge into a crossing attack through smoke. Motion: wide ensemble sweep. SFX: rising pulse, boots splash.
+Beat 7 (10.0s to 11.7s): The drone swarm collapses inward under combined powers. Motion: compression zoom into impact. SFX: metal shriek, impact thuds.
+Beat 8 (11.7s to 13.3s): Solari catches falling tower debris while teammates shield civilians. Motion: upward tilt from street to shield. SFX: glass rain, shield strain.
+Beat 9 (13.3s to 15.0s): The heroes hold the final defensive line as smoke clears. Motion: slow push-in to ensemble silhouette. SFX: smoke fade, distant sirens.
+
+SFX to follow exactly:
+Beat 1 (0.0s to 1.7s): sirens, drone whine
+Beat 2 (1.7s to 3.3s): shield flare, rain hiss
+Beat 3 (3.3s to 5.0s): pavement crack, bass hit
+Beat 4 (5.0s to 6.7s): blade zip, metal scrape
+Beat 5 (6.7s to 8.3s): magnetic hum, sparks
+Beat 6 (8.3s to 10.0s): rising pulse, boots splash
+Beat 7 (10.0s to 11.7s): metal shriek, impact thuds
+Beat 8 (11.7s to 13.3s): glass rain, shield strain
+Beat 9 (13.3s to 15.0s): smoke fade, distant sirens
+
+Maintain continuity across beats. Keep all heroes fully original and avoid Marvel/Avengers names, likenesses, logos, protected costumes, iconic weapons, or direct character analogues.</pre>
+    </section>
+  </main>
+</body>
+</html>

@@ -1,0 +1,145 @@
+# Routing Table (auto-generated — do not edit)
+
+_Generated: 2026-06-10T16:00:25.120Z • Project: 75 • Global: 58_
+
+Edit `routing-overrides.md` for manual disambiguation. Re-run `.claude/hooks/refresh-registry.js` to refresh.
+
+## Trigger keyword → skill
+
+- `high-stakes work` → `prompt-contracts`
+
+## All skills (alphabetical)
+
+- **ab-test-setup** _(project)_ — "Plan, design, and validate A/B tests and experiments. Triggers: A/B test, split test, experiment, multivariate test, hypothesis testing, statistical significan
+- **ad-concept-engine** _(project)_ — "DCT-aware ad concept pipeline: 3 creatives × 2 headlines × 2 copies = 12 Meta combinations per batch. Per-micro-persona angles, visual style variety, standalon
+- **ad-library-scraper** _(project)_ — "Build industry-level Meta Ad Library swipe-file database + Schwartz 5-stage market brief. One scrape per industry, reusable for all clients. Triggers: scrape a
+- **agents-sdk** _(global)_ — Build AI agents on Cloudflare Workers using the Agents SDK. Load when creating stateful agents, durable workflows, real-time WebSocket apps, scheduled tasks, MC
+- **ai-filmmaking** _(global)_ — "Director-driven film production: brief→storyboard→prompt cards. Load profile (Fincher, Villeneuve, Anderson, Scorsese, custom). 7-step ARQ pipeline. NOT for: d
+- **analytics-attribution** _(project)_ — Performance measurement, attribution modeling, and marketing ROI analysis. Use when setting up tracking, analyzing campaign performance, building attribution mo
+- **analytics-usage** _(project)_ — Track and analyze which skills and agents you use most. Find your 80/20 — which 20% of tools drive 80% of your results. Global tracking across all clients/proje
+- **auto-broll** _(global)_ — "Script→B-roll plan: extract scenes with TYPE TAGS (hook/problem/education/product/proof/credibility/cta), fetch stock clips, generate Higgsfield prompts. Phras
+- **avatar-research** _(project)_ — "Build/refresh buyer-profile.md with 3-7 micro-personas (motivation/pain/outcome/context/trigger) for video, static ads, email, landing pages, funnels. Feeds ca
+- **beat-sheet-director** _(global)_ — "Concept+duration→annotated beat sheet: GPT Image 2 grids, character/prop/product style sheets, video renderer handoff. 15s max/scene. Triggers: storyboard, sho
+- **big-angle-spotter** _(project)_ — "12-step ad-creative pipeline: Opus orchestrator → 12 Sonnet steps → 3 angle prompts + 3 image-gen prompts (parallel). Generates high-converting angles, headlin
+- **brand-building** _(project)_ — Brand strategy, identity, positioning, and voice development. Use when developing brand guidelines, creating positioning statements, defining brand voice, or bu
+- **brand-scaffolder** _(global)_ — "Synthesize missing _brand/ files (brand-voice, offer, icp, buyer-profile, channels, content-pillars, story-bank) from research, transcripts, content, competito
+- **bullshit-detector** _(global)_ — "Reality-check articles, posts, tech, business models, pitches. 3-step: baseline questions → parallel research → plain-English verdict (why-it-works vs failure 
+- **business-profile** _(project)_ — "Fuggy's Media intake: 6 sections, ~21 questions + custom deep-dives. Outputs JSON context profile. Ad-optimized: big promise, objections, pain points, 90-day g
+- **campaign-runner** _(project)_ — "Campaign execution framework. Tracks state across sessions, routes tasks to agents, manages assets, publishes/schedules via Postiz, creates discovery files for
+- **chrome-mcp** _(global)_ — "Chrome DevTools inspection ONLY: Lighthouse audits, perf traces, network/console inspection, heap snapshots on a real logged-in Chrome. NOT for automation — us
+- **claude-md-architect** _(project)_ — "V4 marketing-scoped CLAUDE.md architect for AgentKits client onboarding: 100-point rubric audit, surgical updates, nested-CLAUDE.md scaffolding tied to V4 ICM 
+- **client-onboarding** _(project)_ — "Two-path onboarding orchestrator. Path A (research-first): scrape → summary. Path B (interview-first): 21-question intake. Outputs Jake-structure project + cam
+- **cloudflare** _(global)_ — Comprehensive Cloudflare platform skill covering Workers, Pages, storage (KV, D1, R2), AI (Workers AI, Vectorize, Agents SDK), feature flags (Flagship), network
+- **cloudflare-email-service** _(global)_ — Send and receive transactional emails with Cloudflare Email Service (Email Sending + Email Routing). Use when building email sending (Workers binding or REST AP
+- **competitor-alternatives** _(project)_ — "Create comparison/alternative pages for SEO + sales enablement. Four formats: singular alternative, plural alternatives, you vs competitor, competitor vs compe
+- **content-moat** _(project)_ — Content ideation, originality-first frameworks, and layer stacking for defensible creative moat. Copycat resistance scoring. Triggers: content ideation, content
+- **content-strategy** _(project)_ — Content planning, creation, and distribution strategy. Use when planning content calendars, developing content pillars, creating editorial strategies, or optimi
+- **copy-coach** _(project)_ — "Find/expand a Big Idea (page spine, chorus, belief chain, monkey's fist) and line-stylize prose (tug, cadence, voice, register, kill list, cold-reader). Plus m
+- **copy-editing** _(project)_ — "Edit and polish marketing copy via systematic multi-pass review. Triggers: edit copy, review copy, copy feedback, proofread, polish, make this better, copy swe
+- **copywriting** _(project)_ — "Write or rewrite marketing copy for any page (landing, pricing, homepage, product, about). Triggers: write copy, marketing copy, headline, CTA copy, landing pa
+- **deep-research** _(project)_ — "Multi-agent parallel research: decomposes topic into 3-6 MECE angles, spawns sub-agents, runs gap analysis, synthesizes comprehensive findings. 90.2% better th
+- **design** _(global)_ — >- Create or refine a spec-compliant DESIGN.md — YAML design tokens plus an ordered markdown body. Triggers: "create a DESIGN.md", "design system spec", "design
+- **dev-browser** _(global)_ — "Playwright automation CLI: new/authenticated browsers, multi-page workflows, click/fill/screenshot/scrape. QuickJS sandbox. Triggers: go to, click, fill form, 
+- **durable-objects** _(global)_ — Create and review Cloudflare Durable Objects. Use when building stateful coordination (chat rooms, multiplayer games, booking systems), implementing RPC methods
+- **email-marketing** _(project)_ — Email campaign strategy, automation, and optimization. Use when creating email sequences, improving deliverability, designing automation workflows, or optimizin
+- **email-sequence** _(project)_ — "Create/optimize email sequences, drip campaigns, nurture/onboarding/lifecycle flows. Triggers: email sequence, drip, nurture, welcome, onboarding, re-engagemen
+- **feedback-router** _(project)_ — "Closes creative pipeline after DCT wave. Reads performance data, routes to NEW (research refresh), BETTER (angle refinement), or MORE (scale variants). Auto-ap
+- **ferres-corpus** _(project)_ — "Query Sean Ferres' AI Ads Lab course corpus + distilled rulebooks. Triggers: Ferres, AI Ads Lab, what does the course say, swipe vault pattern, statics playboo
+- **form-cro** _(project)_ — "Optimize non-signup forms: lead capture, contact, demo, application, survey, checkout. Triggers: form optimization, lead form, contact form, form fields, form 
+- **free-tool-strategy** _(project)_ — "Plan & build free marketing tools for lead gen, SEO, brand awareness. Engineering-as-marketing bridge. Triggers: free tool, calculator, generator, interactive 
+- **gpt-image-2-director** _(global)_ — "Concept→production-ready GPT Image 2.0 prompts. JSON for layouts (UI, infographics, character sheets), prose for cinematic images, meta-prompts for concepts. R
+- **hazecraft** _(global)_ — Edit any Hazecraft-hosted site by ID or handle, straight from chat. Pull a page's live HTML, make big changes (popups, sections, rewrites), push it back, and pu
+- **headline-bank** _(project)_ — "Curiosity-led Meta ad copy generator. Per angle: a ~150w PRIMARY on the six-emotional-states sequence (hook -> pain -> agitate -> hope -> loop CTA) + a ~50w co
+- **here-now** _(global)_ — "Publish websites & store private files in cloud Drives. Sites: publish to {slug}.here.now or custom domains. Drives: cloud folders for docs, memory, plans, ass
+- **higgsfield** _(global)_ — "Router for all Higgsfield generation work: image, video, Soul character training, product photography, marketplace, Marketing Studio ads. Triggers: Higgsfield,
+- **icm** _(global)_ — "Interpretable Context Methodology (ICM, arXiv:2603.16021v2) — five-layer folder/context architecture that loads minimum context per step; fixes token bloat, du
+- **ig-reel-script-writer** _(global)_ — "Instagram Reel scripts via Jason's viral framework (Hook → Build-Up → Value → Payoff → CTA). 100+ proven hooks + psychology. Triggers: write reel script, turn 
+- **ig-scorecard** _(global)_ — "Analyze last 10 Instagram posts: engagement metrics, winners/losers analysis, content strategy. Browser automation + .xlsx scorecard. Triggers: Instagram audit
+- **image-generation** _(project)_ — "Tier-1 image-gen orchestrator: routes intent + Vertex/NB2 direct backend + HITL prompt review + carousel mode + video reference frames. Routes to `higgsfield` 
+- **knowledge-hygiene** _(project)_ — "Anti-decay system that detects stale docs, unintegrated learnings, and registry drift. Surfaces hygiene reports inside existing ops commands — not as standalon
+- **launch-strategy** _(project)_ — "Plan product launches, feature releases, announcements, go-to-market strategy. Covers phased launches, channel strategy, momentum. Triggers: launch, Product Hu
+- **linkedin-content** _(project)_ — "LinkedIn content pipeline: reverse-interview profiling, story mining, SIREN-framework drafting, virality engineering. Triggers: write LinkedIn post, ghostwriti
+- **linkedin-optimization** _(project)_ — "LinkedIn organic: profile audit, algorithm, content playbooks, creator mode, B2B sales, engagement, newsletters, organic-to-paid. Tools: profile analyzer, bann
+- **llm-council** _(global)_ — "5-advisor council: independent analysis, peer review, final verdict (Karpathy methodology). TRIGGERS: council this, war room, pressure-test, should I X or Y, w
+- **marketing-fundamentals** _(project)_ — "Foundational marketing: funnels, customer journey, positioning, value propositions, psychology. Triggers: marketing basics, TOFU/MOFU/BOFU, funnel, customer jo
+- **marketing-ideas** _(project)_ — "140 proven marketing approaches by category. Triggers: marketing ideas, growth ideas, how to market, marketing strategies, tactics, ways to promote, ideas to g
+- **marketing-psychology** _(project)_ — "70+ mental models for marketing. Triggers: psychology, mental models, cognitive bias, persuasion, behavioral science, why people buy, decision-making, consumer
+- **meta-ads-uploader** _(project)_ — "End-to-end Meta (Facebook/Instagram) ad creative uploader. Bridges copy generation to live ads. Triggers: upload ads, create meta ads, bulk upload, publish, la
+- **multi-agent-consensus** _(project)_ — "Spawn N agents on same prompt (framing variations) to find consensus, divergences, outliers. Filters hallucinations, surfaces ideas. Triggers: consensus, poll 
+- **notebooklm** _(global)_ — "Google NotebookLM API: create notebooks, add sources (URLs, PDFs, video, audio), generate all artifact types (podcasts, guides, FAQs, timelines), download form
+- **notion-cli** _(global)_ — "Notion CLI (`ntn`): query databases, create/update pages from Markdown, upload files, raw API. Auth via OS keychain (ntn login). 3 req/sec sustained, 10 burst.
+- **offer-builder** _(project)_ — "5-phase offer framework: discovery, viability scoring, identity extraction, micro offers, documents, audits, deployment. Triggers: build offer, offer builder, 
+- **onboarding-cro** _(project)_ — "Post-signup onboarding optimization: activation, first-run, time-to-value, empty states, aha moment, NUX. Triggers: onboarding, activation, first-run, aha mome
+- **onboarding-strategy-pdf** _(project)_ — "Generate client-ready 7-page onboarding strategy PDF (Hormozi framework). Merges context + avatar research + optional paid-media-audit. For paid calls. Trigger
+- **one** _(global)_ — | Use the One CLI (`one`) to interact with 3rd-party platforms — Gmail, Slack, Stripe, Notion, etc. through their APIs. One handles auth, request building, and 
+- **page-cro** _(project)_ — "Optimize any marketing page (homepage, landing, pricing, feature, blog) for conversions. Triggers: CRO, conversion rate optimization, improve conversions, boun
+- **paid-advertising** _(project)_ — Paid media strategy and optimization across platforms. Use when planning paid campaigns, optimizing ad performance, managing budgets, or setting up tracking for
+- **paid-media-audit** _(project)_ — Systematic audit framework for evaluating paid advertising accounts across Google Ads, Meta Ads, LinkedIn Ads, and TikTok Ads. Covers 200+ checkpoints spanning 
+- **paywall-upgrade-cro** _(project)_ — "Create/optimize in-app paywalls, upgrade screens, upsells, feature gates. Triggers: paywall, upgrade screen, upsell modal, feature gate, freemium conversion, t
+- **persuasive-premise** _(project)_ — "Generate the single belief that makes an offer inevitable (Schwartz framework). Outputs: core_belief + contrast + evidence + implication. Feeds: headline-bank,
+- **pinterest** _(global)_ — Pinterest profile inventory + image extraction via two CLIs — pin-scrape (no-auth public scraper, default) or pinterest-pp-cli (official v5 API). Triggers — pin
+- **plan-for-goal** _(global)_ — "Brief → locked /goal plan: size triage, premise challenge, scope selection, 0-10 critique. Outputs: markdown plan + paste-ready /goal one-liner. Locked section
+- **plans-vault** _(global)_ — "Per-client HTML plan vaults at plans.genflos.com/<client>/ via here.now. TRIGGERS: use here.now (client-bound), publish plan for <client>, update <client> page
+- **popup-cro** _(project)_ — "Create/optimize popups, modals, overlays, slide-ins, banners. Triggers: popup, modal, overlay, exit intent, email popup, lead capture popup, announcement banne
+- **pp-recall** _(global)_ — "Recall Printing Press CLI: read-only API for your AI encyclopedia/second brain. List cards, fetch, search. NOTE: --offline/local mode is metadata-only (chunks 
+- **pp-scrape-creators** _(global)_ — "Scrape Creators CLI: TikTok/Instagram/YouTube profiles, Facebook ad library, cross-platform creator data, offline search. Triggers: scrape creators, tiktok pro
+- **pricing-strategy** _(project)_ — "Design pricing, tiers, packaging, monetization. Triggers: pricing, pricing tiers, freemium, free trial, packaging, price increase, value metric, Van Westendorp
+- **problem-promise** _(project)_ — "Generate a two-line setup-payoff structure (Halbert/Hormozi style). Problem line articulates pain so specific the audience says 'that's me.' Promise line inver
+- **problem-solving** _(project)_ — "Systematic problem-solving for marketing: simplification cascades (complexity), collision-zone thinking (creative blocks), meta-pattern recognition (recurring 
+- **programmatic-seo** _(project)_ — "Create SEO-driven pages at scale via templates & data. Triggers: pSEO 2.0, JSON-first pages, niche taxonomy, schema-driven content, template pages, directory/l
+- **prompt-contracts** _(project)_ — "Define success, constraints, output format, and failure conditions in a single structured contract. Auto-triggers on high-stakes work. Contract library + Rever
+- **reddit** _(project)_ — "Reddit CLI: scrape, search, user, subreddit, trending, submission. No API key. 97-100% comment coverage, JSON + markdown output. Anonymous, 60 req/min. For buy
+- **referral-program** _(project)_ — "Referral program design & optimization. Triggers: referral, affiliate, ambassador, word of mouth, viral loop, refer a friend, partner program. Covers incentive
+- **research** _(global)_ — Buyer-language + market-research orchestrator. Routes to channel sub-agents (Exa, Reddit, Linkup, Firecrawl) across quick/standard/deep/buyer-language/crawl mod
+- **responsive-error-audit** _(global)_ — Post-build mobile/responsive QA audit for any web page. Headless multi-viewport sweep detecting horizontal overflow, clipped elements, broken images, tap target
+- **routing-tester** _(global)_ — "Stress-test a skill/agent/system-prompt's routing by spawning sub-agents IN THE CORRECT PERSONA (worker, orchestrator, end-user) to navigate it cold. Surfaces 
+- **sales-letter-audit** _(project)_ — "Audit finished sales letters via Schwartz/Halbert lens: awareness, sophistication, channel, A/B-pile, specificity. Diagnostic + client briefs. NOT for greenfie
+- **sales-letter-method** _(project)_ — "Write 800-2000+ word direct-response sales letters for cold paid traffic. 5+ min engagement → booked consultations. Real estate, consulting, coaching, agency, 
+- **sandbox-sdk** _(global)_ — Build sandboxed applications for secure code execution. Load when building AI code execution, code interpreters, CI/CD systems, interactive dev environments, or
+- **schema-markup** _(project)_ — "Add, fix, optimize schema markup & structured data. Triggers: schema markup, JSON-LD, rich snippets, FAQ schema, product schema, review schema, breadcrumb sche
+- **scrapecreators** _(project)_ — "V4 marketing only — Scrape Creators wrapper at skills/scrapecreators/scripts/scrape.py with V4 brand/research integration. For global Scrape Creators access us
+- **scrapling** _(global)_ — "Python scraping library: three fetcher tiers (static/dynamic/stealth) + adaptive CSS selectors. Handles bot detection (DataDome, Cloudflare). Triggers: scrape,
+- **screenwriter** _(global)_ — "Write screenplays, episodes, scenes, beat sheets using McKee/Campbell/Aristotle. Outputs Hollywood .docx, bilingual dialogue, structure audit. Triggers: screen
+- **script-skill** _(global)_ — "Video scripts, speech patterns, hooks. Extract creator voice, scrape competitor hooks, query hooks database, voice-matched scripts, de-AI passes. Triggers: vid
+- **seedance-director** _(global)_ — "Seedance 2.0 video prompts via TechHalla 4-block call sheet. 15s single-clip. Cinematic/broadcast/UGC/2D animation. Triggers: seedance, ugc ad, motion graphics
+- **seo-mastery** _(project)_ — Search engine optimization strategies and tactics for organic growth. Use when optimizing content for search, conducting keyword research, performing SEO audits
+- **session-handoff** _(global)_ — "End-of-session summary: decisions, shipped changes, key files, running state, deferrals, open questions for fresh agent continuity. Triggers: session handoff, 
+- **sheets-provisioner** _(project)_ — "Provision Google Sheet + LP funnel tabs per campaign. Scaffolds new client folders or appends to existing metrics-config.json. Triggers: new campaign, new LP s
+- **sheets-updater** _(project)_ — "Pull Meta Ads metrics → client Google Sheet. HITL preview, protected columns. Daily/weekly/monthly/on-demand updates via metrics-config.json."
+- **signup-flow-cro** _(project)_ — "Optimize signup/registration/account creation/trial activation flows. Triggers: signup conversions, registration friction, signup form optimization, signup dro
+- **skill-cleaner** _(global)_ — "Audit Claude Code skills: find duplicates across global/plugin/project roots, flag bloated descriptions, surface unused/retired husks, forecast prompt-budget s
+- **skill-creator** _(global)_ — "Create, edit, optimize, and benchmark skills. Test & eval, variance analysis, improve triggering accuracy. Triggers: create skill, build skill, edit skill, opt
+- **source-of-truth** _(project)_ — "Generate 26-section paid ads source-of-truth. Auto-triage input, parallel research (scrapecreators, buyer-language, deep-research, product), synthesize via bus
+- **tiktok-slideshows** _(project)_ — "TikTok slideshows, Photo Mode, content calendar, trending hooks, batch production. Triggers: TikTok + (slideshows, carousels, Photo Mode, hooks, batches, calen
+- **transcribe** _(global)_ — Transcribe any audio or video to text. Groq Whisper by default (fast/cheap); ElevenLabs Scribe for word-level timestamps (--words); local faster-whisper fallbac
+- **trigger-agents** _(global)_ — "AI agent patterns with Trigger.dev: orchestration, parallelization, routing, evaluator-optimizer, human-in-the-loop. Triggers: ai agent, parallel workers, appr
+- **trigger-config** _(global)_ — "Configure Trigger.dev with trigger.config.ts: build extensions (Prisma, Playwright, FFmpeg, Python), deployment. Triggers: trigger config, build extension, dep
+- **trigger-cost-savings** _(global)_ — "Optimize Trigger.dev costs: analyze runs, machine sizes, task efficiency, audit spend. Triggers: reduce spend, optimize costs, cost audit, right-size machines.
+- **trigger-realtime** _(global)_ — Subscribe to Trigger.dev task runs in real-time from frontend and backend. Use when building progress indicators, live dashboards, streaming AI/LLM responses, o
+- **trigger-setup** _(global)_ — Set up Trigger.dev in your project. Use when adding Trigger.dev for the first time, creating trigger.config.ts, or initializing the trigger directory.
+- **trigger-tasks** _(global)_ — Build AI agents, workflows and durable background tasks with Trigger.dev. Use when creating tasks, triggering jobs, handling retries, scheduling cron jobs, or i
+- **trim-the-fat** _(global)_ — trim
+- **tweak** _(global)_ — Wrap any sales letter or HTML artifact in a browser inline editor — edit text, resize/move elements, add review notes, export clean HTML. Triggers: tweak this, 
+- **ugc-creator** _(global)_ — "Persistent actor UGC studio on Higgsfield — face-locked talking heads + product reviews, GRWM, unboxing. Triggers: UGC generation, actor creation, talent, prod
+- **unique-mechanism-problem** _(project)_ — "Generate new root-cause explanation for WHY the problem exists—distinct from market consensus. Schwartz Sophistication Stages 3-4. Outputs: hidden_cause, named
+- **unique-mechanism-solution** _(project)_ — "Generate new explanation for HOW solution works—distinct from market alternatives. Schwartz Stages 3-4. Outputs: how_it_works, named_label, moat, proof. Mirror
+- **unslop** _(project)_ — "Domain-specific AI flaw detection. Generates empirical avoidance profiles via model sampling. Outputs: patterns to avoid, failure modes, cost/quality trade-off
+- **userinterface-wiki** _(project)_ — "152 UI/UX rules across 12 categories: animations, easing, springs, CSS, typography, spacing, Laws of UX. Triggers: feels janky, improve UX, polish UI, review C
+- **usp-generator** _(project)_ — "Rosser Reeves USP generator: definite proposition + uniqueness + sales pull (3-part test, all required). Outputs: proposition, claim, pull, weakest link. Trigg
+- **verification-loops** _(project)_ — "Post-task review loop: spawn reviewer agents to audit output for correctness, edge cases, simplification. Spawn resolver agent to reconcile conflicts. 2-3x qua
+- **vid-director** _(project)_ — Paid-video director brain — concept ideation, hook/spine/beat, route Higgsfield/Seedance/Veo/Kling/Sora, dispatch subagents, gate AG0/AG1/AG2. Triggers: vid-dir
+- **video-brief-normalizer** _(project)_ — "Bridge component: approved Video Concept Lab winner → client Google Docs brief + internal AI production brief. In Option B it feeds video-prompt-pack-builder, 
+- **video-concept-lab** _(project)_ — "Paid AI-video concept methodology for the main video-concept-seeder agent: 5 concepts + winner scoring before render. Hooks, narrative format, proof mode, stra
+- **video-director** _(project)_ — "REDIRECT / signpost (consolidated 2026-05-30). AI-video ad prompt-craft no longer lives here — it moved to the higgsfield-prompts video infra. This skill now o
+- **video-factory** _(global)_ — "Video clip production harness: model-ready prompts/payloads, render via selected executor, human review of MP4s, ffmpeg stitching. Triggers: video factory, pip
+- **video-hook-variants** _(project)_ — "Hook engineering for multi-clip paid video ads. Produces 2 paired hook variants per concept (clip_1A + clip_1B) — each variant is verbal (VO line) + visual (sh
+- **video-new-concept** _(global)_ — "Scaffold a video-concept workspace from clients/_template/_templates/video-concept-workspace/ for AG1/AG2 ideation work. Use /video:new for Video Factory rende
+- **viral-presets-index** _(global)_ — "34 viral Seedance 2.0 I2V preset recipes (Soul Fighter, Disintegration, Earth Zoom, Baseball Game, Magic Spell, Face Punch + 28 more). Thin router — loads reci
+- **web-perf** _(global)_ — Analyzes web performance using Chrome DevTools MCP. Measures Core Web Vitals (LCP, INP, CLS) and supplementary metrics (FCP, TBT, Speed Index), identifies rende
+- **website-design** _(project)_ — "5-mode website builder: Recreation (pixel-perfect), Creation (from scratch), Hybrid (improve), Paper-First (Paper.design import), Cold-Traffic CRO. Single inde
+- **workers-best-practices** _(global)_ — Reviews and authors Cloudflare Workers code against production best practices. Load when writing new Workers, reviewing Worker code, configuring wrangler.jsonc,
+- **wrangler** _(global)_ — Cloudflare Workers CLI for deploying, developing, and managing Workers, KV, R2, D1, Vectorize, Hyperdrive, Workers AI, Containers, Queues, Workflows, Pipelines,
+- **youtube-content** _(project)_ — "Generate YouTube descriptions from transcripts: timestamps, tool links, brand-consistent copy. Triggers: youtube description, describe this video, video metada
+- **yt-ideator** _(global)_ — "YouTube ideation via Linden Chasteen packaging methodology: ramblings → polished concepts + TAM analysis + 50+ title variations + thumbnail direction. Triggers
+- **yt-scorecard** _(global)_ — "YouTube Scorecard: browser-automates YouTube Studio, collects 10-video analytics, outputs .xlsx (Full Scorecard, Winners/Losers Analysis, Takeaways, Strategy).
+- **yt-scriptwriter** _(global)_ — "Full YouTube scripts via Chasteen retention methodology: hooks, intros, story structure, loops, payoffs, emotional arcs, CTAs. Based on MrBeast/Colin & Samir/J

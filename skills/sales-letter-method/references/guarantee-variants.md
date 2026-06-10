@@ -1,164 +1,86 @@
-# Guarantee Variants for No-Price Funnels
-
-Since this skill targets lead-gen/consultation funnels (no disclosed price), the traditional money-back guarantee doesn't apply. The Guarantee Stack is still the primary conversion lever — it just takes a different form.
-
-**Rule:** Stack 2-3 guarantees together. A single guarantee is weaker than three specific ones.
-
+---
+file_type: reference
+component: guarantee
+load_when: writer is drafting a guarantee for a no-price page (consult/audit/lead funnel); reviewer is grading risk reversal on a long-form letter that does not disclose a price upfront
+loads_from_research: classical-exemplars (Karbo, Halbert, Stansberry), strong-exemplars (Brendon Luu, Syncom, George Ten)
+last_updated: 2026-05-27
 ---
 
-## The 5 Variants
+# Guarantee Variants (no-price funnels)
 
-### 1. No-Pitch Guarantee
+## What this file is about
 
-**Pattern:** "If [we / I] can't help you in the first [X minutes], [we / I will] tell you and end the call."
+When the page does not name a price — consult call, audit, lead form — the classic "money-back" guarantee does not fit. Nothing was paid yet. But you still need to reverse risk, or the reader will not click.
 
-**Use when:** Prospect's biggest fear is "being sold to." Common in real estate, consulting, coaching.
+We pulled every guarantee section from our seven classical letters and eight modern "strong" letters. Findings:
 
-**Examples:**
-- "If we can't help you in the first 10 minutes, we'll tell you straight up and end the call. No pressure. No pitch."
-- "This isn't a discovery call — it's a working session to identify gaps and prescribe solutions. If you're not the right fit, we'll say so."
-- "My goal is to save both of us time. If I can't deliver real value in 15 minutes, we end it there."
+- 7 of 8 modern letters use weak verbal guarantees (vague promises, no structure). Only George Ten has a structural one.
+- The classical letters that won for decades all used *structural* guarantees — the structure itself does the work, not the words.
+- A strong guarantee is a form of damaging admission (see `damaging-admission.md`). You give up something real — a refund, a free hour, a deferred payment — and the reader's guard drops.
 
-**Why it works:** Removes the #1 cold-call objection ("I'll just be pitched"). Converts hesitation into curiosity.
+## The five variants
 
----
+### 1. Money-back (classical baseline)
 
-### 2. Value-Pay Guarantee
+Take payment now, refund on request inside a window. Works only when a price is disclosed.
 
-**Pattern:** "If you don't leave the call with [specific value], [we / I will] pay you $[amount]."
+> "I won't even cash your check or money order for 31 days after I've sent you my material. That'll give you plenty of time to get it, look it over, try it out. If you don't agree that it's worth at least a hundred times what you invested, send it back. Your uncashed check or money order will be promptly returned." — Karbo, *Lazy Man's Way to Riches*
 
-**Use when:** You want to make the consultation ITSELF feel risk-free. Extreme confidence in delivery.
+When to use: paid product page. Skip on no-price funnels.
 
-**Examples:**
-- "If you don't leave with at least 3 specific strategies you can implement immediately, I'll send you a $100 Amazon gift card."
-- "If you feel the call wasn't worth your time, we'll Venmo you $50. No questions."
-- "Your time is worth something. If we waste it, I'll pay for it."
+### 2. Conditional / cancel-anytime
 
-**Why it works:** Price-reverses the commitment. The consultation becomes free PLUS upside. Psychological effect: "I can only win."
+Reader can cancel within a long window and keep what they got.
 
-**Caution:** Only offer if you can afford to pay out. Don't use for high-volume funnels.
+> "If at any point you're not satisfied you can cancel and keep the reports" — Stansberry, *End of America* (Agora standard, full year)
 
----
+When to use: subscription or membership where the first payment is small enough to feel like a trial.
 
-### 3. Outcome Guarantee
+### 3. Value-pay (pay-only-if-worth-it)
 
-**Pattern:** "Leave with [specific outcome] — or [reversal]."
+Reader pays a deposit, second payment is voluntary. Strongest structural form we found in modern letters.
 
-**Use when:** Your consultation delivers a tangible, measurable outcome (audit result, strategy document, action plan).
+> "$97 today. You send another $97 after — only if you think it was worth it. Not charged automatically." — George Ten
 
-**Examples:**
-- "You'll leave with at least 3 actionable strategies — or I'll send you my complete [framework] PDF free."
-- "Walk away with a custom lead-gen plan for your market, or the call is on us."
-- "If we can't identify 5 gaps in your current funnel in 30 minutes, we'll refund your time with a free audit."
+When to use: workshop, one-off product, or first engagement. Needs trust that the buyer will pay. Works best in small-list, high-context offers.
 
-**Why it works:** Specific deliverable. Removes ambiguity about what "value" means.
+### 4. No-pitch (consult call)
 
----
+The risk on a consult call is "I will be pressured." Kill that fear directly.
 
-### 4. Integrity Layer (Triple-Negative Commitment)
+> "I will NEVER waste your time. I will NEVER hit you with hidden fees. You will always have 100% transparency. You will always get the best terms in the market." — Brendon Luu
 
-**Pattern:** "I will NEVER [X]. I will NEVER [Y]. I will NEVER [Z]."
+When to use: free consult, audit call, discovery call. Pair it with a triple-negative line (never/never/never) — three specific exclusions land harder than one general promise.
 
-**Use when:** You want to signal trust without a formal guarantee. Pairs with any of the other variants.
+### 5. Outcome guarantee
 
-**Examples:**
-- "I will NEVER waste your time. I will NEVER hit you with hidden fees. I will NEVER try to sell you something you don't need."
-- "I will NEVER pressure you to buy. I will NEVER use fake urgency. I will NEVER hide my process."
-- "No upsells. No gotchas. No pressure."
+Name a specific deliverable the reader walks away with, win or lose.
 
-**Why it works:** Three specific exclusions are stronger than one general promise. Pattern appears in 3/8 competitor pages (Syncom template).
+> "no closing costs / no renovations / no hidden fees / no commissions / NO CATCH" — Syncom (07-syncom-XiJt)
 
----
+When to use: any consult or audit where you can name the artefact (a written plan, three strategies, a list of gaps). Vague ("real value") is worse than naming nothing.
 
-### 5. Conditional Guarantee (Results-Based)
+## Reviewer checks
 
-**Pattern:** "If [specific result] doesn't happen within [timeframe], [reversal]."
+Score yes/no on each:
 
-**Use when:** You work with clients AFTER the consultation and want to pre-frame your service guarantee.
+1. **Is there a guarantee at all?** A long letter with no risk-reversal is a real gap.
+2. **Is the guarantee structural or just verbal?** Karbo's "I won't cash your check" is structural. "Satisfaction guaranteed" is verbal. Structural wins.
+3. **Is it specific?** Numbers, timeframes, named outcomes. Vague guarantees ("you'll love it") count as no guarantee.
+4. **Does it match the funnel?** Money-back on a no-price page is a mismatch. No-pitch on a paid product page is a mismatch.
+5. **Is one variant enough, or should you stack two?** Stack only if each does a different job (e.g. no-pitch for the call + outcome for what they leave with). Do not stack two that say the same thing.
 
-**Examples:**
-- "If you don't book 5 qualified calls in the first 30 days, we work with you for free until you do."
-- "If we can't deliver your first 10 leads in 60 days, we refund everything AND keep working."
-- "If my strategy doesn't generate 3x return in 90 days, I'll personally rework it free."
+## What we cut from the old version
 
-**Why it works:** Extreme conditional reversal makes it feel impossible NOT to say yes. Hormozi's "make it so the prospect takes on greater risk by NOT buying."
+The previous file asserted five "no-price variants" with invented example copy and a "Hormozi Grand Slam stack" of four guarantees. No verbatim sources. The stacking advice over-promised — most strong modern letters use one guarantee, not three. Removed.
 
-**Caution:** This is a POST-consultation service guarantee. For the consultation page itself, use variants 1-4.
+One honest weakness in this rewrite: we have only one strong-exemplar with a structural guarantee (George Ten). The other seven modern letters give us mostly negative evidence — what is missing, not what works. Treat variant 3 as the highest-leverage move but the least-tested in modern web letters.
 
----
+## Linked files
 
-## Stacking Strategy
-
-**Minimum viable stack (always include):**
-1. No-Pitch Guarantee (variant 1) — removes the #1 fear
-2. Integrity Layer (variant 4) — triple-negative commitment
-
-**Strongest stack (for high-conviction offers):**
-1. No-Pitch Guarantee
-2. Value-Pay Guarantee
-3. Outcome Guarantee
-4. Integrity Layer
-
-**Hormozi's "Grand Slam" stack (for established operators):**
-1. Value-Pay (variant 2) — consultation itself is guaranteed
-2. Outcome Guarantee (variant 3) — specific deliverable
-3. Conditional Guarantee (variant 5) — post-sale service guarantee
-4. Integrity Layer (variant 4)
-
----
-
-## Placement on the Page
-
-The Guarantee Stack component lives between **Offer Breakdown (7/8)** and **CTA (11)**. Sequence:
-
-1. Reveal the offer
-2. (Light scarcity if applicable)
-3. **GUARANTEE STACK** (2-3 variants minimum)
-4. CTA with friction reducer
-
-Why this order: guarantee appears AFTER the offer (so it feels risk-reversal) and BEFORE the CTA (so it removes the last friction).
-
----
-
-## Format Template
-
-```
-Here's my promise to you:
-
-**No pressure, no pitch.**
-If I can't deliver real value in the first 10 minutes of the call, I'll tell you straight up and we'll end it there. Your time is worth more than that.
-
-**Your time is protected.**
-If you feel the call wasn't worth it, I'll send you a $100 [gift card]. I'm that confident.
-
-**You'll leave with a plan.**
-Walk away with at least 3 specific strategies you can implement immediately — or I'll send you my complete [framework] PDF free.
-
-**I will NEVER pressure you. I will NEVER use fake urgency. I will NEVER sell you something you don't need.**
-
-[CTA button]
-```
-
-Adapt the exact language to the client's brand voice. Keep the pattern: specific, stacked, concrete.
-
----
-
-## What NOT To Do
-
-- **Vague reassurance:** "Satisfaction guaranteed!" — meaningless without specifics
-- **Single guarantee:** "Money back if not happy" — weaker than three specific ones
-- **Uenforceable promises:** "We guarantee you'll be successful!" — unfalsifiable
-- **Hidden conditions:** "Guarantee applies only if..." buried in fine print
-- **Price-based guarantees on a no-price page:** "30-day refund" doesn't apply — nothing was purchased yet
-
----
-
-## Red Flags That Demand User Input
-
-Before writing guarantees, ask the user IF:
-- No guarantee is specified in `offer.md`
-- Client has history of over-promising
-- Service has high variability in outcomes (e.g., "results depend on your implementation")
-- Guarantee amount (for variant 2) isn't decided
-
-Do NOT invent guarantees the client can't or won't honor. Surface to user, wait for confirmation.
+- `best-practices/damaging-admission.md` — a strong guarantee is a form of admission; pair the two
+- `research/classical-exemplars/annotated/karbo-lazy-mans-way.md` — money-back / escrow source
+- `research/classical-exemplars/annotated/stansberry-end-of-america.md` — conditional / cancel-anytime source
+- `research/strong-exemplars/annotated/08-george-ten.md` — value-pay source
+- `research/strong-exemplars/annotated/01-brendon-luu.md` — no-pitch source
+- `research/strong-exemplars/annotated/07-syncom-XiJt.md` — outcome / friction-removal source
