@@ -1,0 +1,20 @@
+{
+  "client": "neezanizam",
+  "score": "5/7",
+  "verdict": "PASS — Minor Issues",
+  "rules": [
+    {"status": "FAIL", "rule": "Rule 1 — CLAUDE.md exists and sized", "detail": "clients/neezanizam/CLAUDE.md is      114 lines (max 100)"}
+    ,
+    {"status": "PASS", "rule": "Rule 2 — Root CONTEXT.md exists", "detail": ""}
+    ,
+    {"status": "PASS", "rule": "Rule 3 — _brand/ has CONTEXT.md", "detail": ""}
+    ,
+    {"status": "PASS", "rule": "Rule 4 — No CONTEXT.md over 100 lines", "detail": ""}
+    ,
+    {"status": "PASS", "rule": "Rule 5 — No duplicated global rules in room CONTEXT.md", "detail": ""}
+    ,
+    {"status": "FAIL", "rule": "Rule 6 — No broken pointers", "detail": "clients/neezanizam/CLAUDE.md: '_or_create_sheet.sh' not found; clients/neezanizam/CLAUDE.md: '_assets.json' not found; clients/neezanizam/CLAUDE.md: '_assets.json' not found; clients/neezanizam/CLAUDE.md: '_assets.json' not found; clients/neezanizam/CLAUDE.md: '_refs/_registry.md' not found"}
+    ,
+    {"status": "PASS", "rule": "Rule 7 — CONTEXT-md-pattern.md (no phase templates — N/A)", "detail": ""}
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.0",
+  "client": "{{client_slug}}",
+  "campaign": "{{campaign_slug}}",
+  "concept_slug": "{{concept_slug}}",
+  "current_phase": "not_started",
+  "selected_engine": null,
+  "selected_flow": null,
+  "active_generation_run": {
+    "status": "none",
+    "path": null,
+    "run_manifest": null
+  },
+  "production_contract": "lean_clip_run",
+  "strategy_map": {
+    "status": "missing",
+    "path": null
+  },
+  "selected_inputs": {
+    "status": "missing",
+    "path": "concept-brief.json",
+    "source_manifest": "../../../../00_inputs/input-manifest.json",
+    "campaign_selection": "../../campaign-selection.json",
+    "buyer_profile": "../../../../_brand/buyer-profile.md"
+  },
+  "approvals": {
+    "ag0": "not_started",
+    "ag1": "not_started",
+    "ag2": "not_started"
+  },
+  "legal_next_actions": [
+    "complete_concept_brief_from_client_input_manifest",
+    "create_or_load_creative_diversity_map",
+    "run_ag0"
+  ],
+  "blocked_actions": [
+    "render_before_ag2_approval"
+  ],
+  "updated_at": "{{today}}"
+}

@@ -1,0 +1,44 @@
+{
+  "client_slug": "_smoketest",
+  "client_name": "Meridian Property Advisory",
+  "client_type": "service",
+  "specialty": "Flat-fee property-buyer advisory for Singapore residential purchases (HDB resale, EC, private condo)",
+  "geo": "Singapore",
+  "engagement_type": "demo / smoke-test (FICTIONAL — regression baseline, not a real client)",
+  "deadline": null,
+  "stopping_criteria": "Baseline run complete: scaffold + research pack written and logged.",
+  "links": {
+    "website": "https://meridianpropertyadvisory.example.sg",
+    "linkedin": "https://www.linkedin.com/company/meridian-property-advisory-fictional",
+    "instagram": "https://instagram.com/meridian.advisory.fictional",
+    "tiktok": null,
+    "youtube": null,
+    "featured_landing_page": "https://meridianpropertyadvisory.example.sg/advisory"
+  },
+  "offer_ladder": {
+    "t1_lead_magnet": "Free 'Overpaying Checklist' — 9 unit red flags that cost SG buyers S$30k+",
+    "t2_mid_funnel": "S$290 90-minute 'Shortlist Teardown' call (one shortlist, data-backed verdict)",
+    "t3_back_end": "S$4,500 flat-fee end-to-end Property Purchase Advisory (data-backed unit selection through to OTP)"
+  },
+  "current_funnel_state": {
+    "email_list": false,
+    "email_provider": null,
+    "lead_magnet": false,
+    "current_path": "strangers -> word-of-mouth referral -> WhatsApp enquiry -> S$4,500 advisory. No paid acquisition yet."
+  },
+  "production_capability": {
+    "heygen": false,
+    "can_film_self": true,
+    "ai_assisted_video_edit": false
+  },
+  "tools_available": [],
+  "research_status": "seeded-fictional",
+  "_created": "2026-06-11",
+  "_last_updated": "2026-06-11",
+  "_fictional": true,
+  "_onboarding_progress": {
+    "current_phase": 1,
+    "path": "research-first",
+    "completed_steps": ["scaffold", "research-pack-seed"]
+  }
+}

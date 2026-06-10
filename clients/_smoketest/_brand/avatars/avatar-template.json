@@ -1,0 +1,55 @@
+{
+  "schema_version": "1.0",
+  "status": "legacy_tooling_or_visual_character_only",
+  "targeting_source_of_truth": "../buyer-profile.md#micro-persona-map",
+  "source_micro_persona_id": "",
+  "avatar_id": "",
+  "name": "",
+  "type": "legacy-export",
+  "allowed_uses": [
+    "legacy_tooling_export",
+    "visual_character_reference",
+    "mascot_or_presenter_reference",
+    "face_lock_reference"
+  ],
+  "not_allowed_for": [
+    "buyer_targeting_source_of_truth",
+    "primary_persona_strategy"
+  ],
+  "micro_persona_fields_snapshot": {
+    "motivation": "",
+    "pain": "",
+    "desired_outcome": "",
+    "lifestyle_context": "",
+    "buying_trigger": "",
+    "language": [],
+    "proof": [],
+    "creative_entry_point": ""
+  },
+  "awareness_level": "",
+  "sophistication_level": "",
+  "primary_emotion": "",
+  "primary_fear": "",
+  "buying_trigger": "",
+  "market_awareness": {
+    "level": "",
+    "evidence": [],
+    "ad_implication": ""
+  },
+  "daily_struggles": [],
+  "raw_inner_dialogue": [],
+  "desired_transformation": {
+    "daily_life": "",
+    "relationships": "",
+    "self_image": "",
+    "external_markers": [],
+    "internal_markers": []
+  },
+  "beliefs_to_overcome": [],
+  "past_solutions_tried": [],
+  "language_to_use": [],
+  "language_to_avoid": [],
+  "proof_elements_that_resonate": [],
+  "creative_entry_points": [],
+  "notes": ""
+}

@@ -1,0 +1,7 @@
+{
+  "provider": "google-appointments",
+  "embed_url": "",
+  "calendar_id": "",
+  "label": "Book a call",
+  "_notes": "Optional — fill only if this client has a booking page. Google route: Calendar -> Create -> Appointment schedule -> Share -> Add to your website, then paste the booking-page URL into embed_url. Full-page sub-page uses an iframe of embed_url; an in-letter button uses Google's scheduling-button embed. Leave blank if no booking page. RECOMMENDED, not required for conformance."
+}

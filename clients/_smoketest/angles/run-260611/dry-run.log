@@ -1,0 +1,37 @@
+=== DRY-RUN attempt (hardened) — validates wiring, no token spend ===
+[00:42:07] [INFO] run directory: /Users/jerel/Documents/Jerel's brain/jerel's brain/Marketing/clients/_smoketest/angles/run-260611/dry-run-output
+[00:42:07] [INFO] hardened angle stage: mode=fresh, threshold>=4, need>=5 winners, max_loops=3, confirm_passes=1
+[00:42:07] [INFO]   loop 1: 10/10 BANKED winners (need 5; monotonic)
+[00:42:07] [INFO]   resonance gate PASS on loop 1 — 10 banked winners
+[00:42:07] [INFO]   wrote 01_angles.md (hardened structured angles — gate PASS)
+[00:42:07] [INFO] DRY-RUN [step03] would run: ['claude', '-p', '--model', 'claude-sonnet-4-6', '--tools', '', '--output-format', 'json', '--dangerously-skip-permissions', '--no-session-persistence', '--session-id', '7e4f0672-e5be-440a-9e91-b57eb03d6eb0', '--system-prompt', '<25976-char blob>', '<701-char blob>']
+[00:42:07] [INFO]   wrote 03_pruned.md
+[00:42:07] [INFO] DRY-RUN [step04] would run: ['claude', '-p', '--model', 'claude-sonnet-4-6', '--tools', '', '--output-format', 'json', '--dangerously-skip-permissions', '--no-session-persistence', '--session-id', '8e30ef9d-cdb1-4296-a39e-7316fcfc0978', '--system-prompt', '<25976-char blob>', '## Input — pruned (from step 03)\n\n(dry-run output for step03)\n\n---\nNow, order those angles from 1 to 10. 1 being most high converting and 10 being least. Include a one-line rationale per position.']
+[00:42:07] [INFO]   wrote 04_ranked_angles.md
+[00:42:07] [INFO] DRY-RUN [step05] would run: ['claude', '-p', '--model', 'claude-sonnet-4-6', '--tools', '', '--output-format', 'json', '--dangerously-skip-permissions', '--no-session-persistence', '--session-id', 'dbb25a62-de16-484b-8b01-3a5b9bdd2fe9', '--system-prompt', '<25976-char blob>', '## Input — ranked angles (from step 04)\n\n(dry-run output for step04)\n\n---\nNow confirm angle 1 is the top angle. Answer YES or NO in the first line, then explain. If NO, re-rank.']
+[00:42:07] [INFO]   wrote 05_gate_top_angle.md
+[00:42:07] [INFO] DRY-RUN [step06] would run: ['claude', '-p', '--model', 'claude-sonnet-4-6', '--tools', '', '--output-format', 'json', '--dangerously-skip-permissions', '--no-session-persistence', '--session-id', '8f735acf-1ded-4607-8c99-700e74b5c001', '--system-prompt', '<25976-char blob>', '<303-char blob>']
+[00:42:07] [INFO]   wrote 06_gate_novelty.md
+[00:42:07] [INFO] DRY-RUN [step07] would run: ['claude', '-p', '--model', 'claude-opus-4-8', '--tools', '', '--output-format', 'json', '--dangerously-skip-permissions', '--no-session-persistence', '--session-id', '52fa36bf-827b-437f-9061-ad6576e5443f', '--system-prompt', '<25976-char blob>', '<488-char blob>']
+[00:42:07] [INFO]   wrote 07_expansion.md
+[00:42:07] [INFO] DRY-RUN [step07b] would run: ['claude', '-p', '--model', 'claude-opus-4-8', '--tools', '', '--output-format', 'json', '--dangerously-skip-permissions', '--no-session-persistence', '--session-id', '31558eac-291d-4b96-b1d5-4a4a83b87ed7', '--system-prompt', '<25976-char blob>', '<1922-char blob>']
+[00:42:07] [INFO]   wrote 07b_angle_rationale.md
+[00:42:07] [INFO] DRY-RUN [step08] would run: ['claude', '-p', '--model', 'claude-opus-4-8', '--tools', '', '--output-format', 'json', '--dangerously-skip-permissions', '--no-session-persistence', '--session-id', 'b8b43d78-27b8-4715-b597-98cc81101ecb', '--system-prompt', '<25976-char blob>', '<640-char blob>']
+[00:42:07] [INFO]   wrote 08_headlines.md
+[00:42:07] [INFO] DRY-RUN [step09] would run: ['claude', '-p', '--model', 'claude-sonnet-4-6', '--tools', '', '--output-format', 'json', '--dangerously-skip-permissions', '--no-session-persistence', '--session-id', 'f8245d8b-0d88-465c-9ad1-69e5f2fcbddd', '--system-prompt', '<25976-char blob>', '<210-char blob>']
+[00:42:07] [INFO]   wrote 09_ranked_headlines.md
+[00:42:07] [INFO] DRY-RUN [step10] would run: ['claude', '-p', '--model', 'claude-sonnet-4-6', '--tools', '', '--output-format', 'json', '--dangerously-skip-permissions', '--no-session-persistence', '--session-id', '9d498229-4bd1-4368-9f79-8c16a1fd1513', '--system-prompt', '<25976-char blob>', '<344-char blob>']
+[00:42:07] [INFO]   wrote 10_gate_four_check.md
+[00:42:07] [INFO] top 3 headlines: ['(dry-run headline 1)', '(dry-run headline 2)', '(dry-run headline 3)']
+[00:42:07] [INFO] fanning out step 11 (3 parallel ad-prompt workers)
+[00:42:07] [INFO] DRY-RUN [step11.1] would run: ['claude', '-p', '--model', 'claude-opus-4-8', '--tools', '', '--output-format', 'json', '--dangerously-skip-permissions', '--no-session-persistence', '--session-id', '42ebff03-a6a1-4d60-a319-4112023938c7', '--system-prompt', '<25976-char blob>', '<2089-char blob>']
+[00:42:07] [INFO] DRY-RUN [step11.2] would run: ['claude', '-p', '--model', 'claude-opus-4-8', '--tools', '', '--output-format', 'json', '--dangerously-skip-permissions', '--no-session-persistence', '--session-id', 'cb384520-0486-46ef-9d27-30ffe6cd6eb9', '--system-prompt', '<25976-char blob>', '<2089-char blob>']
+[00:42:07] [INFO] DRY-RUN [step11.3] would run: ['claude', '-p', '--model', 'claude-opus-4-8', '--tools', '', '--output-format', 'json', '--dangerously-skip-permissions', '--no-session-persistence', '--session-id', '092f4e93-4fd9-499d-af1a-b4a3d15eb0cf', '--system-prompt', '<25976-char blob>', '<2089-char blob>']
+[00:42:07] [INFO] fanning out step 12 (3 parallel image-prompt refinement workers)
+[00:42:07] [INFO] DRY-RUN [step12.1] would run: ['claude', '-p', '--model', 'claude-opus-4-8', '--tools', '', '--output-format', 'json', '--dangerously-skip-permissions', '--no-session-persistence', '--session-id', 'fbd31786-7402-435b-b075-a5dd2fefe238', '--system-prompt', '<25976-char blob>', '<1419-char blob>']
+[00:42:07] [INFO] DRY-RUN [step12.2] would run: ['claude', '-p', '--model', 'claude-opus-4-8', '--tools', '', '--output-format', 'json', '--dangerously-skip-permissions', '--no-session-persistence', '--session-id', 'ec3dd3a6-0250-47d0-91a5-1f424cbe9b66', '--system-prompt', '<25976-char blob>', '<1419-char blob>']
+[00:42:07] [INFO] DRY-RUN [step12.3] would run: ['claude', '-p', '--model', 'claude-opus-4-8', '--tools', '', '--output-format', 'json', '--dangerously-skip-permissions', '--no-session-persistence', '--session-id', '93f0059e-5438-4f2a-9add-0dd11f435af9', '--system-prompt', '<25976-char blob>', '<1419-char blob>']
+[00:42:07] [INFO] wrote SUMMARY.md — pipeline complete
+
+✅ Run complete. Results: /Users/jerel/Documents/Jerel's brain/jerel's brain/Marketing/clients/_smoketest/angles/run-260611/dry-run-output/SUMMARY.md
+EXIT_CODE=0

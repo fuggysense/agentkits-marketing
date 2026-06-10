@@ -1,0 +1,20 @@
+{
+  "client": "stackworks",
+  "score": "4/7",
+  "verdict": "PARTIAL",
+  "rules": [
+    {"status": "FAIL", "rule": "Rule 1 — CLAUDE.md exists and sized", "detail": "Missing: clients/stackworks/CLAUDE.md"}
+    ,
+    {"status": "FAIL", "rule": "Rule 2 — Root CONTEXT.md exists", "detail": "Missing: clients/stackworks/CONTEXT.md"}
+    ,
+    {"status": "FAIL", "rule": "Rule 3 — _brand/ has CONTEXT.md", "detail": "_brand/ directory does not exist"}
+    ,
+    {"status": "PASS", "rule": "Rule 4 — No CONTEXT.md over 100 lines", "detail": ""}
+    ,
+    {"status": "PASS", "rule": "Rule 5 — No duplicated global rules in room CONTEXT.md", "detail": ""}
+    ,
+    {"status": "PASS", "rule": "Rule 6 — No broken pointers", "detail": ""}
+    ,
+    {"status": "PASS", "rule": "Rule 7 — CONTEXT-md-pattern.md (no phase templates — N/A)", "detail": ""}
+  ]
+}

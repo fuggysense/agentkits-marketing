@@ -1,0 +1,20 @@
+{
+  "client": "eugene-chieng",
+  "score": "3/7",
+  "verdict": "PARTIAL",
+  "rules": [
+    {"status": "FAIL", "rule": "Rule 1 — CLAUDE.md exists and sized", "detail": "clients/eugene-chieng/CLAUDE.md is      197 lines (max 100)"}
+    ,
+    {"status": "PASS", "rule": "Rule 2 — Root CONTEXT.md exists", "detail": ""}
+    ,
+    {"status": "FAIL", "rule": "Rule 3 — _brand/ has CONTEXT.md", "detail": "Missing: clients/eugene-chieng/_brand/CONTEXT.md"}
+    ,
+    {"status": "FAIL", "rule": "Rule 4 — No CONTEXT.md over 100 lines", "detail": "clients/eugene-chieng/_brand/brand-assets/testimonials/CONTEXT.md (     101 lines); clients/eugene-chieng/CONTEXT.md (     127 lines)"}
+    ,
+    {"status": "PASS", "rule": "Rule 5 — No duplicated global rules in room CONTEXT.md", "detail": ""}
+    ,
+    {"status": "FAIL", "rule": "Rule 6 — No broken pointers", "detail": "clients/eugene-chieng/CLAUDE.md: '_inputs/input-manifest.json' not found; clients/eugene-chieng/CLAUDE.md: '_inputs/input-manifest.json' not found; clients/eugene-chieng/CLAUDE.md: '_strategy/creative-diversity-map.json' not found; clients/eugene-chieng/CLAUDE.md: '_ag1-options/concepts-draft.json' not found; clients/eugene-chieng/CLAUDE.md: '_ag1-options/approval-1.json' not found; clients/eugene-chieng/CLAUDE.md: '_inputs/research/onboarding-form-260528.md' not found; clients/eugene-chieng/CONTEXT.md: '_inputs/input-manifest.json' not found; clients/eugene-chieng/CONTEXT.md: '_inputs/input-manifest.json' not found; clients/eugene-chieng/CONTEXT.md: '_inputs/input-manifest.json' not found"}
+    ,
+    {"status": "PASS", "rule": "Rule 7 — CONTEXT-md-pattern.md present (phase templates exist)", "detail": ""}
+  ]
+}

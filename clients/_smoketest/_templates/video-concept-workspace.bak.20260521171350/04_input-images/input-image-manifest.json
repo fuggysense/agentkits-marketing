@@ -1,0 +1,8 @@
+{
+  "schema_version": "1.0",
+  "client": "{{client_slug}}",
+  "campaign": "{{campaign_slug}}",
+  "concept_slug": "{{concept_slug}}",
+  "root": "04_input-images",
+  "images": []
+}

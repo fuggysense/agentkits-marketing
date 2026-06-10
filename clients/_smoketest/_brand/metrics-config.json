@@ -1,0 +1,186 @@
+{
+  "_comment": "Canonical client metrics-config TEMPLATE. Copied into clients/<slug>/_brand/ at onboarding, then filled by sheets-provisioner. The Modal cron + Pentagon skills read the LIVE client copy (not this template) to know which sheet/tabs to update. See skills/sheets-provisioner/SKILL.md for the build sequence.",
+  "_tabs_doctrine": "CORE (every client gets these): daily_calls, weekly_calls, monthly_calls, kpis, appt, creatives, avatars, copy, obf_data. OPTIONAL (add only when relevant): lp_funnel(+weekly/+monthly) = client has a landing page; creatives_test + copy_test = client runs 10-5-5 test-wave discipline; a form-response tab (named for the client's own tool, e.g. TALLY FORM) = client captures leads via an embedded form. Clone the live tabs from a template workbook with scripts/provision_from_template.py, then record the real gids into campaigns[].tabs.",
+  "client_slug": "{{CLIENT_SLUG}}",
+  "sheet_id": "{{GOOGLE_SHEET_ID}}",
+  "sheet_url": "{{GOOGLE_SHEET_URL}}",
+  "provisioning": {
+    "_comment": "Identities that touch this client's sheets. Creator = human OAuth via the gws CLI (a bare service account cannot create Sheets — it has no Drive). Writer = the metrics-cron service account. find_or_create_sheet.sh reads share_editors[] as default share targets. Leave service_account as TBD to defer the cron — sheet creation + manual avatar/copy writes only need the creator.",
+    "creator_account": "jerel@genflos.com",
+    "creator_tool": "gws",
+    "service_account": "{{CLIENT_SERVICE_ACCOUNT_EMAIL}}",
+    "share_editors": [
+      { "email": "{{CLIENT_SERVICE_ACCOUNT_EMAIL}}", "role": "writer", "note": "service account — metrics cron writer (omit until provisioned)" },
+      { "email": "ops@1upsalesai.com", "role": "writer", "note": "human ops access" }
+    ]
+  },
+  "ad_platforms": {
+    "meta": {
+      "enabled": true,
+      "ad_account_id": "{{META_AD_ACCOUNT_ID}}",
+      "batch_name_prefix": "DCT",
+      "_comment_campaign_filter": "Set this when LP funnel tabs should report on a specific campaign only. Omit/empty for account-level totals.",
+      "campaign_filter": {
+        "campaign_ids": [],
+        "campaign_name_match": ""
+      }
+    },
+    "google_ads": {
+      "enabled": false,
+      "customer_id": ""
+    }
+  },
+  "tabs": {
+    "_comment": "Schema library for the canonical tabs. Provisioning copies the relevant entries (with real gids) into campaigns[].tabs. CORE first; OPTIONAL blocks are prefixed _optional_ and are NOT live until you move them out and fill the gid.",
+    "daily_calls": {
+      "gid": "{{GID_DAILY_CALLS}}",
+      "name": "DAILY CALLS",
+      "columns": ["DATE", "LEAD", "CPL", "APPT", "CAPPT", "REVENUE", "AMOUNT SPENT", "CVR", "CPM", "CPOC", "OCTR", "NOTES"],
+      "write_mode": "append",
+      "frequency": "daily",
+      "date_format": "DD/MM/YY",
+      "source": "meta_insights"
+    },
+    "weekly_calls": {
+      "gid": "{{GID_WEEKLY_CALLS}}",
+      "name": "WEEKLY CALLS",
+      "columns": ["DATE", "APPT", "CAPPT", "REVENUE", "AMOUNT SPENT", "ROAS", "CVR", "CPM", "CPOC", "OCTR", "NOTES"],
+      "write_mode": "append",
+      "frequency": "weekly",
+      "date_format": "DD/MM/YY TO DD/MM/YY",
+      "source": "aggregate_from_daily"
+    },
+    "monthly_calls": {
+      "gid": "{{GID_MONTHLY_CALLS}}",
+      "name": "MONTHLY CALLS",
+      "columns": ["DATE", "APPT", "CAPPT", "REVENUE", "AMOUNT SPENT", "ROAS", "CVR", "CPM", "CPOC", "OCTR", "NOTES"],
+      "write_mode": "append",
+      "frequency": "monthly",
+      "date_format": "MMMM",
+      "source": "aggregate_from_weekly"
+    },
+    "kpis": {
+      "gid": "{{GID_KPIS}}",
+      "name": "KPIs",
+      "columns": ["Metric", "Value", "Notes"],
+      "write_mode": "update_cells",
+      "frequency": "weekly",
+      "source": "manual_plus_derived",
+      "derived_metrics": ["AOV", "COGS", "BCAC", "ROAS_AVG"]
+    },
+    "appt": {
+      "gid": "{{GID_APPT}}",
+      "name": "APPT",
+      "write_mode": "manual",
+      "frequency": "on_demand",
+      "source": "manual",
+      "_note": "Appointment log. Two header rows (keep=2 when cloning). Manually maintained."
+    },
+    "creatives": {
+      "gid": "{{GID_CREATIVES}}",
+      "name": "CREATIVES",
+      "columns": ["BATCH", "STATUS", "FORMAT", "AD", "MARKET AWARENESS", "MARKET SOPHISTICATION", "ANGLE", "Why am I testing this?", "PERSONA", "CANVA LINK", "CTR", "CVR", "CPA", "CALLS", "SPEND", "DURATION"],
+      "strategy_columns": ["BATCH", "FORMAT", "AD", "MARKET AWARENESS", "MARKET SOPHISTICATION", "ANGLE", "Why am I testing this?", "PERSONA", "CANVA LINK"],
+      "write_mode": "update_metric_columns",
+      "metric_columns": ["STATUS", "CTR", "CVR", "CPA", "CALLS", "SPEND", "DURATION"],
+      "protected_columns": ["BATCH", "FORMAT", "AD", "MARKET AWARENESS", "MARKET SOPHISTICATION", "ANGLE", "Why am I testing this?", "PERSONA", "CANVA LINK"],
+      "frequency": "daily",
+      "source": "meta_insights_per_ad",
+      "_canva_link_convention": "One Canva doc per DCT (1080x1080, 3 image variants per doc). User fills CANVA LINK manually after building the Canva doc; ad_concept_sheet_writer.py writes it from dct-tracker.json if populated there.",
+      "_col_note": "16-col live shape. 'Why am I testing this?' sits at index 7 between ANGLE and PERSONA. The older 15-col shape (no that column) is stale — use 16."
+    },
+    "copy": {
+      "gid": "{{GID_COPY}}",
+      "name": "COPY",
+      "columns": ["BATCH", "STATUS", "COPY 1", "COPY 2", "HEADLINE 1", "HEADLINE 2"],
+      "write_mode": "manual",
+      "frequency": "on_demand",
+      "source": "copywriter_agent",
+      "status_values": ["DRAFT", "REVIEW", "UPLOAD", "LIVE"],
+      "_col_note": "6-col live default (3-2-2 era, BATCH-prefixed). For 10-5-5 clients the wide variant is 12-col: BATCH, STATUS, COPY 1-5, HEADLINE 1-5 — widen the tab before a 10-5-5 wave if you want one row per DCT instead of one row per angle."
+    },
+    "avatars": {
+      "gid": "{{GID_AVATARS}}",
+      "name": "AVATARS",
+      "write_mode": "manual",
+      "frequency": "on_refresh",
+      "source": "source_of_truth_sheet_writer",
+      "format": "narrative_sections",
+      "_format_note": "Canonical = narrative-per-row: header [AVATAR | NARRATIVE | LAST UPDATED], then one row per avatar with the full markdown profile in the NARRATIVE cell. Written by scripts/source_of_truth_sheet_writer.py from clients/<slug>/source-of-truth-draft.json."
+    },
+    "obf_data": {
+      "gid": "{{GID_OBF_DATA}}",
+      "name": "OBF DATA",
+      "write_mode": "manual",
+      "frequency": "on_demand",
+      "source": "manual",
+      "_note": "Order/booking-form or misc manual ops data tab."
+    },
+    "_optional_lp_funnel": {
+      "_comment": "OPTIONAL — only for clients with a landing page. Provision via scripts/modal/setup/provision_lp_tabs.py --client-slug <slug> --label <Label>, then move these three blocks up alongside the core tabs with their real gids. Skip entirely for clients whose funnel has no LP (e.g. IG/DM -> WhatsApp -> consult).",
+      "lp_funnel": {
+        "gid": "{{GID_LP_FUNNEL_DAILY}}",
+        "name": "LP-{{LABEL}}",
+        "columns": ["DATE", "SPEND", "FORM SUBMITS", "CPFS", "LP→FORM CVR", "APPT", "CAPPT", "CPA", "REVENUE", "IMPRESSIONS", "REACH", "LINK CLICKS", "LP VIEWS", "CTR", "CPC", "CPM", "CPLV", "CLICK→FORM CVR", "NOTES"],
+        "write_mode": "append",
+        "frequency": "daily",
+        "date_format": "DD/MM/YY",
+        "source": "meta_insights_lp_funnel",
+        "scope": "campaign_filtered",
+        "blank_when_zero_submits": ["CPFS", "LP→FORM CVR", "CLICK→FORM CVR"],
+        "blank_when_zero_appt": ["CPA"],
+        "manual_columns": ["APPT", "CAPPT", "REVENUE", "NOTES"]
+      },
+      "lp_funnel_weekly": {
+        "gid": "{{GID_LP_FUNNEL_WEEKLY}}",
+        "name": "LP-{{LABEL}}-Weekly",
+        "columns": ["DATE", "SPEND", "FORM SUBMITS", "CPFS", "LP→FORM CVR", "APPT", "CAPPT", "CPA", "REVENUE", "IMPRESSIONS", "REACH", "LINK CLICKS", "LP VIEWS", "CTR", "CPC", "CPM", "CPLV", "CLICK→FORM CVR", "NOTES"],
+        "write_mode": "append",
+        "frequency": "weekly",
+        "date_format": "DD/MM/YY TO DD/MM/YY",
+        "source": "meta_insights_lp_funnel_period",
+        "scope": "campaign_filtered",
+        "blank_when_zero_submits": ["CPFS", "LP→FORM CVR", "CLICK→FORM CVR"],
+        "blank_when_zero_appt": ["CPA"],
+        "manual_columns": ["APPT", "CAPPT", "REVENUE", "NOTES"]
+      },
+      "lp_funnel_monthly": {
+        "gid": "{{GID_LP_FUNNEL_MONTHLY}}",
+        "name": "LP-{{LABEL}}-Monthly",
+        "columns": ["DATE", "SPEND", "FORM SUBMITS", "CPFS", "LP→FORM CVR", "APPT", "CAPPT", "CPA", "REVENUE", "IMPRESSIONS", "REACH", "LINK CLICKS", "LP VIEWS", "CTR", "CPC", "CPM", "CPLV", "CLICK→FORM CVR", "NOTES"],
+        "write_mode": "append",
+        "frequency": "monthly",
+        "date_format": "MMMM YYYY",
+        "source": "meta_insights_lp_funnel_period",
+        "scope": "campaign_filtered",
+        "blank_when_zero_submits": ["CPFS", "LP→FORM CVR", "CLICK→FORM CVR"],
+        "blank_when_zero_appt": ["CPA"],
+        "manual_columns": ["APPT", "CAPPT", "REVENUE", "NOTES"]
+      }
+    },
+    "_optional_10x5x5_test": {
+      "_comment": "OPTIONAL — only for clients running 10-5-5 test-wave discipline (test creative writes here, never on the live CREATIVES/COPY). Clone CREATIVES_10x5x5_TEST + COPY_10x5x5_TEST from the template workbook and record gids here, moved out of this _optional_ wrapper.",
+      "creatives_test": { "gid": "{{GID_CREATIVES_TEST}}", "name": "CREATIVES_10x5x5_TEST", "write_mode": "manual", "source": "ad_concept_engine", "_col_note": "Same 16-col shape as creatives." },
+      "copy_test": { "gid": "{{GID_COPY_TEST}}", "name": "COPY_10x5x5_TEST", "write_mode": "manual", "source": "ad_concept_engine" }
+    },
+    "_optional_form_tab": {
+      "_comment": "OPTIONAL — clients capturing leads via an embedded form get one manual tab named for THEIR tool. Do not hardcode a tool. Example for a Tally.so client, moved out of this wrapper: \"tally_form\": { \"gid\": \"<gid>\", \"name\": \"TALLY FORM\", \"write_mode\": \"manual\", \"source\": \"tally_form_responses\" }."
+    }
+  },
+  "anomaly_thresholds": {
+    "cpa_warning_multiplier": 1.3,
+    "cpa_critical_multiplier": 1.5,
+    "ctr_warning_drop_pct": 0.2,
+    "ctr_critical_drop_pct": 0.3,
+    "spend_zero_hours_warning": 24,
+    "ad_disapproved_action": "immediate_dm_strategist"
+  },
+  "hitl": {
+    "daily_write": "preview_then_approve",
+    "weekly_write": "preview_then_approve",
+    "monthly_write": "preview_then_approve",
+    "modal_run_mode": "auto_write_with_dm_summary"
+  },
+  "campaigns": [],
+  "output_snapshots": "clients/{{CLIENT_SLUG}}/metrics/"
+}

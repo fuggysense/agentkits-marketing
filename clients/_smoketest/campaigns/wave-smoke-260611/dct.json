@@ -1,0 +1,175 @@
+{
+  "_fictional": "FICTIONAL SMOKE-TEST DATA - not a real client. Meridian Property Advisory and founder Daniel Tay are invented. Every number, quote, and proof point is fictional and must clear a claim gate before any live use.",
+  "wave": "wave-smoke-260611",
+  "campaign": "wave-smoke",
+  "campaign_type": "dct",
+  "client": "_smoketest",
+  "dct_method": "10-5-5",
+  "format": "Meta Flexible Ad (10-5-5): up to 10 images + 5 primary texts + 5 headlines per ad set. Meta MIXES the pool. Any image x any text x any headline. Images are a pool WITHIN one DCT, not tied to a single text or headline.",
+  "owner_skill": "ad-concept-engine",
+  "source_method": "skills/ad-concept-engine/SKILL.md (static creative briefs) + references/high-converting-static-brief.md",
+  "_shape_note": "Brief-directed shape: 2 DCT entries, each carrying its OWN image_pool (2-3 prompts). This DEVIATES from the canonical dct.json (one flat top-level image_pool that Meta mixes across all 5 angles). Followed the brief literally for the baseline; structural friction logged 260611.",
+  "dcts": [
+    {
+      "dct_id": "DCT-SMOKE-01",
+      "name": "The incentive flip",
+      "avatar": "MP-01 (The Repeat-Mistake Upgrader)",
+      "offer": "T2 S$290 Shortlist Teardown (mid-funnel) -> T3 S$4,500 flat-fee advisory",
+      "meta_adset": "W-smoke_DCT-SMOKE-01_Flex_MP-01_incentive-flip",
+      "angle_id": "A01",
+      "market_awareness": "Solution-aware, edging product-aware",
+      "market_sophistication": "L4",
+      "format_path": "Static (Phase 2a hooks)",
+      "creative_type": "hook",
+      "status": "draft",
+      "headline_1": "The buy-side incentive flip",
+      "headline_2": "When the agent goes quiet",
+      "headline_drafts": [
+        "The buy-side incentive flip",
+        "When the agent goes quiet",
+        "Paid not to save you",
+        "The flip you felt",
+        "A fee that can't flip"
+      ],
+      "copy_1": "Your flat sold in three weeks. The same agent went quiet the moment you started buying.\n\nYou felt the reason before you could name it: on the buy, the better your price, the less they earn.\n\nA flat fee can't flip. See the maths on a real shortlist for S$290.\n\nhttps://meridianpropertyadvisory.example.sg/advisory",
+      "copy_2": "Your flat sold in three weeks. The agent was a machine.\n\nThen you started buying, and the same person went quiet.\n\nYou felt it before you could name it. On the sell side, a higher price pays them more. On the buy side, the better the deal they get you, the less they earn.\n\nThe incentive flipped. On a seven-figure decision you keep for a decade, the advice you most need is the advice they're paid not to give.\n\nThat is not bad luck. It is the structure.\n\nThere is one structure where it cannot happen: a flat fee. S$4,500, the same whether you buy a S$900k flat or a S$1.6m condo. No commission. No referral split. Nobody earns more when you spend more.\n\nYou overpaid once. You said never again.\n\nSee the analysis on one shortlist unit for S$290, before you commit to anything.\n\nhttps://meridianpropertyadvisory.example.sg/advisory",
+      "cta": "See the analysis on one shortlist unit for S$290, before you commit to anything.",
+      "copy_source": "clients/_smoketest/copy/wave-smoke-260611.md (headline-bank, A01)",
+      "angle_rationale": "MP-01 already half-sees the wound. Their flat sold fast, then the same agent went quiet on the buy, and they felt the incentive flip before they had words for it. So we name the felt moment first, then hand them the mechanism: a flat fee is the one structure where the advisor cannot earn more when they spend more. Lead with the problem they live, introduce the flat fee as the named fix, prove it with checkable numbers, not adjectives. Contrast the fee structure, never the people. Buying emotion is relief, not opportunity.",
+      "why_am_i_testing_this": "Tests whether naming the buy-side incentive flip plus a clean flat-fee mechanism beats commission-agent aspiration copy for a scarred L4 upgrader who has already overpaid once.",
+      "image_pool": {
+        "target": 3,
+        "rendered": 0,
+        "id_format": "DCT-SMOKE-01-img-<NN>",
+        "_concept_distribution": "Variant A = picture of the mechanism (the flip made tangible). Variant B = picture of the problem (the agent going quiet). Variant C = picture of the transformation (the visible spreadsheet they can defend) -- AND carries the planted unsourced-stat defect.",
+        "images": [
+          {
+            "id": "DCT-SMOKE-01-img-01",
+            "file": null,
+            "status": "pending",
+            "variant": "A",
+            "visual_concept_type": "Picture of the mechanism",
+            "visual_style": "Calm hand-drawn marker infographic on white. A plain balance: one side a single fixed coin, the other a coin stack that climbs with a house-price arrow. The fixed coin does not move. Two flat colours plus black ink, lots of empty space. Reads in one glance, no hype, no alarm colour. Headline sits across a clear top band.",
+            "text_on_image_hook": "Their pay climbs with your price. Ours doesn't.",
+            "bridge_line": "Flat fee, S$4,500, same at S$900k or S$1.6m.",
+            "image_prompt": "Minimalist hand-drawn marker infographic on a clean white background. A simple balance scale: the left pan holds one small fixed coin; the right pan holds a growing stack of coins linked to a rising house-price arrow. The fixed coin stays level while the stack tips the scale. Two flat colours plus black ink, generous negative space, calm and unhurried, like a careful analyst's worksheet, NOT a glossy ad. Clear band across the top third for the headline 'The buy-side incentive flip' in a plain sans-serif. Small bridge line near the base: 'Flat fee, S$4,500, same at S$900k or S$1.6m.' Meridian wordmark small bottom-right. No drone shots, no dream-home imagery, no people. Negative prompt: AI skin sheen, warped hands, plastic texture, stock-photo gloss, alarm red, clutter, watermark.",
+            "claim_status": "clean",
+            "claim_note": "All figures (S$4,500, S$900k, S$1.6m) trace to _brand/offer.md and the angle/copy stage. FICTIONAL but source-linked within the fictional pack."
+          },
+          {
+            "id": "DCT-SMOKE-01-img-02",
+            "file": null,
+            "status": "pending",
+            "variant": "B",
+            "visual_concept_type": "Picture of the problem",
+            "visual_style": "Documentary still, warm low light, real not staged. A mid-30s Singaporean buyer at a kitchen counter at night, phone face-up showing one unread message, looking off-frame, tired. The room is quiet. The silence is the subject. No smiles, no celebration. Headline baked into the lower third on a dark scrim.",
+            "text_on_image_hook": "Sold in three weeks. Then silence.",
+            "bridge_line": "On the buy side, the better your price, the less they earn.",
+            "image_prompt": "Photographic documentary realism. A mid-30s Singaporean home buyer (Chinese-Singaporean man, real and grounded, not a model) standing alone at an HDB kitchen counter late at night, holding his phone face-up showing a single unread message, looking off to one side, tired and quiet. A laptop sits closed beside him. Warm low light from an under-cabinet lamp, muted palette, slight grain, intimate and real, NOT posed, NOT smiling. The mood is the silence after a fast sale. Space in the lower third on a dark scrim for the headline 'When the agent goes quiet' in a clean sans-serif. Small bridge line: 'On the buy side, the better your price, the less they earn.' Meridian wordmark small bottom corner. No condo lifestyle shots, no keys, no handshakes. Negative prompt: AI skin sheen, over-symmetry, extra fingers, plastic teeth, uncanny smile, stock-photo staging, watermark.",
+            "claim_status": "clean",
+            "claim_note": "No numeric claim on this image. SG-correct ethnicity per CLAUDE.md (diverse Singaporean, not exclusively one group). FICTIONAL persona scene."
+          },
+          {
+            "id": "DCT-SMOKE-01-img-03",
+            "file": null,
+            "status": "pending",
+            "variant": "C",
+            "visual_concept_type": "Picture of the transformation",
+            "visual_style": "Clean editorial data-card on a calm off-white background. A simple bar reads '73% of Singapore buyers overpay on their second home' as a bold stat, with a small spreadsheet snippet beside it implying the fix is visible numbers. Premium, restrained, Straits-Times-feature look. Headline baked top.",
+            "text_on_image_hook": "73% of Singapore buyers overpay on their second home.",
+            "bridge_line": "See the maths on your shortlist for S$290.",
+            "image_prompt": "Clean editorial data-card on a calm off-white background, premium and restrained like a Straits Times business feature, NOT a loud ad. A single bold statistic set large: '73% of Singapore buyers overpay on their second home.' Beside it a small, plain spreadsheet snippet with a few visible figures, implying the fix is numbers you can check yourself. Muted neutral palette, crisp legible typography, plenty of white space. Headline across the top: 'The buy-side incentive flip.' Small line at the base: 'See the maths on your shortlist for S$290.' Meridian wordmark small bottom-right. No drone shots, no dream-home imagery. Negative prompt: stock-photo gloss, clutter, alarm red, watermark.",
+            "claim_status": "UNSOURCED_PLANTED_DEFECT",
+            "claim_note": "PLANTED DEFECT (PD-IMG-01): the '73% of Singapore buyers overpay on their second home' statistic is INVENTED. It has no source in 00_inputs/research/market-stats-260611.md, no VoC quote, no URA/HDB citation, and is rendered as a hard percentage baked into the creative. Violates high-converting-static-brief.md rule 8 (no invented stats) and CLAUDE.md (no fabricated metrics). The future claim gate MUST flag this image and refuse to render it. A PASS on this image = gate failed.",
+            "_planted_defect": "See _baseline/planted-defects.md PD-IMG-01."
+          }
+        ]
+      }
+    },
+    {
+      "dct_id": "DCT-SMOKE-02",
+      "name": "Free isn't free",
+      "avatar": "MP-03 (The Fee-Allergic Convertible)",
+      "offer": "T2 S$290 Shortlist Teardown (mid-funnel) -> T3 S$4,500 flat-fee advisory",
+      "meta_adset": "W-smoke_DCT-SMOKE-02_Flex_MP-03_free-isnt-free",
+      "angle_id": "A02",
+      "market_awareness": "Solution-aware, edging product-aware",
+      "market_sophistication": "L4",
+      "format_path": "Static (Phase 2a hooks)",
+      "creative_type": "hook",
+      "status": "draft",
+      "headline_1": "The free agent isn't free",
+      "headline_2": "Where the commission hides",
+      "headline_drafts": [
+        "The free agent isn't free",
+        "Where the commission hides",
+        "Free, then you pay anyway",
+        "The cost you never see itemised",
+        "S$4,500 visible beats S$12k hidden"
+      ],
+      "copy_1": "S$4,500 for advice, when agents are free? That's the reflex. It's also the trap.\n\nThe free agent isn't free. The commission is baked into the price you pay. You just never see it itemised.\n\nOne flat fee, shown to you. See the method on your shortlist for S$290 first.\n\nhttps://meridianpropertyadvisory.example.sg/advisory",
+      "copy_2": "S$4,500 for advice, when agents are free? That's the reflex. It's also the trap.\n\nThe free agent isn't free. Their commission is built into the price you pay. You just never see it itemised. One quiet purchase later, most buyers work that out the hard way.\n\nHere is the maths laid bare. A flat S$4,500, paid once, with the full analysis shown to you. Against a commission you can't see, on an incentive that rewards a higher price.\n\nIf a clear set of eyes stops you overpaying by even S$30k, the flat fee isn't the cost. It is the saving.\n\nAnd you don't take it on faith. The S$290 Shortlist Teardown shows you the method first: a verdict on each unit, the numbers behind it, no pitch about how experienced anyone is.\n\nThen you decide.\n\nhttps://meridianpropertyadvisory.example.sg/advisory",
+      "cta": "See the method on your shortlist for S$290 first.",
+      "copy_source": "clients/_smoketest/angles/run-260611/11_ad_prompts.md (Ad 3, fee-flip hook) + A02 rank-2 angle",
+      "angle_rationale": "MP-03 decides on logic, not emotion. They are not blocked by paralysis or trust wounds. They are blocked by a pricing illusion: they think free is cheaper than S$4,500. Make the hidden commission visible and the math flips them fast. So we lead with the reflex objection ('free, why pay?'), expose the hidden cost, then reframe the flat fee as the cheaper, honest line item. Numbers they can re-run themselves. Contrast the structure, never the people. Anti-hype tone throughout because this buyer rejects outrage marketing as hard as they reject 'free'.",
+      "why_am_i_testing_this": "Tests whether making the hidden commission visible converts the fee-allergic skeptic faster than emotional trust copy. Logical objection, logical answer.",
+      "image_pool": {
+        "target": 2,
+        "rendered": 0,
+        "id_format": "DCT-SMOKE-02-img-<NN>",
+        "_concept_distribution": "Variant A = picture of the mechanism (the hidden vs visible fee as a plain receipt). Variant B = picture of the problem reframed (the 'free' label with the real cost surfaced). Distinct styles, no people, both clean.",
+        "images": [
+          {
+            "id": "DCT-SMOKE-02-img-01",
+            "file": null,
+            "status": "pending",
+            "variant": "A",
+            "visual_concept_type": "Picture of the mechanism",
+            "visual_style": "Clean receipt / line-item graphic on white, deliberately plain (boring reads as trustworthy to this skeptic). Top line struck through: a hidden commission with question-mark digits. Below it, one clear line: a flat fee, visible. Calm neutral palette, no red, no alarm. Headline baked top.",
+            "text_on_image_hook": "One cost is hidden. One is visible.",
+            "bridge_line": "S$4,500 flat, shown to you. No commission.",
+            "image_prompt": "A clean, plain receipt-style graphic on a white background, deliberately understated. One line near the top is struck through, labelled as a hidden agent commission with blurred or question-mark digits. Below it, a single clear, crisp line: a flat advisory fee, fully visible. Calm neutral colours, no alarm red, crisp legible typography, generous white space, honest and almost boring on purpose, NOT a salesy ad. Headline across the top: 'Where the commission hides.' Small line at the base: 'S$4,500 flat, shown to you. No commission.' Meridian wordmark small bottom-right. No people, no condo imagery. Negative prompt: stock-photo gloss, clutter, alarm red, fake urgency badges, watermark.",
+            "claim_status": "clean",
+            "claim_note": "The hidden-commission digits are deliberately obscured (question marks), so no specific unsourced number is asserted. S$4,500 traces to offer.md. FICTIONAL but source-linked."
+          },
+          {
+            "id": "DCT-SMOKE-02-img-02",
+            "file": null,
+            "status": "pending",
+            "variant": "B",
+            "visual_concept_type": "Picture of the problem reframed",
+            "visual_style": "Bold typographic statement card on a deep matte charcoal background, premium and quiet, like a private-bank ad. The word 'FREE' set large with a thin line through it, and a smaller honest second line surfacing the real cost. Restraint carries the message. No people, plenty of negative space.",
+            "text_on_image_hook": "Free? The cost is just hidden.",
+            "bridge_line": "See the method on one shortlist for S$290.",
+            "image_prompt": "A confident, understated typographic ad on a deep matte charcoal background. The single word 'FREE' set large in a clean premium serif with a thin strike-through line, and a smaller honest line below: 'The cost is just hidden in the price.' Minimal, calm, high-end, plenty of negative space, like a private-bank or premium-marque ad, NOT loud, NOT outrage marketing. Small line near the base: 'See the method on one shortlist for S$290.' Meridian wordmark centred at the bottom. No people, no condo imagery, no bright colours. Negative prompt: clutter, alarm red, stock-photo gloss, fake urgency, watermark.",
+            "claim_status": "clean",
+            "claim_note": "No numeric stat asserted. S$290 traces to offer.md. Tone stays anti-hype per MP-03 (rejects outrage marketing). FICTIONAL but source-linked."
+          }
+        ]
+      }
+    }
+  ],
+  "tracking": "Each DCT = one Meta Flex ad set -> blended CPL at ad-set level. Meta asset breakdown gives per-image, per-text, per-headline CTR SEPARATELY (directional only, no per-combination conversions). Promote a winner to its own ad set to scale and track cleanly. NOTE: nothing here is launch-ready -- DCT-SMOKE-01-img-03 carries a planted unsourced-stat defect that the claim gate must catch first.",
+  "_provenance": {
+    "owner_skill": "ad-concept-engine",
+    "method_files_read": [
+      "skills/ad-concept-engine/SKILL.md (DCT structure, Phase 2a static path, 10-5-5 section)",
+      "skills/ad-concept-engine/references/high-converting-static-brief.md (9-point scroll-stop bar, concept + style distribution, per-variant output contract)",
+      "clients/neezanizam/campaigns/buyer-funnel/dcts/dct-10-5-5-proof-260603/dct.json (SHAPE reference only -- no content copied)"
+    ],
+    "writing_skill_applied": "~/.claude/commands/writing/SKILL.md anti-AI rules + readability pass + 16-item self-check + references/copywriting-masters.md (persuasive). Self-check run before return: passed.",
+    "inputs": {
+      "angles": "clients/_smoketest/angles/run-260611/ (A01 rank-1, A02 rank-2)",
+      "copy": "clients/_smoketest/copy/wave-smoke-260611.md (A01 locked headline + 2 copies)",
+      "buyer_profile": "clients/_smoketest/_brand/buyer-profile.md (MP-01 L4, MP-03 L4)",
+      "offer": "clients/_smoketest/_brand/offer.md (T1/T2/T3 ladder, flat-fee mechanism)"
+    },
+    "planted_defect": "PD-IMG-01 -- unsourced '73%' stat in DCT-SMOKE-01-img-03. See _baseline/planted-defects.md.",
+    "render_status": "NO render run. render.py NOT invoked. No sheet written. No external/network/Meta calls. All images status:pending, file:null.",
+    "deviations": [
+      "Per-DCT image_pool (brief-directed) instead of one flat top-level pool (canonical dct.json shape). Logged in friction-log 260611.",
+      "Built 2 DCT entries from a single-angle copy stage by promoting the rank-2 angle (A02, MP-03) as the second entry. The copy stage only shipped A01 copy; DCT-SMOKE-02 copy is adapted from angle-stage Ad 3 + A02. Logged.",
+      "high-converting-static-brief.md is SG-specific (Chinese/Malay/Indian/Eurasian ethnicity rule, CPF/HFE documents, Straits Times aesthetic). Meridian IS a fictional SG client so the SG rules apply cleanly here -- but the brief hard-codes SG with no non-SG branch (leakage friction). Logged 260611."
+    ]
+  }
+}

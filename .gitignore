@@ -82,6 +82,7 @@ data/**
 # Client data (private — never push to shared repo)
 clients/*/
 !clients/_template/
+!clients/_smoketest/
 !clients/README.md
 
 # Voice profiles (private)

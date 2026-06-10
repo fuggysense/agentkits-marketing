@@ -1,0 +1,99 @@
+{
+  "_meta": {
+    "record": "regression-baseline",
+    "client": "_smoketest",
+    "client_name": "Meridian Property Advisory",
+    "fictional": true,
+    "note": "FICTIONAL SMOKE-TEST DATA - not a real client. All paths relative to clients/_smoketest/. Hashes are sha256 of file bytes at baseline capture.",
+    "captured": "2026-06-11",
+    "repo_root": "/Users/jerel/Documents/Jerel's brain/jerel's brain/Marketing",
+    "hash_algo": "sha256",
+    "size_unit": "bytes",
+    "all_outputs_verified_present": true,
+    "missing_outputs": []
+  },
+  "stages": [
+    {
+      "stage": "stage-0-scaffold",
+      "label": "Smoke-test client scaffold + fictional research pack",
+      "files": [
+        { "path": "context-profile.json", "size": 1822, "sha256": "5898c2aadf95a398d666f34e97e43cb1b41e54560827c315f347d403cef19a62" },
+        { "path": "CLAUDE.md", "size": 12084, "sha256": "9b8e143819e5c920ebb5298106c79ef03d94a7b5b308740e4a0aea2504934e53" },
+        { "path": "CONTEXT.md", "size": 9157, "sha256": "9690b6f571092130cdbf076e0e2dd96ac01f00db7427e9396e3fad9ad9c2e827" },
+        { "path": "00_inputs/research/onboarding-form-260611.md", "size": 5868, "sha256": "577c3334812f4e1046de66c239b5c398162c7adba55f71d48190fcb4208d6e41" },
+        { "path": "00_inputs/research/voc-reddit-dump-260611.md", "size": 8095, "sha256": "c56b38aae3f88821a8370224f9c5f002743fd2054e9e5c140eced9d3ad6dffd6" },
+        { "path": "00_inputs/research/competitor-notes-260611.md", "size": 5163, "sha256": "6e721e833f967e3ab3a5b9cd097c49e28e1ca04fdeb39fadfb3a3fc58a11649c" },
+        { "path": "00_inputs/research/market-stats-260611.md", "size": 2980, "sha256": "9037c65fa373b16a1f5ee2c2a7e685bb54dcd604edcdf58afe146dbf92be1c24" },
+        { "path": "_brand/offer.md", "size": 2411, "sha256": "9841d70e3fe1ee886f24f290cb0116d5e0d7720a7d691a3c04d028cf49ada623", "note": "thin seed (Stage 0); enriched/consumed by avatar stage" }
+      ]
+    },
+    {
+      "stage": "avatar",
+      "label": "avatar-research micro-persona map",
+      "files": [
+        { "path": "_brand/buyer-profile.md", "size": 16911, "sha256": "27612f4eac204bc4196c5841f8149d4d4ba4ef060af1cb26ab22e8c64ad76b61", "note": "thin seed at Stage 0, rewritten by avatar stage with 3 micro-personas + sophistication matrix + refresh log" }
+      ]
+    },
+    {
+      "stage": "angles",
+      "label": "big-angle-spotter (hardened mode, EMULATED gate)",
+      "run_dir": "angles/run-260611/",
+      "files": [
+        { "path": "angles/run-260611/inputs.json", "size": 1245, "sha256": "01bb2eaa873e6605e1c78b8859cc8ba1ac67aa2e712c9fa19c31cd6b926af2cc" },
+        { "path": "angles/run-260611/kill-list.md", "size": 1640, "sha256": "865751def9fb45d4f714fedbf10d556caaea420d04fdfe716ff3f9ea63e18ce4" },
+        { "path": "angles/run-260611/01_angles.md", "size": 3520, "sha256": "b9bacff8346b93c5e554c6b9b8d6ee26ed22a342f0886dcee31f4dc36e5c0786" },
+        { "path": "angles/run-260611/02_gate_resonance.json", "size": 7655, "sha256": "04c560753dce886bc04e111979a1047cd87c5c76549518c8fba92e3f25b9e230" },
+        { "path": "angles/run-260611/03_pruned.md", "size": 666, "sha256": "a2aa9142ff0f7973b60660d5778e8132f0a1d85213eb80bbc3a17ddcc0700fce" },
+        { "path": "angles/run-260611/04_ranked_angles.md", "size": 2045, "sha256": "4bb2bf189f2b211cab01e2b56e1a1906b730769da05afc187c6e96647de2d6b1" },
+        { "path": "angles/run-260611/05_gate_top_angle.md", "size": 814, "sha256": "c4ff6faf951626847c75ebbc725b9ddd42682fe011fd35a423122f7ce7d31118" },
+        { "path": "angles/run-260611/06_gate_novelty.md", "size": 1232, "sha256": "b21af1b4681888be8737fbb961a2ec41c14d653ea7c0db5f2508a0fd587e9e93" },
+        { "path": "angles/run-260611/07_expansion.md", "size": 2907, "sha256": "c809c02b8dda1dc4c7202ddebd9bbfa39975b19c244e38fb35322f16ac38bf7e" },
+        { "path": "angles/run-260611/08_headlines.md", "size": 1226, "sha256": "2790905748db792a157d454c66ad62ea35bacc02a2fcc96e759d0365f172f9fd" },
+        { "path": "angles/run-260611/09_ranked_headlines.md", "size": 2038, "sha256": "381fd29e4bda3dd5dd75de08da3b083eaca4ea619aba32c3df87088bb3ee53fb" },
+        { "path": "angles/run-260611/10_gate_four_check.md", "size": 1629, "sha256": "de467e1402e0b466e541328aefaf9de2c16bab4d572a1e3a03a90acddca9abd1" },
+        { "path": "angles/run-260611/11_ad_prompts.md", "size": 5917, "sha256": "a106563484c590619a09ee15f7647c2d898c3d9aa76143e37fef3cfe418585ae" },
+        { "path": "angles/run-260611/12_image_prompts.md", "size": 4574, "sha256": "185a2df13129b5394fed83e47d34fdf4d2417be9b4cc769b6a2ba89ccee6e4ff" },
+        { "path": "angles/run-260611/SUMMARY.md", "size": 3928, "sha256": "75431e1ec9e5da346199ba12b7417872be362158b2642e40cceb076bb17fa545" },
+        { "path": "angles/run-260611/_run.log", "size": 4630, "sha256": "c22a82ed12e94d2483e76e62c1776ad178987c02b7d4834df0388f6a770789c7" },
+        { "path": "angles/run-260611/dry-run.log", "size": 6511, "sha256": "d71f0712fd526337a61ced280c47e176ac3b5edaea8b5d00ea0acbfedc0e184b", "note": "real --hardened --dry-run wiring proof (forced-PASS stubs); NOT a generation artifact" }
+      ],
+      "scratch_not_deliverable": [
+        "angles/run-260611/dry-run-output/ (22 stub files from --dry-run; sandbox DENIED rm -rf; left in place, flagged in _run.log)"
+      ]
+    },
+    {
+      "stage": "meta-copy",
+      "label": "headline-bank (Mode A, single angle)",
+      "files": [
+        { "path": "copy/wave-smoke-260611.md", "size": 4371, "sha256": "129dc83891e82fa188eebe68957db498db56faacdb6103a1d54cd1f3414539cb", "note": "halbert-copy.md format at brief-directed path (NOT skill default angles/big-angle-spotter/wave-<N>/DCT<N>/)" }
+      ]
+    },
+    {
+      "stage": "image-prompt",
+      "label": "ad-concept-engine static creative briefs (last generation stage; STOP before render)",
+      "files": [
+        { "path": "campaigns/wave-smoke-260611/dct.json", "size": 19203, "sha256": "6665887d238fa87ba2bfb2ed3edced1f8d1c8ade6ed25be06f95351c227a4b3f", "note": "2 DCTs, 3+2 inline image prompts, all images status=pending file=null; carries planted defect PD-IMG-01" }
+      ]
+    },
+    {
+      "stage": "baseline-record",
+      "label": "regression baseline record files",
+      "files": [
+        { "path": "_baseline/planted-defects.md", "size": 2646, "sha256": "0061a8aad754b1b946a4c4d166ec883acb4a04aac5cb27db6aba50779ce1a9eb" },
+        { "path": "_baseline/invocations.md", "size": 24763, "sha256": "8dc8692f2e5e99c7f6078280dd1cb99cf012d28c50bb990da6eb9447f7db3eee" },
+        { "path": "_baseline/friction-log.md", "size": 19600, "sha256": "e33dca70b29a75817ff817190f1412747112b9ce3f59206428da883548ee1e16" }
+      ]
+    }
+  ],
+  "planted_defects": [
+    {
+      "id": "PD-IMG-01",
+      "stage": "image-prompt",
+      "location": "campaigns/wave-smoke-260611/dct.json -> DCT-SMOKE-01 -> image_pool.images[2] (id DCT-SMOKE-01-img-03)",
+      "claim": "73% of Singapore buyers overpay on their second home.",
+      "type": "unsourced-statistic-baked-into-creative",
+      "in_artifact_marker": "claim_status=UNSOURCED_PLANTED_DEFECT + _planted_defect pointer",
+      "gate_must": "future claim/fact gate MUST flag this image, refuse render, demand source (none exists) or removal. A PASS = gate failed."
+    }
+  ]
+}

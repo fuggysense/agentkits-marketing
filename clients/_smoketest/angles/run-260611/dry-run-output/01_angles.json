@@ -1,0 +1,162 @@
+[
+  {
+    "id": "A01",
+    "title": "Stub Angle 1",
+    "scores": {
+      "voc_mirror": 5,
+      "core_pain_hit": 5,
+      "awareness_match": 5,
+      "distinct": 5,
+      "not_saturated": 5
+    },
+    "verdict": "PASS",
+    "weakest": "none",
+    "evidence": "(dry-run)",
+    "fix_if_fail": "",
+    "min_score": 5
+  },
+  {
+    "id": "A02",
+    "title": "Stub Angle 2",
+    "scores": {
+      "voc_mirror": 5,
+      "core_pain_hit": 5,
+      "awareness_match": 5,
+      "distinct": 5,
+      "not_saturated": 5
+    },
+    "verdict": "PASS",
+    "weakest": "none",
+    "evidence": "(dry-run)",
+    "fix_if_fail": "",
+    "min_score": 5
+  },
+  {
+    "id": "A03",
+    "title": "Stub Angle 3",
+    "scores": {
+      "voc_mirror": 5,
+      "core_pain_hit": 5,
+      "awareness_match": 5,
+      "distinct": 5,
+      "not_saturated": 5
+    },
+    "verdict": "PASS",
+    "weakest": "none",
+    "evidence": "(dry-run)",
+    "fix_if_fail": "",
+    "min_score": 5
+  },
+  {
+    "id": "A04",
+    "title": "Stub Angle 4",
+    "scores": {
+      "voc_mirror": 5,
+      "core_pain_hit": 5,
+      "awareness_match": 5,
+      "distinct": 5,
+      "not_saturated": 5
+    },
+    "verdict": "PASS",
+    "weakest": "none",
+    "evidence": "(dry-run)",
+    "fix_if_fail": "",
+    "min_score": 5
+  },
+  {
+    "id": "A05",
+    "title": "Stub Angle 5",
+    "scores": {
+      "voc_mirror": 5,
+      "core_pain_hit": 5,
+      "awareness_match": 5,
+      "distinct": 5,
+      "not_saturated": 5
+    },
+    "verdict": "PASS",
+    "weakest": "none",
+    "evidence": "(dry-run)",
+    "fix_if_fail": "",
+    "min_score": 5
+  },
+  {
+    "id": "A06",
+    "title": "Stub Angle 6",
+    "scores": {
+      "voc_mirror": 5,
+      "core_pain_hit": 5,
+      "awareness_match": 5,
+      "distinct": 5,
+      "not_saturated": 5
+    },
+    "verdict": "PASS",
+    "weakest": "none",
+    "evidence": "(dry-run)",
+    "fix_if_fail": "",
+    "min_score": 5
+  },
+  {
+    "id": "A07",
+    "title": "Stub Angle 7",
+    "scores": {
+      "voc_mirror": 5,
+      "core_pain_hit": 5,
+      "awareness_match": 5,
+      "distinct": 5,
+      "not_saturated": 5
+    },
+    "verdict": "PASS",
+    "weakest": "none",
+    "evidence": "(dry-run)",
+    "fix_if_fail": "",
+    "min_score": 5
+  },
+  {
+    "id": "A08",
+    "title": "Stub Angle 8",
+    "scores": {
+      "voc_mirror": 5,
+      "core_pain_hit": 5,
+      "awareness_match": 5,
+      "distinct": 5,
+      "not_saturated": 5
+    },
+    "verdict": "PASS",
+    "weakest": "none",
+    "evidence": "(dry-run)",
+    "fix_if_fail": "",
+    "min_score": 5
+  },
+  {
+    "id": "A09",
+    "title": "Stub Angle 9",
+    "scores": {
+      "voc_mirror": 5,
+      "core_pain_hit": 5,
+      "awareness_match": 5,
+      "distinct": 5,
+      "not_saturated": 5
+    },
+    "verdict": "PASS",
+    "weakest": "none",
+    "evidence": "(dry-run)",
+    "fix_if_fail": "",
+    "min_score": 5
+  },
+  {
+    "id": "A10",
+    "title": "Stub Angle 10",
+    "scores": {
+      "voc_mirror": 5,
+      "core_pain_hit": 5,
+      "awareness_match": 5,
+      "distinct": 5,
+      "not_saturated": 5
+    },
+    "verdict": "PASS",
+    "weakest": "none",
+    "evidence": "(dry-run)",
+    "fix_if_fail": "",
+    "min_score": 5
+  }
+]

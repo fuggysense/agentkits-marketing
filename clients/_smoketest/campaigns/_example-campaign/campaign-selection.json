@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.0",
+  "client": "{{client_slug}}",
+  "campaign": "{{campaign_slug}}",
+  "campaign_brief_path": "campaigns/{{campaign_slug}}/campaign-brief.md",
+  "generated_date": "{{today}}",
+  "generated_by": "{{agent_or_skill}}",
+  "scope_note": "{{one_sentence_explaining_who_is_in_and_who_is_out}}",
+  "in_scope_micro_personas": [
+    {
+      "micro_persona_id": "{{persona_id}}",
+      "awareness_stage": "{{unaware|problem-aware|solution-aware|product-aware|most-aware}}",
+      "sophistication_level": "{{L1|L2|L3|L4|L5}}",
+      "source": "_brand/buyer-profile.md",
+      "primary_for_campaign": true,
+      "rationale": "{{why_this_persona_for_this_campaign}}"
+    }
+  ],
+  "out_of_scope_micro_personas": [],
+  "in_scope_input_manifest_entries": [
+    "00_inputs/input-manifest.json#{{entry_id}}"
+  ],
+  "active_workspaces": [
+    {
+      "workspace": "campaigns/{{campaign_slug}}/video-concepts/{{concept_slug}}/",
+      "script_mode": "spoken",
+      "status": "phase_0_preflight",
+      "phase": "phase_0_preflight",
+      "pipeline_state": "campaigns/{{campaign_slug}}/video-concepts/{{concept_slug}}/pipeline-state.json",
+      "artifact_manifest": "campaigns/{{campaign_slug}}/video-concepts/{{concept_slug}}/artifact-manifest.json",
+      "live_review_url": null
+    }
+  ],
+  "approved": false,
+  "approval_scope": "campaign_selection_only_not_ag1_concept_approval",
+  "approved_by": null,
+  "ag1_concept_approval_status": "not_started"
+}

@@ -1,0 +1,1 @@
+{"ts":"{{today_iso8601}}","actor":"{{agent_or_skill}}","action":"workspace_initialized","details":"Scaffolded from clients/_template/campaigns/_example-campaign/video-concepts/_example-concept/. Replace placeholders before use."}

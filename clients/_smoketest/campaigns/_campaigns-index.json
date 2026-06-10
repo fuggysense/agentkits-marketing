@@ -1,0 +1,8 @@
+{
+  "schema_version": "1.0",
+  "client": "{{client_slug}}",
+  "client_name": "{{client_name}}",
+  "created": "{{today}}",
+  "purpose": "Client-level campaign registry. Use this to discover campaign-index.json files instead of guessing campaign paths.",
+  "campaigns": []
+}
