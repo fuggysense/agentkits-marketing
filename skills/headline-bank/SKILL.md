@@ -1,6 +1,6 @@
 ---
 name: headline-bank
-version: "2.1.0"
+version: "2.2.0"
 brand: AgentKits Marketing by AityTech
 preferred_invocation: /copy:headline  # wraps this skill with mandatory 5-mechanism diversity (cai #39) + copywriting-OS gates (see .claude/references/copywriting-os/)
 category: content
@@ -85,6 +85,10 @@ output_schema: meta-copy-bank
 
 If any are missing, halt and request them. No improvisation on inputs.
 
+## Research-completeness precondition (rebuild M2.1)
+Before generating for any client, run: python3 scripts/research_gate.py --client clients/<slug>
+PASS is required. On FAIL: stop and surface the scorecard to the operator — never generate from thin research. Override only via an operator-recorded research_gate_override (with reason) in the campaign's pipeline-state.json.
+
 ---
 
 ## Body Copy Structure (the format — not "Halbert vibes")
@@ -105,6 +109,41 @@ Primary text is BUILT on a structure, not freestyled to a word count. The struct
 **Length:** the **~150w piece is the PRIMARY lock.** Generate a ~50w compression as a secondary variant (same beats, fewer words) for brevity-first placements. In 10-5-5 mode the ~150w piece is the single locked copy per angle.
 
 **Emoji:** brand-conditional, OFF by default. Only include emoji if the client's `brand-voice.md` permits them. Many brands (e.g. senior/advisory registers) ban them outright — then the CTA is plain text, no arrow glyph.
+
+## Insight tags (every hook and headline carries one — non-negotiable)
+
+A hook has two jobs: scroll-stop AND speak to the avatar's real situation in their own words (Ferres `03-angles-hooks-copy.md` §Hook rules #4 — build hooks from the prospect's problems, circumstances, outcomes; §Copy rules #3 — exact customer language everywhere). The second job is the one that decays silently when copy is freestyled from model memory. So we make it checkable.
+
+**Every hook and every headline you generate MUST carry an insight tag.** The format is exact:
+
+```
+insight: <research-file>#<line-or-anchor> — <≤8-word paraphrase>
+```
+
+- `<research-file>` — a path that exists on disk (e.g. `clients/<slug>/00_inputs/research/voc-reddit-dump.md` or `_brand/buyer-profile.md`).
+- `#<line-or-anchor>` — either `#L<n>` (1-based line) or `#<markdown-heading>` text (e.g. `#THE CORE PROBLEM`).
+- `— <paraphrase>` — eight words or fewer, what the line tells you.
+
+**An untagged hook or headline is invalid output.** It is not a stylistic nicety — it is the gate the `hook_gate.py` script (below) enforces. A tag that points at a missing file or a non-existent line/anchor fails the build too.
+
+**Worked example** (smoke-test client `_smoketest`, against its real research pack):
+
+| Hook / headline | Insight tag |
+|---|---|
+| "We overpaid 40-50k on our first flat. Not doing it twice." | `insight: clients/_smoketest/00_inputs/research/voc-reddit-dump-260611.md#L30 — upgrader overpaid 40-50k, won't repeat` |
+| "28 saved listings. Zero decisions. Sound familiar?" | `insight: clients/_smoketest/00_inputs/research/voc-reddit-dump-260611.md#L38 — first-timer, 28 saved, zero decisions` |
+| Headline: "The fee that saves 50k" | `insight: clients/_smoketest/_brand/buyer-profile.md#THE CORE PROBLEM — advice never feels on their side` |
+
+Each tag points at a line a reviewer can open and read. The hook is only as good as the research line under it.
+
+## VOC injection slots (fixed-slot discipline, per Ferres)
+
+Ferres treats voice-of-customer not as flavour but as fixed structural slots — the agitation beat runs on verbatim mined phrases, and the top objection is answered in-line with proof (`03-angles-hooks-copy.md` §Copy rules #3, #6, #5 proof hierarchy). Two slots are mandatory in the ~150w PRIMARY:
+
+1. **Problem/agitate beat = EXACT customer language.** Do not paraphrase the pain into marketer-speak. Pull a verbatim phrase from the VOC dump (or buyer-profile `Language` rows) and use the buyer's own words. Carry a source pointer for the phrase you lifted: `voc: <research-file>#<line> — "<the lifted phrase>"`. If comments say "scam," the copy opens near "scam" — not "you may have concerns about legitimacy." (Ferres: *if comments say "scam," open with "you probably think this is a bullshit scam…"*).
+2. **Top objection, answered in-line with proof.** Identify the single biggest objection for this avatar from research (the buyer-profile `Beliefs to overcome` / `Messages rejected` rows are the source). Answer it inside the body with one concrete proof, not a separate FAQ. Max ~3 objections per ad; lead with the one research ranks highest. The proof must follow the proof hierarchy (demonstration > stat > testimonial) and clear the Claim Gate before it ships.
+
+Both slots feed the insight-tag requirement above — the verbatim phrase and the objection each name the research line they came from.
 
 ## THE CORE PROMPT (curiosity-led, structured)
 
@@ -136,8 +175,10 @@ Brand emoji rule: <"EMOJI OK (sparingly)" OR "NO EMOJI" — read from the client
 Write the body on the curiosity-led structure (Curiosity hook → Pain → Problem/agitate → Hope → loop-opener CTA). Do not freestyle. Each beat earns the next line.
 
 - If FUNNEL TARGET is a sales letter / long-form page: run Curiosity → Pain → Problem → a flash of Hope, then STOP and hand off. The page closes the sale, not the ad. CTA is a read-cue ("see the number on your flat", "read how"), never "Sign Up / Book / Submit". Carry the page's exact claims (numbers, mechanism, named case) so the scent matches.
-- Mirror the reader's pain in THEIR words — pull verbatim avatar voice, do not paraphrase into marketer-speak.
+- Mirror the reader's pain in THEIR words — pull verbatim avatar voice, do not paraphrase into marketer-speak. The problem/agitate beat MUST use an exact phrase lifted from the research (VOC dump or buyer-profile Language rows) — quote it, do not summarise it. Record the source as `voc: <research-file>#<line> — "<lifted phrase>"`.
+- Answer the avatar's single biggest objection IN-LINE with one concrete proof (from the buyer-profile "Beliefs to overcome" / "Messages rejected" rows). Not a separate FAQ. The proof must clear the Claim Gate before it ships.
 - Agitate with one concrete cost (a figure, a named consequence), not a vague worry.
+- Every hook AND every headline you write MUST carry an insight tag: `insight: <research-file>#<line-or-anchor> — <≤8-word paraphrase>`. The file must exist and the line/anchor must resolve. Untagged hooks/headlines are invalid output — they fail the hook gate (see "Hook gate" below).
 
 Take brand messaging and tone into account. Use plain verbs. Lay it out for the eye: short lines, one idea per line, white space between beats, each line pulling the next.
 
@@ -157,15 +198,23 @@ Output format (exact):
 
 ## COPY A — PRIMARY (~150 words)
 **HEADLINE 1:** <3-5 word headline>
+insight (headline 1): <research-file>#<line-or-anchor> — <≤8-word paraphrase>
 
 <body copy: curiosity hook → pain → problem → hope → loop-opener CTA. Emoji only if brand permits.>
+
+insight (hook): <research-file>#<line-or-anchor> — <≤8-word paraphrase>
+voc (agitate phrase): <research-file>#<line> — "<verbatim phrase lifted into the body>"
 
 ---
 
 ## COPY B — COMPRESSION (~50 words)
 **HEADLINE 2:** <3-5 word headline>
+insight (headline 2): <research-file>#<line-or-anchor> — <≤8-word paraphrase>
 
 <same five beats, compressed. Emoji only if brand permits.>
+
+insight (hook): <research-file>#<line-or-anchor> — <≤8-word paraphrase>
+voc (agitate phrase): <research-file>#<line> — "<verbatim phrase lifted into the body>"
 ```
 
 ---
@@ -180,6 +229,55 @@ Output format (exact):
 6. **Built on the curiosity-led structure** (Body Copy Structure section). Curiosity hook → pain → problem/agitate → hope → loop-opener CTA. Copy B is the compression of Copy A (same beats), not a different angle.
 7. **Headlines 3-5 words MAX.** These populate Meta's headline field (the short text below the image, not the overlay). If you're writing 6+ words, you're writing a text overlay, not a headline.
 8. **Paragraph rhythm:** short lines, one idea per line. White space between paragraphs. Each line should make the reader want the next.
+9. **Every hook and headline carries a resolving insight tag** (Insight tags section). The agitate beat carries a `voc:` source pointer. Untagged output is invalid and fails the hook gate.
+
+---
+
+## Hook gate (run before output is final — rebuild M2.2)
+
+Hooks/headlines are the highest-leverage, easiest-to-fake part of the copy, so they pass through a code-decided gate before the copy bank is considered final. The gate is not advisory — it fail-closes the build.
+
+**Step 1 — emit a hooks JSON.** Collect every hook (the first line of each copy) and every headline into a flat JSON array. Score each on five 1-5 dimensions and attach its insight tag:
+
+```json
+[
+  {
+    "hook": "We overpaid 40-50k on our first flat. Not doing it twice.",
+    "scores": { "clarity": 5, "avatar_match": 5, "flow": 4, "insight_tag_resolves": 5, "native_feel": 4 },
+    "insight": "clients/_smoketest/00_inputs/research/voc-reddit-dump-260611.md#L30 — upgrader overpaid 40-50k, won't repeat"
+  }
+]
+```
+
+- `clarity` — a cold reader gets it in one pass.
+- `avatar_match` — would THIS avatar think "that's me".
+- `flow` — reads aloud clean, no stumble.
+- `insight_tag_resolves` — your confidence the tag is real (the gate re-checks it anyway).
+- `native_feel` — feed-native, not salesy, no AI tell.
+
+**Step 2 — run the gate:**
+
+```
+python3 scripts/hook_gate.py <hooks.json> --root clients/<slug>
+```
+
+The gate code-decides: average score ≥ 4.0 for every hook AND every insight tag must resolve to a real file at a real line/anchor. On any failure it exits 1 and names what broke. PASS (exit 0) is required before you finalise the copy bank. Use `--audit` to see the per-hook table without fail-closing. Full input shape + format in `python3 scripts/hook_gate.py --help`.
+
+This is the hook-side sibling of the Claim Gate (`scripts/claim_gate.py`), which guards the body's numeric claims. Run both: hook gate on the hooks JSON, claim gate on the finished copy `.md`.
+
+## Additional hook sources (input candidates — operator extension point)
+
+The default hook source is the avatar's research (VOC dump, buyer-profile, big-angle-spotter angle spine). When that runs thin, or for breadth before you narrow, the global `script-skill` carries a large hook library and a query flow you can mine for candidates — by reference, not by duplication:
+
+- `~/.claude/skills/script-skill/references/viral-hooks-library.md` — 1000+ hook templates across 7 categories (educational, comparison, myth-busting, storytelling, authority, day-in-the-life, engagement). Use for batch ideation when the research-native hooks are thin.
+- `~/.claude/skills/script-skill/references/hook-bank.md` — example library by element + reusable structural templates.
+- `~/.claude/skills/script-skill` Phase 3.5 (the 3-element framework: Relatability / Sensationalism / Stakes) + `cases/case_log.md` — for single-brief depth calibrated against decoded real-world hooks.
+
+Rules when mining script-skill:
+- A borrowed template is a STARTING shape, not a finished hook. It still has to pass every Hard Rule, carry a resolving insight tag back to THIS client's research, and clear the hook gate. A template with no client research line behind it is invalid output.
+- Do not edit script-skill — it is read-only here. Fold its assets in by reference only.
+
+**Operator extension point:** to add a future hook source (a new swipe file, a competitor scrape, a client's own winning ads), append it as a bullet to the list above with a one-line "use when X" trigger. Keep each entry a pointer + trigger — never copy the source's contents into this skill.
 
 ---
 
@@ -203,17 +301,25 @@ Inside that file, structure:
 
 ---
 
-## COPY 1 (~50 words)
+## COPY 1 — PRIMARY (~150 words)
 **HEADLINE 1:** <3-5 words>
+insight (headline 1): <research-file>#<line-or-anchor> — <≤8-word paraphrase>
 
-<body copy>
+<body copy: the full curiosity-led sequence — this is the lock>
+
+insight (hook): <research-file>#<line-or-anchor> — <≤8-word paraphrase>
+voc (agitate phrase): <research-file>#<line> — "<verbatim phrase>"
 
 ---
 
-## COPY 2 (~150 words)
+## COPY 2 — COMPRESSION (~50 words)
 **HEADLINE 2:** <3-5 words>
+insight (headline 2): <research-file>#<line-or-anchor> — <≤8-word paraphrase>
 
-<body copy>
+<body copy: same five beats as COPY 1, fewer words>
+
+insight (hook): <research-file>#<line-or-anchor> — <≤8-word paraphrase>
+voc (agitate phrase): <research-file>#<line> — "<verbatim phrase>"
 
 ---
 
@@ -225,6 +331,8 @@ Inside that file, structure:
 | HEADLINE 2 | <headline 2 verbatim> |
 | COPY 1 | <body copy 1 verbatim, with emojis + CTA> |
 | COPY 2 | <body copy 2 verbatim, with emojis + CTA> |
+
+> The `insight:` and `voc:` lines are the audit trail — they stay in this `.md`, NOT in the sheet (the sheet only carries the four shippable text fields). They are what `scripts/hook_gate.py` checks before this file is final.
 ```
 
 ---
@@ -256,6 +364,8 @@ THEN:
 - Passes `skills/copy-editing/references/overused-ai-patterns.md` (no AI-slop patterns)
 - Passes avatar tonal contract (avatar-*.md "Language to Avoid")
 - Passes `clients/<slug>/learnings.md` saturated-angle check (don't echo tried-and-killed hooks)
+- Passes `scripts/hook_gate.py` (every hook/headline scores ≥4 avg AND resolves its insight tag) before the bank is final
+- Passes the research-completeness precondition (`scripts/research_gate.py`) before any generation starts
 
 ## Known Limitations
 
@@ -325,6 +435,5 @@ Do not duplicate the schema here — read those two files before writing a track
 <!-- auto-generated by scripts/link-skills.py — do not edit by hand -->
 
 - [[ad-concept-engine]] (skill, 0.14)
-- [[big-angle-spotter]] (skill, 0.13)
 
 <!-- skill-graph:end -->

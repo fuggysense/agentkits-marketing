@@ -83,7 +83,7 @@ Market sophistication determines **how** you say it — not what you say. The sa
 - service: "The Triage Protocol: we score your case in 10 minutes, route to the right specialist same-day, follow up at 7 days."
 - info: "The 4-Pillar Method: hook, harvest, monetise, scale — taught in 8 weekly modules with weekly office hours."
 - agency: "Our 90-Day Pipeline System: discovery sprint → asset build → outbound launch → review and iterate."
-- property: "A 2-minute assessment that calculates your exact equity, CPF position, and upgrade gap. It's how one couple discovered they could upgrade without touching their savings."
+- property: "A 2-minute assessment that calculates your exact equity, home-equity position, and upgrade gap. It's how one couple discovered they could upgrade without touching their savings."
 
 ---
 

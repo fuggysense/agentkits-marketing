@@ -1,0 +1,24 @@
+[
+  {
+    "hook": "We overpaid 40-50k on our first flat. Not doing it twice.",
+    "scores": {
+      "clarity": 5,
+      "avatar_match": 5,
+      "flow": 5,
+      "insight_tag_resolves": 5,
+      "native_feel": 5
+    },
+    "insight": "clients/_smoketest/00_inputs/research/does-not-exist-260611.md#L30 — file is missing on disk"
+  },
+  {
+    "hook": "28 saved listings. Zero decisions. Sound familiar?",
+    "scores": {
+      "clarity": 5,
+      "avatar_match": 5,
+      "flow": 5,
+      "insight_tag_resolves": 5,
+      "native_feel": 5
+    },
+    "insight": "clients/_smoketest/00_inputs/research/voc-reddit-dump-260611.md#L9000 — line is past end of file"
+  }
+]

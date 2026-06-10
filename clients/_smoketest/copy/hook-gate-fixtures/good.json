@@ -1,0 +1,35 @@
+[
+  {
+    "hook": "We overpaid 40-50k on our first flat. Not doing it twice.",
+    "scores": {
+      "clarity": 5,
+      "avatar_match": 5,
+      "flow": 4,
+      "insight_tag_resolves": 5,
+      "native_feel": 4
+    },
+    "insight": "clients/_smoketest/00_inputs/research/voc-reddit-dump-260611.md#L30 — upgrader overpaid 40-50k, won't repeat"
+  },
+  {
+    "hook": "28 saved listings. Zero decisions. Sound familiar?",
+    "scores": {
+      "clarity": 5,
+      "avatar_match": 4,
+      "flow": 5,
+      "insight_tag_resolves": 5,
+      "native_feel": 4
+    },
+    "insight": "clients/_smoketest/00_inputs/research/voc-reddit-dump-260611.md#L38 — first-timer, 28 saved, zero decisions"
+  },
+  {
+    "hook": "The 4,500 fee that stops you overpaying 50k.",
+    "scores": {
+      "clarity": 4,
+      "avatar_match": 5,
+      "flow": 4,
+      "insight_tag_resolves": 4,
+      "native_feel": 4
+    },
+    "insight": "clients/_smoketest/_brand/buyer-profile.md#THE CORE PROBLEM — advice never feels on their side"
+  }
+]

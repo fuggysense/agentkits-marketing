@@ -131,6 +131,44 @@ Classify before any methodology loads:
 
 Solution-Aware × L3+ stack requires `concept-brief.json` to carry the extended `big_idea` + `credibility_stack` per `references/general/concept-input-packet.md`. Seeder refuses to emit concepts otherwise.
 
+## Hook-Swap Variant Lane (clients with a proven control)
+
+A cheap test lane — not a replacement for full concept seeding. When a client already has a **winning control video**, the highest-leverage, lowest-cost move is to keep the proven body and race new hooks against it, rather than seeding five fresh concepts from scratch. This is Ferres' Control Challenge spine: three new ads = (1) the control's own hook re-shot + (2) two brand-new hooks, all stitched onto the existing winning body, run head-to-head for 7 days (`_shared-knowledge/ferres/04-end-to-end-sop.md` stages 3-5).
+
+**When to choose this lane (all must hold):**
+- The client has a video ad with real performance data marking it the control.
+- The body of that ad still converts — the suspected ceiling is the hook, not the offer or the proof.
+- The goal is a fast, single-variable test (hook only), not a new angle or audience.
+
+If any fails, fall back to full five-concept seeding (§Process). State the lane choice in one line before proceeding, per the Schwartz/sophistication pre-dispatch call.
+
+**Inputs:**
+- Control transcript (the winning ad's full script — hook + body, clearly marked where the hook ends).
+- The three research docs (ICP / competitor / market) per §Context Load — the new hooks must be traceable to a research insight, not invented.
+- `_brand/{offer,buyer-profile}.md` for avatar fit.
+- Performance note on WHY the control wins (retention past 3s = hook strength; click-rate among watchers = body strength). This confirms the body is the keeper.
+
+**Hook engine — do not reinvent it.** This lane does not write hooks itself. Dispatch `video-hook-variants` (the skill that owns hook engineering for multi-clip paid video). It produces paired verbal + visual + rendered-text + subtitle-policy hook variants per concept. This lane's job is to set the brief, gate the output, and shape it for the existing AG pipeline.
+
+- Default count: 2-3 new hooks (the control's own re-shot hook is a fourth contender the operator keeps "for free").
+- Every variant inherits the control's body verbatim — the variant differs ONLY in the first 0-3 seconds.
+- Tag each variant with the research insight it leverages (the same traceability §Process and Ferres stage 4 require).
+
+**Gate (lighter than full AG1 — it is a hook test, not a new concept):**
+- **Hook clarity:** clear beats clever; a confused viewer never buys. Reject hooks that need the body to make sense.
+- **Avatar fit:** does the hook pull the RIGHT person? Ferres rejected "work 1 hour a day" because it attracts lazy buyers; he reworked it. Run the same filter.
+- **Flow:** does the new hook stitch cleanly onto the proven body — same persona, same tone, no seam the viewer notices?
+- **Insight tag present:** each surviving hook names its research insight. No tag = not ready.
+
+Operator picks the top 2-3. Record the choice in `approval-1.json` with `lane: "hook_swap"` so downstream knows the body is fixed and only the hook clips are new.
+
+**Outputs (hook clips spec for the existing AG pipeline):**
+- A hook-clips spec per surviving variant: `verbal_hook`, `quiet_visual_hook`, `rendered_text_hook`, `subtitle_policy` (the §2 Hook Lab four-field shape), plus the insight tag and the exact frame where it hands off to the control body.
+- A `control_body_ref` block naming the control transcript and the handoff point, so `video-prompt-pack-builder` renders only the new hook clips and the editor stitches them onto the untouched body.
+- `approval-1.json` with `lane: "hook_swap"`, the chosen hooks, and the fixed-body note.
+
+The hook clips then flow through the normal AG pipeline (AG1 here → `video-brief-normalizer` → `video-prompt-pack-builder` → AG2 → render). The difference from the full lane: only the hook is generated and rendered; the body is reused, so AG2 and the prompt pack scope to the hook clips alone.
+
 ## DR First Principles
 
 `references/direct-response/dr-foundation.md` is the runtime DR methodology — loaded automatically via `dr_standard_concept` and its extensions. It combines spine, short-form adaptation, and operational checklist.

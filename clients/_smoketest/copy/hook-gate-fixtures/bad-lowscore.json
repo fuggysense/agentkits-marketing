@@ -1,0 +1,13 @@
+[
+  {
+    "hook": "Unlock your dream home today with our breakthrough advisory.",
+    "scores": {
+      "clarity": 3,
+      "avatar_match": 2,
+      "flow": 3,
+      "insight_tag_resolves": 2,
+      "native_feel": 2
+    },
+    "insight": "clients/_smoketest/00_inputs/research/voc-reddit-dump-260611.md#L30 — tag resolves but the hook is weak and off-avatar"
+  }
+]

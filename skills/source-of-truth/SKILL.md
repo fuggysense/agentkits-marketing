@@ -4,7 +4,7 @@ version: "1.0.0"
 brand: AgentKits Marketing by AityTech
 category: foundation
 difficulty: advanced
-description: "Generate 26-section paid ads source-of-truth. Auto-triage input, parallel research (scrapecreators, buyer-language, deep-research, product), synthesize via business-profile/avatar-research/ab-test. 4 checkpoints. Output: md + 5 derivatives for downstream skills."
+description: "Generate paid ads source-of-truth: 26 core sections + 2 Ferres research-flow sections (§27 says-vs-addresses gap analysis, §28 competitor opportunity matrix). Auto-triage input, parallel research (scrapecreators, buyer-language, deep-research, product), synthesize via business-profile/avatar-research/ab-test. 4 checkpoints. Output: md + 5 derivatives for downstream skills."
 triggers:
   - source of truth
   - paid ads source of truth
@@ -50,7 +50,7 @@ output_schema: source-of-truth-v1
 
 # Source of Truth — Paid Ads Strategic Document
 
-> Generates the complete 26-section paid ads source-of-truth for any client, product URL, or idea. Self-triages input, runs parallel research, synthesises all 26 sections from real buyer language (not guesses), and asks only the 4 strategic decisions humans must make. Single artifact (`source-of-truth.md`) + 5 derivative files for downstream consumption.
+> Generates the complete paid ads source-of-truth for any client, product URL, or idea: the 26-section spine plus §27 (says-vs-addresses gap analysis) and §28 (competitor opportunity matrix) from the Ferres research flow. Self-triages input, runs parallel research, synthesises every section from real buyer language (not guesses), and asks only the 4 strategic decisions humans must make. Single artifact (`source-of-truth.md`) + 5 derivative files for downstream consumption.
 
 ## Graph Links
 
@@ -198,6 +198,8 @@ Synthesise each of the 26 sections per the frameworks. Reuses existing skill fra
 | §24 Recommended Workflow | static reference (process map) |
 | §25 Naming Convention | static reference |
 | §26 Final Notes | living-doc reminder + version stamp |
+| §27 Says-vs-Addresses Gap Analysis | **net-new** — buyer verbatim (§5/§6) cross-checked against the client's live messaging (sales page, current ad scripts, landing headlines); table the gaps. Source: `_shared-knowledge/ferres/02-research-flow.md` prompt 1 (ICP Deep Dive gap analysis). |
+| §28 Competitor Opportunity Matrix | **net-new** — per-competitor profiles + saturation + blue-box/blue-ocean/weak-proof/unmarketed-advantage matrix + differentiation strategy. Built from §7 + competitor-ads research + competitor review mining; reuse `stage-analysis.md` blue boxes/gaps if present. Source: `_shared-knowledge/ferres/02-research-flow.md` prompt 2 (Competitor Analysis opportunity matrix). |
 
 **Strategic sections (§2 KPI, §9 Core Message, §10 Top 3 Angles, §16 First Variable to Test) are DRAFTED here but NOT finalised** — they go to the HITL gate next. The skill drafts 2-3 options for each so the user can pick rather than freehand.
 

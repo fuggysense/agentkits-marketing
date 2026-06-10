@@ -20,6 +20,7 @@ Stable brand context for this client. Load files on demand based on the job belo
 | `higgsfield-reference-routing.json` | Approved Higgsfield reference IDs + character/product/scene routing | Video prompt building, Higgsfield render dispatch |
 | `metrics-config.json` | Per-funnel KPI definitions + sheet mapping | Reporting, dashboards, sheets-updater |
 | `asset-map.md` | Inventory of brand assets (logos, fonts, product shots, b-roll) and where they live | Production prep, image/video generation, asset hunts |
+| `research-brief.md` | Niche-parameterized definition of "research complete" (YAML floor + builder interview). Read by `scripts/research_gate.py`. | Before any avatar/angle/ad work — the gate checks research against this contract |
 
 ## Subfolders
 

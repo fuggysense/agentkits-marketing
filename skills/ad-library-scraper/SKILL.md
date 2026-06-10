@@ -119,6 +119,72 @@ Display draft inline → HITL gate → on approval, write to `swipe-files/<indus
 
 ---
 
+## Proven-winner curation defaults (Ferres Path A)
+
+The scrape pulls every active ad on a page, but the swipe file is only worth modelling if it surfaces the *proven* winners. Apply Ferres' Path A filters as the DEFAULT view whenever a human or a downstream skill reads the pool (`_shared-knowledge/ferres/06-statics-playbook.md` §5 Path A; `patterns/statics-pattern-library.md` §build-stack). Long run-time is the closest thing the Ad Library gives to a "this works" stamp — there is no impression sort, so duration stands in for spend-backed proof.
+
+Default filter set (override only with a stated reason):
+- **Media type: image OR video still live** — `creative.media_type IN ('image','video')` AND `is_active = 1`. A dead ad proves nothing.
+- **30+ days running** — `run.days_running >= 30`. This already matches the L2-enrichment trigger (Phase 3 enriches `days_running > 30`), so the curated view and the enriched view line up.
+- **Sort by longest-running, descending** — `ORDER BY run.days_running DESC`. The top of this list is the model-first set; the multi-year runners (Liquid Death's comment-style at 2,037 days, King Kong's native at 1,184) are near-certain profit.
+
+SQL shape against the Ghost pool (read-only):
+```sql
+SELECT page_id, ad_archive_id, media_type, days_running, primary_text, headline
+FROM ads
+WHERE industry_slug = '<industry>' AND is_active = true AND days_running >= 30
+  AND media_type IN ('IMAGE','VIDEO')
+ORDER BY days_running DESC;
+```
+
+This is curation, not a scrape filter — the scrape still stores everything (so duration can keep accruing run-by-run). The filters apply at read/model time. `stage-analysis.md` Phase 6 "Winners by duration (top 10)" already honours this ordering; the defaults above make it the standard lens for `source-of-truth` and `ad-concept-engine` reads too.
+
+## Pattern-naming discipline (11 named static patterns)
+
+When a saved STATIC ad clearly matches one of the named patterns in `_shared-knowledge/ferres/patterns/statics-pattern-library.md`, tag it with the pattern name so downstream skills can model by recipe, not just by lane. The pattern names are a finer split UNDER the five canonical lanes (PRODUCT-SHOT · SOCIAL-PROOF · INFOGRAPHIC · NATIVE · TABLOID) — record both.
+
+| # | Pattern name | Lane | One-line tell |
+|---|---|---|---|
+| 01 | Product-Shot + Big Promise | PRODUCT-SHOT | product fills frame, the big text is an outcome promise/number, not the product name |
+| 02 | Hard Offer / Red-Hot-Deal | PRODUCT-SHOT | the discount/offer figure IS the creative |
+| 03 | Social-Proof Quote + Face | SOCIAL-PROOF | real-feeling customer face + verbatim quote, no separate headline |
+| 04 | Verified Review / Comment Card | SOCIAL-PROOF | star-rated review widget or FB comment embedded as found content |
+| 05 | Educational / Annotated Infographic | INFOGRAPHIC | labelled how-it-works, stat, or leader-line benefit diagram |
+| 06 | Us-vs-Them Comparison | INFOGRAPHIC | split frame, OUR side vs THEIR side |
+| 07 | Native Article-Thumbnail Advertorial | NATIVE | reads as an editorial article thumbnail, zero ad-signals on the image |
+| 08 | Breaking-News / Tabloid | TABLOID | odd primary image + red-circle inset + news-style headline bar |
+| 09 | Native-Organic: Notes / Handwritten / UI-Mimic | NATIVE | sticky note, fake iOS alert, fake X thread — copy IS the ad |
+| 10 | Before / After Transformation | SOCIAL-PROOF / INFOGRAPHIC | split-screen timeline (Week 0 / Week 4) |
+| 11 | Pattern-Interrupt Oddballs | (varies, STAND-OUT) | wanted poster, ugly-pain close-up, surreal-AI, meme, apology, listicle cover, spokesperson, UGC selfie, quiz, countdown |
+
+Tagging rules:
+- Only tag where the match is clear — a forced tag is worse than no tag. If an ad fits none, leave the pattern field empty (it is still a valid swipe).
+- Pattern 11 is a tail of single-trick formats; record the specific sub-name in a note (e.g. `pattern: 11 / wanted-poster`) rather than just "11".
+- Tags belong in the per-ad JSON (`enrichment` block) so `ghost-sync.py` carries them into the Ghost classification rows. Do not invent a new top-level schema field without updating `swipe-files/schema/ad.schema.json` first — flagged here, not changed in this pass.
+- These 11 patterns are for STATICS. Video ads keep lane + format tags from the existing L3 classifier; the named-pattern library does not apply to video.
+
+---
+
+## Canonical store: Ghost Postgres (the SQLite is a transient build artifact)
+
+`swipe-files/<industry>/ads-db.sqlite` **no longer exists on disk** — it is regenerated on demand by `scripts/ad_library/rebuild_ads_db.py` (Phase 5) from the per-ad JSON files, then consumed by `scripts/ghost-sync.py` and discarded. **The canonical store is Ghost Postgres** (`GHOST_DATABASE_URL`, accessed via `mcp__ghost__ghost_sql` with `id: "swipe-ads"`). The SQLite is a flat intermediate, not the source of truth.
+
+Source-of-truth hierarchy (most → least canonical):
+1. **Ghost Postgres** — the live, queryable, embedding-backed store. Query here for any read.
+2. **Per-ad JSON** (`swipe-files/<industry>/pages/<page_id>/ads/<ad_id>.json`) — the durable on-disk record; what `rebuild_ads_db.py` walks. These are the regeneration seed.
+3. **`ads-db.sqlite`** — transient. Built from (2), synced into (1), then expendable.
+
+Regeneration path (if SQLite or Ghost rows are missing or stale):
+```bash
+# Rebuild the transient SQLite from the durable per-ad JSON files
+python3 scripts/ad_library/rebuild_ads_db.py --industry <industry>
+# Sync the rebuilt SQLite into Ghost Postgres (canonical)
+python3 scripts/ghost-sync.py <industry>
+```
+The first command is local-only (no network). The second writes to Ghost — that IS the canonical write, gated by normal data-reliability rules. Earlier doc text that called the SQLite "canonical source" is superseded by this note.
+
+---
+
 ## Execution recipe (what `/ads:scrape-library <industry>` actually runs)
 
 ```bash
@@ -156,7 +222,7 @@ Flag passthrough:
 | `swipe-files/<industry>/pages/<page_id>/ads/<ad_id>-image-ocr.txt` | L2 image |
 | `swipe-files/<industry>/pages/<page_id>/ads/assets/<ad_id>.(mp4\|jpg\|png)` | Asset cache |
 | `swipe-files/<industry>/pages/<page_id>/scrape-log.jsonl` | Append-only log |
-| `swipe-files/<industry>/ads-db.sqlite` | Queryable layer |
+| `swipe-files/<industry>/ads-db.sqlite` | Transient build artifact — rebuilt from per-ad JSON, synced into Ghost Postgres (canonical), then expendable. See §"Canonical store". |
 | `swipe-files/<industry>/stage-analysis.md` | HITL-approved Schwartz brief |
 
 ## Files this skill reads

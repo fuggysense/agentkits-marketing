@@ -11,10 +11,11 @@ Append a wave-conclusion entry. Format:
 ```markdown
 ### Wave [N] conclusion (YYYY-MM-DD)
 
-**Spend:** S$[total] over [N] days · **Routing decision:** [NEW | BETTER | MORE]
+**Spend:** [currency][total] over [N] days · **Routing decision:** [NEW | BETTER | MORE]
+<!-- currency follows the client's metrics-config.json (feedback_thresholds.currency / ad-account currency) — not hardcoded S$ -->
 
 **Winning angle:** [Angle name]
-- CPA: S$[X] (vs KPI target S$[Y], baseline S$[Z])
+- CPA: [currency][X] (vs KPI target [currency][Y], baseline [currency][Z])
 - CTR: [X]% · Hold-rate: [X]% · Frequency: [X]
 
 **Underperforming (cut):** [List of cut angles with their CPA]

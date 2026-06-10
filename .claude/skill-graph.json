@@ -11,7 +11,7 @@
       {
         "name": "headline-bank",
         "kind": "skill",
-        "score": 0.1354
+        "score": 0.1358
       }
     ]
   },
@@ -27,17 +27,17 @@
       {
         "name": "paid-advertising",
         "kind": "skill",
-        "score": 0.1731
+        "score": 0.1729
       },
       {
         "name": "marketing-fundamentals",
         "kind": "skill",
-        "score": 0.1416
+        "score": 0.1417
       },
       {
         "name": "content-strategy",
         "kind": "skill",
-        "score": 0.1226
+        "score": 0.1227
       }
     ]
   },
@@ -53,20 +53,14 @@
       {
         "name": "persona-builder",
         "kind": "agent",
-        "score": 0.1215
+        "score": 0.1225
       }
     ]
   },
   "big-angle-spotter": {
     "kind": "skill",
     "path": "skills/big-angle-spotter/SKILL.md",
-    "neighbours": [
-      {
-        "name": "headline-bank",
-        "kind": "skill",
-        "score": 0.1307
-      }
-    ]
+    "neighbours": []
   },
   "brand-building": {
     "kind": "skill",
@@ -80,7 +74,7 @@
       {
         "name": "onboarding-strategy-pdf",
         "kind": "skill",
-        "score": 0.1719
+        "score": 0.1717
       }
     ]
   },
@@ -91,7 +85,7 @@
       {
         "name": "client-onboarding",
         "kind": "skill",
-        "score": 0.144
+        "score": 0.1431
       }
     ]
   },
@@ -107,7 +101,7 @@
       {
         "name": "campaign-runner",
         "kind": "skill",
-        "score": 0.144
+        "score": 0.1431
       }
     ]
   },
@@ -138,7 +132,7 @@
       {
         "name": "analytics-attribution",
         "kind": "skill",
-        "score": 0.1226
+        "score": 0.1227
       }
     ]
   },
@@ -159,12 +153,12 @@
       {
         "name": "copywriter",
         "kind": "agent",
-        "score": 0.1609
+        "score": 0.1603
       },
       {
         "name": "unslop",
         "kind": "skill",
-        "score": 0.136
+        "score": 0.1363
       }
     ]
   },
@@ -180,7 +174,7 @@
       {
         "name": "email-sequence",
         "kind": "skill",
-        "score": 0.1349
+        "score": 0.1348
       }
     ]
   },
@@ -191,14 +185,20 @@
       {
         "name": "email-marketing",
         "kind": "skill",
-        "score": 0.1349
+        "score": 0.1348
       }
     ]
   },
   "feedback-router": {
     "kind": "skill",
     "path": "skills/feedback-router/SKILL.md",
-    "neighbours": []
+    "neighbours": [
+      {
+        "name": "sheets-updater",
+        "kind": "skill",
+        "score": 0.1252
+      }
+    ]
   },
   "ferres-corpus": {
     "kind": "skill",
@@ -212,7 +212,7 @@
       {
         "name": "signup-flow-cro",
         "kind": "skill",
-        "score": 0.2353
+        "score": 0.2351
       },
       {
         "name": "popup-cro",
@@ -233,12 +233,7 @@
       {
         "name": "ad-concept-engine",
         "kind": "skill",
-        "score": 0.1354
-      },
-      {
-        "name": "big-angle-spotter",
-        "kind": "skill",
-        "score": 0.1307
+        "score": 0.1358
       }
     ]
   },
@@ -249,7 +244,7 @@
       {
         "name": "video-director",
         "kind": "skill",
-        "score": 0.1276
+        "score": 0.1278
       }
     ]
   },
@@ -285,12 +280,12 @@
       {
         "name": "analytics-attribution",
         "kind": "skill",
-        "score": 0.1416
+        "score": 0.1417
       },
       {
         "name": "paid-advertising",
         "kind": "skill",
-        "score": 0.1253
+        "score": 0.1254
       }
     ]
   },
@@ -326,7 +321,7 @@
       {
         "name": "signup-flow-cro",
         "kind": "skill",
-        "score": 0.1379
+        "score": 0.1378
       }
     ]
   },
@@ -337,7 +332,7 @@
       {
         "name": "business-profile",
         "kind": "skill",
-        "score": 0.1719
+        "score": 0.1717
       }
     ]
   },
@@ -364,17 +359,17 @@
       {
         "name": "analytics-attribution",
         "kind": "skill",
-        "score": 0.1731
+        "score": 0.1729
       },
       {
         "name": "marketing-fundamentals",
         "kind": "skill",
-        "score": 0.1253
+        "score": 0.1254
       },
       {
         "name": "paid-media-audit",
         "kind": "skill",
-        "score": 0.1237
+        "score": 0.1235
       }
     ]
   },
@@ -385,7 +380,7 @@
       {
         "name": "paid-advertising",
         "kind": "skill",
-        "score": 0.1237
+        "score": 0.1235
       }
     ]
   },
@@ -401,12 +396,12 @@
       {
         "name": "problem-promise",
         "kind": "skill",
-        "score": 0.3659
+        "score": 0.366
       },
       {
         "name": "usp-generator",
         "kind": "skill",
-        "score": 0.1227
+        "score": 0.123
       },
       {
         "name": "unique-mechanism-problem",
@@ -443,12 +438,12 @@
       {
         "name": "persuasive-premise",
         "kind": "skill",
-        "score": 0.3659
+        "score": 0.366
       },
       {
         "name": "usp-generator",
         "kind": "skill",
-        "score": 0.1242
+        "score": 0.1243
       }
     ]
   },
@@ -521,7 +516,7 @@
       {
         "name": "sheets-updater",
         "kind": "skill",
-        "score": 0.137
+        "score": 0.1359
       }
     ]
   },
@@ -532,7 +527,12 @@
       {
         "name": "sheets-provisioner",
         "kind": "skill",
-        "score": 0.137
+        "score": 0.1359
+      },
+      {
+        "name": "feedback-router",
+        "kind": "skill",
+        "score": 0.1252
       }
     ]
   },
@@ -543,12 +543,12 @@
       {
         "name": "form-cro",
         "kind": "skill",
-        "score": 0.2353
+        "score": 0.2351
       },
       {
         "name": "onboarding-cro",
         "kind": "skill",
-        "score": 0.1379
+        "score": 0.1378
       }
     ]
   },
@@ -569,12 +569,12 @@
       {
         "name": "unique-mechanism-solution",
         "kind": "skill",
-        "score": 0.3702
+        "score": 0.3703
       },
       {
         "name": "usp-generator",
         "kind": "skill",
-        "score": 0.1966
+        "score": 0.1965
       },
       {
         "name": "persuasive-premise",
@@ -590,7 +590,7 @@
       {
         "name": "unique-mechanism-problem",
         "kind": "skill",
-        "score": 0.3702
+        "score": 0.3703
       },
       {
         "name": "usp-generator",
@@ -606,7 +606,7 @@
       {
         "name": "copywriting",
         "kind": "skill",
-        "score": 0.136
+        "score": 0.1363
       }
     ]
   },
@@ -627,17 +627,17 @@
       {
         "name": "unique-mechanism-problem",
         "kind": "skill",
-        "score": 0.1966
+        "score": 0.1965
       },
       {
         "name": "problem-promise",
         "kind": "skill",
-        "score": 0.1242
+        "score": 0.1243
       },
       {
         "name": "persuasive-premise",
         "kind": "skill",
-        "score": 0.1227
+        "score": 0.123
       }
     ]
   },
@@ -653,7 +653,7 @@
       {
         "name": "video-concept-lab",
         "kind": "skill",
-        "score": 0.1952
+        "score": 0.1953
       }
     ]
   },
@@ -680,7 +680,7 @@
       {
         "name": "vid-director",
         "kind": "skill",
-        "score": 0.1952
+        "score": 0.1953
       }
     ]
   },
@@ -691,7 +691,7 @@
       {
         "name": "image-generation",
         "kind": "skill",
-        "score": 0.1276
+        "score": 0.1278
       }
     ]
   },
@@ -717,27 +717,27 @@
       {
         "name": "conversion-optimizer-attribution",
         "kind": "agent",
-        "score": 0.9211
-      },
-      {
-        "name": "persona-builder-attribution",
-        "kind": "agent",
-        "score": 0.7576
+        "score": 0.899
       },
       {
         "name": "researcher-attribution",
         "kind": "agent",
-        "score": 0.7468
+        "score": 0.7531
+      },
+      {
+        "name": "persona-builder-attribution",
+        "kind": "agent",
+        "score": 0.7415
       },
       {
         "name": "copywriter-attribution",
         "kind": "agent",
-        "score": 0.7354
+        "score": 0.7401
       },
       {
         "name": "eval-halbert-attribution",
         "kind": "agent",
-        "score": 0.3318
+        "score": 0.3319
       }
     ]
   },
@@ -748,17 +748,17 @@
       {
         "name": "conversion-optimizer",
         "kind": "agent",
-        "score": 0.2697
+        "score": 0.2696
       },
       {
         "name": "researcher",
         "kind": "agent",
-        "score": 0.2412
+        "score": 0.241
       },
       {
         "name": "copywriter",
         "kind": "agent",
-        "score": 0.2278
+        "score": 0.2279
       }
     ]
   },
@@ -769,27 +769,27 @@
       {
         "name": "brand-voice-guardian-attribution",
         "kind": "agent",
-        "score": 0.9211
-      },
-      {
-        "name": "copywriter-attribution",
-        "kind": "agent",
-        "score": 0.7579
+        "score": 0.899
       },
       {
         "name": "persona-builder-attribution",
         "kind": "agent",
-        "score": 0.752
+        "score": 0.7534
+      },
+      {
+        "name": "copywriter-attribution",
+        "kind": "agent",
+        "score": 0.7532
       },
       {
         "name": "researcher-attribution",
         "kind": "agent",
-        "score": 0.7342
+        "score": 0.7297
       },
       {
         "name": "eval-halbert-attribution",
         "kind": "agent",
-        "score": 0.3753
+        "score": 0.375
       }
     ]
   },
@@ -800,17 +800,17 @@
       {
         "name": "researcher",
         "kind": "agent",
-        "score": 0.2875
+        "score": 0.2872
       },
       {
         "name": "brand-voice-guardian",
         "kind": "agent",
-        "score": 0.2697
+        "score": 0.2696
       },
       {
         "name": "copywriter",
         "kind": "agent",
-        "score": 0.2013
+        "score": 0.2015
       },
       {
         "name": "page-cro",
@@ -820,7 +820,7 @@
       {
         "name": "persona-builder",
         "kind": "agent",
-        "score": 0.1233
+        "score": 0.1231
       }
     ]
   },
@@ -831,27 +831,27 @@
       {
         "name": "persona-builder-attribution",
         "kind": "agent",
-        "score": 0.8746
+        "score": 0.8875
       },
       {
         "name": "researcher-attribution",
         "kind": "agent",
-        "score": 0.8565
+        "score": 0.847
       },
       {
         "name": "conversion-optimizer-attribution",
         "kind": "agent",
-        "score": 0.7579
+        "score": 0.7532
       },
       {
         "name": "brand-voice-guardian-attribution",
         "kind": "agent",
-        "score": 0.7354
+        "score": 0.7401
       },
       {
         "name": "eval-halbert-attribution",
         "kind": "agent",
-        "score": 0.4706
+        "score": 0.4533
       }
     ]
   },
@@ -862,12 +862,12 @@
       {
         "name": "brand-voice-guardian",
         "kind": "agent",
-        "score": 0.2278
+        "score": 0.2279
       },
       {
         "name": "conversion-optimizer",
         "kind": "agent",
-        "score": 0.2013
+        "score": 0.2015
       },
       {
         "name": "researcher",
@@ -877,7 +877,7 @@
       {
         "name": "copywriting",
         "kind": "skill",
-        "score": 0.1609
+        "score": 0.1603
       }
     ]
   },
@@ -891,24 +891,24 @@
         "score": 1.0
       },
       {
-        "name": "copywriter-attribution",
+        "name": "persona-builder-attribution",
         "kind": "agent",
-        "score": 0.4706
+        "score": 0.475
       },
       {
         "name": "researcher-attribution",
         "kind": "agent",
-        "score": 0.4654
+        "score": 0.4662
       },
       {
-        "name": "persona-builder-attribution",
+        "name": "copywriter-attribution",
         "kind": "agent",
-        "score": 0.4601
+        "score": 0.4533
       },
       {
         "name": "conversion-optimizer-attribution",
         "kind": "agent",
-        "score": 0.3753
+        "score": 0.375
       }
     ]
   },
@@ -919,7 +919,7 @@
       {
         "name": "eval-sales-letter",
         "kind": "agent",
-        "score": 0.2807
+        "score": 0.2811
       }
     ]
   },
@@ -933,24 +933,24 @@
         "score": 1.0
       },
       {
-        "name": "copywriter-attribution",
+        "name": "persona-builder-attribution",
         "kind": "agent",
-        "score": 0.4706
+        "score": 0.475
       },
       {
         "name": "researcher-attribution",
         "kind": "agent",
-        "score": 0.4654
+        "score": 0.4662
       },
       {
-        "name": "persona-builder-attribution",
+        "name": "copywriter-attribution",
         "kind": "agent",
-        "score": 0.4601
+        "score": 0.4533
       },
       {
         "name": "conversion-optimizer-attribution",
         "kind": "agent",
-        "score": 0.3753
+        "score": 0.375
       }
     ]
   },
@@ -961,7 +961,7 @@
       {
         "name": "eval-halbert",
         "kind": "agent",
-        "score": 0.2807
+        "score": 0.2811
       }
     ]
   },
@@ -970,29 +970,29 @@
     "path": "agents/persona-builder-attribution.md",
     "neighbours": [
       {
-        "name": "copywriter-attribution",
-        "kind": "agent",
-        "score": 0.8746
-      },
-      {
         "name": "researcher-attribution",
         "kind": "agent",
-        "score": 0.8444
+        "score": 0.8904
       },
       {
-        "name": "brand-voice-guardian-attribution",
+        "name": "copywriter-attribution",
         "kind": "agent",
-        "score": 0.7576
+        "score": 0.8875
       },
       {
         "name": "conversion-optimizer-attribution",
         "kind": "agent",
-        "score": 0.752
+        "score": 0.7534
+      },
+      {
+        "name": "brand-voice-guardian-attribution",
+        "kind": "agent",
+        "score": 0.7415
       },
       {
         "name": "eval-halbert-attribution",
         "kind": "agent",
-        "score": 0.4601
+        "score": 0.475
       }
     ]
   },
@@ -1003,17 +1003,17 @@
       {
         "name": "researcher",
         "kind": "agent",
-        "score": 0.1297
+        "score": 0.1293
       },
       {
         "name": "conversion-optimizer",
         "kind": "agent",
-        "score": 0.1233
+        "score": 0.1231
       },
       {
         "name": "avatar-research",
         "kind": "skill",
-        "score": 0.1215
+        "score": 0.1225
       }
     ]
   },
@@ -1022,29 +1022,29 @@
     "path": "agents/researcher-attribution.md",
     "neighbours": [
       {
-        "name": "copywriter-attribution",
-        "kind": "agent",
-        "score": 0.8565
-      },
-      {
         "name": "persona-builder-attribution",
         "kind": "agent",
-        "score": 0.8444
+        "score": 0.8904
+      },
+      {
+        "name": "copywriter-attribution",
+        "kind": "agent",
+        "score": 0.847
       },
       {
         "name": "brand-voice-guardian-attribution",
         "kind": "agent",
-        "score": 0.7468
+        "score": 0.7531
       },
       {
         "name": "conversion-optimizer-attribution",
         "kind": "agent",
-        "score": 0.7342
+        "score": 0.7297
       },
       {
         "name": "eval-halbert-attribution",
         "kind": "agent",
-        "score": 0.4654
+        "score": 0.4662
       }
     ]
   },
@@ -1055,12 +1055,12 @@
       {
         "name": "conversion-optimizer",
         "kind": "agent",
-        "score": 0.2875
+        "score": 0.2872
       },
       {
         "name": "brand-voice-guardian",
         "kind": "agent",
-        "score": 0.2412
+        "score": 0.241
       },
       {
         "name": "copywriter",
@@ -1070,7 +1070,7 @@
       {
         "name": "persona-builder",
         "kind": "agent",
-        "score": 0.1297
+        "score": 0.1293
       }
     ]
   },

@@ -1,6 +1,8 @@
-# 26-Section Source-of-Truth Template
+# 28-Section Source-of-Truth Template
 
 This is the full template Phase 5 fills in and writes to `clients/<project>/source-of-truth.md`. Variables in `{{...}}` get replaced from research dossiers + Phase 1 intake + HITL answers.
+
+> §1-26 are the original SoT spine. §27 (Says-vs-Addresses Gap Analysis) and §28 (Competitor Opportunity Matrix) are appended Ferres research-flow sections — see `_shared-knowledge/ferres/02-research-flow.md` prompts 1 and 2. They are numbered as 27/28 by design; the rest of the doc is NOT renumbered.
 
 Section synthesis instructions live in `section-synthesis-frameworks.md` (per-section how-to).
 
@@ -812,6 +814,56 @@ This document is not static. It functions as a living paid creative operating sy
 - Scale what works with less guesswork
 
 **Rule:** If a creative decision cannot be traced back to audience insight, offer logic, proof, or performance learning, it likely does not belong in the next testing round.
+
+---
+
+## 27. Says-vs-Addresses Gap Analysis
+
+> What customers actually say in their own words vs what the client's current messaging actually addresses. The gap is the opportunity. Ferres bakes this into his ICP Deep Dive prompt — the deep-research run reads the client's sales page and ad scripts FIRST, then mines Reddit, reviews, and comment sections, then reports where the two diverge (`_shared-knowledge/ferres/02-research-flow.md` prompt 1; 04_part-3-how-to-create-winning-ads [00:20:13]).
+
+Build this row by row from §5 Buyer Language Bank and §6 Pain Points (the "says" column) cross-checked against the client's live messaging — sales page copy, current ad scripts, landing page headlines (the "addresses" column). Pull the "says" side verbatim; never paraphrase a buyer into the gap table.
+
+### Gap Table
+| # | What customers say (verbatim + source) | What client messaging currently says | Gap type | Why it matters | Where to use it |
+|---|---|---|---|---|---|
+{{gap_analysis_rows}}
+
+**Gap types:** `unaddressed` (customers raise it, client says nothing) · `mismatched` (client addresses it, but in different language than buyers use) · `over-indexed` (client leans hard on something buyers barely mention) · `buried` (client mentions it, but below the fold / late in the funnel).
+
+### Top 3 Gaps to Close First
+1. {{top_gap_1}}
+2. {{top_gap_2}}
+3. {{top_gap_3}}
+
+> The "read their mind" bar (§Ferres operating principle 5): an ad earns the click when it repeats the buyer's exact phrasing back to them. Every `unaddressed` or `mismatched` gap is a hook waiting to be written. Feed the top 3 into §10 Ad Angles and §11 Hook Library on the next wave.
+
+---
+
+## 28. Competitor Opportunity Matrix
+
+> Per-competitor read of where the category leaves room. Ferres' Competitor Analysis prompt outputs per-competitor profiles, saturation analysis, an opportunity matrix, and differentiation strategies — then he extends it with "give me a strategy to differentiate... a unique mechanism" (`_shared-knowledge/ferres/02-research-flow.md` prompt 2; 04_part-3-how-to-create-winning-ads [00:25:35]). His payoff: competitor reviews expose their weaknesses (big claims, thin proof) AND surface client advantages they aren't yet marketing — both go straight into the ads (06_part-5 [00:24:15], [00:24:35]).
+
+Build from §7 Objections + the competitor-ads research (Phase 2 `scrapecreators` output) + competitor review mining. If an industry `stage-analysis.md` exists (from `ad-library-scraper`), pull its blue-box / blue-ocean findings into the matrix rather than re-deriving them.
+
+### Per-Competitor Profile
+| Competitor | Their core claim | Proof they show | Awareness/sophistication they target | Their weakness (from reviews) | Our counter |
+|---|---|---|---|---|---|
+{{competitor_profile_rows}}
+
+### Opportunity Matrix
+| Opportunity | Type | Who owns it now | Why it's open | Our angle to take it |
+|---|---|---|---|---|
+{{opportunity_matrix_rows}}
+
+**Opportunity types:** `blue-box` (a claim every competitor makes — table stakes, match it, don't lead with it) · `blue-ocean` (a claim or mechanism NO competitor makes — lead here) · `weak-proof` (a claim competitors make but can't back — out-prove them) · `unmarketed-advantage` (something the client genuinely has that no competitor mentions).
+
+### Differentiation Strategy
+- **Unique mechanism to claim:** {{unique_mechanism}}
+- **Strongest blue-ocean gap:** {{strongest_gap}}
+- **Where every competitor is weak (out-prove them here):** {{shared_weakness}}
+- **Client advantage to start marketing now:** {{unmarketed_advantage}}
+
+> Saturation note: in a Stage 4-5 (exhausted) market, plain claims are dead — lead with the unique mechanism from this matrix, not the claim. Cross-check §4 sophistication before picking the differentiation lane.
 
 ---
 

@@ -3,8 +3,18 @@
 
 Final step of /ads:scrape-library. Idempotent. Safe to re-run.
 
+Canonical store: GHOST POSTGRES (this script's destination), not the SQLite.
+  The SQLite (swipe-files/<industry>/ads-db.sqlite) is a TRANSIENT build artifact:
+  rebuild_ads_db.py regenerates it from the durable per-ad JSON files
+  (swipe-files/<industry>/pages/<page_id>/ads/<ad_id>.json) right before this sync,
+  and it is expendable afterward. The JSON files are the durable on-disk seed; Ghost
+  Postgres is the live queryable source of truth. If ads-db.sqlite is missing, regenerate:
+    python3 scripts/ad_library/rebuild_ads_db.py --industry <industry>   # JSON -> SQLite (local)
+    python3 scripts/ghost-sync.py <industry>                             # SQLite -> Ghost (canonical write)
+  See skills/ad-library-scraper/SKILL.md §"Canonical store" for the full hierarchy.
+
 What it does:
-  1. Reads swipe-files/<industry>/ads-db.sqlite (canonical source)
+  1. Reads swipe-files/<industry>/ads-db.sqlite (the transient intermediate)
   2. Upserts industries → pages → ads → transcripts → classifications
   3. Temporal reconciliation: ads that were ACTIVE last run but absent from this
      scrape get flipped to INACTIVE with stopped_date=today
