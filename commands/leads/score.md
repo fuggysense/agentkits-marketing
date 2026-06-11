@@ -166,9 +166,9 @@ Load these files first:
 
 | Task | Agent | Trigger |
 |------|-------|---------|
-| Model design | `lead-qualifier` | Primary task |
-| Behavioral analysis | `continuity-specialist` | Engagement patterns |
-| Implementation spec | `docs-manager` | Complete scope |
+| Model design | `persona-builder` | Primary task |
+| Behavioral analysis | `(retired)` | Engagement patterns |
+| Implementation spec | `(retired)` | Complete scope |
 
 ---
 

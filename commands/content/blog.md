@@ -1,9 +1,13 @@
 ---
-description: Create SEO-optimized blog post
+description: "[DEPRECATED] Create SEO-optimized blog post"
 version: "1.0.0"
 brand: AgentKits Marketing by AityTech
 argument-hint: [topic]
+deprecated: true
+deprecation-note: "The /content:* family is superseded by /copy:* (see .claude/rules/_index.md). For long-form prose use the copywriting skill; for SEO structure pair it with seo-mastery."
 ---
+
+> **DEPRECATED.** `/content:*` is superseded by `/copy:*` (see `.claude/rules/_index.md`). There is no `/copy:blog` — write the post with the `copywriting` skill and layer `seo-mastery` for search structure. Kept for reference only.
 
 ## Prerequisites
 
@@ -239,8 +243,8 @@ Load context in this order:
 | Task | Agent | Trigger |
 |------|-------|---------|
 | Content writing | `copywriter` | Primary task |
-| SEO optimization | `seo-specialist` | Technical SEO |
-| Keyword research | `attraction-specialist` | Topic research |
+| SEO optimization | `researcher` | Technical SEO |
+| Keyword research | `researcher` | Topic research |
 
 ---
 

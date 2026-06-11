@@ -1,9 +1,13 @@
 ---
-description: Analyze the current content and optimize for conversion
+description: "[DEPRECATED] Analyze the current content and optimize for conversion"
 version: "1.0.0"
 brand: AgentKits Marketing by AityTech
 argument-hint: [url-or-content]
+deprecated: true
+deprecation-note: "The /content:* family is superseded by /copy:* (see .claude/rules/_index.md). For conversion optimization use /cro:page (or the page-cro skill)."
 ---
+
+> **DEPRECATED.** `/content:*` is superseded by `/copy:*` (see `.claude/rules/_index.md`). For conversion work, use `/cro:page` or the `page-cro` skill. Kept for reference only.
 
 ## Language & Quality Standards
 
@@ -140,7 +144,7 @@ argument-hint: [url-or-content]
 |------|-------|---------|
 | CRO analysis | `conversion-optimizer` | Primary analysis |
 | Copy rewrite | `copywriter` | Messaging fixes |
-| Psychology review | `brainstormer` | Persuasion elements |
+| Psychology review | `copywriter` | Persuasion elements |
 
 ---
 

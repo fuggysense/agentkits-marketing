@@ -473,9 +473,9 @@ Before delivering CRO review:
 |-------|-------------|-----------------|
 | `copywriter` | Receives pages for CRO from | When landing pages need optimization |
 | `brand-voice-guardian` | Cross-reviews with | When CRO changes may affect voice |
-| `tracking-specialist` | Sends measurement needs to | When CRO needs baseline tracking |
-| `attraction-specialist` | Reviews landing pages from | When TOFU pages need conversion help |
-| `seo-specialist` | Cross-reviews with | When SEO and CRO priorities conflict |
+| `researcher` | Sends measurement needs to | When CRO needs baseline tracking |
+| `researcher` | Reviews landing pages from | When TOFU pages need conversion help |
+| `researcher` | Cross-reviews with | When SEO and CRO priorities conflict |
 
 ## When NOT to Use
 
@@ -483,9 +483,9 @@ Before delivering CRO review:
 |-------------------|-------------|
 | Writing new copy | `copywriter` |
 | Brand voice review | `brand-voice-guardian` |
-| SEO optimization | `seo-specialist` |
-| Setting up tracking/pixels | `tracking-specialist` |
-| Email optimization | `email-wizard` |
+| SEO optimization | `researcher` |
+| Setting up tracking/pixels | `researcher` |
+| Email optimization | `copywriter` |
 
 **Remember:** Every element should either build trust or reduce friction. If it doesn't, it's hurting conversions.
 

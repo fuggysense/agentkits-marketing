@@ -156,8 +156,8 @@ Load these files first:
 
 | Task | Agent | Trigger |
 |------|-------|---------|
-| Sequence design | `email-wizard` | Primary task |
-| Entry criteria | `lead-qualifier` | Trigger definition |
+| Sequence design | `copywriter` | Primary task |
+| Entry criteria | `persona-builder` | Trigger definition |
 | Content creation | `copywriter` | Email copy |
 
 ---

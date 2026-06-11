@@ -195,8 +195,8 @@ echo "Report Date: $CURRENT_DATE"
 | Task | Agent | Trigger |
 |------|-------|---------|
 | Data compilation | `researcher` | Report generation |
-| Analysis | `lead-qualifier` | Performance review |
-| Insights | `planner` | Recommendations |
+| Analysis | `persona-builder` | Performance review |
+| Insights | `(retired)` | Recommendations |
 
 ---
 

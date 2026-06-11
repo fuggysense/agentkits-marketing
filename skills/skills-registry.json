@@ -7,83 +7,203 @@
   "categories": {
     "core": {
       "description": "Foundational marketing knowledge and frameworks",
-      "skills": ["marketing-fundamentals", "marketing-psychology", "marketing-ideas", "seo-mastery", "social-media", "linkedin-optimization", "email-marketing", "paid-advertising", "content-strategy", "analytics-attribution", "brand-building", "problem-solving", "offer-builder"]
+      "skills": [
+        "marketing-fundamentals",
+        "marketing-psychology",
+        "marketing-ideas",
+        "seo-mastery",
+        "social-media",
+        "linkedin-optimization",
+        "email-marketing",
+        "paid-advertising",
+        "content-strategy",
+        "analytics-attribution",
+        "brand-building",
+        "problem-solving",
+        "offer-builder"
+      ]
     },
     "cro": {
       "description": "Conversion rate optimization across touchpoints",
-      "skills": ["page-cro", "form-cro", "popup-cro", "signup-flow-cro", "onboarding-cro", "paywall-upgrade-cro", "ab-test-setup"]
+      "skills": [
+        "page-cro",
+        "form-cro",
+        "popup-cro",
+        "signup-flow-cro",
+        "onboarding-cro",
+        "paywall-upgrade-cro",
+        "ab-test-setup"
+      ]
     },
     "content": {
       "description": "Content creation and copywriting",
-      "skills": ["copywriting", "copy-editing", "email-sequence", "website-design", "linkedin-content", "video-director", "content-moat", "youtube-content", "tiktok-slideshows", "image-generation"]
+      "skills": [
+        "copywriting",
+        "copy-editing",
+        "email-sequence",
+        "website-design",
+        "linkedin-content",
+        "video-director",
+        "content-moat",
+        "youtube-content",
+        "tiktok-slideshows",
+        "image-generation"
+      ]
     },
     "seo-growth": {
       "description": "SEO and growth-focused strategies",
-      "skills": ["programmatic-seo", "schema-markup", "competitor-alternatives", "launch-strategy", "pricing-strategy", "referral-program", "free-tool-strategy"]
+      "skills": [
+        "programmatic-seo",
+        "schema-markup",
+        "competitor-alternatives",
+        "launch-strategy",
+        "pricing-strategy",
+        "referral-program",
+        "free-tool-strategy"
+      ]
     },
     "document": {
       "description": "Document creation skills",
-      "skills": ["document-skills/docx", "document-skills/pdf", "document-skills/pptx", "document-skills/xlsx"]
+      "skills": [
+        "document-skills/docx",
+        "document-skills/pdf",
+        "document-skills/pptx",
+        "document-skills/xlsx"
+      ]
     },
     "paid-media": {
       "description": "Paid media auditing, optimization, and ad deployment",
-      "skills": ["paid-media-audit", "meta-ads-uploader"]
+      "skills": [
+        "paid-media-audit",
+        "meta-ads-uploader"
+      ]
     },
     "onboarding": {
       "description": "Client and project onboarding",
-      "skills": ["client-onboarding"]
+      "skills": [
+        "client-onboarding"
+      ]
     },
     "campaign": {
       "description": "Campaign execution and state management",
-      "skills": ["campaign-runner"]
+      "skills": [
+        "campaign-runner"
+      ]
     },
     "research": {
       "description": "Deep research and analysis capabilities",
-      "skills": ["deep-research"]
+      "skills": [
+        "deep-research"
+      ]
     },
     "quality-assurance": {
       "description": "Quality control, verification, and structured execution",
-      "skills": ["verification-loops", "multi-agent-consensus", "prompt-contracts", "agent-chatrooms"]
+      "skills": [
+        "verification-loops",
+        "multi-agent-consensus",
+        "prompt-contracts",
+        "agent-chatrooms"
+      ]
     },
     "specialized": {
       "description": "System tools for managing and improving the skill/agent ecosystem",
-      "skills": ["claude-md", "knowledge-hygiene", "autoresearch"]
+      "skills": [
+        "claude-md",
+        "knowledge-hygiene",
+        "autoresearch"
+      ]
     },
     "utility": {
       "description": "Utility skills for content processing",
-      "skills": ["transcribe", "scrapecreators", "unslop"]
+      "skills": [
+        "transcribe",
+        "scrapecreators",
+        "unslop"
+      ]
     }
   },
   "dependencyGraph": {
-    "form-cro": ["page-cro"],
-    "popup-cro": ["page-cro"],
-    "signup-flow-cro": ["form-cro"],
-    "onboarding-cro": ["signup-flow-cro"],
-    "paywall-upgrade-cro": ["page-cro", "pricing-strategy"],
-    "ab-test-setup": ["page-cro", "analytics-attribution"],
-    "copy-editing": ["copywriting"],
+    "form-cro": [
+      "page-cro"
+    ],
+    "popup-cro": [
+      "page-cro"
+    ],
+    "signup-flow-cro": [
+      "form-cro"
+    ],
+    "onboarding-cro": [
+      "signup-flow-cro"
+    ],
+    "paywall-upgrade-cro": [
+      "page-cro",
+      "pricing-strategy"
+    ],
+    "ab-test-setup": [
+      "page-cro",
+      "analytics-attribution"
+    ],
+    "copy-editing": [
+      "copywriting"
+    ],
     "unslop": [],
-    "email-sequence": ["email-marketing", "copywriting"],
-    "programmatic-seo": ["seo-mastery", "analytics-attribution", "content-strategy"],
-    "schema-markup": ["seo-mastery"],
-    "competitor-alternatives": ["seo-mastery", "copywriting"],
-    "launch-strategy": ["content-strategy", "social-media"],
-    "referral-program": ["marketing-fundamentals"],
-    "free-tool-strategy": ["seo-mastery", "content-strategy"],
-    "paid-media-audit": ["paid-advertising", "analytics-attribution"],
-    "meta-ads-uploader": ["paid-advertising"],
+    "email-sequence": [
+      "email-marketing",
+      "copywriting"
+    ],
+    "programmatic-seo": [
+      "seo-mastery",
+      "analytics-attribution",
+      "content-strategy"
+    ],
+    "schema-markup": [
+      "seo-mastery"
+    ],
+    "competitor-alternatives": [
+      "seo-mastery",
+      "copywriting"
+    ],
+    "launch-strategy": [
+      "content-strategy",
+      "social-media"
+    ],
+    "referral-program": [
+      "marketing-fundamentals"
+    ],
+    "free-tool-strategy": [
+      "seo-mastery",
+      "content-strategy"
+    ],
+    "paid-media-audit": [
+      "paid-advertising",
+      "analytics-attribution"
+    ],
+    "meta-ads-uploader": [
+      "paid-advertising"
+    ],
     "client-onboarding": [],
     "offer-builder": [],
-    "linkedin-optimization": ["social-media"],
-    "linkedin-content": ["linkedin-optimization", "copywriting"],
-    "campaign-runner": ["content-strategy", "social-media", "analytics-attribution"],
+    "linkedin-optimization": [
+      "social-media"
+    ],
+    "linkedin-content": [
+      "linkedin-optimization",
+      "copywriting"
+    ],
+    "campaign-runner": [
+      "content-strategy",
+      "social-media",
+      "analytics-attribution"
+    ],
     "deep-research": [],
     "website-design": [],
     "verification-loops": [],
     "multi-agent-consensus": [],
     "prompt-contracts": [],
     "agent-chatrooms": [],
-    "video-director": ["image-generation"]
+    "video-director": [
+      "image-generation"
+    ]
   },
   "skills": [
     {
@@ -94,15 +214,38 @@
       "version": "1.0.0",
       "difficulty": "beginner",
       "description": "Core marketing concepts, psychology, and frameworks for effective marketing",
-      "triggers": ["marketing basics", "funnel", "TOFU", "MOFU", "BOFU", "customer journey", "positioning", "value proposition", "marketing psychology", "marketing framework"],
+      "triggers": [
+        "marketing basics",
+        "funnel",
+        "TOFU",
+        "MOFU",
+        "BOFU",
+        "customer journey",
+        "positioning",
+        "value proposition",
+        "marketing psychology",
+        "marketing framework"
+      ],
       "prerequisites": [],
-      "relatedSkills": ["marketing-psychology", "brand-building", "content-strategy"],
-      "agents": ["researcher", "brainstormer", "planner"],
+      "relatedSkills": [
+        "marketing-psychology",
+        "brand-building",
+        "content-strategy"
+      ],
+      "agents": [
+        "researcher",
+        "copywriter"
+      ],
       "mcpIntegrations": {
         "required": [],
-        "optional": ["google-analytics"]
+        "optional": [
+          "google-analytics"
+        ]
       },
-      "successMetrics": ["funnel_conversion", "customer_acquisition"],
+      "successMetrics": [
+        "funnel_conversion",
+        "customer_acquisition"
+      ],
       "hasReferences": true
     },
     {
@@ -113,15 +256,38 @@
       "version": "1.0.0",
       "difficulty": "intermediate",
       "description": "70+ mental models and psychological principles for marketing",
-      "triggers": ["psychology", "mental models", "cognitive bias", "persuasion", "behavioral science", "why people buy", "decision-making", "consumer behavior", "first principles", "jobs to be done"],
-      "prerequisites": ["marketing-fundamentals"],
-      "relatedSkills": ["marketing-fundamentals", "copywriting", "page-cro"],
-      "agents": ["brainstormer", "copywriter", "conversion-optimizer"],
+      "triggers": [
+        "psychology",
+        "mental models",
+        "cognitive bias",
+        "persuasion",
+        "behavioral science",
+        "why people buy",
+        "decision-making",
+        "consumer behavior",
+        "first principles",
+        "jobs to be done"
+      ],
+      "prerequisites": [
+        "marketing-fundamentals"
+      ],
+      "relatedSkills": [
+        "marketing-fundamentals",
+        "copywriting",
+        "page-cro"
+      ],
+      "agents": [
+        "copywriter",
+        "conversion-optimizer"
+      ],
       "mcpIntegrations": {
         "required": [],
         "optional": []
       },
-      "successMetrics": ["conversion_rate", "engagement_rate"],
+      "successMetrics": [
+        "conversion_rate",
+        "engagement_rate"
+      ],
       "hasReferences": false
     },
     {
@@ -132,15 +298,33 @@
       "version": "1.0.0",
       "difficulty": "beginner",
       "description": "140+ proven SaaS marketing strategies and tactics",
-      "triggers": ["marketing ideas", "growth ideas", "how to market", "marketing strategies", "marketing tactics", "ways to promote", "ideas to grow", "growth hacking"],
+      "triggers": [
+        "marketing ideas",
+        "growth ideas",
+        "how to market",
+        "marketing strategies",
+        "marketing tactics",
+        "ways to promote",
+        "ideas to grow",
+        "growth hacking"
+      ],
       "prerequisites": [],
-      "relatedSkills": ["marketing-fundamentals", "content-strategy", "social-media"],
-      "agents": ["brainstormer", "planner", "researcher"],
+      "relatedSkills": [
+        "marketing-fundamentals",
+        "content-strategy",
+        "social-media"
+      ],
+      "agents": [
+        "copywriter",
+        "researcher"
+      ],
       "mcpIntegrations": {
         "required": [],
         "optional": []
       },
-      "successMetrics": ["idea_implementation_rate"],
+      "successMetrics": [
+        "idea_implementation_rate"
+      ],
       "hasReferences": false
     },
     {
@@ -151,15 +335,42 @@
       "version": "1.0.0",
       "difficulty": "intermediate",
       "description": "Search engine optimization strategies for organic growth",
-      "triggers": ["SEO", "search optimization", "keyword research", "organic traffic", "rankings", "backlinks", "on-page SEO", "technical SEO", "search intent", "SERP"],
-      "prerequisites": ["content-strategy"],
-      "relatedSkills": ["programmatic-seo", "schema-markup", "content-strategy"],
-      "agents": ["attraction-specialist", "seo-specialist"],
+      "triggers": [
+        "SEO",
+        "search optimization",
+        "keyword research",
+        "organic traffic",
+        "rankings",
+        "backlinks",
+        "on-page SEO",
+        "technical SEO",
+        "search intent",
+        "SERP"
+      ],
+      "prerequisites": [
+        "content-strategy"
+      ],
+      "relatedSkills": [
+        "programmatic-seo",
+        "schema-markup",
+        "content-strategy"
+      ],
+      "agents": [
+        "researcher"
+      ],
       "mcpIntegrations": {
         "required": [],
-        "optional": ["google-search-console", "semrush", "dataforseo"]
+        "optional": [
+          "google-search-console",
+          "semrush",
+          "dataforseo"
+        ]
       },
-      "successMetrics": ["organic_traffic", "keyword_rankings", "domain_authority"],
+      "successMetrics": [
+        "organic_traffic",
+        "keyword_rankings",
+        "domain_authority"
+      ],
       "hasReferences": true
     },
     {
@@ -170,15 +381,41 @@
       "version": "1.0.0",
       "difficulty": "intermediate",
       "description": "Social media strategy, content creation, and platform optimization",
-      "triggers": ["social media", "Twitter", "LinkedIn", "Instagram", "TikTok", "Facebook", "social content", "engagement", "viral", "algorithm"],
-      "prerequisites": ["content-strategy"],
-      "relatedSkills": ["content-strategy", "copywriting", "paid-advertising"],
-      "agents": ["attraction-specialist", "copywriter"],
+      "triggers": [
+        "social media",
+        "Twitter",
+        "LinkedIn",
+        "Instagram",
+        "TikTok",
+        "Facebook",
+        "social content",
+        "engagement",
+        "viral",
+        "algorithm"
+      ],
+      "prerequisites": [
+        "content-strategy"
+      ],
+      "relatedSkills": [
+        "content-strategy",
+        "copywriting",
+        "paid-advertising"
+      ],
+      "agents": [
+        "researcher",
+        "copywriter"
+      ],
       "mcpIntegrations": {
         "required": [],
-        "optional": ["twitter"]
+        "optional": [
+          "twitter"
+        ]
       },
-      "successMetrics": ["engagement_rate", "follower_growth", "reach"],
+      "successMetrics": [
+        "engagement_rate",
+        "follower_growth",
+        "reach"
+      ],
       "hasReferences": true
     },
     {
@@ -189,15 +426,49 @@
       "version": "1.0.0",
       "difficulty": "intermediate",
       "description": "LinkedIn organic optimization — profile audit, algorithm, content type playbooks, creator mode, B2B sales, engagement, newsletters, banner design",
-      "triggers": ["LinkedIn profile", "LinkedIn optimization", "LinkedIn content", "LinkedIn strategy", "LinkedIn algorithm", "LinkedIn profile audit", "LinkedIn banner", "LinkedIn content ideas", "LinkedIn newsletter", "LinkedIn engagement", "LinkedIn creator mode", "LinkedIn SSI", "LinkedIn B2B", "LinkedIn organic"],
-      "prerequisites": ["social-media"],
-      "relatedSkills": ["social-media", "paid-advertising", "copywriting", "content-strategy", "image-generation"],
-      "agents": ["attraction-specialist", "copywriter", "brainstormer"],
+      "triggers": [
+        "LinkedIn profile",
+        "LinkedIn optimization",
+        "LinkedIn content",
+        "LinkedIn strategy",
+        "LinkedIn algorithm",
+        "LinkedIn profile audit",
+        "LinkedIn banner",
+        "LinkedIn content ideas",
+        "LinkedIn newsletter",
+        "LinkedIn engagement",
+        "LinkedIn creator mode",
+        "LinkedIn SSI",
+        "LinkedIn B2B",
+        "LinkedIn organic"
+      ],
+      "prerequisites": [
+        "social-media"
+      ],
+      "relatedSkills": [
+        "social-media",
+        "paid-advertising",
+        "copywriting",
+        "content-strategy",
+        "image-generation"
+      ],
+      "agents": [
+        "researcher",
+        "copywriter"
+      ],
       "mcpIntegrations": {
         "required": [],
-        "optional": ["postiz"]
+        "optional": [
+          "postiz"
+        ]
       },
-      "successMetrics": ["SSI_score", "engagement_rate", "profile_views", "follower_growth", "connection_acceptance_rate"],
+      "successMetrics": [
+        "SSI_score",
+        "engagement_rate",
+        "profile_views",
+        "follower_growth",
+        "connection_acceptance_rate"
+      ],
       "hasReferences": true
     },
     {
@@ -208,15 +479,39 @@
       "version": "1.0.0",
       "difficulty": "intermediate",
       "description": "Email campaign strategy, automation, and optimization",
-      "triggers": ["email marketing", "email campaign", "newsletter", "deliverability", "open rate", "click rate", "email automation", "email list"],
-      "prerequisites": ["copywriting"],
-      "relatedSkills": ["email-sequence", "copywriting", "analytics-attribution"],
-      "agents": ["email-wizard", "copywriter"],
+      "triggers": [
+        "email marketing",
+        "email campaign",
+        "newsletter",
+        "deliverability",
+        "open rate",
+        "click rate",
+        "email automation",
+        "email list"
+      ],
+      "prerequisites": [
+        "copywriting"
+      ],
+      "relatedSkills": [
+        "email-sequence",
+        "copywriting",
+        "analytics-attribution"
+      ],
+      "agents": [
+        "copywriter"
+      ],
       "mcpIntegrations": {
         "required": [],
-        "optional": ["hubspot"]
+        "optional": [
+          "hubspot"
+        ]
       },
-      "successMetrics": ["open_rate", "click_rate", "conversion_rate", "unsubscribe_rate"],
+      "successMetrics": [
+        "open_rate",
+        "click_rate",
+        "conversion_rate",
+        "unsubscribe_rate"
+      ],
       "hasReferences": true
     },
     {
@@ -227,15 +522,42 @@
       "version": "1.0.0",
       "difficulty": "intermediate",
       "description": "Paid media strategy across platforms for customer acquisition",
-      "triggers": ["paid ads", "PPC", "Google Ads", "Facebook Ads", "Meta Ads", "LinkedIn Ads", "ROAS", "CPC", "CPL", "ad campaign"],
-      "prerequisites": ["analytics-attribution"],
-      "relatedSkills": ["analytics-attribution", "copywriting", "page-cro"],
-      "agents": ["attraction-specialist", "tracking-specialist"],
+      "triggers": [
+        "paid ads",
+        "PPC",
+        "Google Ads",
+        "Facebook Ads",
+        "Meta Ads",
+        "LinkedIn Ads",
+        "ROAS",
+        "CPC",
+        "CPL",
+        "ad campaign"
+      ],
+      "prerequisites": [
+        "analytics-attribution"
+      ],
+      "relatedSkills": [
+        "analytics-attribution",
+        "copywriting",
+        "page-cro"
+      ],
+      "agents": [
+        "researcher"
+      ],
       "mcpIntegrations": {
         "required": [],
-        "optional": ["meta-ads", "google-analytics"]
+        "optional": [
+          "meta-ads",
+          "google-analytics"
+        ]
       },
-      "successMetrics": ["ROAS", "CPC", "CPA", "conversion_rate"],
+      "successMetrics": [
+        "ROAS",
+        "CPC",
+        "CPA",
+        "conversion_rate"
+      ],
       "hasReferences": true
     },
     {
@@ -246,15 +568,39 @@
       "version": "1.0.0",
       "difficulty": "intermediate",
       "description": "Content planning, creation, and distribution strategy",
-      "triggers": ["content strategy", "content calendar", "editorial", "content pillars", "content marketing", "blog strategy", "content distribution"],
-      "prerequisites": ["marketing-fundamentals"],
-      "relatedSkills": ["seo-mastery", "copywriting", "social-media"],
-      "agents": ["planner", "copywriter", "attraction-specialist"],
+      "triggers": [
+        "content strategy",
+        "content calendar",
+        "editorial",
+        "content pillars",
+        "content marketing",
+        "blog strategy",
+        "content distribution"
+      ],
+      "prerequisites": [
+        "marketing-fundamentals"
+      ],
+      "relatedSkills": [
+        "seo-mastery",
+        "copywriting",
+        "social-media"
+      ],
+      "agents": [
+        "copywriter",
+        "researcher"
+      ],
       "mcpIntegrations": {
         "required": [],
-        "optional": ["notion", "asana"]
+        "optional": [
+          "notion",
+          "asana"
+        ]
       },
-      "successMetrics": ["content_output", "engagement", "traffic_growth"],
+      "successMetrics": [
+        "content_output",
+        "engagement",
+        "traffic_growth"
+      ],
       "hasReferences": true
     },
     {
@@ -265,15 +611,39 @@
       "version": "1.0.0",
       "difficulty": "advanced",
       "description": "Performance measurement, attribution modeling, and marketing ROI",
-      "triggers": ["analytics", "attribution", "tracking", "ROI", "CAC", "LTV", "dashboard", "reporting", "conversion tracking", "marketing metrics"],
-      "prerequisites": ["marketing-fundamentals"],
-      "relatedSkills": ["ab-test-setup", "paid-advertising"],
-      "agents": ["project-manager", "researcher", "tracking-specialist"],
+      "triggers": [
+        "analytics",
+        "attribution",
+        "tracking",
+        "ROI",
+        "CAC",
+        "LTV",
+        "dashboard",
+        "reporting",
+        "conversion tracking",
+        "marketing metrics"
+      ],
+      "prerequisites": [
+        "marketing-fundamentals"
+      ],
+      "relatedSkills": [
+        "ab-test-setup",
+        "paid-advertising"
+      ],
+      "agents": [
+        "researcher"
+      ],
       "mcpIntegrations": {
         "required": [],
-        "optional": ["google-analytics", "google-search-console"]
+        "optional": [
+          "google-analytics",
+          "google-search-console"
+        ]
       },
-      "successMetrics": ["tracking_accuracy", "attribution_confidence"],
+      "successMetrics": [
+        "tracking_accuracy",
+        "attribution_confidence"
+      ],
       "hasReferences": true
     },
     {
@@ -284,15 +654,34 @@
       "version": "1.0.0",
       "difficulty": "intermediate",
       "description": "Brand strategy, identity, positioning, and voice development",
-      "triggers": ["brand", "branding", "brand voice", "positioning", "brand guidelines", "brand identity", "brand strategy", "tone of voice"],
-      "prerequisites": ["marketing-fundamentals"],
-      "relatedSkills": ["copywriting", "content-strategy"],
-      "agents": ["docs-manager", "brand-voice-guardian"],
+      "triggers": [
+        "brand",
+        "branding",
+        "brand voice",
+        "positioning",
+        "brand guidelines",
+        "brand identity",
+        "brand strategy",
+        "tone of voice"
+      ],
+      "prerequisites": [
+        "marketing-fundamentals"
+      ],
+      "relatedSkills": [
+        "copywriting",
+        "content-strategy"
+      ],
+      "agents": [
+        "brand-voice-guardian"
+      ],
       "mcpIntegrations": {
         "required": [],
         "optional": []
       },
-      "successMetrics": ["brand_consistency", "brand_awareness"],
+      "successMetrics": [
+        "brand_consistency",
+        "brand_awareness"
+      ],
       "hasReferences": true
     },
     {
@@ -303,15 +692,31 @@
       "version": "1.0.0",
       "difficulty": "advanced",
       "description": "Systematic problem-solving techniques for marketing challenges",
-      "triggers": ["stuck", "problem", "challenge", "complexity", "creative block", "campaign issues", "troubleshooting", "optimization"],
+      "triggers": [
+        "stuck",
+        "problem",
+        "challenge",
+        "complexity",
+        "creative block",
+        "campaign issues",
+        "troubleshooting",
+        "optimization"
+      ],
       "prerequisites": [],
-      "relatedSkills": ["marketing-psychology", "marketing-fundamentals"],
-      "agents": ["brainstormer", "planner"],
+      "relatedSkills": [
+        "marketing-psychology",
+        "marketing-fundamentals"
+      ],
+      "agents": [
+        "copywriter"
+      ],
       "mcpIntegrations": {
         "required": [],
         "optional": []
       },
-      "successMetrics": ["problem_resolution_rate"],
+      "successMetrics": [
+        "problem_resolution_rate"
+      ],
       "hasReferences": true
     },
     {
@@ -322,15 +727,38 @@
       "version": "1.0.0",
       "difficulty": "intermediate",
       "description": "Optimize marketing pages for conversions",
-      "triggers": ["CRO", "conversion rate optimization", "landing page", "homepage", "pricing page", "improve conversions", "bounce rate", "page optimization"],
+      "triggers": [
+        "CRO",
+        "conversion rate optimization",
+        "landing page",
+        "homepage",
+        "pricing page",
+        "improve conversions",
+        "bounce rate",
+        "page optimization"
+      ],
       "prerequisites": [],
-      "relatedSkills": ["form-cro", "popup-cro", "ab-test-setup", "copywriting"],
-      "agents": ["conversion-optimizer", "attraction-specialist"],
+      "relatedSkills": [
+        "form-cro",
+        "popup-cro",
+        "ab-test-setup",
+        "copywriting"
+      ],
+      "agents": [
+        "conversion-optimizer",
+        "researcher"
+      ],
       "mcpIntegrations": {
         "required": [],
-        "optional": ["google-analytics"]
+        "optional": [
+          "google-analytics"
+        ]
       },
-      "successMetrics": ["conversion_rate", "bounce_rate", "time_on_page"],
+      "successMetrics": [
+        "conversion_rate",
+        "bounce_rate",
+        "time_on_page"
+      ],
       "hasReferences": false
     },
     {
@@ -341,15 +769,38 @@
       "version": "1.0.0",
       "difficulty": "intermediate",
       "description": "Optimize lead capture, contact, and demo request forms",
-      "triggers": ["form optimization", "lead form", "contact form", "demo request", "form fields", "form completion rate", "form friction", "form conversions"],
-      "prerequisites": ["page-cro"],
-      "relatedSkills": ["page-cro", "signup-flow-cro", "popup-cro"],
-      "agents": ["conversion-optimizer"],
+      "triggers": [
+        "form optimization",
+        "lead form",
+        "contact form",
+        "demo request",
+        "form fields",
+        "form completion rate",
+        "form friction",
+        "form conversions"
+      ],
+      "prerequisites": [
+        "page-cro"
+      ],
+      "relatedSkills": [
+        "page-cro",
+        "signup-flow-cro",
+        "popup-cro"
+      ],
+      "agents": [
+        "conversion-optimizer"
+      ],
       "mcpIntegrations": {
         "required": [],
-        "optional": ["google-analytics", "hubspot"]
+        "optional": [
+          "google-analytics",
+          "hubspot"
+        ]
       },
-      "successMetrics": ["form_completion_rate", "field_drop_off"],
+      "successMetrics": [
+        "form_completion_rate",
+        "field_drop_off"
+      ],
       "hasReferences": false
     },
     {
@@ -360,15 +811,38 @@
       "version": "1.0.0",
       "difficulty": "intermediate",
       "description": "Create and optimize popups, modals, and overlays",
-      "triggers": ["popup", "modal", "overlay", "exit intent", "email popup", "lead capture popup", "announcement banner", "slide-in"],
-      "prerequisites": ["page-cro"],
-      "relatedSkills": ["page-cro", "form-cro", "copywriting"],
-      "agents": ["conversion-optimizer", "copywriter"],
+      "triggers": [
+        "popup",
+        "modal",
+        "overlay",
+        "exit intent",
+        "email popup",
+        "lead capture popup",
+        "announcement banner",
+        "slide-in"
+      ],
+      "prerequisites": [
+        "page-cro"
+      ],
+      "relatedSkills": [
+        "page-cro",
+        "form-cro",
+        "copywriting"
+      ],
+      "agents": [
+        "conversion-optimizer",
+        "copywriter"
+      ],
       "mcpIntegrations": {
         "required": [],
-        "optional": ["google-analytics"]
+        "optional": [
+          "google-analytics"
+        ]
       },
-      "successMetrics": ["popup_conversion_rate", "close_rate"],
+      "successMetrics": [
+        "popup_conversion_rate",
+        "close_rate"
+      ],
       "hasReferences": false
     },
     {
@@ -379,15 +853,35 @@
       "version": "1.0.0",
       "difficulty": "intermediate",
       "description": "Optimize signup, registration, and trial activation flows",
-      "triggers": ["signup", "registration", "account creation", "trial signup", "signup form", "signup dropoff", "registration friction"],
-      "prerequisites": ["form-cro"],
-      "relatedSkills": ["form-cro", "onboarding-cro"],
-      "agents": ["conversion-optimizer"],
+      "triggers": [
+        "signup",
+        "registration",
+        "account creation",
+        "trial signup",
+        "signup form",
+        "signup dropoff",
+        "registration friction"
+      ],
+      "prerequisites": [
+        "form-cro"
+      ],
+      "relatedSkills": [
+        "form-cro",
+        "onboarding-cro"
+      ],
+      "agents": [
+        "conversion-optimizer"
+      ],
       "mcpIntegrations": {
         "required": [],
-        "optional": ["google-analytics"]
+        "optional": [
+          "google-analytics"
+        ]
       },
-      "successMetrics": ["signup_completion_rate", "step_drop_off"],
+      "successMetrics": [
+        "signup_completion_rate",
+        "step_drop_off"
+      ],
       "hasReferences": false
     },
     {
@@ -398,15 +892,37 @@
       "version": "1.0.0",
       "difficulty": "advanced",
       "description": "Optimize post-signup onboarding and user activation",
-      "triggers": ["onboarding", "activation", "first-run experience", "aha moment", "user activation", "time to value", "onboarding checklist", "empty states"],
-      "prerequisites": ["signup-flow-cro"],
-      "relatedSkills": ["signup-flow-cro", "email-sequence"],
-      "agents": ["conversion-optimizer", "continuity-specialist"],
+      "triggers": [
+        "onboarding",
+        "activation",
+        "first-run experience",
+        "aha moment",
+        "user activation",
+        "time to value",
+        "onboarding checklist",
+        "empty states"
+      ],
+      "prerequisites": [
+        "signup-flow-cro"
+      ],
+      "relatedSkills": [
+        "signup-flow-cro",
+        "email-sequence"
+      ],
+      "agents": [
+        "conversion-optimizer"
+      ],
       "mcpIntegrations": {
         "required": [],
-        "optional": ["google-analytics"]
+        "optional": [
+          "google-analytics"
+        ]
       },
-      "successMetrics": ["activation_rate", "time_to_value", "feature_adoption"],
+      "successMetrics": [
+        "activation_rate",
+        "time_to_value",
+        "feature_adoption"
+      ],
       "hasReferences": false
     },
     {
@@ -417,15 +933,38 @@
       "version": "1.0.0",
       "difficulty": "advanced",
       "description": "Optimize in-app paywalls, upgrade screens, and feature gates",
-      "triggers": ["paywall", "upgrade screen", "upsell modal", "feature gate", "freemium conversion", "trial expiration", "upgrade prompt", "in-app pricing"],
-      "prerequisites": ["page-cro", "pricing-strategy"],
-      "relatedSkills": ["pricing-strategy", "page-cro", "copywriting"],
-      "agents": ["conversion-optimizer", "upsell-maximizer"],
+      "triggers": [
+        "paywall",
+        "upgrade screen",
+        "upsell modal",
+        "feature gate",
+        "freemium conversion",
+        "trial expiration",
+        "upgrade prompt",
+        "in-app pricing"
+      ],
+      "prerequisites": [
+        "page-cro",
+        "pricing-strategy"
+      ],
+      "relatedSkills": [
+        "pricing-strategy",
+        "page-cro",
+        "copywriting"
+      ],
+      "agents": [
+        "conversion-optimizer"
+      ],
       "mcpIntegrations": {
         "required": [],
-        "optional": ["google-analytics"]
+        "optional": [
+          "google-analytics"
+        ]
       },
-      "successMetrics": ["upgrade_conversion_rate", "ARPU"],
+      "successMetrics": [
+        "upgrade_conversion_rate",
+        "ARPU"
+      ],
       "hasReferences": false
     },
     {
@@ -436,15 +975,38 @@
       "version": "1.0.0",
       "difficulty": "intermediate",
       "description": "Plan, design, and implement A/B tests",
-      "triggers": ["A/B test", "split test", "experiment", "test this change", "variant copy", "multivariate test", "hypothesis", "statistical significance"],
-      "prerequisites": ["page-cro", "analytics-attribution"],
-      "relatedSkills": ["page-cro", "analytics-attribution"],
-      "agents": ["conversion-optimizer", "researcher"],
+      "triggers": [
+        "A/B test",
+        "split test",
+        "experiment",
+        "test this change",
+        "variant copy",
+        "multivariate test",
+        "hypothesis",
+        "statistical significance"
+      ],
+      "prerequisites": [
+        "page-cro",
+        "analytics-attribution"
+      ],
+      "relatedSkills": [
+        "page-cro",
+        "analytics-attribution"
+      ],
+      "agents": [
+        "conversion-optimizer",
+        "researcher"
+      ],
       "mcpIntegrations": {
         "required": [],
-        "optional": ["google-analytics"]
+        "optional": [
+          "google-analytics"
+        ]
       },
-      "successMetrics": ["test_velocity", "win_rate"],
+      "successMetrics": [
+        "test_velocity",
+        "win_rate"
+      ],
       "hasReferences": false
     },
     {
@@ -455,15 +1017,34 @@
       "version": "1.0.0",
       "difficulty": "intermediate",
       "description": "Write marketing copy for pages, ads, and campaigns",
-      "triggers": ["write copy", "marketing copy", "headline", "CTA copy", "landing page copy", "homepage copy", "rewrite", "improve copy"],
+      "triggers": [
+        "write copy",
+        "marketing copy",
+        "headline",
+        "CTA copy",
+        "landing page copy",
+        "homepage copy",
+        "rewrite",
+        "improve copy"
+      ],
       "prerequisites": [],
-      "relatedSkills": ["copy-editing", "page-cro", "email-sequence"],
-      "agents": ["copywriter", "brand-voice-guardian"],
+      "relatedSkills": [
+        "copy-editing",
+        "page-cro",
+        "email-sequence"
+      ],
+      "agents": [
+        "copywriter",
+        "brand-voice-guardian"
+      ],
       "mcpIntegrations": {
         "required": [],
         "optional": []
       },
-      "successMetrics": ["conversion_rate", "engagement_rate"],
+      "successMetrics": [
+        "conversion_rate",
+        "engagement_rate"
+      ],
       "hasReferences": false
     },
     {
@@ -474,15 +1055,35 @@
       "version": "1.0.0",
       "difficulty": "intermediate",
       "description": "Edit and polish existing marketing copy",
-      "triggers": ["edit copy", "review copy", "copy feedback", "proofread", "polish", "make this better", "copy sweep", "improve writing"],
-      "prerequisites": ["copywriting"],
-      "relatedSkills": ["copywriting", "brand-building"],
-      "agents": ["copywriter", "brand-voice-guardian"],
+      "triggers": [
+        "edit copy",
+        "review copy",
+        "copy feedback",
+        "proofread",
+        "polish",
+        "make this better",
+        "copy sweep",
+        "improve writing"
+      ],
+      "prerequisites": [
+        "copywriting"
+      ],
+      "relatedSkills": [
+        "copywriting",
+        "brand-building"
+      ],
+      "agents": [
+        "copywriter",
+        "brand-voice-guardian"
+      ],
       "mcpIntegrations": {
         "required": [],
         "optional": []
       },
-      "successMetrics": ["clarity_improvement", "consistency_score"],
+      "successMetrics": [
+        "clarity_improvement",
+        "consistency_score"
+      ],
       "hasReferences": false
     },
     {
@@ -493,15 +1094,38 @@
       "version": "1.0.0",
       "difficulty": "intermediate",
       "description": "Create email sequences, drip campaigns, and automation flows",
-      "triggers": ["email sequence", "drip campaign", "nurture sequence", "welcome sequence", "onboarding emails", "re-engagement emails", "email automation", "lifecycle emails"],
-      "prerequisites": ["email-marketing", "copywriting"],
-      "relatedSkills": ["email-marketing", "copywriting", "onboarding-cro"],
-      "agents": ["email-wizard", "copywriter"],
+      "triggers": [
+        "email sequence",
+        "drip campaign",
+        "nurture sequence",
+        "welcome sequence",
+        "onboarding emails",
+        "re-engagement emails",
+        "email automation",
+        "lifecycle emails"
+      ],
+      "prerequisites": [
+        "email-marketing",
+        "copywriting"
+      ],
+      "relatedSkills": [
+        "email-marketing",
+        "copywriting",
+        "onboarding-cro"
+      ],
+      "agents": [
+        "copywriter"
+      ],
       "mcpIntegrations": {
         "required": [],
-        "optional": ["hubspot"]
+        "optional": [
+          "hubspot"
+        ]
       },
-      "successMetrics": ["sequence_completion_rate", "conversion_rate"],
+      "successMetrics": [
+        "sequence_completion_rate",
+        "conversion_rate"
+      ],
       "hasReferences": false
     },
     {
@@ -512,15 +1136,48 @@
       "version": "2.0.0",
       "difficulty": "advanced",
       "description": "pSEO 2.0 — JSON-first schema-driven pages at scale, niche taxonomy, quality gates, GEO",
-      "triggers": ["programmatic SEO", "pSEO 2.0", "JSON-first pages", "niche taxonomy", "schema-driven content", "template pages", "pages at scale", "directory pages", "location pages", "comparison pages", "integration pages", "GEO", "generative engine optimization"],
-      "prerequisites": ["seo-mastery"],
-      "relatedSkills": ["seo-mastery", "schema-markup", "competitor-alternatives", "analytics-attribution", "content-strategy", "website-design"],
-      "agents": ["pseo-architect", "attraction-specialist", "seo-specialist"],
+      "triggers": [
+        "programmatic SEO",
+        "pSEO 2.0",
+        "JSON-first pages",
+        "niche taxonomy",
+        "schema-driven content",
+        "template pages",
+        "pages at scale",
+        "directory pages",
+        "location pages",
+        "comparison pages",
+        "integration pages",
+        "GEO",
+        "generative engine optimization"
+      ],
+      "prerequisites": [
+        "seo-mastery"
+      ],
+      "relatedSkills": [
+        "seo-mastery",
+        "schema-markup",
+        "competitor-alternatives",
+        "analytics-attribution",
+        "content-strategy",
+        "website-design"
+      ],
+      "agents": [
+        "researcher"
+      ],
       "mcpIntegrations": {
         "required": [],
-        "optional": ["google-search-console", "semrush", "dataforseo"]
+        "optional": [
+          "google-search-console",
+          "semrush",
+          "dataforseo"
+        ]
       },
-      "successMetrics": ["indexed_pages", "organic_traffic", "keyword_coverage"],
+      "successMetrics": [
+        "indexed_pages",
+        "organic_traffic",
+        "keyword_coverage"
+      ],
       "hasReferences": true
     },
     {
@@ -531,15 +1188,36 @@
       "version": "1.0.0",
       "difficulty": "intermediate",
       "description": "Add and optimize structured data for rich snippets",
-      "triggers": ["schema", "structured data", "JSON-LD", "rich snippets", "schema.org", "FAQ schema", "product schema", "review schema"],
-      "prerequisites": ["seo-mastery"],
-      "relatedSkills": ["seo-mastery", "programmatic-seo"],
-      "agents": ["seo-specialist", "attraction-specialist"],
+      "triggers": [
+        "schema",
+        "structured data",
+        "JSON-LD",
+        "rich snippets",
+        "schema.org",
+        "FAQ schema",
+        "product schema",
+        "review schema"
+      ],
+      "prerequisites": [
+        "seo-mastery"
+      ],
+      "relatedSkills": [
+        "seo-mastery",
+        "programmatic-seo"
+      ],
+      "agents": [
+        "researcher"
+      ],
       "mcpIntegrations": {
         "required": [],
-        "optional": ["google-search-console"]
+        "optional": [
+          "google-search-console"
+        ]
       },
-      "successMetrics": ["rich_snippet_appearance", "CTR_improvement"],
+      "successMetrics": [
+        "rich_snippet_appearance",
+        "CTR_improvement"
+      ],
       "hasReferences": false
     },
     {
@@ -550,15 +1228,37 @@
       "version": "1.0.0",
       "difficulty": "intermediate",
       "description": "Create competitor comparison and alternative pages",
-      "triggers": ["alternative page", "vs page", "competitor comparison", "comparison page", "competitor vs", "alternative to"],
-      "prerequisites": ["seo-mastery", "copywriting"],
-      "relatedSkills": ["seo-mastery", "copywriting", "programmatic-seo"],
-      "agents": ["attraction-specialist", "researcher"],
+      "triggers": [
+        "alternative page",
+        "vs page",
+        "competitor comparison",
+        "comparison page",
+        "competitor vs",
+        "alternative to"
+      ],
+      "prerequisites": [
+        "seo-mastery",
+        "copywriting"
+      ],
+      "relatedSkills": [
+        "seo-mastery",
+        "copywriting",
+        "programmatic-seo"
+      ],
+      "agents": [
+        "researcher"
+      ],
       "mcpIntegrations": {
         "required": [],
-        "optional": ["semrush", "dataforseo"]
+        "optional": [
+          "semrush",
+          "dataforseo"
+        ]
       },
-      "successMetrics": ["comparison_page_traffic", "conversion_rate"],
+      "successMetrics": [
+        "comparison_page_traffic",
+        "conversion_rate"
+      ],
       "hasReferences": false
     },
     {
@@ -569,15 +1269,41 @@
       "version": "1.0.0",
       "difficulty": "intermediate",
       "description": "Plan product launches, feature announcements, and releases",
-      "triggers": ["launch", "Product Hunt", "feature release", "announcement", "go-to-market", "beta launch", "early access", "waitlist", "product update"],
-      "prerequisites": ["content-strategy", "social-media"],
-      "relatedSkills": ["content-strategy", "social-media", "email-sequence"],
-      "agents": ["planner", "project-manager", "copywriter"],
+      "triggers": [
+        "launch",
+        "Product Hunt",
+        "feature release",
+        "announcement",
+        "go-to-market",
+        "beta launch",
+        "early access",
+        "waitlist",
+        "product update"
+      ],
+      "prerequisites": [
+        "content-strategy",
+        "social-media"
+      ],
+      "relatedSkills": [
+        "content-strategy",
+        "social-media",
+        "email-sequence"
+      ],
+      "agents": [
+        "copywriter"
+      ],
       "mcpIntegrations": {
         "required": [],
-        "optional": ["slack", "twitter"]
+        "optional": [
+          "slack",
+          "twitter"
+        ]
       },
-      "successMetrics": ["launch_signups", "media_coverage", "social_engagement"],
+      "successMetrics": [
+        "launch_signups",
+        "media_coverage",
+        "social_engagement"
+      ],
       "hasReferences": false
     },
     {
@@ -588,15 +1314,37 @@
       "version": "1.0.0",
       "difficulty": "advanced",
       "description": "Design pricing, packaging, and monetization strategy",
-      "triggers": ["pricing", "pricing tiers", "freemium", "free trial", "packaging", "price increase", "value metric", "willingness to pay", "monetization"],
-      "prerequisites": ["marketing-fundamentals"],
-      "relatedSkills": ["paywall-upgrade-cro", "page-cro"],
-      "agents": ["researcher", "upsell-maximizer"],
+      "triggers": [
+        "pricing",
+        "pricing tiers",
+        "freemium",
+        "free trial",
+        "packaging",
+        "price increase",
+        "value metric",
+        "willingness to pay",
+        "monetization"
+      ],
+      "prerequisites": [
+        "marketing-fundamentals"
+      ],
+      "relatedSkills": [
+        "paywall-upgrade-cro",
+        "page-cro"
+      ],
+      "agents": [
+        "researcher",
+        "conversion-optimizer"
+      ],
       "mcpIntegrations": {
         "required": [],
         "optional": []
       },
-      "successMetrics": ["conversion_rate", "ARPU", "LTV"],
+      "successMetrics": [
+        "conversion_rate",
+        "ARPU",
+        "LTV"
+      ],
       "hasReferences": false
     },
     {
@@ -607,15 +1355,34 @@
       "version": "1.0.0",
       "difficulty": "intermediate",
       "description": "Design referral, affiliate, and word-of-mouth programs",
-      "triggers": ["referral", "affiliate", "ambassador", "word of mouth", "viral loop", "refer a friend", "partner program"],
-      "prerequisites": ["marketing-fundamentals"],
-      "relatedSkills": ["email-sequence", "marketing-psychology"],
-      "agents": ["continuity-specialist", "upsell-maximizer"],
+      "triggers": [
+        "referral",
+        "affiliate",
+        "ambassador",
+        "word of mouth",
+        "viral loop",
+        "refer a friend",
+        "partner program"
+      ],
+      "prerequisites": [
+        "marketing-fundamentals"
+      ],
+      "relatedSkills": [
+        "email-sequence",
+        "marketing-psychology"
+      ],
+      "agents": [
+        "conversion-optimizer"
+      ],
       "mcpIntegrations": {
         "required": [],
         "optional": []
       },
-      "successMetrics": ["referral_rate", "viral_coefficient", "referred_conversion"],
+      "successMetrics": [
+        "referral_rate",
+        "viral_coefficient",
+        "referred_conversion"
+      ],
       "hasReferences": false
     },
     {
@@ -626,15 +1393,40 @@
       "version": "1.0.0",
       "difficulty": "advanced",
       "description": "Plan free tools for engineering-as-marketing",
-      "triggers": ["free tool", "engineering as marketing", "calculator", "generator", "interactive tool", "lead gen tool", "marketing tool"],
-      "prerequisites": ["seo-mastery", "content-strategy"],
-      "relatedSkills": ["seo-mastery", "content-strategy", "programmatic-seo"],
-      "agents": ["attraction-specialist", "brainstormer"],
+      "triggers": [
+        "free tool",
+        "engineering as marketing",
+        "calculator",
+        "generator",
+        "interactive tool",
+        "lead gen tool",
+        "marketing tool"
+      ],
+      "prerequisites": [
+        "seo-mastery",
+        "content-strategy"
+      ],
+      "relatedSkills": [
+        "seo-mastery",
+        "content-strategy",
+        "programmatic-seo"
+      ],
+      "agents": [
+        "researcher",
+        "copywriter"
+      ],
       "mcpIntegrations": {
         "required": [],
-        "optional": ["google-search-console", "google-analytics"]
+        "optional": [
+          "google-search-console",
+          "google-analytics"
+        ]
       },
-      "successMetrics": ["tool_usage", "backlinks_generated", "lead_conversion"],
+      "successMetrics": [
+        "tool_usage",
+        "backlinks_generated",
+        "lead_conversion"
+      ],
       "hasReferences": false
     },
     {
@@ -645,10 +1437,21 @@
       "version": "1.0.0",
       "difficulty": "intermediate",
       "description": "Create and edit Microsoft Word documents",
-      "triggers": ["Word document", "DOCX", "Word file", "create document", "edit Word"],
+      "triggers": [
+        "Word document",
+        "DOCX",
+        "Word file",
+        "create document",
+        "edit Word"
+      ],
       "prerequisites": [],
-      "relatedSkills": ["document-skills/pdf", "document-skills/pptx"],
-      "agents": ["docs-manager", "copywriter"],
+      "relatedSkills": [
+        "document-skills/pdf",
+        "document-skills/pptx"
+      ],
+      "agents": [
+        "copywriter"
+      ],
       "mcpIntegrations": {
         "required": [],
         "optional": []
@@ -664,10 +1467,18 @@
       "version": "1.0.0",
       "difficulty": "intermediate",
       "description": "Create and edit PDF documents",
-      "triggers": ["PDF", "PDF document", "create PDF", "edit PDF"],
+      "triggers": [
+        "PDF",
+        "PDF document",
+        "create PDF",
+        "edit PDF"
+      ],
       "prerequisites": [],
-      "relatedSkills": ["document-skills/docx", "document-skills/pptx"],
-      "agents": ["docs-manager"],
+      "relatedSkills": [
+        "document-skills/docx",
+        "document-skills/pptx"
+      ],
+      "agents": [],
       "mcpIntegrations": {
         "required": [],
         "optional": []
@@ -683,10 +1494,21 @@
       "version": "1.0.0",
       "difficulty": "intermediate",
       "description": "Create and edit PowerPoint presentations",
-      "triggers": ["PowerPoint", "PPTX", "presentation", "slides", "create presentation"],
+      "triggers": [
+        "PowerPoint",
+        "PPTX",
+        "presentation",
+        "slides",
+        "create presentation"
+      ],
       "prerequisites": [],
-      "relatedSkills": ["document-skills/docx", "document-skills/pdf"],
-      "agents": ["docs-manager", "sales-enabler"],
+      "relatedSkills": [
+        "document-skills/docx",
+        "document-skills/pdf"
+      ],
+      "agents": [
+        "copywriter"
+      ],
       "mcpIntegrations": {
         "required": [],
         "optional": []
@@ -702,10 +1524,18 @@
       "version": "1.0.0",
       "difficulty": "intermediate",
       "description": "Create and edit Excel spreadsheets",
-      "triggers": ["Excel", "XLSX", "spreadsheet", "create spreadsheet", "edit Excel"],
+      "triggers": [
+        "Excel",
+        "XLSX",
+        "spreadsheet",
+        "create spreadsheet",
+        "edit Excel"
+      ],
       "prerequisites": [],
-      "relatedSkills": ["analytics-attribution"],
-      "agents": ["docs-manager", "project-manager"],
+      "relatedSkills": [
+        "analytics-attribution"
+      ],
+      "agents": [],
       "mcpIntegrations": {
         "required": [],
         "optional": []
@@ -721,15 +1551,40 @@
       "version": "1.0.0",
       "difficulty": "advanced",
       "description": "Systematic 200+ checkpoint audit framework for paid advertising accounts across Google Ads, Meta Ads, LinkedIn Ads, and TikTok Ads",
-      "triggers": ["paid media audit", "ad account audit", "PPC audit", "ads review", "advertising audit", "account health check", "ad performance review", "campaign audit"],
-      "prerequisites": ["paid-advertising", "analytics-attribution"],
-      "relatedSkills": ["paid-advertising", "analytics-attribution", "page-cro"],
-      "agents": ["attraction-specialist", "tracking-specialist"],
+      "triggers": [
+        "paid media audit",
+        "ad account audit",
+        "PPC audit",
+        "ads review",
+        "advertising audit",
+        "account health check",
+        "ad performance review",
+        "campaign audit"
+      ],
+      "prerequisites": [
+        "paid-advertising",
+        "analytics-attribution"
+      ],
+      "relatedSkills": [
+        "paid-advertising",
+        "analytics-attribution",
+        "page-cro"
+      ],
+      "agents": [
+        "researcher"
+      ],
       "mcpIntegrations": {
         "required": [],
-        "optional": ["meta-ads", "google-analytics"]
+        "optional": [
+          "meta-ads",
+          "google-analytics"
+        ]
       },
-      "successMetrics": ["audit_completion", "findings_resolved", "ROAS_improvement"],
+      "successMetrics": [
+        "audit_completion",
+        "findings_resolved",
+        "ROAS_improvement"
+      ],
       "hasReferences": true
     },
     {
@@ -740,15 +1595,43 @@
       "version": "1.0.0",
       "difficulty": "intermediate",
       "description": "End-to-end pipeline for uploading ad creatives to Meta (Facebook/Instagram). Image/video upload, creative creation, ad creation — all PAUSED.",
-      "triggers": ["upload ads", "create meta ads", "bulk upload ads", "publish ads to meta", "facebook ads upload", "instagram ads upload", "ad creative upload", "launch ads", "deploy ads to meta"],
-      "prerequisites": ["paid-advertising"],
-      "relatedSkills": ["paid-advertising", "copywriting", "image-generation", "video-director", "campaign-runner", "paid-media-audit"],
-      "agents": ["copywriter", "tracking-specialist"],
+      "triggers": [
+        "upload ads",
+        "create meta ads",
+        "bulk upload ads",
+        "publish ads to meta",
+        "facebook ads upload",
+        "instagram ads upload",
+        "ad creative upload",
+        "launch ads",
+        "deploy ads to meta"
+      ],
+      "prerequisites": [
+        "paid-advertising"
+      ],
+      "relatedSkills": [
+        "paid-advertising",
+        "copywriting",
+        "image-generation",
+        "video-director",
+        "campaign-runner",
+        "paid-media-audit"
+      ],
+      "agents": [
+        "copywriter",
+        "researcher"
+      ],
       "mcpIntegrations": {
-        "required": ["meta-ads"],
+        "required": [
+          "meta-ads"
+        ],
         "optional": []
       },
-      "successMetrics": ["ads_created", "upload_success_rate", "creative_approval_rate"],
+      "successMetrics": [
+        "ads_created",
+        "upload_success_rate",
+        "creative_approval_rate"
+      ],
       "hasReferences": true
     },
     {
@@ -759,15 +1642,35 @@
       "version": "1.0.0",
       "difficulty": "beginner",
       "description": "Guided client/project onboarding — scaffold files, discovery interview, agent enrichment, readiness validation, session activation",
-      "triggers": ["new project", "onboard client", "new client", "set up project", "create project", "project setup"],
+      "triggers": [
+        "new project",
+        "onboard client",
+        "new client",
+        "set up project",
+        "create project",
+        "project setup"
+      ],
       "prerequisites": [],
-      "relatedSkills": ["brand-building", "campaign-runner", "marketing-fundamentals", "offer-builder"],
-      "agents": ["persona-builder", "researcher", "brand-voice-guardian"],
+      "relatedSkills": [
+        "brand-building",
+        "campaign-runner",
+        "marketing-fundamentals",
+        "offer-builder"
+      ],
+      "agents": [
+        "persona-builder",
+        "researcher",
+        "brand-voice-guardian"
+      ],
       "mcpIntegrations": {
         "required": [],
         "optional": []
       },
-      "successMetrics": ["files_completed", "readiness_score", "time_to_first_campaign"],
+      "successMetrics": [
+        "files_completed",
+        "readiness_score",
+        "time_to_first_campaign"
+      ],
       "hasReferences": true
     },
     {
@@ -778,15 +1681,44 @@
       "version": "1.0.0",
       "difficulty": "intermediate",
       "description": "Interactive 5-phase offer construction — deep discovery, viability scoring (OV Gate + Vending Machine), identity extraction, micro offers, audit passes, deployment scripts",
-      "triggers": ["build offer", "offer builder", "offer positioning", "micro offer", "offer viability", "offer audit", "offer score", "vending machine score", "create offer", "offer document", "what should I sell", "package my offer"],
+      "triggers": [
+        "build offer",
+        "offer builder",
+        "offer positioning",
+        "micro offer",
+        "offer viability",
+        "offer audit",
+        "offer score",
+        "vending machine score",
+        "create offer",
+        "offer document",
+        "what should I sell",
+        "package my offer"
+      ],
       "prerequisites": [],
-      "relatedSkills": ["marketing-psychology", "brand-building", "pricing-strategy", "copywriting", "client-onboarding", "launch-strategy"],
-      "agents": ["persona-builder", "brand-voice-guardian", "copywriter", "sales-enabler"],
+      "relatedSkills": [
+        "marketing-psychology",
+        "brand-building",
+        "pricing-strategy",
+        "copywriting",
+        "client-onboarding",
+        "launch-strategy"
+      ],
+      "agents": [
+        "persona-builder",
+        "brand-voice-guardian",
+        "copywriter"
+      ],
       "mcpIntegrations": {
         "required": [],
         "optional": []
       },
-      "successMetrics": ["ov_gate_score", "vending_machine_score", "audit_pass_rate", "time_to_first_sale"],
+      "successMetrics": [
+        "ov_gate_score",
+        "vending_machine_score",
+        "audit_pass_rate",
+        "time_to_first_sale"
+      ],
       "hasReferences": true
     },
     {
@@ -797,15 +1729,47 @@
       "version": "1.0.0",
       "difficulty": "intermediate",
       "description": "Full-stack campaign execution framework with state tracking across sessions, agent routing, asset management, and Postiz publishing",
-      "triggers": ["campaign", "run campaign", "campaign status", "continue campaign", "next actions", "schedule posts", "campaign metrics", "start campaign", "campaign progress"],
-      "prerequisites": ["content-strategy", "social-media", "analytics-attribution"],
-      "relatedSkills": ["launch-strategy", "email-sequence", "paid-advertising", "copywriting", "page-cro"],
-      "agents": ["copywriter", "email-wizard", "attraction-specialist", "planner", "project-manager", "seo-specialist", "tracking-specialist"],
+      "triggers": [
+        "campaign",
+        "run campaign",
+        "campaign status",
+        "continue campaign",
+        "next actions",
+        "schedule posts",
+        "campaign metrics",
+        "start campaign",
+        "campaign progress"
+      ],
+      "prerequisites": [
+        "content-strategy",
+        "social-media",
+        "analytics-attribution"
+      ],
+      "relatedSkills": [
+        "launch-strategy",
+        "email-sequence",
+        "paid-advertising",
+        "copywriting",
+        "page-cro"
+      ],
+      "agents": [
+        "copywriter",
+        "researcher"
+      ],
       "mcpIntegrations": {
         "required": [],
-        "optional": ["postiz", "google-analytics", "hubspot", "meta-ads"]
+        "optional": [
+          "postiz",
+          "google-analytics",
+          "hubspot",
+          "meta-ads"
+        ]
       },
-      "successMetrics": ["campaign_completion_rate", "tasks_per_session", "time_to_publish"],
+      "successMetrics": [
+        "campaign_completion_rate",
+        "tasks_per_session",
+        "time_to_publish"
+      ],
       "hasReferences": true
     },
     {
@@ -816,15 +1780,28 @@
       "version": "1.0.0",
       "difficulty": "beginner",
       "description": "Anti-decay system that detects stale docs, unintegrated learnings, and registry drift. Surfaces hygiene reports inside existing ops commands.",
-      "triggers": ["hygiene", "stale docs", "knowledge decay", "freshness audit", "learnings check", "registry drift"],
+      "triggers": [
+        "hygiene",
+        "stale docs",
+        "knowledge decay",
+        "freshness audit",
+        "learnings check",
+        "registry drift"
+      ],
       "prerequisites": [],
-      "relatedSkills": ["analytics-usage"],
-      "agents": ["docs-manager"],
+      "relatedSkills": [
+        "analytics-usage"
+      ],
+      "agents": [],
       "mcpIntegrations": {
         "required": [],
         "optional": []
       },
-      "successMetrics": ["docs_freshness_rate", "learnings_integration_rate", "registry_accuracy_rate"],
+      "successMetrics": [
+        "docs_freshness_rate",
+        "learnings_integration_rate",
+        "registry_accuracy_rate"
+      ],
       "hasReferences": false
     },
     {
@@ -835,15 +1812,39 @@
       "version": "1.0.0",
       "difficulty": "intermediate",
       "description": "Multi-agent parallel research orchestrator using MECE decomposition — 90.2% better than single-agent",
-      "triggers": ["deep research", "thorough research", "research everything", "comprehensive research", "spawn research agents", "find everything about", "exhaustive research", "multi-agent research"],
+      "triggers": [
+        "deep research",
+        "thorough research",
+        "research everything",
+        "comprehensive research",
+        "spawn research agents",
+        "find everything about",
+        "exhaustive research",
+        "multi-agent research"
+      ],
       "prerequisites": [],
-      "relatedSkills": ["marketing-fundamentals", "competitor-alternatives", "content-strategy"],
-      "agents": ["researcher", "brainstormer", "planner"],
+      "relatedSkills": [
+        "marketing-fundamentals",
+        "competitor-alternatives",
+        "content-strategy"
+      ],
+      "agents": [
+        "researcher",
+        "copywriter"
+      ],
       "mcpIntegrations": {
         "required": [],
-        "optional": ["semrush", "dataforseo", "google-search-console"]
+        "optional": [
+          "semrush",
+          "dataforseo",
+          "google-search-console"
+        ]
       },
-      "successMetrics": ["research_depth", "source_count", "actionable_insights"],
+      "successMetrics": [
+        "research_depth",
+        "source_count",
+        "actionable_insights"
+      ],
       "hasReferences": false
     },
     {
@@ -854,15 +1855,36 @@
       "version": "1.0.0",
       "difficulty": "intermediate",
       "description": "Spawn reviewer agents to audit output, then resolver agents to fix issues. Implement → Review → Resolve chain for 2-3x quality improvement.",
-      "triggers": ["verify this", "review loop", "verification loop", "self-review", "agent review agent", "double-check", "get a second opinion", "review and resolve"],
+      "triggers": [
+        "verify this",
+        "review loop",
+        "verification loop",
+        "self-review",
+        "agent review agent",
+        "double-check",
+        "get a second opinion",
+        "review and resolve"
+      ],
       "prerequisites": [],
-      "relatedSkills": ["prompt-contracts", "multi-agent-consensus", "deep-research"],
-      "agents": ["brand-voice-guardian", "conversion-optimizer", "seo-specialist"],
+      "relatedSkills": [
+        "prompt-contracts",
+        "multi-agent-consensus",
+        "deep-research"
+      ],
+      "agents": [
+        "brand-voice-guardian",
+        "conversion-optimizer",
+        "researcher"
+      ],
       "mcpIntegrations": {
         "required": [],
         "optional": []
       },
-      "successMetrics": ["issues_caught", "quality_improvement", "review_pass_rate"],
+      "successMetrics": [
+        "issues_caught",
+        "quality_improvement",
+        "review_pass_rate"
+      ],
       "hasReferences": false
     },
     {
@@ -873,15 +1895,34 @@
       "version": "1.0.0",
       "difficulty": "intermediate",
       "description": "Spawn N agents with framing variations to independently analyze a problem, then aggregate by consensus, divergence, and outlier detection.",
-      "triggers": ["consensus", "poll agents", "stochastic consensus", "multi-agent vote", "get multiple opinions", "compare approaches", "spawn agents to analyze"],
+      "triggers": [
+        "consensus",
+        "poll agents",
+        "stochastic consensus",
+        "multi-agent vote",
+        "get multiple opinions",
+        "compare approaches",
+        "spawn agents to analyze"
+      ],
       "prerequisites": [],
-      "relatedSkills": ["verification-loops", "deep-research", "prompt-contracts"],
-      "agents": ["brainstormer", "researcher", "planner"],
+      "relatedSkills": [
+        "verification-loops",
+        "deep-research",
+        "prompt-contracts"
+      ],
+      "agents": [
+        "copywriter",
+        "researcher"
+      ],
       "mcpIntegrations": {
         "required": [],
         "optional": []
       },
-      "successMetrics": ["consensus_strength", "outlier_value", "decision_confidence"],
+      "successMetrics": [
+        "consensus_strength",
+        "outlier_value",
+        "decision_confidence"
+      ],
       "hasReferences": false
     },
     {
@@ -892,15 +1933,30 @@
       "version": "1.0.0",
       "difficulty": "beginner",
       "description": "Define GOAL, CONSTRAINTS, FORMAT, and FAILURE conditions as a structured contract before execution. Prevents ambiguous deliverables.",
-      "triggers": ["prompt contract", "define success criteria", "failure conditions", "spec this out", "what does done look like", "structured spec", "define the contract"],
+      "triggers": [
+        "prompt contract",
+        "define success criteria",
+        "failure conditions",
+        "spec this out",
+        "what does done look like",
+        "structured spec",
+        "define the contract"
+      ],
       "prerequisites": [],
-      "relatedSkills": ["verification-loops", "multi-agent-consensus", "campaign-runner"],
-      "agents": ["planner", "project-manager"],
+      "relatedSkills": [
+        "verification-loops",
+        "multi-agent-consensus",
+        "campaign-runner"
+      ],
+      "agents": [],
       "mcpIntegrations": {
         "required": [],
         "optional": []
       },
-      "successMetrics": ["contract_pass_rate", "failure_conditions_caught"],
+      "successMetrics": [
+        "contract_pass_rate",
+        "failure_conditions_caught"
+      ],
       "hasReferences": false
     },
     {
@@ -911,15 +1967,36 @@
       "version": "1.0.0",
       "difficulty": "intermediate",
       "description": "Multi-round adversarial debate between N agents with distinct roles. Agents read each other's responses and refine positions across rounds.",
-      "triggers": ["chatroom", "agent debate", "have agents discuss", "debate this", "multi-agent discussion", "let them debate", "adversarial review"],
+      "triggers": [
+        "chatroom",
+        "agent debate",
+        "have agents discuss",
+        "debate this",
+        "multi-agent discussion",
+        "let them debate",
+        "adversarial review"
+      ],
       "prerequisites": [],
-      "relatedSkills": ["multi-agent-consensus", "verification-loops", "deep-research"],
-      "agents": ["brainstormer", "researcher", "planner", "brand-voice-guardian", "conversion-optimizer"],
+      "relatedSkills": [
+        "multi-agent-consensus",
+        "verification-loops",
+        "deep-research"
+      ],
+      "agents": [
+        "copywriter",
+        "researcher",
+        "brand-voice-guardian",
+        "conversion-optimizer"
+      ],
       "mcpIntegrations": {
         "required": [],
         "optional": []
       },
-      "successMetrics": ["convergence_rate", "mind_changes", "decision_quality"],
+      "successMetrics": [
+        "convergence_rate",
+        "mind_changes",
+        "decision_quality"
+      ],
       "hasReferences": false
     },
     {
@@ -930,15 +2007,65 @@
       "version": "5.0.0",
       "difficulty": "intermediate",
       "description": "Quad-mode website skill: Recreation (pixel-perfect from reference), Creation (bold aesthetics from scratch), Hybrid (recreate + improve), Paper-First (import from Paper.design). Paper.design MCP integration for bidirectional visual editing — push HTML to Paper, read back JSX/Tailwind, extract precise design tokens. Single index.html with Tailwind CDN. Automated screenshot comparison loops. Anti-generic guardrails. BM25 design system lookup (67 styles, 161 palettes, 57 font pairings).",
-      "triggers": ["website design", "build website", "create website", "design website", "landing page design", "website from screenshot", "clone design", "replicate website", "web design", "website redesign", "HTML website", "design from scratch", "build landing page", "cinematic website", "distinctive website", "bold design", "creative landing page", "scroll-driven website", "animated website", "pixel perfect", "recreate website", "match this design", "design system", "paper design", "design from paper", "paper to code", "import from paper", "paper file"],
+      "triggers": [
+        "website design",
+        "build website",
+        "create website",
+        "design website",
+        "landing page design",
+        "website from screenshot",
+        "clone design",
+        "replicate website",
+        "web design",
+        "website redesign",
+        "HTML website",
+        "design from scratch",
+        "build landing page",
+        "cinematic website",
+        "distinctive website",
+        "bold design",
+        "creative landing page",
+        "scroll-driven website",
+        "animated website",
+        "pixel perfect",
+        "recreate website",
+        "match this design",
+        "design system",
+        "paper design",
+        "design from paper",
+        "paper to code",
+        "import from paper",
+        "paper file"
+      ],
       "prerequisites": [],
-      "relatedSkills": ["page-cro", "copywriting", "image-generation", "brand-building", "schema-markup"],
-      "agents": ["copywriter", "brand-voice-guardian", "conversion-optimizer", "tracking-specialist"],
+      "relatedSkills": [
+        "page-cro",
+        "copywriting",
+        "image-generation",
+        "brand-building",
+        "schema-markup"
+      ],
+      "agents": [
+        "copywriter",
+        "brand-voice-guardian",
+        "conversion-optimizer",
+        "researcher"
+      ],
       "mcpIntegrations": {
         "required": [],
-        "optional": ["google-analytics", "firecrawl", "paper"]
+        "optional": [
+          "google-analytics",
+          "firecrawl",
+          "paper"
+        ]
       },
-      "successMetrics": ["design_match_percentage", "mobile_responsive", "page_load_speed", "conversion_elements_present", "aesthetic_distinctiveness"],
+      "successMetrics": [
+        "design_match_percentage",
+        "mobile_responsive",
+        "page_load_speed",
+        "conversion_elements_present",
+        "aesthetic_distinctiveness"
+      ],
       "hasReferences": true
     },
     {
@@ -949,15 +2076,46 @@
       "version": "1.0.0",
       "difficulty": "advanced",
       "description": "LinkedIn content creation pipeline — story mining via reverse-prompting interview, SIREN framework drafting, virality engineering, and performance tracking",
-      "triggers": ["linkedin post", "write linkedin post", "linkedin ghostwriting", "linkedin story", "story bank", "SIREN framework", "linkedin content creation", "client interview", "linkedin engagement", "unfindable content"],
-      "prerequisites": ["linkedin-optimization", "copywriting"],
-      "relatedSkills": ["content-strategy", "copywriting", "linkedin-optimization", "social-media", "brand-building"],
-      "agents": ["copywriter", "brainstormer", "brand-voice-guardian"],
+      "triggers": [
+        "linkedin post",
+        "write linkedin post",
+        "linkedin ghostwriting",
+        "linkedin story",
+        "story bank",
+        "SIREN framework",
+        "linkedin content creation",
+        "client interview",
+        "linkedin engagement",
+        "unfindable content"
+      ],
+      "prerequisites": [
+        "linkedin-optimization",
+        "copywriting"
+      ],
+      "relatedSkills": [
+        "content-strategy",
+        "copywriting",
+        "linkedin-optimization",
+        "social-media",
+        "brand-building"
+      ],
+      "agents": [
+        "copywriter",
+        "brand-voice-guardian"
+      ],
       "mcpIntegrations": {
         "required": [],
-        "optional": ["postiz"]
+        "optional": [
+          "postiz"
+        ]
       },
-      "successMetrics": ["post_engagement_rate", "likes_per_post", "comment_to_like_ratio", "story_bank_depth", "SIREN_score_average"],
+      "successMetrics": [
+        "post_engagement_rate",
+        "likes_per_post",
+        "comment_to_like_ratio",
+        "story_bank_depth",
+        "SIREN_score_average"
+      ],
       "hasReferences": true
     },
     {
@@ -968,15 +2126,60 @@
       "version": "2.0.0",
       "difficulty": "intermediate",
       "description": "AI video prompt generation for marketing ads — 14 video types across 3 pipelines (Direct, Image-First, Localized). Generates ready-to-paste prompts for Sora, Kling, VEO. Includes HITL review gates, character bibles, seed management, UGC automation, and full production SOP.",
-      "triggers": ["video ad", "AI video", "video prompt", "sora prompt", "kling prompt", "veo prompt", "talking head video", "UGC video", "unboxing video", "product video", "street interview", "podcast video", "shock hook", "video commercial", "food video", "real estate video", "anatomical animation", "ad localization", "video generation", "consistent character", "UGC automation", "sora character", "video edit", "character bible", "seed bracketing", "8K video", "post production"],
-      "prerequisites": ["image-generation"],
-      "relatedSkills": ["copywriting", "paid-advertising", "image-generation", "social-media", "content-moat"],
-      "agents": ["copywriter", "attraction-specialist", "brainstormer"],
+      "triggers": [
+        "video ad",
+        "AI video",
+        "video prompt",
+        "sora prompt",
+        "kling prompt",
+        "veo prompt",
+        "talking head video",
+        "UGC video",
+        "unboxing video",
+        "product video",
+        "street interview",
+        "podcast video",
+        "shock hook",
+        "video commercial",
+        "food video",
+        "real estate video",
+        "anatomical animation",
+        "ad localization",
+        "video generation",
+        "consistent character",
+        "UGC automation",
+        "sora character",
+        "video edit",
+        "character bible",
+        "seed bracketing",
+        "8K video",
+        "post production"
+      ],
+      "prerequisites": [
+        "image-generation"
+      ],
+      "relatedSkills": [
+        "copywriting",
+        "paid-advertising",
+        "image-generation",
+        "social-media",
+        "content-moat"
+      ],
+      "agents": [
+        "copywriter",
+        "researcher"
+      ],
       "mcpIntegrations": {
         "required": [],
-        "optional": ["meta-ads"]
+        "optional": [
+          "meta-ads"
+        ]
       },
-      "successMetrics": ["prompt_approval_rate", "video_quality_score", "platform_native_feel"],
+      "successMetrics": [
+        "prompt_approval_rate",
+        "video_quality_score",
+        "platform_native_feel"
+      ],
       "hasReferences": true
     },
     {
@@ -987,15 +2190,36 @@
       "version": "1.0.0",
       "difficulty": "advanced",
       "description": "Autonomous skill optimization via generate → evaluate → mutate → keep/discard loops. Wraps any existing skill in a self-improving loop that simultaneously improves the skill AND produces winning content per client.",
-      "triggers": ["autoresearch", "skill optimization", "autonomous improvement", "self-improving", "optimize skill", "boost skill", "skill booster"],
+      "triggers": [
+        "autoresearch",
+        "skill optimization",
+        "autonomous improvement",
+        "self-improving",
+        "optimize skill",
+        "boost skill",
+        "skill booster"
+      ],
       "prerequisites": [],
-      "relatedSkills": ["knowledge-hygiene", "analytics-usage", "campaign-runner"],
+      "relatedSkills": [
+        "knowledge-hygiene",
+        "analytics-usage",
+        "campaign-runner"
+      ],
       "agents": [],
       "mcpIntegrations": {
-        "required": ["kilo-gateway"],
-        "optional": ["gemini-cli"]
+        "required": [
+          "kilo-gateway"
+        ],
+        "optional": [
+          "gemini-cli"
+        ]
       },
-      "successMetrics": ["score_improvement_per_run", "winner_rate", "rollback_rate", "cost_per_run"],
+      "successMetrics": [
+        "score_improvement_per_run",
+        "winner_rate",
+        "rollback_rate",
+        "cost_per_run"
+      ],
       "hasReferences": true
     },
     {
@@ -1006,15 +2230,31 @@
       "version": "1.0.0",
       "difficulty": "beginner",
       "description": "Transcribe video from any URL into text using yt-dlp + faster-whisper",
-      "triggers": ["transcribe", "transcribe video", "transcribe url", "get transcript", "video to text"],
+      "triggers": [
+        "transcribe",
+        "transcribe video",
+        "transcribe url",
+        "get transcript",
+        "video to text"
+      ],
       "prerequisites": [],
-      "relatedSkills": ["youtube-content", "copywriting", "content-strategy"],
-      "agents": ["researcher", "copywriter"],
+      "relatedSkills": [
+        "youtube-content",
+        "copywriting",
+        "content-strategy"
+      ],
+      "agents": [
+        "researcher",
+        "copywriter"
+      ],
       "mcpIntegrations": {
         "required": [],
         "optional": []
       },
-      "successMetrics": ["transcription_accuracy", "processing_speed"],
+      "successMetrics": [
+        "transcription_accuracy",
+        "processing_speed"
+      ],
       "hasReferences": false
     },
     {
@@ -1025,15 +2265,34 @@
       "version": "1.0.0",
       "difficulty": "intermediate",
       "description": "Generate complete YouTube descriptions from video transcripts with timestamps, links, and brand-consistent copy",
-      "triggers": ["youtube description", "describe this video", "video description", "youtube metadata"],
-      "prerequisites": ["transcribe", "copywriting"],
-      "relatedSkills": ["transcribe", "copywriting", "content-strategy", "seo-mastery"],
-      "agents": ["copywriter"],
+      "triggers": [
+        "youtube description",
+        "describe this video",
+        "video description",
+        "youtube metadata"
+      ],
+      "prerequisites": [
+        "transcribe",
+        "copywriting"
+      ],
+      "relatedSkills": [
+        "transcribe",
+        "copywriting",
+        "content-strategy",
+        "seo-mastery"
+      ],
+      "agents": [
+        "copywriter"
+      ],
       "mcpIntegrations": {
         "required": [],
         "optional": []
       },
-      "successMetrics": ["description_quality", "timestamp_accuracy", "seo_optimization"],
+      "successMetrics": [
+        "description_quality",
+        "timestamp_accuracy",
+        "seo_optimization"
+      ],
       "hasReferences": false
     },
     {
@@ -1044,91 +2303,266 @@
       "version": "1.0.0",
       "difficulty": "intermediate",
       "description": "Domain-specific AI pattern detection — generates empirical avoidance profiles by sampling model defaults. Layer 1 of 4-layer de-AI stack.",
-      "triggers": ["unslop", "ai pattern detection", "domain profile", "avoidance profile", "de-ai profile", "slop detection", "ai defaults"],
+      "triggers": [
+        "unslop",
+        "ai pattern detection",
+        "domain profile",
+        "avoidance profile",
+        "de-ai profile",
+        "slop detection",
+        "ai defaults"
+      ],
       "prerequisites": [],
-      "relatedSkills": ["copy-editing", "copywriting", "linkedin-content", "email-sequence", "website-design"],
-      "agents": ["copywriter", "brand-voice-guardian"],
+      "relatedSkills": [
+        "copy-editing",
+        "copywriting",
+        "linkedin-content",
+        "email-sequence",
+        "website-design"
+      ],
+      "agents": [
+        "copywriter",
+        "brand-voice-guardian"
+      ],
       "mcpIntegrations": {
         "required": [],
         "optional": []
       },
-      "successMetrics": ["patterns_detected", "profile_specificity", "consumer_skill_improvement"],
+      "successMetrics": [
+        "patterns_detected",
+        "profile_specificity",
+        "consumer_skill_improvement"
+      ],
       "hasReferences": true
     }
   ],
   "mcpIntegrationMatrix": {
     "google-analytics": {
-      "skills": ["analytics-attribution", "page-cro", "form-cro", "popup-cro", "signup-flow-cro", "onboarding-cro", "paywall-upgrade-cro", "ab-test-setup", "paid-advertising", "free-tool-strategy", "marketing-fundamentals", "paid-media-audit"],
-      "agents": ["conversion-optimizer", "attraction-specialist", "project-manager", "tracking-specialist"],
-      "dataTypes": ["traffic", "conversions", "user_behavior", "goals"]
+      "skills": [
+        "analytics-attribution",
+        "page-cro",
+        "form-cro",
+        "popup-cro",
+        "signup-flow-cro",
+        "onboarding-cro",
+        "paywall-upgrade-cro",
+        "ab-test-setup",
+        "paid-advertising",
+        "free-tool-strategy",
+        "marketing-fundamentals",
+        "paid-media-audit"
+      ],
+      "agents": [
+        "conversion-optimizer",
+        "researcher"
+      ],
+      "dataTypes": [
+        "traffic",
+        "conversions",
+        "user_behavior",
+        "goals"
+      ]
     },
     "google-search-console": {
-      "skills": ["seo-mastery", "programmatic-seo", "schema-markup", "analytics-attribution", "free-tool-strategy"],
-      "agents": ["seo-specialist", "attraction-specialist"],
-      "dataTypes": ["rankings", "impressions", "clicks", "crawl_errors"]
+      "skills": [
+        "seo-mastery",
+        "programmatic-seo",
+        "schema-markup",
+        "analytics-attribution",
+        "free-tool-strategy"
+      ],
+      "agents": [
+        "researcher"
+      ],
+      "dataTypes": [
+        "rankings",
+        "impressions",
+        "clicks",
+        "crawl_errors"
+      ]
     },
     "semrush": {
-      "skills": ["seo-mastery", "programmatic-seo", "competitor-alternatives"],
-      "agents": ["seo-specialist", "attraction-specialist", "researcher"],
-      "dataTypes": ["keywords", "backlinks", "competitor_data", "domain_metrics"]
+      "skills": [
+        "seo-mastery",
+        "programmatic-seo",
+        "competitor-alternatives"
+      ],
+      "agents": [
+        "researcher"
+      ],
+      "dataTypes": [
+        "keywords",
+        "backlinks",
+        "competitor_data",
+        "domain_metrics"
+      ]
     },
     "dataforseo": {
-      "skills": ["seo-mastery", "programmatic-seo", "competitor-alternatives"],
-      "agents": ["seo-specialist", "attraction-specialist"],
-      "dataTypes": ["SERP_data", "keyword_metrics", "backlinks"]
+      "skills": [
+        "seo-mastery",
+        "programmatic-seo",
+        "competitor-alternatives"
+      ],
+      "agents": [
+        "researcher"
+      ],
+      "dataTypes": [
+        "SERP_data",
+        "keyword_metrics",
+        "backlinks"
+      ]
     },
     "meta-ads": {
-      "skills": ["paid-advertising", "paid-media-audit", "meta-ads-uploader"],
-      "agents": ["attraction-specialist", "tracking-specialist"],
-      "dataTypes": ["ad_performance", "audiences", "creatives"]
+      "skills": [
+        "paid-advertising",
+        "paid-media-audit",
+        "meta-ads-uploader"
+      ],
+      "agents": [
+        "researcher"
+      ],
+      "dataTypes": [
+        "ad_performance",
+        "audiences",
+        "creatives"
+      ]
     },
     "hubspot": {
-      "skills": ["email-marketing", "email-sequence", "form-cro"],
-      "agents": ["email-wizard", "lead-qualifier", "sales-enabler"],
-      "dataTypes": ["contacts", "deals", "email_metrics", "form_submissions"]
+      "skills": [
+        "email-marketing",
+        "email-sequence",
+        "form-cro"
+      ],
+      "agents": [
+        "copywriter",
+        "persona-builder"
+      ],
+      "dataTypes": [
+        "contacts",
+        "deals",
+        "email_metrics",
+        "form_submissions"
+      ]
     },
     "slack": {
-      "skills": ["launch-strategy"],
-      "agents": ["project-manager"],
-      "dataTypes": ["notifications", "messages"]
+      "skills": [
+        "launch-strategy"
+      ],
+      "agents": [],
+      "dataTypes": [
+        "notifications",
+        "messages"
+      ]
     },
     "notion": {
-      "skills": ["content-strategy"],
-      "agents": ["planner", "project-manager"],
-      "dataTypes": ["pages", "databases"]
+      "skills": [
+        "content-strategy"
+      ],
+      "agents": [],
+      "dataTypes": [
+        "pages",
+        "databases"
+      ]
     },
     "asana": {
-      "skills": ["content-strategy"],
-      "agents": ["project-manager", "planner"],
-      "dataTypes": ["tasks", "projects"]
+      "skills": [
+        "content-strategy"
+      ],
+      "agents": [],
+      "dataTypes": [
+        "tasks",
+        "projects"
+      ]
     },
     "twitter": {
-      "skills": ["social-media", "launch-strategy"],
-      "agents": ["attraction-specialist", "copywriter"],
-      "dataTypes": ["tweets", "engagement", "trends"]
+      "skills": [
+        "social-media",
+        "launch-strategy"
+      ],
+      "agents": [
+        "researcher",
+        "copywriter"
+      ],
+      "dataTypes": [
+        "tweets",
+        "engagement",
+        "trends"
+      ]
     },
     "postiz": {
-      "skills": ["social-media", "linkedin-optimization", "linkedin-content", "campaign-runner"],
-      "agents": ["copywriter", "project-manager"],
-      "dataTypes": ["scheduled_posts", "post_analytics", "platform_analytics", "media"]
+      "skills": [
+        "social-media",
+        "linkedin-optimization",
+        "linkedin-content",
+        "campaign-runner"
+      ],
+      "agents": [
+        "copywriter"
+      ],
+      "dataTypes": [
+        "scheduled_posts",
+        "post_analytics",
+        "platform_analytics",
+        "media"
+      ]
     }
   },
   "outputSchemas": {
     "cro-analysis": {
-      "sections": ["initial_assessment", "quick_wins", "high_impact_changes", "test_ideas", "implementation_priority"],
-      "requiredFields": ["page_type", "primary_goal", "recommendations"]
+      "sections": [
+        "initial_assessment",
+        "quick_wins",
+        "high_impact_changes",
+        "test_ideas",
+        "implementation_priority"
+      ],
+      "requiredFields": [
+        "page_type",
+        "primary_goal",
+        "recommendations"
+      ]
     },
     "content-plan": {
-      "sections": ["content_pillars", "content_calendar", "distribution_strategy", "metrics"],
-      "requiredFields": ["pillars", "schedule", "channels"]
+      "sections": [
+        "content_pillars",
+        "content_calendar",
+        "distribution_strategy",
+        "metrics"
+      ],
+      "requiredFields": [
+        "pillars",
+        "schedule",
+        "channels"
+      ]
     },
     "campaign-brief": {
-      "sections": ["objective", "audience", "messaging", "channels", "timeline", "success_metrics"],
-      "requiredFields": ["objective", "audience", "key_message"]
+      "sections": [
+        "objective",
+        "audience",
+        "messaging",
+        "channels",
+        "timeline",
+        "success_metrics"
+      ],
+      "requiredFields": [
+        "objective",
+        "audience",
+        "key_message"
+      ]
     },
     "seo-audit": {
-      "sections": ["technical_issues", "on_page_opportunities", "content_gaps", "backlink_analysis", "action_items"],
-      "requiredFields": ["issues", "opportunities", "priorities"]
+      "sections": [
+        "technical_issues",
+        "on_page_opportunities",
+        "content_gaps",
+        "backlink_analysis",
+        "action_items"
+      ],
+      "requiredFields": [
+        "issues",
+        "opportunities",
+        "priorities"
+      ]
     }
   }
 }

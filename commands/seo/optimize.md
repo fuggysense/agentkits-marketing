@@ -157,9 +157,9 @@ Load these files first:
 
 | Task | Agent | Trigger |
 |------|-------|---------|
-| SEO analysis | `seo-specialist` | Primary task |
+| SEO analysis | `researcher` | Primary task |
 | Content enhancement | `copywriter` | Content depth |
-| Technical SEO | `attraction-specialist` | Schema, technical |
+| Technical SEO | `researcher` | Schema, technical |
 
 ---
 

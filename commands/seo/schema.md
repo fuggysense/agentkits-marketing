@@ -174,9 +174,9 @@ Load these files first:
 
 | Task | Agent | Trigger |
 |------|-------|---------|
-| Schema creation | `seo-specialist` | Primary task |
+| Schema creation | `researcher` | Primary task |
 | Content analysis | `copywriter` | Property values |
-| Technical review | `attraction-specialist` | Implementation |
+| Technical review | `researcher` | Implementation |
 
 ---
 

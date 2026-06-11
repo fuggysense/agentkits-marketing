@@ -207,7 +207,7 @@ Review all content with specialists:
 Review all content we created with:
 1. brand-voice-guardian - brand consistency
 2. conversion-optimizer - conversion potential
-3. seo-specialist - SEO optimization
+3. researcher - SEO optimization
 
 Score each piece and identify top improvements needed.
 ```

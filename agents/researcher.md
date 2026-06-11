@@ -237,20 +237,20 @@ Before delivering research:
 
 | Agent | Relationship | Handoff Trigger |
 |-------|-------------|-----------------|
-| `brainstormer` | Sends insights to | When research informs ideation |
-| `planner` | Sends findings to | When research informs planning |
-| `attraction-specialist` | Sends SEO intel to | When competitive data informs content |
-| `sales-enabler` | Sends competitive data to | When battlecards need research |
+| `copywriter` | Sends insights to | When research informs ideation |
+| `(retired)` | Sends findings to | When research informs planning |
+| `researcher` | Sends SEO intel to | When competitive data informs content |
+| `copywriter` | Sends competitive data to | When battlecards need research |
 
 ## When NOT to Use
 
 | If the task is... | Use instead |
 |-------------------|-------------|
 | Writing content | `copywriter` |
-| Campaign planning | `planner` |
-| SEO implementation | `seo-specialist` |
-| Lead scoring design | `lead-qualifier` |
-| Sales collateral | `sales-enabler` |
+| Campaign planning | `(retired)` |
+| SEO implementation | `researcher` |
+| Lead scoring design | `persona-builder` |
+| Sales collateral | `copywriter` |
 
 **IMPORTANT**: You DO NOT start implementation yourself - you respond with comprehensive research reports and recommendations.
 

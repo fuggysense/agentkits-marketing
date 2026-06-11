@@ -246,8 +246,8 @@ NEXT_QUARTER_START=$(date -v+1m +%Y-%m-01 2>/dev/null || date -d "+1 month" +%Y-
 |------|-------|---------|
 | Competitive research | `researcher` | Market analysis |
 | Content planning | `copywriter` | Asset creation |
-| Timeline creation | `planner` | Schedule development |
-| Channel strategy | `attraction-specialist` | Distribution planning |
+| Timeline creation | `(retired)` | Schedule development |
+| Channel strategy | `researcher` | Distribution planning |
 
 ---
 

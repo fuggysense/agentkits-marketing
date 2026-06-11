@@ -51,29 +51,29 @@ The marketing kit has agents organized by function:
 **Core Marketing Agents (6):**
 | Agent | Focus | Use Cases |
 |-------|-------|-----------|
-| `attraction-specialist` | TOFU, lead gen | SEO, landing pages, competitor intel |
-| `lead-qualifier` | Intent detection | Lead scoring, behavioral analysis |
-| `email-wizard` | Email marketing | Sequences, automation, optimization |
-| `sales-enabler` | Sales support | Pitches, case studies, battlecards |
-| `continuity-specialist` | Retention | Churn detection, re-engagement |
-| `upsell-maximizer` | Revenue expansion | Cross-sell, upsell, feature adoption |
+| `researcher` | TOFU, lead gen | SEO, landing pages, competitor intel |
+| `persona-builder` | Intent detection | Lead scoring, behavioral analysis |
+| `copywriter` | Email marketing | Sequences, automation, optimization |
+| `copywriter` | Sales support | Pitches, case studies, battlecards |
+| `(retired)` | Retention | Churn detection, re-engagement |
+| `conversion-optimizer` | Revenue expansion | Cross-sell, upsell, feature adoption |
 
 **Supporting Agents (6):**
 | Agent | Focus | Use Cases |
 |-------|-------|-----------|
 | `researcher` | Market intelligence | Research, competitive analysis |
-| `brainstormer` | Creative ideation | Campaign concepts, messaging angles |
-| `planner` | Strategic planning | Campaign plans, content calendars |
-| `project-manager` | Coordination | Status tracking, campaign oversight |
+| `copywriter` | Creative ideation | Campaign concepts, messaging angles |
+| `(retired)` | Strategic planning | Campaign plans, content calendars |
+| `(retired)` | Coordination | Status tracking, campaign oversight |
 | `copywriter` | Content creation | Copy, messaging, creative |
-| `docs-manager` | Documentation | Brand guidelines, style guides |
+| `(retired)` | Documentation | Brand guidelines, style guides |
 
 **Reviewer Agents (6):**
 | Agent | Perspective | Reviews For |
 |-------|-------------|-------------|
 | `brand-voice-guardian` | Brand consistency | Voice, tone, messaging |
 | `conversion-optimizer` | CRO expert | Conversion, persuasion |
-| `seo-specialist` | Search optimization | Keywords, technical SEO |
+| `researcher` | Search optimization | Keywords, technical SEO |
 | `manager-maria` | Marketing manager (38yo, B2B) | Strategy, team fit |
 | `solo-steve` | Solopreneur (32yo) | Time, budget, DIY |
 | `startup-sam` | Startup founder (28yo) | Growth, virality, speed |
@@ -99,7 +99,7 @@ Explain what just happened - three specialized reviews in one command.
 
 ### Step 3: Using Lead Qualification
 
-Demonstrate lead-qualifier agent via commands:
+Demonstrate persona-builder agent via commands:
 
 ```
 /leads:score "B2B SaaS company - technology industry"
@@ -109,14 +109,14 @@ Demonstrate lead-qualifier agent via commands:
 /leads:qualify "AgentKits productivity tool"
 ```
 
-Show how lead-qualifier creates:
+Show how persona-builder creates:
 - Demographic scoring criteria
 - Behavioral scoring signals
 - MQL/SQL thresholds
 
 ### Step 4: Using Email Wizard
 
-Demonstrate email-wizard agent:
+Demonstrate copywriter agent:
 
 ```
 /sequence:welcome "AgentKits" "trial users"
@@ -128,7 +128,7 @@ Demonstrate email-wizard agent:
 
 ### Step 5: Using Sales Enabler
 
-Demonstrate sales-enabler agent:
+Demonstrate copywriter agent:
 
 ```
 /sales:pitch "enterprise company considering AgentKits" "team coordination"
@@ -144,9 +144,9 @@ Demonstrate sales-enabler agent:
 SCENARIO: A competitor just announced a "team focus" feature. Use agents to respond:
 
 1. Use `researcher` to analyze their announcement
-2. Use `brainstormer` to develop counter-positioning
+2. Use `copywriter` to develop counter-positioning
 3. Use `copywriter` to create response content
-4. Use `email-wizard` to draft customer communication
+4. Use `copywriter` to draft customer communication
 ```
 
 ### Step 7: Agent Best Practices

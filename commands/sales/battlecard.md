@@ -148,7 +148,7 @@ Load these files first:
 | Task | Agent | Trigger |
 |------|-------|---------|
 | Competitor research | `researcher` | Data gathering |
-| Battlecard creation | `sales-enabler` | Primary task |
+| Battlecard creation | `copywriter` | Primary task |
 | Copy polish | `copywriter` | Talk tracks |
 
 ---

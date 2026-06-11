@@ -190,20 +190,20 @@ Load these files first:
 
 | Task | Agent | Trigger |
 |------|-------|---------|
-| pSEO 2.0 pipeline (Pipeline scope) | `pseo-architect` | User selects "Pipeline" scope |
-| pSEO planning (other scopes) | `attraction-specialist` | Basic/Recommended/Complete scope |
+| pSEO 2.0 pipeline (Pipeline scope) | `researcher` | User selects "Pipeline" scope |
+| pSEO planning (other scopes) | `researcher` | Basic/Recommended/Complete scope |
 | Template copy | `copywriter` | Content structure |
-| Technical specs | `seo-specialist` | Schema, indexation |
-| Quality validation | `seo-specialist` | 3-gate quality check |
-| Indexation monitoring | `tracking-specialist` | Post-rollout monitoring |
+| Technical specs | `researcher` | Schema, indexation |
+| Quality validation | `researcher` | 3-gate quality check |
+| Indexation monitoring | `researcher` | Post-rollout monitoring |
 
 ### Routing Decision Tree
 
-1. User selects **Pipeline** scope → route to `pseo-architect`
-   - pseo-architect orchestrates the full 7-step pipeline
-   - Delegates internally to researcher, copywriter, seo-specialist, tracking-specialist
-2. User selects **Basic/Recommended/Complete** scope → route to `attraction-specialist`
-   - attraction-specialist uses programmatic-seo v2.0 skill as reference
+1. User selects **Pipeline** scope → route to `researcher`
+   - researcher orchestrates the full 7-step pipeline
+   - Delegates internally to researcher, copywriter, researcher, researcher
+2. User selects **Basic/Recommended/Complete** scope → route to `researcher`
+   - researcher uses programmatic-seo v2.0 skill as reference
    - Produces planning deliverable (not pipeline execution)
 3. User selects **Custom** → ask what they need, route accordingly
 

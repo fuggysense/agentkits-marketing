@@ -1,7 +1,7 @@
 ## Graph Links
 - **Parent skill:** [[seo-mastery]]
 - **Related skills:** [[schema-markup]], [[programmatic-seo]], [[website-design]]
-- **Used by agents:** [[seo-specialist]], [[attraction-specialist]]
+- **Used by agents:** [[researcher]]
 
 # Generative Engine Optimization (GEO)
 

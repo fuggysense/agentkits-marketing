@@ -22,7 +22,7 @@ tasks:
   - id: lead-magnet-strategy
     phase: planning
     status: planned
-    agent: brainstormer
+    agent: copywriter
     skill: marketing-fundamentals
     description: "Define lead magnet — type, topic, value proposition, qualification criteria"
     dependencies: []
@@ -31,7 +31,7 @@ tasks:
   - id: lead-scoring
     phase: planning
     status: planned
-    agent: lead-qualifier
+    agent: persona-builder
     skill: marketing-fundamentals
     description: "Lead scoring model — behavioral signals, demographic fit, MQL/SQL thresholds"
     dependencies: [lead-magnet-strategy]
@@ -59,7 +59,7 @@ tasks:
   - id: nurture-sequence
     phase: creation
     status: planned
-    agent: email-wizard
+    agent: copywriter
     skill: email-sequence
     description: "5-email nurture sequence — value delivery, education, case study, offer, follow-up"
     dependencies: [lead-magnet-strategy]
@@ -87,7 +87,7 @@ tasks:
   - id: tracking-setup
     phase: execution
     status: planned
-    agent: tracking-specialist
+    agent: researcher
     skill: analytics-attribution
     description: "Conversion tracking — form submissions, email opens, MQL triggers"
     dependencies: [lead-form]

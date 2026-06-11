@@ -150,8 +150,8 @@ Load these files first:
 
 | Task | Agent | Trigger |
 |------|-------|---------|
-| Keyword research | `attraction-specialist` | Content planning |
-| Technical audit | `attraction-specialist` | Site health |
+| Keyword research | `researcher` | Content planning |
+| Technical audit | `researcher` | Site health |
 | Content gaps | `researcher` | Competitor analysis |
 | Performance analysis | `researcher` | Rankings review |
 

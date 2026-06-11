@@ -146,7 +146,7 @@ Load these files first:
 | Task | Agent | Trigger |
 |------|-------|---------|
 | Content creation | `copywriter` | Draft stage |
-| SEO review | `attraction-specialist` | Optimization |
+| SEO review | `researcher` | Optimization |
 | Quality check | `researcher` | Fact verification |
 | Final polish | `copywriter` | Revisions |
 
@@ -253,4 +253,4 @@ Save workflow to: `./docs/workflows/approval-[content-type]-[YYYY-MM-DD].md`
 After approval workflow, consider:
 - `/content:blog` - Create content using workflow
 - `/brand:voice` - Define brand voice guidelines
-- `/docs-manager` - Document management
+- `/knowledge-hygiene` - Document management

@@ -1,0 +1,27 @@
+{
+  "client": "harmony-wellness",
+  "onboarded": true,
+  "score": "8/10",
+  "verdict": "PASS — Minor Issues",
+  "rules": [
+    {"status": "PASS", "rule": "Rule 1 — CLAUDE.md exists and sized", "detail": ""}
+    ,
+    {"status": "PASS", "rule": "Rule 2 — Root CONTEXT.md exists", "detail": ""}
+    ,
+    {"status": "PASS", "rule": "Rule 3 — _brand/ has CONTEXT.md", "detail": ""}
+    ,
+    {"status": "PASS", "rule": "Rule 4 — No CONTEXT.md over 100 lines", "detail": ""}
+    ,
+    {"status": "PASS", "rule": "Rule 5 — No duplicated global rules in room CONTEXT.md", "detail": ""}
+    ,
+    {"status": "PASS", "rule": "Rule 6 — No broken pointers", "detail": ""}
+    ,
+    {"status": "PASS", "rule": "Rule 7 — CONTEXT-md-pattern.md (no phase templates — N/A)", "detail": ""}
+    ,
+    {"status": "PASS", "rule": "Rule 8 — L3 (_brand/) never references L4 (campaigns/, output/)", "detail": ""}
+    ,
+    {"status": "FAIL", "rule": "Rule 9 — L2 CONTEXT.md uses 3-section contract (Inputs/Process/Outputs)", "detail": "03_production/CONTEXT.md: sections [Output convention (reuses storyboard skill contract), HITL rule, Hand-off rule] (need exactly Inputs, Process, Outputs); 02_script/CONTEXT.md: sections [In scope, Output convention, Copywriting framework, Skills available for this phase, Hand-off rule] (need exactly Inputs, Process, Outputs); 06_measure/CONTEXT.md: sections [Consumes, Owns, Produces, Skills available for this phase, Gates fired, Cadence, Out of scope] (need exactly Inputs, Process, Outputs); 04_review/CONTEXT.md: sections [Inputs, Process, Output convention, Done looks like] (need exactly Inputs, Process, Outputs); 05_handoff/CONTEXT.md: sections [Inputs, Process, Output convention, Done looks like] (need exactly Inputs, Process, Outputs); 01_research/CONTEXT.md: sections [In scope, Out of scope, Output convention, Hand-off rule, Skills available for this phase] (need exactly Inputs, Process, Outputs)"}
+    ,
+    {"status": "FAIL", "rule": "Rule 10 — Persona quotes carry source provenance (or [HYPOTHESIS] tag)", "detail": "_brand/buyer-profile.md: 5 unsourced persona quote(s) (first L85)"}
+  ]
+}

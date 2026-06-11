@@ -1,9 +1,13 @@
 ---
-description: Create platform-specific social content
+description: "[DEPRECATED] Create platform-specific social content"
 version: "1.0.0"
 brand: AgentKits Marketing by AityTech
 argument-hint: [topic] [platform]
+deprecated: true
+deprecation-note: "Doubly deprecated: (1) /content:* is superseded by /copy:* per .claude/rules/_index.md; (2) the social-media skill it loads is archived (skills/_archive/social-media/). Use the copywriting skill + content-strategy for social planning."
 ---
+
+> **DEPRECATED.** Two reasons: the `/content:*` family is superseded by `/copy:*` (see `.claude/rules/_index.md`), and the `social-media` skill this command loads is archived at `skills/_archive/social-media/`. For social content, use the `copywriting` skill plus `content-strategy` for planning. Kept for reference only.
 
 ## Prerequisites
 
@@ -19,8 +23,8 @@ Before running this command, ensure:
 Load context in this order:
 1. **Project**: Read `./README.md` for product context
 2. **Brand**: Read `./docs/brand-guidelines.md` for voice
-3. **Social Skill**: Load `.claude/skills/social-media/SKILL.md`
-4. **Playbook**: Load `.claude/skills/social-media/references/social-media-playbook.md`
+3. **Social Skill**: Load `skills/content-strategy/SKILL.md` (replaces the archived social-media skill)
+4. **Hooks (optional)**: Load `viral-hooks-content-creator` for short-form hooks
 5. **Prior Posts**: Check `./docs/content/social/` for consistency
 
 ---
@@ -31,7 +35,7 @@ Load context in this order:
 
 **Standards**: Token efficiency, sacrifice grammar for concision, list unresolved questions at end.
 
-**Skills**: Activate `social-media`, `copywriting` skills.
+**Skills**: Activate `content-strategy`, `copywriting` skills.
 
 **Components**: Reference `./.claude/components/interactive-questions.md`
 
@@ -161,8 +165,8 @@ Load context in this order:
 | Task | Agent | Trigger |
 |------|-------|---------|
 | Social copy | `copywriter` | Content creation |
-| Platform strategy | `brainstormer` | Format optimization |
-| Engagement tactics | `planner` | Campaign planning |
+| Platform strategy | `copywriter` | Format optimization |
+| Engagement tactics | `(retired)` | Campaign planning |
 
 ---
 

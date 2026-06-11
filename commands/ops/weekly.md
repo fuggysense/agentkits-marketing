@@ -182,9 +182,9 @@ Use MCP for metrics; if unavailable show "⚠️ NOT AVAILABLE":
 | Task | Agent | Trigger |
 |------|-------|---------|
 | Metrics compilation | `researcher` | Weekly review |
-| Progress tracking | `project-manager` | Status update |
-| Content planning | `planner` | Next week prep |
-| Funnel analysis | `lead-qualifier` | Conversion review |
+| Progress tracking | `(retired)` | Status update |
+| Content planning | `(retired)` | Next week prep |
+| Funnel analysis | `persona-builder` | Conversion review |
 
 ---
 

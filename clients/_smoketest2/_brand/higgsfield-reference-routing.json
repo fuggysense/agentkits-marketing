@@ -1,0 +1,15 @@
+{
+  "schema_version": "0.1",
+  "status": "template",
+  "purpose": "Client-local cache of human-confirmed Higgsfield workflow reference paths. Agents must prefer approved client routes before deriving paths from the Higgsfield prompt repo.",
+  "rules": [
+    "Client facts, product assets, visual-character references, buyer context, and approval state come from this client folder and campaign/workspace files.",
+    "Higgsfield files provide reusable prompt mechanics only; they do not override client facts.",
+    "If approved_routes contains the selected workflow_flow, use that route and record it in the workspace reference_resolution receipt.",
+    "If pending_routes contains the selected workflow_flow, use it as the candidate route, mark operator_confirmation_required true, and surface it for confirmation before treating it as reusable client law.",
+    "If no approved or pending route exists, resolve the route from the selected Higgsfield workflow SKILL.md reference contract, surface it for operator confirmation, and do not treat it as reusable client law until confirmed.",
+    "After operator confirmation, store the confirmed route under approved_routes with confirmed_at, confirmed_by, workflow_skill_path, image_generation_refs, video_generation_refs, and known_missing_refs."
+  ],
+  "approved_routes": {},
+  "pending_routes": {}
+}

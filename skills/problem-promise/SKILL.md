@@ -23,7 +23,6 @@ related_skills:
   - sales-letter-method
 agents:
   - copywriter
-  - brainstormer
 mcp_integrations: {}
 success_metrics:
   - pain_specificity

@@ -1,0 +1,35 @@
+[
+  {
+    "hook": "The bottle says magnesium. It doesn't say which magnesium.",
+    "scores": {
+      "clarity":              5,
+      "avatar_match":         5,
+      "flow":                 5,
+      "insight_tag_resolves": 5,
+      "native_feel":          5
+    },
+    "insight": "clients/_smoketest2/00_inputs/research/voc-reddit-dump-260611.md#L6 — 'which form to take — does it actually matter' (q6, form confusion pattern)"
+  },
+  {
+    "hook": "Three variables. Most supplements get one.",
+    "scores": {
+      "clarity":              4,
+      "avatar_match":         5,
+      "flow":                 5,
+      "insight_tag_resolves": 5,
+      "native_feel":          4
+    },
+    "insight": "clients/_smoketest2/00_inputs/research/voc-reddit-dump-260611.md#L6 — form/dose/timing — three variables most buyers never hear about"
+  },
+  {
+    "hook": "You've already spent money on the version that didn't explain any of that.",
+    "scores": {
+      "clarity":              5,
+      "avatar_match":         5,
+      "flow":                 4,
+      "insight_tag_resolves": 5,
+      "native_feel":          4
+    },
+    "insight": "clients/_smoketest2/00_inputs/research/voc-reddit-dump-260611.md#L1 — graveyard of half-empty bottles (q1, past purchase failure)"
+  }
+]

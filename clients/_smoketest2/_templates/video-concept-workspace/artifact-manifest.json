@@ -1,0 +1,189 @@
+{
+  "schema_version": "1.0",
+  "client": "{{client_slug}}",
+  "campaign": "{{campaign_slug}}",
+  "concept_slug": "{{concept_slug}}",
+  "workspace_root": "campaigns/{{campaign_slug}}/video-concepts/{{concept_slug}}",
+  "client_input_bank": {
+    "client_root": "../../../..",
+    "manifest_path": "../../../../00_inputs/input-manifest.json",
+    "product_root": "../../../../00_inputs/product",
+    "market_root": "../../../../00_inputs/market",
+    "research_root": "../../../../00_inputs/research",
+    "buyer_profile": "../../../../_brand/buyer-profile.md",
+    "campaign_selection": "../../campaign-selection.json",
+    "note": "This is the client-root input bank. Concept workspaces reference selected entries; they do not copy broad input folders."
+  },
+  "folders": {
+    "strategy": "01_strategy",
+    "ag1_options": "02_ag1-options",
+    "scripts": "03_scripts",
+    "input_images": "04_input-images",
+    "prompt_packs": "05_prompt-packs",
+    "generation_runs": "06_generation-runs",
+    "review": "07_review"
+  },
+  "artifacts": {
+    "pipeline_state": {
+      "path": "pipeline-state.json",
+      "owner_phase": "state",
+      "status": "present",
+      "approval_state": "not_applicable"
+    },
+    "event_log": {
+      "path": "event-log.jsonl",
+      "owner_phase": "state",
+      "status": "present",
+      "approval_state": "not_applicable"
+    },
+    "concept_brief": {
+      "path": "concept-brief.json",
+      "owner_phase": "intake",
+      "status": "missing",
+      "approval_state": "not_started",
+      "contract": {
+        "purpose": "Select the client-root inputs used by this concept.",
+        "source_manifest": "../../../../00_inputs/input-manifest.json",
+        "campaign_selection": "../../campaign-selection.json",
+        "required_sections": [
+          "product_refs",
+          "market_buyer_refs",
+          "competitor_refs",
+          "research_refs"
+        ],
+        "duplication_rule": "Store references and short rationale only. Do not duplicate the full client input folders."
+      }
+    },
+    "creative_diversity_map": {
+      "path": "01_strategy/creative-diversity-map.json",
+      "owner_phase": "strategy",
+      "status": "missing",
+      "approval_state": "not_started"
+    },
+    "concepts": {
+      "path": "02_ag1-options/concepts.json",
+      "owner_phase": "ag1",
+      "status": "missing",
+      "approval_state": "not_started"
+    },
+    "concept_pack_json": {
+      "path": "02_ag1-options/concept-pack.json",
+      "owner_phase": "ag1",
+      "status": "missing",
+      "approval_state": "not_started"
+    },
+    "concept_pack_html": {
+      "path": "02_ag1-options/concept-pack.html",
+      "owner_phase": "ag1",
+      "status": "missing",
+      "approval_state": "not_started"
+    },
+    "scripts": {
+      "path": "03_scripts/scripts-draft.json",
+      "owner_phase": "ag2",
+      "status": "missing",
+      "approval_state": "not_started"
+    },
+    "final_script": {
+      "path": "03_scripts/final-script.md",
+      "owner_phase": "ag2",
+      "status": "missing",
+      "approval_state": "not_started"
+    },
+    "visual_treatment": {
+      "path": "03_scripts/visual-treatment.md",
+      "owner_phase": "ag2",
+      "status": "missing",
+      "approval_state": "not_started"
+    },
+    "input_image_plan": {
+      "path": "04_input-images/input-image-plan.json",
+      "owner_phase": "ag2",
+      "status": "missing",
+      "approval_state": "not_started"
+    },
+    "input_image_manifest": {
+      "path": "04_input-images/input-image-manifest.json",
+      "owner_phase": "ag2",
+      "status": "present",
+      "approval_state": "not_started",
+      "optional_when": "No uploaded images, start frames, product references, style sheets, or visual references are used by the executor payload."
+    },
+    "canonical_prompt_pack": {
+      "path": "05_prompt-packs/canonical-prompt-pack.json",
+      "owner_phase": "ag2",
+      "status": "missing",
+      "approval_state": "not_started"
+    },
+    "video_brief_json": {
+      "path": "05_prompt-packs/brief-pack/video-brief.json",
+      "owner_phase": "ag2",
+      "status": "missing",
+      "approval_state": "not_started"
+    },
+    "video_factory_handoff": {
+      "path": "05_prompt-packs/video-factory-handoff.json",
+      "owner_phase": "ag2",
+      "status": "missing",
+      "approval_state": "blocked_until_approval_2"
+    },
+    "higgsfield_seedance_adapter": {
+      "path": "05_prompt-packs/model-adapters/higgsfield-seedance.json",
+      "owner_phase": "ag2",
+      "status": "missing",
+      "approval_state": "not_started"
+    },
+    "approval_1": {
+      "path": "02_ag1-options/approval-1.json",
+      "owner_phase": "ag1",
+      "status": "missing",
+      "approval_state": "not_started"
+    },
+    "approval_gate_1_html": {
+      "path": "02_ag1-options/approval-gate-1.html",
+      "owner_phase": "ag1",
+      "status": "missing",
+      "approval_state": "not_started"
+    },
+    "approval_2": {
+      "path": "07_review/approval-2.json",
+      "owner_phase": "ag2",
+      "status": "missing",
+      "approval_state": "not_started"
+    },
+    "approval_gate_2_html": {
+      "path": "07_review/approval-gate-2.html",
+      "owner_phase": "ag2",
+      "status": "missing",
+      "approval_state": "not_started"
+    },
+    "active_generation_run": {
+      "path": "06_generation-runs/<run-id>/run-manifest.json",
+      "owner_phase": "render",
+      "status": "missing",
+      "approval_state": "blocked_until_render_confirmation",
+      "contract": {
+        "required_files": [
+          "run-manifest.json",
+          "payloads/<clip-id>.json",
+          "clips/<clip-id>/output.mp4",
+          "review/review.json",
+          "stitch/ffmpeg-command.sh",
+          "stitch/final.mp4"
+        ],
+        "optional_helper_folders": [
+          "stills",
+          "beat-sheets",
+          "motion-prompts",
+          "rerenders"
+        ]
+      }
+    },
+    "render_qa": {
+      "path": "07_review/render-qa.json",
+      "owner_phase": "review",
+      "status": "missing",
+      "approval_state": "not_started"
+    }
+  }
+}

@@ -171,7 +171,7 @@ Load these files first:
 
 | Task | Agent | Trigger |
 |------|-------|---------|
-| Strategy design | `planner` | Primary task |
+| Strategy design | `(retired)` | Primary task |
 | Market research | `researcher` | Competitive analysis |
 | Page optimization | `conversion-optimizer` | Pricing page CRO |
 

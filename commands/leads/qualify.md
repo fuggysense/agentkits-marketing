@@ -155,9 +155,9 @@ Load these files first:
 
 | Task | Agent | Trigger |
 |------|-------|---------|
-| Framework design | `lead-qualifier` | Primary task |
+| Framework design | `persona-builder` | Primary task |
 | ICP research | `researcher` | Data gathering |
-| Handoff process | `sales-enabler` | Complete scope |
+| Handoff process | `copywriter` | Complete scope |
 
 ---
 

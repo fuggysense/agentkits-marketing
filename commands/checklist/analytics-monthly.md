@@ -148,9 +148,9 @@ Load these files first:
 | Task | Agent | Trigger |
 |------|-------|---------|
 | Data compilation | `researcher` | Monthly review |
-| Funnel analysis | `lead-qualifier` | Conversion review |
+| Funnel analysis | `persona-builder` | Conversion review |
 | Insights narrative | `copywriter` | Report writing |
-| Recommendations | `planner` | Strategy planning |
+| Recommendations | `(retired)` | Strategy planning |
 
 ---
 

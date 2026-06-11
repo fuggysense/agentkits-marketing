@@ -185,25 +185,25 @@ Display all available commands and course navigation help.
 ## Agent Quick Reference
 
 ### Core Agents
-- `attraction-specialist` - Lead gen, SEO, TOFU
-- `lead-qualifier` - Scoring, intent detection
-- `email-wizard` - Sequences, automation
-- `sales-enabler` - Pitches, battlecards
-- `continuity-specialist` - Retention, churn
-- `upsell-maximizer` - Revenue expansion
+- `researcher` - Lead gen, SEO, TOFU
+- `persona-builder` - Scoring, intent detection
+- `copywriter` - Sequences, automation
+- `copywriter` - Pitches, battlecards
+- `(retired)` - Retention, churn
+- `conversion-optimizer` - Revenue expansion
 
 ### Supporting Agents
 - `researcher` - Market research
-- `brainstormer` - Campaign ideation
-- `planner` - Strategic planning
+- `copywriter` - Campaign ideation
+- `(retired)` - Strategic planning
 - `copywriter` - Content creation
-- `project-manager` - Coordination
-- `docs-manager` - Documentation
+- `(retired)` - Coordination
+- `(retired)` - Documentation
 
 ### Reviewer Agents
 - `brand-voice-guardian` - Brand consistency
 - `conversion-optimizer` - CRO review
-- `seo-specialist` - SEO optimization
+- `researcher` - SEO optimization
 - `manager-maria` - B2B perspective
 - `solo-steve` - Solopreneur perspective
 - `startup-sam` - Startup perspective

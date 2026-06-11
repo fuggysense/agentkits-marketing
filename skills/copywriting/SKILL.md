@@ -33,7 +33,7 @@ success_metrics:
 ## Graph Links
 - **Feeds into:** [[copy-editing]], [[page-cro]], [[email-sequence]], [[video-director]], [[linkedin-content]], [[content-moat]]
 - **Draws from:** [[marketing-psychology]], [[content-strategy]]
-- **Used by agents:** [[copywriter]], [[brainstormer]]
+- **Used by agents:** [[copywriter]]
 - **Related:** [[marketing-fundamentals]], [[brand-building]]
 
 # Copywriting

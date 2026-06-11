@@ -1,0 +1,102 @@
+{
+  "client": "_smoketest2",
+  "campaign": "wave-smoke-m3-260611",
+  "created": "2026-06-11",
+  "smoke_test_note": "FICTIONAL SMOKE-TEST DATA — M3.8 repeatability proof. All copy and images are fictional. Do not run live.",
+  "claims": [
+    {
+      "claim": "$49",
+      "source": "clients/_smoketest2/_brand/offer.md — T2 Starter Kit price"
+    },
+    {
+      "claim": "$129",
+      "source": "clients/_smoketest2/_brand/offer.md — T3 Foundation Stack price"
+    },
+    {
+      "claim": "200",
+      "source": "clients/_smoketest2/00_inputs/research/market-stats-260611.md — dose range note"
+    },
+    {
+      "claim": "400",
+      "source": "clients/_smoketest2/00_inputs/research/market-stats-260611.md — dose range note"
+    }
+  ],
+  "dcts": [
+    {
+      "dct_id": "DCT-SM3-01",
+      "angle_id": "A02",
+      "persona": "MP-01",
+      "awareness": "solution-aware",
+      "sophistication": "L4",
+      "headline_1": "Three variables. Most supplements get one.",
+      "headline_2": "The version that explains itself",
+      "copy_1": "The bottle says magnesium. It doesn't say which magnesium.\n\nMagnesium oxide is what you find in the cheap ones. It's poorly absorbed and the dose that matters for sleep — 200 to 400mg of elemental magnesium — isn't what you're getting. That's why you took it for six weeks and nothing changed.\n\nForm, dose, timing. Three variables. Most supplements get the dose approximately right and leave the other two to chance.\n\nThe VitalKit sleep kit has magnesium glycinate, not oxide. It has the dose that's in the evidence-backed range for sleep onset. It tells you to take it 30 to 60 minutes before bed.\n\nYou've already spent money on the version that didn't explain any of that.\n\nSee the sleep kit and the ingredient rationale for $49, before committing to anything.\n\nhttps://vitalkit-labs.example.com/starter",
+      "copy_2": "You've tried magnesium. Most people have. The form matters. The dose matters. The timing matters.\n\nThe sleep kit gets all three right and writes them down.\n\nSee the ingredient rationale for $49.\n\nhttps://vitalkit-labs.example.com/starter",
+      "image_pool": {
+        "images": [
+          {
+            "id": "DCT-SM3-01-img-01",
+            "concept_type": "product-editorial",
+            "text_on_image_hook": "Three variables.",
+            "image_prompt": "Clean white surface. VitalKit sleep kit box, three small amber glass bottles arranged beside it, clean label design showing ingredient names. Natural side lighting. No hands, no model. Editorial photograph, Kinfolk aesthetic. Negative prompt: busy background, gradient, text overlay beyond the label.",
+            "status": "pending",
+            "file": null,
+            "claim_status": "clean"
+          },
+          {
+            "id": "DCT-SM3-01-img-02",
+            "concept_type": "mechanism-diagram",
+            "text_on_image_hook": "Form. Dose. Timing.",
+            "image_prompt": "Minimal infographic on cream paper. Three stacked rows: row 1 says 'Form: glycinate not oxide', row 2 says 'Dose: 200-400mg', row 3 says 'Timing: 30-60 min before bed'. Clean sans-serif type. No illustrations. Editorial, not wellness-influencer. Negative prompt: stock photo hands, pills floating, gradient background.",
+            "status": "pending",
+            "file": null,
+            "claim_status": "clean"
+          },
+          {
+            "id": "DCT-SM3-01-img-03",
+            "concept_type": "social-proof-stat",
+            "text_on_image_hook": "91% of VitalKit buyers sleep better within 14 days.",
+            "image_prompt": "Minimalist card on cream background. Large bold number '91%' centered. Below it: 'of VitalKit buyers report improved sleep within 14 days (n=847 customer survey, 2026)'. Clean type, no decoration. Negative prompt: celebratory imagery, star ratings, cheesy stock.",
+            "status": "pending",
+            "file": null,
+            "claim_status": "UNSOURCED_PLANTED_DEFECT",
+            "_planted_defect": "PD2-STAT-01 — '91%' and 'n=847' are fabricated, not in any source file. The claim gate must flag this. A PASS verdict on this image = gate failed."
+          }
+        ]
+      }
+    },
+    {
+      "dct_id": "DCT-SM3-02",
+      "angle_id": "A01",
+      "persona": "MP-01",
+      "awareness": "solution-aware",
+      "sophistication": "L4",
+      "headline_1": "The graveyard under your bathroom sink",
+      "headline_2": "Not another supplement",
+      "copy_1": "Half-empty bottles. Magnesium you took for six weeks. An ashwagandha tub you never finished. A greens powder that tasted like a lawn.\n\nYou spent the money. You can't point to a result.\n\nThat is not a you problem. Nobody told you which form of magnesium works for sleep onset. Nobody told you ashwagandha needs eight weeks to build up. The bottles say 'supports' everything and explain nothing.\n\nVitalKit's sleep kit has one job. It explains every ingredient, the form that matters, the dose that's in the evidence range, and when to take it. If it doesn't do what we say it does, you spent $49 on one month of supplements instead of $79 a month on something you can't audit.\n\nSee the sleep kit for $49.\n\nhttps://vitalkit-labs.example.com/starter",
+      "copy_2": "You have supplements that didn't work. Most people do. The problem is nobody explained the form or the dose.\n\nThe sleep kit explains both. $49 to find out.\n\nhttps://vitalkit-labs.example.com/starter",
+      "image_pool": {
+        "images": [
+          {
+            "id": "DCT-SM3-02-img-01",
+            "concept_type": "relatable-problem-scene",
+            "text_on_image_hook": "The supplement graveyard.",
+            "image_prompt": "Flat lay on white bathroom shelf. Four to five supplement bottles, various brands, half-empty, slightly dusty. One bottle tipped on its side. Soft natural light from above. Slightly melancholy, honest, not clinical. Negative prompt: vibrant colors, smiling model, cheerful styling.",
+            "status": "pending",
+            "file": null,
+            "claim_status": "clean"
+          },
+          {
+            "id": "DCT-SM3-02-img-02",
+            "concept_type": "founder-credibility",
+            "text_on_image_hook": "I built this so you don't have to figure it out the hard way.",
+            "image_prompt": "Close-up photo of woman (South Asian, early 30s, natural makeup, no posing) writing in a notebook at a kitchen table. A few supplement bottles and printed research papers visible in the background. Warm morning light. Candid and real, not staged. Negative prompt: lab coat, sterile environment, promotional styling.",
+            "status": "pending",
+            "file": null,
+            "claim_status": "clean"
+          }
+        ]
+      }
+    }
+  ]
+}

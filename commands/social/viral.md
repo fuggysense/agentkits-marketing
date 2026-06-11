@@ -1,9 +1,13 @@
 ---
-description: Create viral-potential content
+description: "[DEPRECATED] Create viral-potential content"
 version: "1.0.0"
 brand: AgentKits Marketing by AityTech
 argument-hint: [topic] [platform]
+deprecated: true
+deprecation-note: "The social-media skill was archived (skills/_archive/social-media/). For viral short-form use viral-hooks-content-creator; marketing-psychology still applies."
 ---
+
+> **DEPRECATED.** The `social-media` skill this command loads is archived at `skills/_archive/social-media/`. For viral short-form, use `viral-hooks-content-creator` (organic hooks) or `ig-reel-script-writer` (Reels); `marketing-psychology` still applies. Kept for reference only.
 
 ## Prerequisites
 
@@ -27,7 +31,7 @@ Load these files first:
 
 **Standards**: Token efficiency, sacrifice grammar for concision, list unresolved questions at end.
 
-**Skills**: Activate `social-media`, `marketing-psychology` skills.
+**Skills**: Activate `viral-hooks-content-creator`, `marketing-psychology` skills.
 
 **Components**: Reference `./.claude/components/interactive-questions.md`
 
@@ -159,7 +163,7 @@ Load these files first:
 |------|-------|---------|
 | Content creation | `copywriter` | Primary task |
 | Trend research | `researcher` | Pattern analysis |
-| Platform optimization | `brainstormer` | Format adaptation |
+| Platform optimization | `copywriter` | Format adaptation |
 
 ---
 

@@ -147,9 +147,9 @@ Load these files first:
 
 | Task | Agent | Trigger |
 |------|-------|---------|
-| Score calculation | `lead-qualifier` | Primary task |
-| Behavioral analysis | `continuity-specialist` | Engagement data |
-| Action planning | `sales-enabler` | Hot leads |
+| Score calculation | `persona-builder` | Primary task |
+| Behavioral analysis | `(retired)` | Engagement data |
+| Action planning | `copywriter` | Hot leads |
 
 ---
 

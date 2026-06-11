@@ -1,0 +1,1 @@
+{"schema_version":"1.0","event":"concept_workspace_template_created","client":"{{client_slug}}","campaign":"{{campaign_slug}}","concept_slug":"{{concept_slug}}","created_at":"{{today}}"}

@@ -159,8 +159,8 @@ Load these files first:
 | Task | Agent | Trigger |
 |------|-------|---------|
 | Company research | `researcher` | Primary task |
-| SEO analysis | `attraction-specialist` | Keyword gaps |
-| Battlecard creation | `sales-enabler` | Sales enablement |
+| SEO analysis | `researcher` | Keyword gaps |
+| Battlecard creation | `copywriter` | Sales enablement |
 
 ---
 

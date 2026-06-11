@@ -172,9 +172,9 @@ echo "Campaign Analysis Date: $CURRENT_DATE"
 | Task | Agent | Trigger |
 |------|-------|---------|
 | Data compilation | `researcher` | Metrics gathering |
-| ROI analysis | `upsell-maximizer` | Revenue attribution |
+| ROI analysis | `conversion-optimizer` | Revenue attribution |
 | Optimization ideas | `conversion-optimizer` | Performance gaps |
-| Strategic planning | `planner` | Recommendations |
+| Strategic planning | `(retired)` | Recommendations |
 
 ---
 

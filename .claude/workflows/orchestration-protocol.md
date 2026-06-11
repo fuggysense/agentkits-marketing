@@ -151,7 +151,7 @@ Skills are specialized knowledge modules that agents load for specific tasks. Us
    - Determine primary goal
 
 2. **Query Skills Registry**
-   - Read `.claude/skills/skills-registry.json`
+   - Read `.claude/rules/skills-registry.json` (canonical, 132 skills; the older `.claude/skills/` and `skills/` copies are stale — see their README-MOVED.md)
    - Match against skill triggers
    - Score relevance (0-1)
 

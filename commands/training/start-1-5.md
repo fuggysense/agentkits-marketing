@@ -65,7 +65,7 @@ Explain the three expert reviewers:
 - Validates against brand guidelines
 - Flags off-brand content
 
-**`seo-specialist`:**
+**`researcher`:**
 - Evaluates keyword usage
 - Checks on-page SEO elements
 - Reviews content structure
@@ -107,7 +107,7 @@ Practice with expert reviewers:
 Review our AgentKits blog post with expert reviewers:
 
 1. `brand-voice-guardian`: Evaluate brand consistency
-2. `seo-specialist`: Evaluate SEO optimization
+2. `researcher`: Evaluate SEO optimization
 3. `conversion-optimizer`: Evaluate conversion potential
 
 Each should score (1-10) and provide:
@@ -142,7 +142,7 @@ Run a full review board on the AgentKits landing page copy:
 
 Expert Reviews:
 - Brand consistency (brand-voice-guardian)
-- SEO optimization (seo-specialist)
+- SEO optimization (researcher)
 - Conversion potential (conversion-optimizer)
 
 Persona Reviews:
@@ -171,11 +171,11 @@ Provide guidance:
 
 | Content Type | Primary Reviewers |
 |-------------|-------------------|
-| Blog posts | seo-specialist, brand-voice-guardian |
+| Blog posts | researcher, brand-voice-guardian |
 | Landing pages | conversion-optimizer, manager-maria |
-| Email sequences | email-wizard, startup-sam |
+| Email sequences | copywriter, startup-sam |
 | Social content | brand-voice-guardian, solo-steve |
-| Sales collateral | sales-enabler, manager-maria |
+| Sales collateral | copywriter, manager-maria |
 
 ### What's Next
 

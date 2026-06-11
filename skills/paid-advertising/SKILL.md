@@ -23,7 +23,7 @@ related_skills:
   - copywriting
   - page-cro
 agents:
-  - attraction-specialist
+  - researcher
 mcp_integrations:
   optional:
     - meta-ads
@@ -38,7 +38,7 @@ success_metrics:
 ## Graph Links
 - **Feeds into:** [[paid-media-audit]]
 - **Draws from:** [[analytics-attribution]]
-- **Used by agents:** [[attraction-specialist]], [[conversion-optimizer]]
+- **Used by agents:** [[researcher]], [[conversion-optimizer]]
 - **Related:** [[copywriting]], [[page-cro]]
 
 # Paid Advertising
@@ -175,10 +175,10 @@ Apply paid advertising expertise when:
 
 | Agent | How They Use This Skill |
 |-------|------------------------|
-| `attraction-specialist` | Paid campaign strategy and setup |
+| `researcher` | Paid campaign strategy and setup |
 | `copywriter` | Ad copy creation |
 | `researcher` | Competitor ad analysis |
-| `planner` | Budget allocation planning |
+| `(retired)` | Budget allocation planning |
 
 ## Anti-Patterns to Avoid
 

@@ -17,9 +17,9 @@ Strategic competitive intelligence for positioning and differentiation.
 | Task | Agent | Trigger |
 |------|-------|---------|
 | Competitive research | `researcher` | Analysis request |
-| SEO gap analysis | `attraction-specialist` | Content planning |
-| Battlecard creation | `sales-enabler` | Sales enablement |
-| Positioning strategy | `planner` | Strategic planning |
+| SEO gap analysis | `researcher` | Content planning |
+| Battlecard creation | `copywriter` | Sales enablement |
+| Positioning strategy | `(retired)` | Strategic planning |
 
 ## Lead Scoring: Competitor Mentions
 
@@ -275,8 +275,8 @@ Where you want to be
 
 ### Agents
 - `researcher` - Competitive intelligence
-- `attraction-specialist` - SEO gap analysis
-- `sales-enabler` - Battlecard creation
+- `researcher` - SEO gap analysis
+- `copywriter` - Battlecard creation
 
 ## Sales Handoff: Competitor Context
 

@@ -149,8 +149,8 @@ Load these files first:
 
 | Task | Agent | Trigger |
 |------|-------|---------|
-| Inactivity criteria | `continuity-specialist` | Segment definition |
-| Sequence design | `email-wizard` | Primary task |
+| Inactivity criteria | `(retired)` | Segment definition |
+| Sequence design | `copywriter` | Primary task |
 | Win-back copy | `copywriter` | Emotional reconnection |
 
 ---

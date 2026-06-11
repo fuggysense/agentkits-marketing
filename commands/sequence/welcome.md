@@ -150,9 +150,9 @@ Load these files first:
 
 | Task | Agent | Trigger |
 |------|-------|---------|
-| Sequence design | `email-wizard` | Primary task |
+| Sequence design | `copywriter` | Primary task |
 | Copy writing | `copywriter` | Email content |
-| Segmentation | `lead-qualifier` | Entry/exit criteria |
+| Segmentation | `persona-builder` | Entry/exit criteria |
 
 ---
 

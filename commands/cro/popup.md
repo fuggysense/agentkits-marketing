@@ -170,7 +170,7 @@ Load context in this order:
 |------|-------|---------|
 | Popup analysis | `conversion-optimizer` | Primary task |
 | Popup copy | `copywriter` | Headlines, CTAs |
-| A/B variants | `brainstormer` | Test ideas |
+| A/B variants | `copywriter` | Test ideas |
 
 ---
 

@@ -68,4 +68,4 @@ Reference layer — load on demand, not every session. Project CLAUDE.md points 
 
 - `.claude/skill-graph.json` — auto-generated semantic adjacency map (top-5 nearest per skill/agent)
 - `.claude/workflows/` — pipeline specs (primary, sales, crm, creative-pipeline, data-reliability, marketing-rules, orchestration, documentation)
-- `.claude/skills/skills-registry.json` — enterprise skill registry (semantic metadata)
+- `.claude/rules/skills-registry.json` — enterprise skill registry (semantic metadata; canonical 132-skill copy. The `.claude/skills/` and `skills/` copies are stale 51-skill snapshots — see README-MOVED.md beside each)

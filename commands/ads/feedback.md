@@ -10,8 +10,8 @@ argument-hint: <client-slug> <wave-number>
 After a DCT wave concludes (typically 7-14 days post-launch with sufficient spend), this command reads the wave's performance data, applies routing thresholds, and outputs ONE of three next actions:
 
 - **NEW** — back to Research (`/ads:source-of-truth <slug>` refresh) when the buyer has shifted
-- **BETTER** — back to Brief/Hooks (`/ads:concepts <slug> --refine`) when winning angle is clear but execution needs work
-- **MORE** — back to Create (`/ads:concepts <slug> --expand`) when winning combo is proven and ready to scale
+- **BETTER** — back to Brief/Hooks (ad-concept-engine Conductor Mode: "new ad concepts for `<slug>`, refine within `<winning-angle>`") when winning angle is clear but execution needs work
+- **MORE** — back to Create (ad-concept-engine Conductor Mode: "next angle wave for `<slug>`, expand `<winning-batch>`") when winning combo is proven and ready to scale
 
 This closes the 6-stage creative pipeline loop. Without this, waves don't compound — you launch wave 2 from the same Phase 1 thinking as wave 1.
 

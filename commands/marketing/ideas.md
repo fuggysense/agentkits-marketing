@@ -175,8 +175,8 @@ Load these files first:
 
 | Task | Agent | Trigger |
 |------|-------|---------|
-| Idea generation | `brainstormer` | Primary task |
-| Implementation planning | `planner` | Roadmap creation |
+| Idea generation | `copywriter` | Primary task |
+| Implementation planning | `(retired)` | Roadmap creation |
 | Channel research | `researcher` | Competitive context |
 
 ---

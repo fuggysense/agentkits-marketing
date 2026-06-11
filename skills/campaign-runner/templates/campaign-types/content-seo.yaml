@@ -21,7 +21,7 @@ tasks:
   - id: keyword-research
     phase: planning
     status: planned
-    agent: seo-specialist
+    agent: researcher
     skill: seo-mastery
     description: "Keyword cluster research — primary keywords, long-tail variants, search volume, difficulty"
     dependencies: []
@@ -30,7 +30,7 @@ tasks:
   - id: content-calendar
     phase: planning
     status: planned
-    agent: planner
+    agent: researcher
     skill: content-strategy
     description: "12-post content calendar — topics, target keywords, publish dates, distribution plan"
     dependencies: [keyword-research]
@@ -58,7 +58,7 @@ tasks:
   - id: schema-markup
     phase: creation
     status: planned
-    agent: seo-specialist
+    agent: researcher
     skill: schema-markup
     description: "JSON-LD schema markup for each blog post — FAQ, Article, HowTo as appropriate"
     dependencies: [blog-posts]
@@ -78,7 +78,7 @@ tasks:
   - id: internal-linking
     phase: execution
     status: planned
-    agent: seo-specialist
+    agent: researcher
     skill: seo-mastery
     description: "Internal linking audit — connect new posts to existing content, update old posts"
     dependencies: [blog-posts]

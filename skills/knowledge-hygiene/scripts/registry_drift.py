@@ -25,10 +25,12 @@ def find_project_root():
 
 
 def find_registry(root):
-    """Find skills-registry.json."""
+    """Find skills-registry.json. Canonical copy lives at .claude/rules/ (132 skills);
+    the .claude/skills/ and skills/ copies are stale 51-skill snapshots (E-15)."""
     for candidate in [
-        root / "skills" / "skills-registry.json",
+        root / ".claude" / "rules" / "skills-registry.json",
         root / ".claude" / "skills" / "skills-registry.json",
+        root / "skills" / "skills-registry.json",
     ]:
         if candidate.exists():
             return candidate

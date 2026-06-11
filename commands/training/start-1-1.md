@@ -78,18 +78,18 @@ Subscriber → Lead → MQL → SQL → Opportunity → Customer → Advocate
 Explain how agents map to marketing functions:
 
 **TOFU (Top of Funnel):**
-- `attraction-specialist` - Lead generation, SEO, landing pages
+- `researcher` - Lead generation, SEO, landing pages
 
 **MOFU (Middle of Funnel):**
-- `lead-qualifier` - Intent detection, lead scoring
-- `email-wizard` - Nurture sequences
+- `persona-builder` - Intent detection, lead scoring
+- `copywriter` - Nurture sequences
 
 **BOFU (Bottom of Funnel):**
-- `sales-enabler` - Pitches, case studies, battlecards
+- `copywriter` - Pitches, case studies, battlecards
 
 **Retention:**
-- `continuity-specialist` - Churn detection, re-engagement
-- `upsell-maximizer` - Revenue expansion
+- `(retired)` - Churn detection, re-engagement
+- `conversion-optimizer` - Revenue expansion
 
 ### Step 4: Create First Campaign Brief
 
@@ -103,7 +103,7 @@ Review the comprehensive campaign plan generated.
 
 ### Step 5: Review the Brief
 
-Point out how the planner agent:
+Point out how the campaign-runner agent:
 - Created structured objectives and KPIs
 - Defined target audience segments
 - Allocated budget across channels

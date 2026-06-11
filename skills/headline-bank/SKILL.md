@@ -53,7 +53,7 @@ output_schema: meta-copy-bank
 - After big-angle-spotter produces a locked angle + top-3 image/overlay creatives
 - Need Meta primary text (body copy above the image) + Meta headline field (short clickable text below image)
 - Per DCT: run once to get 2 headlines + 2 copies — Meta DCT rotates all 4 text combinations against the 3 image creatives = 12 combinations tested
-- Command: `/ads:headlines` (or invoked as Step 13 inside `/ads:concepts` orchestration)
+- Command: `/ads:headlines` (or invoked as the copy step inside ad-concept-engine Conductor Mode — intent-routed, see routing-overrides.md)
 
 ## What This Skill Does NOT Produce
 

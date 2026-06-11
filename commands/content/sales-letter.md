@@ -1,9 +1,13 @@
 ---
-description: Write a long-form direct-response sales letter for cold paid traffic (FB/IG ads) — 800-2000+ words engineered for neurological dominance. 5-phase pipeline with context-aware 12-component framework.
+description: "[DEPRECATED] Write a long-form direct-response sales letter for cold paid traffic (FB/IG ads) — 800-2000+ words. 5-phase pipeline with context-aware 12-component framework."
 version: "1.0.0"
 brand: AgentKits Marketing by AityTech
 argument-hint: [client-slug] [optional: offer focus]
+deprecated: true
+deprecation-note: "The /content:* family is superseded by /copy:* (see .claude/rules/_index.md). For sales letters use /copy:sales-letter (the sales-letter-method skill)."
 ---
+
+> **DEPRECATED.** `/content:*` is superseded by `/copy:*` (see `.claude/rules/_index.md`). For long-form sales letters, use `/copy:sales-letter` (routes the `sales-letter-method` skill). Kept for reference only.
 
 ## Prerequisites
 

@@ -167,10 +167,10 @@ After running quality gates on a batch, produce:
 
 After pages pass the 3-gate validation, apply the optimization stack from `skills/website-design/SKILL.md` → "Post-Build Optimization Router":
 
-1. **SEO** (meta tags, heading structure) — via seo-specialist
-2. **Schema Markup** (JSON-LD) — via seo-specialist
-3. **AEO/GEO** (AI search optimization) — via seo-specialist
-4. **Tracking** (GA4 events, conversion pixels) — via tracking-specialist
+1. **SEO** (meta tags, heading structure) — via researcher
+2. **Schema Markup** (JSON-LD) — via researcher
+3. **AEO/GEO** (AI search optimization) — via researcher
+4. **Tracking** (GA4 events, conversion pixels) — via researcher
 
 This applies at the template level (optimize once, all pages benefit) rather than per-page.
 

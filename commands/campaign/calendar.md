@@ -11,7 +11,7 @@ argument-hint: [timeframe] - Interactive mode, user will be asked for all parame
 
 **Standards**: Token efficiency, sacrifice grammar for concision, list unresolved questions at end.
 
-**Skills**: Activate `content-strategy`, `social-media`, `marketing-fundamentals` skills.
+**Skills**: Activate `content-strategy`, `marketing-fundamentals` skills.
 
 **Components**: Reference `./.claude/components/interactive-questions.md`
 
@@ -134,10 +134,10 @@ argument-hint: [timeframe] - Interactive mode, user will be asked for all parame
 
 | Task | Agent | Trigger |
 |------|-------|---------|
-| Content strategy | `planner` | Calendar structure |
-| Content ideas | `brainstormer` | Topic generation |
+| Content strategy | `(retired)` | Calendar structure |
+| Content ideas | `copywriter` | Topic generation |
 | Copy creation | `copywriter` | Content drafting |
-| Coordination | `project-manager` | Timeline management |
+| Coordination | `(retired)` | Timeline management |
 
 ---
 

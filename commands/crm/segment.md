@@ -147,9 +147,9 @@ Load these files first:
 
 | Task | Agent | Trigger |
 |------|-------|---------|
-| Segment definition | `lead-qualifier` | Primary task |
-| Engagement analysis | `continuity-specialist` | Behavioral data |
-| Campaign strategy | `email-wizard` | Automation setup |
+| Segment definition | `persona-builder` | Primary task |
+| Engagement analysis | `(retired)` | Behavioral data |
+| Campaign strategy | `copywriter` | Automation setup |
 
 ---
 

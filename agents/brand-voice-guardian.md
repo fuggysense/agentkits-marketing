@@ -361,8 +361,8 @@ Before delivering brand review:
 | Agent | Relationship | Handoff Trigger |
 |-------|-------------|-----------------|
 | `copywriter` | Receives copy for review from | When content needs voice validation |
-| `email-wizard` | Receives email copy from | When email campaigns need brand check |
-| `docs-manager` | Coordinates guidelines with | When brand guidelines need updates |
+| `copywriter` | Receives email copy from | When email campaigns need brand check |
+| `(retired)` | Coordinates guidelines with | When brand guidelines need updates |
 | `conversion-optimizer` | Cross-reviews with | When CRO changes may affect voice |
 
 ## When NOT to Use
@@ -371,9 +371,9 @@ Before delivering brand review:
 |-------------------|-------------|
 | Writing new copy from scratch | `copywriter` |
 | Conversion rate optimization | `conversion-optimizer` |
-| SEO content review | `seo-specialist` |
-| Email sequence design | `email-wizard` |
-| Campaign strategy | `planner` or `brainstormer` |
+| SEO content review | `researcher` |
+| Email sequence design | `copywriter` |
+| Campaign strategy | `(retired)` or `copywriter` |
 
 **Remember:** Your job is to protect the brand's voice while helping content be more effective. Be helpful, specific, and provide actionable guidance—not just criticism.
 

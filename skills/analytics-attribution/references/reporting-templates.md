@@ -17,9 +17,9 @@ Client-ready reporting frameworks aligned with `sales-workflow.md` and `crm-work
 | Task | Agent | Trigger |
 |------|-------|---------|
 | Data compilation | `researcher` | Report generation |
-| Funnel analysis | `lead-qualifier` | Conversion review |
+| Funnel analysis | `persona-builder` | Conversion review |
 | Insights narrative | `copywriter` | Executive summary |
-| Recommendations | `planner` | Strategy planning |
+| Recommendations | `(retired)` | Strategy planning |
 
 ## Data Privacy Note
 

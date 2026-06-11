@@ -20,9 +20,8 @@ related_skills:
   - copywriting
   - social-media
 agents:
-  - planner
   - copywriter
-  - attraction-specialist
+  - researcher
 mcp_integrations:
   optional:
     - notion
@@ -37,7 +36,7 @@ output_schema: content-plan
 ## Graph Links
 - **Feeds into:** [[launch-strategy]], [[campaign-runner]], [[programmatic-seo]], [[social-media]], [[seo-mastery]]
 - **Draws from:** [[marketing-fundamentals]]
-- **Used by agents:** [[planner]], [[attraction-specialist]], [[brainstormer]]
+- **Used by agents:** [[researcher]], [[copywriter]]
 - **Related:** [[content-moat]], [[analytics-attribution]]
 
 # Content Strategy
@@ -150,10 +149,10 @@ Content pillars are the main themes your content revolves around.
 
 | Agent | How They Use This Skill |
 |-------|------------------------|
-| `planner` | Building content calendars and editorial plans |
+| `(retired)` | Building content calendars and editorial plans |
 | `copywriter` | Creating content aligned with strategy |
-| `attraction-specialist` | SEO-optimized content creation |
-| `email-wizard` | Email content aligned with nurture goals |
+| `researcher` | SEO-optimized content creation |
+| `copywriter` | Email content aligned with nurture goals |
 
 ## Anti-Patterns to Avoid
 

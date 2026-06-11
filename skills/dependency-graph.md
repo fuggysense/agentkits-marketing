@@ -359,16 +359,16 @@ Skills loaded: page-cro → form-cro → signup-flow-cro
 | Agent | Primary Skills |
 |-------|----------------|
 | `conversion-optimizer` | page-cro, form-cro, popup-cro, signup-flow-cro, onboarding-cro, paywall-upgrade-cro, ab-test-setup |
-| `attraction-specialist` | seo-mastery, schema-markup, content-strategy, paid-advertising, competitor-alternatives |
-| `pseo-architect` | programmatic-seo, seo-mastery, schema-markup, content-strategy, analytics-attribution |
+| `researcher` | seo-mastery, schema-markup, content-strategy, paid-advertising, competitor-alternatives |
+| `researcher` | programmatic-seo, seo-mastery, schema-markup, content-strategy, analytics-attribution |
 | `copywriter` | copywriting, copy-editing, email-sequence, linkedin-content, video-director |
-| `email-wizard` | email-marketing, email-sequence |
-| `seo-specialist` | seo-mastery, schema-markup, programmatic-seo |
+| `copywriter` | email-marketing, email-sequence |
+| `researcher` | seo-mastery, schema-markup, programmatic-seo |
 | `brand-voice-guardian` | brand-building, copywriting, copy-editing, linkedin-content |
-| `brainstormer` | marketing-ideas, marketing-psychology, problem-solving, linkedin-content |
-| `planner` | content-strategy, launch-strategy |
+| `copywriter` | marketing-ideas, marketing-psychology, problem-solving, linkedin-content |
+| `(retired)` | content-strategy, launch-strategy |
 | `researcher` | marketing-fundamentals, analytics-attribution, pricing-strategy |
-| `upsell-maximizer` | paywall-upgrade-cro, pricing-strategy, referral-program |
-| `tracking-specialist` | analytics-attribution, paid-advertising, paid-media-audit |
-| `continuity-specialist` | onboarding-cro, email-sequence, referral-program |
-| `project-manager` | campaign-runner, content-strategy |
+| `conversion-optimizer` | paywall-upgrade-cro, pricing-strategy, referral-program |
+| `researcher` | analytics-attribution, paid-advertising, paid-media-audit |
+| `(retired)` | onboarding-cro, email-sequence, referral-program |
+| `(retired)` | campaign-runner, content-strategy |

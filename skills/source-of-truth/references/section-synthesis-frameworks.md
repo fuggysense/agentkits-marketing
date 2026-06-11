@@ -324,7 +324,7 @@ How to convert raw research data + intake answers into the 26-section template c
 
 **Source:** static template — fill {{project_slug}}, {{brand_name}}, {{core_offer}}, {{primary_kpi}}, and the 3 priority angles.
 
-**Quality bar:** the prompt should be copy-pasteable into `/ads:concepts` or `/content:ads` and produce a usable first draft without further context.
+**Quality bar:** the prompt should be copy-pasteable into an ad-concept-engine Conductor Mode run or `/content:ads` and produce a usable first draft without further context.
 
 ---
 

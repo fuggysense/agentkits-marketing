@@ -24,7 +24,7 @@ related_skills:
   - video-factory
 agents:
   - copywriter
-  - attraction-specialist
+  - researcher
 ---
 
 ## Graph Links

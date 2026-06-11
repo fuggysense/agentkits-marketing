@@ -179,10 +179,10 @@ Use MCP for all metrics; if unavailable show "⚠️ NOT AVAILABLE":
 | Task | Agent | Trigger |
 |------|-------|---------|
 | Metrics compilation | `researcher` | Monthly review |
-| Funnel analysis | `lead-qualifier` | Performance review |
-| Strategy planning | `planner` | Next month prep |
-| Retention analysis | `continuity-specialist` | Customer review |
-| Upsell opportunities | `upsell-maximizer` | Revenue expansion |
+| Funnel analysis | `persona-builder` | Performance review |
+| Strategy planning | `(retired)` | Next month prep |
+| Retention analysis | `(retired)` | Customer review |
+| Upsell opportunities | `conversion-optimizer` | Revenue expansion |
 
 ---
 

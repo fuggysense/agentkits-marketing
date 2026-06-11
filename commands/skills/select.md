@@ -14,7 +14,7 @@ Before running this command, ensure you have:
 ## Context Loading
 
 Load these files first:
-1. `.claude/skills/skills-registry.json` - Skills catalog
+1. `.claude/rules/skills-registry.json` - Skills catalog (canonical 132-skill copy)
 2. `.claude/skills/dependency-graph.md` - Skill dependencies
 
 ---
@@ -35,7 +35,7 @@ You are an intelligent skill selection system. Your job is to analyze user reque
 
 ### Step 1: Read the Registry
 ```
-Read: .claude/skills/skills-registry.json
+Read: .claude/rules/skills-registry.json
 ```
 
 ### Step 2: Extract Keywords
@@ -127,11 +127,11 @@ If this doesn't match your intent, consider:
 **Analysis:**
 - Keywords: plan, Product Hunt, launch
 - Matches: launch-strategy (0.95)
-- Prerequisites: content-strategy, social-media
+- Prerequisites: content-strategy, content-moat
 
 **Result:**
 1. content-strategy (prerequisite)
-2. social-media (prerequisite)
+2. content-moat (prerequisite)
 3. launch-strategy (primary match)
 
 ## Special Cases

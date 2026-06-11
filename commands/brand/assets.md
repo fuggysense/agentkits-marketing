@@ -149,9 +149,9 @@ Load these files first:
 
 | Task | Agent | Trigger |
 |------|-------|---------|
-| Asset organization | `project-manager` | Primary task |
+| Asset organization | `(retired)` | Primary task |
 | Compliance review | `brand-voice-guardian` | Quality check |
-| Documentation | `docs-manager` | Usage guides |
+| Documentation | `(retired)` | Usage guides |
 
 ---
 

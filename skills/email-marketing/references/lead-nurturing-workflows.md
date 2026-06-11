@@ -25,10 +25,10 @@ Comprehensive lead nurturing sequences aligned with `crm-workflow.md` and `sales
 
 | Task | Agent | Trigger |
 |------|-------|---------|
-| Sequence design | `email-wizard` | New sequence request |
-| Lead scoring | `lead-qualifier` | Engagement events |
+| Sequence design | `copywriter` | New sequence request |
+| Lead scoring | `persona-builder` | Engagement events |
 | Copy creation | `copywriter` | Email drafting |
-| Sales handoff | `sales-enabler` | Score reaches 70+ |
+| Sales handoff | `copywriter` | Score reaches 70+ |
 
 ## Welcome Sequence (7 Days)
 
@@ -237,6 +237,6 @@ Day 21: Sunset (remove if no engagement)
 - `sales-workflow.md` - BANT/MEDDIC qualification
 
 ### Agents
-- `email-wizard` - Sequence creation
-- `lead-qualifier` - Score calculation
-- `sales-enabler` - Handoff preparation
+- `copywriter` - Sequence creation
+- `persona-builder` - Score calculation
+- `copywriter` - Handoff preparation

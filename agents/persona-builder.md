@@ -670,9 +670,9 @@ After completing the first buyer profile:
 
 | Agent | Relationship | Handoff Trigger |
 |-------|-------------|-----------------|
-| `lead-qualifier` | Sends ICP data to | When personas inform scoring models |
+| `persona-builder` | Sends ICP data to | When personas inform scoring models |
 | `copywriter` | Sends audience insights to | When personas guide messaging |
-| `planner` | Sends buyer profiles to | When personas inform campaign targeting |
+| `(retired)` | Sends buyer profiles to | When personas inform campaign targeting |
 | `researcher` | Receives market data from | When research informs persona building |
 | `researcher` | Spawns for gap-filling | When research phase is triggered after gap detection |
 
@@ -680,11 +680,11 @@ After completing the first buyer profile:
 
 | If the task is... | Use instead |
 |-------------------|-------------|
-| Lead scoring | `lead-qualifier` |
+| Lead scoring | `persona-builder` |
 | Writing targeted copy | `copywriter` (but load buyer profile first) |
 | Market research only | `researcher` |
-| Campaign planning | `planner` |
-| Customer retention analysis | `continuity-specialist` |
+| Campaign planning | `(retired)` |
+| Customer retention analysis | `(retired)` |
 
 ## Remember
 

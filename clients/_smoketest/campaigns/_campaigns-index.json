@@ -1,8 +1,25 @@
 {
   "schema_version": "1.0",
-  "client": "{{client_slug}}",
+  "client": "_smoketest",
   "client_name": "{{client_name}}",
   "created": "{{today}}",
   "purpose": "Client-level campaign registry. Use this to discover campaign-index.json files instead of guessing campaign paths.",
-  "campaigns": []
+  "campaigns": [
+    {
+      "campaign_slug": "tr-smoketest",
+      "path": "tr-smoketest/",
+      "workspace_count": 0
+    },
+    {
+      "campaign_slug": "wave-smoke-260611",
+      "path": "wave-smoke-260611/",
+      "workspace_count": 0
+    },
+    {
+      "campaign_slug": "wave-smoke-m2-260611",
+      "path": "wave-smoke-m2-260611/",
+      "workspace_count": 0
+    }
+  ],
+  "last_updated": "2026-06-11"
 }

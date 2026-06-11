@@ -1,0 +1,19 @@
+{
+  "schema_version": "1.0",
+  "concept_slug": "{{concept_slug}}",
+  "purpose": "Pin the exact client-root input paths used by this concept. Populated during Phase 00.",
+  "note": "All paths are relative to the client root (../../../../). Do not copy full input content here — reference only.",
+  "pinned_inputs": {
+    "product": [],
+    "offer": [],
+    "buyer_profile": "_brand/buyer-profile.md",
+    "micro_persona_ids": [],
+    "market": [],
+    "competitors": [],
+    "research": [],
+    "winning_ads": []
+  },
+  "hashes": {},
+  "locked_at": null,
+  "pipeline_state_advance": "On lock, set pipeline-state.json.current_phase to '01_strategy'."
+}

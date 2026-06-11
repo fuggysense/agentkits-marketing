@@ -10,6 +10,7 @@ Analyze marketing requirements → delegate to marketing agents → deliver camp
 - `USER.md` — operator context (Jerel)
 - `cron-registry.json` — scheduled tasks (if running with `--channels`)
 - `CHANNELS.md` — Telegram bot setup (read on demand)
+- **Where is every client / what's next?** → `/campaign:status` (no args = cross-client board, `scripts/status_board.py`). Session memory lives in `_handoffs/<date>-<topic>.md` (see `session-end-protocol.md`).
 
 ## Critical workflow rules (mandatory, every session)
 
@@ -49,7 +50,6 @@ Every subagent/worker touching `clients/*` must receive `context_receipt: {clien
 | Routing keyword → skill | `.claude/rules/routing-table.md` (auto-generated, hot) + `routing-overrides.md` |
 | Detailed catalogs (commands, skills, agents) | `docs/system-rules/details/{commands,routing-table,skills-catalog}.md` |
 | System rules (HITL, owner model, self-annealing, etc.) | `docs/system-rules/*.md` (see `_index.md`) |
-| Learnings + session state | `learnings/*.md` (see `_index.md`) |
 | Skill graph (semantic edges) | `.claude/skill-graph.json` — see `docs/system-rules/skill-graph-rule.md` |
 | MCP integrations | `.claude/rules/mcp-integrations.md` |
 

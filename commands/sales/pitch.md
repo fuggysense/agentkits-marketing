@@ -149,7 +149,7 @@ Load these files first:
 | Task | Agent | Trigger |
 |------|-------|---------|
 | Prospect research | `researcher` | Data gathering |
-| Pitch creation | `sales-enabler` | Primary task |
+| Pitch creation | `copywriter` | Primary task |
 | Copy polish | `copywriter` | Narrative refinement |
 
 ---

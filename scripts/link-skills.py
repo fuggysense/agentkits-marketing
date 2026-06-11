@@ -16,23 +16,28 @@ Usage:
   python3 scripts/link-skills.py --top 5        # neighbours per node (default 5)
   python3 scripts/link-skills.py --min 0.12     # min cosine to count (default 0.12)
 
-Requires: scikit-learn, pyyaml (optional — falls back to regex parse)
+Dependencies: scikit-learn is used when present (best TF-IDF quality). If it is
+not installed, the script transparently falls back to a stdlib TF-IDF + cosine
+implementation (no third-party deps), so it always runs on a default python3 and
+still emits semantic edges. pyyaml is optional too (falls back to regex parse).
 """
 from __future__ import annotations
 
 import argparse
 import json
+import math
 import re
 import sys
+from collections import Counter
 from dataclasses import dataclass
 from pathlib import Path
 
 try:
     from sklearn.feature_extraction.text import TfidfVectorizer
     from sklearn.metrics.pairwise import cosine_similarity
+    HAVE_SKLEARN = True
 except ImportError:
-    sys.stderr.write("Install sklearn: pip3 install scikit-learn\n")
-    sys.exit(1)
+    HAVE_SKLEARN = False
 
 ROOT = Path(__file__).resolve().parent.parent
 SKILLS_DIR = ROOT / "skills"
@@ -125,18 +130,62 @@ def collect_nodes() -> list[Node]:
     return nodes
 
 
+_TOKEN_RE = re.compile(r"[a-z0-9]+")
+# small English stop-word set so the stdlib path roughly matches sklearn's filter
+_STOP = set(
+    "a an the and or of to in for on with at by from as is are be this that it its "
+    "you your we our they their he she his her not no can will would should could "
+    "into over under out up down off about than then them these those which who what "
+    "when where why how all any each more most other some such only own same so via".split()
+)
+
+
+def _stdlib_similarity(texts: list[str]) -> list[list[float]]:
+    """Pure-stdlib TF-IDF (sublinear tf, smoothed idf) + cosine similarity.
+    No third-party deps — used when scikit-learn is unavailable."""
+    docs_tokens = [[t for t in _TOKEN_RE.findall(s.lower()) if t not in _STOP] for s in texts]
+    n_docs = len(docs_tokens)
+    # document frequency
+    df: Counter = Counter()
+    for toks in docs_tokens:
+        for term in set(toks):
+            df[term] += 1
+    idf = {t: math.log((1 + n_docs) / (1 + c)) + 1.0 for t, c in df.items()}
+    # tf-idf vectors (sublinear tf: 1 + log(count))
+    vecs: list[dict] = []
+    for toks in docs_tokens:
+        tf = Counter(toks)
+        vec = {t: (1.0 + math.log(c)) * idf[t] for t, c in tf.items()}
+        norm = math.sqrt(sum(v * v for v in vec.values())) or 1.0
+        vecs.append({t: v / norm for t, v in vec.items()})
+    sim = [[0.0] * n_docs for _ in range(n_docs)]
+    for i in range(n_docs):
+        vi = vecs[i]
+        sim[i][i] = 1.0
+        for j in range(i + 1, n_docs):
+            vj = vecs[j]
+            # dot over the smaller vector
+            a, b = (vi, vj) if len(vi) <= len(vj) else (vj, vi)
+            dot = sum(val * b.get(term, 0.0) for term, val in a.items())
+            sim[i][j] = sim[j][i] = dot
+    return sim
+
+
 def compute_graph(nodes: list[Node], top: int, min_sim: float) -> dict:
     if len(nodes) < 2:
         return {}
-    vec = TfidfVectorizer(
-        stop_words="english",
-        ngram_range=(1, 2),
-        max_df=0.9,
-        min_df=1,
-        sublinear_tf=True,
-    )
-    matrix = vec.fit_transform([n.text for n in nodes])
-    sim = cosine_similarity(matrix)
+    if HAVE_SKLEARN:
+        vec = TfidfVectorizer(
+            stop_words="english",
+            ngram_range=(1, 2),
+            max_df=0.9,
+            min_df=1,
+            sublinear_tf=True,
+        )
+        matrix = vec.fit_transform([n.text for n in nodes])
+        sim = cosine_similarity(matrix)
+    else:
+        sim = _stdlib_similarity([n.text for n in nodes])
     graph: dict = {}
     for i, node in enumerate(nodes):
         scored = [
@@ -197,9 +246,10 @@ def main() -> int:
     args = ap.parse_args()
 
     nodes = collect_nodes()
+    engine = "sklearn" if HAVE_SKLEARN else "stdlib-tfidf"
     print(f"[link-skills] loaded {len(nodes)} nodes "
           f"({sum(1 for n in nodes if n.kind=='skill')} skills, "
-          f"{sum(1 for n in nodes if n.kind=='agent')} agents)")
+          f"{sum(1 for n in nodes if n.kind=='agent')} agents) [similarity: {engine}]")
 
     graph = compute_graph(nodes, args.top, args.min)
 

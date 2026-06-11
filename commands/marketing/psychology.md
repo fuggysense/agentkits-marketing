@@ -178,7 +178,7 @@ Feedback Loops, Compounding, Network Effects, Flywheel, Switching Costs
 
 | Task | Agent | Trigger |
 |------|-------|---------|
-| Psychology analysis | `brainstormer` | Primary task |
+| Psychology analysis | `copywriter` | Primary task |
 | Copy applications | `copywriter` | Messaging tactics |
 | CRO implementation | `conversion-optimizer` | Conversion focus |
 

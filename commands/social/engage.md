@@ -1,9 +1,13 @@
 ---
-description: Develop social engagement strategy
+description: "[DEPRECATED] Develop social engagement strategy"
 version: "1.0.0"
 brand: AgentKits Marketing by AityTech
 argument-hint: [platform]
+deprecated: true
+deprecation-note: "The social-media skill was archived (skills/_archive/social-media/). Use the content-strategy skill for social planning, plus viral-hooks-content-creator / ig-reel-script-writer for platform-specific hooks."
 ---
+
+> **DEPRECATED.** The `social-media` skill this command loads is archived at `skills/_archive/social-media/`. Use the `content-strategy` skill for social planning; reach for `viral-hooks-content-creator` (organic short-form) or `ig-reel-script-writer` (Reels) for hooks. This file stays for reference only — do not run it as a live path.
 
 ## Prerequisites
 
@@ -17,7 +21,7 @@ Before running this command, ensure you have:
 Load these files first:
 1. `./README.md` - Product context
 2. `./docs/brand/` - Brand voice guidelines
-3. `.claude/skills/social-media/SKILL.md` - Social frameworks
+3. `skills/content-strategy/SKILL.md` - Social/content frameworks (replaces the archived social-media skill)
 
 ---
 
@@ -27,7 +31,7 @@ Load these files first:
 
 **Standards**: Token efficiency, sacrifice grammar for concision, list unresolved questions at end.
 
-**Skills**: Activate `social-media`, `marketing-fundamentals` skills.
+**Skills**: Activate `content-strategy`, `marketing-fundamentals` skills.
 
 **Components**: Reference `./.claude/components/interactive-questions.md`
 
@@ -155,9 +159,9 @@ Load these files first:
 
 | Task | Agent | Trigger |
 |------|-------|---------|
-| Strategy creation | `continuity-specialist` | Primary task |
+| Strategy creation | `(retired)` | Primary task |
 | Response templates | `copywriter` | Template library |
-| Community planning | `planner` | Initiative calendar |
+| Community planning | `(retired)` | Initiative calendar |
 
 ---
 

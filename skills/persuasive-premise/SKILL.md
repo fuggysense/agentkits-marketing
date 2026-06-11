@@ -26,7 +26,6 @@ related_skills:
   - unique-mechanism-solution
 agents:
   - copywriter
-  - brainstormer
   - brand-voice-guardian
 mcp_integrations: {}
 success_metrics:

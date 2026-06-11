@@ -185,7 +185,7 @@ echo "Date context loaded: Current=$CURRENT_MONTH_NAME"
    - Campaign ROI analysis
    - Competitive landscape
 
-2. Use `lead-qualifier` agent to analyze:
+2. Use `persona-builder` agent to analyze:
    - Funnel performance vs CRM benchmarks
    - Lead quality and velocity
    - Attribution data
@@ -196,7 +196,7 @@ echo "Date context loaded: Current=$CURRENT_MONTH_NAME"
    - Present insights clearly
    - Frame strategic recommendations
 
-4. Use `planner` agent for:
+4. Use `(retired)` agent for:
    - Next month recommendations
    - Budget optimization suggestions
 
@@ -204,11 +204,11 @@ echo "Date context loaded: Current=$CURRENT_MONTH_NAME"
 | Task | Agent | Trigger |
 |------|-------|---------|
 | Data compilation | `researcher` | Report generation |
-| Funnel analysis | `lead-qualifier` | Performance review |
+| Funnel analysis | `persona-builder` | Performance review |
 | Competitive intel | `researcher` | Market analysis |
 | Executive narrative | `copywriter` | Report writing |
-| Strategy recommendations | `planner` | Next month planning |
-| Retention metrics | `continuity-specialist` | Customer analysis |
+| Strategy recommendations | `(retired)` | Next month planning |
+| Retention metrics | `(retired)` | Customer analysis |
 
 ---
 

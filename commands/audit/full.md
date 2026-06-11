@@ -167,10 +167,10 @@ Load these files first:
 
 | Task | Agent | Trigger |
 |------|-------|---------|
-| Website/SEO audit | `attraction-specialist` | Technical review |
+| Website/SEO audit | `researcher` | Technical review |
 | Content analysis | `researcher` | Content inventory |
-| Funnel analysis | `lead-qualifier` | Conversion review |
-| Email audit | `email-wizard` | Email program |
+| Funnel analysis | `persona-builder` | Conversion review |
+| Email audit | `copywriter` | Email program |
 | Social audit | `researcher` | Social presence |
 | Competitive context | `researcher` | Market position |
 

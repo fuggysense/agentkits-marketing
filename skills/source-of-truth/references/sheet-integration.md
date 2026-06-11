@@ -262,7 +262,7 @@ if sheet_integration_available():
 # 3. CREATIVES + COPY tabs — note dependency, don't write
 print_dependency_note(
     "CREATIVES + COPY tabs will be populated by ad-concept-engine when "
-    "/ads:concepts runs. That skill is expected to ship ad_concept_sheet_writer.py."
+    "a Conductor Mode run executes. That skill is expected to ship ad_concept_sheet_writer.py."
 )
 
 # 4. Output hand-off message

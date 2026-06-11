@@ -145,7 +145,7 @@ Use the content commands for each piece:
 1. /seo:keywords "topic" - Research keywords
 2. /content:blog "title" "keyword" - Create post
 3. /seo:optimize "post" "keyword" - Optimize
-4. Review with seo-specialist agent
+4. Review with researcher agent
 5. Review with brand-voice-guardian agent
 ```
 

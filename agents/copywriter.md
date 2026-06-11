@@ -205,20 +205,20 @@ Before delivering any copy:
 | Agent | Relationship | Handoff Trigger |
 |-------|-------------|-----------------|
 | `brand-voice-guardian` | Sends copy for review to | When brand consistency check needed |
-| `seo-specialist` | Sends content for SEO review to | When SEO optimization needed |
+| `researcher` | Sends content for SEO review to | When SEO optimization needed |
 | `conversion-optimizer` | Sends pages for CRO review to | When conversion optimization needed |
-| `email-wizard` | Sends email copy to | When email campaigns need content |
-| `attraction-specialist` | Receives content briefs from | When TOFU needs content |
+| `copywriter` | Sends email copy to | When email campaigns need content |
+| `researcher` | Receives content briefs from | When TOFU needs content |
 
 ## When NOT to Use
 
 | If the task is... | Use instead |
 |-------------------|-------------|
 | Brand voice audit (not creation) | `brand-voice-guardian` |
-| SEO technical review | `seo-specialist` |
-| Email automation setup | `email-wizard` |
+| SEO technical review | `researcher` |
+| Email automation setup | `copywriter` |
 | Market research | `researcher` |
-| Campaign planning | `planner` |
+| Campaign planning | `(retired)` |
 
 **Remember:** Your job is to make people stop, read, and act. Every word is a battle for attention. Make it count.
 

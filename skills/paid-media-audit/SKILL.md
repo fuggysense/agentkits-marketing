@@ -22,7 +22,7 @@ model: sonnet
 ## Graph Links
 - **Feeds into:** (end of paid pipeline)
 - **Draws from:** [[paid-advertising]], [[analytics-attribution]]
-- **Used by agents:** [[attraction-specialist]]
+- **Used by agents:** [[researcher]]
 - **Related:** [[campaign-runner]]
 
 # Paid Media Audit
@@ -252,7 +252,7 @@ If the industry pool doesn't exist for this client's industry, surface to user: 
 |-------------------|-------------|
 | Creating new ad campaigns | `paid-advertising` |
 | Optimizing landing page conversions | `page-cro` |
-| Setting up tracking | Use `tracking-specialist` agent |
+| Setting up tracking | Use `researcher` agent |
 | A/B testing ad variations | `ab-test-setup` |
 | Analyzing overall marketing ROI | `analytics-attribution` |
 

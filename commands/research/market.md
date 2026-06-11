@@ -160,8 +160,8 @@ Load these files first:
 | Task | Agent | Trigger |
 |------|-------|---------|
 | Data gathering | `researcher` | Primary task |
-| Competitor analysis | `attraction-specialist` | Competitive focus |
-| Trend synthesis | `brainstormer` | Opportunity identification |
+| Competitor analysis | `researcher` | Competitive focus |
+| Trend synthesis | `copywriter` | Opportunity identification |
 
 ---
 

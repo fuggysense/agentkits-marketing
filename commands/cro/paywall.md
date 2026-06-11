@@ -162,7 +162,7 @@ argument-hint: [product-or-upgrade-context]
 | Task | Agent | Trigger |
 |------|-------|---------|
 | Paywall analysis | `conversion-optimizer` | Primary task |
-| Revenue strategy | `upsell-maximizer` | Pricing/packaging |
+| Revenue strategy | `conversion-optimizer` | Pricing/packaging |
 | Copy optimization | `copywriter` | Headlines, CTAs |
 
 ---

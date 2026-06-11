@@ -148,7 +148,7 @@ Load these files first:
 | Task | Agent | Trigger |
 |------|-------|---------|
 | Prospect research | `researcher` | Data gathering |
-| Sequence creation | `sales-enabler` | Primary task |
+| Sequence creation | `copywriter` | Primary task |
 | Copy optimization | `copywriter` | Email refinement |
 
 ---

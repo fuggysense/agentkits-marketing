@@ -31,12 +31,7 @@ related_skills:
   - image-generation
 agents:
   - copywriter
-  - email-wizard
-  - attraction-specialist
-  - planner
-  - project-manager
-  - seo-specialist
-  - tracking-specialist
+  - researcher
 mcp_integrations:
   optional:
     - postiz
@@ -53,7 +48,6 @@ output_schema: campaign-state
 ## Graph Links
 - **Feeds into:** (orchestrator — routes to all execution skills)
 - **Draws from:** [[content-strategy]], [[analytics-attribution]], [[launch-strategy]]
-- **Used by agents:** [[project-manager]], [[planner]]
 - **Related:** [[deep-research]], [[marketing-ideas]]
 
 # Campaign Runner

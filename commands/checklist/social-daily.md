@@ -1,9 +1,13 @@
 ---
-description: Daily social media management checklist
+description: "[DEPRECATED] Daily social media management checklist"
 version: "1.0.0"
 brand: AgentKits Marketing by AityTech
 argument-hint: [platforms] [brand]
+deprecated: true
+deprecation-note: "The social-media skill was archived (skills/_archive/social-media/). Use the content-strategy skill for social planning; Postiz handles publishing/scheduling."
 ---
+
+> **DEPRECATED.** The `social-media` skill this checklist loads is archived at `skills/_archive/social-media/`. Use the `content-strategy` skill for social planning; Postiz (see `.claude/rules/mcp-integrations.md`) handles publishing. Kept for reference only.
 
 ## Prerequisites
 
@@ -17,7 +21,7 @@ Before running this command, ensure you have:
 Load these files first:
 1. `./README.md` - Product context
 2. `./docs/social/` - Social media strategies
-3. `.claude/skills/social-media/SKILL.md` - Social frameworks
+3. `skills/content-strategy/SKILL.md` - Social/content frameworks (replaces the archived social-media skill)
 
 ---
 
@@ -27,7 +31,7 @@ Load these files first:
 
 **Standards**: Token efficiency, sacrifice grammar for concision, list unresolved questions at end.
 
-**Skills**: Activate `social-media`, `marketing-fundamentals` skills.
+**Skills**: Activate `content-strategy`, `marketing-fundamentals` skills.
 
 **Components**: Reference `./.claude/components/interactive-questions.md`
 
@@ -146,9 +150,9 @@ Load these files first:
 
 | Task | Agent | Trigger |
 |------|-------|---------|
-| Content ideas | `brainstormer` | Content gaps |
+| Content ideas | `copywriter` | Content gaps |
 | Copy creation | `copywriter` | Post drafting |
-| Engagement strategy | `brainstormer` | Community building |
+| Engagement strategy | `copywriter` | Community building |
 | Performance review | `researcher` | Daily metrics |
 
 ---

@@ -1,6 +1,8 @@
 {
   "name": "meta-ads",
   "description": "Facebook & Instagram advertising management and analytics",
+  "deprecated": true,
+  "deprecation_note": "DO NOT USE. Meta Marketing API work routes through the `meta` CLI (~/.local/bin/meta), not an MCP. See .claude/rules/mcp-integrations.md (CLI-only rule). This third-party meta-ads-mcp npm config is retained for reference only.",
   "type": "npm",
   "command": "npx",
   "args": ["-y", "meta-ads-mcp"],

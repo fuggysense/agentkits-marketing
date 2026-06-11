@@ -83,6 +83,7 @@ data/**
 clients/*/
 !clients/_template/
 !clients/_smoketest/
+!clients/_smoketest2/
 !clients/README.md
 
 # Voice profiles (private)

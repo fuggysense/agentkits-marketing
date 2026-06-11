@@ -14,18 +14,18 @@ Agent routing and publishing strategy for each campaign task type.
 |-----------|--------------|---------------|-------|---------------|
 | Social posts | copywriter | — | social-media | Postiz MCP |
 | Social images | (direct) | — | image-generation | Postiz upload |
-| Ad creative copy | copywriter | attraction-specialist | paid-advertising + copywriting | meta-ads-uploader |
+| Ad creative copy | copywriter | researcher | paid-advertising + copywriting | meta-ads-uploader |
 | Ad images | (direct) | — | image-generation | meta-ads-uploader |
-| Email sequence | email-wizard | copywriter | email-sequence | HubSpot MCP |
+| Email sequence | copywriter | copywriter | email-sequence | HubSpot MCP |
 | Landing page copy | copywriter | conversion-optimizer | page-cro | Manual |
-| Blog posts | copywriter | seo-specialist | seo-mastery | Manual |
-| SEO content | copywriter | seo-specialist | seo-mastery + schema-markup | Manual |
+| Blog posts | copywriter | researcher | seo-mastery | Manual |
+| SEO content | copywriter | researcher | seo-mastery + schema-markup | Manual |
 | Market research | researcher | — | marketing-fundamentals | State file |
-| Keyword research | seo-specialist | — | seo-mastery | State file |
-| Content calendar | planner | — | content-strategy | State file |
-| Tracking setup | tracking-specialist | — | analytics-attribution | Config docs |
+| Keyword research | researcher | — | seo-mastery | State file |
+| Content calendar | campaign-runner | — | content-strategy | State file |
+| Tracking setup | researcher | — | analytics-attribution | Config docs |
 | Metrics pull | (direct) | — | analytics-attribution | State file |
-| Campaign report | project-manager | — | analytics-attribution | State file |
+| Campaign report | campaign-runner | — | analytics-attribution | State file |
 | TikTok slideshows | copywriter | researcher | image-generation + social-media + content-moat | Postiz MCP |
 
 ---
@@ -60,13 +60,13 @@ Agent routing and publishing strategy for each campaign task type.
 ### Planning Phase Tasks
 1. **Market research** → researcher agent, marketing-fundamentals skill
 2. **Competitor analysis** → researcher agent, competitor-alternatives skill
-3. **Keyword research** → seo-specialist agent, seo-mastery skill
-4. **Content calendar** → planner agent, content-strategy skill
-5. **Campaign brief** → planner agent (uses existing /campaign:brief command)
+3. **Keyword research** → researcher agent, seo-mastery skill
+4. **Content calendar** → campaign-runner agent, content-strategy skill
+5. **Campaign brief** → campaign-runner agent (uses existing /campaign:brief command)
 
 ### Creation Phase Tasks
 6. **Landing page copy** → copywriter + page-cro
-7. **Email sequence** → email-wizard + email-sequence
+7. **Email sequence** → copywriter + email-sequence
 8. **Social posts** → copywriter + social-media
 9. **Ad creative** → copywriter + paid-advertising + copywriting
 10. **Images/media** → image-generation skill (direct)
@@ -76,15 +76,15 @@ Agent routing and publishing strategy for each campaign task type.
 12. **Social scheduling** → Postiz MCP
 13. **Email deployment** → HubSpot MCP
 14. **Ad launch** → meta-ads-uploader (bundle → upload → PAUSED ads)
-15. **Tracking setup** → tracking-specialist + analytics-attribution
+15. **Tracking setup** → researcher + analytics-attribution
 16. **Landing page publish** → Manual (Jerel deploys)
 
 ### Optimization Phase Tasks
 17. **Metrics pull** → MCP integrations (GA, Postiz, HubSpot, Meta)
-18. **Performance report** → project-manager + analytics-attribution
+18. **Performance report** → campaign-runner + analytics-attribution
 19. **A/B test design** → conversion-optimizer + ab-test-setup
 20. **Copy optimization** → copywriter based on data
-21. **Retargeting** → email-wizard + attraction-specialist
+21. **Retargeting** → copywriter + researcher
 
 ---
 
@@ -119,7 +119,7 @@ Create all social posts for the week in one session:
 ### Email Sequence Batch
 Write full email sequence in one session:
 1. Load ICP + offer context
-2. Write all emails (email-wizard + email-sequence)
+2. Write all emails (copywriter + email-sequence)
 3. Review with brand-voice-guardian
 4. Save to assets/emails/
 5. Deploy to HubSpot when approved

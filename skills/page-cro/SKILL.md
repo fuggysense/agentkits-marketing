@@ -22,7 +22,7 @@ related_skills:
   - copywriting
 agents:
   - conversion-optimizer
-  - attraction-specialist
+  - researcher
 mcp_integrations:
   optional:
     - google-analytics

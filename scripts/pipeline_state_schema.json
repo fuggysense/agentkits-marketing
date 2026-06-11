@@ -1,0 +1,65 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "marketing/pipeline-state",
+  "title": "Pipeline State (canonical, permissive)",
+  "description": "Resume save-file for any deliverable workspace (DCT, sales-letter, video-concept, launch). Permissive on purpose: real files across the repo carry different identity-field spellings and different optional blocks. The validator (validate_pipeline_state.py) enforces this contract directly in Python (no jsonschema dependency); this document is the human-readable spec it follows. Three rules: (1) the file must name WHERE it is, (2) WHAT phase it is at, (3) WHEN it was last touched. Everything else is optional passthrough.",
+
+  "type": "object",
+
+  "identity": {
+    "comment": "At least ONE field from each of the three families below must be present. Aliases exist because the repo grew organically; the validator accepts any alias and warns when the canonical one is absent. New files SHOULD use the canonical spelling.",
+    "where_family": {
+      "canonical": ["client", "campaign"],
+      "accepted_any_of": ["client", "campaign", "workspace", "workspace_id", "concept_slug", "workspace_slug"],
+      "note": "client+campaign is the canonical pair. A `workspace` path string (e.g. clients/<slug>/campaigns/<campaign>/...) satisfies WHERE on its own because client+campaign are derivable from it."
+    },
+    "phase_family": {
+      "canonical": "current_phase",
+      "accepted_any_of": ["current_phase", "phase", "current_stage"],
+      "note": "current_phase is canonical. `phase` (thomson-reserve launch state) and `current_stage` (older video states) are accepted aliases."
+    },
+    "when_family": {
+      "canonical": "last_updated",
+      "accepted_any_of": ["last_updated", "updated_at", "last_modified", "created_date", "created"],
+      "note": "last_updated is canonical. updated_at / last_modified are accepted; created_date alone is accepted (a never-updated file is still legitimately stamped)."
+    }
+  },
+
+  "known_phase_values": {
+    "comment": "OPEN enum. These are the phase tokens seen in the wild. A value NOT in this list is allowed if it (a) matches one of the structural patterns below or (b) is x- prefixed (explicit custom). Unrecognized + non-x- values produce a WARNING, never a hard fail.",
+    "dct_lane": ["phase_0_context", "phase_1_angles", "phase_2_assembly", "phase_3_render", "phase_3b_allocate", "phase_3_creative_gate", "phase_4_sheet", "phase_5_upload", "PARKED", "PARTIAL_UPLOAD__BLOCKED_SG_ADVERTISER_VERIFICATION"],
+    "video_concept_lane": ["phase_0_preflight", "phase_1_strategy", "phase_2_ag1_options", "phase_3_scripts", "phase_4_synthesis", "phase_5_ag1", "phase_6_refinement", "phase_7_ag2", "ag1_review", "ag1_review_pending_operator_taste_pass"],
+    "sales_letter_lane": ["phase_0_foundation", "phase_1_leads", "phase_2_spine", "phase_3_body_draft", "phase_4_gate", "phase_5_assembly", "phase_6_ship"],
+    "structural_patterns_accepted": [
+      "^phase_[0-9]+[a-z]?(_[a-z0-9]+)*$",
+      "^x-.+",
+      "^[A-Z][A-Z0-9_]+$"
+    ]
+  },
+
+  "optional_blocks_passthrough": {
+    "comment": "Any of these may be present; none are required; the validator never rejects extra keys. Listed only so a reader knows the common shapes.",
+    "examples": ["schema_version", "pipeline", "dct_id", "dct_method", "metrics_campaign", "campaign_type", "next_action", "phase_status", "phases", "blockers", "blockers_before_live", "open_subagent_threads", "pending_approvals", "approvals", "eval_buyer_fit", "eval_override", "recommendation_snapshot", "script_mode", "live_review_url", "publisher_source", "production_contract", "strategy_map", "selected_inputs", "naming_conventions", "upload_plan", "meta", "hard_rules", "done"]
+  },
+
+  "validator_contract": {
+    "hard_fail_conditions": [
+      "file does not parse as JSON",
+      "top-level value is not a JSON object",
+      "no field from the WHERE family is present",
+      "no field from the PHASE family is present",
+      "no field from the WHEN family is present",
+      "a present phase value is null or empty string"
+    ],
+    "warn_conditions": [
+      "canonical identity field absent but an accepted alias is present",
+      "phase value is unrecognized AND not x-prefixed AND not matching a structural pattern",
+      "phases block present but not an object",
+      "last_updated present but not an ISO-ish date string (YYYY-MM-DD or full ISO)"
+    ],
+    "never": [
+      "auto-repair any file",
+      "reject a file solely for carrying extra/unknown top-level keys"
+    ]
+  }
+}

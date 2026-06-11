@@ -19,7 +19,16 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime
 from pathlib import Path
 
-REPO = Path("/Users/jerel/Documents/Jerel's brain/jerel's brain/Marketing")
+def _repo_root() -> Path:
+    """Repo root via MARKETING_REPO_ROOT env, else this file's parent.parent
+    (this script lives in scripts/)."""
+    env = os.environ.get("MARKETING_REPO_ROOT")
+    if env:
+        return Path(env).expanduser().resolve()
+    return Path(__file__).resolve().parent.parent
+
+
+REPO = _repo_root()
 CLIENT = REPO / "clients/neezanizam"
 DRAFT = CLIENT / "sales-letters/260421-v1.md"
 REVIEWS_DIR = CLIENT / "sales-letters/260421-v1-reviews"

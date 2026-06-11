@@ -15,7 +15,7 @@
   "phases": {
     "phase_0_context": {
       "title": "Context load + micro-persona pick",
-      "owner": "avatar-research (/ads:avatars) + client _brand/",
+      "owner": "avatar-research (intent: build avatars for <project>) + client _brand/",
       "status": "not_started",
       "gate": "gate_0_personas",
       "gate_status": "pending",

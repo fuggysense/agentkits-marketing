@@ -9,7 +9,7 @@ argument-hint: <client-slug> [angle-name if targeting a specific existing angle]
 
 Wraps `skills/ad-concept-engine/` + `skills/big-angle-spotter/` with copywriting-OS gates + reviewers. Produces ad-ready copy (primary text variants + headline variants + description variants) for Meta / Google / TikTok paid placements.
 
-**Relationship to existing ads pipeline:** the 6-stage creative pipeline (`/ads:source-of-truth` → `/ads:avatars` → `/ads:big-angle-spotter` → `/ads:concepts` → `/ads:upload` → `/ads:feedback`) stays intact. This command wraps the COPY output of that pipeline with universal gates + reviewers. Use for standalone ad copy generation OR to add gate-enforcement to a concepts-engine wave.
+**Relationship to existing ads pipeline:** the 6-stage creative pipeline (`/ads:source-of-truth` → avatar-research → big-angle-spotter → ad-concept-engine Conductor Mode → /ads:upload → /ads:feedback) stays intact. This command wraps the COPY output of that pipeline with universal gates + reviewers. Use for standalone ad copy generation OR to add gate-enforcement to a concepts-engine wave.
 
 ## Step 1 — Shared context
 
@@ -30,16 +30,16 @@ If no angle specified:
 - Prompt the operator: "Which angle? Pick from existing (list) OR 'new' to trigger big-angle-spotter first."
 - If "new" → delegate to `/ads:big-angle-spotter` first, then return here with the produced angle.
 
-## Step 4 — Delegate to existing `/content:ads` or `/ads:concepts`
+## Step 4 — Delegate to `/content:ads` or ad-concept-engine
 
 For simple ad copy generation:
 ```
 /content:ads <slug> <angle>
 ```
 
-For full DCT wave (3 creatives × 2 headlines × 2 ad copies):
+For full DCT wave (3 creatives × 2 headlines × 2 ad copies), route to ad-concept-engine in Conductor Mode (intent, no slash command):
 ```
-/ads:concepts <slug> <angle>
+"new ad concepts for <slug>, angle <angle>"
 ```
 
 Sub-agent execution.
@@ -61,7 +61,7 @@ Same as `/copy:sales-letter`. Revision cycles ≤2.
 ## Step 7 — Ship + log
 
 - **Output:** `clients/<slug>/angles/<angle>/ad-copy-<YYMMDD>.md` (structured: primary-text variants, headline variants, description variants)
-- **DCT tracker row:** if invoked via `/ads:concepts`, the existing `dct-tracker.json` entry adds a `gates-passed` field with all 5 reviewer verdicts
+- **DCT tracker row:** if invoked via ad-concept-engine Conductor Mode, the existing `dct-tracker.json` entry adds a `gates-passed` field with all 5 reviewer verdicts
 - **Logs + learnings:** standard + append to `skills/ad-concept-engine/learnings.md` + `skills/big-angle-spotter/learnings.md`
 
 ## Prerequisites

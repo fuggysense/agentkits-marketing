@@ -1,9 +1,9 @@
 {
-  "generated": "2026-06-11T02:28:13.944Z",
+  "generated": "2026-06-11T04:04:00.774Z",
   "counts": {
-    "project": 75,
+    "project": 76,
     "global": 58,
-    "total": 133
+    "total": 134
   },
   "skills": [
     {
@@ -302,7 +302,7 @@
     },
     {
       "name": "icm",
-      "description": "\"Interpretable Context Methodology (ICM, arXiv:2603.16021v2) — five-layer folder/context architecture that loads minimum context per step; fixes token bloat, duplication drift, context discovery. Includes a V4 Marketing Scaffold Mode (validate-icm.sh, delegates to client-onboardi",
+      "description": "\"Interpretable Context Methodology (ICM) — five-layer folder/context architecture that loads minimum context per step; fixes token bloat, duplication drift, context discovery. Includes a V4 Marketing Scaffold Mode (validate-icm.sh, delegates to client-onboarding/brand-scaffolder)",
       "triggers": [],
       "source": "global",
       "path": "../../../../.claude/skills/icm/SKILL.md"
@@ -707,6 +707,13 @@
       "triggers": [],
       "source": "project",
       "path": ".claude/skills/source-of-truth/SKILL.md"
+    },
+    {
+      "name": "status-board",
+      "description": "\"One-glance cross-client status. Reads every client's campaign registry + state files + folder truth and prints one line per client: where the work sits, what's next, who's blocking, plus a stale-state flag. Triggers: where is every client, what's next, status board, who's blocke",
+      "triggers": [],
+      "source": "project",
+      "path": ".claude/skills/status-board/SKILL.md"
     },
     {
       "name": "tiktok-slideshows",

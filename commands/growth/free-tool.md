@@ -161,9 +161,9 @@ Load these files first:
 
 | Task | Agent | Trigger |
 |------|-------|---------|
-| Tool ideation | `brainstormer` | Concept generation |
-| Strategy design | `attraction-specialist` | Primary task |
-| SEO planning | `seo-specialist` | Complete scope |
+| Tool ideation | `copywriter` | Concept generation |
+| Strategy design | `researcher` | Primary task |
+| SEO planning | `researcher` | Complete scope |
 
 ---
 

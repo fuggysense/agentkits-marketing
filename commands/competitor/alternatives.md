@@ -151,7 +151,7 @@ Load these files first:
 |------|-------|---------|
 | Competitor research | `researcher` | Data gathering |
 | Page copy | `copywriter` | Primary task |
-| SEO optimization | `seo-specialist` | Complete scope |
+| SEO optimization | `researcher` | Complete scope |
 
 ---
 

@@ -1,9 +1,13 @@
 ---
-description: Analyze the current copy issues and enhance it
+description: "[DEPRECATED] Analyze the current copy issues and enhance it"
 version: "1.0.0"
 brand: AgentKits Marketing by AityTech
 argument-hint: [url-or-content] - Interactive mode, user will be asked for all parameters
+deprecated: true
+deprecation-note: "The /content:* family is superseded by /copy:* (see .claude/rules/_index.md). To enhance existing copy use the copy-editing skill."
 ---
+
+> **DEPRECATED.** `/content:*` is superseded by `/copy:*` (see `.claude/rules/_index.md`). To enhance existing copy, use the `copy-editing` skill. Kept for reference only.
 
 ## Language & Quality Standards
 
@@ -136,7 +140,7 @@ argument-hint: [url-or-content] - Interactive mode, user will be asked for all p
 | Copy enhancement | `copywriter` | Primary task |
 | Brand review | `brand-voice-guardian` | Tone consistency |
 | CRO check | `conversion-optimizer` | Conversion elements |
-| Psychology review | `brainstormer` | Persuasion elements |
+| Psychology review | `copywriter` | Persuasion elements |
 
 ---
 

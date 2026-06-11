@@ -25,9 +25,9 @@ Never freehand analysis from model training knowledge. Always activate the relev
 | Need a framework/checklist/scoring rubric | Skill |
 | Need autonomous execution or review | Agent |
 | Need deep analysis with structured output | Both — skill loads the framework, agent applies it |
-| Research or competitive intel | Agent (researcher, attraction-specialist) |
+| Research or competitive intel | Agent (researcher) |
 | Content creation or rewriting | Skill (copywriting, copy-editing) + Agent (copywriter) |
-| Multi-perspective review | Multiple agents (solopreneur, startup-founder, brand-voice-guardian) |
+| Multi-perspective review | Agent (brand-voice-guardian) + conversion-optimizer |
 
 ## Why
 

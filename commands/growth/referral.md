@@ -161,8 +161,8 @@ Load these files first:
 
 | Task | Agent | Trigger |
 |------|-------|---------|
-| Program design | `upsell-maximizer` | Primary task |
-| Launch planning | `planner` | Complete scope |
+| Program design | `conversion-optimizer` | Primary task |
+| Launch planning | `(retired)` | Complete scope |
 | Referral copy | `copywriter` | Messaging |
 
 ---

@@ -1,7 +1,0 @@
-{
-  "gtm_id": "",
-  "meta_pixel_id": "",
-  "clarity_id": "",
-  "ga4_id": "",
-  "_notes": "Optional — fill only if this client has a public site. Injected into the site <head>. Prefer ONE GTM container per client (gtm_id) and manage Meta Pixel / Microsoft Clarity / GA4 as tags inside GTM rather than pasting each snippet. Leave blank if no site. RECOMMENDED, not required for conformance."
-}

@@ -1,0 +1,8 @@
+{
+  "client": "_smoketest2",
+  "campaign": "wave-smoke-m3-260611",
+  "current_phase": "phase_3_creative_gate",
+  "last_updated": "2026-06-11",
+  "notes": "FICTIONAL SMOKE-TEST DATA. M3.8 repeatability proof. Stopped before render — no render.py, no Meta, no sheet.",
+  "smoke_test": true
+}

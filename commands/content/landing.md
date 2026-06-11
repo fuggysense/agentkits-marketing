@@ -1,9 +1,13 @@
 ---
-description: Create high-converting landing page copy
+description: "[DEPRECATED] Create high-converting landing page copy"
 version: "1.0.0"
 brand: AgentKits Marketing by AityTech
 argument-hint: [offer] [audience]
+deprecated: true
+deprecation-note: "The /content:* family is superseded by /copy:* (see .claude/rules/_index.md). For landing-page copy use /copy:landing."
 ---
+
+> **DEPRECATED.** `/content:*` is superseded by `/copy:*` (see `.claude/rules/_index.md`). For landing-page copy, use `/copy:landing`. Kept for reference only.
 
 ## Prerequisites
 
@@ -158,7 +162,7 @@ Load context in this order:
 |------|-------|---------|
 | Landing page copy | `copywriter` | Primary creation |
 | CRO optimization | `conversion-optimizer` | Conversion review |
-| SEO elements | `attraction-specialist` | Organic visibility |
+| SEO elements | `researcher` | Organic visibility |
 
 ---
 

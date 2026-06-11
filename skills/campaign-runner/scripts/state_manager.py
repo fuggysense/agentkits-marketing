@@ -228,12 +228,14 @@ def new_campaign(project: str, slug: str, campaign_type: str) -> dict:
         },
         "concept_workspaces": [],
         "fixed_system_paths": {
-            "video_factory": "/Users/jerel/.claude/skills/video-factory/",
-            "higgsfield_prompts": "/Users/jerel/AI workflows/higgsfield-prompts/",
-            "higgsfield_repo_claude": "/Users/jerel/AI workflows/higgsfield-prompts/CLAUDE.md",
-            "higgsfield_video_generation": "/Users/jerel/AI workflows/higgsfield-prompts/skills/media/video-generation/SKILL.md",
-            "higgsfield_image_generation": "/Users/jerel/AI workflows/higgsfield-prompts/skills/media/image-generation/SKILL.md",
-            "higgsfield_viral_presets": "/Users/jerel/AI workflows/higgsfield-prompts/skills/media/viral-presets/"
+            # Cross-repo paths (live outside this repo) — expand ~ to the active home dir
+            # rather than hardcoding /Users/jerel.
+            "video_factory": os.path.expanduser("~/.claude/skills/video-factory/"),
+            "higgsfield_prompts": os.path.expanduser("~/AI workflows/higgsfield-prompts/"),
+            "higgsfield_repo_claude": os.path.expanduser("~/AI workflows/higgsfield-prompts/CLAUDE.md"),
+            "higgsfield_video_generation": os.path.expanduser("~/AI workflows/higgsfield-prompts/skills/media/video-generation/SKILL.md"),
+            "higgsfield_image_generation": os.path.expanduser("~/AI workflows/higgsfield-prompts/skills/media/image-generation/SKILL.md"),
+            "higgsfield_viral_presets": os.path.expanduser("~/AI workflows/higgsfield-prompts/skills/media/viral-presets/")
         }
     }
     write_json(cdir / "campaign-index.json", campaign_index)

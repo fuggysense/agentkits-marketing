@@ -160,7 +160,7 @@ Load context in this order:
 | Task | Agent | Trigger |
 |------|-------|---------|
 | Messaging strategy | `copywriter` | Key messages |
-| Campaign structure | `planner` | Timeline planning |
+| Campaign structure | `(retired)` | Timeline planning |
 | Audience insights | `researcher` | Persona development |
 | Brand alignment | `brand-voice-guardian` | Voice/tone review |
 

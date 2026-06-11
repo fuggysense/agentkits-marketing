@@ -170,7 +170,7 @@ echo "Current Week: W$CURRENT_WEEK ($WEEK_START to $WEEK_END)"
    - Lead generation stats
    - Engagement metrics
 
-2. Use `lead-qualifier` agent to analyze:
+2. Use `persona-builder` agent to analyze:
    - Funnel performance vs CRM benchmarks
    - Lead quality and SLA compliance
    - Conversion trends
@@ -189,9 +189,9 @@ echo "Current Week: W$CURRENT_WEEK ($WEEK_START to $WEEK_END)"
 | Task | Agent | Trigger |
 |------|-------|---------|
 | Data compilation | `researcher` | Report generation |
-| Funnel analysis | `lead-qualifier` | Lead metrics |
+| Funnel analysis | `persona-builder` | Lead metrics |
 | Executive summary | `copywriter` | Report narrative |
-| Recommendations | `planner` | Next steps |
+| Recommendations | `(retired)` | Next steps |
 
 ---
 

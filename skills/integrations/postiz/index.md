@@ -74,7 +74,7 @@ Add to your Claude Code MCP settings:
 | Tool | Description | Used By |
 |------|-------------|---------|
 | `posts:create` | Create/schedule posts (multi-platform, with media) | copywriter, social-media skill |
-| `posts:list` | List scheduled/published posts | project-manager, campaign-runner |
+| `posts:list` | List scheduled/published posts | campaign-runner, campaign-runner |
 | `posts:delete` | Remove a post | campaign-runner |
 | `upload` | Upload media files | image-generation, copywriter |
 | `integrations:list` | Show connected social accounts | campaign-runner (discovery) |

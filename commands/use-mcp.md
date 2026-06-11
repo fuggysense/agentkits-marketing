@@ -160,7 +160,7 @@ Check `.claude/skills/integrations/_registry.md` for full list.
 
 | Task | Agent | Trigger |
 |------|-------|---------|
-| Data orchestration | `mcp-manager` | Complex queries |
+| Data orchestration | `(retired)` | Complex queries |
 | Results analysis | `researcher` | Deep insights |
 | Report formatting | `copywriter` | Summary writing |
 

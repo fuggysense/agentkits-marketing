@@ -145,9 +145,9 @@ Load these files first:
 | Task | Agent | Trigger |
 |------|-------|---------|
 | Test design | `conversion-optimizer` | Primary task |
-| Psychology review | `brainstormer` | Behavioral insights |
+| Psychology review | `copywriter` | Behavioral insights |
 | Technical setup | `researcher` | Implementation guidance |
-| Analytics setup | `mcp-manager` | Tracking configuration |
+| Analytics setup | `(retired)` | Tracking configuration |
 
 ---
 

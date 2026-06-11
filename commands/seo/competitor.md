@@ -171,8 +171,8 @@ Load these files first:
 | Task | Agent | Trigger |
 |------|-------|---------|
 | SEO research | `researcher` | Primary task |
-| Keyword analysis | `attraction-specialist` | Gap identification |
-| Content strategy | `planner` | Topic recommendations |
+| Keyword analysis | `researcher` | Gap identification |
+| Content strategy | `(retired)` | Topic recommendations |
 
 ---
 

@@ -1,0 +1,27 @@
+{
+  "client": "michelle-koh",
+  "onboarded": true,
+  "score": "8/10",
+  "verdict": "PASS — Minor Issues",
+  "rules": [
+    {"status": "PASS", "rule": "Rule 1 — CLAUDE.md exists and sized", "detail": ""}
+    ,
+    {"status": "PASS", "rule": "Rule 2 — Root CONTEXT.md exists", "detail": ""}
+    ,
+    {"status": "FAIL", "rule": "Rule 3 — _brand/ has CONTEXT.md", "detail": "Missing: clients/michelle-koh/_brand/CONTEXT.md"}
+    ,
+    {"status": "PASS", "rule": "Rule 4 — No CONTEXT.md over 100 lines", "detail": ""}
+    ,
+    {"status": "PASS", "rule": "Rule 5 — No duplicated global rules in room CONTEXT.md", "detail": ""}
+    ,
+    {"status": "PASS", "rule": "Rule 6 — No broken pointers", "detail": ""}
+    ,
+    {"status": "PASS", "rule": "Rule 7 — CONTEXT-md-pattern.md (no phase templates — N/A)", "detail": ""}
+    ,
+    {"status": "PASS", "rule": "Rule 8 — L3 (_brand/) never references L4 (campaigns/, output/)", "detail": ""}
+    ,
+    {"status": "FAIL", "rule": "Rule 9 — L2 CONTEXT.md uses 3-section contract (Inputs/Process/Outputs)", "detail": "03_production/CONTEXT.md: sections [Output convention (reuses storyboard contract), Hand-off rule] (need exactly Inputs, Process, Outputs); 02_script/CONTEXT.md: sections [In scope, Output convention, Hand-off rule] (need exactly Inputs, Process, Outputs); 01_research/CONTEXT.md: sections [In scope, Out of scope, Output convention, Hand-off rule] (need exactly Inputs, Process, Outputs)"}
+    ,
+    {"status": "PASS", "rule": "Rule 10 — Persona quotes carry source provenance (or [HYPOTHESIS] tag)", "detail": ""}
+  ]
+}

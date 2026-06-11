@@ -161,7 +161,7 @@ argument-hint: [product-or-flow-description]
 | Task | Agent | Trigger |
 |------|-------|---------|
 | Onboarding analysis | `conversion-optimizer` | Primary task |
-| Email sequences | `email-wizard` | Onboarding emails |
+| Email sequences | `copywriter` | Onboarding emails |
 | UX copy | `copywriter` | Microcopy, tooltips |
 
 ---

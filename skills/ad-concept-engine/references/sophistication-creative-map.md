@@ -227,4 +227,4 @@ avatar-research (Phase 2.5: Sophistication Audit)
 - Parent skill: [[ad-concept-engine]]
 - Source framework: [[avatar-research]]
 - Related skills: [[copywriting]], [[marketing-psychology]], [[paid-advertising]], [[image-generation]]
-- Used by agents: [[brainstormer]], [[copywriter]], [[brand-voice-guardian]]
+- Used by agents: [[copywriter]], [[brand-voice-guardian]]

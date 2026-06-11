@@ -1,0 +1,27 @@
+{
+  "client": "neezanizam",
+  "onboarded": true,
+  "score": "5/10",
+  "verdict": "FAIL",
+  "rules": [
+    {"status": "FAIL", "rule": "Rule 1 — CLAUDE.md exists and sized", "detail": "clients/neezanizam/CLAUDE.md is 114 lines (max 100)"}
+    ,
+    {"status": "PASS", "rule": "Rule 2 — Root CONTEXT.md exists", "detail": ""}
+    ,
+    {"status": "PASS", "rule": "Rule 3 — _brand/ has CONTEXT.md", "detail": ""}
+    ,
+    {"status": "PASS", "rule": "Rule 4 — No CONTEXT.md over 100 lines", "detail": ""}
+    ,
+    {"status": "PASS", "rule": "Rule 5 — No duplicated global rules in room CONTEXT.md", "detail": ""}
+    ,
+    {"status": "FAIL", "rule": "Rule 6 — No broken pointers", "detail": "clients/neezanizam/CLAUDE.md: '_or_create_sheet.sh' not found; clients/neezanizam/CLAUDE.md: '_assets.json' not found; clients/neezanizam/CLAUDE.md: '_assets.json' not found; clients/neezanizam/CLAUDE.md: '_assets.json' not found; clients/neezanizam/CLAUDE.md: '_refs/_registry.md' not found"}
+    ,
+    {"status": "PASS", "rule": "Rule 7 — CONTEXT-md-pattern.md (no phase templates — N/A)", "detail": ""}
+    ,
+    {"status": "FAIL", "rule": "Rule 8 — L3 (_brand/) never references L4 (campaigns/, output/)", "detail": "_brand/source-of-truth.md:1092:- **Next creative sprint focus:** Wave 1 DCT batch (10 creatives × 4 Meta combos = 40 combinations) — see `campaigns/dct-260417/dct-tracker.json`; _brand/avatars/avatar-coverage-map.md:17:| output/sales-letters/260421-v1.md | letter | avatar-1 | Prob | N | Y |; _brand/avatars/avatar-coverage-map.md:18:| output/sales-letters/260424-v1.6.md | letter | avatar-1 | Prob | N | Y |; _brand/avatars/avatar-coverage-map.md:19:| output/sales-letters/260425-v1.7.md | letter | avatar-1 | Prob | N | Y |"}
+    ,
+    {"status": "FAIL", "rule": "Rule 9 — L2 CONTEXT.md uses 3-section contract (Inputs/Process/Outputs)", "detail": "_brand/CONTEXT.md: sections [Files, Avatars (sub-room), Rules] (need exactly Inputs, Process, Outputs)"}
+    ,
+    {"status": "FAIL", "rule": "Rule 10 — Persona quotes carry source provenance (or [HYPOTHESIS] tag)", "detail": "_brand/buyer-profile.md: 30 unsourced persona quote(s) (first L14); _brand/avatars/avatar-4.md: 41 unsourced persona quote(s) (first L12); _brand/avatars/sophistication-map.md: 29 unsourced persona quote(s) (first L19); _brand/avatars/avatar-1.md: 28 unsourced persona quote(s) (first L11); _brand/avatars/first-time-buyers/ftb-1-ballot-exhausted.md: 62 unsourced persona quote(s) (first L5); _brand/avatars/first-time-buyers/ftb-2-eligibility-trapped.md: 47 unsourced persona quote(s) (first L23); _brand/avatars/first-time-buyers/_index.md: 4 unsourced persona quote(s) (first L20); _brand/avatars/avatar-2.md: 47 unsourced persona quote(s) (first L11); _brand/avatars/research-prompts.md: 7 unsourced persona quote(s) (first L67); _brand/avatars/avatar-backlog.md: 2 unsourced persona quote(s) (first L31); _brand/avatars/avatar-3.md: 30 unsourced persona quote(s) (first L11); _brand/avatars/_index.md: 1 unsourced persona quote(s) (first L30)"}
+  ]
+}

@@ -23,7 +23,6 @@ related_skills:
   - analytics-attribution
 agents:
   - researcher
-  - tracking-specialist
 data_sources:
   required:
     - meta_cli_read_only   # ~/.local/bin/meta — read verbs only (insights get / campaign list). No MCP.

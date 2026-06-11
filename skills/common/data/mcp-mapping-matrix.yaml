@@ -40,8 +40,7 @@ integrations:
         - analytics-attribution
         - free-tool-strategy
     agents:
-      - seo-specialist
-      - attraction-specialist
+      - researcher
     use_cases:
       - "Check keyword rankings"
       - "Analyze organic CTR"
@@ -67,8 +66,6 @@ integrations:
       secondary:
         - content-strategy
     agents:
-      - seo-specialist
-      - attraction-specialist
       - researcher
     use_cases:
       - "Keyword research"
@@ -91,8 +88,7 @@ integrations:
         - programmatic-seo
         - competitor-alternatives
     agents:
-      - seo-specialist
-      - attraction-specialist
+      - researcher
     use_cases:
       - "Real-time SERP tracking"
       - "Bulk keyword data"
@@ -126,8 +122,7 @@ integrations:
         - marketing-fundamentals
     agents:
       - conversion-optimizer
-      - attraction-specialist
-      - project-manager
+      - researcher
     use_cases:
       - "Track conversions"
       - "Analyze user journeys"
@@ -149,7 +144,7 @@ integrations:
       primary:
         - paid-advertising
     agents:
-      - attraction-specialist
+      - researcher
     use_cases:
       - "Campaign performance"
       - "Audience insights"
@@ -175,9 +170,8 @@ integrations:
       secondary:
         - form-cro
     agents:
-      - email-wizard
-      - lead-qualifier
-      - sales-enabler
+      - copywriter
+      - persona-builder
     use_cases:
       - "Email performance"
       - "Lead tracking"
@@ -197,7 +191,7 @@ integrations:
       primary:
         - launch-strategy
     agents:
-      - project-manager
+      - researcher
     use_cases:
       - "Launch announcements"
       - "Team notifications"
@@ -216,8 +210,7 @@ integrations:
       primary:
         - content-strategy
     agents:
-      - planner
-      - project-manager
+      - researcher
     use_cases:
       - "Content calendars"
       - "Campaign planning"
@@ -235,8 +228,7 @@ integrations:
       primary:
         - content-strategy
     agents:
-      - project-manager
-      - planner
+      - researcher
     use_cases:
       - "Campaign tasks"
       - "Content workflow"
@@ -257,7 +249,7 @@ integrations:
         - social-media
         - launch-strategy
     agents:
-      - attraction-specialist
+      - researcher
       - copywriter
     use_cases:
       - "Social monitoring"
@@ -329,26 +321,8 @@ agent_mcp_map:
   conversion-optimizer:
     primary: [google-analytics]
     secondary: []
-  seo-specialist:
-    primary: [google-search-console, semrush]
-    secondary: [dataforseo]
-  attraction-specialist:
-    primary: [google-analytics, google-search-console]
-    secondary: [semrush, meta-ads, twitter]
-  email-wizard:
+  persona-builder:
     primary: [hubspot]
-    secondary: []
-  lead-qualifier:
-    primary: [hubspot]
-    secondary: []
-  sales-enabler:
-    primary: [hubspot]
-    secondary: []
-  project-manager:
-    primary: [notion, asana]
-    secondary: [slack]
-  planner:
-    primary: [notion, asana]
     secondary: []
   researcher:
     primary: [semrush]

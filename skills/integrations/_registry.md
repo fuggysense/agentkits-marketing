@@ -11,7 +11,7 @@
 | [Google Analytics](./google-analytics/) | Analytics | npm | ✅ Active |
 | [Semrush](./semrush/) | SEO | Remote | ✅ Active |
 | [DataForSEO](./dataforseo/) | SEO | npm | ✅ Active |
-| [Meta Ads](./meta-ads/) | Advertising | npm | ✅ Active |
+| Meta Ads | Advertising | CLI (`meta`) | ✅ Active — NOT an MCP |
 | [HubSpot](./hubspot/) | CRM | Remote | ✅ Active |
 | [Slack](./slack/) | Communication | npm | ✅ Active |
 | [Notion](./notion/) | Project Mgmt | npm | ✅ Active |
@@ -47,8 +47,7 @@
   - Tools: 6 | Package: `mcp-server-google-analytics` | Auth: Service Account
 
 ### Advertising
-- **[Meta Ads](./meta-ads/)** - Facebook/Instagram ads
-  - Tools: 25 | Package: `meta-ads-mcp` | Auth: `META_ACCESS_TOKEN`
+- **Meta Ads** - Facebook/Instagram ads — **CLI, not MCP.** All Meta Marketing API work routes through the `meta` CLI (`~/.local/bin/meta`); there is no meta-ads MCP server. Auth: `META_ACCESS_TOKEN`. See `.claude/rules/mcp-integrations.md` for the full CLI-only rule. (`meta-ads/config.json` describes a deprecated third-party `meta-ads-mcp` npm server — do NOT use it.)
 
 ### CRM
 - **[HubSpot](./hubspot/)** - CRM, contacts, deals, marketing

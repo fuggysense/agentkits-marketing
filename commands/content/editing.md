@@ -1,9 +1,13 @@
 ---
-description: Edit, review, or improve existing marketing copy
+description: "[DEPRECATED] Edit, review, or improve existing marketing copy"
 version: "1.0.0"
 brand: AgentKits Marketing by AityTech
 argument-hint: [copy-to-edit] - Interactive mode, user will be asked for all parameters
+deprecated: true
+deprecation-note: "The /content:* family is superseded by /copy:* (see .claude/rules/_index.md). To edit/polish existing copy use the copy-editing skill."
 ---
+
+> **DEPRECATED.** `/content:*` is superseded by `/copy:*` (see `.claude/rules/_index.md`). To edit or de-AI existing copy, use the `copy-editing` skill. Kept for reference only.
 
 ## Language & Quality Standards
 
@@ -147,7 +151,7 @@ argument-hint: [copy-to-edit] - Interactive mode, user will be asked for all par
 | Copy editing | `copywriter` | Primary task |
 | Voice review | `brand-voice-guardian` | Tone consistency |
 | CRO check | `conversion-optimizer` | Persuasion elements |
-| SEO review | `seo-specialist` | Keyword optimization |
+| SEO review | `researcher` | Keyword optimization |
 
 ---
 

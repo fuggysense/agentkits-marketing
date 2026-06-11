@@ -170,8 +170,8 @@ Load these files first:
 | Task | Agent | Trigger |
 |------|-------|---------|
 | Company research | `researcher` | Data gathering |
-| Lead scoring | `lead-qualifier` | Primary task |
-| Case study matching | `sales-enabler` | Social proof |
+| Lead scoring | `persona-builder` | Primary task |
+| Case study matching | `copywriter` | Social proof |
 
 ---
 

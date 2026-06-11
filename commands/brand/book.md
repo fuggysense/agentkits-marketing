@@ -150,7 +150,7 @@ Load these files first:
 | Task | Agent | Trigger |
 |------|-------|---------|
 | Brand book creation | `copywriter` | Primary task |
-| Visual specs | `docs-manager` | Asset documentation |
+| Visual specs | `(retired)` | Asset documentation |
 | Voice guidelines | `brand-voice-guardian` | Consistency |
 
 ---

@@ -23,7 +23,6 @@ related_skills:
   - copywriting
   - onboarding-cro
 agents:
-  - email-wizard
   - copywriter
 mcp_integrations:
   optional:
@@ -37,7 +36,7 @@ output_schema: email-sequence
 ## Graph Links
 - **Feeds into:** [[campaign-runner]]
 - **Draws from:** [[email-marketing]], [[copywriting]]
-- **Used by agents:** [[email-wizard]]
+- **Used by agents:** [[copywriter]]
 - **Related:** [[marketing-psychology]]
 
 # Email Sequence Design

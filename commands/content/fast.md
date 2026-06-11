@@ -1,9 +1,13 @@
 ---
-description: Write creative & smart copy [FAST]
+description: "[DEPRECATED] Write creative & smart copy [FAST]"
 version: "1.0.0"
 brand: AgentKits Marketing by AityTech
 argument-hint: [user-request] - Interactive mode, user will be asked for all parameters
+deprecated: true
+deprecation-note: "The /content:* family is superseded by /copy:* (see .claude/rules/_index.md). Use /copy for net-new prose."
 ---
+
+> **DEPRECATED.** `/content:*` is superseded by `/copy:*` (see `.claude/rules/_index.md`). Use `/copy` for net-new prose. Kept for reference only.
 
 ## Language & Quality Standards
 

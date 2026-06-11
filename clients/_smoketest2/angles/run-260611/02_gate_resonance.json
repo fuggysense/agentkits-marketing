@@ -1,0 +1,102 @@
+{
+  "gate": "resonance",
+  "threshold": 4.0,
+  "min_pass_count": 5,
+  "loop": 1,
+  "angles": [
+    {
+      "id": "A01",
+      "label": "The graveyard acknowledgment",
+      "scores": {
+        "resonance": 5,
+        "distinct": 4,
+        "not_saturated": 4,
+        "proof_ready": 4,
+        "avatar_fit": 5
+      },
+      "avg": 4.4,
+      "pass": true,
+      "min_dim": "distinct",
+      "min_val": 4
+    },
+    {
+      "id": "A02",
+      "label": "The mechanism reveal",
+      "scores": {
+        "resonance": 5,
+        "distinct": 5,
+        "not_saturated": 4,
+        "proof_ready": 5,
+        "avatar_fit": 5
+      },
+      "avg": 4.8,
+      "pass": true,
+      "min_dim": "not_saturated",
+      "min_val": 4
+    },
+    {
+      "id": "A03",
+      "label": "The burnout-to-sleep link",
+      "scores": {
+        "resonance": 4,
+        "distinct": 5,
+        "not_saturated": 5,
+        "proof_ready": 4,
+        "avatar_fit": 4
+      },
+      "avg": 4.4,
+      "pass": true,
+      "min_dim": "resonance",
+      "min_val": 4
+    },
+    {
+      "id": "A04",
+      "label": "Try before you subscribe",
+      "scores": {
+        "resonance": 5,
+        "distinct": 4,
+        "not_saturated": 4,
+        "proof_ready": 4,
+        "avatar_fit": 5
+      },
+      "avg": 4.4,
+      "pass": true,
+      "min_dim": "distinct",
+      "min_val": 4
+    },
+    {
+      "id": "A05",
+      "label": "First kit, done right",
+      "scores": {
+        "resonance": 4,
+        "distinct": 4,
+        "not_saturated": 4,
+        "proof_ready": 4,
+        "avatar_fit": 4
+      },
+      "avg": 4.0,
+      "pass": true,
+      "min_dim": "resonance",
+      "min_val": 4
+    },
+    {
+      "id": "A06",
+      "label": "The transparency gap",
+      "scores": {
+        "resonance": 4,
+        "distinct": 4,
+        "not_saturated": 3,
+        "proof_ready": 5,
+        "avatar_fit": 3
+      },
+      "avg": 3.8,
+      "pass": false,
+      "min_dim": "not_saturated",
+      "min_val": 3
+    }
+  ],
+  "banked_count": 5,
+  "overall": "PASS",
+  "banked_ids": ["A01", "A02", "A03", "A04", "A05"],
+  "note": "A06 held: not_saturated=3 (transparency angle saturated in supplement category), avatar_fit=3 (not the primary pain for MP-01). Honest hold, not inflated."
+}

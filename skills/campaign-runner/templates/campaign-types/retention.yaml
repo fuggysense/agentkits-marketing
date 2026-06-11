@@ -31,7 +31,7 @@ tasks:
   - id: engagement-strategy
     phase: planning
     status: planned
-    agent: continuity-specialist
+    agent: copywriter
     skill: marketing-fundamentals
     description: "Engagement strategy — touchpoints, triggers, content themes, success criteria"
     dependencies: [churn-analysis]
@@ -41,7 +41,7 @@ tasks:
   - id: win-back-emails
     phase: creation
     status: planned
-    agent: email-wizard
+    agent: copywriter
     skill: email-sequence
     description: "Win-back email sequence — 4 emails for at-risk users (value reminder, what's new, special offer, last chance)"
     dependencies: [engagement-strategy]
@@ -50,7 +50,7 @@ tasks:
   - id: nps-survey
     phase: creation
     status: planned
-    agent: continuity-specialist
+    agent: copywriter
     skill: marketing-fundamentals
     description: "NPS survey + follow-up automation — survey copy, thank-you, detractor outreach"
     dependencies: [engagement-strategy]

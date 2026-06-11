@@ -21,7 +21,6 @@ related_skills:
   - email-sequence
 agents:
   - conversion-optimizer
-  - continuity-specialist
 mcp_integrations:
   optional:
     - google-analytics

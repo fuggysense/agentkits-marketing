@@ -145,10 +145,10 @@ Load these files first:
 
 | Task | Agent | Trigger |
 |------|-------|---------|
-| Hypothesis creation | `brainstormer` | Test ideation |
+| Hypothesis creation | `copywriter` | Test ideation |
 | Copy variants | `copywriter` | Content testing |
 | Analysis | `researcher` | Results review |
-| Recommendations | `planner` | Next steps |
+| Recommendations | `(retired)` | Next steps |
 
 ---
 

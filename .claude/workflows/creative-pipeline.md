@@ -26,7 +26,7 @@ Research ──► Concept ──► Brief (video) + Hooks (static) ──► Cr
 |---|---|---|---|---|
 | 1 | **Research** (what they want) | `source-of-truth` · `/ads:source-of-truth <slug>` | `clients/<slug>/source-of-truth.md` (26 sections) + derivative files | Phase 4: 4 strategic decisions (KPI, core message, top-3 angles, first test variable) |
 | 1.5 | **Headline Reservoir** (what to say — OPTIONAL) | `headline-bank` · `/ads:headlines <slug>` | `clients/<slug>/angles/wave-<N>-headline-bank.md` — 75+ headlines across 5 awareness levels × 10 angle banks, anchored to one mass desire | Phase 1: mass-desire selection (user picks or skill suggests top 3 candidates). Phase 5: approve bank before write |
-| 2 | **Concept** (what to show) | `ad-concept-engine` Phase 1 · `/ads:concepts <slug>` | 6-8 angles per avatar, scored. Phase 2a reads headline-bank (if exists) as primary Meta headline reservoir | Phase 1 HITL Gate: pick top 2 angles per avatar |
+| 2 | **Concept** (what to show) | `ad-concept-engine` Phase 1 · Conductor Mode "new ad concepts for `<slug>`" | 6-8 angles per avatar, scored. Phase 2a reads headline-bank (if exists) as primary Meta headline reservoir | Phase 1 HITL Gate: pick top 2 angles per avatar |
 | 3a | **Hooks** (statics) | `ad-concept-engine` Phase 2a | Per-creative: text-on-image hook + visual concept type + image prompt + headlines + copy | Phase 2 HITL Gate: per-batch approval |
 | 3b | **Brief** (videos) | `ad-concept-engine` Phase 2b | Per-creative: 6-scene breakdown + performer notes + audio + graphics + technical specs + timing map + headlines + copy | Phase 2 HITL Gate: per-batch approval |
 | 4a | **Create — statics** | `image-generation` (called by ad-concept-engine Phase 3a) | Image files at `clients/<slug>/campaigns/dct-YYMMDD/batch-NN/assets/` | Phase 3 HITL Gate: per-image approval |
@@ -52,8 +52,8 @@ Research ──► Concept ──► Brief (video) + Hooks (static) ──► Cr
 # → writes clients/<slug>/angles/wave-<N>-headline-bank.md
 # → feeds ad-concept-engine Phase 2a as the primary Meta headline reservoir
 
-# Stages 2 + 3 — Concept + Brief/Hooks (one command, multiple HITL gates)
-/ads:concepts <slug>
+# Stages 2 + 3 — Concept + Brief/Hooks (ad-concept-engine Conductor Mode, multiple HITL gates)
+# intent (no slash command): "new ad concepts for <slug>"
 # → Phase 1: generates 6-8 angles per avatar [HITL Gate 1: angle approval]
 # → Phase 2a (per Static/Carousel batch): hooks + visual concepts + image prompts
 # → Phase 2b (per UGC/Founder/VSL/Demo batch): full video briefs
@@ -90,7 +90,7 @@ After `/ads:feedback` returns a routing decision, the user runs the recommended 
 
 ```bash
 /ads:source-of-truth <slug>     # Stage 1 refresh — buyer shifted, regenerate dossier
-/ads:concepts <slug>            # Stages 2-3 again with refreshed inputs
+# "new ad concepts for <slug>" (ad-concept-engine Conductor Mode) — Stages 2-3 again with refreshed inputs
 /ads:upload <slug>              # Stage 5
 /ads:feedback <slug> 2          # Stage 6 again
 ```
@@ -100,7 +100,7 @@ After `/ads:feedback` returns a routing decision, the user runs the recommended 
 ### Route BETTER — back to Brief/Hooks
 
 ```bash
-/ads:concepts <slug> --refine "Angle 2: Wife-Initiator Reframe"
+# "new ad concepts for <slug>, refine within Angle 2: Wife-Initiator Reframe" (ad-concept-engine Conductor Mode)
 # → Phase 1 SKIPPED (winning angle locked)
 # → Phase 2a + 2b re-run within winning angle, generating 5-8 new variants
 # → focus: address identified failure pattern (low hold-rate, low CTR, format gap, etc.)
@@ -113,7 +113,7 @@ After `/ads:feedback` returns a routing decision, the user runs the recommended 
 ### Route MORE — back to Create
 
 ```bash
-/ads:concepts <slug> --expand "DCT004"
+# "next angle wave for <slug>, expand DCT004" (ad-concept-engine Conductor Mode)
 # → Phase 1 + 2 SKIPPED (winning combo locked)
 # → spawn 5-8 new variants mirroring DCT004 (same angle, format, hook pattern, copy framework)
 # → vary: secondary visual element, performer cast, scene 1 entry, copy framework variant

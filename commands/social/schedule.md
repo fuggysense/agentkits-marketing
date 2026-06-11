@@ -1,9 +1,13 @@
 ---
-description: Create social media posting schedule
+description: "[DEPRECATED] Create social media posting schedule"
 version: "1.0.0"
 brand: AgentKits Marketing by AityTech
 argument-hint: [platforms] [timeframe]
+deprecated: true
+deprecation-note: "The social-media skill was archived (skills/_archive/social-media/). Use the content-strategy skill for scheduling/calendar planning; Postiz handles the actual multi-platform scheduling."
 ---
+
+> **DEPRECATED.** The `social-media` skill this command loads is archived at `skills/_archive/social-media/`. Use the `content-strategy` skill for calendar/scheduling planning; Postiz (see `.claude/rules/mcp-integrations.md`) handles the live multi-platform scheduling. Kept for reference only.
 
 ## Prerequisites
 
@@ -17,7 +21,7 @@ Before running this command, ensure you have:
 Load these files first:
 1. `./README.md` - Product context
 2. `./docs/social/` - Existing social strategies
-3. `.claude/skills/social-media/SKILL.md` - Platform guidelines
+3. `skills/content-strategy/SKILL.md` - Platform/content guidelines (replaces the archived social-media skill)
 
 ---
 
@@ -27,7 +31,7 @@ Load these files first:
 
 **Standards**: Token efficiency, sacrifice grammar for concision, list unresolved questions at end.
 
-**Skills**: Activate `social-media`, `content-strategy` skills.
+**Skills**: Activate `content-strategy` skill.
 
 **Components**: Reference `./.claude/components/interactive-questions.md`
 
@@ -156,8 +160,8 @@ Load these files first:
 
 | Task | Agent | Trigger |
 |------|-------|---------|
-| Schedule creation | `project-manager` | Primary task |
-| Content planning | `planner` | Content calendar |
+| Schedule creation | `(retired)` | Primary task |
+| Content planning | `(retired)` | Content calendar |
 | Trend alignment | `researcher` | Campaign timing |
 
 ---

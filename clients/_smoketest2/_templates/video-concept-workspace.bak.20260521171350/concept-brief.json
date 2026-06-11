@@ -1,0 +1,29 @@
+{
+  "schema_version": "1.0",
+  "client": "{{client_slug}}",
+  "campaign": "{{campaign_slug}}",
+  "concept_slug": "{{concept_slug}}",
+  "purpose": "Concept-level selection contract. Reference top-level client inputs; do not duplicate the whole input bank here.",
+  "path_resolution": "Paths in selected_inputs are relative to client_root unless absolute.",
+  "client_root": "../../../..",
+  "campaign_selection": "../../campaign-selection.json",
+  "selected_inputs": {
+    "product": [],
+    "offer": [],
+    "buyer_profile": "_brand/buyer-profile.md",
+    "micro_persona_ids": [],
+    "market": [],
+    "competitors": [],
+    "research": [],
+    "winning_ads": []
+  },
+  "locked_decisions": {
+    "primary_platform": null,
+    "target_video_frame": null,
+    "workflow_flow": null,
+    "claim_risk": null,
+    "style_lanes": []
+  },
+  "approval_state": "draft",
+  "updated_at": "{{today}}"
+}

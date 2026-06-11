@@ -12,7 +12,7 @@ Produce the full paid ads source-of-truth document for any input — existing cl
 This command sits UPSTREAM of the existing ad pipeline:
 
 ```
-/ads:source-of-truth → /ads:avatars → /ads:concepts → /ads:validate → /ads:preview → /ads:upload → /test:ab-setup
+/ads:source-of-truth → avatar-research → ad-concept-engine (Conductor Mode) → /ads:validate → /ads:preview → /ads:upload → /test:ab-setup
 ```
 
 ## Input
@@ -142,9 +142,9 @@ Sheet integration: [completed | skipped | preview-only]
   CREATIVES tab: [N rows appended as DCT00X-Y]
   COPY tab: [N rows appended as DRAFT]
 
-Suggested next commands:
-  1. /ads:avatars <slug>     → refine avatar files with source-of-truth depth
-  2. /ads:concepts <slug>    → generate DCT batches from angles/wave-N.md
+Suggested next steps:
+  1. avatar-research skill   → "build avatars for <slug>" — refine avatars with source-of-truth depth
+  2. ad-concept-engine       → Conductor Mode "new ad concepts for <slug>" — DCT batches from angles/wave-N.md
   3. /ads:preview <slug>     → dry-run what would upload to Meta
   4. /ads:upload <slug>      → push to Meta paused
   5. /test:ab-setup          → design first DCT split test using §16 priority
@@ -174,8 +174,8 @@ Before this command reports success:
 ## Related
 
 - `/project:profile` — build context-profile.json first (if missing)
-- `/ads:avatars` — downstream: builds 3+ DCT avatars from this
-- `/ads:concepts` — downstream: generates DCT batches
+- avatar-research skill — downstream: builds 3+ DCT avatars from this (intent-routed: "build avatars for <slug>")
+- ad-concept-engine — downstream: generates DCT batches (intent-routed: Conductor Mode "new ad concepts for <slug>")
 - `/audit:paid-media` — upstream (optional): feeds §8 + §18 if ad account connected
 - `/audit:competitor-ads` — alternative to scrapecreators for Meta Ad Library
 

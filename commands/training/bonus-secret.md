@@ -87,23 +87,23 @@ Use agents strategically:
 
 **For Research Phase:**
 - `researcher` → Market understanding
-- `attraction-specialist` → Competitive intel
+- `researcher` → Competitive intel
 
 **For Creation Phase:**
-- `brainstormer` → Campaign concepts
+- `copywriter` → Campaign concepts
 - `copywriter` → Content creation
-- `planner` → Strategic structure
+- `(retired)` → Strategic structure
 
 **For Review Phase:**
 - `brand-voice-guardian` → Voice check
 - `conversion-optimizer` → CRO review
-- `seo-specialist` → SEO validation
+- `researcher` → SEO validation
 - Persona reviewers → Audience fit
 
 **For Optimization Phase:**
-- `lead-qualifier` → Lead quality
-- `email-wizard` → Sequence optimization
-- `continuity-specialist` → Retention
+- `persona-builder` → Lead quality
+- `copywriter` → Sequence optimization
+- `(retired)` → Retention
 
 ### Pillar 3: Documentation Leverage
 

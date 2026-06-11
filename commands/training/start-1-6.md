@@ -86,9 +86,9 @@ Explain critical sections:
 **Agent Mapping:**
 ```markdown
 ### Core Marketing Agents
-- `attraction-specialist` - TOFU (SEO, landing pages)
-- `lead-qualifier` - Intent detection, scoring
-- `email-wizard` - Sequences, automation
+- `researcher` - TOFU (SEO, landing pages)
+- `persona-builder` - Intent detection, scoring
+- `copywriter` - Sequences, automation
 ...
 ```
 

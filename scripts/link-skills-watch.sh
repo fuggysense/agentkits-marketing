@@ -10,7 +10,14 @@
 
 set -u
 
-MARKETING="/Users/jerel/Documents/Jerel's brain/jerel's brain/Marketing"
+# Repo root: MARKETING_REPO_ROOT env wins, else derive from this script's own
+# location (scripts/link-skills-watch.sh -> repo root is two levels up).
+if [ -n "${MARKETING_REPO_ROOT:-}" ]; then
+  MARKETING="$MARKETING_REPO_ROOT"
+else
+  SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+  MARKETING="$(cd "$SCRIPT_DIR/.." && pwd)"
+fi
 LINKER="$MARKETING/scripts/link-skills.py"
 LOG_DIR="$HOME/Library/Logs/marketing-link-skills"
 LOG="$LOG_DIR/watch.log"

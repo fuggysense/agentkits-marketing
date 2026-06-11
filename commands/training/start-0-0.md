@@ -70,9 +70,9 @@ If not, guide them to set up first.
 Briefly explain the marketing kit components:
 
 **18 Specialized Agents:**
-- Core Marketing: `attraction-specialist`, `lead-qualifier`, `email-wizard`, `sales-enabler`, `continuity-specialist`, `upsell-maximizer`
-- Supporting: `researcher`, `brainstormer`, `planner`, `project-manager`, `copywriter`, `docs-manager`
-- Reviewers: `brand-voice-guardian`, `conversion-optimizer`, `seo-specialist`, `manager-maria`, `solo-steve`, `startup-sam`
+- Core Marketing: `researcher`, `persona-builder`, `copywriter`, `copywriter`, `(retired)`, `conversion-optimizer`
+- Supporting: `researcher`, `copywriter`, `(retired)`, `(retired)`, `copywriter`, `(retired)`
+- Reviewers: `brand-voice-guardian`, `conversion-optimizer`, `researcher`, `manager-maria`, `solo-steve`, `startup-sam`
 
 **76 Slash Commands** across categories:
 - `/campaign:*` - Campaign planning and analysis
@@ -83,7 +83,7 @@ Briefly explain the marketing kit components:
 - `/crm:*` - CRM and lifecycle management
 
 **Marketing Skills:**
-- `marketing-fundamentals`, `seo-mastery`, `social-media`, `email-marketing`
+- `marketing-fundamentals`, `seo-mastery`, `content-moat`, `email-marketing`
 - `paid-advertising`, `content-strategy`, `analytics-attribution`, `brand-building`
 
 ### What's Next

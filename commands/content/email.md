@@ -166,9 +166,9 @@ Load context in this order:
 
 | Task | Agent | Trigger |
 |------|-------|---------|
-| Email copy | `email-wizard` | Primary creation |
+| Email copy | `copywriter` | Primary creation |
 | Subject lines | `copywriter` | A/B variations |
-| Sequence logic | `planner` | Automation design |
+| Sequence logic | `(retired)` | Automation design |
 
 ---
 

@@ -146,6 +146,9 @@ Use MCP for real-time data; tasks from `./plans/` files:
 
 ## Workflow
 
+0. **State hygiene (run first)**
+   - `python3 scripts/sync_campaign_indexes.py --drift` — flags campaign folders missing from (or stale in) each client's `_campaigns-index.json`. Read-only; fix drift with `--apply` (live clients stage to `_handoffs/staged-m3/`).
+
 1. **Priority Collection**
    - Urgent items from previous day
    - Scheduled content for today
@@ -174,10 +177,10 @@ Use MCP for real-time data; tasks from `./plans/` files:
 
 | Task | Agent | Trigger |
 |------|-------|---------|
-| Daily task compilation | `project-manager` | Morning routine |
-| Lead scoring review | `lead-qualifier` | New leads/score changes |
+| Daily task compilation | `(retired)` | Morning routine |
+| Lead scoring review | `persona-builder` | New leads/score changes |
 | Content scheduling | `copywriter` | Content calendar |
-| Social engagement | `brainstormer` | Engagement strategy |
+| Social engagement | `copywriter` | Engagement strategy |
 
 ---
 

@@ -1,0 +1,27 @@
+{
+  "client": "propwise-sg",
+  "onboarded": false,
+  "score": "-/10",
+  "verdict": "UNONBOARDED — no CLAUDE.md, CONTEXT.md, or _brand/ (not a real client folder)",
+  "rules": [
+    {"status": "FAIL", "rule": "Rule 1 — CLAUDE.md exists and sized", "detail": "Missing: clients/propwise-sg/CLAUDE.md"}
+    ,
+    {"status": "FAIL", "rule": "Rule 2 — Root CONTEXT.md exists", "detail": "Missing: clients/propwise-sg/CONTEXT.md"}
+    ,
+    {"status": "FAIL", "rule": "Rule 3 — _brand/ has CONTEXT.md", "detail": "_brand/ directory does not exist"}
+    ,
+    {"status": "PASS", "rule": "Rule 4 — No CONTEXT.md over 100 lines", "detail": ""}
+    ,
+    {"status": "PASS", "rule": "Rule 5 — No duplicated global rules in room CONTEXT.md", "detail": ""}
+    ,
+    {"status": "PASS", "rule": "Rule 6 — No broken pointers", "detail": ""}
+    ,
+    {"status": "PASS", "rule": "Rule 7 — CONTEXT-md-pattern.md (no phase templates — N/A)", "detail": ""}
+    ,
+    {"status": "PASS", "rule": "Rule 8 — L3 (_brand/) never references L4 (campaigns/, output/)", "detail": ""}
+    ,
+    {"status": "PASS", "rule": "Rule 9 — L2 CONTEXT.md uses 3-section contract (Inputs/Process/Outputs)", "detail": ""}
+    ,
+    {"status": "PASS", "rule": "Rule 10 — Persona quotes carry source provenance (or [HYPOTHESIS] tag)", "detail": ""}
+  ]
+}

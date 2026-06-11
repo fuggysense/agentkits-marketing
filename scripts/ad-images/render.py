@@ -39,10 +39,27 @@ import sys
 from datetime import datetime
 from pathlib import Path
 
+import os
+
 HERE = Path(__file__).resolve().parent
+
+
+def _repo_root() -> Path:
+    """Repo root via MARKETING_REPO_ROOT env, else walk up to the dir that holds
+    both CLAUDE.md and scripts/ (this file is scripts/ad-images/render.py)."""
+    env = os.environ.get("MARKETING_REPO_ROOT")
+    if env:
+        return Path(env).expanduser().resolve()
+    for parent in [HERE, *HERE.parents]:
+        if (parent / "CLAUDE.md").exists() and (parent / "scripts").is_dir():
+            return parent
+    return HERE.parents[1]  # scripts/ad-images -> scripts -> repo root
+
+
+REPO_ROOT = _repo_root()
 REGISTRY = HERE / "styles" / "_registry.json"
 GPT_IMAGE_2 = Path.home() / ".claude" / "scripts" / "gpt-image-2"
-CLAIM_GATE = Path("/Users/jerel/Documents/Jerel's brain/jerel's brain/Marketing/scripts/claim_gate.py")
+CLAIM_GATE = REPO_ROOT / "scripts" / "claim_gate.py"
 
 
 # ---- engines -------------------------------------------------------------

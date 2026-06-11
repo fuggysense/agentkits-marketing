@@ -23,8 +23,7 @@ related_skills:
   - schema-markup
   - content-strategy
 agents:
-  - attraction-specialist
-  - seo-specialist
+  - researcher
 mcp_integrations:
   optional:
     - google-search-console
@@ -40,7 +39,7 @@ output_schema: seo-audit
 ## Graph Links
 - **Feeds into:** [[programmatic-seo]], [[schema-markup]], [[competitor-alternatives]]
 - **Draws from:** [[content-strategy]]
-- **Used by agents:** [[seo-specialist]], [[attraction-specialist]]
+- **Used by agents:** [[researcher]]
 - **Related:** [[analytics-attribution]]
 
 # SEO Mastery
@@ -197,10 +196,10 @@ Pillar Page (comprehensive, 3000+ words)
 
 | Agent | How They Use This Skill |
 |-------|------------------------|
-| `attraction-specialist` | Full SEO strategy and execution |
+| `researcher` | Full SEO strategy and execution |
 | `copywriter` | SEO-optimized content creation |
 | `researcher` | Competitor SEO analysis |
-| `docs-manager` | SEO documentation and audits |
+| `(retired)` | SEO documentation and audits |
 
 ## Anti-Patterns to Avoid
 

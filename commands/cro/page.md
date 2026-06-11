@@ -271,7 +271,7 @@ Load context in this order:
 |------|-------|---------|
 | CRO analysis | `conversion-optimizer` | Primary task |
 | Copy alternatives | `copywriter` | Content optimization |
-| Psychology review | `brainstormer` | Persuasion elements |
+| Psychology review | `copywriter` | Persuasion elements |
 
 ---
 

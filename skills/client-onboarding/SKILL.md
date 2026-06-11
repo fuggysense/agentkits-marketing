@@ -36,7 +36,6 @@ output_schema: project-readiness
 ## Graph Links
 - **Feeds into:** [[campaign-runner]], [[offer-builder]], [[copywriting]], [[brand-building]]
 - **Draws from:** [[business-profile]] (Path B), [[scrapling]] + [[scrapecreators]] (Path A)
-- **Used by agents:** [[project-manager]]
 - **Related:** [[brand-building]], [[persona-builder]]
 
 # Client Onboarding (v3.1)

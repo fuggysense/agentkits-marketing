@@ -248,9 +248,9 @@ Load these files first:
 
 | Task | Agent | Trigger |
 |------|-------|---------|
-| Keyword research | `attraction-specialist` | Primary task |
+| Keyword research | `researcher` | Primary task |
 | Competitor analysis | `researcher` | Gap analysis |
-| Content planning | `planner` | Roadmap creation |
+| Content planning | `(retired)` | Roadmap creation |
 
 ---
 

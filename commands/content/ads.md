@@ -1,9 +1,13 @@
 ---
-description: Create ad copy for paid campaigns
+description: "[DEPRECATED] Create ad copy for paid campaigns"
 version: "1.0.0"
 brand: AgentKits Marketing by AityTech
 argument-hint: [platform] [objective]
+deprecated: true
+deprecation-note: "The /content:* family is superseded by /copy:* (see .claude/rules/_index.md). For ad copy use /copy:ad."
 ---
+
+> **DEPRECATED.** `/content:*` is superseded by `/copy:*` (see `.claude/rules/_index.md`). For ad copy, use `/copy:ad`. Kept for reference only — do not run this as a live path.
 
 ## Language & Quality Standards
 
@@ -144,7 +148,7 @@ argument-hint: [platform] [objective]
 | Task | Agent | Trigger |
 |------|-------|---------|
 | Ad copy creation | `copywriter` | All formats |
-| Platform strategy | `attraction-specialist` | Campaign planning |
+| Platform strategy | `researcher` | Campaign planning |
 | CRO review | `conversion-optimizer` | Landing page alignment |
 
 ---

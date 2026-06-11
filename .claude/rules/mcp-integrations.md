@@ -24,7 +24,7 @@ Use MCP servers for verified data. See `.claude/skills/integrations/_registry.md
 | `paper` | Design | Visual design editing, JSX/Tailwind export, HTML preview |
 | `netlify` | Hosting | Site creation, deploys, env vars, DNS, serverless functions |
 
-**Usage**: `/use-mcp [task]` or delegate to `mcp-manager` agent.
+**Usage**: `/use-mcp [task]`.
 
 > **Meta / Facebook Ads = CLI, not MCP.** All Meta Marketing API work (campaigns, ad sets, ads, creatives, insights, datasets/pixels, catalogs) goes through the `meta` CLI (`~/.local/bin/meta`) — there is no meta-ads MCP server. Auth: `source ~/.claude/.env && export ACCESS_TOKEN="$META_ACCESS_TOKEN"`, then `meta auth status`. Read verbs (`meta ads campaign list`, `meta ads insights get`, `meta ads adaccount get`) are safe; `create`/`update`/`delete` are LIVE + billable — show the command and confirm before running. Scope every call with `--ad-account-id act_…` or `--business-id …`; add `-o json` for downstream processing. Do NOT use a meta-ads MCP, pipeboard, or raw Graph `curl`. Known accounts: NND@Propnex `act_837789749619954` (biz `837781629620766`), Fuggy's Media #1 `act_936198302709669` (biz `2334231630425342`).
 

@@ -4,8 +4,6 @@ description: "Generate client-ready 7-page onboarding strategy PDF (Hormozi fram
 version: 1.0.0
 category: client-deliverables
 agents:
-  - docs-manager
-  - project-manager
 prerequisites:
   - client-onboarding
   - avatar-research
@@ -22,7 +20,6 @@ mcp_integrations:
 ## Graph Links
 - **Feeds from:** [[client-onboarding]], [[avatar-research]], optionally [[paid-media-audit]]
 - **Feeds into:** paid client onboarding call (manual step — Jerel presents the PDF)
-- **Used by agents:** [[docs-manager]], [[project-manager]]
 - **Related:** [[ad-concept-engine]] (downstream engagement after sign-on), [[document-skills/pdf]] (PDF engine)
 
 ---

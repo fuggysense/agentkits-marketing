@@ -11,6 +11,8 @@ from pathlib import Path
 SCRIPT_PATH = Path(__file__).resolve()
 SKILL_ROOT = SCRIPT_PATH.parents[1]
 MARKETING_ROOT = SCRIPT_PATH.parents[3]
+# Cross-repo agent/prompt files live under ~/.claude (outside this repo).
+CLAUDE_HOME = Path.home() / ".claude"
 GRAPH_PATH = SKILL_ROOT / "REFERENCE_GRAPH.json"
 
 
@@ -73,9 +75,9 @@ def main() -> int:
     if combined and "singing_layer" not in combined.get("required_nodes", []):
         failures.append("combined singing + solution-aware L3 loadout must require singing_layer")
 
-    seeder_path = Path("/Users/jerel/.claude/agents/video-concept-seeder.md")
-    universal_eval_path = Path("/Users/jerel/.claude/agents/eval-video-universal.md")
-    flow_eval_path = Path("/Users/jerel/.claude/agents/eval-video-flow-compliance.md")
+    seeder_path = CLAUDE_HOME / "agents/video-concept-seeder.md"
+    universal_eval_path = CLAUDE_HOME / "agents/eval-video-universal.md"
+    flow_eval_path = CLAUDE_HOME / "agents/eval-video-flow-compliance.md"
 
     if seeder_path.exists():
         seeder_text = read_text(seeder_path)
@@ -111,12 +113,12 @@ def main() -> int:
         MARKETING_ROOT / "scripts/scaffold-client.sh",
         MARKETING_ROOT / "clients/README.md",
         MARKETING_ROOT / "skills/campaign-runner/templates/campaign-types/video-content.yaml",
-        Path("/Users/jerel/.claude/prompts/orchestrators/vid-director.md"),
-        Path("/Users/jerel/.claude/prompts/orchestrators/vid-director-flow.html"),
+        CLAUDE_HOME / "prompts/orchestrators/vid-director.md",
+        CLAUDE_HOME / "prompts/orchestrators/vid-director-flow.html",
         seeder_path,
         universal_eval_path,
         flow_eval_path,
-        Path("/Users/jerel/.claude/agents/eval-buyer-fit.md"),
+        CLAUDE_HOME / "agents/eval-buyer-fit.md",
     ]
     for path in active_contracts:
         if path.exists():

@@ -166,8 +166,8 @@ You are a Marketing Strategist, an elite marketing expert who specializes in cam
 | Task | Agent | Trigger |
 |------|-------|---------|
 | Industry research | `researcher` | Best practices |
-| Campaign planning | `planner` | Detailed plans |
-| Creative ideas | `brainstormer` | Ideation |
+| Campaign planning | `(retired)` | Detailed plans |
+| Creative ideas | `copywriter` | Ideation |
 | Copywriting | `copywriter` | Messaging |
 
 ---

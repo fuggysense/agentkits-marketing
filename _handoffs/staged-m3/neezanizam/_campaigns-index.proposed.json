@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.0",
+  "client": "neezanizam",
+  "client_name": "NeezaNizam / Swop Your Home",
+  "created": "2026-06-03",
+  "purpose": "Client-level campaign registry. Discover campaign trackers here instead of guessing paths. Generated 260603 from on-disk dct-tracker.json scan (was MISSING before).",
+  "method_reference": "docs/methods/10-5-5/SPEC.md (10-5-5 opt-in; default still 3-2-2)",
+  "metrics_campaigns": {
+    "buyer-funnel": "Avatar-1 upgrade angles → workbook 14bh8k6S (CREATIVES gid 1164222857, COPY 1695031878)",
+    "asset-progression": "Avatar-2 sell-side → workbook 1D-HrqZH",
+    "buyer-funnel-10-5-5-test": "10-5-5 proof TEST tabs → workbook 14bh8k6S (CREATIVES_10x5x5_TEST 1443650484, COPY_10x5x5_TEST 1125162846)"
+  },
+  "campaigns": [
+    {
+      "campaign_slug": "asset-progression",
+      "path": "asset-progression/",
+      "workspace_count": 0
+    },
+    {
+      "campaign_slug": "buyer-funnel",
+      "path": "buyer-funnel/",
+      "workspace_count": 1
+    },
+    {
+      "campaign_slug": "thomson-reserve",
+      "path": "thomson-reserve/",
+      "workspace_count": 1
+    }
+  ],
+  "last_updated": "2026-06-11"
+}

@@ -12,7 +12,7 @@ Produce a deep, awareness-mapped headline reservoir for a client's paid static a
 Pipeline placement (optional — upstream of Stage 2):
 
 ```
-/ads:source-of-truth → /ads:avatars → [OPTIONAL: /ads:headlines] → /ads:concepts → /ads:upload → /ads:feedback
+/ads:source-of-truth → avatar-research → [OPTIONAL: /ads:headlines] → ad-concept-engine (Conductor Mode) → /ads:upload → /ads:feedback
 ```
 
 Run this command when:
@@ -35,7 +35,7 @@ Skip this command when:
 
 - [ ] Context Gate passed — current session has WHO + WHAT PROJECT established (per Marketing CLAUDE.md)
 - [ ] `clients/<slug>/source-of-truth.md` exists (run `/ads:source-of-truth <slug>` first if not)
-- [ ] `clients/<slug>/_brand/avatars/` has at least one avatar file or avatar hypothesis (run `/ads:avatars <slug>` first if not)
+- [ ] `clients/<slug>/_brand/avatars/` has at least one avatar file or avatar hypothesis (run the avatar-research skill — "build avatars for `<slug>`" — first if not)
 - [ ] `clients/<slug>/_brand/brand-voice.md` exists
 
 ## Workflow
@@ -77,9 +77,9 @@ Ask: *"Approve the bank as-is? Or want me to re-weight any awareness level / swa
 On approval, write to `clients/<slug>/angles/wave-<N>-headline-bank.md`. Append iteration-log entry.
 
 ### Phase 7 — Downstream Handoff
-Surface the exact next command:
+Surface the exact next step (intent-routed — no slash command):
 ```
-/ads:concepts <slug>
+ad-concept-engine, Conductor Mode: "new ad concepts for <slug>"
 ```
 
 ## Output

@@ -148,7 +148,7 @@ Load these files first:
 | Task | Agent | Trigger |
 |------|-------|---------|
 | Research synthesis | `researcher` | Data gathering |
-| Persona creation | `lead-qualifier` | Primary task |
+| Persona creation | `persona-builder` | Primary task |
 | Messaging alignment | `copywriter` | Complete scope |
 
 ---

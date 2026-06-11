@@ -143,9 +143,9 @@ Load these files first:
 
 | Task | Agent | Trigger |
 |------|-------|---------|
-| Config validation | `project-manager` | Validate settings |
-| First-time setup | `brainstormer` | Onboarding guidance |
-| Preference sync | `docs-manager` | Documentation update |
+| Config validation | `(retired)` | Validate settings |
+| First-time setup | `copywriter` | Onboarding guidance |
+| Preference sync | `(retired)` | Documentation update |
 
 ---
 

@@ -1,9 +1,13 @@
 ---
-description: Write good creative & smart copy [GOOD]
+description: "[DEPRECATED] Write good creative & smart copy [GOOD]"
 version: "1.0.0"
 brand: AgentKits Marketing by AityTech
 argument-hint: [user-request]
+deprecated: true
+deprecation-note: "The /content:* family is superseded by /copy:* (see .claude/rules/_index.md). Use /copy for net-new prose."
 ---
+
+> **DEPRECATED.** `/content:*` is superseded by `/copy:*` (see `.claude/rules/_index.md`). Use `/copy` for net-new prose. Kept for reference only.
 
 ## Language & Quality Standards
 
@@ -110,7 +114,7 @@ argument-hint: [user-request]
    - Search codebase if needed
 
 2. **Planning Phase**
-   - Use `planner` agent to structure
+   - Use `(retired)` agent to structure
    - Define messaging strategy
    - Outline key points
 
@@ -130,7 +134,7 @@ argument-hint: [user-request]
 | Task | Agent | Trigger |
 |------|-------|---------|
 | Research | `researcher` | Context gathering |
-| Planning | `planner` | Strategy development |
+| Planning | `(retired)` | Strategy development |
 | Copy creation | `copywriter` | Primary output |
 | Voice check | `brand-voice-guardian` | Brand alignment |
 

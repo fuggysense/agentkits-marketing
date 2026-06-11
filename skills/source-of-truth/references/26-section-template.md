@@ -644,7 +644,7 @@ If an ad shows promise, avoid changing hook + angle + proof + offer + visual sty
 
 ## 20. AI Prompt for Creative Development
 
-Reusable prompt for `/ads:concepts` or `/content:ads` runs against this doc:
+Reusable prompt for ad-concept-engine (Conductor Mode) or `/content:ads` runs against this doc:
 
 ```
 You are a direct-response paid social copywriter.

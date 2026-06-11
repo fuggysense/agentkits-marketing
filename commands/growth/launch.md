@@ -175,9 +175,9 @@ Load these files first:
 
 | Task | Agent | Trigger |
 |------|-------|---------|
-| Launch planning | `planner` | Primary task |
+| Launch planning | `(retired)` | Primary task |
 | Launch copy | `copywriter` | Asset creation |
-| Email sequences | `email-wizard` | Automation |
+| Email sequences | `copywriter` | Automation |
 
 ---
 

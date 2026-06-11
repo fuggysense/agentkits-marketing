@@ -22,7 +22,6 @@ related_skills:
   - ab-test-setup
   - paid-advertising
 agents:
-  - project-manager
   - researcher
 mcp_integrations:
   optional:
@@ -36,7 +35,7 @@ success_metrics:
 ## Graph Links
 - **Feeds into:** [[paid-advertising]], [[paid-media-audit]], [[campaign-runner]], [[ab-test-setup]]
 - **Draws from:** (foundation — standalone)
-- **Used by agents:** [[tracking-specialist]], [[conversion-optimizer]]
+- **Used by agents:** [[researcher]], [[conversion-optimizer]]
 - **Related:** [[marketing-fundamentals]]
 
 # Analytics & Attribution
@@ -147,9 +146,9 @@ Apply analytics expertise when:
 | Agent | How They Use This Skill |
 |-------|------------------------|
 | `researcher` | Compiling performance data, competitive benchmarks |
-| `lead-qualifier` | Funnel conversion analysis, lead source quality |
-| `planner` | Budget allocation based on channel ROI |
-| `project-manager` | Campaign performance tracking |
+| `persona-builder` | Funnel conversion analysis, lead source quality |
+| `(retired)` | Budget allocation based on channel ROI |
+| `(retired)` | Campaign performance tracking |
 
 ## Anti-Patterns to Avoid
 

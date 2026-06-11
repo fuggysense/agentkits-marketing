@@ -149,8 +149,8 @@ Load these files first:
 
 | Task | Agent | Trigger |
 |------|-------|---------|
-| Entry criteria | `lead-qualifier` | Segment definition |
-| Sequence design | `email-wizard` | Primary task |
+| Entry criteria | `persona-builder` | Segment definition |
+| Sequence design | `copywriter` | Primary task |
 | Educational content | `copywriter` | Content creation |
 
 ---

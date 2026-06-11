@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0",
+  "client": "eugene-chieng",
+  "client_name": "Eugene Chieng",
+  "created": "2026-05-28",
+  "purpose": "Client-level campaign registry. Use this to discover campaign-index.json files instead of guessing campaign paths.",
+  "campaigns": [
+    {
+      "campaign_slug": "mp1-upgrader-letter-260603",
+      "campaign_name": "MP1 Upgrader Sales Letter",
+      "status": "active",
+      "created": "2026-06-03",
+      "path": "mp1-upgrader-letter-260603/",
+      "campaign_index": "mp1-upgrader-letter-260603/campaign-index.json",
+      "primary_persona": "avatar-1",
+      "deliverable": "cold-traffic DR sales letter -> no-obligation consults",
+      "workspace_count": 1
+    },
+    {
+      "campaign_slug": "upgrader-ads",
+      "path": "upgrader-ads/",
+      "workspace_count": 2
+    }
+  ],
+  "last_updated": "2026-06-11"
+}

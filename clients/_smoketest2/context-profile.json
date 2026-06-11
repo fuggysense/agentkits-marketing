@@ -1,0 +1,44 @@
+{
+  "client_slug": "_smoketest2",
+  "client_name": "VitalKit Labs",
+  "client_type": "DTC e-commerce",
+  "specialty": "Health supplement starter kits — sleep, stress, energy",
+  "geo": "US nationwide DTC, primary: 25-45 urban women",
+  "engagement_type": "paid-acquisition funnel build",
+  "deadline": null,
+  "stopping_criteria": "smoke-test complete — research gate PASS, angles emulated, hooks gated, claims gated, prelaunch rubric wired",
+  "links": {
+    "website": "https://vitalkit-labs.example.com",
+    "linkedin": null,
+    "instagram": "https://instagram.com/vitalkitlabs.fictional",
+    "tiktok": null,
+    "youtube": null,
+    "featured_landing_page": "https://vitalkit-labs.example.com/starter"
+  },
+  "offer_ladder": {
+    "t1_lead_magnet": "Free 'Sleep Stack Guide' — 7 mistakes that kill supplement ROI",
+    "t2_mid_funnel": "$49 single-category Starter Kit (sleep, stress, or energy) — 30-day sampler",
+    "t3_back_end": "$129/mo Foundation Stack subscription — curated 3-category bundle, cancel anytime"
+  },
+  "current_funnel_state": {
+    "email_list": false,
+    "email_provider": null,
+    "lead_magnet": false,
+    "current_path": "strangers -> Instagram DM -> Shopify cart -> one-time purchase"
+  },
+  "production_capability": {
+    "heygen": null,
+    "can_film_self": true,
+    "ai_assisted_video_edit": true
+  },
+  "tools_available": ["Shopify", "Klaviyo (planned)", "Meta Ads"],
+  "research_status": "complete-fictional",
+  "_created": "2026-06-11",
+  "_last_updated": "2026-06-11",
+  "_smoke_test_note": "FICTIONAL SMOKE-TEST DATA — VitalKit Labs is not a real client. Every fact, figure, and quote is invented for M3.8 repeatability proof.",
+  "_onboarding_progress": {
+    "current_phase": 1,
+    "path": "research-first",
+    "completed_steps": ["scaffold", "research-pack", "research-gate"]
+  }
+}

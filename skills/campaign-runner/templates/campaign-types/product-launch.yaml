@@ -50,7 +50,7 @@ tasks:
   - id: email-sequence
     phase: creation
     status: planned
-    agent: email-wizard
+    agent: copywriter
     skill: email-sequence
     description: "5-email launch sequence — announcement, value, social proof, urgency, last chance"
     dependencies: [landing-page]
@@ -87,7 +87,7 @@ tasks:
   - id: tracking-setup
     phase: execution
     status: planned
-    agent: tracking-specialist
+    agent: researcher
     skill: analytics-attribution
     description: "GA4 conversion events, UTM templates, Postiz tracking params"
     dependencies: [landing-page]
@@ -126,7 +126,7 @@ tasks:
   - id: ad-optimization
     phase: optimization
     status: planned
-    agent: attraction-specialist
+    agent: researcher
     skill: paid-advertising
     description: "Optimize ads based on week 1 data — pause losers, scale winners, new variants"
     dependencies: [week1-metrics, ad-creative]
