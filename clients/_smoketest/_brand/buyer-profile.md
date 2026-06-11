@@ -38,7 +38,7 @@
 - To sign and actually sleep.
 
 ## BUYER-TRUTH LINE (from VoC)
-> "Fix the incentive and I'm in." The objection isn't the fee — it's whether the advisor is genuinely on their side.
+> "Fix the incentive and I'm in." — `00_inputs/research/voc-reddit-dump-260611.md:97` (q26). The objection isn't the fee — it's whether the advisor is genuinely on their side.
 
 ## SCHWARTZ AWARENESS (primary, one-buyer)
 - **Primary level:** Problem-aware, edging into Solution-aware. They KNOW the conflict-of-interest problem. Most don't yet know a true flat-fee buyer-advisory exists as a category.
@@ -70,7 +70,7 @@
 | Buying Trigger | Their flat sells, the clock starts on the next purchase, and the agent's attention visibly drops. |
 | Awareness Level | Solution-aware. Knows the conflict, actively wants a different model, may not know flat-fee advisory exists by name. |
 | Sophistication Level | 4 |
-| Language | "This time I want data not vibes." "Less money for them on the buy, makes sense." "We overpaid maybe 40-50k looking back. Not making that mistake twice." |
+| Language | "This time I want data not vibes." — `00_inputs/research/voc-reddit-dump-260611.md:30` (q7); "Less money for them on the buy, makes sense." — `00_inputs/research/voc-reddit-dump-260611.md:18` (q3); "We overpaid maybe 40-50k looking back. Not making that mistake twice." — `00_inputs/research/voc-reddit-dump-260611.md:30` (q7) |
 | Proof | The visible spreadsheet. Anonymised before/after teardowns. A named fair-value gap they can check themselves. Not credentials, not testimonials alone. |
 | What Makes This Segment Distinct | They carry a specific scar (a past overpay) and a specific trigger (the buy-side incentive flip). That history makes them the fastest to grasp the flat-fee pitch and the hardest to fool with polish. |
 | Source Confidence | medium — strong VoC signal (quotes 1, 3, 7, 21), but all fictional and inferred. |
@@ -81,7 +81,7 @@
 - **Primary fear:** Doing it again. A second decade-long mistake would confirm the first wasn't bad luck.
 - **Beliefs to overcome:** "All advice is tainted by commission." "I should be able to figure this out myself if I'm a numbers person." Counter: a clean incentive plus a second set of eyes is not weakness, it's the move a careful person makes.
 - **Past solutions tried:** Self-analysing URA caveats (didn't trust their own answer), the same dual-role agent (felt the buy-side drop-off).
-- **Raw inner dialogue:** "I can model my whole life on a spreadsheet. Why am I buying a house on a feeling and an agent's word?"
+- **Raw inner dialogue:** "I can model my whole life on a spreadsheet. Why am I buying a house on a feeling and an agent's word?" — `00_inputs/research/voc-reddit-dump-260611.md:78` (q21, paraphrased composite; `[HYPOTHESIS - partial inferred assembly]`)
 - **Relationship impact:** Tension with a spouse who still trusts the agent. Wants a neutral third party to break the tie without a fight. (Folded-in couple signal.)
 
 #### Market Behavior
@@ -106,7 +106,7 @@
 | Buying Trigger | A lease or rental ending, a wedding, a baby on the way — a life event that turns "someday" into "this quarter." |
 | Awareness Level | Problem-aware. Feels the doubt acutely, hasn't yet framed it as an incentive problem or found the flat-fee category. |
 | Sophistication Level | 2 |
-| Language | "28 saved listings, zero decisions, send help." "Three Telegram groups, three opinions, all anonymous." "I feel completely unqualified to choose." |
+| Language | "28 saved listings, zero decisions, send help." — `00_inputs/research/voc-reddit-dump-260611.md:38` (q9); "Three Telegram groups, three opinions, all anonymous." — `00_inputs/research/voc-reddit-dump-260611.md:44` (q11, compressed composite); "I feel completely unqualified to choose." — `00_inputs/research/voc-reddit-dump-260611.md:51` (q13 source note) |
 | Proof | A simple, human verdict over raw data. Plain-language reasoning. A low-risk first step (the S$290 teardown) so they can feel the method before committing. |
 | What Makes This Segment Distinct | Their block isn't trust in agents (yet) — it's trust in themselves. They want a conclusion, not more inputs. That makes the "verdict, not a dashboard" angle land hardest here. |
 | Source Confidence | medium — clear VoC signal (quotes 9, 11, 13), all fictional. |
@@ -117,7 +117,7 @@
 - **Primary fear:** Signing the OTP and discovering six months later it was the wrong unit, now stuck for a decade.
 - **Beliefs to overcome:** "More research will eventually give me certainty." "Paying for advice means I failed to do it myself." Counter: the research was never going to produce a verdict — a person who isn't selling will.
 - **Past solutions tried:** Months on PropertyGuru and 99.co, anonymous Telegram crowdsourcing, asking a cousin "in the industry."
-- **Raw inner dialogue:** "I'm about to make the biggest purchase of my life on basically a feeling."
+- **Raw inner dialogue:** "I'm about to make the biggest purchase of my life on basically a feeling." — `00_inputs/research/voc-reddit-dump-260611.md:50` (q13)
 - **Relationship impact:** Often deciding as a couple where neither partner wants to be the one who pushed the wrong unit. (Folded-in couple signal.)
 
 #### Market Behavior
@@ -142,7 +142,7 @@
 | Buying Trigger | Seeing the hidden-commission math laid out, or a peer telling them what they actually paid an agent. |
 | Awareness Level | Solution-aware, edging to Product-aware once shown the flat-fee model. Sharpest of the three. |
 | Sophistication Level | 4 |
-| Language | "Pay 4.5k for advice when agents are free? No thanks. (But also I have no idea if my free agent is screwing me.)" "4.5k flat is nothing if it stops me overpaying 50k. The math is obvious." "Show me the spreadsheet, not a sales pitch." |
+| Language | "Pay 4.5k for advice when agents are free? No thanks. (But also I have no idea if my free agent is screwing me.)" — `00_inputs/research/voc-reddit-dump-260611.md:58` (q15); "4.5k flat is nothing if it stops me overpaying 50k. The math is obvious." — `00_inputs/research/voc-reddit-dump-260611.md:67` (q18); "Show me the spreadsheet, not a sales pitch." — `00_inputs/research/voc-reddit-dump-260611.md:64` (q17) |
 | Proof | The hidden-commission breakdown. The visible analysis up front. A clear before-you-pay sample of the method. Anti-hype tone. |
 | What Makes This Segment Distinct | They're not blocked by emotion or paralysis — they're blocked by a pricing illusion. Make the real cost visible and they convert almost on contact. The objection is logical, not psychological. |
 | Source Confidence | medium — direct VoC signal (quotes 15, 16, 17, 18, 26), all fictional. |
@@ -153,7 +153,7 @@
 - **Primary fear:** Being quietly fleeced and not knowing it. The unseen cost is worse than a visible one.
 - **Beliefs to overcome:** "Free is cheaper than S$4,500." "Anyone charging for advice is just another salesperson." Counter: free isn't free, the commission is baked into the price, and a flat fee is the only structure where the advisor doesn't profit from you spending more.
 - **Past solutions tried:** Used "free" agents, later worked out the commission was in the price. Looked at data tools to self-serve.
-- **Raw inner dialogue:** "The whole game is rigged on the incentive. Fix the incentive and I'm in."
+- **Raw inner dialogue:** "The whole game is rigged on the incentive. Fix the incentive and I'm in." — `00_inputs/research/voc-reddit-dump-260611.md:97` (q26)
 - **Relationship impact:** Lower than the other two — this buyer decides on logic and is less swayed by family pressure.
 
 #### Market Behavior

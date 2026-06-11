@@ -1,6 +1,6 @@
 # Routing Table (auto-generated — do not edit)
 
-_Generated: 2026-06-10T17:20:10.662Z • Project: 75 • Global: 58_
+_Generated: 2026-06-11T02:28:13.949Z • Project: 75 • Global: 58_
 
 Edit `routing-overrides.md` for manual disambiguation. Re-run `.claude/hooks/refresh-registry.js` to refresh.
 
@@ -109,7 +109,7 @@ Edit `routing-overrides.md` for manual disambiguation. Re-run `.claude/hooks/ref
 - **signup-flow-cro** _(project)_ — "Optimize signup/registration/account creation/trial activation flows. Triggers: signup conversions, registration friction, signup form optimization, signup dro
 - **skill-cleaner** _(global)_ — "Audit Claude Code skills: find duplicates across global/plugin/project roots, flag bloated descriptions, surface unused/retired husks, forecast prompt-budget s
 - **skill-creator** _(global)_ — "Create, edit, optimize, and benchmark skills. Test & eval, variance analysis, improve triggering accuracy. Triggers: create skill, build skill, edit skill, opt
-- **source-of-truth** _(project)_ — "Generate 26-section paid ads source-of-truth. Auto-triage input, parallel research (scrapecreators, buyer-language, deep-research, product), synthesize via bus
+- **source-of-truth** _(project)_ — "Generate paid ads source-of-truth: 26 core sections + 2 Ferres research-flow sections (§27 says-vs-addresses gap analysis, §28 competitor opportunity matrix). 
 - **tiktok-slideshows** _(project)_ — "TikTok slideshows, Photo Mode, content calendar, trending hooks, batch production. Triggers: TikTok + (slideshows, carousels, Photo Mode, hooks, batches, calen
 - **transcribe** _(global)_ — Transcribe any audio or video to text. Groq Whisper by default (fast/cheap); ElevenLabs Scribe for word-level timestamps (--words); local faster-whisper fallbac
 - **trigger-agents** _(global)_ — "AI agent patterns with Trigger.dev: orchestration, parallelization, routing, evaluator-optimizer, human-in-the-loop. Triggers: ai agent, parallel workers, appr

@@ -55,7 +55,7 @@ The headline must pass the persona identification test:
 
 ## 4. Cultural Sensitivity
 
-Load the relevant cultural guidelines from `references/sg-cultural-guidelines.md` (or equivalent for other markets). Quick checks:
+Load the client's locale rules from `clients/<project>/_brand/locale-rules.md` IF PRESENT (template + SG example at `clients/_template/_brand/locale-rules.md`). The old skill-global `sg-cultural-guidelines.md` is archived at `_archive/references-pre-ferres/`. Quick checks:
 
 - [ ] No insensitive references to race, religion, or ethnicity
 - [ ] Respects cultural norms of the target demographic

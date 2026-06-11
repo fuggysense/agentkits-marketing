@@ -130,7 +130,7 @@ Route on the answer:
 - Before/after transformation visuals
 - Any marketing visual that needs to look professional without a photographer
 
-> **Ad-creative quality bar:** when generating ad-image prompt SETS (DCT variants / statics), apply `references/gut-wrenching-ad-format.md` — the 9-rule "Gut-Wrenching FORMAT" standard (unique formats, real-not-AI Singaporean/locale casting, headline on the ad, scroll-stopping gut-punch). Always reconcile against the active client's brand kill-list.
+> **Ad-creative quality bar:** when generating ad-image prompt SETS (DCT variants / statics), the active method is `skills/ad-concept-engine/references/static-image-method.md` — the Ferres-grounded rebuild that replaces the retired `gut-wrenching-ad-format.md` (now archived at `_archive/references-pre-ferres/`, switchable on operator request). It owns format/pattern choice, the 3-pass teardown-rebuild, the source-pointed offer + VOC injection, the Claim Gate on prompt text, and the post-render image QA gate. Casting and any locale/compliance specifics come from the client's `clients/<slug>/_brand/locale-rules.md` (loaded IF PRESENT) — this renderer carries no locale content. Always reconcile against the active client's brand kill-list.
 
 ## How It Works
 

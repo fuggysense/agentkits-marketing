@@ -221,7 +221,8 @@ def run(path, threshold, root, audit):
 
 def main(argv=None):
     p = argparse.ArgumentParser(
-        description="Score + insight-tag gate for ad hooks/headlines (see --help for shape).")
+        description=__doc__,
+        formatter_class=argparse.RawDescriptionHelpFormatter)
     p.add_argument("hooks", metavar="HOOKS_JSON", help="path to the hooks JSON array")
     p.add_argument("--threshold", type=float, default=4.0,
                    help="minimum average of the five 1-5 scores (default 4.0)")

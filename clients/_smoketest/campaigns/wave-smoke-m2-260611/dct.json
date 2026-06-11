@@ -1,0 +1,262 @@
+{
+  "_fictional": "FICTIONAL SMOKE-TEST DATA - not a real client. Meridian Property Advisory and founder Daniel Tay are invented. Every number, quote, and proof point is fictional and must clear a claim gate before any live use.",
+  "_m2_rerun": true,
+  "_m2_note": "M2 regression rerun 260611. Upgrades applied: static-image-method.md (pattern-cited prompts, 4:5 portrait, per-slot source pointers), locale-rules.md (SG casting + compliance hard rules), claim_gate.py --gate (claim ledger run). NO planted defect in this run — the gate must confirm all claims are sourced. Copy carries M2.2 insight tags. Angles from run-m2-260611 (M2.6 diversity-map, DM entries cited).",
+  "wave": "wave-smoke-m2-260611",
+  "campaign": "wave-smoke-m2",
+  "campaign_type": "dct",
+  "client": "_smoketest",
+  "dct_method": "10-5-5",
+  "format": "Meta Flexible Ad (10-5-5): up to 10 images + 5 primary texts + 5 headlines per ad set. Meta MIXES the pool.",
+  "owner_skill": "ad-concept-engine",
+  "source_method": "skills/ad-concept-engine/SKILL.md + references/static-image-method.md (active, replaces archived high-converting-static-brief.md)",
+  "locale_rules_loaded": "clients/_smoketest/_brand/locale-rules.md (SG property buyer — casting, CPF/HFE/OTP render rules, compliance, UK spelling)",
+  "claims": [
+    {
+      "id": "CL-01",
+      "claim": "S$4,500",
+      "source": "_brand/offer.md:13-15 (T3 flat-fee, same at any purchase price). FICTIONAL but in-world consistent.",
+      "note": "Flat fee price. On-image at img-01 bridge_line."
+    },
+    {
+      "id": "CL-02",
+      "claim": "S$900k",
+      "source": "_brand/offer.md:13-15 (illustrative lower price-band bound, same fee). FICTIONAL but in-world consistent.",
+      "note": "Price-band lower bound on img-01."
+    },
+    {
+      "id": "CL-03",
+      "claim": "S$1.6m",
+      "source": "_brand/offer.md:13-15 (illustrative upper price-band bound, same fee). FICTIONAL but in-world consistent.",
+      "note": "Price-band upper bound on img-01."
+    },
+    {
+      "id": "CL-04",
+      "claim": "S$290",
+      "source": "_brand/offer.md (T2 S$290 Shortlist Teardown). FICTIONAL but in-world consistent.",
+      "note": "CTA price on img-01 bridge_line and img-03 bridge_line."
+    },
+    {
+      "id": "CL-05",
+      "claim": "40-50k overpay",
+      "source": "00_inputs/research/voc-reddit-dump-260611.md:30 (q7, verbatim buyer VoC). FICTIONAL but source-linked within fictional pack.",
+      "note": "On-image hook img-02 mirrors verbatim VoC. Not a market stat."
+    }
+  ],
+  "dcts": [
+    {
+      "dct_id": "DCT-SM2-01",
+      "name": "The incentive flip",
+      "avatar": "MP-01 (The Repeat-Mistake Upgrader)",
+      "offer": "T2 S$290 Shortlist Teardown -> T3 S$4,500 flat-fee advisory",
+      "meta_adset": "W-sm2_DCT-SM2-01_Flex_MP-01_incentive-flip",
+      "angle_id": "A01",
+      "diversity_map_entry": "DM#1 (solution-aware; resentment at buy-side agent incentive)",
+      "market_awareness": "Solution-aware, edging product-aware",
+      "market_sophistication": "L4",
+      "format_path": "Static (Phase 2a hooks)",
+      "creative_type": "hook",
+      "status": "draft",
+      "headline_1": "The buy-side incentive flip",
+      "headline_2": "When the agent goes quiet",
+      "headline_drafts": [
+        "The buy-side incentive flip",
+        "When the agent goes quiet",
+        "Paid not to save you",
+        "The flip you felt",
+        "A fee that can't flip"
+      ],
+      "headline_insight_tags": {
+        "The buy-side incentive flip": "clients/_smoketest/00_inputs/research/voc-reddit-dump-260611.md#L18 — buy-side incentive flip, q3",
+        "When the agent goes quiet": "clients/_smoketest/00_inputs/research/voc-reddit-dump-260611.md#L18 — same agent went quiet on the buy, q3"
+      },
+      "copy_1": "Your flat sold in three weeks. The same agent went quiet the moment you started buying.\n\nYou felt the reason before you could name it. On the sell side, a higher price pays them more. On the buy side, the better the deal they get you, the less they earn.\n\nThat is not a personality change. That is the structure.\n\nThe advice you most need — push for a lower price, flag the risky stack, tell you the unit is overpriced — is the advice they are paid not to give.\n\nOne structure cannot produce that conflict: a flat fee. S$4,500, the same whether you buy at S$900k or S$1.6m. Nobody earns more when you spend more.\n\nYou overpaid once. You said never again.\n\nSee the analysis on one shortlist unit for S$290, before you commit to anything.\n\nhttps://meridianpropertyadvisory.example.sg/advisory",
+      "copy_2": "Your flat sold in three weeks. Then the same agent went quiet.\n\nOn the buy, the better your price, the less they earn. The incentive flipped.\n\nA flat fee can't flip. See the maths on a real shortlist for S$290.\n\nhttps://meridianpropertyadvisory.example.sg/advisory",
+      "copy_insight_tags": {
+        "copy_1_voc_anchor": "clients/_smoketest/00_inputs/research/voc-reddit-dump-260611.md#L18 — incentive flip felt, q3",
+        "copy_2_voc_anchor": "clients/_smoketest/00_inputs/research/voc-reddit-dump-260611.md#L18 — incentive flip felt, q3"
+      },
+      "cta": "See the analysis on one shortlist unit for S$290, before you commit to anything.",
+      "copy_source": "clients/_smoketest/copy/wave-smoke-m2-260611.md (headline-bank M2.2, A01)",
+      "angle_rationale": "MP-01 already half-sees the wound. Their flat sold fast, then the same agent went quiet on the buy. Name the felt moment first, then hand them the mechanism: a flat fee is the one structure where the advisor cannot earn more when they spend more. Lead with the problem they live, introduce the flat fee as the named fix, prove it with checkable numbers. Contrast the fee structure, never the people. Buying emotion is relief, not opportunity.",
+      "why_am_i_testing_this": "Tests whether naming the buy-side incentive flip plus a clean flat-fee mechanism beats commission-agent aspiration copy for a scarred L4 upgrader who has already overpaid once.",
+      "image_pool": {
+        "target": 3,
+        "rendered": 0,
+        "id_format": "DCT-SM2-01-img-<NN>",
+        "_concept_distribution": "Variant A = infographic of the mechanism (the flip made visible, Pattern 05). Variant B = native-organic note mirroring the buyer's inner monologue (Pattern 09). Variant C = documentary still of the felt problem moment (Pattern 07 native-article style). No two creatives share a pattern; indirect-heavy batch (cold traffic).",
+        "images": [
+          {
+            "id": "DCT-SM2-01-img-01",
+            "file": null,
+            "status": "pending",
+            "variant": "A",
+            "pattern": "Pattern 05 — Educational / Annotated Infographic",
+            "lane": "INFOGRAPHIC",
+            "direct_indirect": "indirect-inform",
+            "routes_to": "advertorial",
+            "visual_concept_type": "Picture of the mechanism",
+            "text_on_image_hook": "Their pay climbs with your price. Ours doesn't.",
+            "bridge_line": "Flat fee: S$4,500, same at S$900k or S$1.6m.",
+            "image_prompt": "Aspect ratio 4:5 portrait. Minimalist hand-drawn marker infographic on a clean white background, centre-safe text zone, negative space top and bottom. A simple balance scale: the left pan holds one small fixed coin labelled 'flat fee'; the right pan holds a growing coin stack linked by a rising house-price arrow. The fixed coin does not move as the stack climbs. Two flat neutral colours plus black ink, calm and unhurried, like a careful analyst's worksheet, NOT a glossy ad. Headline band across the top: 'The buy-side incentive flip' in a plain sans-serif. Bridge line near the base: 'Flat fee: S$4,500, same at S$900k or S$1.6m.' Meridian wordmark small bottom-right. No people, no drone shots, no dream-home imagery. --ar 4:5. Negative prompt: AI skin sheen, warped hands, plastic texture, stock-photo gloss, alarm red, clutter, watermark.",
+            "claim_status": "clean",
+            "claim_note": "All figures (S$4,500, S$900k, S$1.6m) trace to claims ledger CL-01/02/03 -> _brand/offer.md:13-15. FICTIONAL but source-linked.",
+            "_meta": {
+              "voc_source": "_brand/buyer-profile.md#THE-CORE-PROBLEM",
+              "offer_source": "_brand/offer.md:13-15",
+              "claim_sources": ["dct.json#claims/CL-01", "dct.json#claims/CL-02", "dct.json#claims/CL-03"]
+            }
+          },
+          {
+            "id": "DCT-SM2-01-img-02",
+            "file": null,
+            "status": "pending",
+            "variant": "B",
+            "pattern": "Pattern 09 — Native-Organic: Notes / Handwritten / UI-Mimic",
+            "lane": "NATIVE",
+            "direct_indirect": "indirect-blend",
+            "routes_to": "advertorial",
+            "visual_concept_type": "Picture of the problem — buyer's inner monologue",
+            "text_on_image_hook": "We overpaid maybe 40-50k. Not making that mistake twice.",
+            "bridge_line": "This time on data, not an agent's word.",
+            "image_prompt": "Aspect ratio 4:5 portrait. Close, slightly-off-angle photo of an iOS Notes-app screen held in one hand at a kitchen counter in warm evening light, faint bokeh behind. Reads as a real screenshot a person took, not a designed graphic. Note title in standard Notes font: 'We overpaid maybe 40-50k. Not making that mistake twice.' Body line smaller: 'This time on data, not an agent's word.' Hand is a mid-30s Singaporean — real skin texture, slight asymmetry, natural. No graphic-design polish, no banner, no logo on screen. Centre-safe note text, phone bezel and hand at edges. --ar 4:5. Negative prompt: AI skin sheen, plastic texture, warped or extra fingers, over-symmetry, watermark, glossy stock-photo look, designed ad banner, brand logo on screen.",
+            "claim_status": "clean",
+            "claim_note": "On-image text mirrors verbatim VoC q7 (voc-reddit-dump-260611.md:30). Not a market stat — a quoted buyer phrase. CL-05 in ledger.",
+            "_meta": {
+              "voc_source": "00_inputs/research/voc-reddit-dump-260611.md:30 (q7, verbatim)",
+              "locale_source": "clients/_smoketest/_brand/locale-rules.md §2 (Singaporean casting, documentary realism, real skin texture)",
+              "claim_sources": ["dct.json#claims/CL-05"]
+            }
+          },
+          {
+            "id": "DCT-SM2-01-img-03",
+            "file": null,
+            "status": "pending",
+            "variant": "C",
+            "pattern": "Pattern 07 — Native Article-Thumbnail Advertorial",
+            "lane": "NATIVE",
+            "direct_indirect": "indirect-blend",
+            "routes_to": "advertorial",
+            "visual_concept_type": "Picture of the problem — the silence after the flat sold",
+            "text_on_image_hook": "Sold in three weeks. Then silence.",
+            "bridge_line": "On the buy side, the better your price, the less they earn.",
+            "image_prompt": "Aspect ratio 4:5 portrait. Photographic documentary realism, Straits Times feature look, real-person not model. A mid-30s Chinese-Singaporean man standing alone at an HDB kitchen counter at night, phone face-up showing one unread message, looking off to one side, tired and quiet. Laptop sits closed beside him. Warm low light from an under-cabinet lamp, muted palette, slight grain, intimate — NOT posed. The mood is the silence after a fast sale. Lower-third space on a dark translucent scrim for headline text 'When the agent goes quiet' in clean sans-serif. Small bridge line below it. Meridian wordmark small bottom corner. --ar 4:5. Negative prompt: AI skin sheen, over-symmetry, extra fingers, plastic teeth, uncanny smile, stock-photo staging, condo lifestyle shots, watermark.",
+            "claim_status": "clean",
+            "claim_note": "No numeric stat on this image. SG-correct primary ethnicity per locale-rules.md §2 (Chinese-Singaporean for MP-01). No invented stats. FICTIONAL persona scene.",
+            "_meta": {
+              "voc_source": "00_inputs/research/voc-reddit-dump-260611.md:18 (q3, agent went quiet on the buy)",
+              "locale_source": "clients/_smoketest/_brand/locale-rules.md §2 + §3 (casting, no invented figures)",
+              "claim_sources": []
+            }
+          }
+        ]
+      }
+    },
+    {
+      "dct_id": "DCT-SM2-02",
+      "name": "Free isn't free",
+      "avatar": "MP-03 (The Fee-Allergic Convertible)",
+      "offer": "T2 S$290 Shortlist Teardown -> T3 S$4,500 flat-fee advisory",
+      "meta_adset": "W-sm2_DCT-SM2-02_Flex_MP-03_free-isnt-free",
+      "angle_id": "A02",
+      "diversity_map_entry": "DM#4 (solution-aware; suspicion at hidden commission cost)",
+      "market_awareness": "Solution-aware, edging product-aware",
+      "market_sophistication": "L4",
+      "format_path": "Static (Phase 2a hooks)",
+      "creative_type": "hook",
+      "status": "draft",
+      "headline_1": "The free agent isn't free",
+      "headline_2": "Where the commission hides",
+      "headline_drafts": [
+        "The free agent isn't free",
+        "Where the commission hides",
+        "Free, then you pay anyway",
+        "The cost you never see itemised",
+        "S$4,500 visible beats hidden fees"
+      ],
+      "copy_1": "S$4,500 for advice, when agents are free? That's the reflex. It's also the trap.\n\nThe free agent isn't free. The commission is baked into the price you pay. You just never see it itemised.\n\nOne flat fee, shown to you. See the method on your shortlist for S$290 first.\n\nhttps://meridianpropertyadvisory.example.sg/advisory",
+      "copy_2": "The free agent isn't free. Their commission is built into the price you pay — you just never see it itemised. If a clear set of eyes stops you overpaying, the flat fee isn't the cost. It is the saving.\n\nSee the method on your shortlist for S$290.\n\nhttps://meridianpropertyadvisory.example.sg/advisory",
+      "cta": "See the method on your shortlist for S$290 first.",
+      "copy_source": "clients/_smoketest/angles/run-m2-260611/01_angles.md (A02 angle) + wave-smoke-m2-260611.md adapted",
+      "angle_rationale": "MP-03 decides on logic. They are blocked by a pricing illusion: they think free is cheaper than S$4,500. Make the hidden commission visible and the math flips them fast. Lead with the reflex objection, expose the hidden cost, reframe the flat fee as the cheaper honest line item. Numbers they can re-run. Contrast the structure, never the people. Anti-hype tone because this buyer rejects outrage marketing.",
+      "image_pool": {
+        "target": 2,
+        "rendered": 0,
+        "id_format": "DCT-SM2-02-img-<NN>",
+        "_concept_distribution": "Variant A = infographic receipt (Pattern 05, the hidden vs visible fee). Variant B = typographic statement (Pattern 11 oddballs, bold 'FREE' struck through). No two creatives share a pattern.",
+        "images": [
+          {
+            "id": "DCT-SM2-02-img-01",
+            "file": null,
+            "status": "pending",
+            "variant": "A",
+            "pattern": "Pattern 05 — Educational / Annotated Infographic",
+            "lane": "INFOGRAPHIC",
+            "direct_indirect": "indirect-inform",
+            "routes_to": "advertorial",
+            "visual_concept_type": "Picture of the mechanism — hidden vs visible fee",
+            "text_on_image_hook": "One cost is hidden. One is visible.",
+            "bridge_line": "S$4,500 flat, shown to you. No commission.",
+            "image_prompt": "Aspect ratio 4:5 portrait. A clean, plain receipt-style graphic on a white background, deliberately understated. One line near the top is struck through, labelled as a hidden agent commission with blurred or question-mark digits (no specific invented number). Below it, a single clear, crisp line: flat advisory fee visible, amount left as a clear label rather than a figure so no number is asserted on screen. Calm neutral colours, no alarm red, crisp legible typography, generous white space, honest and almost boring on purpose. Headline across the top: 'Where the commission hides.' Small line at the base: 'S$4,500 flat, shown to you. No commission.' Meridian wordmark small bottom-right. No people, no condo imagery. Centre-safe text zone. --ar 4:5. Negative prompt: stock-photo gloss, clutter, alarm red, fake urgency badges, watermark.",
+            "claim_status": "clean",
+            "claim_note": "Hidden commission digits are deliberately obscured (question marks) — no specific unsourced number asserted on image. S$4,500 traces to CL-01 -> _brand/offer.md. FICTIONAL but source-linked.",
+            "_meta": {
+              "voc_source": "_brand/buyer-profile.md#MP-03-The-Fee-Allergic-Convertible",
+              "offer_source": "_brand/offer.md:13-15",
+              "claim_sources": ["dct.json#claims/CL-01"]
+            }
+          },
+          {
+            "id": "DCT-SM2-02-img-02",
+            "file": null,
+            "status": "pending",
+            "variant": "B",
+            "pattern": "Pattern 11 — Pattern-Interrupt Oddballs (bold typographic statement)",
+            "lane": "mixed",
+            "direct_indirect": "indirect-standout",
+            "routes_to": "advertorial",
+            "visual_concept_type": "Pattern-interrupt — FREE struck through",
+            "text_on_image_hook": "Free? The cost is just hidden.",
+            "bridge_line": "See the method on one shortlist for S$290.",
+            "image_prompt": "Aspect ratio 4:5 portrait. Confident, understated typographic ad on a deep matte charcoal background. The single word 'FREE' set large in a clean premium serif with a thin strike-through line. Smaller honest line below: 'The cost is just hidden in the price.' Minimal, calm, high-end, plenty of negative space, like a private-bank or premium-marque ad — NOT loud, NOT outrage marketing. Small line near the base: 'See the method on one shortlist for S$290.' Meridian wordmark centred at the bottom. No people, no condo imagery, no bright colours. Centre-safe text zone. --ar 4:5. Negative prompt: clutter, alarm red, stock-photo gloss, fake urgency, watermark.",
+            "claim_status": "clean",
+            "claim_note": "No numeric stat asserted. S$290 traces to CL-04 -> _brand/offer.md. Tone stays anti-hype per MP-03 profile. FICTIONAL but source-linked.",
+            "_meta": {
+              "voc_source": "00_inputs/research/voc-reddit-dump-260611.md:61 (q15, pay-for-advice reflex)",
+              "offer_source": "_brand/offer.md (T2 S$290)",
+              "claim_sources": ["dct.json#claims/CL-04"]
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "tracking": "Each DCT = one Meta Flex ad set. Meta asset breakdown gives per-image/per-text/per-headline CTR. Promote a winner to its own ad set to track cleanly. STOP before render — no render.py, no executor, no sheet, no network/Meta. All images pending/null.",
+  "_provenance": {
+    "owner_skill": "ad-concept-engine",
+    "method_files_read": [
+      "skills/ad-concept-engine/SKILL.md (DCT structure, Phase 2a static path, 10-5-5)",
+      "skills/ad-concept-engine/references/static-image-method.md (ACTIVE method — Move 1-4, pattern-cited prompts, 4:5 portrait, per-slot source pointers)",
+      "clients/_smoketest/_brand/locale-rules.md (SG casting + compliance rules, UK spelling)",
+      "_shared-knowledge/ferres/patterns/statics-pattern-library.md (pattern names cited by exact pattern number)"
+    ],
+    "writing_skill_applied": "~/.claude/commands/writing/SKILL.md anti-AI rules + readability pass + 16-item self-check. Solution-aware + mature/exhausted -> Hopkins PRIMARY, Schwartz SUPPORT. Run before return: PASS.",
+    "copywriting_masters_applied": "references/copywriting-masters.md loaded (persuasive copy task). Hopkins mechanism-first for L4; Schwartz awareness-level lead.",
+    "m2_gates_added": [
+      "angles: diversity-map coverage (9 distinct DM entries >= 6 required) -- PASS",
+      "angles: blocking citation audit (all banked angles cite DM entry + source pointer) -- PASS",
+      "copy: hook_gate.py on wave-smoke-m2-hooks.json (3 hooks, avg >= 4.0, insight tags resolve) -- PASS exit 0",
+      "image-prompts: pattern cited by name for every image (Pattern 05/07/09/11)",
+      "image-prompts: locale-rules.md hard rules applied (SG casting, no invented stats, UK spelling)",
+      "claim_gate.py --gate on this dct.json -- must run before HITL Gate 3"
+    ],
+    "inputs": {
+      "angles": "clients/_smoketest/angles/run-m2-260611/ (A01 rank-1, A02 rank-2, diversity-map-260611.md)",
+      "buyer_profile": "clients/_smoketest/_brand/buyer-profile.md (M1.2 provenance fixed 260611)",
+      "offer": "clients/_smoketest/_brand/offer.md",
+      "voc": "clients/_smoketest/00_inputs/research/voc-reddit-dump-260611.md",
+      "locale_rules": "clients/_smoketest/_brand/locale-rules.md",
+      "research_gate": "PASS (exit 0, 11/11 items)"
+    }
+  }
+}

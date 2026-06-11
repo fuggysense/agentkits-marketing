@@ -167,6 +167,20 @@
       "_comment": "OPTIONAL — clients capturing leads via an embedded form get one manual tab named for THEIR tool. Do not hardcode a tool. Example for a Tally.so client, moved out of this wrapper: \"tally_form\": { \"gid\": \"<gid>\", \"name\": \"TALLY FORM\", \"write_mode\": \"manual\", \"source\": \"tally_form_responses\" }."
     }
   },
+  "feedback_thresholds": {
+    "_comment": "Per-client overrides the feedback-router reads (skills/feedback-router/references/routing-criteria.md §Threshold tuning). Currency follows this block, never a hardcoded S$. tcpr + tcpr_kill_multiple feed the doctrine's 3x-TCPR kill rule. FICTIONAL smoke values.",
+    "currency": "SGD",
+    "tcpr": 100,
+    "tcpr_kill_multiple": 3,
+    "min_spend_per_creative": 200,
+    "min_spend_per_batch": 600,
+    "min_wave_duration_days": 7,
+    "min_impressions_per_creative": 5000,
+    "winning_angle_cpa_ratio_to_next_best": 0.7,
+    "winning_creative_cpa_ratio_to_kpi": 0.75,
+    "fatigue_frequency_floor": 2.5,
+    "buyer_shift_cpa_delta_pct": 40
+  },
   "anomaly_thresholds": {
     "cpa_warning_multiplier": 1.3,
     "cpa_critical_multiplier": 1.5,

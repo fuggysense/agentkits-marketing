@@ -767,6 +767,5 @@ Before delivering buyer profile:
 
 - [[researcher]] (agent, 0.13)
 - [[conversion-optimizer]] (agent, 0.12)
-- [[avatar-research]] (skill, 0.12)
 
 <!-- skill-graph:end -->

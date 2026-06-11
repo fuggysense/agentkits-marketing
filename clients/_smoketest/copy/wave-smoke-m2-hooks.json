@@ -1,0 +1,35 @@
+[
+  {
+    "hook": "Your flat sold in three weeks. The same agent went quiet the moment you started buying.",
+    "scores": {
+      "clarity":              5,
+      "avatar_match":         5,
+      "flow":                 5,
+      "insight_tag_resolves": 5,
+      "native_feel":          5
+    },
+    "insight": "clients/_smoketest/00_inputs/research/voc-reddit-dump-260611.md#L18 — buy-side incentive flip felt, same agent went quiet (q3)"
+  },
+  {
+    "hook": "The buy-side incentive flip",
+    "scores": {
+      "clarity":              4,
+      "avatar_match":         5,
+      "flow":                 5,
+      "insight_tag_resolves": 5,
+      "native_feel":          4
+    },
+    "insight": "clients/_smoketest/00_inputs/research/voc-reddit-dump-260611.md#L18 — incentive flip: less money for them on the buy (q3)"
+  },
+  {
+    "hook": "A flat fee can't flip. See the maths on a real shortlist for S$290.",
+    "scores": {
+      "clarity":              5,
+      "avatar_match":         4,
+      "flow":                 4,
+      "insight_tag_resolves": 5,
+      "native_feel":          4
+    },
+    "insight": "clients/_smoketest/_brand/offer.md#T2 — S$290 Shortlist Teardown CTA"
+  }
+]

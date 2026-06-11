@@ -197,7 +197,7 @@ Campaign naming: `[Objective]_[Test|Scale]_[Theme]_[MonYY]` → e.g. `CBO_Test_B
 - UK English spelling throughout (analyse, recognised, colour, centre)
 - All headlines pass validation checklist (`references/headline-validation-checklist.md`)
 - All angles pass scoring rubric (`references/angle-scoring-rubric.md`)
-- Cultural sensitivity rules apply (`references/sg-cultural-guidelines.md`)
+- Locale + cultural-sensitivity rules apply per-client (`clients/<project>/_brand/locale-rules.md` if present; template + SG example at `clients/_template/_brand/locale-rules.md`)
 - Brand-voice compliance against `clients/<project>/_brand/brand-voice.md`
 - Anti-AI slop check against `skills/copy-editing/references/overused-ai-patterns.md`
 
@@ -462,9 +462,9 @@ Rules:
 
 > Path taken when batch `format ∈ {Static, Carousel}`. Output: text-on-image hook + visual concept + image prompt per creative. Deliverable is `creative_type: "hook"` in dct-tracker.json.
 
-**Skills loaded:** `image-generation/SKILL.md`, `references/sg-cultural-guidelines.md`, `references/sophistication-creative-map.md`, `references/high-converting-static-brief.md`
+**Skills loaded:** `image-generation/SKILL.md`, `references/static-image-method.md`, `references/sophistication-creative-map.md`, plus `clients/<project>/_brand/locale-rules.md` **if present**.
 
-**MANDATORY:** Load `references/high-converting-static-brief.md` as hard constraints before producing any static/carousel variant. That file encodes the 9-point scroll-stop bar (unique variants, SG ethnic distribution, real-not-AI faces, clear headline on image, bridge line when needed, editorial/documentary/cinematic aesthetic — not generic Meta-ad look, factually correct info, gut-punch emotional weight). Store each variant's Nano Banana 2 JSON in `clients/<project>/campaigns/<campaign>/image-prompts/<batch>-<variant>.json` — never inline the full prompt in dct-tracker.json, just reference the file.
+**MANDATORY:** Load `references/static-image-method.md` as the active method before producing any static/carousel variant. It is the Ferres-grounded rebuild (replaces the retired `high-converting-static-brief.md`, now in `_archive/references-pre-ferres/`). The method runs four moves per batch: (1) choose a FORMAT (1 of 5 lanes) or a named PATTERN (1 of 11 — load `_shared-knowledge/ferres/patterns/statics-pattern-library.md` at generation time and cite the pattern by name); (2) 3-pass teardown-rebuild (why-it-wins → how-we-rebuild → the prompt); (3) inject the client offer + VOC with a source pointer on every specific, then run the Claim Gate on the prompt text; (4) post-render image QA gate (text legible + spelled, on-brand, product correct, compliance scan, claim gate green) and label by format + hook. The method carries ZERO locale content — load `clients/<project>/_brand/locale-rules.md` IF PRESENT for casting, regulated-document fidelity, currency/income bands, and the local compliance block. Store each variant's Nano Banana JSON in `clients/<project>/campaigns/<campaign>/image-prompts/<batch>-<variant>.json` — never inline the full prompt in dct-tracker.json, just reference the file.
 
 Rules:
 - 3 creatives per batch, each a COMPLETELY DIFFERENT visual style
@@ -512,7 +512,7 @@ Rules:
 
 > Path taken when batch `format ∈ {UGC, Founder Video, UGC Testimonial, Demo, Singing Ad, No-dialogue Ad, VSL}` AND the user has confirmed the batch/wave is video. Output starts with `vid-director` dispatching `video-concept-seeder` using the `video-concept-lab` graph loadout, then becomes a full production-ready brief per approved video creative. Deliverable is `creative_type: "brief"` in dct-tracker.json.
 
-**Skills loaded:** `video-concept-lab/SKILL.md`, `video-concept-lab/REFERENCE_GRAPH.json`, `script-skill/SKILL.md`, `video-brief-normalizer/SKILL.md`, `references/sg-cultural-guidelines.md`, `references/sophistication-creative-map.md`
+**Skills loaded:** `video-concept-lab/SKILL.md`, `video-concept-lab/REFERENCE_GRAPH.json`, `script-skill/SKILL.md`, `video-brief-normalizer/SKILL.md`, `clients/<project>/_brand/locale-rules.md` (if present), `references/sophistication-creative-map.md`
 
 A brief is NOT the first concept output. A script is the words or visual beats. The brief pack is created only after Approval Gate 1 and script/visual refinement. It contains a client-facing Google Docs source brief plus an internal AI production contract that Video Factory can execute after Approval Gate 2.
 
@@ -641,9 +641,22 @@ On a fail, do exactly one of three things per claim: add a real source to the `c
 
 Never wave a failing gate through silently. If an operator decides to ship an unsourced number anyway, that is a recorded HITL override with a reason, never a skipped step.
 
+### Copy Pre-Launch Rubric (fresh-context reviewer — runs AFTER the Claim Gate, BEFORE HITL Gate 3)
+
+Once every number is sourced, the batch's copy still has to clear the Ferres quality bar before a human spends attention on it. Dispatch a **fresh-context reviewer** (a sub-agent with no anchoring from the drafting context) to score each ad against `references/copy-prelaunch-rubric.md` — six dimensions, 1-5 each: hook effort + two jobs, call-out + who-it's-NOT-for, copyboarding (every claim → objection → proof), native feel, word economy, compliance. The reviewer JUDGES; **code decides** the verdict (threshold 4, fail-closed on any missing/malformed score), reusing the repo's gate-scoring convention (`scripts/hook_gate.py`). On a `REVISE` verdict, route only the failed ads back to the copywriter with their scores + weakest dimension + evidence + fix, keep the passing ads verbatim, and re-run. Full procedure, anchors, JSON contract, and decision rule: `references/copy-prelaunch-rubric.md`.
+
+The gate sequence before a human ever sees a batch:
+
+```
+Phase 2 assembly → dct.json
+  → Claim Gate (machine: every number sourced or cut)            [scripts/claim_gate.py --gate]
+  → Copy Pre-Launch Rubric (fresh reviewer scores; code decides) [references/copy-prelaunch-rubric.md]
+  → HITL Gate 3: human creative approval
+```
+
 ### HITL Gate 3: Creative Approval
 
-Show generated images and video previews grouped by batch. User approves or requests regeneration. Do not enter this gate until the Claim Gate above has returned exit 0 (or carries a recorded operator override).
+Show generated images and video previews grouped by batch. User approves or requests regeneration. Do not enter this gate until the Claim Gate has returned exit 0 (or carries a recorded operator override) AND the Copy Pre-Launch Rubric verdict is PASS (or a recorded operator override).
 
 ---
 
@@ -712,10 +725,11 @@ Present the complete tracker. User approves before handoff to `meta-ads-uploader
 ## References
 
 - `references/sophistication-creative-map.md` — L1-L5 creative strategy framework (Schwartz market sophistication)
-- `references/high-converting-static-brief.md` — 9-point scroll-stop bar for Phase 2a static/carousel variants (MANDATORY on every static batch)
+- `references/static-image-method.md` — **active** Ferres-grounded static/carousel image-prompt method (MANDATORY on every static batch; replaces the retired `high-converting-static-brief.md`, archived at `_archive/references-pre-ferres/`)
+- `references/copy-prelaunch-rubric.md` — fresh-context reviewer rubric run after the Claim Gate, before HITL Gate 3
 - `references/angle-scoring-rubric.md` — Scoring matrix for angle ranking
 - `references/headline-validation-checklist.md` — Full validation checklist
-- `references/sg-cultural-guidelines.md` — Singapore cultural sensitivity rules
+- Locale (casting, regulated documents, currency, local compliance) lives **per-client** at `clients/<project>/_brand/locale-rules.md` — load it IF PRESENT (template + SG example: `clients/_template/_brand/locale-rules.md`). The old skill-global `sg-cultural-guidelines.md` is archived at `_archive/references-pre-ferres/`.
 - `references/swipe-file-template.md` — Competitive research template
 - `references/dct-tracker-template.md` — DCT tracker output template
 - `references/video-brief-template.md` — 6-scene video brief spec for Phase 2b

@@ -1,0 +1,174 @@
+{
+  "_fictional": "FICTIONAL SMOKE-TEST DATA — not a real client. Meridian Property Advisory and founder Daniel Tay are invented. This is a POST-LAUNCH wave fixture: it carries fictional performance numbers (CPA/CTR/SPEND/frequency) so the feedback-router can be walked end-to-end to a NEW/BETTER/MORE decision. No real Meta account was read; nothing here is launch data.",
+  "_purpose": "feedback-router walkthrough fixture (M2.7). Mirrors the post-launch shape of dcts[].image_pool with per-ad-set blended metrics + per-image asset-level CTR. Designed so the router lands on BETTER: one angle wins clearly, intra-angle variance is wide (UGC image beats founder image), headroom exists, and a sibling angle shows the TAM-exhaustion pattern.",
+  "wave": "feedback/wave-1",
+  "campaign": "feedback",
+  "campaign_type": "dct",
+  "client": "_smoketest",
+  "dct_method": "10-5-5",
+  "launched": "2026-05-28",
+  "concluded": "2026-06-10",
+  "duration_days": 13,
+  "format": "Meta Flexible Ad (10-5-5): images pooled WITHIN one DCT; Meta mixes any image x any text x any headline. Asset breakdown gives per-image CTR (directional, no per-combination conversions).",
+  "currency": "SGD",
+  "baseline_cpa": 600,
+  "kpi_target_cpa": 300,
+  "notes_on_baseline": "Pre-paid baseline = 100% referral, ~S$600 effective cost per advisory enquiry (founder-time + referral attrition). KPI target = S$300 CPL on the T2 S$290 teardown front-door. TCPR (target cost per result for the optimization event, a T2 booking) = S$100.",
+  "dcts": [
+    {
+      "dct_id": "DCT-FB-01",
+      "name": "The incentive flip",
+      "avatar": "MP-01 (The Repeat-Mistake Upgrader)",
+      "angle_id": "A01",
+      "meta_adset": "FB-W1_DCT-FB-01_Flex_MP-01_incentive-flip",
+      "market_awareness": "Solution-aware, edging product-aware",
+      "market_sophistication": "L4",
+      "creative_type": "hook",
+      "format": "Static",
+      "metrics": {
+        "spend": 720,
+        "cpa": 247,
+        "ctr_pct": 2.1,
+        "hold_rate_pct": 31,
+        "frequency": 1.8,
+        "cpm": 14.2,
+        "impressions": 50700,
+        "results": 2,
+        "week1_ctr_pct": 2.0,
+        "week2_ctr_pct": 2.2
+      },
+      "image_pool": {
+        "images": [
+          {
+            "id": "DCT-FB-01-img-01",
+            "variant": "A",
+            "visual_concept_type": "Picture of the mechanism (balance scale)",
+            "format_subtype": "Founder-infographic",
+            "asset_ctr_pct": 1.4,
+            "asset_spend": 240
+          },
+          {
+            "id": "DCT-FB-01-img-02",
+            "variant": "B",
+            "visual_concept_type": "Picture of the problem (agent goes quiet, kitchen counter at night)",
+            "format_subtype": "UGC-documentary",
+            "asset_ctr_pct": 3.9,
+            "asset_spend": 410
+          },
+          {
+            "id": "DCT-FB-01-img-03",
+            "variant": "C",
+            "visual_concept_type": "Picture of the transformation (editorial data-card)",
+            "format_subtype": "Editorial-data",
+            "asset_ctr_pct": 1.1,
+            "asset_spend": 70
+          }
+        ]
+      },
+      "comment_mining": {
+        "top_objections_verbatim": [
+          "is the 4.5k a one-time fee or per-property? recurred 6x under the winning ad",
+          "so you don't even view the units with me? asked 3x — scope confusion, not price",
+          "what stops you just steering me to the cheapest unit so it looks like you saved me money? asked 2x"
+        ]
+      }
+    },
+    {
+      "dct_id": "DCT-FB-02",
+      "name": "Free isn't free",
+      "avatar": "MP-03 (The Fee-Allergic Convertible)",
+      "angle_id": "A02",
+      "meta_adset": "FB-W1_DCT-FB-02_Flex_MP-03_free-isnt-free",
+      "market_awareness": "Solution-aware, edging product-aware",
+      "market_sophistication": "L4",
+      "creative_type": "hook",
+      "format": "Static",
+      "metrics": {
+        "spend": 480,
+        "cpa": 520,
+        "ctr_pct": 1.6,
+        "hold_rate_pct": 22,
+        "frequency": 1.5,
+        "cpm": 13.8,
+        "impressions": 34800,
+        "results": 1,
+        "week1_ctr_pct": 1.6,
+        "week2_ctr_pct": 1.5
+      },
+      "image_pool": {
+        "images": [
+          {
+            "id": "DCT-FB-02-img-01",
+            "variant": "A",
+            "visual_concept_type": "Picture of the mechanism (struck-through receipt)",
+            "format_subtype": "Editorial-data",
+            "asset_ctr_pct": 1.7,
+            "asset_spend": 300
+          },
+          {
+            "id": "DCT-FB-02-img-02",
+            "variant": "B",
+            "visual_concept_type": "Picture of the problem reframed (FREE struck through, charcoal)",
+            "format_subtype": "Editorial-data",
+            "asset_ctr_pct": 1.5,
+            "asset_spend": 180
+          }
+        ]
+      },
+      "comment_mining": {
+        "top_objections_verbatim": [
+          "every agent says they're different, prove the commission is actually baked in — recurred 4x, this objection was supposedly already answered in copy_2 and is NOT landing",
+          "ok but s$4500 is still real money i have to find up front — asked 2x"
+        ]
+      }
+    },
+    {
+      "dct_id": "DCT-FB-03",
+      "name": "The 73-second teardown",
+      "avatar": "MP-01 (The Repeat-Mistake Upgrader)",
+      "angle_id": "A03",
+      "meta_adset": "FB-W1_DCT-FB-03_Flex_MP-01_73sec-teardown",
+      "market_awareness": "Solution-aware",
+      "market_sophistication": "L4",
+      "creative_type": "hook",
+      "format": "Static",
+      "_narrow_angle_note": "Hyper-specific angle: 'we tear down one shortlist unit in 73 seconds.' Started cheap (CPA S$210 wk1) then climbed to S$430 wk2 with frequency still moderate (2.1) — its blended CPA (S$370) now sits above the KPI and well above the winner (A01 S$247), so A01 is the DECISIVE winner. The wk1->wk2 climb at moderate frequency is the TAM-exhaustion shape the router must NOT misread as fatigue (freq never breaches 3).",
+      "metrics": {
+        "spend": 740,
+        "cpa": 370,
+        "ctr_pct": 2.4,
+        "hold_rate_pct": 28,
+        "frequency": 2.1,
+        "cpm": 12.9,
+        "impressions": 57300,
+        "results": 2,
+        "week1_cpa": 210,
+        "week2_cpa": 430,
+        "week1_ctr_pct": 2.6,
+        "week2_ctr_pct": 2.3
+      },
+      "image_pool": {
+        "images": [
+          {
+            "id": "DCT-FB-03-img-01",
+            "variant": "A",
+            "visual_concept_type": "Stopwatch + shortlist unit card",
+            "format_subtype": "Editorial-data",
+            "asset_ctr_pct": 2.4,
+            "asset_spend": 740
+          }
+        ]
+      }
+    }
+  ],
+  "tracking": "Each DCT = one Meta Flex ad set -> blended CPA at ad-set level. Asset breakdown = per-image CTR (directional only). DCT-FB-01 (A01) is the clear winner (CPA S$247, <= 0.7x next-best). DCT-FB-02 (A02) underperforms with a recurring un-answered objection. DCT-FB-03 (A03) shows the TAM-exhaustion climb (CPA S$210 -> S$430 at moderate frequency 2.1, never fatigued).",
+  "_provenance": {
+    "owner_skill": "feedback-router (fixture for M2.7 walkthrough)",
+    "grounded_in": [
+      "clients/_smoketest/_brand/buyer-profile.md (MP-01, MP-03)",
+      "clients/_smoketest/campaigns/wave-smoke-260611/dct.json (A01/A02 angles + copy)"
+    ],
+    "performance_numbers": "FICTIONAL. Hand-authored for the router walkthrough so it reaches a BETTER decision. No Meta account read; no sheet written; no network call.",
+    "designed_to_route": "BETTER (A01 wins clearly; UGC image_pool member beats founder/editorial 2.8x on asset CTR; headroom present at freq 1.8; A03 sibling shows TAM-exhaustion the router names explicitly; A02 carries a recurring un-answered objection feeding the next brief)."
+  }
+}

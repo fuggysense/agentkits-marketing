@@ -76,3 +76,14 @@
 - **Platform (Meta):** no graphic before/after; no personal-attribute call-outs; no income/money-amount claims that breach policy.
 - **Local:** financial/property promotions should avoid guaranteed-return or guaranteed-price language; property advice that touches CPF/HDB rules must stay factually accurate to current scheme rules.
 - **Kill-list cross-check:** reconcile against the client's brand-voice kill-list before finalising.
+
+### 6. Cultural sensitivity (SG-specific — was `sg-cultural-guidelines.md`, relocated 260611)
+
+> Only relevant for clients whose audience is SG and ethnicity/religion-sensitive (e.g. a Malay-Muslim property audience). Skip if the client's audience is mixed/general and the brand voice already covers tone.
+
+- **Malay-Muslim audience — do:** family/legacy framing (providing for parents + children); "we decide together" couple framing; acknowledge community touchpoints (void decks, estate identity); show households, not lone individuals.
+- **Malay-Muslim audience — don't:** mock or trivialise HDB living; imply not-upgrading = failure; "keep up with the Joneses" framing; alcohol/gambling/non-halal imagery; debt-shaming ("stuck in debt", "throwing money away").
+- **Islamic finance:** riba (interest) is a genuine concern — use "monthly commitment" or "financing", not "mortgage", for devout-Muslim audiences (see this client's ad-concept-engine `corrections.md` 260406). Reference Shariah-compliant options (Musharakah Mutanaqisah; Maybank/OCBC Islamic financing) only when relevant. Never label a service "halal" unless the client genuinely offers Shariah-compliant products. Treat "Is this halal?" as a values question, never a gimmick.
+- **Sensitive periods:** Ramadan / Hari Raya Aidilfitri and National Day — acknowledge respectfully or stay neutral; never use a religious occasion as an urgency trigger ("Hari Raya special — upgrade now!").
+- **Property-specific:** HDB is national pride, not something to "escape" — frame upgrading as progression; never name an estate negatively; avoid PDPA-triggering language ("We know your MOP is ending"); no implied returns (MAS compliance).
+- **Language register:** Meta ad copy = standard English with natural SG phrasing. Singlish ("lah", "lor", "can") is fine in casual organic content only, used sparingly and authentically — never forced to seem relatable.
