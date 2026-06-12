@@ -1,9 +1,9 @@
 {
-  "generated": "2026-06-12T07:29:46.938Z",
+  "generated": "2026-06-11T04:04:00.774Z",
   "counts": {
-    "project": 77,
-    "global": 59,
-    "total": 136
+    "project": 76,
+    "global": 58,
+    "total": 134
   },
   "skills": [
     {
@@ -716,13 +716,6 @@
       "path": ".claude/skills/status-board/SKILL.md"
     },
     {
-      "name": "tally",
-      "description": "> Tally Forms API CLI: list/get/create/delete/publish forms, read submissions. Triggers: tally form, create tally form, tally api, qualification form, build a tally form, tally submissions, tally integrate.",
-      "triggers": [],
-      "source": "global",
-      "path": "../../../../.claude/skills/tally/SKILL.md"
-    },
-    {
       "name": "tiktok-slideshows",
       "description": "\"TikTok slideshows, Photo Mode, content calendar, trending hooks, batch production. Triggers: TikTok + (slideshows, carousels, Photo Mode, hooks, batches, calendar, performance, competitor). Also: story ledger, batch 01/02, narrative threads. Lifecycle: research \\u2192 prompt \\u2",
       "triggers": [],
@@ -896,13 +889,6 @@
       "triggers": [],
       "source": "global",
       "path": "../../../../.claude/skills/viral-presets-index/SKILL.md"
-    },
-    {
-      "name": "voiceover",
-      "description": "Generate UGC-realistic voiceover via ElevenLabs v3 with optional room-acoustic humanization. Use when user says \"voiceover\", \"vo\", \"narration\", \"talking head audio\", \"add voice over\", \"UGC voiceover\", \"elevenlabs voice\", or types /voiceover.",
-      "triggers": [],
-      "source": "project",
-      "path": ".claude/skills/voiceover/SKILL.md"
     },
     {
       "name": "web-perf",
