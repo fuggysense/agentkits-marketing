@@ -1,6 +1,6 @@
 # Routing Table (auto-generated — do not edit)
 
-_Generated: 2026-06-11T02:28:13.949Z • Project: 75 • Global: 58_
+_Generated: 2026-06-12T07:29:46.941Z • Project: 77 • Global: 59_
 
 Edit `routing-overrides.md` for manual disambiguation. Re-run `.claude/hooks/refresh-registry.js` to refresh.
 
@@ -52,7 +52,7 @@ Edit `routing-overrides.md` for manual disambiguation. Re-run `.claude/hooks/ref
 - **headline-bank** _(project)_ — "Curiosity-led Meta ad copy generator. Per angle: a ~150w PRIMARY on the six-emotional-states sequence (hook -> pain -> agitate -> hope -> loop CTA) + a ~50w co
 - **here-now** _(global)_ — "Publish websites & store private files in cloud Drives. Sites: publish to {slug}.here.now or custom domains. Drives: cloud folders for docs, memory, plans, ass
 - **higgsfield** _(global)_ — "Router for all Higgsfield generation work: image, video, Soul character training, product photography, marketplace, Marketing Studio ads. Triggers: Higgsfield,
-- **icm** _(global)_ — "Interpretable Context Methodology (ICM, arXiv:2603.16021v2) — five-layer folder/context architecture that loads minimum context per step; fixes token bloat, du
+- **icm** _(global)_ — "Interpretable Context Methodology (ICM) — five-layer folder/context architecture that loads minimum context per step; fixes token bloat, duplication drift, con
 - **ig-reel-script-writer** _(global)_ — "Instagram Reel scripts via Jason's viral framework (Hook → Build-Up → Value → Payoff → CTA). 100+ proven hooks + psychology. Triggers: write reel script, turn 
 - **ig-scorecard** _(global)_ — "Analyze last 10 Instagram posts: engagement metrics, winners/losers analysis, content strategy. Browser automation + .xlsx scorecard. Triggers: Instagram audit
 - **image-generation** _(project)_ — "Tier-1 image-gen orchestrator: routes intent + Vertex/NB2 direct backend + HITL prompt review + carousel mode + video reference frames. Routes to `higgsfield` 
@@ -110,6 +110,8 @@ Edit `routing-overrides.md` for manual disambiguation. Re-run `.claude/hooks/ref
 - **skill-cleaner** _(global)_ — "Audit Claude Code skills: find duplicates across global/plugin/project roots, flag bloated descriptions, surface unused/retired husks, forecast prompt-budget s
 - **skill-creator** _(global)_ — "Create, edit, optimize, and benchmark skills. Test & eval, variance analysis, improve triggering accuracy. Triggers: create skill, build skill, edit skill, opt
 - **source-of-truth** _(project)_ — "Generate paid ads source-of-truth: 26 core sections + 2 Ferres research-flow sections (§27 says-vs-addresses gap analysis, §28 competitor opportunity matrix). 
+- **status-board** _(project)_ — "One-glance cross-client status. Reads every client's campaign registry + state files + folder truth and prints one line per client: where the work sits, what's
+- **tally** _(global)_ — > Tally Forms API CLI: list/get/create/delete/publish forms, read submissions. Triggers: tally form, create tally form, tally api, qualification form, build a t
 - **tiktok-slideshows** _(project)_ — "TikTok slideshows, Photo Mode, content calendar, trending hooks, batch production. Triggers: TikTok + (slideshows, carousels, Photo Mode, hooks, batches, calen
 - **transcribe** _(global)_ — Transcribe any audio or video to text. Groq Whisper by default (fast/cheap); ElevenLabs Scribe for word-level timestamps (--words); local faster-whisper fallbac
 - **trigger-agents** _(global)_ — "AI agent patterns with Trigger.dev: orchestration, parallelization, routing, evaluator-optimizer, human-in-the-loop. Triggers: ai agent, parallel workers, appr
@@ -135,6 +137,7 @@ Edit `routing-overrides.md` for manual disambiguation. Re-run `.claude/hooks/ref
 - **video-hook-variants** _(project)_ — "Hook engineering for multi-clip paid video ads. Produces 2 paired hook variants per concept (clip_1A + clip_1B) — each variant is verbal (VO line) + visual (sh
 - **video-new-concept** _(global)_ — "Scaffold a video-concept workspace from clients/_template/_templates/video-concept-workspace/ for AG1/AG2 ideation work. Use /video:new for Video Factory rende
 - **viral-presets-index** _(global)_ — "34 viral Seedance 2.0 I2V preset recipes (Soul Fighter, Disintegration, Earth Zoom, Baseball Game, Magic Spell, Face Punch + 28 more). Thin router — loads reci
+- **voiceover** _(project)_ — Generate UGC-realistic voiceover via ElevenLabs v3 with optional room-acoustic humanization. Use when user says "voiceover", "vo", "narration", "talking head au
 - **web-perf** _(global)_ — Analyzes web performance using Chrome DevTools MCP. Measures Core Web Vitals (LCP, INP, CLS) and supplementary metrics (FCP, TBT, Speed Index), identifies rende
 - **website-design** _(project)_ — "5-mode website builder: Recreation (pixel-perfect), Creation (from scratch), Hybrid (improve), Paper-First (Paper.design import), Cold-Traffic CRO. Single inde
 - **workers-best-practices** _(global)_ — Reviews and authors Cloudflare Workers code against production best practices. Load when writing new Workers, reviewing Worker code, configuring wrangler.jsonc,
