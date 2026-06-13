@@ -347,6 +347,11 @@ class AdConceptSheetWriter:
         dct_id = data.get("dct_id", "")
         if not dct_id:
             raise ValueError(f"{path} missing dct_id.")
+        # 10-5-5 Canva is ONE shared design per wave (canva_push.py imports all
+        # renders as pages of a single design and writes a TOP-LEVEL canva_link).
+        # There is no per-angle link in this model, so every angle-row carries the
+        # wave's shared link. A per-angle canva_link still wins if one ever lands.
+        wave_canva_link = data.get("canva_link", "")
         creatives = []
         for a in data["angles"]:
             creatives.append({
@@ -365,9 +370,7 @@ class AdConceptSheetWriter:
                 "format": a.get("format", ""),
                 "status": a.get("status", "DRAFT"),
                 "why_am_i_testing_this": a.get("why_am_i_testing_this", ""),
-                # canva home is still an open decision for dct.json (schema doc);
-                # pass through a per-angle canva_link if one ever lands there.
-                "canva_link": a.get("canva_link", ""),
+                "canva_link": a.get("canva_link") or wave_canva_link,
             })
         return {
             "creatives": creatives,
@@ -432,17 +435,36 @@ class AdConceptSheetWriter:
                 bad.append((b.get("batch", "<no-batch>"), link or "<missing>"))
         if bad:
             details = "\n".join(f"    - {batch}: {val!r}" for batch, val in bad)
+            is_10_5_5 = (self.tracker.get("dct_structure") or {}).get("method") == "10-5-5"
+            if is_10_5_5:
+                # dct.json (10-5-5) Canva = ONE shared design per wave. canva_push.py
+                # imports the rendered PNGs as pages of a single design and writes the
+                # top-level canva_link the adapter shares across all angle-rows.
+                dct_json = self.campaign_dir / "dct.json"
+                fix = (
+                    "Canonical fix for 10-5-5 (one command):\n"
+                    f"    python3 scripts/canva_push.py --dct {dct_json}\n\n"
+                    "This stitches the wave's rendered images into one PDF, imports it to\n"
+                    "Canva as a single multi-page design, and writes the top-level\n"
+                    "canva_link into dct.json (shared by every angle-row). Requires the\n"
+                    "images to be rendered first (phase_3). Re-run this writer after."
+                )
+            else:
+                fix = (
+                    "Canonical fix (one command):\n"
+                    f"    python3 scripts/create_canva_design.py \\\n"
+                    f"        --client {self.client_slug} \\\n"
+                    f"        --campaign {self.campaign_slug or '<slug>'}\n\n"
+                    "This creates the Canva design via `one` CLI, writes the real URL into\n"
+                    "creatives[0].canva_link + every visual_variants[].canva_link + the matching\n"
+                    "canva_design_id fields, then you re-run this writer."
+                )
             raise SystemExit(
                 "Refusing to write — one or more batches have a placeholder canva_link:\n"
                 f"{details}\n\n"
-                "Canonical fix (one command):\n"
-                f"    python3 scripts/create_canva_design.py \\\n"
-                f"        --client {self.client_slug} \\\n"
-                f"        --campaign {self.campaign_slug or '<slug>'}\n\n"
-                "This creates the Canva design via `one` CLI, writes the real URL into\n"
-                "creatives[0].canva_link + every visual_variants[].canva_link + the matching\n"
-                "canva_design_id fields, then you re-run this writer. Never ship 'TBD' to\n"
-                "column J — see clients/neezanizam/learnings.md 'Mistakes Not to Repeat'."
+                f"{fix}\n\n"
+                "Never ship 'TBD' to column J — see clients/neezanizam/learnings.md "
+                "'Mistakes Not to Repeat'."
             )
 
     def _validate_headers(self) -> None:
