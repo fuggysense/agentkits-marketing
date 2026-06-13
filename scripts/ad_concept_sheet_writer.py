@@ -311,10 +311,23 @@ class AdConceptSheetWriter:
         return config
 
     def _load_tracker(self) -> dict:
+        # dct.json (current 10-5-5 shape, docs/dct-json-schema.md) wins when present;
+        # legacy dct-tracker.json stays the path for 3-2-2 workspaces (byte-identical
+        # behavior when no dct.json exists).
+        dct_path = self.campaign_dir / "dct.json"
+        if dct_path.exists():
+            data = json.loads(dct_path.read_text())
+            if isinstance(data.get("angles"), list) and data.get("dct_method") == "10-5-5":
+                return self._adapt_dct_json(data, dct_path)
+            raise ValueError(
+                f"{dct_path} exists but is not a valid 10-5-5 dct.json "
+                "(need angles[] + dct_method='10-5-5'). Fix the file or remove it "
+                "to fall back to dct-tracker.json."
+            )
         tracker_path = self.campaign_dir / "dct-tracker.json"
         if not tracker_path.exists():
             raise FileNotFoundError(
-                f"No dct-tracker.json at {tracker_path}. "
+                f"No dct.json or dct-tracker.json at {self.campaign_dir}. "
                 f"Run /ads:concepts for client '{self.client_slug}' campaign '{self.campaign_slug}' first."
             )
         tracker = json.loads(tracker_path.read_text())
@@ -323,6 +336,44 @@ class AdConceptSheetWriter:
                 f"dct-tracker.json missing required 'creatives' array at {tracker_path}."
             )
         return tracker
+
+    @staticmethod
+    def _adapt_dct_json(data: dict, path: Path) -> dict:
+        """Map a dct.json (angles[] shape) onto the legacy creatives[] batch shape.
+
+        One row per angle (5/wave). batch id = '<dct_id>-<angle_id>' (e.g. DCT010-A01).
+        copy_2/headline_2 stay empty — 10-5-5 carries 1 copy + 1 headline per angle.
+        """
+        dct_id = data.get("dct_id", "")
+        if not dct_id:
+            raise ValueError(f"{path} missing dct_id.")
+        creatives = []
+        for a in data["angles"]:
+            creatives.append({
+                "batch": f"{dct_id}-{a.get('id', '')}",
+                "ad_name": a.get("ad_name", ""),
+                "angle": a.get("name", ""),
+                "angle_rationale": a.get("angle_rationale", ""),
+                "copy_1": a.get("primary_text", ""),
+                "copy_2": "",
+                "headline_1": a.get("headline", ""),
+                "headline_2": "",
+                "headline_drafts": a.get("headline_drafts", []),
+                "market_awareness": a.get("market_awareness", ""),
+                "market_sophistication": a.get("market_sophistication", ""),
+                "persona": data.get("avatar", ""),
+                "format": a.get("format", ""),
+                "status": a.get("status", "DRAFT"),
+                "why_am_i_testing_this": a.get("why_am_i_testing_this", ""),
+                # canva home is still an open decision for dct.json (schema doc);
+                # pass through a per-angle canva_link if one ever lands there.
+                "canva_link": a.get("canva_link", ""),
+            })
+        return {
+            "creatives": creatives,
+            "dct_structure": {"method": "10-5-5"},
+            "_source": str(path),
+        }
 
     def _select_batches(self) -> list[dict]:
         all_batches = self.tracker["creatives"]
