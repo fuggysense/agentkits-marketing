@@ -25,6 +25,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import shutil
 import sys
 from datetime import datetime, timezone, timedelta
@@ -45,7 +46,11 @@ def load_json(path: Path) -> dict:
 
 
 def save_json(path: Path, data: dict) -> None:
-    path.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n")
+    """Atomic write: serialize to a temp sibling, then os.replace. A kill mid-write
+    can never leave a half-written JSON file at `path` (crash safety)."""
+    tmp = path.with_suffix(path.suffix + ".tmp")
+    tmp.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n")
+    os.replace(tmp, path)
 
 
 def resolve_dct(arg: str) -> tuple[Path, dict]:
@@ -107,9 +112,31 @@ def consistency_check(dct_path: Path, data: dict, ledger_path: Path, ledger: dic
             ledger_file = campaign_dir / entry.get("file", "")
             if ledger_file.resolve() != (workspace / f).resolve():
                 problems.append(f"{img['id']}: file path disagrees (dct={f}, ledger={entry.get('file')})")
-    target = data["image_pool"].get("target", 10)
-    if len([i for i in data["image_pool"]["images"]]) > 10:
-        problems.append(f"pool has >10 images (target {target}) — exceeds Meta Flex cap")
+
+    # Reverse scan: catch orphan ledger allocations (status allocated/published for
+    # THIS dct whose dct slot is missing or not rendered) — the drift a partial write
+    # or partial reconcile leaves. Without this the check has a silent false negative.
+    dct_id = data.get("dct_id")
+    slot_status = {i.get("id"): i.get("status") for i in data["image_pool"]["images"]}
+    for entry in ledger.get("images", []):
+        if entry.get("status") not in ("allocated", "published"):
+            continue
+        if dct_id not in (entry.get("allocated_to") or []):
+            continue
+        eid = entry.get("id")
+        if slot_status.get(eid) != "rendered":
+            problems.append(
+                f"{eid}: ledger marks it {entry.get('status')} for {dct_id} but dct.json slot "
+                f"is {slot_status.get(eid, 'absent')!r} — orphan ledger allocation"
+            )
+
+    images = data["image_pool"]["images"]
+    cap = data["image_pool"].get("target", 10)
+    if len(images) > cap:
+        problems.append(f"pool has {len(images)} images — exceeds target {cap}")
+    rendered = sum(1 for i in images if i.get("status") == "rendered")
+    if rendered != data["image_pool"].get("rendered"):
+        problems.append(f"rendered invariant off: field={data['image_pool'].get('rendered')}, actual={rendered}")
     return problems
 
 
@@ -186,6 +213,14 @@ def do_allocate(dct_path: Path, data: dict, render: Path, write: bool) -> None:
             fail(f"{f} missing — aborting, nothing changed")
     target.parent.mkdir(parents=True, exist_ok=True)
 
+    # Snapshot the pre-mutation on-disk bytes so a failure ANYWHERE after the move
+    # restores all three to their starting state — honoring the locked contract
+    # "Any check fails -> abort, nothing changed". Restoring only the moved PNG
+    # (the old behavior) left dct.json mid-mutation and out of lockstep with the
+    # ledger, which then read as 'pool full' on the operator's retry.
+    dct_backup = dct_path.read_text()
+    ledger_backup = ledger_path.read_text()
+
     shutil.move(str(render), str(target))
     try:
         slot["file"] = f"images/{slot['id']}.png"
@@ -211,8 +246,13 @@ def do_allocate(dct_path: Path, data: dict, render: Path, write: bool) -> None:
         ledger["updated"] = datetime.now(SGT).strftime("%y%m%d")
         save_json(ledger_path, ledger)
     except Exception as e:
-        shutil.move(str(target), str(render))  # roll back the move
-        fail(f"write failed after move — file rolled back to {render}. Error: {e}")
+        # Full rollback: move the render back, then restore both JSON files verbatim.
+        if target.exists():
+            shutil.move(str(target), str(render))
+        dct_path.write_text(dct_backup)
+        ledger_path.write_text(ledger_backup)
+        fail(f"write failed after move — render restored to {render}, dct.json + ledger "
+             f"rolled back. Nothing changed. Error: {e}")
 
     problems = consistency_check(dct_path, data, ledger_path, ledger)
     if problems:
