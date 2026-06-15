@@ -38,7 +38,14 @@ This schema models the **10-5-5 method only** (5 angles, one copy + one headline
       "format": "Static", "ad_name": "DCT010-A01_avatar-1_closed-loop",
       "market_awareness": "Problem-Aware", "market_sophistication": "Stage 4",
       "angle_rationale": "...", "why_am_i_testing_this": "...",
-      "headline_drafts": ["...", "..."], "status": "DRAFT" }
+      "headline_drafts": ["...", "..."], "status": "DRAFT",
+      "psych_coverage": {              // OPTIONAL — v2 psychological-coverage tags. Absent on untagged DCTs. Full ref: docs/methods/psychological-coverage/v2-tag-schema.md
+        "valence_arc": "worry->relief", // "<from>" (static) or "<from>-><to>" (arc); tokens: worry|relief|neutral. Lead valence = the <from> token.
+        "self_image": "mirror",         // mirror | aspiration  (cold target; duty is a tripwire, NOT a value here)
+        "real_loud": false,             // opt-in test lane: true ONLY for genuine deadline/runway/quantified-loss urgency
+        "tripwire": null,               // null | "fake_loud" | "guilt_duty"  (auto-flag = likely cold-traffic breach)
+        "evidence": "cited line from the copy that justifies the tags (provenance gate — no vibes)"
+      } }
   ],
 
   "image_pool": {                     // FLAT pool, ≤10, NOT angle-tied (Meta mixes the pool)
@@ -67,6 +74,7 @@ This schema models the **10-5-5 method only** (5 angles, one copy + one headline
 - **Image prompts live on the image slot** (`image_pool.images[].image_prompt`), not on the angle. The pool is flat; `source` records the angle/variant lineage so prompts aren't angle-tied but provenance survives. (Operator decision 2026-06-08.)
 - **One image = one DCT by default.** Cross-DCT sharing is opt-in via `_assets.json` `allocated_to[]`, never the default. `dct.json` records only the post-allocation image (with `source`); the campaign-wide pool/ledger lives in `_assets.json`.
 - **Per-angle metadata stays per-angle.** `market_awareness`, `market_sophistication`, `angle_rationale`, `why_am_i_testing_this`, `headline_drafts`, `ad_name`, `format`, `status` ride on each angle — the sheet writer reads them per row.
+- **`psych_coverage` is OPTIONAL and v2 (added 2026-06-14).** A namespaced per-angle object carrying the psychological-coverage tags: `valence_arc`, `self_image`, `real_loud`, `tripwire`, `evidence`. Absent/`null` on untagged DCTs — never `required`. It does NOT re-encode `market_awareness`/`market_sophistication` (those already exist). It supersedes the dead `valence_zone`/`self_concept_anchor`/`coverage_tag` design in `docs/methods/psychological-coverage/INTEGRATION-PROPOSAL.md` (the v1 4-room grid the re-cut trimmed). Canonical field/value reference: `docs/methods/psychological-coverage/v2-tag-schema.md`. Same Quote-Provenance gate as the avatars — every tag carries a cited `evidence` line.
 - **canva fields are NOT yet in the schema.** Whether canva attaches per-angle or per-image is a Phase-3 sheet-writer decision (the 10-5-5 model splits one "creative row" into pools, so the canva→row mapping needs resolving first). The sheet writer's canva gate hard-fails on a live tab without it — so this MUST be decided before `phase_4_sheet` writes to a non-test tab.
 - **`dct.json` and `_assets.json` are two views of the same image and MUST stay in lockstep.** They use different shapes on purpose: `dct.json image_pool` is the per-DCT post-allocation record (`id` = `DCT<NNN>-img-<NN>`, `status` ∈ {pending, rendered}, `source` = pre-move filename); `_assets.json` is the campaign-wide pool ledger (`status` ∈ {available, allocated, published, reference, retired}, `allocated_to[]`). **`allocate` (Build #10) must be the SOLE writer of both**, in one atomic op, with an explicit id-map (`_assets.json` `source` id ↔ `dct.json` slot id) and a post-write consistency check (same image present in both, file path agrees, statuses correspond). Any other writer = silent drift. _(DCT010 already shows minor drift between the two — reconcile when allocate is built.)_
 

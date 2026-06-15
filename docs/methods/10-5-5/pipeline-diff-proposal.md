@@ -3,7 +3,7 @@
 **File:** `~/AI workflows/big-angle-spotter/scripts/run_pipeline.py` (GLOBAL — shared by every client)
 **Goal:** let the pipeline emit N top angles (5 for 10-5-5) instead of a hardcoded 3.
 **Contract:** add `--top-n` (default **3**). Default run is byte-identical to today. JSON key `top_3` and the `10b_top_3.json` filename stay (ad-concept-engine reads that file) — only the COUNT relaxes.
-**Status:** NOT APPLIED. Awaiting Jerel's "go". Verify after with the pipeline's own `--dry-run`.
+**Status:** APPLIED + verified 260616 — in the big-angle-spotter working tree, **UNCOMMITTED** (the repo also carries pending hardening edits awaiting Jerel's review, so `run_pipeline.py` is not committed yet). Backward-compat proven via `--dry-run`: default `--top-n 3` → "top 3 headlines" + 3-parallel fan-out at steps 11/12 (identical to prior); `--top-n 5` → 5 headlines + 5-parallel fan-out; guard errors when `--headline-count < --top-n`; `py_compile` clean.
 
 ---
 

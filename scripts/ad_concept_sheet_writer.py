@@ -86,6 +86,10 @@ SGT = ZoneInfo("Asia/Singapore")
 REPO_ROOT = Path(__file__).resolve().parent.parent
 CREDENTIALS_PATH = REPO_ROOT / "scripts" / "modal" / "credentials.json"
 
+import sys  # noqa: E402
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import psych_coverage_tally as pct  # noqa: E402  (sibling module in scripts/)
+
 # Columns this writer is allowed to write to in CREATIVES
 CREATIVES_STRATEGY_COLUMNS = [
     "BATCH",
@@ -371,6 +375,7 @@ class AdConceptSheetWriter:
                 "status": a.get("status", "DRAFT"),
                 "why_am_i_testing_this": a.get("why_am_i_testing_this", ""),
                 "canva_link": a.get("canva_link") or wave_canva_link,
+                "psych_coverage": a.get("psych_coverage"),  # v2 tags (None if untagged)
             })
         return {
             "creatives": creatives,
@@ -526,6 +531,11 @@ class AdConceptSheetWriter:
         rationale = batch.get("why_am_i_testing_this")
         if rationale:
             row["Why am I testing this?"] = rationale
+        psych = batch.get("psych_coverage")
+        if psych:
+            # written only if the live CREATIVES header has a "PSYCH COVERAGE" column
+            # (_append_to_tab maps by header) — additive, never shifts existing columns.
+            row["PSYCH COVERAGE"] = pct.project_angle(psych)
         return row
 
     def _build_copy_row(self, batch: dict) -> dict:
@@ -603,6 +613,8 @@ class AdConceptSheetWriter:
             else:
                 canva_note = "(CANVA LINK empty — user fills after Canva doc built)"
                 lines.append(f"     Canva: {canva_note}")
+            if "PSYCH COVERAGE" in row:
+                lines.append(f"     Psych: {row['PSYCH COVERAGE']}")
             lines.append("")
 
         lines += [
