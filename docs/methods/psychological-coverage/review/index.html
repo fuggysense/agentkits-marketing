@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Psychological Coverage — Review v2 (locked)</title>
+<style>
+  :root{
+    --ink:#1c1b19; --ink-soft:#55504a; --paper:#f7f4ee; --card:#fffdf8;
+    --line:#e4ddd0; --rail:#cfc6b4;
+    --ok:#2f7d4f; --ok-bg:#e7f3ea; --no:#b4452f; --no-bg:#f7e7e2;
+    --accent:#7a5c3e; --mono:'SFMono-Regular',ui-monospace,Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0;background:var(--paper);color:var(--ink);
+    font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    padding-bottom:120px;}
+  .wrap{max-width:760px;margin:0 auto;padding:28px 20px 40px;}
+  header.top{border-bottom:2px solid var(--ink);padding-bottom:16px;margin-bottom:8px;}
+  .kicker{font:600 12px/1.3 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--accent);}
+  h1{font-size:25px;line-height:1.2;margin:8px 0 6px;letter-spacing:-.01em;}
+  .sub{color:var(--ink-soft);font-size:14px;margin:0;}
+  .legend{display:flex;gap:14px;flex-wrap:wrap;margin:14px 0 0;font-size:13px;color:var(--ink-soft)}
+  .legend b{color:var(--ink)}
+
+  .recap{background:var(--ok-bg);border:1px solid #bcd9c4;border-radius:12px;padding:16px 18px;margin:22px 0;}
+  .recap h3{margin:0 0 8px;color:var(--ok);font-size:13px;text-transform:uppercase;letter-spacing:.06em}
+  .recap table{width:100%;border-collapse:collapse;font-size:14px}
+  .recap td{padding:6px 6px 6px 0;vertical-align:top;border-top:1px solid #cfe3d4}
+  .recap td:first-child{white-space:nowrap;color:var(--no);font-weight:600;width:1%}
+  .recap td:last-child{color:var(--ink)}
+  .recap .fix{color:var(--ink-soft)}
+
+  .locked-strip{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 18px;margin:18px 0}
+  .locked-strip h3{margin:0 0 8px;font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--accent)}
+  .locked-strip li{margin:6px 0;color:var(--ink)}
+  .pill{display:inline-block;font:600 10px/1 var(--mono);padding:4px 7px;border-radius:5px;text-transform:uppercase;letter-spacing:.05em;vertical-align:middle;margin-left:6px}
+  .pill-lock{background:var(--ok-bg);color:var(--ok)}
+  .pill-open{background:#fbf0dd;color:#9a6b1f}
+
+  section.item{position:relative;background:var(--card);border:1px solid var(--line);
+    border-radius:12px;padding:18px 18px 16px;margin:22px 0;box-shadow:0 1px 0 rgba(0,0,0,.02);}
+  section.item.context{background:transparent;border:none;border-left:3px solid var(--rail);
+    border-radius:0;padding:4px 0 4px 18px;margin:18px 0;box-shadow:none;}
+  .num{font:700 12px/1 var(--mono);color:var(--accent);letter-spacing:.08em;text-transform:uppercase;}
+  h2{font-size:18px;margin:6px 0 4px;letter-spacing:-.01em;}
+  h3.sec{font-size:13px;margin:14px 0 4px;color:var(--accent);text-transform:uppercase;letter-spacing:.06em;font-weight:700}
+  p{margin:8px 0;color:var(--ink-soft)}
+  p strong, li strong{color:var(--ink)}
+  ul{margin:8px 0;padding-left:20px;color:var(--ink-soft)}
+  li{margin:5px 0}
+  code{font:13px var(--mono);background:#efe9dc;padding:1px 5px;border-radius:4px;color:var(--accent)}
+  .ascii{font:13px/1.5 var(--mono);background:#2b2722;color:#ece3d2;border-radius:8px;
+    padding:12px 14px;overflow-x:auto;white-space:pre;margin:10px 0;}
+  .ascii .gap{color:#e0a07a}
+  .ascii .ok{color:#9cc6a6}
+  .ascii .test{color:#e8c87a}
+  .verdict{display:inline-block;font:600 11px/1 var(--mono);padding:4px 8px;border-radius:5px;
+    text-transform:uppercase;letter-spacing:.06em;vertical-align:middle;margin-left:6px}
+  .v-strain{background:var(--no-bg);color:var(--no)}
+  .v-hold{background:var(--ok-bg);color:var(--ok)}
+  .tag{font:600 12px var(--mono);background:#efe9dc;color:var(--accent);padding:2px 7px;border-radius:4px}
+  .filechip{font:600 13px var(--mono);color:var(--ink)}
+  .diff{font-size:14px}
+
+  .decide{display:flex;align-items:center;gap:8px;margin-top:14px;flex-wrap:wrap;
+    border-top:1px dashed var(--line);padding-top:13px}
+  .decide .q{font-size:13px;font-weight:600;color:var(--ink);margin-right:2px}
+  button.choice{font:600 14px/1 inherit;cursor:pointer;border:1.5px solid var(--line);
+    background:#fff;color:var(--ink-soft);border-radius:8px;padding:9px 14px;transition:.12s;display:flex;align-items:center;gap:6px}
+  button.choice:hover{border-color:var(--rail)}
+  button.choice .ic{font-size:15px}
+  button.choice.sel-ok{background:var(--ok-bg);border-color:var(--ok);color:var(--ok)}
+  button.choice.sel-no{background:var(--no-bg);border-color:var(--no);color:var(--no)}
+  .note{flex:1 1 100%;margin-top:8px}
+  .note input{width:100%;font:14px inherit;padding:8px 10px;border:1px solid var(--line);
+    border-radius:8px;background:#fff;color:var(--ink)}
+  .note input::placeholder{color:#b3aa98}
+
+  .radios{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
+  .radios button{font:600 14px inherit;cursor:pointer;border:1.5px solid var(--line);background:#fff;
+    color:var(--ink-soft);border-radius:8px;padding:9px 13px}
+  .radios button.sel{background:#efe9dc;border-color:var(--accent);color:var(--accent)}
+
+  .bar{position:fixed;left:0;right:0;bottom:0;background:rgba(247,244,238,.96);
+    backdrop-filter:blur(8px);border-top:1px solid var(--line);padding:12px 16px;z-index:10}
+  .bar .inner{max-width:760px;margin:0 auto;display:flex;align-items:center;gap:12px;justify-content:space-between}
+  .counts{font:600 13px var(--mono);color:var(--ink-soft)}
+  .counts b{color:var(--ink)}
+  .copybtn{font:700 14px inherit;cursor:pointer;background:var(--ink);color:#fff;border:none;
+    border-radius:9px;padding:11px 18px;letter-spacing:.01em}
+  .copybtn:active{transform:translateY(1px)}
+  .reset{font:13px inherit;color:var(--ink-soft);background:none;border:none;cursor:pointer;text-decoration:underline}
+  dialog{border:1px solid var(--line);border-radius:12px;max-width:620px;width:92%;padding:0;color:var(--ink)}
+  dialog .dh{display:flex;justify-content:space-between;align-items:center;padding:14px 16px;border-bottom:1px solid var(--line)}
+  dialog h4{margin:0;font-size:15px}
+  dialog textarea{width:100%;height:300px;border:none;font:13px/1.5 var(--mono);padding:14px 16px;resize:vertical;color:var(--ink)}
+  dialog .df{padding:12px 16px;border-top:1px solid var(--line);display:flex;gap:8px;justify-content:flex-end}
+  dialog button{font:600 14px inherit;cursor:pointer;border-radius:8px;padding:9px 14px;border:1px solid var(--line);background:#fff}
+  dialog button.prim{background:var(--ink);color:#fff;border:none}
+  .x{cursor:pointer;font-size:20px;color:var(--ink-soft);background:none;border:none;line-height:1}
+  .hint{font-size:12px;color:#b3aa98;font-style:italic}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="top">
+    <div class="kicker">Internal review · v2 · rebuilt to match locked decisions</div>
+    <h1>Psychological Coverage — Proof, Re-Cut &amp; Lock</h1>
+    <p class="sub">Rebuilt 2026-06-14 SGT · supersedes the v1 page that still said "loud = dead" · NeezaNizam DCT010 + Eugene DCT002</p>
+    <div class="legend"><span><b>Why this is v2:</b> you flagged the page had drifted from the docs. This version is rebuilt to match what's now locked. Skim the green box first — it answers your 4 notes. Re-tick anything you still disagree with, then <b>Copy decisions</b> at the bottom.</span></div>
+  </header>
+
+  <!-- RECAP of the 4 notes -->
+  <div class="recap">
+    <h3>Since your last review — your 4 notes → what changed</h3>
+    <table>
+      <tr><td>❌ "speak in english"</td><td>De-jargoned. "Not a single room" now reads: <span class="fix">your ad walks from a worry to a relief inside one ad — I tag the <em>move</em> (worry → relief), not a frozen label.</span></td></tr>
+      <tr><td>❌ "alarm/big can be explored"</td><td>You were right; I overstated "dead." Split into <span class="fix"><b>fake-loud</b> (hype — banned) vs <b>real-loud</b> (genuine deadline/runway — an opt-in <b>test lane</b> you're not using). Grounded in your own brand files.</span></td></tr>
+      <tr><td>❌ "check neezanizam vs eugene angles"</td><td>Checked. Different folders. <span class="fix">Safety check flipped the fix: the tool documents client-root, which <b>Eugene already matches</b> — NeezaNizam is the deviation. Verdict: move nothing, P1 reads <code>dct.json</code>.</span></td></tr>
+      <tr><td>✅ "Lock v2"</td><td><span class="fix">Kept — now the <b>amended</b> v2 (real-loud test lane). Your ✓lock and ❌finding no longer conflict.</span></td></tr>
+    </table>
+  </div>
+
+  <!-- LOCKED STRIP -->
+  <div class="locked-strip">
+    <h3>What's locked now (from your picks)</h3>
+    <ul>
+      <li>Loud rooms = <strong>real-loud test lane</strong>, fake-loud + guilt-duty = tripwires <span class="pill pill-lock">locked</span></li>
+      <li>This review page <strong>rebuilt to match</strong> <span class="pill pill-lock">done</span></li>
+      <li>Angle folders <strong>not moved</strong>; canonical = client-root; P1 tags off <code>dct.json</code> <span class="pill pill-lock">resolved</span></li>
+      <li>Start the P1 build &amp; which client <span class="pill pill-open">still open — item 07</span></li>
+    </ul>
+  </div>
+
+  <!-- 0 CONTEXT -->
+  <section class="item context">
+    <div class="num">00 · what this was</div>
+    <p>Tagged the 5 real angles of two cold waves you run into the coverage "rooms" (emotional feel + who the ad casts the reader as), each tag forced to cite a real line from the copy, then a second agent challenged every tag. Read-only — nothing written to sheets, avatars, or dct.json.</p>
+  </section>
+
+  <!-- 1 NEEZANIZAM -->
+  <section class="item" data-id="nz-read">
+    <div class="num">01 · coverage read</div>
+    <h2>NeezaNizam DCT010 <span class="verdict v-strain">tags strained</span></h2>
+    <div class="ascii">Worry / quiet ......... A01, A02, A03
+Relief / quiet ........ A04, A05
+Loud (any) ............ <span class="gap">none</span>
+Who the ad casts them as: mostly "themselves right now" (mirror) ×5</div>
+    <p>One correction the auditor caught: I first tagged A04 as "the future them" — wrong, it's a present-readiness test ("which family are you"), so it's still mirror. Net: the whole wave is quiet + casts them as who they are now. A03/A04 don't sit in one room — they move from worry to relief inside the ad.</p>
+    <div class="decide" data-q="NeezaNizam read accurate"><span class="q">Read looks right now?</span>
+      <button class="choice ok"><span class="ic">✓</span> Yes</button>
+      <button class="choice no"><span class="ic">✗</span> Still off</button>
+      <div class="note"><input type="text" placeholder="optional note…"></div></div>
+  </section>
+
+  <!-- 2 EUGENE -->
+  <section class="item" data-id="eug-read">
+    <div class="num">02 · coverage read</div>
+    <h2>Eugene DCT002 <span class="verdict v-hold">tags held</span></h2>
+    <div class="ascii">Worry / quiet ......... A01, A02
+Relief / quiet ........ A06, A07, A10
+Loud (any) ............ <span class="gap">none</span>
+Who the ad casts them as: who-they-are ×3 · who-they-want-to-be ×2 (A07,A10)</div>
+    <p>Cleaner than NeezaNizam — it spans both "who they are now" and "who they want to be." Still entirely quiet.</p>
+    <div class="decide" data-q="Eugene read accurate"><span class="q">Read looks right?</span>
+      <button class="choice ok"><span class="ic">✓</span> Yes</button>
+      <button class="choice no"><span class="ic">✗</span> Off</button>
+      <div class="note"><input type="text" placeholder="optional note…"></div></div>
+  </section>
+
+  <!-- 3 FINDING (corrected) -->
+  <section class="item" data-id="finding" style="border-color:var(--accent)">
+    <div class="num">03 · the finding (corrected after your note)</div>
+    <h2>Loud isn't dead — fake-loud is. Real-loud is unused white space.</h2>
+    <ul>
+      <li><strong>Fake-loud = banned.</strong> "Limited units", "act now", "dream home", hype CTAs. Both brand files kill these. Nobody wants them back.</li>
+      <li><strong>Real-loud = allowed, and you're not using it.</strong> Your files permit genuine life-trigger urgency — Eugene: <em>"anchor to the prospect's own runway"</em>; NeezaNizam: <em>"MOP timing · mortgage-rate window."</em> An ad like <em>"your MOP window is closing"</em> or <em>"your income runway is 4 months — here's the gain you're leaving behind"</em> is loud, true, on-contract, and <strong>absent from both waves.</strong> Real white space worth a test.</li>
+      <li><strong>"Do it for the kids" stays off for cold.</strong> The material's in the avatars but they call it "too tender for cold creative" — retargeting only.</li>
+    </ul>
+    <div class="decide" data-q="Finding agreed (v2)"><span class="q">Agree with the corrected finding?</span>
+      <button class="choice ok"><span class="ic">✓</span> Agree</button>
+      <button class="choice no"><span class="ic">✗</span> Still off</button>
+      <div class="note"><input type="text" placeholder="optional note…"></div></div>
+  </section>
+
+  <!-- 4 ERRORS -->
+  <section class="item" data-id="errors">
+    <div class="num">04 · errors found</div>
+    <h2>What the proof caught</h2>
+    <ul>
+      <li><strong>1. Both waves are <span class="tag">draft</span>, not live.</strong> NeezaNizam: 1/10 images rendered. Eugene: 7 open launch gates, <code>[LETTER_URL]</code> placeholder still in copy.</li>
+      <li><strong>2. Angle folders differ — <span style="color:var(--ok)">RESOLVED</span>.</strong> The tool documents client-root; <strong>Eugene already matches it</strong>; NeezaNizam's campaign-scoped folder is the deviation. Verdict: don't move either (moving a live folder for cosmetics isn't worth pipeline risk); P1 reads <code>dct.json</code>, so folder location is moot.</li>
+      <li><strong>3. Eugene tooling reads the wrong file.</strong> <code>ad_concept_sheet_writer.py</code> + <code>render.py</code> read legacy <code>dct-tracker.json</code>, not <code>dct.json</code> — a P1 build pointing at dct.json reads nothing without a bridge.</li>
+      <li><strong>4. Ads are worry→relief arcs, not single feelings</strong> — folded into the tag schema.</li>
+    </ul>
+    <div class="decide" data-q="Errors acknowledged (v2)"><span class="q">These are real / handled?</span>
+      <button class="choice ok"><span class="ic">✓</span> Good</button>
+      <button class="choice no"><span class="ic">✗</span> Question one</button>
+      <div class="note"><input type="text" placeholder="which one…"></div></div>
+  </section>
+
+  <!-- 5 THE LOCKED RE-CUT -->
+  <section class="item" data-id="recut" style="border:2px solid var(--ink)">
+    <div class="num">05 · the locked vocabulary (amended v2)</div>
+    <h2>What a cold wave gets tagged on <span class="pill pill-lock">you locked this</span></h2>
+    <div class="ascii"><span class="ok">SPREAD CHECK (aim to cover):</span>
+  • worry-led AND relief-led ads — not all piled on one
+  • who-they-are AND who-they-want-to-be
+<span class="test">TEST LANE (opt-in, real urgency only):</span>
+  • a loud-but-true angle (deadline / runway / quantified loss)
+<span class="gap">TRIPWIRES (auto-flag as off-contract):</span>
+  • fake-loud (manufactured scarcity / hype)
+  • guilt / "do it for them" on cold traffic</div>
+    <p>This replaces the 12-cell grid. Two spread questions + one opt-in test lane + two tripwires. Warm/retargeting waves still keep the full grid (loud + duty are fair game once traffic is warm).</p>
+    <div class="decide" data-q="Lock v2 amended (confirm)"><span class="q" style="color:var(--ink)">Confirm this is the locked shape?</span>
+      <button class="choice ok"><span class="ic">✓</span> Confirm lock</button>
+      <button class="choice no"><span class="ic">✗</span> Change it</button>
+      <div class="note"><input type="text" placeholder="rename anything? change the test lane?…"></div></div>
+  </section>
+
+  <!-- 6 FILES -->
+  <section class="item" data-id="files">
+    <div class="num">06 · files changed (read-only on all client assets)</div>
+    <h2>3 WIP method docs — keep or revert each</h2>
+    <p class="diff"><span class="filechip">VOCABULARY.md</span> — v2 re-cut at top, amended to the real-loud test lane + plain-English "arc".</p>
+    <div class="decide" data-q="VOCABULARY.md edit">
+      <button class="choice ok"><span class="ic">✓</span> Keep</button>
+      <button class="choice no"><span class="ic">✗</span> Revert</button>
+      <div class="note"><input type="text" placeholder="optional note…"></div></div>
+    <p class="diff" style="margin-top:18px"><span class="filechip">NEXT-SESSION.md</span> — proof result, pre-P1 fixes, folder verdict (don't move), gate resolved.</p>
+    <div class="decide" data-q="NEXT-SESSION.md edit">
+      <button class="choice ok"><span class="ic">✓</span> Keep</button>
+      <button class="choice no"><span class="ic">✗</span> Revert</button>
+      <div class="note"><input type="text" placeholder="optional note…"></div></div>
+    <p class="diff" style="margin-top:18px"><span class="filechip">INTEGRATION-PROPOSAL.md</span> — "superseded in part" banner pointing to v2.</p>
+    <div class="decide" data-q="INTEGRATION-PROPOSAL.md edit">
+      <button class="choice ok"><span class="ic">✓</span> Keep</button>
+      <button class="choice no"><span class="ic">✗</span> Revert</button>
+      <div class="note"><input type="text" placeholder="optional note…"></div></div>
+  </section>
+
+  <!-- 7 OPEN -->
+  <section class="item" data-id="p1client">
+    <div class="num">07 · the one thing still open</div>
+    <h2>Start the P1 build — and on which client?</h2>
+    <ul>
+      <li><strong>Eugene</strong> — more spread to demo the map, but needs the <code>dct-tracker→dct.json</code> bridge first.</li>
+      <li><strong>NeezaNizam</strong> — tooling already on dct.json (lowest friction), but coverage is near-pure mirror (less to show).</li>
+      <li><strong>Hold</strong> — lock the vocab, don't build yet.</li>
+    </ul>
+    <div class="radios" data-q="P1 next step">
+      <button>Build on Eugene</button>
+      <button>Build on NeezaNizam</button>
+      <button>Hold the build</button>
+    </div>
+  </section>
+
+</div>
+
+<div class="bar">
+  <div class="inner">
+    <span class="counts" id="counts">0 decided</span>
+    <div style="display:flex;gap:14px;align-items:center">
+      <button class="reset" id="reset">reset</button>
+      <button class="copybtn" id="copy">Copy decisions</button>
+    </div>
+  </div>
+</div>
+
+<dialog id="dlg">
+  <div class="dh"><h4>Your decisions — copy &amp; paste back to me</h4><button class="x" id="dx">×</button></div>
+  <textarea id="out" readonly></textarea>
+  <div class="df"><button id="copy2" class="prim">Copy to clipboard</button></div>
+</dialog>
+
+<script>
+const KEY='psychcov-review-260614-v2';
+let state=JSON.parse(localStorage.getItem(KEY)||'{}');
+function save(){localStorage.setItem(KEY,JSON.stringify(state));render();}
+
+document.querySelectorAll('.decide').forEach(d=>{
+  const q=d.dataset.q;
+  const ok=d.querySelector('.choice.ok'), no=d.querySelector('.choice.no');
+  const note=d.querySelector('input');
+  d._paint=function(){
+    ok.classList.toggle('sel-ok', !!(state[q]&&state[q].v==='approve'));
+    no.classList.toggle('sel-no', !!(state[q]&&state[q].v==='reject'));
+    if(note&&state[q]&&state[q].note!==undefined) note.value=state[q].note;
+  };
+  ok.onclick=()=>{state[q]={v:'approve',note:note?note.value:''};save();};
+  no.onclick=()=>{state[q]={v:'reject',note:note?note.value:''};save();};
+  if(note) note.oninput=()=>{if(!state[q])state[q]={v:'',note:''};state[q].note=note.value;localStorage.setItem(KEY,JSON.stringify(state));};
+});
+document.querySelectorAll('.radios').forEach(r=>{
+  const q=r.dataset.q;
+  r.querySelectorAll('button').forEach(b=>{ b.onclick=()=>{state[q]={v:b.textContent};save();}; });
+  r._paint=()=>r.querySelectorAll('button').forEach(b=>b.classList.toggle('sel', !!(state[q]&&state[q].v===b.textContent)));
+});
+function render(){
+  document.querySelectorAll('.decide').forEach(d=>d._paint&&d._paint());
+  document.querySelectorAll('.radios').forEach(r=>r._paint&&r._paint());
+  const n=Object.values(state).filter(x=>x&&x.v).length;
+  document.getElementById('counts').innerHTML='<b>'+n+'</b> decided';
+}
+function summary(){
+  const order=['Lock v2 amended (confirm)','P1 next step','VOCABULARY.md edit','NEXT-SESSION.md edit','INTEGRATION-PROPOSAL.md edit','NeezaNizam read accurate','Eugene read accurate','Finding agreed (v2)','Errors acknowledged (v2)'];
+  const mark=v=>v==='approve'?'✓':v==='reject'?'✗':'• '+v;
+  let lines=['PSYCH-COVERAGE REVIEW v2 — Jerel\'s decisions (260614)',''];
+  order.forEach(q=>{const s=state[q];
+    if(!s||!s.v){lines.push('[ ] '+q+' — (not decided)');return;}
+    lines.push(mark(s.v)+' '+q+(s.note?'  — note: '+s.note:''));});
+  Object.keys(state).forEach(q=>{if(!order.includes(q)&&state[q]&&state[q].v){let s=state[q];lines.push(mark(s.v)+' '+q+(s.note?'  — note: '+s.note:''));}});
+  return lines.join('\n');
+}
+const dlg=document.getElementById('dlg'), out=document.getElementById('out');
+document.getElementById('copy').onclick=()=>{out.value=summary();dlg.showModal();try{navigator.clipboard.writeText(out.value);}catch(e){}};
+document.getElementById('copy2').onclick=()=>{out.select();try{navigator.clipboard.writeText(out.value);}catch(e){document.execCommand('copy');}
+  const b=document.getElementById('copy2');b.textContent='Copied ✓';setTimeout(()=>b.textContent='Copy to clipboard',1500);};
+document.getElementById('dx').onclick=()=>dlg.close();
+document.getElementById('reset').onclick=()=>{if(confirm('Clear all your ticks?')){state={};save();}};
+render();
+</script>
+</body>
+</html>

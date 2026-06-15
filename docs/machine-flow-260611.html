@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marketing Machine v2 — rebuilt 2026-06-11</title>
+<style>
+  :root {
+    --bg: #0f1117;
+    --surface: #1a1d27;
+    --surface2: #22263a;
+    --border: #2e3350;
+    --text: #e2e6f0;
+    --muted: #7b84a3;
+    --accent: #4f8ef7;
+    --accent2: #6ee7b7;
+    --red: #f87171;
+    --amber: #fbbf24;
+    --green: #34d399;
+    --purple: #a78bfa;
+    --tag-bg: #1e2035;
+    --gate-code: #2a1a1a;
+    --gate-code-border: #f87171;
+    --gate-human: #2a2100;
+    --gate-human-border: #fbbf24;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    padding: 24px 16px 64px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  /* ---- HEADER ---- */
+  .header-strip {
+    border-left: 3px solid var(--accent);
+    padding: 16px 20px;
+    background: var(--surface);
+    border-radius: 6px;
+    margin-bottom: 32px;
+  }
+  .header-strip h1 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: 0.01em;
+    margin-bottom: 8px;
+  }
+  .header-strip .status-line {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+  .header-strip .status-line strong { color: var(--accent2); }
+  .badge {
+    display: inline-block;
+    background: #1e2d1e;
+    color: var(--green);
+    border: 1px solid #2a4a2a;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 1px 7px;
+    margin-right: 4px;
+    vertical-align: middle;
+  }
+  .badge.pending {
+    background: #2a2000;
+    color: var(--amber);
+    border-color: #4a3800;
+  }
+
+  /* ---- SECTION HEADINGS ---- */
+  .section-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 12px;
+    margin-top: 40px;
+  }
+  .section-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+  .section-sub {
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 24px;
+  }
+
+  /* ---- PIPELINE DIAGRAM ---- */
+  .pipeline-wrap {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 28px 20px 32px;
+  }
+
+  .entry-row {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+  }
+
+  .entry-card {
+    flex: 1;
+    min-width: 200px;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 12px 14px;
+  }
+  .entry-card .entry-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 6px;
+  }
+  .entry-card .entry-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 4px;
+  }
+  .entry-card .entry-desc {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  /* converge arrow */
+  .converge-label {
+    text-align: center;
+    font-size: 12px;
+    color: var(--muted);
+    margin-bottom: 16px;
+    padding: 8px 0;
+    border-top: 1px dashed var(--border);
+  }
+  .arrow-down {
+    display: flex;
+    justify-content: center;
+    margin: 4px 0 8px;
+  }
+  .arrow-down svg { display: block; }
+
+  /* chain steps */
+  .chain {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .step {
+    position: relative;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 14px;
+    margin-bottom: 0;
+  }
+  .step-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+  }
+  .step-desc {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+
+  /* connector line between steps */
+  .connector {
+    display: flex;
+    justify-content: center;
+    height: 20px;
+    align-items: center;
+  }
+  .connector-line {
+    width: 2px;
+    height: 20px;
+    background: var(--border);
+  }
+
+  /* gate styles */
+  .gate-code-block {
+    background: var(--gate-code);
+    border: 1.5px solid var(--gate-code-border);
+    border-radius: 6px;
+    padding: 10px 14px;
+    margin-bottom: 0;
+  }
+  .gate-human-block {
+    background: var(--gate-human);
+    border: 1.5px solid var(--gate-human-border);
+    border-radius: 6px;
+    padding: 10px 14px;
+    margin-bottom: 0;
+  }
+
+  .gate-tag {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 1px 7px;
+    border-radius: 3px;
+    margin-right: 8px;
+    vertical-align: middle;
+  }
+  .gate-tag.code {
+    background: #4a0f0f;
+    color: var(--red);
+    border: 1px solid #7a1f1f;
+  }
+  .gate-tag.human {
+    background: #4a3000;
+    color: var(--amber);
+    border: 1px solid #7a5000;
+  }
+
+  .gate-title {
+    font-size: 13px;
+    font-weight: 600;
+    display: inline;
+  }
+  .gate-title.code { color: var(--red); }
+  .gate-title.human { color: var(--amber); }
+
+  .gate-desc {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 4px;
+  }
+
+  /* legend */
+  .legend {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px dashed var(--border);
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+  .legend-swatch {
+    width: 14px;
+    height: 14px;
+    border-radius: 3px;
+    border: 1.5px solid;
+    flex-shrink: 0;
+  }
+
+  /* ---- DET VS PROB ---- */
+  .two-col {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+  }
+  .col-card {
+    flex: 1;
+    min-width: 240px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+  }
+  .col-card h3 {
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .col-card .col-sub {
+    font-size: 11px;
+    color: var(--muted);
+    margin-bottom: 14px;
+  }
+  .col-card ul {
+    list-style: none;
+    padding: 0;
+  }
+  .col-card ul li {
+    font-size: 13px;
+    color: var(--muted);
+    padding: 5px 0;
+    border-bottom: 1px solid var(--border);
+    line-height: 1.5;
+  }
+  .col-card ul li:last-child { border-bottom: none; }
+  .col-card ul li strong { color: var(--text); }
+
+  .col-det h3 { color: var(--accent); }
+  .col-prob h3 { color: var(--purple); }
+
+  .gate-bridge {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+  }
+  .gate-bridge p {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.65;
+  }
+  .gate-bridge p strong { color: var(--text); }
+
+  .caveat-line {
+    font-size: 12px;
+    color: var(--muted);
+    background: var(--surface2);
+    border-left: 3px solid var(--border);
+    padding: 10px 14px;
+    border-radius: 0 4px 4px 0;
+    line-height: 1.6;
+  }
+  .caveat-line strong { color: var(--amber); }
+
+  /* ---- BEFORE/AFTER TABLE ---- */
+  .table-wrap {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 12px;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+  thead tr {
+    background: var(--surface2);
+  }
+  thead th {
+    padding: 10px 14px;
+    text-align: left;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    border-bottom: 1px solid var(--border);
+  }
+  tbody tr {
+    border-bottom: 1px solid var(--border);
+  }
+  tbody tr:last-child { border-bottom: none; }
+  tbody td {
+    padding: 10px 14px;
+    vertical-align: top;
+    line-height: 1.55;
+    color: var(--muted);
+  }
+  tbody td:first-child {
+    color: var(--text);
+    font-weight: 500;
+    width: 22%;
+    font-size: 12px;
+  }
+  tbody td:nth-child(2) {
+    width: 39%;
+    color: #f87171;
+    font-size: 12px;
+  }
+  tbody td:nth-child(3) {
+    width: 39%;
+    color: var(--accent2);
+    font-size: 12px;
+  }
+
+  /* ---- FOOTER ---- */
+  .footer {
+    margin-top: 48px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+    font-size: 12px;
+    color: var(--muted);
+  }
+  .footer a {
+    color: var(--accent);
+    text-decoration: none;
+    word-break: break-all;
+  }
+  .footer a:hover { text-decoration: underline; }
+  .footer ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 8px;
+  }
+  .footer ul li {
+    padding: 3px 0;
+  }
+
+  /* mobile */
+  @media (max-width: 600px) {
+    body { padding: 16px 12px 48px; font-size: 14px; }
+    .entry-row { flex-direction: column; }
+    .two-col { flex-direction: column; }
+    .header-strip h1 { font-size: 16px; }
+    thead th, tbody td { padding: 8px 10px; }
+    .pipeline-wrap { padding: 20px 14px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ======================================================
+     SECTION 1 — HEADER STRIP
+====================================================== -->
+<div class="header-strip">
+  <h1>Marketing Machine v2 &mdash; rebuilt 2026-06-11</h1>
+  <div class="status-line">
+    <span class="badge">M0&ndash;M4 complete</span>
+    <span class="badge">branch: rebuild-v2</span>
+    <span class="badge">repeatability proven (2 niches)</span>
+    &nbsp;
+    <span class="badge pending">pending: Eugene diffs</span>
+    <span class="badge pending">pending: staged live-client files</span>
+    <span class="badge pending">pending: calibration interview</span>
+    <span class="badge pending">pending: merge to main</span>
+    <br><br>
+    <strong>What this page is:</strong> a plain-language map of how the machine now works &mdash; where the three client entry points feed in, what happens at each step, and which decisions a human makes versus which ones code enforces automatically.
+  </div>
+</div>
+
+
+<!-- ======================================================
+     SECTION 2 — THE THREE CLIENT FLOWS
+====================================================== -->
+<div class="section-label">Section 2</div>
+<div class="section-title">The three client flows</div>
+<div class="section-sub">Every client enters from one of these three doors. All three converge at the same gated chain once they're past their entry step.</div>
+
+<div class="pipeline-wrap">
+
+  <!-- Entry points -->
+  <div class="entry-row">
+
+    <div class="entry-card">
+      <div class="entry-label">Door A &mdash; New client</div>
+      <div class="entry-title">Template onboarding</div>
+      <div class="entry-desc">Client folder scaffolded from the template. Research brief generated per-niche. Research runs until the completeness gate passes &mdash; thin research blocks here, not downstream.</div>
+    </div>
+
+    <div class="entry-card">
+      <div class="entry-label">Door B &mdash; Existing client, new wave</div>
+      <div class="entry-title">/campaign:status &rarr; conductor resume</div>
+      <div class="entry-desc">Status board shows where every client sits. Conductor reads pipeline-state.json and resumes at the right step. No re-briefing, no guessing.</div>
+    </div>
+
+    <div class="entry-card">
+      <div class="entry-label">Door C &mdash; Live client iterating</div>
+      <div class="entry-title">Metrics cron &rarr; feedback-router</div>
+      <div class="entry-desc">Daily metrics pull feeds the feedback-router: NEW (research refresh), BETTER (angle refinement), or MORE (scale variants). Next batch is 80% proven iterations, 20% fresh angles.</div>
+    </div>
+
+  </div>
+
+  <div class="converge-label">All three doors feed into the same chain below</div>
+  <div class="arrow-down">
+    <svg width="14" height="28" viewBox="0 0 14 28" fill="none">
+      <line x1="7" y1="0" x2="7" y2="20" stroke="#4f8ef7" stroke-width="2"/>
+      <polyline points="2,16 7,24 12,16" stroke="#4f8ef7" stroke-width="2" fill="none"/>
+    </svg>
+  </div>
+
+  <!-- Shared chain -->
+  <div class="chain">
+
+    <div class="step">
+      <div class="step-title">Avatars &mdash; verbatim buyer language</div>
+      <div class="step-desc">Micro-personas built from real research. Every quote carries a source pointer (transcript line or Reddit URL). Invented quotes cannot enter &mdash; the provenance field is required.</div>
+    </div>
+
+    <div class="connector"><div class="connector-line"></div></div>
+
+    <div class="gate-code-block">
+      <span class="gate-tag code">Gate &mdash; code decides</span>
+      <span class="gate-title code">Research completeness floor</span>
+      <div class="gate-desc">Niche-adaptive minimum quote/source count. If the research vault is thin, this step refuses to proceed. Fails loud &mdash; does not silently downgrade output quality.</div>
+    </div>
+
+    <div class="connector"><div class="connector-line"></div></div>
+
+    <div class="step">
+      <div class="step-title">Angles + diversity map</div>
+      <div class="step-desc">Big-angle-spotter runs in hardened mode (now the default). Scores each angle across five dimensions. Diversity map ensures the batch covers different awareness stages, emotions, and formats &mdash; not ten variations of the same idea.</div>
+    </div>
+
+    <div class="connector"><div class="connector-line"></div></div>
+
+    <div class="gate-code-block">
+      <span class="gate-tag code">Gate &mdash; code decides</span>
+      <span class="gate-title code">Angle scored 4 of 5 minimum, code decides</span>
+      <div class="gate-desc">Each angle is scored on grounding, specificity, and differentiation. Below threshold, the run regenerates. The model does not grade its own work &mdash; a separate scoring pass does.</div>
+    </div>
+
+    <div class="connector"><div class="connector-line"></div></div>
+
+    <div class="step">
+      <div class="step-title">Hooks + copy</div>
+      <div class="step-desc">Headlines and primary copy generated from approved angles. Each hook carries an insight tag pointing back to the research source that inspired it.</div>
+    </div>
+
+    <div class="connector"><div class="connector-line"></div></div>
+
+    <div class="gate-code-block">
+      <span class="gate-tag code">Gate &mdash; code decides</span>
+      <span class="gate-title code">Hook gate &mdash; insight tags must resolve</span>
+      <div class="gate-desc">Every hook's insight tag is checked against the research vault. If the tag points at nothing, the hook is cut &mdash; not passed along with a warning.</div>
+    </div>
+
+    <div class="connector"><div class="connector-line"></div></div>
+
+    <div class="step">
+      <div class="step-title">Image prompts &mdash; 11-pattern library, 5 formats</div>
+      <div class="step-desc">Prompts built from Ferres' swipe vault (49 proven statics, verbatim anatomy, replication recipes). 11 patterns (e.g. Testimonial Stack, Before/After, Social Proof Strip) across 5 static formats. Not invented from adjectives.</div>
+    </div>
+
+    <div class="connector"><div class="connector-line"></div></div>
+
+    <div class="gate-code-block">
+      <span class="gate-tag code">Gate &mdash; code decides</span>
+      <span class="gate-title code">Claim gate &mdash; every number traces to a source or is cut</span>
+      <div class="gate-desc">The claim ledger checks every number and specific claim in copy and image prompts against the source manifest. No source, no ship. This is the gate that would have caught the invented $214,300 figure from the old machine.</div>
+    </div>
+
+    <div class="connector"><div class="connector-line"></div></div>
+
+    <div class="step">
+      <div class="step-title">Render</div>
+      <div class="step-desc">render.py reads the current dct.json shape directly &mdash; no hand-feeding prompts one by one. Sidecar provenance file written alongside every image: which prompt, which source, which wave.</div>
+    </div>
+
+    <div class="connector"><div class="connector-line"></div></div>
+
+    <div class="gate-code-block">
+      <span class="gate-tag code">Gate &mdash; code decides</span>
+      <span class="gate-title code">Pre-launch rubric</span>
+      <div class="gate-desc">Checks dimensions, file completeness, and copy-to-creative alignment before any human sees it.</div>
+    </div>
+
+    <div class="connector"><div class="connector-line"></div></div>
+
+    <div class="gate-human-block">
+      <span class="gate-tag human">Gate &mdash; Jerel decides</span>
+      <span class="gate-title human">Creative approval</span>
+      <div class="gate-desc">You review rendered images. Code has already cut unsourced claims, thin research, and broken hooks &mdash; so what reaches you has passed the factual checks. This gate is for taste and brand judgment, not fact-checking.</div>
+    </div>
+
+    <div class="connector"><div class="connector-line"></div></div>
+
+    <div class="step">
+      <div class="step-title">Sheet write &mdash; gated writer, dry-run first</div>
+      <div class="step-desc">Generic gated sheet writer (not hardcoded to one client). Runs dry-run by default and shows a diff before touching the live sheet. Provisioner --into no longer deletes existing tabs.</div>
+    </div>
+
+    <div class="connector"><div class="connector-line"></div></div>
+
+    <div class="step">
+      <div class="step-title">Meta upload &mdash; FORCED PAUSED</div>
+      <div class="step-desc">Ads upload in paused state. The machine cannot go live unilaterally &mdash; the upload script cannot set ads to active.</div>
+    </div>
+
+    <div class="connector"><div class="connector-line"></div></div>
+
+    <div class="gate-human-block">
+      <span class="gate-tag human">Gate &mdash; Jerel decides</span>
+      <span class="gate-title human">Enable in Ads Manager</span>
+      <div class="gate-desc">You flip the switch in Meta Ads Manager. No ad goes live without a deliberate human action on your side.</div>
+    </div>
+
+    <div class="connector"><div class="connector-line"></div></div>
+
+    <div class="step">
+      <div class="step-title">Metrics &rarr; feedback loop &rarr; back to Door C</div>
+      <div class="step-desc">Daily metrics cron pulls per-ad data. Kill thresholds (min S$200 spend, 7 days, 5k impressions) prevent early-kill noise. Comment mining feeds VOC slots for the next batch. Router sends the brief back to Door C with NEW / BETTER / MORE tag.</div>
+    </div>
+
+  </div>
+
+  <!-- Legend -->
+  <div class="legend">
+    <div class="legend-item">
+      <div class="legend-swatch" style="background:#2a1a1a; border-color:#f87171;"></div>
+      Code gate &mdash; pass/fail set by score or source check. Model does not grade itself.
+    </div>
+    <div class="legend-item">
+      <div class="legend-swatch" style="background:#2a2100; border-color:#fbbf24;"></div>
+      Human gate &mdash; Jerel's judgment required. Cannot be bypassed by the machine.
+    </div>
+    <div class="legend-item">
+      <div class="legend-swatch" style="background:#22263a; border-color:#2e3350;"></div>
+      Production step &mdash; runs automatically once upstream gates pass.
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ======================================================
+     SECTION 3 — DETERMINISTIC VS PROBABILISTIC
+====================================================== -->
+<div class="section-label">Section 3</div>
+<div class="section-title">What the machine locks vs what it proposes</div>
+<div class="section-sub">Not everything can be code-enforced. The machine is built to lock what can be locked and surface the rest for a human decision.</div>
+
+<div class="two-col">
+
+  <div class="col-card col-det">
+    <h3>Anchors &mdash; code enforces these</h3>
+    <div class="col-sub">These do not change run to run. Gates enforce them. No exceptions.</div>
+    <ul>
+      <li><strong>Research vault + per-niche completeness floor</strong> &mdash; minimum quote and source count before any generation runs</li>
+      <li><strong>Verbatim buyer language with source pointers</strong> &mdash; every quote in a persona traces back to a transcript line or Reddit URL</li>
+      <li><strong>11 proven ad patterns + 5 static formats</strong> &mdash; citation-verified from Ferres' swipe vault, not invented on the fly</li>
+      <li><strong>Claims ledger &mdash; source-or-cut</strong> &mdash; every number in copy or an image prompt either has a source file citation or is removed before render</li>
+      <li><strong>Persona quotes locked to research lines</strong> &mdash; the hook gate checks that insight tags resolve to real source content</li>
+    </ul>
+  </div>
+
+  <div class="col-card col-prob">
+    <h3>Creative surface &mdash; model proposes</h3>
+    <div class="col-sub">These vary every run. The machine generates options; humans and gates filter them.</div>
+    <ul>
+      <li><strong>Which angle</strong> &mdash; the model picks from the grounded research; hardened scoring cuts weak picks</li>
+      <li><strong>Hook phrasing</strong> &mdash; the opening line, the emotional register, the specific words</li>
+      <li><strong>Copy voice</strong> &mdash; tone, sentence rhythm, word choice within the approved angle</li>
+      <li><strong>Visual interpretation of a pattern</strong> &mdash; how a Testimonial Stack or Social Proof Strip is rendered for this specific offer</li>
+    </ul>
+  </div>
+
+</div>
+
+<div class="gate-bridge">
+  <p><strong>The gates sit between them.</strong> Code decides pass/fail from scores and source checks &mdash; the model never grades its own homework. A generation step that fails a gate regenerates or stops; it does not pass along a warning note for someone downstream to maybe read.</p>
+</div>
+
+<div class="caveat-line">
+  <strong>Honest caveat:</strong> gates guarantee grounded and well-formed, not will-convert. A claim that traces to a real source can still be the wrong claim for this audience. Conversion comes from running volume, applying the kill and scale thresholds, and feeding comment objections back into the next batch. The machine makes each wave cheaper to produce and safer to ship &mdash; it does not replace the test-and-learn cycle.
+</div>
+
+
+<!-- ======================================================
+     SECTION 4 — WHAT CHANGED
+====================================================== -->
+<div class="section-label">Section 4</div>
+<div class="section-title">Before and after &mdash; 8 changes that matter</div>
+<div class="section-sub">What the machine did in the old version versus what it does now. Same stages, different behavior.</div>
+
+<div class="table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Area</th>
+        <th>Before (v1)</th>
+        <th>After (v2)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Invented numbers in creatives</td>
+        <td>$214,300 loan balance &mdash; no research source, no research file &mdash; rendered into approved Eugene ad images. Nothing caught it.</td>
+        <td>Claim gate checks every number in copy and image prompts against the source manifest before render. No source means the number is cut, not flagged with a warning.</td>
+      </tr>
+      <tr>
+        <td>Research quality</td>
+        <td>No definition of "research complete." Thin-research clients and deep-research clients ran through identical (zero) grounding floors. Quality silently varied 100:1.</td>
+        <td>Per-niche completeness gate blocks generation until the research vault meets a minimum. Fails loud. First-time onboarding and later waves both hit the same floor.</td>
+      </tr>
+      <tr>
+        <td>Angle gate</td>
+        <td>Hardened scoring mode existed but was opt-in, undocumented in the skill, and the launch path pointed at a directory that did not exist. Most waves ran ungated.</td>
+        <td>Hardened mode is the default. Scored JSON gate (five dimensions, threshold 4 of 5, fail-closed regen). Code decides; not the operator's memory.</td>
+      </tr>
+      <tr>
+        <td>Hooks discarded mid-pipeline</td>
+        <td>The angle run produced gated headlines. Those headlines were thrown away. Headline-bank regenerated new ones downstream with no gate &mdash; the one factual check in the copy lane certified work that never shipped.</td>
+        <td>Hooks carry resolvable insight tags. The hook gate checks tags against the research vault. A hook with a broken tag is cut before it reaches copy assembly.</td>
+      </tr>
+      <tr>
+        <td>Template stamping defects</td>
+        <td>The factory template failed 3 of its own 7 ICM rules. Every new client onboarding cloned the same structural gaps.</td>
+        <td>Template passes its own validator (91-line CLAUDE.md, validator v2 checks content not just structure). Client #2 onboarded with zero out-of-template edits &mdash; repeatability proven.</td>
+      </tr>
+      <tr>
+        <td>Render and sheet automation</td>
+        <td>render.py and the sheet writer could not read the current dct.json shape. Every wave meant hand-feeding prompts one by one and writing sheet rows manually, which silently dropped the preview and snapshot safety steps.</td>
+        <td>render.py repointed to the current dct.json shape. One generic gated sheet writer (not hardcoded to one client). Dry-run default shows diff before touching the live sheet.</td>
+      </tr>
+      <tr>
+        <td>Where is every client?</td>
+        <td>Held in the operator's head or scattered across ad-hoc notes. No cross-client view existed. State index files lagged folder truth across all three crawled clients.</td>
+        <td>/campaign:status board reads every client's campaign registry and state files and prints one line per client: where the work sits and what comes next. Index auto-sync (dry-run default).</td>
+      </tr>
+      <tr>
+        <td>Proof</td>
+        <td>Improvement claims were hypothetical &mdash; no second client had been run through the rebuilt template.</td>
+        <td>Second client (different niche, different compliance requirements) onboarded through the new template with zero hand-edits outside L3. Repeatability is a measured result, not a design goal.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+<!-- ======================================================
+     FOOTER
+====================================================== -->
+<div class="footer">
+  <strong>Source files</strong>
+  <ul>
+    <li><a href="../AUDIT-REPORT.md">../AUDIT-REPORT.md</a> &mdash; full 62-finding audit with file citations</li>
+    <li><a href="../_handoffs/260611-rebuild-complete.md">../_handoffs/260611-rebuild-complete.md</a> &mdash; rebuild session handoff (M0&ndash;M4, open items, backlog)</li>
+    <li><a href="../_shared-knowledge/ferres/_index.md">../_shared-knowledge/ferres/_index.md</a> &mdash; Ferres corpus index (patterns, media-buying doctrine, swipe vault)</li>
+  </ul>
+</div>
+
+</body>
+</html>
