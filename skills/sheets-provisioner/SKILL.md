@@ -214,7 +214,7 @@ A new client's config is a copy of it. It carries the `provisioning` block, an e
 2. `provision_from_template.py --source <template-sheet> --into <new-sheet> --tabs "<CORE 9, + any OPTIONAL the client needs>"` → clone tab structure, clear template data.
 3. (LP clients only) `scripts/modal/setup/provision_lp_tabs.py --client-slug <slug> --label <Label>` → add the 3 LP tabs with their SUMMARY formulas.
 4. Record the live gids into `campaigns[].tabs`.
-5. `source_of_truth_sheet_writer.py` → AVATARS (narrative-per-row). `tr_10_5_5_sheet_writer.py` / `ad_concept_sheet_writer.py` → CREATIVES/COPY rows.
+5. `source_of_truth_sheet_writer.py` → AVATARS (narrative-per-row). `dct_10_5_5_sheet_writer.py` / `ad_concept_sheet_writer.py` → CREATIVES/COPY rows.
 
 Note: the `provision_*.py` scripts need the google python libs (Modal env). In a gws-only
 local shell, replicate the clone via `gws sheets spreadsheets sheets copyTo` (preserves

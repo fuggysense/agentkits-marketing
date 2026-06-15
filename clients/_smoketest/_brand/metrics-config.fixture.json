@@ -1,5 +1,5 @@
 {
-  "_comment": "FICTIONAL fixture (added 260611) for tr_10_5_5_sheet_writer.py dry-run regression. Real campaigns[]-only shape (NO top-level sheet_id — matches live clients like neezanizam, so the campaign-flatten path is exercised). sheet_id is FAKE; dry-run never touches the network. Do NOT flip --mode to live against this. Pass via --config since the canonical _brand/metrics-config.json is the onboarding TEMPLATE (placeholder shape) and must stay pristine.",
+  "_comment": "FICTIONAL fixture (added 260611) for dct_10_5_5_sheet_writer.py dry-run regression. Real campaigns[]-only shape (NO top-level sheet_id — matches live clients like neezanizam, so the campaign-flatten path is exercised). sheet_id is FAKE; dry-run never touches the network. Do NOT flip --mode to live against this. Pass via --config since the canonical _brand/metrics-config.json is the onboarding TEMPLATE (placeholder shape) and must stay pristine.",
   "client_slug": "_smoketest",
   "provisioning": {
     "creator_account": "jerel@genflos.com",
