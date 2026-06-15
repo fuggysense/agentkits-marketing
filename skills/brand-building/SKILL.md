@@ -182,7 +182,7 @@ Apply brand expertise when:
 - [[brand-voice-guardian]] (agent, 0.21)
 - [[researcher]] (agent, 0.17)
 - [[email-marketing]] (skill, 0.17)
-- [[content-strategy]] (skill, 0.16)
+- [[content-strategy]] (skill, 0.17)
 - [[marketing-fundamentals]] (skill, 0.16)
 
 <!-- skill-graph:end -->

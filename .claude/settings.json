@@ -68,6 +68,21 @@
             "type": "command",
             "command": ".claude/hooks/smart-ctx-guard.sh",
             "timeout": 2000
+          },
+          {
+            "type": "command",
+            "command": ".claude/hooks/meta-publish-gate.sh",
+            "timeout": 3000
+          }
+        ]
+      },
+      {
+        "matcher": "mcp__plugin_context-mode_context-mode__ctx_execute",
+        "hooks": [
+          {
+            "type": "command",
+            "command": ".claude/hooks/meta-publish-gate.sh",
+            "timeout": 3000
           }
         ]
       }

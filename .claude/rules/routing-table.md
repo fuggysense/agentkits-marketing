@@ -1,6 +1,6 @@
 # Routing Table (auto-generated — do not edit)
 
-_Generated: 2026-06-11T02:28:13.949Z • Project: 75 • Global: 58_
+_Generated: 2026-06-15T17:18:43.146Z • Project: 78 • Global: 59_
 
 Edit `routing-overrides.md` for manual disambiguation. Re-run `.claude/hooks/refresh-registry.js` to refresh.
 
@@ -52,7 +52,7 @@ Edit `routing-overrides.md` for manual disambiguation. Re-run `.claude/hooks/ref
 - **headline-bank** _(project)_ — "Curiosity-led Meta ad copy generator. Per angle: a ~150w PRIMARY on the six-emotional-states sequence (hook -> pain -> agitate -> hope -> loop CTA) + a ~50w co
 - **here-now** _(global)_ — "Publish websites & store private files in cloud Drives. Sites: publish to {slug}.here.now or custom domains. Drives: cloud folders for docs, memory, plans, ass
 - **higgsfield** _(global)_ — "Router for all Higgsfield generation work: image, video, Soul character training, product photography, marketplace, Marketing Studio ads. Triggers: Higgsfield,
-- **icm** _(global)_ — "Interpretable Context Methodology (ICM, arXiv:2603.16021v2) — five-layer folder/context architecture that loads minimum context per step; fixes token bloat, du
+- **icm** _(global)_ — "Interpretable Context Methodology (ICM) — five-layer folder/context architecture that loads minimum context per step; fixes token bloat, duplication drift, con
 - **ig-reel-script-writer** _(global)_ — "Instagram Reel scripts via Jason's viral framework (Hook → Build-Up → Value → Payoff → CTA). 100+ proven hooks + psychology. Triggers: write reel script, turn 
 - **ig-scorecard** _(global)_ — "Analyze last 10 Instagram posts: engagement metrics, winners/losers analysis, content strategy. Browser automation + .xlsx scorecard. Triggers: Instagram audit
 - **image-generation** _(project)_ — "Tier-1 image-gen orchestrator: routes intent + Vertex/NB2 direct backend + HITL prompt review + carousel mode + video reference frames. Routes to `higgsfield` 
@@ -65,10 +65,12 @@ Edit `routing-overrides.md` for manual disambiguation. Re-run `.claude/hooks/ref
 - **marketing-ideas** _(project)_ — "140 proven marketing approaches by category. Triggers: marketing ideas, growth ideas, how to market, marketing strategies, tactics, ways to promote, ideas to g
 - **marketing-psychology** _(project)_ — "70+ mental models for marketing. Triggers: psychology, mental models, cognitive bias, persuasion, behavioral science, why people buy, decision-making, consumer
 - **meta-ads-uploader** _(project)_ — "End-to-end Meta (Facebook/Instagram) ad creative uploader. Bridges copy generation to live ads. Triggers: upload ads, create meta ads, bulk upload, publish, la
+- **metrics-wire** _(project)_ — "Wire a new campaign into the Modal metrics cron (Meta insights → Google Sheet) with near-zero setup. Inventory-first: checks what exists before creating anythi
 - **multi-agent-consensus** _(project)_ — "Spawn N agents on same prompt (framing variations) to find consensus, divergences, outliers. Filters hallucinations, surfaces ideas. Triggers: consensus, poll 
 - **notebooklm** _(global)_ — "Google NotebookLM API: create notebooks, add sources (URLs, PDFs, video, audio), generate all artifact types (podcasts, guides, FAQs, timelines), download form
 - **notion-cli** _(global)_ — "Notion CLI (`ntn`): query databases, create/update pages from Markdown, upload files, raw API. Auth via OS keychain (ntn login). 3 req/sec sustained, 10 burst.
 - **offer-builder** _(project)_ — "5-phase offer framework: discovery, viability scoring, identity extraction, micro offers, documents, audits, deployment. Triggers: build offer, offer builder, 
+- **offer-validation** _(project)_ — "Validate any offer with a 48h Meta ads test before building the product (George Ten method). Triggers: validate offer, validation campaign, validation test, 48
 - **onboarding-cro** _(project)_ — "Post-signup onboarding optimization: activation, first-run, time-to-value, empty states, aha moment, NUX. Triggers: onboarding, activation, first-run, aha mome
 - **onboarding-strategy-pdf** _(project)_ — "Generate client-ready 7-page onboarding strategy PDF (Hormozi framework). Merges context + avatar research + optional paid-media-audit. For paid calls. Trigger
 - **one** _(global)_ — | Use the One CLI (`one`) to interact with 3rd-party platforms — Gmail, Slack, Stripe, Notion, etc. through their APIs. One handles auth, request building, and 
@@ -110,6 +112,8 @@ Edit `routing-overrides.md` for manual disambiguation. Re-run `.claude/hooks/ref
 - **skill-cleaner** _(global)_ — "Audit Claude Code skills: find duplicates across global/plugin/project roots, flag bloated descriptions, surface unused/retired husks, forecast prompt-budget s
 - **skill-creator** _(global)_ — "Create, edit, optimize, and benchmark skills. Test & eval, variance analysis, improve triggering accuracy. Triggers: create skill, build skill, edit skill, opt
 - **source-of-truth** _(project)_ — "Generate paid ads source-of-truth: 26 core sections + 2 Ferres research-flow sections (§27 says-vs-addresses gap analysis, §28 competitor opportunity matrix). 
+- **status-board** _(project)_ — "One-glance cross-client status. Reads every client's campaign registry + state files + folder truth and prints one line per client: where the work sits, what's
+- **tally** _(global)_ — > Tally Forms API CLI: list/get/create/delete/publish forms, read submissions. Triggers: tally form, create tally form, tally api, qualification form, build a t
 - **tiktok-slideshows** _(project)_ — "TikTok slideshows, Photo Mode, content calendar, trending hooks, batch production. Triggers: TikTok + (slideshows, carousels, Photo Mode, hooks, batches, calen
 - **transcribe** _(global)_ — Transcribe any audio or video to text. Groq Whisper by default (fast/cheap); ElevenLabs Scribe for word-level timestamps (--words); local faster-whisper fallbac
 - **trigger-agents** _(global)_ — "AI agent patterns with Trigger.dev: orchestration, parallelization, routing, evaluator-optimizer, human-in-the-loop. Triggers: ai agent, parallel workers, appr

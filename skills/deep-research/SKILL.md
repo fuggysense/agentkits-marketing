@@ -323,7 +323,7 @@ The script returns JSON with a `result` field containing the structured synthesi
 - [[researcher]] (agent, 0.19)
 - [[persona-builder]] (agent, 0.15)
 - [[multi-agent-consensus]] (skill, 0.14)
-- [[verification-loops]] (skill, 0.14)
 - [[source-of-truth]] (skill, 0.14)
+- [[verification-loops]] (skill, 0.14)
 
 <!-- skill-graph:end -->

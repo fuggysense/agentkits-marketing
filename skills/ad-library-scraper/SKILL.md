@@ -256,7 +256,7 @@ See `~/.claude/plans/started-prancy-origami.md` § "Locked decisions" — Q1–Q
 
 - [[scrapecreators]] (skill, 0.22)
 - [[feedback-router]] (skill, 0.21)
-- [[meta-ads-uploader]] (skill, 0.20)
+- [[meta-ads-uploader]] (skill, 0.19)
 - [[source-of-truth]] (skill, 0.18)
 - [[onboarding-strategy-pdf]] (skill, 0.18)
 

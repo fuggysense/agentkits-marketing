@@ -40,6 +40,8 @@ Sales-letter / Meta-ad-text / angles / DCT are already disambiguated under §Dis
 - Email / sequence → `email-sequence` (copy) + `email-marketing` (strategy) via `/content:email` _(the ONE live `/content:*` engine — every other `/content:*` is deprecated)_
 - Hooks by context: paid-video-ad → `video-hook-variants`; organic short-form → `viral-hooks-content-creator`; IG Reel → `ig-reel-script-writer`. The opening line of a letter/email/ad is the LEAD (handled inside that copy skill), not a hook skill.
 
+- `wire metrics` / `new campaign metrics` / `setup metrics cron` / `connect campaign to sheet` → `metrics-wire` _(inventory-first wiring into the Modal metrics cron + verified test write. `sheets-updater` = manual ad-hoc pulls only; the cron implementation lives at `scripts/modal/marketing_metrics.py`. Added 260612.)_
+
 ## Copy principle overrides (resolve cross-layer contradictions — added 2026-06-02)
 
 - **Readability is audience-relative, not fixed-grade** — third-grade Singapore-English for ESL/consumer, professional/technical for insider/B2B. This OVERRIDES the global `/writing` skill's fixed grade-4–6 target for insider/B2B copy (grade 4–6 applies to consumer short-form only).

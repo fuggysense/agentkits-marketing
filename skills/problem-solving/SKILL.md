@@ -326,8 +326,8 @@ All techniques detailed in `./references/`:
 
 - [[content-strategy]] (skill, 0.14)
 - [[conversion-optimizer]] (agent, 0.14)
-- [[brand-building]] (skill, 0.14)
 - [[paid-advertising]] (skill, 0.14)
+- [[brand-building]] (skill, 0.14)
 - [[researcher]] (agent, 0.14)
 
 <!-- skill-graph:end -->

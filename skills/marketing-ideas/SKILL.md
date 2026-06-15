@@ -608,6 +608,6 @@ When recommending ideas:
 - [[competitor-alternatives]] (skill, 0.20)
 - [[programmatic-seo]] (skill, 0.20)
 - [[researcher]] (agent, 0.16)
-- [[free-tool-strategy]] (skill, 0.15)
+- [[content-strategy]] (skill, 0.15)
 
 <!-- skill-graph:end -->

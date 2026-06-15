@@ -517,8 +517,8 @@ clients/<project>/
 
 - [[image-generation]] (skill, 0.16)
 - [[brand-voice-guardian]] (agent, 0.16)
-- [[linkedin-content]] (skill, 0.15)
 - [[video-brief-normalizer]] (skill, 0.15)
+- [[linkedin-content]] (skill, 0.15)
 - [[ad-concept-engine]] (skill, 0.15)
 
 <!-- skill-graph:end -->

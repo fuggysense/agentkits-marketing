@@ -381,5 +381,6 @@ If you need more context, ask:
 
 - [[conversion-optimizer]] (agent, 0.14)
 - [[popup-cro]] (skill, 0.13)
+- [[signup-flow-cro]] (skill, 0.12)
 
 <!-- skill-graph:end -->

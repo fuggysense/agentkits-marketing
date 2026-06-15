@@ -280,8 +280,8 @@ User can override: "review this with opus" or "do 2 rounds of verification".
 
 - [[prompt-contracts]] (skill, 0.19)
 - [[multi-agent-consensus]] (skill, 0.18)
-- [[sales-letter-auditor]] (agent, 0.17)
+- [[sales-letter-auditor]] (agent, 0.18)
 - [[brand-voice-guardian]] (agent, 0.15)
-- [[copywriter]] (agent, 0.14)
+- [[copywriter]] (agent, 0.15)
 
 <!-- skill-graph:end -->

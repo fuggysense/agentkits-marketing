@@ -304,6 +304,6 @@ The client raises typed exceptions:
 - [[ad-library-scraper]] (skill, 0.22)
 - [[meta-ads-uploader]] (skill, 0.19)
 - [[youtube-content]] (skill, 0.14)
-- [[paid-advertising]] (skill, 0.13)
+- [[tiktok-slideshows]] (skill, 0.12)
 
 <!-- skill-graph:end -->

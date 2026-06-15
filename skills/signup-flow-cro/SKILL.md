@@ -397,5 +397,6 @@ If you need more context:
 
 - [[form-cro]] (skill, 0.24)
 - [[onboarding-cro]] (skill, 0.14)
+- [[page-cro]] (skill, 0.12)
 
 <!-- skill-graph:end -->

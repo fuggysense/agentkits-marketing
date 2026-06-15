@@ -1,9 +1,9 @@
 {
-  "generated": "2026-06-11T04:04:00.774Z",
+  "generated": "2026-06-15T17:18:43.143Z",
   "counts": {
-    "project": 76,
-    "global": 58,
-    "total": 134
+    "project": 78,
+    "global": 59,
+    "total": 137
   },
   "skills": [
     {
@@ -392,6 +392,13 @@
       "path": ".claude/skills/meta-ads-uploader/SKILL.md"
     },
     {
+      "name": "metrics-wire",
+      "description": "\"Wire a new campaign into the Modal metrics cron (Meta insights → Google Sheet) with near-zero setup. Inventory-first: checks what exists before creating anything. Ends with a verified test write to the right sheet. Triggers: wire metrics, new campaign metrics, setup metrics cron",
+      "triggers": [],
+      "source": "project",
+      "path": ".claude/skills/metrics-wire/SKILL.md"
+    },
+    {
       "name": "multi-agent-consensus",
       "description": "\"Spawn N agents on same prompt (framing variations) to find consensus, divergences, outliers. Filters hallucinations, surfaces ideas. Triggers: consensus, poll agents, stochastic consensus, multi-agent vote, compare approaches.\"",
       "triggers": [],
@@ -418,6 +425,13 @@
       "triggers": [],
       "source": "project",
       "path": ".claude/skills/offer-builder/SKILL.md"
+    },
+    {
+      "name": "offer-validation",
+      "description": "\"Validate any offer with a 48h Meta ads test before building the product (George Ten method). Triggers: validate offer, validation campaign, validation test, 48 hour test, test before build, low-ticket validation. Invokable at any pipeline stage: pre-launch setup, mid-flight data",
+      "triggers": [],
+      "source": "project",
+      "path": ".claude/skills/offer-validation/SKILL.md"
     },
     {
       "name": "onboarding-cro",
@@ -714,6 +728,13 @@
       "triggers": [],
       "source": "project",
       "path": ".claude/skills/status-board/SKILL.md"
+    },
+    {
+      "name": "tally",
+      "description": "> Tally Forms API CLI: list/get/create/delete/publish forms, read submissions. Triggers: tally form, create tally form, tally api, qualification form, build a tally form, tally submissions, tally integrate.",
+      "triggers": [],
+      "source": "global",
+      "path": "../../../../.claude/skills/tally/SKILL.md"
     },
     {
       "name": "tiktok-slideshows",
