@@ -26,8 +26,10 @@ Mapping (per the contract + clients/neezanizam/CLAUDE.md DCT law):
     Copy text moved VERBATIM — never altered.
 
 Modes: dry-run (default, no network) prints the planned payload + per-DCT copy-fill state.
-  The live write path is intentionally NOT implemented here yet — gws auth must be valid
-  AND all 5 dct.json copy fields committed first. See the report for the live-write command.
+  live (--mode live) IS implemented — writes CREATIVES + COPY rows via the `gws` CLI
+  (see live_write() below). Preconditions: valid `gws` auth (the owner OAuth identity that
+  owns the sheet) AND every DCT at 5/5 copy (a DCT below 5/5 aborts the write). Recommended:
+  point --config at a scratch-tab config for the first run before writing a live tab.
 """
 from __future__ import annotations
 
