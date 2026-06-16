@@ -117,6 +117,7 @@ credentials/
 .agents/
 .claude/scheduled_tasks.lock
 scripts/modal/credentials.json
+scripts/modal/*-credentials.json
 skills/design-system/node_modules
 skills/design-system/package-lock.json
 

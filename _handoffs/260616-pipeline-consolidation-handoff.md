@@ -121,3 +121,28 @@ Your loop: **(1) spin creatives+copy → (2) track results across clients → (3
 - Eugene's sheet: `1SDLzn4ceWoLUoWEagrmPFtWA7ZlTZAV_ShRqrD557mw`. NeezaNizam workbook: `14bh8k6S…`.
 - Full consolidation evidence: this session's workflow outputs (4-reader pipeline-vs-vision run).
 - Proof-wave folder: `clients/neezanizam/campaigns/buyer-funnel/dcts/dct-10-5-5-proof-260603/` (DCT010, all DRAFT, never live).
+
+---
+
+## 9. SESSION 2 UPDATE (260616 ~11:00 SGT) — decisions locked + Eugene SA unblocked
+
+**Operator decisions (this session):**
+1. **SA architecture = per-client SAs** (not shared agency SA).
+2. **Attribution = isolate winners → own ad sets**, PLUS two added must-haves: (a) track whether a 10-5-5 *set as a whole* is working, (b) a live registry of *which angles are currently running*. (Sharper than §6 — this is the learn-loop spec.)
+3. **Proof-wave folder (DCT010) = keep** as historical.
+4. **"Lisa" = does not exist** — dropped. No phantom client.
+5. **Eugene sheet layout = Layout A** — one row per DCT, 5 angles across `ANGLE1…ANGLE5` columns (the shape already in the sheet; matches the "which angles are running + is the set working" goal).
+
+**DONE + verified this session (local only, see commit):**
+- **§7.3 keystone — `dct_10_5_5_sheet_writer.py` repointed off `gws` → service account** (gspread `values_update`). Dry-run + read-only SA auth both pass.
+- **Fixed a hidden env blocker:** gspread was not installed in ANY local Python → installed `gspread`+`google-auth` into `.venv`. The SA write path for BOTH writers was unrunnable locally before this.
+- **Eugene per-client SA fully unblocked:** relaxed `iam.disableServiceAccountKeyCreation` **project-scoped** on `eugene-chieng-ads` (Jerel is org `roles/owner` → self-granted org-level `policyAdmin`); minted + **gitignored** the Eugene SA key (`scripts/modal/eugene-credentials.json`, glob added); granted the SA Editor on Eugene's sheet via `gws`; wired `provisioning.service_account`+`credentials_path`; fixed a `{{GOOGLE_SHEET_ID}}` placeholder bug that blocked campaign-flatten. **Eugene SA opened Eugene's live sheet read-only — zero human login. Auth proven 3×.**
+- **Made `ad_concept_sheet_writer.py` credentials-aware** (was hardcoding the agency-default SA → would 403 on a per-client sheet).
+
+**CORRECTION to §4:** the handoff said "Eugene uses `ad_concept_sheet_writer.py` (per-angle rows)". **Wrong against the live sheet.** Eugene's sheet is **Layout A** (per-DCT row, `ANGLE1…5` + `COPY1…5` columns) — neither canonical writer emits it. DCT002 was hand-populated (~260610) and already sits in the sheet correctly. `ad_concept_sheet_writer.py` (per-angle rows) **fails header validation** on Eugene's sheet.
+
+**STILL OPEN (next session):**
+- **[P1 build] Layout-A writer for Eugene** — small writer: read `dct.json` (5 angles) → emit ONE per-DCT row with `ANGLE1…5` / `COPY1…5` / `HEADLINE1…5`. Only matters for the NEXT DCT; DCT002's row already stands. This is the canonical-writer gap behind decision #5.
+- **[operator] Eugene DCT002 Meta upload** — still gated on Derek+Cheryl quote permission + v10 case scope.
+- **[P2] Learn-loop wiring** — per decision #2: set-level performance + active-angles registry + winner→own-ad-set promotion + competitor-insight→big-angle-spotter route.
+- **[P2] Other 6 clients** — still no metrics-config (1up, aura, fuggysmedia, michelle-koh, propwise-sg, stackworks); each now needs its own per-client SA + key + `provisioning.credentials_path` (the per-client cost decision #1 accepted).

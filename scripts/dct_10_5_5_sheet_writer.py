@@ -26,9 +26,10 @@ Mapping (per the contract + clients/neezanizam/CLAUDE.md DCT law):
     Copy text moved VERBATIM — never altered.
 
 Modes: dry-run (default, no network) prints the planned payload + per-DCT copy-fill state.
-  live (--mode live) IS implemented — writes CREATIVES + COPY rows via the `gws` CLI
-  (see live_write() below). Preconditions: valid `gws` auth (the owner OAuth identity that
-  owns the sheet) AND every DCT at 5/5 copy (a DCT below 5/5 aborts the write). Recommended:
+  live (--mode live) IS implemented — writes CREATIVES + COPY rows via the service account
+  (gspread; see live_write() below). Preconditions: the SA named in metrics-config.provisioning
+  (or the agency-default scripts/modal/credentials.json) must have Editor on the sheet AND
+  every DCT at 5/5 copy (a DCT below 5/5 aborts the write). No human login, ever. Recommended:
   point --config at a scratch-tab config for the first run before writing a live tab.
 """
 from __future__ import annotations
@@ -36,7 +37,6 @@ from __future__ import annotations
 import argparse
 import json
 import re
-import subprocess
 import sys
 from pathlib import Path
 
@@ -219,27 +219,29 @@ def build_copy_row(d: dict) -> dict:
     return row
 
 
-def _gws_update(spreadsheet_id: str, a1_range: str, values: list[list]) -> dict:
-    """values update via gws CLI — body passed as JSON string (handles newlines/commas)."""
-    params = json.dumps({
-        "spreadsheetId": spreadsheet_id,
-        "range": a1_range,
-        "valueInputOption": "RAW",
-    })
-    body = json.dumps({"values": values})
-    proc = subprocess.run(
-        ["gws", "sheets", "spreadsheets", "values", "update",
-         "--params", params, "--json", body, "--format", "json"],
-        capture_output=True, text=True,
+def _open_sheet(credentials_path: Path):
+    """Authenticate the service account (gspread) and return the writer.
+
+    Mirrors ad_concept_sheet_writer.py: the SA named in metrics-config.provisioning (or the
+    agency-default scripts/modal/credentials.json) must have Editor on the sheet. No human
+    login, ever — this is the "validate once, never again" path.
+    """
+    from modal.sheets_writer import SheetsWriter  # lazy: avoids gspread import in dry-run
+
+    return SheetsWriter(service_account_path=str(credentials_path))
+
+
+def _sa_update(sheet, a1_range: str, values: list[list]) -> dict:
+    """Range value-update via the service-account gspread client — drop-in for the old gws path."""
+    return sheet.values_update(
+        a1_range,
+        params={"valueInputOption": "RAW"},
+        body={"values": values},
     )
-    out = "\n".join(l for l in proc.stdout.splitlines() if "keyring" not in l)
-    if proc.returncode != 0:
-        raise RuntimeError(f"gws update failed ({a1_range}): {proc.stderr or out}")
-    return json.loads(out) if out.strip() else {}
 
 
 def live_write(dcts_dir: Path, sheet_id: str, dct_ids: list[str],
-               creatives_tab: str, copy_tab: str) -> None:
+               creatives_tab: str, copy_tab: str, credentials_path: Path) -> None:
     dcts = [load_dct(dcts_dir, dct_id) for dct_id in dct_ids]
     cr_header = effective_creatives_header(dcts)
     last_col = chr(ord("A") + len(cr_header) - 1)  # P (16) normally; Q (17) when psych active
@@ -253,23 +255,27 @@ def live_write(dcts_dir: Path, sheet_id: str, dct_ids: list[str],
         rows_cr.append([cr.get(c, "") for c in cr_header])
         rows_cp.append([cp.get(c, "") for c in COPY_HEADER])
 
+    sa_email = json.loads(credentials_path.read_text()).get("client_email", "<unknown>")
+    print(f"Auth: service account {sa_email} (gspread) — no human login")
+    sheet = _open_sheet(credentials_path).get_sheet(sheet_id)
+
     # 1) widen + set COPY header row (12 cols) — overwrites the old 3-2-2 header verbatim
     print(f"Writing COPY header (10-5-5, 12 cols) -> '{copy_tab}'!A1:L1")
-    _gws_update(sheet_id, f"'{copy_tab}'!A1:L1", [COPY_HEADER])
+    _sa_update(sheet, f"'{copy_tab}'!A1:L1", [COPY_HEADER])
 
     # 1b) only when the psych column is active, label its header cell ALONE — leaves the
     # 260609-verified A1:P1 CREATIVES header untouched, so no metric column ever reorders.
     if len(cr_header) > len(CREATIVES_HEADER):
         print(f"Writing PSYCH COVERAGE header -> '{creatives_tab}'!{last_col}1")
-        _gws_update(sheet_id, f"'{creatives_tab}'!{last_col}1", [["PSYCH COVERAGE"]])
+        _sa_update(sheet, f"'{creatives_tab}'!{last_col}1", [["PSYCH COVERAGE"]])
 
     # 2) CREATIVES data rows at A2 (A:{last_col} — 16 cols, or 17 when psych active).
     print(f"Writing {len(rows_cr)} CREATIVES rows -> '{creatives_tab}'!A2:{last_col}{1+len(rows_cr)}")
-    _gws_update(sheet_id, f"'{creatives_tab}'!A2:{last_col}{1+len(rows_cr)}", rows_cr)
+    _sa_update(sheet, f"'{creatives_tab}'!A2:{last_col}{1+len(rows_cr)}", rows_cr)
 
     # 3) COPY data rows at A2 (12 cols A:L)
     print(f"Writing {len(rows_cp)} COPY rows -> '{copy_tab}'!A2:L{1+len(rows_cp)}")
-    _gws_update(sheet_id, f"'{copy_tab}'!A2:L{1+len(rows_cp)}", rows_cp)
+    _sa_update(sheet, f"'{copy_tab}'!A2:L{1+len(rows_cp)}", rows_cp)
     print("LIVE WRITE COMPLETE.")
 
 
@@ -285,7 +291,7 @@ def main() -> None:
                     help="Explicit path to metrics-config.json. Overrides the "
                          "client-root / _brand/ auto-search.")
     ap.add_argument("--mode", choices=["dry-run", "live"], default="dry-run",
-                    help="dry-run: print payload only. live: write to the sheet via gws.")
+                    help="dry-run: print payload only. live: write to the sheet via the service account.")
     args = ap.parse_args()
 
     dcts_dir = REPO_ROOT / "clients" / args.client / "campaigns" / args.campaign / "dcts"
@@ -305,7 +311,7 @@ def main() -> None:
         sys.exit(f"No DCT<NNN>/ folders found under {dcts_dir}")
 
     if args.mode == "live":
-        live_write(dcts_dir, sheet_id, dct_ids, creatives_tab, copy_tab)
+        live_write(dcts_dir, sheet_id, dct_ids, creatives_tab, copy_tab, credentials_path)
         return
 
     print(f"# DRY-RUN — {args.client}/{args.campaign} 10-5-5 sheet payload")

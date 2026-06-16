@@ -162,7 +162,9 @@ class AdConceptSheetWriter:
         if not self.dry_run:
             from modal.sheets_writer import SheetsWriter  # lazy: avoids gspread import in dry-run
 
-            self.writer = SheetsWriter(service_account_path=str(CREDENTIALS_PATH))
+            creds_path = self._resolve_credentials()
+            print(f"Auth: service-account creds {creds_path.name} (no human login)")
+            self.writer = SheetsWriter(service_account_path=str(creds_path))
             self.sheet = self.writer.get_sheet(self.config["sheet_id"])
             self.creatives_tab = self.writer.get_tab(
                 self.sheet, self.config["tabs"]["creatives"]["gid"]
@@ -313,6 +315,37 @@ class AdConceptSheetWriter:
                 "This writer needs both 'creatives' and 'copy' tab definitions."
             )
         return config
+
+    def _resolve_credentials(self) -> Path:
+        """Per-client SA creds: honor provisioning.credentials_path, else agency-default.
+
+        This writer used to hardcode CREDENTIALS_PATH (the agency-default SA), which 403s on
+        any client sheet that SA was never granted on. With per-client SAs, each client's
+        metrics-config names its own provisioning.credentials_path. Mirrors
+        dct_10_5_5_sheet_writer.resolve_credentials.
+        """
+        prov = self.config.get("provisioning", {})
+        raw_path = prov.get("credentials_path")
+        if raw_path:
+            p = Path(raw_path)
+            if not p.is_absolute():
+                p = REPO_ROOT / p
+            if not p.exists():
+                raise FileNotFoundError(
+                    f"provisioning.credentials_path points to a missing file: {p}"
+                )
+            return p
+        sa_email = "<unknown>"
+        if CREDENTIALS_PATH.exists():
+            try:
+                sa_email = json.loads(CREDENTIALS_PATH.read_text()).get("client_email", "<unknown>")
+            except (json.JSONDecodeError, OSError):
+                pass
+        print(
+            f"⚠️  metrics-config names no provisioning.credentials_path — using agency-default "
+            f"SA {sa_email}. Set provisioning.credentials_path for per-client isolation."
+        )
+        return CREDENTIALS_PATH
 
     def _load_tracker(self) -> dict:
         # dct.json (current 10-5-5 shape, docs/dct-json-schema.md) wins when present;
