@@ -142,7 +142,50 @@ Your loop: **(1) spin creatives+copy → (2) track results across clients → (3
 **CORRECTION to §4:** the handoff said "Eugene uses `ad_concept_sheet_writer.py` (per-angle rows)". **Wrong against the live sheet.** Eugene's sheet is **Layout A** (per-DCT row, `ANGLE1…5` + `COPY1…5` columns) — neither canonical writer emits it. DCT002 was hand-populated (~260610) and already sits in the sheet correctly. `ad_concept_sheet_writer.py` (per-angle rows) **fails header validation** on Eugene's sheet.
 
 **STILL OPEN (next session):**
-- **[P1 build] Layout-A writer for Eugene** — small writer: read `dct.json` (5 angles) → emit ONE per-DCT row with `ANGLE1…5` / `COPY1…5` / `HEADLINE1…5`. Only matters for the NEXT DCT; DCT002's row already stands. This is the canonical-writer gap behind decision #5.
+- ~~[P1 build] Layout-A writer for Eugene~~ **DONE 260617 — see §10.**
 - **[operator] Eugene DCT002 Meta upload** — still gated on Derek+Cheryl quote permission + v10 case scope.
 - **[P2] Learn-loop wiring** — per decision #2: set-level performance + active-angles registry + winner→own-ad-set promotion + competitor-insight→big-angle-spotter route.
 - **[P2] Other 6 clients** — still no metrics-config (1up, aura, fuggysmedia, michelle-koh, propwise-sg, stackworks); each now needs its own per-client SA + key + `provisioning.credentials_path` (the per-client cost decision #1 accepted).
+
+---
+
+## 10. SESSION 3 UPDATE (260617) — Layout-A writer built + verified
+
+**Built:** `scripts/dct_layout_a_sheet_writer.py` — the canonical Layout-A writer (closes decision #5 / the §9 P1 gap). Imports all shared config/auth/COPY logic from `dct_10_5_5_sheet_writer.py` (one source of truth); the base writer was NOT modified, so NeezaNizam's full-wave path is untouched.
+
+**What's different from the base 10-5-5 writer** (verified against Eugene's live sheet, not the config — the config's column defs were stale 3-2-2 / single-ANGLE):
+- **CREATIVES = 20 cols, Layout A.** Col A header is a literal SPACE (the BATCH key). Angles are split into **`ANGLE1…ANGLE5`** (cols G:K), each cell `<id> - <name> ("<headline>")` — vs the base writer's single joined `ANGLE` cell.
+- **COPY = 12 cols, byte-identical** to the base 10-5-5 COPY tab (reused verbatim).
+- **Write strategy = per-DCT UPSERT**, not full-wave rewrite. Finds-or-appends each DCT's row by `dct_id` in col A; writes ONLY `A + C:N` (CREATIVES) and `A + C:L` (COPY). **Never** touches STATUS (col B) or the meta_puller metric cols (O:T). So a new DCT joins without disturbing DCT002.
+- **DCT discovery is folder-name agnostic** (any subdir with a `dct.json`) — Eugene names folders `dct-002-math-blind`, which the base writer's `^DCT\d+$` regex would miss.
+
+**Verified:** py_compile (both writers); dry-run against DCT002 reproduces the live row's ANGLE/COPY/HEADLINE cells exactly; read-only live-path sim against the real sheet → header passes `validate_layout_a`, DCT002 resolves to row 2 (UPDATE), a future DCT003 appends at row 3. Fresh-eyes sub-agent review applied: hardened the append target (true last-used row, not `len(col_values)+1`), anchored the header left-edge (cols C:F), added write-width asserts.
+
+**NOT done (gated):** no live write performed — DCT002 already stands and any write to Eugene's real tab needs operator go. The writer is ready for the next DCT:
+`./.venv/bin/python scripts/dct_layout_a_sheet_writer.py --client eugene-chieng --campaign upgrader-ads --mode dry-run` (then `--mode live` on operator go).
+- Note: re-running `--mode live` on DCT002 would UPDATE its row in place — replacing the hand-tuned FORMAT/AWARENESS/PERSONA/ANGLE prose with the writer's computed (cleaner, deterministic) versions, STATUS+metrics untouched. Only do that if you want the machine version on DCT002; otherwise target new DCTs only (`--dct <folder>`).
+
+---
+
+## 11. SESSION 3 cont. (260617) — cross-client consistency sweep + 3-2-2 kill + buyer-funnel live migration
+
+**Operator directive (standing): NEVER the 3-2-2 format again.** 10-5-5 is canonical (COPY 1..5 / HEADLINE 1..5). Captured to memory `feedback_no_322_format.md`.
+
+**Consistency audit (3 sub-agents, live sheets read as ground truth):**
+| Sheet | CREATIVES | COPY | Writer | Was consistent? |
+|---|---|---|---|---|
+| neez **thomson-reserve-buyers** (`1KqWJP08…`) | single `ANGLE` | 10-5-5 | `dct_10_5_5` | ✅ reference sheet |
+| neez **buyer-funnel** (`14bh8k6S…`) | single `ANGLE` | **3-2-2** (old DCT1/DCT2 wave) | `dct_10_5_5` | ❌ COPY was 3-2-2; DCT010 10-5-5 wave never written |
+| **eugene** upgrader-ads (`1SDLzn4…`) | `ANGLE1…5` | 10-5-5 | `dct_layout_a` | ✅ |
+
+**DONE this session (all verified):**
+- **Killed 3-2-2 at the root:** `_template/_brand/metrics-config.json` COPY → 10-5-5. Eugene config → true Layout A (ANGLE1…5 + "Why am I testing this?") + 10-5-5 COPY.
+- **buyer-funnel MIGRATED LIVE → Layout A** (operator chose: overwrite old wave + "do it like eugene"). Sequence: snapshot (`campaigns/_sheet-snapshots/buyer-funnel-pre-migration-260617-1219.json`) → cleared old DCT1/DCT2/DCT003/DCT3 → stamped Layout-A headers → upserted DCT010. **Fresh sub-agent validated PASS** (header byte-identical to Eugene; DCT010 copy verbatim; STATUS+metrics blank; old wave gone).
+- **New writer mode:** `dct_layout_a_sheet_writer.py --init-headers` (stamps the 20-col CREATIVES + 12-col COPY Layout-A headers; one-time, header row only) — used for the buyer-funnel conversion, reusable for any future Layout-A client.
+- **neez config synced to live truth:** buyer-funnel block → Layout A; thomson block → declared single-ANGLE 10-5-5 (was silent). Region-scoped edit (buyer-funnel block only) because buyer-funnel + asset-progression blocks were byte-identical.
+- **credentials.json relabel + guard:** it is NeezaNizam's SA, not "agency-default". `resolve_credentials` now HARD-ABORTS if a client's `provisioning.service_account` ≠ the fallback creds' `client_email` (unit-tested: neez passes, a mismatched client aborts).
+
+**FLAGGED (not touched — need a separate decision/audit):**
+- **neez `asset-progression` block** — STILL 3-2-2 AND its `creatives`/`copy` gids (`1164222857`/`1695031878`) are stale copy-paste pointing at buyer-funnel's tabs, while its real `sheet_id` is `1D-HrqZ…`. Needs a live audit of `1D-HrqZ…` before any config fix (don't repeat the config-≠-sheet drift).
+- **Legacy `CREATIVES_10x5x5_TEST` / `COPY_10x5x5_TEST` tabs** still on the buyer-funnel sheet (`14bh8k6S…`) — retire if unused.
+- **Other clients' configs still 3-2-2** (harmony-wellness, hazecraft, takekine, `_template.old`, smoketests, archive) — un-audited, scoped out; fix per-client only after confirming their live sheet shape.

@@ -44,8 +44,12 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import psych_coverage_tally as pct  # noqa: E402  (sibling module in scripts/)
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
-# Agency-default service-account creds. Used only as a fallback when the client's
-# metrics-config.json names no per-client credentials path — and only with a loud warning.
+# Legacy fallback creds. NOTE (260617): despite the "agency-default" name this file has
+# historically carried, scripts/modal/credentials.json is actually NeezaNizam's per-client
+# service account (neezanizam@neezanizam-492212…). It is used ONLY as a fallback when a
+# client's metrics-config names no per-client credentials_path — and resolve_credentials now
+# HARD-ABORTS if the requesting client's provisioning.service_account doesn't match this
+# file's client_email, so no client can silently write to its sheet AS NeezaNizam.
 DEFAULT_CREDENTIALS_PATH = REPO_ROOT / "scripts" / "modal" / "credentials.json"
 DCT_DIR_RE = re.compile(r"^DCT\d+$")
 
@@ -149,19 +153,29 @@ def resolve_credentials(config: dict) -> Path:
             sys.exit(f"provisioning.credentials_path points to a missing file: {p}")
         return p
 
-    # Fallback — loud warning naming the SA email actually in use.
-    sa_email = prov.get("service_account", "<not set in metrics-config.provisioning>")
+    # Fallback to the legacy creds (= NeezaNizam's SA). HARD GUARD: if this client's config
+    # names a different service_account, abort — writing to their sheet as NeezaNizam's SA is
+    # a cross-client identity leak (and would 403 anyway on a sheet NeezaNizam can't reach).
+    sa_email = prov.get("service_account", "")
     creds_email = "<unreadable>"
     if DEFAULT_CREDENTIALS_PATH.exists():
         try:
             creds_email = json.loads(DEFAULT_CREDENTIALS_PATH.read_text()).get("client_email", "<no client_email>")
         except (json.JSONDecodeError, OSError):
             pass
+    if sa_email and sa_email != creds_email:
+        sys.exit(
+            "ABORT: metrics-config names no provisioning.credentials_path, so this would fall "
+            f"back to the legacy creds {DEFAULT_CREDENTIALS_PATH} (SA: {creds_email}) — but the "
+            f"client's config names a DIFFERENT service_account ({sa_email}). Refusing to write "
+            "as the wrong client's SA. Mint a per-client key and set provisioning.credentials_path "
+            "(see Eugene: scripts/modal/eugene-credentials.json)."
+        )
     print(
-        "⚠️  WARNING: metrics-config names no provisioning.credentials_path — "
-        f"falling back to agency-default {DEFAULT_CREDENTIALS_PATH}.\n"
-        f"    SA named in config:  {sa_email}\n"
-        f"    SA in default creds: {creds_email}",
+        "⚠️  WARNING: metrics-config names no provisioning.credentials_path — falling back to "
+        f"the legacy creds {DEFAULT_CREDENTIALS_PATH}.\n"
+        f"    SA named in config:  {sa_email or '<not set>'}\n"
+        f"    SA in fallback creds: {creds_email}",
         file=sys.stderr,
     )
     return DEFAULT_CREDENTIALS_PATH

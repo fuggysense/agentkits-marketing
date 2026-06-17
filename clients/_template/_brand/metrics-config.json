@@ -92,12 +92,12 @@
     "copy": {
       "gid": "{{GID_COPY}}",
       "name": "COPY",
-      "columns": ["BATCH", "STATUS", "COPY 1", "COPY 2", "HEADLINE 1", "HEADLINE 2"],
+      "columns": ["BATCH", "STATUS", "COPY 1", "COPY 2", "COPY 3", "COPY 4", "COPY 5", "HEADLINE 1", "HEADLINE 2", "HEADLINE 3", "HEADLINE 4", "HEADLINE 5"],
       "write_mode": "manual",
       "frequency": "on_demand",
       "source": "copywriter_agent",
       "status_values": ["DRAFT", "REVIEW", "UPLOAD", "LIVE"],
-      "_col_note": "6-col live default (3-2-2 era, BATCH-prefixed). For 10-5-5 clients the wide variant is 12-col: BATCH, STATUS, COPY 1-5, HEADLINE 1-5 — widen the tab before a 10-5-5 wave if you want one row per DCT instead of one row per angle."
+      "_col_note": "12-col 10-5-5 default (BATCH, STATUS, COPY 1-5, HEADLINE 1-5), one row per DCT. The 3-2-2 era (COPY 1-2 / HEADLINE 1-2) is DEAD — never seed a new client with it. Eugene's Layout-A variant additionally splits CREATIVES ANGLE into ANGLE1-5; see scripts/dct_layout_a_sheet_writer.py."
     },
     "avatars": {
       "gid": "{{GID_AVATARS}}",
